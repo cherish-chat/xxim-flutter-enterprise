@@ -191,9 +191,7 @@ class HttpTool extends GetLifeCycle {
         cancelToken: cancelToken ?? _cancelToken,
         options: Options(
           method: method,
-          headers: await HttpService.service.getHeaders(
-            headers: headers,
-          ),
+          headers: headers,
         ),
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
@@ -274,9 +272,7 @@ class HttpTool extends GetLifeCycle {
         }),
         cancelToken: cancelToken ?? _cancelToken,
         options: Options(
-          headers: await HttpService.service.getHeaders(
-            headers: headers,
-          ),
+          headers: headers,
         ),
         onSendProgress: onSendProgress,
       );
@@ -327,9 +323,7 @@ class HttpTool extends GetLifeCycle {
         queryParameters: query,
         cancelToken: cancelToken ?? _cancelToken,
         options: Options(
-          headers: await HttpService.service.getHeaders(
-            headers: headers,
-          ),
+          headers: headers,
         ),
         onReceiveProgress: onReceiveProgress,
       );

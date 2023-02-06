@@ -29,10 +29,10 @@ class ImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (imageUrl.isEmpty) return _buildPlaceholder();
     return ExtendedImage.network(
-      Tool.getThumbnail(
+      Tool.getFileUrl(
         imageUrl,
-        width: thumbnailW,
-        height: thumbnailH,
+        // width: thumbnailW,
+        // height: thumbnailH,
       ),
       width: width,
       height: height,
@@ -68,10 +68,10 @@ class ImagePrecache {
   }) {
     precacheImage(
       ExtendedNetworkImageProvider(
-        Tool.getThumbnail(
+        Tool.getFileUrl(
           imageUrl,
-          width: thumbnailW,
-          height: thumbnailH,
+          // width: thumbnailW,
+          // height: thumbnailH,
         ),
         cache: true,
       ),

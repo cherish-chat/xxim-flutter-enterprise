@@ -1,4 +1,3 @@
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 
 class LaunchLogic extends GetxController with StateMixin {

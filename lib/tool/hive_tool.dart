@@ -6,6 +6,18 @@ class HiveTool {
   /// 配置信息
   static Box get configBox => HiveService.service(HiveService.config);
 
+  static String configList = "configList";
+
+  static List getConfigList() => configBox.get(
+        configList,
+        defaultValue: defConfigList,
+      );
+
+  static void setConfigList(List configList) => configBox.put(
+        HiveTool.configList,
+        configList,
+      );
+
   /// 用户信息
   static Box get userBox => HiveService.service(HiveService.user);
 

@@ -49,11 +49,14 @@ dependencies:
   file_picker: 5.2.5
   flutter_inappwebview: 5.7.2+3
   pull_to_refresh: 2.0.0
+  flutter_list_view: 1.1.21
+  flutter_slidable: 2.0.0
   flutter_picker: 2.1.0
   modal_bottom_sheet: 2.1.2
   badges: 3.0.2
   lottie: 2.2.0
   fluttertoast: 8.1.2
+  flutter_spinkit: 5.1.0
 
 dev_dependencies:
   flutter_test:

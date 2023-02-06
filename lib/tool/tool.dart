@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:uuid/uuid.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -25,6 +26,94 @@ const String encryptAESKey = "";
 const String encryptAESIV = "";
 
 class Tool {
+  static List configList = [];
+  static String wsUrl = "";
+  static Map minioMap = {};
+  static String fileUrl = "";
+
+  static Future<bool> loadConfigFile() async {
+    try {
+      Response response = await Dio(BaseOptions(
+        connectTimeout: 60000,
+        receiveTimeout: 60000,
+        sendTimeout: 60000,
+      )).get(defConfigFile);
+      if (response.statusCode == 200) {
+        dynamic data = response.data;
+        Map body = (data is String) ? json.decode(data) : data;
+        Uint8List uint8list = base64Decode(body["config"]);
+        String value = EncryptTool.aesDecode(uint8list);
+        configList = json.decode(value);
+        HiveTool.setConfigList(configList);
+        return true;
+      } else {
+        return false;
+      }
+    } catch (_) {
+      return false;
+    }
+  }
+
+  static Future loadFastUrl() async {
+    if (Tool.configList.isEmpty) {
+      Tool.configList = HiveTool.getConfigList();
+    }
+    int fastTime = -1;
+    Map fastMap = configList.first;
+    await Future.wait(configList.map((map) {
+      int beginTime = DateTime.now().millisecondsSinceEpoch;
+      return HttpService.service
+          .getDio()
+          .get(
+            map["apiUrl"],
+            options: Options(
+              sendTimeout: 1000,
+              receiveTimeout: 1000,
+            ),
+          )
+          .then(
+        (response) {
+          if (response.statusCode == 200) {
+            int endTime = DateTime.now().millisecondsSinceEpoch;
+            int interval = endTime - beginTime;
+            if (fastTime == -1) {
+              fastTime = interval;
+              fastMap = map;
+            } else if (interval < fastTime) {
+              fastTime = interval;
+              fastMap = map;
+            }
+          }
+        },
+      ).catchError((error) {});
+    }).toList());
+    wsUrl = fastMap["wsUrl"];
+    minioMap = {
+      "endPoint": fastMap["minioHost"],
+      "port": fastMap["minioPort"],
+      "accessKey": fastMap["accessKey"],
+      "secretKey": fastMap["secretKey"],
+      "useSSL": fastMap["useSSL"],
+      "bucket": fastMap["bucket"],
+    };
+    fileUrl = fastMap["fileUrl"];
+  }
+
+  static String getWsUrl() {
+    return wsUrl;
+  }
+
+  static Map getMinioMap() {
+    return minioMap;
+  }
+
+  static String getFileUrl(String fileName) {
+    if (fileName.startsWith("http://") || fileName.startsWith("https://")) {
+      return fileName;
+    }
+    return "$fileUrl$fileName";
+  }
+
   static Logic? capture<Logic extends GetxController>(
     Function logic, {
     String? tag,
@@ -44,24 +133,6 @@ class Tool {
     Get.focusScope?.unfocus();
   }
 
-  static String getThumbnail(
-    String url, {
-    double width = 0,
-    double height = 0,
-  }) {
-    if (url.contains("aliyuncs.com")) {
-      double ratio = 1.15;
-      if (width > 0) {
-        int w = (width * ratio).toInt();
-        return "$url?x-oss-process=image/resize,w_$w/format,webp";
-      } else if (height > 0) {
-        int h = (height * ratio).toInt();
-        return "$url?x-oss-process=image/resize,h_$h/format,webp";
-      }
-    }
-    return url;
-  }
-
   static void showToast(String msg) {
     FToast fToast = FToast().init(Get.overlayContext!);
     fToast.removeCustomToast();
@@ -75,7 +146,7 @@ class Tool {
         child: Text(
           msg,
           style: const TextStyle(
-            color: getTextWhite,
+            color: Colors.white,
             fontSize: 12,
           ),
         ),

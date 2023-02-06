@@ -62,7 +62,7 @@ class WebViewPage extends StatelessWidget {
             () => Text(
               logic.title.value,
               style: const TextStyle(
-                color: getTextWhite,
+                color: getTextBlack,
                 fontSize: 18,
                 fontWeight: getSemiBold,
               ),
