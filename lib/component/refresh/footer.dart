@@ -1,3 +1,4 @@
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 
 class Footer extends StatelessWidget {
@@ -20,27 +21,11 @@ class Footer extends StatelessWidget {
       height: margin.top + height + margin.bottom,
       loadStyle: loadStyle,
       builder: (context, mode) {
-        Widget widget = const SizedBox();
-        if (mode == LoadStatus.idle) {
-          widget = Text(
-            "准备加载",
-            style: TextStyle(
-              color:
-                  brightness == Brightness.dark ? getTextBlack : getTextWhite,
-              fontSize: 12,
-            ),
-          );
-        } else if (mode == LoadStatus.canLoading ||
-            mode == LoadStatus.loading) {
-          widget = Text(
-            "加载中～",
-            style: TextStyle(
-              color:
-                  brightness == Brightness.dark ? getTextBlack : getTextWhite,
-              fontSize: 12,
-            ),
-          );
-        } else if (mode == LoadStatus.noMore) {
+        Widget widget = const SpinKitThreeBounce(
+          size: 20,
+          color: getMainColor,
+        );
+        if (mode == LoadStatus.noMore) {
           widget = Text(
             "到底啦~",
             style: TextStyle(

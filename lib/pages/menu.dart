@@ -4,12 +4,29 @@ class MenuLogic extends GetxController {
   static MenuLogic? logic() => Tool.capture(Get.find);
 }
 
-class MenuPage extends StatelessWidget {
+class MenuPage extends StatelessWidget with GetResponsiveMixin {
   const MenuPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  bool get alwaysUseBuilder => false;
+
+  @override
+  ResponsiveScreen get screen => ResponsiveScreen(
+        const ResponsiveScreenSettings(),
+      );
+
+  @override
+  Widget? phone() {
+    return _buildScaffold();
+  }
+
+  @override
+  Widget? desktop() {
+    return _buildScaffold();
+  }
+
+  Widget _buildScaffold() {
     MenuLogic logic = Get.put(MenuLogic());
-    return Container();
+    return Scaffold();
   }
 }

@@ -37,12 +37,22 @@ class Error extends StatelessWidget {
         alignment: Alignment.center,
         decoration: decoration,
         child: child ??
-            const Text(
-              "点击重试",
-              style: TextStyle(
-                color: getTextBlack,
-                fontSize: 12,
-              ),
+            Column(
+              children: const [
+                Icon(
+                  Icons.error_outline_rounded,
+                  size: 50,
+                  color: Colors.black,
+                ),
+                SizedBox(height: 5),
+                Text(
+                  "点击重试",
+                  style: TextStyle(
+                    color: getTextBlack,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
             ),
       ),
     );

@@ -55,12 +55,10 @@
 	</dict>
 	<key>io.flutter.embedded_views_preview</key>
     <true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>企业需要访问你的音乐库</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>企业需要访问你的相册</string>
-	<key>NSCameraUsageDescription</key>
-	<string>企业需要访问你的相机</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>企业需要访问你的麦克风</string>
 
 </dict>
 </plist>

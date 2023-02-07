@@ -8,8 +8,8 @@ const Color getToolbarColor = Color(0xFFFFFFFF);
 const Color getBackgroundColor = Color(0xFFFFFFFF);
 const Color getMainColor = Color(0xFF5FAA88);
 const Color getSecondColor = Color(0xFFFF5656);
-const Color getDividerColor = Color(0x1AEEF5F0);
-const Color getPlaceholderColor = Color(0x1AEEF5F0);
+const Color getDividerColor = Color(0x1A5FAA88);
+const Color getPlaceholderColor = Color(0x1A5FAA88);
 
 const Color getBlack50 = Color(0x80000000);
 const Color getBlack25 = Color(0x40000000);

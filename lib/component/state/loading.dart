@@ -1,3 +1,4 @@
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 
 class Loading extends StatelessWidget {
@@ -32,12 +33,9 @@ class Loading extends StatelessWidget {
       alignment: Alignment.center,
       decoration: decoration,
       child: child ??
-          const Text(
-            "加载中～",
-            style: TextStyle(
-              color: getTextBlack,
-              fontSize: 12,
-            ),
+          const SpinKitSquareCircle(
+            size: 40,
+            color: getMainColor,
           ),
     );
   }

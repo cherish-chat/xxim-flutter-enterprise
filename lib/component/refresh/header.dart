@@ -1,3 +1,4 @@
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 
 class Header extends StatelessWidget {
@@ -20,31 +21,14 @@ class Header extends StatelessWidget {
       height: margin.top + height + margin.bottom,
       refreshStyle: refreshStyle,
       builder: (context, mode) {
-        Widget widget = const SizedBox();
-        if (mode == RefreshStatus.idle) {
-          widget = Text(
-            "准备刷新",
-            style: TextStyle(
-              color:
-                  brightness == Brightness.dark ? getTextBlack : getTextWhite,
-              fontSize: 12,
-            ),
-          );
-        } else {
-          widget = Text(
-            "刷新中～",
-            style: TextStyle(
-              color:
-                  brightness == Brightness.dark ? getTextBlack : getTextWhite,
-              fontSize: 12,
-            ),
-          );
-        }
         return Container(
           margin: margin,
           alignment: Alignment.center,
           height: height,
-          child: widget,
+          child: const SpinKitChasingDots(
+            size: 30,
+            color: getMainColor,
+          ),
         );
       },
     );

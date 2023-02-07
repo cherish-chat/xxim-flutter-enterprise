@@ -15,6 +15,19 @@ class LaunchLogic extends GetxController with StateMixin {
   @override
   void onReady() {
     super.onReady();
+    _loadConfig();
+  }
+
+  void _loadConfig() async {
+    if (HiveTool.getConfigList().isEmpty) {
+      if (!(await Tool.loadConfigFile())) {
+        _loadConfig();
+        return;
+      }
+    } else {
+      Tool.loadConfigFile();
+    }
+    await Tool.loadFastUrl();
     _gotoPage();
   }
 
@@ -34,6 +47,7 @@ class LaunchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(LaunchLogic());
     return const Scaffold(
+      body: Loading(),
       backgroundColor: Colors.transparent,
       resizeToAvoidBottomInset: false,
     );
