@@ -1,8 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future initServices() async {
-  if (GetPlatform.isMobile) {
+  if (!kIsWeb) {
     Hive.init(
       (await getApplicationDocumentsDirectory()).path,
     );
@@ -16,6 +17,7 @@ Future initServices() async {
     tag: HiveService.user,
   );
   await Get.putAsync(() => HttpService().init());
+  await XXIM.instance.init();
 }
 
 class HiveService extends GetxService {

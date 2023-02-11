@@ -1,0 +1,94 @@
+syntax = "proto3";
+package pb;
+option go_package = "./pb";
+
+message CommonResp {
+  enum Code {
+    Success = 0;
+
+    UnknownError = 1;  // 未知 error
+    InternalError = 2; // 内部错误
+    RequestError = 3;  // 请求错误
+    AuthError = 4;     // 鉴权错误 // 应该退出登录
+    ToastError = 5;    // toast 错误 只有 message
+    AlertError = 7;    // alert 错误 只有一个确定按钮
+    RetryError = 8;    // alert 错误 有一个取消按钮 和一个重试按钮
+  }
+  Code code = 1;
+  optional string msg = 2;
+  bytes data = 3;
+}
+
+message AlertAction {
+  enum type {
+    // 取消
+    Cancel = 0;
+    // 重试
+    Retry = 1;
+    // 跳转h5
+    ToH5 = 2;
+    // 跳转应用内页面
+    ToApp = 3;
+  }
+  type action = 1;
+  string title = 2;
+  string jumpTo = 3;
+}
+
+message CommonReq {
+  string userId = 1;
+  string token = 2;
+
+  string deviceModel = 11;
+  string deviceId = 12;
+  string osVersion = 13;
+  string platform = 14;
+
+  string appVersion = 21;
+  string language = 22;
+
+  bytes data = 31;
+
+  string ip = 41;
+  string userAgent = 42;
+}
+
+enum ConvType {
+  SINGLE = 0; // 单聊
+  GROUP = 1; // 群聊
+}
+
+enum ContentType {
+  UNKNOWN_Content = 0;
+  TYPING = 1; // 正在输入
+  READ = 2; // 已读
+  REVOKE = 3; // 撤回
+  Tip = 4; // 提示 灰色小字 比如：xxx加入群聊、xxx撤回了一条消息
+
+  TEXT = 11; // 文本
+  IMAGE = 12; // 图片
+  AUDIO = 13; // 语音
+  VIDEO = 14; // 视频
+  FILE = 15; // 文件
+  LOCATION = 16; // 位置
+  CARD = 17; // 名片
+  MERGE = 18; // 合并
+  EMOJI = 19; // 表情
+  COMMAND = 20; // 命令
+  RICH_TXT = 21; // 富文本
+  MARKDOWN = 22; // markdown
+
+  CUSTOM = 100; // 自定义消息
+}
+
+message IpRegion {
+  string country = 1;
+  string province = 2;
+  string city = 3;
+  string isp = 4;
+}
+
+message Page {
+  int32 page = 1;
+  int32 size = 2;
+}

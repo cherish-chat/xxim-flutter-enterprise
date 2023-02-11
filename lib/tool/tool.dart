@@ -26,10 +26,10 @@ const String encryptAESKey = "";
 const String encryptAESIV = "";
 
 class Tool {
-  static List configList = [];
-  static String wsUrl = "";
-  static Map minioMap = {};
-  static String fileUrl = "";
+  static List _configList = [];
+  static String _wsUrl = "wss://api.cherish.chat";
+  static Map _minioMap = {};
+  static String _fileUrl = "";
 
   static Future<bool> loadConfigFile() async {
     try {
@@ -43,8 +43,8 @@ class Tool {
         Map body = (data is String) ? json.decode(data) : data;
         Uint8List uint8list = base64Decode(body["config"]);
         String value = EncryptTool.aesDecode(uint8list);
-        configList = json.decode(value);
-        HiveTool.setConfigList(configList);
+        _configList = json.decode(value);
+        HiveTool.setConfigList(_configList);
         return true;
       } else {
         return false;
@@ -55,12 +55,12 @@ class Tool {
   }
 
   static Future loadFastUrl() async {
-    if (Tool.configList.isEmpty) {
-      Tool.configList = HiveTool.getConfigList();
+    if (Tool._configList.isEmpty) {
+      Tool._configList = HiveTool.getConfigList();
     }
     int fastTime = -1;
-    Map fastMap = configList.first;
-    await Future.wait(configList.map((map) {
+    Map fastMap = _configList.first;
+    await Future.wait(_configList.map((map) {
       int beginTime = DateTime.now().millisecondsSinceEpoch;
       return HttpService.service
           .getDio()
@@ -87,8 +87,8 @@ class Tool {
         },
       ).catchError((error) {});
     }).toList());
-    wsUrl = fastMap["wsUrl"];
-    minioMap = {
+    _wsUrl = fastMap["wsUrl"];
+    _minioMap = {
       "endPoint": fastMap["minioHost"],
       "port": fastMap["minioPort"],
       "accessKey": fastMap["accessKey"],
@@ -96,22 +96,22 @@ class Tool {
       "useSSL": fastMap["useSSL"],
       "bucket": fastMap["bucket"],
     };
-    fileUrl = fastMap["fileUrl"];
+    _fileUrl = fastMap["fileUrl"];
   }
 
   static String getWsUrl() {
-    return wsUrl;
+    return _wsUrl;
   }
 
   static Map getMinioMap() {
-    return minioMap;
+    return _minioMap;
   }
 
   static String getFileUrl(String fileName) {
     if (fileName.startsWith("http://") || fileName.startsWith("https://")) {
       return fileName;
     }
-    return "$fileUrl$fileName";
+    return "$_fileUrl$fileName";
   }
 
   static Logic? capture<Logic extends GetxController>(

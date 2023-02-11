@@ -31,11 +31,11 @@ class HiveTool {
   static bool isLogin() => getUserToken().isNotEmpty && getUserId().isNotEmpty;
 
   static void login(
-    String userToken,
     String userId,
+    String userToken,
   ) {
-    userBox.put(HiveTool.userToken, userToken);
     userBox.put(HiveTool.userId, userId);
+    userBox.put(HiveTool.userToken, userToken);
   }
 
   static void logout() => userBox.clear();

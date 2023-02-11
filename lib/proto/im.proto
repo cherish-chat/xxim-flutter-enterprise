@@ -1,0 +1,96 @@
+syntax = "proto3";
+package pb;
+option go_package = "./pb";
+import "common.proto";
+import "conn.proto";
+
+message ImMQBody {
+  // 推送事件
+  enum Event {
+    Unknown = 0;
+  }
+  Event event = 1;
+  bytes data = 2;
+}
+
+message BeforeConnectReq {
+  ConnParam connParam = 1;
+}
+
+message BeforeConnectResp {
+  int32 code = 1;
+  string msg = 2;
+}
+
+message GetUserLatestConnReq {
+  string userId = 1;
+}
+
+message GetUserLatestConnResp {
+  string userId = 1;
+  string ip = 2;
+  IpRegion ipRegion = 3;
+  string connectedAt = 4;
+  string disconnectedAt = 5;
+  string platform = 6;
+  string deviceId = 7;
+}
+
+//batchGetUserLatestConnReq 批量获取用户最新连接信息
+message BatchGetUserLatestConnReq {
+  repeated string userIds = 1;
+}
+
+//batchGetUserLatestConnResp 批量获取用户最新连接信息
+message BatchGetUserLatestConnResp {
+  CommonResp commonResp = 1;
+  repeated GetUserLatestConnResp userLatestConns = 2;
+}
+
+//MsgNotifyOpt 消息通知选项
+message MsgNotifyOpt {
+  bool noDisturb = 1;
+  bool preview = 2; // 是否预览
+  bool sound = 3; // 是否声音
+  string soundName = 4; // 声音名称
+  bool vibrate = 5; // 是否震动
+}
+
+//GetAppSystemConfigReq 获取系统配置
+message GetAppSystemConfigReq {
+  CommonReq commonReq = 1;
+}
+
+//GetAppSystemConfigResp 获取系统配置
+message GetAppSystemConfigResp {
+  CommonResp commonResp = 1;
+  map<string, string> configs = 2;
+}
+
+//GetAllConvIdOfUserReq 获取用户所有会话id
+message GetAllConvIdOfUserReq {
+  CommonReq commonReq = 1;
+  string userId = 2;
+}
+
+//GetAllConvIdOfUserResp 获取用户所有会话id
+message GetAllConvIdOfUserResp {
+  CommonResp commonResp = 1;
+  repeated string convIds = 2;
+  repeated string groupIds = 3;
+  repeated string friendIds = 4;
+  repeated string noticeIds = 5;
+}
+
+service imService {
+  rpc BeforeConnect(BeforeConnectReq) returns (BeforeConnectResp);
+  rpc AfterConnect(AfterConnectReq) returns (CommonResp);
+  rpc AfterDisconnect(AfterDisconnectReq) returns (CommonResp);
+  rpc KickUserConn(KickUserConnReq) returns (KickUserConnResp);
+  rpc GetUserConn(GetUserConnReq) returns (GetUserConnResp);
+  rpc GetUserLatestConn(GetUserLatestConnReq) returns (GetUserLatestConnResp);
+  rpc BatchGetUserLatestConn(BatchGetUserLatestConnReq) returns (BatchGetUserLatestConnResp);
+  rpc SendMsg(SendMsgReq) returns (SendMsgResp);
+  rpc GetAppSystemConfig(GetAppSystemConfigReq) returns (GetAppSystemConfigResp);
+  rpc GetAllConvIdOfUser(GetAllConvIdOfUserReq) returns (GetAllConvIdOfUserResp);
+}

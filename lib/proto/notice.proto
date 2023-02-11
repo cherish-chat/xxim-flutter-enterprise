@@ -1,0 +1,69 @@
+syntax = "proto3";
+package pb;
+option go_package = "./pb";
+import "conn.proto";
+import "common.proto";
+
+//通知数据
+message NoticeData {
+  message Options {
+    // 客户端是否需要保存消息
+    bool storageForClient = 1;
+    // 是否需要重新渲染会话
+    bool updateConvMsg = 2;
+  }
+  // 会话信息
+  string convId = 1; // 会话id
+
+  // 消息信息
+  string noticeId = 11;
+  string createTime = 12;
+  string title = 13; // 消息标题(显示在会话列表)
+  int32 contentType = 14; // 通知数据类型
+  bytes content = 15; // 消息数据
+
+  // 附加信息
+  Options options = 21; // 通知选项
+
+  // 扩展信息
+  bytes ext = 101; // 扩展字段
+}
+
+message NoticeDataList {
+  repeated NoticeData noticeDataList = 1;
+}
+
+//GetNoticeDataReq 获取通知数据
+message GetUserNoticeDataReq {
+  CommonReq commonReq = 1;
+  string userId = 2;
+  string convId = 3;
+  optional string deviceId = 4;
+}
+
+message GetUserNoticeDataResp {
+  CommonResp commonResp = 1;
+  repeated NoticeData noticeData = 2;
+  bool push = 3;
+}
+
+//AckNoticeDataReq 确认通知数据
+message AckNoticeDataReq {
+  string convId = 1;
+  string noticeId = 2;
+  CommonReq commonReq = 11;
+}
+
+message AckNoticeDataResp {
+  CommonResp commonResp = 1;
+}
+service noticeService {
+  //AfterConnect conn hook
+  rpc AfterConnect(AfterConnectReq) returns (CommonResp);
+  //AfterDisconnect conn hook
+  rpc AfterDisconnect(AfterDisconnectReq) returns (CommonResp);
+  //GetUserNoticeData 获取用户通知数据
+  rpc GetUserNoticeData(GetUserNoticeDataReq) returns (GetUserNoticeDataResp);
+  //AckNoticeData 确认通知数据
+  rpc AckNoticeData(AckNoticeDataReq) returns (AckNoticeDataResp);
+}

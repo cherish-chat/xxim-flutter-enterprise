@@ -1,0 +1,203 @@
+syntax = "proto3";
+package pb;
+option go_package = "./pb";
+import "conn.proto";
+import "common.proto";
+
+// 服务器通过websocket发送给客户端的消息体
+message MsgMQBody {
+  // 推送事件
+  enum Event {
+    // 插入消息并推送消息
+    SendMsgListSync = 0;
+  }
+  Event event = 1;
+  bytes data = 2;
+}
+
+message MsgData {
+  message OfflinePush {
+    string title = 1;
+    string content = 2;
+    string payload = 3;
+  }
+  message Options {
+    // 服务端是否需要保存消息
+    bool storageForServer = 1;
+    // 客户端是否需要保存消息
+    bool storageForClient = 2;
+    // 是否需要解密 （端对端加密技术，服务端无法解密）
+    bool needDecrypt = 3;
+    // 是否需要离线推送
+    bool offlinePush = 4;
+    // 是否需要重新渲染会话
+    bool updateConvMsg = 5;
+    // 消息是否需要计入未读数
+    bool updateUnreadCount = 6;
+  }
+  string clientMsgId = 1;
+  string serverMsgId = 2;
+  string clientTime = 3;
+  string serverTime = 4;
+
+  string senderId = 11; // 发送者id
+  bytes senderInfo = 12; // 发送者信息
+
+  string convId = 21; // 会话id (单聊时 single:user1-user2，群聊时 group:groupId，通知号 notice:noticeId)
+  repeated string atUsers = 22;   // 强提醒用户id列表 用户不在线时，会收到离线推送，除非用户屏蔽了该会话 如果需要提醒所有人，可以传入"all"
+
+  int32 contentType = 31; // 消息内容类型
+  bytes content = 32; // 消息内容
+  string seq = 33; // 消息序号 会话内唯一且递增
+
+  Options options = 41; // 消息选项
+  OfflinePush offlinePush = 42; // 离线推送
+
+  bytes ext = 101;
+}
+
+message MsgDataList {
+  repeated MsgData msgDataList = 1;
+}
+
+message SendMsgListReq {
+  repeated MsgData msgDataList = 1;
+  // options
+  // 1. 延迟时间（秒） 不得大于 864000秒 也就是10天
+  optional int32 deliverAfter = 2;
+  CommonReq commonReq = 11;
+}
+
+message SendMsgListResp {
+  CommonResp commonResp = 1;
+}
+
+message PushMsgListReq {
+  repeated MsgData msgDataList = 1;
+}
+
+message BatchGetMsgListByConvIdReq {
+  message Item {
+    string convId = 1;
+    repeated string seqList = 2;
+  }
+  repeated Item items = 1;
+  bool return = 2;
+  CommonReq commonReq = 11;
+}
+
+message GetMsgListResp {
+  repeated MsgData msgDataList = 1;
+  CommonResp commonResp = 11;
+}
+
+message GetMsgByIdReq {
+  optional string serverMsgId = 1;
+  optional string clientMsgId = 2;
+  bool return = 3;
+  CommonReq commonReq = 11;
+}
+
+message GetMsgByIdResp {
+  MsgData msgData = 1;
+  CommonResp commonResp = 11;
+}
+
+//批量设置用户某会话的minseq
+message BatchSetMinSeqReq {
+  CommonReq commonReq = 1;
+  string convId = 2;
+  repeated string userIdList = 3;
+  string minSeq = 4;
+}
+
+message BatchSetMinSeqResp {
+  CommonResp commonResp = 1;
+}
+
+//批量获取会话的seq
+message BatchGetConvSeqReq {
+  repeated string convIdList = 1;
+  CommonReq commonReq = 11;
+}
+
+message BatchGetConvSeqResp {
+  message ConvSeq {
+    string convId = 1;
+    string minSeq = 2;
+    string maxSeq = 3;
+    string updateTime = 4;
+  }
+  map<string, ConvSeq> convSeqMap = 1;
+  CommonResp commonResp = 11;
+}
+
+//GetConvSubscribersReq 获取一个会话里所有的消息订阅者
+message GetConvSubscribersReq {
+  CommonReq commonReq = 1;
+  string convId = 2;
+  // 最后的活跃时间 会查询 >= lastActiveTime 的订阅者
+  optional int64 lastActiveTime = 3;
+}
+
+message GetConvSubscribersResp {
+  CommonResp commonResp = 1;
+  repeated string userIdList = 2;
+}
+
+message OfflinePushMsgReq {
+  CommonReq commonReq = 1;
+  repeated string userIds = 2;
+  string title = 3;
+  string content = 4;
+  string payload = 5;
+  string uniqueId = 6;
+}
+
+message OfflinePushMsgResp {
+  CommonResp commonResp = 1;
+}
+
+// GetConvOnlineCountReq 获取一个会话里所有的在线用户
+message GetConvOnlineCountReq {
+  CommonReq commonReq = 1;
+  string convId = 2;
+}
+
+message GetConvOnlineCountResp {
+  CommonResp commonResp = 1;
+  int32 user = 2;
+  int32 device = 3;
+}
+
+//FlushUsersSubConvReq 刷新用户订阅的会话
+message FlushUsersSubConvReq {
+  CommonReq commonReq = 1;
+  repeated string userIds = 2;
+}
+
+service msgService {
+  rpc InsertMsgDataList(MsgDataList) returns (MsgDataList) {}
+  rpc SendMsgListSync(SendMsgListReq) returns (SendMsgListResp) {} // 同步发送消息 成功后立刻能拉取到消息
+  rpc SendMsgListAsync(SendMsgListReq) returns (SendMsgListResp) {} // 异步发送消息 成功后只能等待推送
+  rpc PushMsgList(PushMsgListReq) returns (CommonResp) {} // 推送消息
+  //BatchGetMsgListByConvId 通过seq拉取一个会话的消息
+  rpc BatchGetMsgListByConvId(BatchGetMsgListByConvIdReq) returns (GetMsgListResp) {}
+  //GetMsgById 通过serverMsgId或者clientMsgId拉取一条消息
+  rpc GetMsgById(GetMsgByIdReq) returns (GetMsgByIdResp) {}
+  //BatchSetMinSeq 批量设置用户某会话的minseq
+  rpc BatchSetMinSeq(BatchSetMinSeqReq) returns (BatchSetMinSeqResp) {}
+  //BatchGetConvSeq 批量获取会话的seq
+  rpc BatchGetConvSeq(BatchGetConvSeqReq) returns (BatchGetConvSeqResp) {}
+  // conn hook
+  rpc AfterConnect(AfterConnectReq) returns (CommonResp);
+  rpc AfterDisconnect(AfterDisconnectReq) returns (CommonResp);
+  //GetConvSubscribers 获取一个会话里所有的消息订阅者
+  rpc GetConvSubscribers(GetConvSubscribersReq) returns (GetConvSubscribersResp) {}
+  //OfflinePushMsg 离线推送消息
+  rpc OfflinePushMsg(OfflinePushMsgReq) returns (OfflinePushMsgResp) {}
+  //GetConvOnlineCount 获取一个会话里所有的在线用户
+  rpc GetConvOnlineCount(GetConvOnlineCountReq) returns (GetConvOnlineCountResp) {}
+  //FlushUsersSubConv 刷新用户订阅的会话
+  rpc FlushUsersSubConv(FlushUsersSubConvReq) returns (CommonResp) {}
+}

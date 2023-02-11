@@ -19,15 +19,15 @@ class LaunchLogic extends GetxController with StateMixin {
   }
 
   void _loadConfig() async {
-    if (HiveTool.getConfigList().isEmpty) {
-      if (!(await Tool.loadConfigFile())) {
-        _loadConfig();
-        return;
-      }
-    } else {
-      Tool.loadConfigFile();
-    }
-    await Tool.loadFastUrl();
+    // if (HiveTool.getConfigList().isEmpty) {
+    //   if (!(await Tool.loadConfigFile())) {
+    //     _loadConfig();
+    //     return;
+    //   }
+    // } else {
+    //   Tool.loadConfigFile();
+    // }
+    // await Tool.loadFastUrl();
     _gotoPage();
   }
 

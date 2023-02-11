@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:encrypt/encrypt.dart';
+import 'package:crypto/crypto.dart';
 import 'package:xxim_flutter_enterprise/main.dart' hide Key;
 
 class EncryptTool {
@@ -29,5 +31,11 @@ class EncryptTool {
       iv: _iv,
     );
     return source;
+  }
+
+  static String cryptoMD5(String data) {
+    Uint8List content = const Utf8Encoder().convert(data);
+    Digest digest = md5.convert(content);
+    return digest.toString();
   }
 }

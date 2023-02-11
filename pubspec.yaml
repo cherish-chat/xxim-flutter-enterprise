@@ -36,13 +36,16 @@ dependencies:
   device_info_plus: 8.0.0
   android_id: 0.1.3+1
   package_info_plus: 3.0.2
+  connectivity_plus: 3.0.3
   path_provider: 2.0.12
   get: 4.6.5
   dio: 4.0.6
   hive: 2.2.3
   uuid: 3.0.7
   intl: 0.17.0
+  crypto: 3.0.2
   encrypt: 5.0.1
+  protobuf: 2.1.0
   extended_image: 6.4.0
   photo_view: 0.14.0
   video_player: 2.5.1
@@ -58,10 +61,32 @@ dependencies:
   fluttertoast: 8.1.2
   flutter_spinkit: 5.1.0
 
+  xxim_sdk_flutter:
+    git:
+      url: https://github.com/cherish-chat/xxim-sdk-flutter.git
+      ref: isar-2.5.0
+  isar:
+    git:
+      url: https://github.com/cherish-chat/isar-2.5.0
+      path: packages/isar
+  isar_flutter_libs: 2.5.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  build_runner: ^2.3.2
+  isar_generator:
+    git:
+      url: https://github.com/cherish-chat/isar-2.5.0
+      path: packages/isar_generator
+
+dependency_overrides:
+  isar:
+    git:
+      url: https://github.com/cherish-chat/isar-2.5.0
+      path: packages/isar
+  isar_flutter_libs: 2.5.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
