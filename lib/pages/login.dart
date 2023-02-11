@@ -177,7 +177,7 @@ class LoginPage extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        Get.toNamed(Routes.register);
+        Get.toNamed(Routes.registerAccount);
       },
       child: const Padding(
         padding: EdgeInsets.symmetric(vertical: 10),

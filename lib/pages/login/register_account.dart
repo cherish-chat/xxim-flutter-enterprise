@@ -1,8 +1,8 @@
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 
-class RegisterLogic extends GetxController {
-  static RegisterLogic? logic() => Tool.capture(Get.find);
+class RegisterAccountLogic extends GetxController {
+  static RegisterAccountLogic? logic() => Tool.capture(Get.find);
 
   late TextEditingController username;
   late TextEditingController firstPwd;
@@ -78,12 +78,12 @@ class RegisterLogic extends GetxController {
   }
 }
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class RegisterAccountPage extends StatelessWidget {
+  const RegisterAccountPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    RegisterLogic logic = Get.put(RegisterLogic());
+    RegisterAccountLogic logic = Get.put(RegisterAccountLogic());
     return Scaffold(
       appBar: AppBar(
         leading: const GetCloseButton(),
@@ -109,7 +109,7 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  Widget _buildUsername(RegisterLogic logic) {
+  Widget _buildUsername(RegisterAccountLogic logic) {
     return Container(
       width: 280,
       decoration: BoxDecoration(
@@ -131,7 +131,7 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  Widget _buildFirstPwd(RegisterLogic logic) {
+  Widget _buildFirstPwd(RegisterAccountLogic logic) {
     return Container(
       width: 280,
       decoration: BoxDecoration(
@@ -154,7 +154,7 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  Widget _buildConfirmPwd(RegisterLogic logic) {
+  Widget _buildConfirmPwd(RegisterAccountLogic logic) {
     return Container(
       width: 280,
       decoration: BoxDecoration(
@@ -177,7 +177,7 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  Widget _buildInvitation(RegisterLogic logic) {
+  Widget _buildInvitation(RegisterAccountLogic logic) {
     return Container(
       width: 280,
       decoration: BoxDecoration(
@@ -198,7 +198,7 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  Widget _buildRegister(RegisterLogic logic) {
+  Widget _buildRegister(RegisterAccountLogic logic) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: logic.register,
