@@ -758,7 +758,7 @@ class BatchGetMsgListByConvIdReq_Item extends $pb.GeneratedMessage {
 class BatchGetMsgListByConvIdReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BatchGetMsgListByConvIdReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..pc<BatchGetMsgListByConvIdReq_Item>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'items', $pb.PbFieldType.PM, subBuilder: BatchGetMsgListByConvIdReq_Item.create)
-    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'return')
+    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'push')
     ..aOM<$0.CommonReq>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..hasRequiredFields = false
   ;
@@ -766,15 +766,15 @@ class BatchGetMsgListByConvIdReq extends $pb.GeneratedMessage {
   BatchGetMsgListByConvIdReq._() : super();
   factory BatchGetMsgListByConvIdReq({
     $core.Iterable<BatchGetMsgListByConvIdReq_Item>? items,
-    $core.bool? return_2,
+    $core.bool? push,
     $0.CommonReq? commonReq,
   }) {
     final _result = create();
     if (items != null) {
       _result.items.addAll(items);
     }
-    if (return_2 != null) {
-      _result.return_2 = return_2;
+    if (push != null) {
+      _result.push = push;
     }
     if (commonReq != null) {
       _result.commonReq = commonReq;
@@ -806,13 +806,13 @@ class BatchGetMsgListByConvIdReq extends $pb.GeneratedMessage {
   $core.List<BatchGetMsgListByConvIdReq_Item> get items => $_getList(0);
 
   @$pb.TagNumber(2)
-  $core.bool get return_2 => $_getBF(1);
+  $core.bool get push => $_getBF(1);
   @$pb.TagNumber(2)
-  set return_2($core.bool v) { $_setBool(1, v); }
+  set push($core.bool v) { $_setBool(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasReturn_2() => $_has(1);
+  $core.bool hasPush() => $_has(1);
   @$pb.TagNumber(2)
-  void clearReturn_2() => clearField(2);
+  void clearPush() => clearField(2);
 
   @$pb.TagNumber(11)
   $0.CommonReq get commonReq => $_getN(2);
@@ -887,7 +887,7 @@ class GetMsgByIdReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetMsgByIdReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'serverMsgId', protoName: 'serverMsgId')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'clientMsgId', protoName: 'clientMsgId')
-    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'return')
+    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'push')
     ..aOM<$0.CommonReq>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..hasRequiredFields = false
   ;
@@ -896,7 +896,7 @@ class GetMsgByIdReq extends $pb.GeneratedMessage {
   factory GetMsgByIdReq({
     $core.String? serverMsgId,
     $core.String? clientMsgId,
-    $core.bool? return_3,
+    $core.bool? push,
     $0.CommonReq? commonReq,
   }) {
     final _result = create();
@@ -906,8 +906,8 @@ class GetMsgByIdReq extends $pb.GeneratedMessage {
     if (clientMsgId != null) {
       _result.clientMsgId = clientMsgId;
     }
-    if (return_3 != null) {
-      _result.return_3 = return_3;
+    if (push != null) {
+      _result.push = push;
     }
     if (commonReq != null) {
       _result.commonReq = commonReq;
@@ -954,13 +954,13 @@ class GetMsgByIdReq extends $pb.GeneratedMessage {
   void clearClientMsgId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.bool get return_3 => $_getBF(2);
+  $core.bool get push => $_getBF(2);
   @$pb.TagNumber(3)
-  set return_3($core.bool v) { $_setBool(2, v); }
+  set push($core.bool v) { $_setBool(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasReturn_3() => $_has(2);
+  $core.bool hasPush() => $_has(2);
   @$pb.TagNumber(3)
-  void clearReturn_3() => clearField(3);
+  void clearPush() => clearField(3);
 
   @$pb.TagNumber(11)
   $0.CommonReq get commonReq => $_getN(3);
@@ -1869,6 +1869,508 @@ class FlushUsersSubConvReq extends $pb.GeneratedMessage {
   $core.List<$core.String> get userIds => $_getList(1);
 }
 
+class GetAllMsgListReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetAllMsgListReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convId', protoName: 'convId')
+    ..aOM<$0.Page>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
+    ..m<$core.String, $core.String>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'filter', entryClassName: 'GetAllMsgListReq.FilterEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
+    ..hasRequiredFields = false
+  ;
+
+  GetAllMsgListReq._() : super();
+  factory GetAllMsgListReq({
+    $0.CommonReq? commonReq,
+    $core.String? convId,
+    $0.Page? page,
+    $core.Map<$core.String, $core.String>? filter,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (convId != null) {
+      _result.convId = convId;
+    }
+    if (page != null) {
+      _result.page = page;
+    }
+    if (filter != null) {
+      _result.filter.addAll(filter);
+    }
+    return _result;
+  }
+  factory GetAllMsgListReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetAllMsgListReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetAllMsgListReq clone() => GetAllMsgListReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetAllMsgListReq copyWith(void Function(GetAllMsgListReq) updates) => super.copyWith((message) => updates(message as GetAllMsgListReq)) as GetAllMsgListReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetAllMsgListReq create() => GetAllMsgListReq._();
+  GetAllMsgListReq createEmptyInstance() => create();
+  static $pb.PbList<GetAllMsgListReq> createRepeated() => $pb.PbList<GetAllMsgListReq>();
+  @$core.pragma('dart2js:noInline')
+  static GetAllMsgListReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetAllMsgListReq>(create);
+  static GetAllMsgListReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get convId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set convId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasConvId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearConvId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $0.Page get page => $_getN(2);
+  @$pb.TagNumber(3)
+  set page($0.Page v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasPage() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearPage() => clearField(3);
+  @$pb.TagNumber(3)
+  $0.Page ensurePage() => $_ensure(2);
+
+  @$pb.TagNumber(4)
+  $core.Map<$core.String, $core.String> get filter => $_getMap(3);
+}
+
+class GetAllMsgListResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetAllMsgListResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..pc<MsgData>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'msgDataList', $pb.PbFieldType.PM, protoName: 'msgDataList', subBuilder: MsgData.create)
+    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'total')
+    ..m<$core.String, $core.String>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userMap', protoName: 'userMap', entryClassName: 'GetAllMsgListResp.UserMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
+    ..hasRequiredFields = false
+  ;
+
+  GetAllMsgListResp._() : super();
+  factory GetAllMsgListResp({
+    $0.CommonResp? commonResp,
+    $core.Iterable<MsgData>? msgDataList,
+    $fixnum.Int64? total,
+    $core.Map<$core.String, $core.String>? userMap,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    if (msgDataList != null) {
+      _result.msgDataList.addAll(msgDataList);
+    }
+    if (total != null) {
+      _result.total = total;
+    }
+    if (userMap != null) {
+      _result.userMap.addAll(userMap);
+    }
+    return _result;
+  }
+  factory GetAllMsgListResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetAllMsgListResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetAllMsgListResp clone() => GetAllMsgListResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetAllMsgListResp copyWith(void Function(GetAllMsgListResp) updates) => super.copyWith((message) => updates(message as GetAllMsgListResp)) as GetAllMsgListResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetAllMsgListResp create() => GetAllMsgListResp._();
+  GetAllMsgListResp createEmptyInstance() => create();
+  static $pb.PbList<GetAllMsgListResp> createRepeated() => $pb.PbList<GetAllMsgListResp>();
+  @$core.pragma('dart2js:noInline')
+  static GetAllMsgListResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetAllMsgListResp>(create);
+  static GetAllMsgListResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.List<MsgData> get msgDataList => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get total => $_getI64(2);
+  @$pb.TagNumber(3)
+  set total($fixnum.Int64 v) { $_setInt64(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasTotal() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearTotal() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.Map<$core.String, $core.String> get userMap => $_getMap(3);
+}
+
+class ReadMsgReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ReadMsgReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderId', protoName: 'senderId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convId', protoName: 'convId')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'seq')
+    ..a<$core.List<$core.int>>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'noticeContent', $pb.PbFieldType.OY, protoName: 'noticeContent')
+    ..aOM<$0.CommonReq>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..hasRequiredFields = false
+  ;
+
+  ReadMsgReq._() : super();
+  factory ReadMsgReq({
+    $core.String? senderId,
+    $core.String? convId,
+    $core.String? seq,
+    $core.List<$core.int>? noticeContent,
+    $0.CommonReq? commonReq,
+  }) {
+    final _result = create();
+    if (senderId != null) {
+      _result.senderId = senderId;
+    }
+    if (convId != null) {
+      _result.convId = convId;
+    }
+    if (seq != null) {
+      _result.seq = seq;
+    }
+    if (noticeContent != null) {
+      _result.noticeContent = noticeContent;
+    }
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    return _result;
+  }
+  factory ReadMsgReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReadMsgReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ReadMsgReq clone() => ReadMsgReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ReadMsgReq copyWith(void Function(ReadMsgReq) updates) => super.copyWith((message) => updates(message as ReadMsgReq)) as ReadMsgReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ReadMsgReq create() => ReadMsgReq._();
+  ReadMsgReq createEmptyInstance() => create();
+  static $pb.PbList<ReadMsgReq> createRepeated() => $pb.PbList<ReadMsgReq>();
+  @$core.pragma('dart2js:noInline')
+  static ReadMsgReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReadMsgReq>(create);
+  static ReadMsgReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get senderId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set senderId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasSenderId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSenderId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get convId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set convId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasConvId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearConvId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get seq => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set seq($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasSeq() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearSeq() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<$core.int> get noticeContent => $_getN(3);
+  @$pb.TagNumber(4)
+  set noticeContent($core.List<$core.int> v) { $_setBytes(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasNoticeContent() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearNoticeContent() => clearField(4);
+
+  @$pb.TagNumber(11)
+  $0.CommonReq get commonReq => $_getN(4);
+  @$pb.TagNumber(11)
+  set commonReq($0.CommonReq v) { setField(11, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasCommonReq() => $_has(4);
+  @$pb.TagNumber(11)
+  void clearCommonReq() => clearField(11);
+  @$pb.TagNumber(11)
+  $0.CommonReq ensureCommonReq() => $_ensure(4);
+}
+
+class ReadMsgResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ReadMsgResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  ReadMsgResp._() : super();
+  factory ReadMsgResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory ReadMsgResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReadMsgResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ReadMsgResp clone() => ReadMsgResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ReadMsgResp copyWith(void Function(ReadMsgResp) updates) => super.copyWith((message) => updates(message as ReadMsgResp)) as ReadMsgResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ReadMsgResp create() => ReadMsgResp._();
+  ReadMsgResp createEmptyInstance() => create();
+  static $pb.PbList<ReadMsgResp> createRepeated() => $pb.PbList<ReadMsgResp>();
+  @$core.pragma('dart2js:noInline')
+  static ReadMsgResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReadMsgResp>(create);
+  static ReadMsgResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
+class EditMsgReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'EditMsgReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderId', protoName: 'senderId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'serverMsgId', protoName: 'serverMsgId')
+    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'contentType', $pb.PbFieldType.O3, protoName: 'contentType')
+    ..a<$core.List<$core.int>>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'content', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ext', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'noticeContent', $pb.PbFieldType.OY, protoName: 'noticeContent')
+    ..aOM<$0.CommonReq>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..hasRequiredFields = false
+  ;
+
+  EditMsgReq._() : super();
+  factory EditMsgReq({
+    $core.String? senderId,
+    $core.String? serverMsgId,
+    $core.int? contentType,
+    $core.List<$core.int>? content,
+    $core.List<$core.int>? ext,
+    $core.List<$core.int>? noticeContent,
+    $0.CommonReq? commonReq,
+  }) {
+    final _result = create();
+    if (senderId != null) {
+      _result.senderId = senderId;
+    }
+    if (serverMsgId != null) {
+      _result.serverMsgId = serverMsgId;
+    }
+    if (contentType != null) {
+      _result.contentType = contentType;
+    }
+    if (content != null) {
+      _result.content = content;
+    }
+    if (ext != null) {
+      _result.ext = ext;
+    }
+    if (noticeContent != null) {
+      _result.noticeContent = noticeContent;
+    }
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    return _result;
+  }
+  factory EditMsgReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory EditMsgReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  EditMsgReq clone() => EditMsgReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  EditMsgReq copyWith(void Function(EditMsgReq) updates) => super.copyWith((message) => updates(message as EditMsgReq)) as EditMsgReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static EditMsgReq create() => EditMsgReq._();
+  EditMsgReq createEmptyInstance() => create();
+  static $pb.PbList<EditMsgReq> createRepeated() => $pb.PbList<EditMsgReq>();
+  @$core.pragma('dart2js:noInline')
+  static EditMsgReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EditMsgReq>(create);
+  static EditMsgReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get senderId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set senderId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasSenderId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSenderId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get serverMsgId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set serverMsgId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasServerMsgId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearServerMsgId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get contentType => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set contentType($core.int v) { $_setSignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasContentType() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearContentType() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<$core.int> get content => $_getN(3);
+  @$pb.TagNumber(4)
+  set content($core.List<$core.int> v) { $_setBytes(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasContent() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearContent() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.List<$core.int> get ext => $_getN(4);
+  @$pb.TagNumber(5)
+  set ext($core.List<$core.int> v) { $_setBytes(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasExt() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearExt() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.List<$core.int> get noticeContent => $_getN(5);
+  @$pb.TagNumber(6)
+  set noticeContent($core.List<$core.int> v) { $_setBytes(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasNoticeContent() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearNoticeContent() => clearField(6);
+
+  @$pb.TagNumber(11)
+  $0.CommonReq get commonReq => $_getN(6);
+  @$pb.TagNumber(11)
+  set commonReq($0.CommonReq v) { setField(11, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasCommonReq() => $_has(6);
+  @$pb.TagNumber(11)
+  void clearCommonReq() => clearField(11);
+  @$pb.TagNumber(11)
+  $0.CommonReq ensureCommonReq() => $_ensure(6);
+}
+
+class EditMsgResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'EditMsgResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  EditMsgResp._() : super();
+  factory EditMsgResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory EditMsgResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory EditMsgResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  EditMsgResp clone() => EditMsgResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  EditMsgResp copyWith(void Function(EditMsgResp) updates) => super.copyWith((message) => updates(message as EditMsgResp)) as EditMsgResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static EditMsgResp create() => EditMsgResp._();
+  EditMsgResp createEmptyInstance() => create();
+  static $pb.PbList<EditMsgResp> createRepeated() => $pb.PbList<EditMsgResp>();
+  @$core.pragma('dart2js:noInline')
+  static EditMsgResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EditMsgResp>(create);
+  static EditMsgResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
 class msgServiceApi {
   $pb.RpcClient _client;
   msgServiceApi(this._client);
@@ -1913,6 +2415,10 @@ class msgServiceApi {
     var emptyResponse = $0.CommonResp();
     return _client.invoke<$0.CommonResp>(ctx, 'msgService', 'AfterDisconnect', request, emptyResponse);
   }
+  $async.Future<$1.KeepAliveResp> keepAlive($pb.ClientContext? ctx, $1.KeepAliveReq request) {
+    var emptyResponse = $1.KeepAliveResp();
+    return _client.invoke<$1.KeepAliveResp>(ctx, 'msgService', 'KeepAlive', request, emptyResponse);
+  }
   $async.Future<GetConvSubscribersResp> getConvSubscribers($pb.ClientContext? ctx, GetConvSubscribersReq request) {
     var emptyResponse = GetConvSubscribersResp();
     return _client.invoke<GetConvSubscribersResp>(ctx, 'msgService', 'GetConvSubscribers', request, emptyResponse);
@@ -1928,6 +2434,18 @@ class msgServiceApi {
   $async.Future<$0.CommonResp> flushUsersSubConv($pb.ClientContext? ctx, FlushUsersSubConvReq request) {
     var emptyResponse = $0.CommonResp();
     return _client.invoke<$0.CommonResp>(ctx, 'msgService', 'FlushUsersSubConv', request, emptyResponse);
+  }
+  $async.Future<GetAllMsgListResp> getAllMsgList($pb.ClientContext? ctx, GetAllMsgListReq request) {
+    var emptyResponse = GetAllMsgListResp();
+    return _client.invoke<GetAllMsgListResp>(ctx, 'msgService', 'GetAllMsgList', request, emptyResponse);
+  }
+  $async.Future<ReadMsgResp> readMsg($pb.ClientContext? ctx, ReadMsgReq request) {
+    var emptyResponse = ReadMsgResp();
+    return _client.invoke<ReadMsgResp>(ctx, 'msgService', 'ReadMsg', request, emptyResponse);
+  }
+  $async.Future<EditMsgResp> editMsg($pb.ClientContext? ctx, EditMsgReq request) {
+    var emptyResponse = EditMsgResp();
+    return _client.invoke<EditMsgResp>(ctx, 'msgService', 'EditMsg', request, emptyResponse);
   }
 }
 

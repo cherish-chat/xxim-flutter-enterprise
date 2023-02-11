@@ -94,6 +94,8 @@ class LoginPage extends StatelessWidget {
             _buildPassword(logic),
             const SizedBox(height: 50),
             _buildLogin(logic),
+            const SizedBox(height: 10),
+            _buildRegister(logic),
             const SizedBox(height: 100),
           ],
         ),
@@ -165,6 +167,25 @@ class LoginPage extends StatelessWidget {
           style: TextStyle(
             color: getTextWhite,
             fontSize: 18,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRegister(LoginLogic logic) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        Get.toNamed(Routes.register);
+      },
+      child: const Padding(
+        padding: EdgeInsets.symmetric(vertical: 10),
+        child: Text(
+          "账号注册",
+          style: TextStyle(
+            color: getMainColor,
+            fontSize: 14,
           ),
         ),
       ),

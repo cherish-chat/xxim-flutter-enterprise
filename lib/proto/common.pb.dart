@@ -13,6 +13,47 @@ import 'common.pbenum.dart';
 
 export 'common.pbenum.dart';
 
+class MStr extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MStr', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..m<$core.String, $core.String>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'm', entryClassName: 'MStr.MEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
+    ..hasRequiredFields = false
+  ;
+
+  MStr._() : super();
+  factory MStr({
+    $core.Map<$core.String, $core.String>? m,
+  }) {
+    final _result = create();
+    if (m != null) {
+      _result.m.addAll(m);
+    }
+    return _result;
+  }
+  factory MStr.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MStr.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MStr clone() => MStr()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MStr copyWith(void Function(MStr) updates) => super.copyWith((message) => updates(message as MStr)) as MStr; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MStr create() => MStr._();
+  MStr createEmptyInstance() => create();
+  static $pb.PbList<MStr> createRepeated() => $pb.PbList<MStr>();
+  @$core.pragma('dart2js:noInline')
+  static MStr getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MStr>(create);
+  static MStr? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.Map<$core.String, $core.String> get m => $_getMap(0);
+}
+
 class CommonResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CommonResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..e<CommonResp_Code>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'code', $pb.PbFieldType.OE, defaultOrMaker: CommonResp_Code.Success, valueOf: CommonResp_Code.valueOf, enumValues: CommonResp_Code.values)
@@ -171,6 +212,7 @@ class CommonReq extends $pb.GeneratedMessage {
     ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceId', protoName: 'deviceId')
     ..aOS(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'osVersion', protoName: 'osVersion')
     ..aOS(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'platform')
+    ..aOS(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'packageId', protoName: 'packageId')
     ..aOS(21, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appVersion', protoName: 'appVersion')
     ..aOS(22, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'language')
     ..a<$core.List<$core.int>>(31, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data', $pb.PbFieldType.OY)
@@ -187,6 +229,7 @@ class CommonReq extends $pb.GeneratedMessage {
     $core.String? deviceId,
     $core.String? osVersion,
     $core.String? platform,
+    $core.String? packageId,
     $core.String? appVersion,
     $core.String? language,
     $core.List<$core.int>? data,
@@ -211,6 +254,9 @@ class CommonReq extends $pb.GeneratedMessage {
     }
     if (platform != null) {
       _result.platform = platform;
+    }
+    if (packageId != null) {
+      _result.packageId = packageId;
     }
     if (appVersion != null) {
       _result.appVersion = appVersion;
@@ -304,48 +350,57 @@ class CommonReq extends $pb.GeneratedMessage {
   @$pb.TagNumber(14)
   void clearPlatform() => clearField(14);
 
+  @$pb.TagNumber(15)
+  $core.String get packageId => $_getSZ(6);
+  @$pb.TagNumber(15)
+  set packageId($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(15)
+  $core.bool hasPackageId() => $_has(6);
+  @$pb.TagNumber(15)
+  void clearPackageId() => clearField(15);
+
   @$pb.TagNumber(21)
-  $core.String get appVersion => $_getSZ(6);
+  $core.String get appVersion => $_getSZ(7);
   @$pb.TagNumber(21)
-  set appVersion($core.String v) { $_setString(6, v); }
+  set appVersion($core.String v) { $_setString(7, v); }
   @$pb.TagNumber(21)
-  $core.bool hasAppVersion() => $_has(6);
+  $core.bool hasAppVersion() => $_has(7);
   @$pb.TagNumber(21)
   void clearAppVersion() => clearField(21);
 
   @$pb.TagNumber(22)
-  $core.String get language => $_getSZ(7);
+  $core.String get language => $_getSZ(8);
   @$pb.TagNumber(22)
-  set language($core.String v) { $_setString(7, v); }
+  set language($core.String v) { $_setString(8, v); }
   @$pb.TagNumber(22)
-  $core.bool hasLanguage() => $_has(7);
+  $core.bool hasLanguage() => $_has(8);
   @$pb.TagNumber(22)
   void clearLanguage() => clearField(22);
 
   @$pb.TagNumber(31)
-  $core.List<$core.int> get data => $_getN(8);
+  $core.List<$core.int> get data => $_getN(9);
   @$pb.TagNumber(31)
-  set data($core.List<$core.int> v) { $_setBytes(8, v); }
+  set data($core.List<$core.int> v) { $_setBytes(9, v); }
   @$pb.TagNumber(31)
-  $core.bool hasData() => $_has(8);
+  $core.bool hasData() => $_has(9);
   @$pb.TagNumber(31)
   void clearData() => clearField(31);
 
   @$pb.TagNumber(41)
-  $core.String get ip => $_getSZ(9);
+  $core.String get ip => $_getSZ(10);
   @$pb.TagNumber(41)
-  set ip($core.String v) { $_setString(9, v); }
+  set ip($core.String v) { $_setString(10, v); }
   @$pb.TagNumber(41)
-  $core.bool hasIp() => $_has(9);
+  $core.bool hasIp() => $_has(10);
   @$pb.TagNumber(41)
   void clearIp() => clearField(41);
 
   @$pb.TagNumber(42)
-  $core.String get userAgent => $_getSZ(10);
+  $core.String get userAgent => $_getSZ(11);
   @$pb.TagNumber(42)
-  set userAgent($core.String v) { $_setString(10, v); }
+  set userAgent($core.String v) { $_setString(11, v); }
   @$pb.TagNumber(42)
-  $core.bool hasUserAgent() => $_has(10);
+  $core.bool hasUserAgent() => $_has(11);
   @$pb.TagNumber(42)
   void clearUserAgent() => clearField(42);
 }

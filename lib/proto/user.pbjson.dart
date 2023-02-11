@@ -58,6 +58,18 @@ const UserSettingKey$json = const {
 
 /// Descriptor for `UserSettingKey`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List userSettingKeyDescriptor = $convert.base64Decode('Cg5Vc2VyU2V0dGluZ0tleRISCg5Ib3dUb0FkZEZyaWVuZBAAEjcKM0hvd1RvQWRkRnJpZW5kX05lZWRBbnN3ZXJRdWVzdGlvbkNvcnJlY3RseV9RdWVzdGlvbhABEjUKMUhvd1RvQWRkRnJpZW5kX05lZWRBbnN3ZXJRdWVzdGlvbkNvcnJlY3RseV9BbnN3ZXIQAhIdChlGcmllbmRFdmVudExpc3RfQ2xlYXJUaW1lEBU=');
+@$core.Deprecated('Use userRoleDescriptor instead')
+const UserRole$json = const {
+  '1': 'UserRole',
+  '2': const [
+    const {'1': 'User', '2': 0},
+    const {'1': 'Service', '2': 1},
+    const {'1': 'Guest', '2': 3},
+  ],
+};
+
+/// Descriptor for `UserRole`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List userRoleDescriptor = $convert.base64Decode('CghVc2VyUm9sZRIICgRVc2VyEAASCwoHU2VydmljZRABEgkKBUd1ZXN0EAM=');
 @$core.Deprecated('Use birthdayInfoDescriptor instead')
 const BirthdayInfo$json = const {
   '1': 'BirthdayInfo',
@@ -148,6 +160,38 @@ const ConfirmRegisterResp$json = const {
 
 /// Descriptor for `ConfirmRegisterResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List confirmRegisterRespDescriptor = $convert.base64Decode('ChNDb25maXJtUmVnaXN0ZXJSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEhQKBXRva2VuGAIgASgJUgV0b2tlbhIWCgZ1c2VySWQYAyABKAlSBnVzZXJJZA==');
+@$core.Deprecated('Use registerReqDescriptor instead')
+const RegisterReq$json = const {
+  '1': 'RegisterReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'id', '3': 2, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'password', '3': 3, '4': 1, '5': 9, '10': 'password'},
+    const {'1': 'nickname', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'nickname', '17': true},
+    const {'1': 'xb', '3': 5, '4': 1, '5': 14, '6': '.pb.XB', '9': 1, '10': 'xb', '17': true},
+    const {'1': 'birthday', '3': 6, '4': 1, '5': 11, '6': '.pb.BirthdayInfo', '9': 2, '10': 'birthday', '17': true},
+  ],
+  '8': const [
+    const {'1': '_nickname'},
+    const {'1': '_xb'},
+    const {'1': '_birthday'},
+  ],
+};
+
+/// Descriptor for `RegisterReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List registerReqDescriptor = $convert.base64Decode('CgtSZWdpc3RlclJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIOCgJpZBgCIAEoCVICaWQSGgoIcGFzc3dvcmQYAyABKAlSCHBhc3N3b3JkEh8KCG5pY2tuYW1lGAQgASgJSABSCG5pY2tuYW1liAEBEhsKAnhiGAUgASgOMgYucGIuWEJIAVICeGKIAQESMQoIYmlydGhkYXkYBiABKAsyEC5wYi5CaXJ0aGRheUluZm9IAlIIYmlydGhkYXmIAQFCCwoJX25pY2tuYW1lQgUKA194YkILCglfYmlydGhkYXk=');
+@$core.Deprecated('Use registerRespDescriptor instead')
+const RegisterResp$json = const {
+  '1': 'RegisterResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'token', '3': 2, '4': 1, '5': 9, '10': 'token'},
+    const {'1': 'userId', '3': 3, '4': 1, '5': 9, '10': 'userId'},
+  ],
+};
+
+/// Descriptor for `RegisterResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List registerRespDescriptor = $convert.base64Decode('CgxSZWdpc3RlclJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASFAoFdG9rZW4YAiABKAlSBXRva2VuEhYKBnVzZXJJZBgDIAEoCVIGdXNlcklk');
 @$core.Deprecated('Use mapUserByIdsReqDescriptor instead')
 const MapUserByIdsReq$json = const {
   '1': 'MapUserByIdsReq',
@@ -380,11 +424,846 @@ const UpdateUserInfoResp$json = const {
 
 /// Descriptor for `UpdateUserInfoResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List updateUserInfoRespDescriptor = $convert.base64Decode('ChJVcGRhdGVVc2VySW5mb1Jlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
+@$core.Deprecated('Use userInvitationCodeDescriptor instead')
+const UserInvitationCode$json = const {
+  '1': 'UserInvitationCode',
+  '2': const [
+    const {'1': 'code', '3': 1, '4': 1, '5': 9, '10': 'code'},
+    const {'1': 'remark', '3': 2, '4': 1, '5': 9, '10': 'remark'},
+    const {'1': 'creator', '3': 3, '4': 1, '5': 9, '10': 'creator'},
+    const {'1': 'creatorType', '3': 4, '4': 1, '5': 5, '10': 'creatorType'},
+    const {'1': 'isEnable', '3': 5, '4': 1, '5': 8, '10': 'isEnable'},
+    const {'1': 'createTime', '3': 6, '4': 1, '5': 3, '10': 'createTime'},
+    const {'1': 'createdAt', '3': 21, '4': 1, '5': 3, '10': 'createdAt'},
+    const {'1': 'createdAtStr', '3': 22, '4': 1, '5': 9, '10': 'createdAtStr'},
+  ],
+};
+
+/// Descriptor for `UserInvitationCode`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userInvitationCodeDescriptor = $convert.base64Decode('ChJVc2VySW52aXRhdGlvbkNvZGUSEgoEY29kZRgBIAEoCVIEY29kZRIWCgZyZW1hcmsYAiABKAlSBnJlbWFyaxIYCgdjcmVhdG9yGAMgASgJUgdjcmVhdG9yEiAKC2NyZWF0b3JUeXBlGAQgASgFUgtjcmVhdG9yVHlwZRIaCghpc0VuYWJsZRgFIAEoCFIIaXNFbmFibGUSHgoKY3JlYXRlVGltZRgGIAEoA1IKY3JlYXRlVGltZRIcCgljcmVhdGVkQXQYFSABKANSCWNyZWF0ZWRBdBIiCgxjcmVhdGVkQXRTdHIYFiABKAlSDGNyZWF0ZWRBdFN0cg==');
+@$core.Deprecated('Use getAllUserInvitationCodeReqDescriptor instead')
+const GetAllUserInvitationCodeReq$json = const {
+  '1': 'GetAllUserInvitationCodeReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'page', '3': 2, '4': 1, '5': 11, '6': '.pb.Page', '10': 'page'},
+    const {'1': 'filter', '3': 3, '4': 3, '5': 11, '6': '.pb.GetAllUserInvitationCodeReq.FilterEntry', '10': 'filter'},
+  ],
+  '3': const [GetAllUserInvitationCodeReq_FilterEntry$json],
+};
+
+@$core.Deprecated('Use getAllUserInvitationCodeReqDescriptor instead')
+const GetAllUserInvitationCodeReq_FilterEntry$json = const {
+  '1': 'FilterEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `GetAllUserInvitationCodeReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllUserInvitationCodeReqDescriptor = $convert.base64Decode('ChtHZXRBbGxVc2VySW52aXRhdGlvbkNvZGVSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESHAoEcGFnZRgCIAEoCzIILnBiLlBhZ2VSBHBhZ2USQwoGZmlsdGVyGAMgAygLMisucGIuR2V0QWxsVXNlckludml0YXRpb25Db2RlUmVxLkZpbHRlckVudHJ5UgZmaWx0ZXIaOQoLRmlsdGVyRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');
+@$core.Deprecated('Use getAllUserInvitationCodeRespDescriptor instead')
+const GetAllUserInvitationCodeResp$json = const {
+  '1': 'GetAllUserInvitationCodeResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'userInvitationCodes', '3': 2, '4': 3, '5': 11, '6': '.pb.UserInvitationCode', '10': 'userInvitationCodes'},
+    const {'1': 'total', '3': 3, '4': 1, '5': 3, '10': 'total'},
+  ],
+};
+
+/// Descriptor for `GetAllUserInvitationCodeResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllUserInvitationCodeRespDescriptor = $convert.base64Decode('ChxHZXRBbGxVc2VySW52aXRhdGlvbkNvZGVSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEkgKE3VzZXJJbnZpdGF0aW9uQ29kZXMYAiADKAsyFi5wYi5Vc2VySW52aXRhdGlvbkNvZGVSE3VzZXJJbnZpdGF0aW9uQ29kZXMSFAoFdG90YWwYAyABKANSBXRvdGFs');
+@$core.Deprecated('Use getUserInvitationCodeDetailReqDescriptor instead')
+const GetUserInvitationCodeDetailReq$json = const {
+  '1': 'GetUserInvitationCodeDetailReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'code', '3': 2, '4': 1, '5': 9, '10': 'code'},
+  ],
+};
+
+/// Descriptor for `GetUserInvitationCodeDetailReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getUserInvitationCodeDetailReqDescriptor = $convert.base64Decode('Ch5HZXRVc2VySW52aXRhdGlvbkNvZGVEZXRhaWxSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESEgoEY29kZRgCIAEoCVIEY29kZQ==');
+@$core.Deprecated('Use getUserInvitationCodeDetailRespDescriptor instead')
+const GetUserInvitationCodeDetailResp$json = const {
+  '1': 'GetUserInvitationCodeDetailResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'userInvitationCode', '3': 2, '4': 1, '5': 11, '6': '.pb.UserInvitationCode', '10': 'userInvitationCode'},
+  ],
+};
+
+/// Descriptor for `GetUserInvitationCodeDetailResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getUserInvitationCodeDetailRespDescriptor = $convert.base64Decode('Ch9HZXRVc2VySW52aXRhdGlvbkNvZGVEZXRhaWxSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEkYKEnVzZXJJbnZpdGF0aW9uQ29kZRgCIAEoCzIWLnBiLlVzZXJJbnZpdGF0aW9uQ29kZVISdXNlckludml0YXRpb25Db2Rl');
+@$core.Deprecated('Use addUserInvitationCodeReqDescriptor instead')
+const AddUserInvitationCodeReq$json = const {
+  '1': 'AddUserInvitationCodeReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'userInvitationCode', '3': 2, '4': 1, '5': 11, '6': '.pb.UserInvitationCode', '10': 'userInvitationCode'},
+  ],
+};
+
+/// Descriptor for `AddUserInvitationCodeReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addUserInvitationCodeReqDescriptor = $convert.base64Decode('ChhBZGRVc2VySW52aXRhdGlvbkNvZGVSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESRgoSdXNlckludml0YXRpb25Db2RlGAIgASgLMhYucGIuVXNlckludml0YXRpb25Db2RlUhJ1c2VySW52aXRhdGlvbkNvZGU=');
+@$core.Deprecated('Use addUserInvitationCodeRespDescriptor instead')
+const AddUserInvitationCodeResp$json = const {
+  '1': 'AddUserInvitationCodeResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `AddUserInvitationCodeResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addUserInvitationCodeRespDescriptor = $convert.base64Decode('ChlBZGRVc2VySW52aXRhdGlvbkNvZGVSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use updateUserInvitationCodeReqDescriptor instead')
+const UpdateUserInvitationCodeReq$json = const {
+  '1': 'UpdateUserInvitationCodeReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'userInvitationCode', '3': 2, '4': 1, '5': 11, '6': '.pb.UserInvitationCode', '10': 'userInvitationCode'},
+  ],
+};
+
+/// Descriptor for `UpdateUserInvitationCodeReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserInvitationCodeReqDescriptor = $convert.base64Decode('ChtVcGRhdGVVc2VySW52aXRhdGlvbkNvZGVSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESRgoSdXNlckludml0YXRpb25Db2RlGAIgASgLMhYucGIuVXNlckludml0YXRpb25Db2RlUhJ1c2VySW52aXRhdGlvbkNvZGU=');
+@$core.Deprecated('Use updateUserInvitationCodeRespDescriptor instead')
+const UpdateUserInvitationCodeResp$json = const {
+  '1': 'UpdateUserInvitationCodeResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `UpdateUserInvitationCodeResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserInvitationCodeRespDescriptor = $convert.base64Decode('ChxVcGRhdGVVc2VySW52aXRhdGlvbkNvZGVSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use deleteUserInvitationCodeReqDescriptor instead')
+const DeleteUserInvitationCodeReq$json = const {
+  '1': 'DeleteUserInvitationCodeReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'codes', '3': 2, '4': 3, '5': 9, '10': 'codes'},
+  ],
+};
+
+/// Descriptor for `DeleteUserInvitationCodeReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteUserInvitationCodeReqDescriptor = $convert.base64Decode('ChtEZWxldGVVc2VySW52aXRhdGlvbkNvZGVSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESFAoFY29kZXMYAiADKAlSBWNvZGVz');
+@$core.Deprecated('Use deleteUserInvitationCodeRespDescriptor instead')
+const DeleteUserInvitationCodeResp$json = const {
+  '1': 'DeleteUserInvitationCodeResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `DeleteUserInvitationCodeResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteUserInvitationCodeRespDescriptor = $convert.base64Decode('ChxEZWxldGVVc2VySW52aXRhdGlvbkNvZGVSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use userIpListDescriptor instead')
+const UserIpList$json = const {
+  '1': 'UserIpList',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'platform', '3': 2, '4': 1, '5': 9, '10': 'platform'},
+    const {'1': 'startIp', '3': 3, '4': 1, '5': 9, '10': 'startIp'},
+    const {'1': 'endIp', '3': 4, '4': 1, '5': 9, '10': 'endIp'},
+    const {'1': 'remark', '3': 5, '4': 1, '5': 9, '10': 'remark'},
+    const {'1': 'userId', '3': 6, '4': 1, '5': 9, '10': 'userId'},
+    const {'1': 'isEnable', '3': 7, '4': 1, '5': 8, '10': 'isEnable'},
+    const {'1': 'createTime', '3': 8, '4': 1, '5': 3, '10': 'createTime'},
+    const {'1': 'createdAt', '3': 21, '4': 1, '5': 3, '10': 'createdAt'},
+    const {'1': 'createdAtStr', '3': 22, '4': 1, '5': 9, '10': 'createdAtStr'},
+  ],
+};
+
+/// Descriptor for `UserIpList`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userIpListDescriptor = $convert.base64Decode('CgpVc2VySXBMaXN0Eg4KAmlkGAEgASgJUgJpZBIaCghwbGF0Zm9ybRgCIAEoCVIIcGxhdGZvcm0SGAoHc3RhcnRJcBgDIAEoCVIHc3RhcnRJcBIUCgVlbmRJcBgEIAEoCVIFZW5kSXASFgoGcmVtYXJrGAUgASgJUgZyZW1hcmsSFgoGdXNlcklkGAYgASgJUgZ1c2VySWQSGgoIaXNFbmFibGUYByABKAhSCGlzRW5hYmxlEh4KCmNyZWF0ZVRpbWUYCCABKANSCmNyZWF0ZVRpbWUSHAoJY3JlYXRlZEF0GBUgASgDUgljcmVhdGVkQXQSIgoMY3JlYXRlZEF0U3RyGBYgASgJUgxjcmVhdGVkQXRTdHI=');
+@$core.Deprecated('Use getAllUserIpWhiteListReqDescriptor instead')
+const GetAllUserIpWhiteListReq$json = const {
+  '1': 'GetAllUserIpWhiteListReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'page', '3': 2, '4': 1, '5': 11, '6': '.pb.Page', '10': 'page'},
+    const {'1': 'filter', '3': 3, '4': 3, '5': 11, '6': '.pb.GetAllUserIpWhiteListReq.FilterEntry', '10': 'filter'},
+  ],
+  '3': const [GetAllUserIpWhiteListReq_FilterEntry$json],
+};
+
+@$core.Deprecated('Use getAllUserIpWhiteListReqDescriptor instead')
+const GetAllUserIpWhiteListReq_FilterEntry$json = const {
+  '1': 'FilterEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `GetAllUserIpWhiteListReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllUserIpWhiteListReqDescriptor = $convert.base64Decode('ChhHZXRBbGxVc2VySXBXaGl0ZUxpc3RSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESHAoEcGFnZRgCIAEoCzIILnBiLlBhZ2VSBHBhZ2USQAoGZmlsdGVyGAMgAygLMigucGIuR2V0QWxsVXNlcklwV2hpdGVMaXN0UmVxLkZpbHRlckVudHJ5UgZmaWx0ZXIaOQoLRmlsdGVyRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');
+@$core.Deprecated('Use getAllUserIpWhiteListRespDescriptor instead')
+const GetAllUserIpWhiteListResp$json = const {
+  '1': 'GetAllUserIpWhiteListResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'userIpLists', '3': 2, '4': 3, '5': 11, '6': '.pb.UserIpList', '10': 'userIpLists'},
+    const {'1': 'total', '3': 3, '4': 1, '5': 3, '10': 'total'},
+  ],
+};
+
+/// Descriptor for `GetAllUserIpWhiteListResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllUserIpWhiteListRespDescriptor = $convert.base64Decode('ChlHZXRBbGxVc2VySXBXaGl0ZUxpc3RSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEjAKC3VzZXJJcExpc3RzGAIgAygLMg4ucGIuVXNlcklwTGlzdFILdXNlcklwTGlzdHMSFAoFdG90YWwYAyABKANSBXRvdGFs');
+@$core.Deprecated('Use getUserIpWhiteListDetailReqDescriptor instead')
+const GetUserIpWhiteListDetailReq$json = const {
+  '1': 'GetUserIpWhiteListDetailReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'id', '3': 2, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `GetUserIpWhiteListDetailReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getUserIpWhiteListDetailReqDescriptor = $convert.base64Decode('ChtHZXRVc2VySXBXaGl0ZUxpc3REZXRhaWxSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESDgoCaWQYAiABKAlSAmlk');
+@$core.Deprecated('Use getUserIpWhiteListDetailRespDescriptor instead')
+const GetUserIpWhiteListDetailResp$json = const {
+  '1': 'GetUserIpWhiteListDetailResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'userIpList', '3': 2, '4': 1, '5': 11, '6': '.pb.UserIpList', '10': 'userIpList'},
+  ],
+};
+
+/// Descriptor for `GetUserIpWhiteListDetailResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getUserIpWhiteListDetailRespDescriptor = $convert.base64Decode('ChxHZXRVc2VySXBXaGl0ZUxpc3REZXRhaWxSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEi4KCnVzZXJJcExpc3QYAiABKAsyDi5wYi5Vc2VySXBMaXN0Ugp1c2VySXBMaXN0');
+@$core.Deprecated('Use addUserIpWhiteListReqDescriptor instead')
+const AddUserIpWhiteListReq$json = const {
+  '1': 'AddUserIpWhiteListReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'userIpList', '3': 2, '4': 1, '5': 11, '6': '.pb.UserIpList', '10': 'userIpList'},
+  ],
+};
+
+/// Descriptor for `AddUserIpWhiteListReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addUserIpWhiteListReqDescriptor = $convert.base64Decode('ChVBZGRVc2VySXBXaGl0ZUxpc3RSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESLgoKdXNlcklwTGlzdBgCIAEoCzIOLnBiLlVzZXJJcExpc3RSCnVzZXJJcExpc3Q=');
+@$core.Deprecated('Use addUserIpWhiteListRespDescriptor instead')
+const AddUserIpWhiteListResp$json = const {
+  '1': 'AddUserIpWhiteListResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `AddUserIpWhiteListResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addUserIpWhiteListRespDescriptor = $convert.base64Decode('ChZBZGRVc2VySXBXaGl0ZUxpc3RSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use updateUserIpWhiteListReqDescriptor instead')
+const UpdateUserIpWhiteListReq$json = const {
+  '1': 'UpdateUserIpWhiteListReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'userIpList', '3': 2, '4': 1, '5': 11, '6': '.pb.UserIpList', '10': 'userIpList'},
+  ],
+};
+
+/// Descriptor for `UpdateUserIpWhiteListReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserIpWhiteListReqDescriptor = $convert.base64Decode('ChhVcGRhdGVVc2VySXBXaGl0ZUxpc3RSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESLgoKdXNlcklwTGlzdBgCIAEoCzIOLnBiLlVzZXJJcExpc3RSCnVzZXJJcExpc3Q=');
+@$core.Deprecated('Use updateUserIpWhiteListRespDescriptor instead')
+const UpdateUserIpWhiteListResp$json = const {
+  '1': 'UpdateUserIpWhiteListResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `UpdateUserIpWhiteListResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserIpWhiteListRespDescriptor = $convert.base64Decode('ChlVcGRhdGVVc2VySXBXaGl0ZUxpc3RSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use deleteUserIpWhiteListReqDescriptor instead')
+const DeleteUserIpWhiteListReq$json = const {
+  '1': 'DeleteUserIpWhiteListReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'ids', '3': 2, '4': 3, '5': 9, '10': 'ids'},
+  ],
+};
+
+/// Descriptor for `DeleteUserIpWhiteListReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteUserIpWhiteListReqDescriptor = $convert.base64Decode('ChhEZWxldGVVc2VySXBXaGl0ZUxpc3RSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESEAoDaWRzGAIgAygJUgNpZHM=');
+@$core.Deprecated('Use deleteUserIpWhiteListRespDescriptor instead')
+const DeleteUserIpWhiteListResp$json = const {
+  '1': 'DeleteUserIpWhiteListResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `DeleteUserIpWhiteListResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteUserIpWhiteListRespDescriptor = $convert.base64Decode('ChlEZWxldGVVc2VySXBXaGl0ZUxpc3RSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use getAllUserIpBlackListReqDescriptor instead')
+const GetAllUserIpBlackListReq$json = const {
+  '1': 'GetAllUserIpBlackListReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'page', '3': 2, '4': 1, '5': 11, '6': '.pb.Page', '10': 'page'},
+    const {'1': 'filter', '3': 3, '4': 3, '5': 11, '6': '.pb.GetAllUserIpBlackListReq.FilterEntry', '10': 'filter'},
+  ],
+  '3': const [GetAllUserIpBlackListReq_FilterEntry$json],
+};
+
+@$core.Deprecated('Use getAllUserIpBlackListReqDescriptor instead')
+const GetAllUserIpBlackListReq_FilterEntry$json = const {
+  '1': 'FilterEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `GetAllUserIpBlackListReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllUserIpBlackListReqDescriptor = $convert.base64Decode('ChhHZXRBbGxVc2VySXBCbGFja0xpc3RSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESHAoEcGFnZRgCIAEoCzIILnBiLlBhZ2VSBHBhZ2USQAoGZmlsdGVyGAMgAygLMigucGIuR2V0QWxsVXNlcklwQmxhY2tMaXN0UmVxLkZpbHRlckVudHJ5UgZmaWx0ZXIaOQoLRmlsdGVyRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');
+@$core.Deprecated('Use getAllUserIpBlackListRespDescriptor instead')
+const GetAllUserIpBlackListResp$json = const {
+  '1': 'GetAllUserIpBlackListResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'userIpLists', '3': 2, '4': 3, '5': 11, '6': '.pb.UserIpList', '10': 'userIpLists'},
+    const {'1': 'total', '3': 3, '4': 1, '5': 3, '10': 'total'},
+  ],
+};
+
+/// Descriptor for `GetAllUserIpBlackListResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllUserIpBlackListRespDescriptor = $convert.base64Decode('ChlHZXRBbGxVc2VySXBCbGFja0xpc3RSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEjAKC3VzZXJJcExpc3RzGAIgAygLMg4ucGIuVXNlcklwTGlzdFILdXNlcklwTGlzdHMSFAoFdG90YWwYAyABKANSBXRvdGFs');
+@$core.Deprecated('Use getUserIpBlackListDetailReqDescriptor instead')
+const GetUserIpBlackListDetailReq$json = const {
+  '1': 'GetUserIpBlackListDetailReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'id', '3': 2, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `GetUserIpBlackListDetailReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getUserIpBlackListDetailReqDescriptor = $convert.base64Decode('ChtHZXRVc2VySXBCbGFja0xpc3REZXRhaWxSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESDgoCaWQYAiABKAlSAmlk');
+@$core.Deprecated('Use getUserIpBlackListDetailRespDescriptor instead')
+const GetUserIpBlackListDetailResp$json = const {
+  '1': 'GetUserIpBlackListDetailResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'userIpList', '3': 2, '4': 1, '5': 11, '6': '.pb.UserIpList', '10': 'userIpList'},
+  ],
+};
+
+/// Descriptor for `GetUserIpBlackListDetailResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getUserIpBlackListDetailRespDescriptor = $convert.base64Decode('ChxHZXRVc2VySXBCbGFja0xpc3REZXRhaWxSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEi4KCnVzZXJJcExpc3QYAiABKAsyDi5wYi5Vc2VySXBMaXN0Ugp1c2VySXBMaXN0');
+@$core.Deprecated('Use addUserIpBlackListReqDescriptor instead')
+const AddUserIpBlackListReq$json = const {
+  '1': 'AddUserIpBlackListReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'userIpList', '3': 2, '4': 1, '5': 11, '6': '.pb.UserIpList', '10': 'userIpList'},
+  ],
+};
+
+/// Descriptor for `AddUserIpBlackListReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addUserIpBlackListReqDescriptor = $convert.base64Decode('ChVBZGRVc2VySXBCbGFja0xpc3RSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESLgoKdXNlcklwTGlzdBgCIAEoCzIOLnBiLlVzZXJJcExpc3RSCnVzZXJJcExpc3Q=');
+@$core.Deprecated('Use addUserIpBlackListRespDescriptor instead')
+const AddUserIpBlackListResp$json = const {
+  '1': 'AddUserIpBlackListResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `AddUserIpBlackListResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addUserIpBlackListRespDescriptor = $convert.base64Decode('ChZBZGRVc2VySXBCbGFja0xpc3RSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use updateUserIpBlackListReqDescriptor instead')
+const UpdateUserIpBlackListReq$json = const {
+  '1': 'UpdateUserIpBlackListReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'userIpList', '3': 2, '4': 1, '5': 11, '6': '.pb.UserIpList', '10': 'userIpList'},
+  ],
+};
+
+/// Descriptor for `UpdateUserIpBlackListReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserIpBlackListReqDescriptor = $convert.base64Decode('ChhVcGRhdGVVc2VySXBCbGFja0xpc3RSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESLgoKdXNlcklwTGlzdBgCIAEoCzIOLnBiLlVzZXJJcExpc3RSCnVzZXJJcExpc3Q=');
+@$core.Deprecated('Use updateUserIpBlackListRespDescriptor instead')
+const UpdateUserIpBlackListResp$json = const {
+  '1': 'UpdateUserIpBlackListResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `UpdateUserIpBlackListResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserIpBlackListRespDescriptor = $convert.base64Decode('ChlVcGRhdGVVc2VySXBCbGFja0xpc3RSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use deleteUserIpBlackListReqDescriptor instead')
+const DeleteUserIpBlackListReq$json = const {
+  '1': 'DeleteUserIpBlackListReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'ids', '3': 2, '4': 3, '5': 9, '10': 'ids'},
+  ],
+};
+
+/// Descriptor for `DeleteUserIpBlackListReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteUserIpBlackListReqDescriptor = $convert.base64Decode('ChhEZWxldGVVc2VySXBCbGFja0xpc3RSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESEAoDaWRzGAIgAygJUgNpZHM=');
+@$core.Deprecated('Use deleteUserIpBlackListRespDescriptor instead')
+const DeleteUserIpBlackListResp$json = const {
+  '1': 'DeleteUserIpBlackListResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `DeleteUserIpBlackListResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteUserIpBlackListRespDescriptor = $convert.base64Decode('ChlEZWxldGVVc2VySXBCbGFja0xpc3RSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use userDefaultConvDescriptor instead')
+const UserDefaultConv$json = const {
+  '1': 'UserDefaultConv',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'convType', '3': 2, '4': 1, '5': 5, '10': 'convType'},
+    const {'1': 'filterType', '3': 3, '4': 1, '5': 5, '10': 'filterType'},
+    const {'1': 'invitationCode', '3': 4, '4': 1, '5': 9, '10': 'invitationCode'},
+    const {'1': 'convId', '3': 5, '4': 1, '5': 9, '10': 'convId'},
+    const {'1': 'createdAt', '3': 21, '4': 1, '5': 3, '10': 'createdAt'},
+    const {'1': 'createdAtStr', '3': 22, '4': 1, '5': 9, '10': 'createdAtStr'},
+  ],
+};
+
+/// Descriptor for `UserDefaultConv`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userDefaultConvDescriptor = $convert.base64Decode('Cg9Vc2VyRGVmYXVsdENvbnYSDgoCaWQYASABKAlSAmlkEhoKCGNvbnZUeXBlGAIgASgFUghjb252VHlwZRIeCgpmaWx0ZXJUeXBlGAMgASgFUgpmaWx0ZXJUeXBlEiYKDmludml0YXRpb25Db2RlGAQgASgJUg5pbnZpdGF0aW9uQ29kZRIWCgZjb252SWQYBSABKAlSBmNvbnZJZBIcCgljcmVhdGVkQXQYFSABKANSCWNyZWF0ZWRBdBIiCgxjcmVhdGVkQXRTdHIYFiABKAlSDGNyZWF0ZWRBdFN0cg==');
+@$core.Deprecated('Use getAllUserDefaultConvReqDescriptor instead')
+const GetAllUserDefaultConvReq$json = const {
+  '1': 'GetAllUserDefaultConvReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'page', '3': 2, '4': 1, '5': 11, '6': '.pb.Page', '10': 'page'},
+    const {'1': 'filter', '3': 3, '4': 3, '5': 11, '6': '.pb.GetAllUserDefaultConvReq.FilterEntry', '10': 'filter'},
+  ],
+  '3': const [GetAllUserDefaultConvReq_FilterEntry$json],
+};
+
+@$core.Deprecated('Use getAllUserDefaultConvReqDescriptor instead')
+const GetAllUserDefaultConvReq_FilterEntry$json = const {
+  '1': 'FilterEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `GetAllUserDefaultConvReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllUserDefaultConvReqDescriptor = $convert.base64Decode('ChhHZXRBbGxVc2VyRGVmYXVsdENvbnZSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESHAoEcGFnZRgCIAEoCzIILnBiLlBhZ2VSBHBhZ2USQAoGZmlsdGVyGAMgAygLMigucGIuR2V0QWxsVXNlckRlZmF1bHRDb252UmVxLkZpbHRlckVudHJ5UgZmaWx0ZXIaOQoLRmlsdGVyRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');
+@$core.Deprecated('Use getAllUserDefaultConvRespDescriptor instead')
+const GetAllUserDefaultConvResp$json = const {
+  '1': 'GetAllUserDefaultConvResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'userDefaultConvs', '3': 2, '4': 3, '5': 11, '6': '.pb.UserDefaultConv', '10': 'userDefaultConvs'},
+    const {'1': 'total', '3': 3, '4': 1, '5': 3, '10': 'total'},
+  ],
+};
+
+/// Descriptor for `GetAllUserDefaultConvResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllUserDefaultConvRespDescriptor = $convert.base64Decode('ChlHZXRBbGxVc2VyRGVmYXVsdENvbnZSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEj8KEHVzZXJEZWZhdWx0Q29udnMYAiADKAsyEy5wYi5Vc2VyRGVmYXVsdENvbnZSEHVzZXJEZWZhdWx0Q29udnMSFAoFdG90YWwYAyABKANSBXRvdGFs');
+@$core.Deprecated('Use getUserDefaultConvDetailReqDescriptor instead')
+const GetUserDefaultConvDetailReq$json = const {
+  '1': 'GetUserDefaultConvDetailReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'id', '3': 2, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `GetUserDefaultConvDetailReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getUserDefaultConvDetailReqDescriptor = $convert.base64Decode('ChtHZXRVc2VyRGVmYXVsdENvbnZEZXRhaWxSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESDgoCaWQYAiABKAlSAmlk');
+@$core.Deprecated('Use getUserDefaultConvDetailRespDescriptor instead')
+const GetUserDefaultConvDetailResp$json = const {
+  '1': 'GetUserDefaultConvDetailResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'userDefaultConv', '3': 2, '4': 1, '5': 11, '6': '.pb.UserDefaultConv', '10': 'userDefaultConv'},
+  ],
+};
+
+/// Descriptor for `GetUserDefaultConvDetailResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getUserDefaultConvDetailRespDescriptor = $convert.base64Decode('ChxHZXRVc2VyRGVmYXVsdENvbnZEZXRhaWxSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEj0KD3VzZXJEZWZhdWx0Q29udhgCIAEoCzITLnBiLlVzZXJEZWZhdWx0Q29udlIPdXNlckRlZmF1bHRDb252');
+@$core.Deprecated('Use addUserDefaultConvReqDescriptor instead')
+const AddUserDefaultConvReq$json = const {
+  '1': 'AddUserDefaultConvReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'userDefaultConv', '3': 2, '4': 1, '5': 11, '6': '.pb.UserDefaultConv', '10': 'userDefaultConv'},
+  ],
+};
+
+/// Descriptor for `AddUserDefaultConvReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addUserDefaultConvReqDescriptor = $convert.base64Decode('ChVBZGRVc2VyRGVmYXVsdENvbnZSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESPQoPdXNlckRlZmF1bHRDb252GAIgASgLMhMucGIuVXNlckRlZmF1bHRDb252Ug91c2VyRGVmYXVsdENvbnY=');
+@$core.Deprecated('Use addUserDefaultConvRespDescriptor instead')
+const AddUserDefaultConvResp$json = const {
+  '1': 'AddUserDefaultConvResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `AddUserDefaultConvResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addUserDefaultConvRespDescriptor = $convert.base64Decode('ChZBZGRVc2VyRGVmYXVsdENvbnZSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use updateUserDefaultConvReqDescriptor instead')
+const UpdateUserDefaultConvReq$json = const {
+  '1': 'UpdateUserDefaultConvReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'userDefaultConv', '3': 2, '4': 1, '5': 11, '6': '.pb.UserDefaultConv', '10': 'userDefaultConv'},
+  ],
+};
+
+/// Descriptor for `UpdateUserDefaultConvReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserDefaultConvReqDescriptor = $convert.base64Decode('ChhVcGRhdGVVc2VyRGVmYXVsdENvbnZSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESPQoPdXNlckRlZmF1bHRDb252GAIgASgLMhMucGIuVXNlckRlZmF1bHRDb252Ug91c2VyRGVmYXVsdENvbnY=');
+@$core.Deprecated('Use updateUserDefaultConvRespDescriptor instead')
+const UpdateUserDefaultConvResp$json = const {
+  '1': 'UpdateUserDefaultConvResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `UpdateUserDefaultConvResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserDefaultConvRespDescriptor = $convert.base64Decode('ChlVcGRhdGVVc2VyRGVmYXVsdENvbnZSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use deleteUserDefaultConvReqDescriptor instead')
+const DeleteUserDefaultConvReq$json = const {
+  '1': 'DeleteUserDefaultConvReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'ids', '3': 2, '4': 3, '5': 9, '10': 'ids'},
+  ],
+};
+
+/// Descriptor for `DeleteUserDefaultConvReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteUserDefaultConvReqDescriptor = $convert.base64Decode('ChhEZWxldGVVc2VyRGVmYXVsdENvbnZSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESEAoDaWRzGAIgAygJUgNpZHM=');
+@$core.Deprecated('Use deleteUserDefaultConvRespDescriptor instead')
+const DeleteUserDefaultConvResp$json = const {
+  '1': 'DeleteUserDefaultConvResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `DeleteUserDefaultConvResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteUserDefaultConvRespDescriptor = $convert.base64Decode('ChlEZWxldGVVc2VyRGVmYXVsdENvbnZSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use userLevelInfoDescriptor instead')
+const UserLevelInfo$json = const {
+  '1': 'UserLevelInfo',
+  '2': const [
+    const {'1': 'level', '3': 1, '4': 1, '5': 5, '10': 'level'},
+    const {'1': 'exp', '3': 2, '4': 1, '5': 5, '10': 'exp'},
+    const {'1': 'nextLevelExp', '3': 3, '4': 1, '5': 5, '10': 'nextLevelExp'},
+  ],
+};
+
+/// Descriptor for `UserLevelInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userLevelInfoDescriptor = $convert.base64Decode('Cg1Vc2VyTGV2ZWxJbmZvEhQKBWxldmVsGAEgASgFUgVsZXZlbBIQCgNleHAYAiABKAVSA2V4cBIiCgxuZXh0TGV2ZWxFeHAYAyABKAVSDG5leHRMZXZlbEV4cA==');
+@$core.Deprecated('Use userLoginInfoDescriptor instead')
+const UserLoginInfo$json = const {
+  '1': 'UserLoginInfo',
+  '2': const [
+    const {'1': 'time', '3': 1, '4': 1, '5': 3, '10': 'time'},
+    const {'1': 'ip', '3': 2, '4': 1, '5': 9, '10': 'ip'},
+    const {'1': 'ipCountry', '3': 3, '4': 1, '5': 9, '10': 'ipCountry'},
+    const {'1': 'ipProvince', '3': 4, '4': 1, '5': 9, '10': 'ipProvince'},
+    const {'1': 'ipCity', '3': 5, '4': 1, '5': 9, '10': 'ipCity'},
+    const {'1': 'ipISP', '3': 6, '4': 1, '5': 9, '10': 'ipISP'},
+    const {'1': 'appVersion', '3': 7, '4': 1, '5': 9, '10': 'appVersion'},
+    const {'1': 'userAgent', '3': 8, '4': 1, '5': 9, '10': 'userAgent'},
+    const {'1': 'osVersion', '3': 9, '4': 1, '5': 9, '10': 'osVersion'},
+    const {'1': 'platform', '3': 10, '4': 1, '5': 9, '10': 'platform'},
+    const {'1': 'deviceId', '3': 11, '4': 1, '5': 9, '10': 'deviceId'},
+    const {'1': 'deviceModel', '3': 12, '4': 1, '5': 9, '10': 'deviceModel'},
+  ],
+};
+
+/// Descriptor for `UserLoginInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userLoginInfoDescriptor = $convert.base64Decode('Cg1Vc2VyTG9naW5JbmZvEhIKBHRpbWUYASABKANSBHRpbWUSDgoCaXAYAiABKAlSAmlwEhwKCWlwQ291bnRyeRgDIAEoCVIJaXBDb3VudHJ5Eh4KCmlwUHJvdmluY2UYBCABKAlSCmlwUHJvdmluY2USFgoGaXBDaXR5GAUgASgJUgZpcENpdHkSFAoFaXBJU1AYBiABKAlSBWlwSVNQEh4KCmFwcFZlcnNpb24YByABKAlSCmFwcFZlcnNpb24SHAoJdXNlckFnZW50GAggASgJUgl1c2VyQWdlbnQSHAoJb3NWZXJzaW9uGAkgASgJUglvc1ZlcnNpb24SGgoIcGxhdGZvcm0YCiABKAlSCHBsYXRmb3JtEhoKCGRldmljZUlkGAsgASgJUghkZXZpY2VJZBIgCgtkZXZpY2VNb2RlbBgMIAEoCVILZGV2aWNlTW9kZWw=');
+@$core.Deprecated('Use userBirthdayInfoDescriptor instead')
+const UserBirthdayInfo$json = const {
+  '1': 'UserBirthdayInfo',
+  '2': const [
+    const {'1': 'year', '3': 1, '4': 1, '5': 5, '10': 'year'},
+    const {'1': 'month', '3': 2, '4': 1, '5': 5, '10': 'month'},
+    const {'1': 'day', '3': 3, '4': 1, '5': 5, '10': 'day'},
+  ],
+};
+
+/// Descriptor for `UserBirthdayInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userBirthdayInfoDescriptor = $convert.base64Decode('ChBVc2VyQmlydGhkYXlJbmZvEhIKBHllYXIYASABKAVSBHllYXISFAoFbW9udGgYAiABKAVSBW1vbnRoEhAKA2RheRgDIAEoBVIDZGF5');
+@$core.Deprecated('Use userLoginRecordDescriptor instead')
+const UserLoginRecord$json = const {
+  '1': 'UserLoginRecord',
+  '2': const [
+    const {'1': 'time', '3': 1, '4': 1, '5': 3, '10': 'time'},
+    const {'1': 'timeStr', '3': 2, '4': 1, '5': 9, '10': 'timeStr'},
+    const {'1': 'ip', '3': 3, '4': 1, '5': 9, '10': 'ip'},
+    const {'1': 'ipRegion', '3': 4, '4': 1, '5': 9, '10': 'ipRegion'},
+  ],
+};
+
+/// Descriptor for `UserLoginRecord`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userLoginRecordDescriptor = $convert.base64Decode('Cg9Vc2VyTG9naW5SZWNvcmQSEgoEdGltZRgBIAEoA1IEdGltZRIYCgd0aW1lU3RyGAIgASgJUgd0aW1lU3RyEg4KAmlwGAMgASgJUgJpcBIaCghpcFJlZ2lvbhgEIAEoCVIIaXBSZWdpb24=');
+@$core.Deprecated('Use userModelDescriptor instead')
+const UserModel$json = const {
+  '1': 'UserModel',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'invitationCode', '3': 2, '4': 1, '5': 9, '10': 'invitationCode'},
+    const {'1': 'mobile', '3': 3, '4': 1, '5': 9, '10': 'mobile'},
+    const {'1': 'mobileCountryCode', '3': 4, '4': 1, '5': 9, '10': 'mobileCountryCode'},
+    const {'1': 'nickname', '3': 5, '4': 1, '5': 9, '10': 'nickname'},
+    const {'1': 'avatar', '3': 6, '4': 1, '5': 9, '10': 'avatar'},
+    const {'1': 'regInfo', '3': 7, '4': 1, '5': 11, '6': '.pb.UserLoginInfo', '10': 'regInfo'},
+    const {'1': 'xb', '3': 8, '4': 1, '5': 5, '10': 'xb'},
+    const {'1': 'birthday', '3': 9, '4': 1, '5': 11, '6': '.pb.UserBirthdayInfo', '10': 'birthday'},
+    const {'1': 'infoMap', '3': 10, '4': 3, '5': 11, '6': '.pb.UserModel.InfoMapEntry', '10': 'infoMap'},
+    const {'1': 'levelInfo', '3': 11, '4': 1, '5': 11, '6': '.pb.UserLevelInfo', '10': 'levelInfo'},
+    const {'1': 'role', '3': 12, '4': 1, '5': 5, '10': 'role'},
+    const {'1': 'unblockTime', '3': 13, '4': 1, '5': 3, '10': 'unblockTime'},
+    const {'1': 'unblockTimeStr', '3': 14, '4': 1, '5': 9, '10': 'unblockTimeStr'},
+    const {'1': 'blockRecordId', '3': 15, '4': 1, '5': 9, '10': 'blockRecordId'},
+    const {'1': 'createTime', '3': 16, '4': 1, '5': 3, '10': 'createTime'},
+    const {'1': 'lastLoginRecord', '3': 17, '4': 1, '5': 11, '6': '.pb.UserLoginRecord', '10': 'lastLoginRecord'},
+    const {'1': 'adminRemark', '3': 18, '4': 1, '5': 9, '10': 'adminRemark'},
+    const {'1': 'createdAt', '3': 21, '4': 1, '5': 3, '10': 'createdAt'},
+    const {'1': 'createdAtStr', '3': 22, '4': 1, '5': 9, '10': 'createdAtStr'},
+  ],
+  '3': const [UserModel_InfoMapEntry$json],
+};
+
+@$core.Deprecated('Use userModelDescriptor instead')
+const UserModel_InfoMapEntry$json = const {
+  '1': 'InfoMapEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `UserModel`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userModelDescriptor = $convert.base64Decode('CglVc2VyTW9kZWwSDgoCaWQYASABKAlSAmlkEiYKDmludml0YXRpb25Db2RlGAIgASgJUg5pbnZpdGF0aW9uQ29kZRIWCgZtb2JpbGUYAyABKAlSBm1vYmlsZRIsChFtb2JpbGVDb3VudHJ5Q29kZRgEIAEoCVIRbW9iaWxlQ291bnRyeUNvZGUSGgoIbmlja25hbWUYBSABKAlSCG5pY2tuYW1lEhYKBmF2YXRhchgGIAEoCVIGYXZhdGFyEisKB3JlZ0luZm8YByABKAsyES5wYi5Vc2VyTG9naW5JbmZvUgdyZWdJbmZvEg4KAnhiGAggASgFUgJ4YhIwCghiaXJ0aGRheRgJIAEoCzIULnBiLlVzZXJCaXJ0aGRheUluZm9SCGJpcnRoZGF5EjQKB2luZm9NYXAYCiADKAsyGi5wYi5Vc2VyTW9kZWwuSW5mb01hcEVudHJ5UgdpbmZvTWFwEi8KCWxldmVsSW5mbxgLIAEoCzIRLnBiLlVzZXJMZXZlbEluZm9SCWxldmVsSW5mbxISCgRyb2xlGAwgASgFUgRyb2xlEiAKC3VuYmxvY2tUaW1lGA0gASgDUgt1bmJsb2NrVGltZRImCg51bmJsb2NrVGltZVN0chgOIAEoCVIOdW5ibG9ja1RpbWVTdHISJAoNYmxvY2tSZWNvcmRJZBgPIAEoCVINYmxvY2tSZWNvcmRJZBIeCgpjcmVhdGVUaW1lGBAgASgDUgpjcmVhdGVUaW1lEj0KD2xhc3RMb2dpblJlY29yZBgRIAEoCzITLnBiLlVzZXJMb2dpblJlY29yZFIPbGFzdExvZ2luUmVjb3JkEiAKC2FkbWluUmVtYXJrGBIgASgJUgthZG1pblJlbWFyaxIcCgljcmVhdGVkQXQYFSABKANSCWNyZWF0ZWRBdBIiCgxjcmVhdGVkQXRTdHIYFiABKAlSDGNyZWF0ZWRBdFN0cho6CgxJbmZvTWFwRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');
+@$core.Deprecated('Use getAllUserModelReqDescriptor instead')
+const GetAllUserModelReq$json = const {
+  '1': 'GetAllUserModelReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'page', '3': 2, '4': 1, '5': 11, '6': '.pb.Page', '10': 'page'},
+    const {'1': 'filter', '3': 3, '4': 3, '5': 11, '6': '.pb.GetAllUserModelReq.FilterEntry', '10': 'filter'},
+  ],
+  '3': const [GetAllUserModelReq_FilterEntry$json],
+};
+
+@$core.Deprecated('Use getAllUserModelReqDescriptor instead')
+const GetAllUserModelReq_FilterEntry$json = const {
+  '1': 'FilterEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `GetAllUserModelReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllUserModelReqDescriptor = $convert.base64Decode('ChJHZXRBbGxVc2VyTW9kZWxSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESHAoEcGFnZRgCIAEoCzIILnBiLlBhZ2VSBHBhZ2USOgoGZmlsdGVyGAMgAygLMiIucGIuR2V0QWxsVXNlck1vZGVsUmVxLkZpbHRlckVudHJ5UgZmaWx0ZXIaOQoLRmlsdGVyRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');
+@$core.Deprecated('Use getAllUserModelRespDescriptor instead')
+const GetAllUserModelResp$json = const {
+  '1': 'GetAllUserModelResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'userModelList', '3': 2, '4': 3, '5': 11, '6': '.pb.UserModel', '10': 'userModelList'},
+    const {'1': 'total', '3': 3, '4': 1, '5': 3, '10': 'total'},
+  ],
+};
+
+/// Descriptor for `GetAllUserModelResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllUserModelRespDescriptor = $convert.base64Decode('ChNHZXRBbGxVc2VyTW9kZWxSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEjMKDXVzZXJNb2RlbExpc3QYAiADKAsyDS5wYi5Vc2VyTW9kZWxSDXVzZXJNb2RlbExpc3QSFAoFdG90YWwYAyABKANSBXRvdGFs');
+@$core.Deprecated('Use getUserModelDetailReqDescriptor instead')
+const GetUserModelDetailReq$json = const {
+  '1': 'GetUserModelDetailReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'id', '3': 2, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `GetUserModelDetailReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getUserModelDetailReqDescriptor = $convert.base64Decode('ChVHZXRVc2VyTW9kZWxEZXRhaWxSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESDgoCaWQYAiABKAlSAmlk');
+@$core.Deprecated('Use getUserModelDetailRespDescriptor instead')
+const GetUserModelDetailResp$json = const {
+  '1': 'GetUserModelDetailResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'userModel', '3': 2, '4': 1, '5': 11, '6': '.pb.UserModel', '10': 'userModel'},
+  ],
+};
+
+/// Descriptor for `GetUserModelDetailResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getUserModelDetailRespDescriptor = $convert.base64Decode('ChZHZXRVc2VyTW9kZWxEZXRhaWxSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEisKCXVzZXJNb2RlbBgCIAEoCzINLnBiLlVzZXJNb2RlbFIJdXNlck1vZGVs');
+@$core.Deprecated('Use addUserModelReqDescriptor instead')
+const AddUserModelReq$json = const {
+  '1': 'AddUserModelReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'userModel', '3': 2, '4': 1, '5': 11, '6': '.pb.UserModel', '10': 'userModel'},
+    const {'1': 'password', '3': 3, '4': 1, '5': 9, '10': 'password'},
+  ],
+};
+
+/// Descriptor for `AddUserModelReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addUserModelReqDescriptor = $convert.base64Decode('Cg9BZGRVc2VyTW9kZWxSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESKwoJdXNlck1vZGVsGAIgASgLMg0ucGIuVXNlck1vZGVsUgl1c2VyTW9kZWwSGgoIcGFzc3dvcmQYAyABKAlSCHBhc3N3b3Jk');
+@$core.Deprecated('Use addUserModelRespDescriptor instead')
+const AddUserModelResp$json = const {
+  '1': 'AddUserModelResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `AddUserModelResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addUserModelRespDescriptor = $convert.base64Decode('ChBBZGRVc2VyTW9kZWxSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use updateUserModelReqDescriptor instead')
+const UpdateUserModelReq$json = const {
+  '1': 'UpdateUserModelReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'userModel', '3': 2, '4': 1, '5': 11, '6': '.pb.UserModel', '10': 'userModel'},
+    const {'1': 'password', '3': 3, '4': 1, '5': 9, '10': 'password'},
+  ],
+};
+
+/// Descriptor for `UpdateUserModelReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserModelReqDescriptor = $convert.base64Decode('ChJVcGRhdGVVc2VyTW9kZWxSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESKwoJdXNlck1vZGVsGAIgASgLMg0ucGIuVXNlck1vZGVsUgl1c2VyTW9kZWwSGgoIcGFzc3dvcmQYAyABKAlSCHBhc3N3b3Jk');
+@$core.Deprecated('Use updateUserModelRespDescriptor instead')
+const UpdateUserModelResp$json = const {
+  '1': 'UpdateUserModelResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `UpdateUserModelResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserModelRespDescriptor = $convert.base64Decode('ChNVcGRhdGVVc2VyTW9kZWxSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use deleteUserModelReqDescriptor instead')
+const DeleteUserModelReq$json = const {
+  '1': 'DeleteUserModelReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'ids', '3': 2, '4': 3, '5': 9, '10': 'ids'},
+  ],
+};
+
+/// Descriptor for `DeleteUserModelReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteUserModelReqDescriptor = $convert.base64Decode('ChJEZWxldGVVc2VyTW9kZWxSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESEAoDaWRzGAIgAygJUgNpZHM=');
+@$core.Deprecated('Use deleteUserModelRespDescriptor instead')
+const DeleteUserModelResp$json = const {
+  '1': 'DeleteUserModelResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `DeleteUserModelResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteUserModelRespDescriptor = $convert.base64Decode('ChNEZWxldGVVc2VyTW9kZWxSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use switchUserModelReqDescriptor instead')
+const SwitchUserModelReq$json = const {
+  '1': 'SwitchUserModelReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'id', '3': 2, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'unblockTime', '3': 3, '4': 1, '5': 3, '10': 'unblockTime'},
+    const {'1': 'disableIp', '3': 4, '4': 1, '5': 8, '10': 'disableIp'},
+  ],
+};
+
+/// Descriptor for `SwitchUserModelReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List switchUserModelReqDescriptor = $convert.base64Decode('ChJTd2l0Y2hVc2VyTW9kZWxSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESDgoCaWQYAiABKAlSAmlkEiAKC3VuYmxvY2tUaW1lGAMgASgDUgt1bmJsb2NrVGltZRIcCglkaXNhYmxlSXAYBCABKAhSCWRpc2FibGVJcA==');
+@$core.Deprecated('Use switchUserModelRespDescriptor instead')
+const SwitchUserModelResp$json = const {
+  '1': 'SwitchUserModelResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `SwitchUserModelResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List switchUserModelRespDescriptor = $convert.base64Decode('ChNTd2l0Y2hVc2VyTW9kZWxSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use loginRecordDescriptor instead')
+const LoginRecord$json = const {
+  '1': 'LoginRecord',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'userId', '3': 2, '4': 1, '5': 9, '10': 'userId'},
+    const {'1': 'time', '3': 3, '4': 1, '5': 3, '10': 'time'},
+    const {'1': 'timeStr', '3': 4, '4': 1, '5': 9, '10': 'timeStr'},
+    const {'1': 'ip', '3': 5, '4': 1, '5': 9, '10': 'ip'},
+    const {'1': 'ipCountry', '3': 6, '4': 1, '5': 9, '10': 'ipCountry'},
+    const {'1': 'ipProvince', '3': 7, '4': 1, '5': 9, '10': 'ipProvince'},
+    const {'1': 'ipCity', '3': 8, '4': 1, '5': 9, '10': 'ipCity'},
+    const {'1': 'ipISP', '3': 9, '4': 1, '5': 9, '10': 'ipISP'},
+    const {'1': 'appVersion', '3': 10, '4': 1, '5': 9, '10': 'appVersion'},
+    const {'1': 'userAgent', '3': 11, '4': 1, '5': 9, '10': 'userAgent'},
+    const {'1': 'osVersion', '3': 12, '4': 1, '5': 9, '10': 'osVersion'},
+    const {'1': 'platform', '3': 13, '4': 1, '5': 9, '10': 'platform'},
+    const {'1': 'deviceId', '3': 14, '4': 1, '5': 9, '10': 'deviceId'},
+    const {'1': 'deviceModel', '3': 15, '4': 1, '5': 9, '10': 'deviceModel'},
+  ],
+};
+
+/// Descriptor for `LoginRecord`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loginRecordDescriptor = $convert.base64Decode('CgtMb2dpblJlY29yZBIOCgJpZBgBIAEoCVICaWQSFgoGdXNlcklkGAIgASgJUgZ1c2VySWQSEgoEdGltZRgDIAEoA1IEdGltZRIYCgd0aW1lU3RyGAQgASgJUgd0aW1lU3RyEg4KAmlwGAUgASgJUgJpcBIcCglpcENvdW50cnkYBiABKAlSCWlwQ291bnRyeRIeCgppcFByb3ZpbmNlGAcgASgJUgppcFByb3ZpbmNlEhYKBmlwQ2l0eRgIIAEoCVIGaXBDaXR5EhQKBWlwSVNQGAkgASgJUgVpcElTUBIeCgphcHBWZXJzaW9uGAogASgJUgphcHBWZXJzaW9uEhwKCXVzZXJBZ2VudBgLIAEoCVIJdXNlckFnZW50EhwKCW9zVmVyc2lvbhgMIAEoCVIJb3NWZXJzaW9uEhoKCHBsYXRmb3JtGA0gASgJUghwbGF0Zm9ybRIaCghkZXZpY2VJZBgOIAEoCVIIZGV2aWNlSWQSIAoLZGV2aWNlTW9kZWwYDyABKAlSC2RldmljZU1vZGVs');
+@$core.Deprecated('Use getAllLoginRecordReqDescriptor instead')
+const GetAllLoginRecordReq$json = const {
+  '1': 'GetAllLoginRecordReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'page', '3': 2, '4': 1, '5': 11, '6': '.pb.Page', '10': 'page'},
+    const {'1': 'filter', '3': 3, '4': 3, '5': 11, '6': '.pb.GetAllLoginRecordReq.FilterEntry', '10': 'filter'},
+  ],
+  '3': const [GetAllLoginRecordReq_FilterEntry$json],
+};
+
+@$core.Deprecated('Use getAllLoginRecordReqDescriptor instead')
+const GetAllLoginRecordReq_FilterEntry$json = const {
+  '1': 'FilterEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `GetAllLoginRecordReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllLoginRecordReqDescriptor = $convert.base64Decode('ChRHZXRBbGxMb2dpblJlY29yZFJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIcCgRwYWdlGAIgASgLMggucGIuUGFnZVIEcGFnZRI8CgZmaWx0ZXIYAyADKAsyJC5wYi5HZXRBbGxMb2dpblJlY29yZFJlcS5GaWx0ZXJFbnRyeVIGZmlsdGVyGjkKC0ZpbHRlckVudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgJUgV2YWx1ZToCOAE=');
+@$core.Deprecated('Use getAllLoginRecordRespDescriptor instead')
+const GetAllLoginRecordResp$json = const {
+  '1': 'GetAllLoginRecordResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'loginRecordList', '3': 2, '4': 3, '5': 11, '6': '.pb.LoginRecord', '10': 'loginRecordList'},
+    const {'1': 'total', '3': 3, '4': 1, '5': 3, '10': 'total'},
+  ],
+};
+
+/// Descriptor for `GetAllLoginRecordResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllLoginRecordRespDescriptor = $convert.base64Decode('ChVHZXRBbGxMb2dpblJlY29yZFJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASOQoPbG9naW5SZWNvcmRMaXN0GAIgAygLMg8ucGIuTG9naW5SZWNvcmRSD2xvZ2luUmVjb3JkTGlzdBIUCgV0b3RhbBgDIAEoA1IFdG90YWw=');
 const $core.Map<$core.String, $core.dynamic> userServiceBase$json = const {
   '1': 'userService',
   '2': const [
     const {'1': 'Login', '2': '.pb.LoginReq', '3': '.pb.LoginResp', '4': const {}},
     const {'1': 'ConfirmRegister', '2': '.pb.ConfirmRegisterReq', '3': '.pb.ConfirmRegisterResp', '4': const {}},
+    const {'1': 'Register', '2': '.pb.RegisterReq', '3': '.pb.RegisterResp', '4': const {}},
     const {'1': 'MapUserByIds', '2': '.pb.MapUserByIdsReq', '3': '.pb.MapUserByIdsResp', '4': const {}},
     const {'1': 'BatchGetUserBaseInfo', '2': '.pb.BatchGetUserBaseInfoReq', '3': '.pb.BatchGetUserBaseInfoResp', '4': const {}},
     const {'1': 'SearchUsersByKeyword', '2': '.pb.SearchUsersByKeywordReq', '3': '.pb.SearchUsersByKeywordResp', '4': const {}},
@@ -395,6 +1274,33 @@ const $core.Map<$core.String, $core.dynamic> userServiceBase$json = const {
     const {'1': 'AfterDisconnect', '2': '.pb.AfterDisconnectReq', '3': '.pb.CommonResp'},
     const {'1': 'BatchGetUserAllDevices', '2': '.pb.BatchGetUserAllDevicesReq', '3': '.pb.BatchGetUserAllDevicesResp', '4': const {}},
     const {'1': 'UpdateUserInfo', '2': '.pb.UpdateUserInfoReq', '3': '.pb.UpdateUserInfoResp', '4': const {}},
+    const {'1': 'GetAllUserInvitationCode', '2': '.pb.GetAllUserInvitationCodeReq', '3': '.pb.GetAllUserInvitationCodeResp', '4': const {}},
+    const {'1': 'GetUserInvitationCodeDetail', '2': '.pb.GetUserInvitationCodeDetailReq', '3': '.pb.GetUserInvitationCodeDetailResp', '4': const {}},
+    const {'1': 'AddUserInvitationCode', '2': '.pb.AddUserInvitationCodeReq', '3': '.pb.AddUserInvitationCodeResp', '4': const {}},
+    const {'1': 'UpdateUserInvitationCode', '2': '.pb.UpdateUserInvitationCodeReq', '3': '.pb.UpdateUserInvitationCodeResp', '4': const {}},
+    const {'1': 'DeleteUserInvitationCode', '2': '.pb.DeleteUserInvitationCodeReq', '3': '.pb.DeleteUserInvitationCodeResp', '4': const {}},
+    const {'1': 'GetAllUserIpWhiteList', '2': '.pb.GetAllUserIpWhiteListReq', '3': '.pb.GetAllUserIpWhiteListResp', '4': const {}},
+    const {'1': 'GetUserIpWhiteListDetail', '2': '.pb.GetUserIpWhiteListDetailReq', '3': '.pb.GetUserIpWhiteListDetailResp', '4': const {}},
+    const {'1': 'AddUserIpWhiteList', '2': '.pb.AddUserIpWhiteListReq', '3': '.pb.AddUserIpWhiteListResp', '4': const {}},
+    const {'1': 'UpdateUserIpWhiteList', '2': '.pb.UpdateUserIpWhiteListReq', '3': '.pb.UpdateUserIpWhiteListResp', '4': const {}},
+    const {'1': 'DeleteUserIpWhiteList', '2': '.pb.DeleteUserIpWhiteListReq', '3': '.pb.DeleteUserIpWhiteListResp', '4': const {}},
+    const {'1': 'GetAllUserIpBlackList', '2': '.pb.GetAllUserIpBlackListReq', '3': '.pb.GetAllUserIpBlackListResp', '4': const {}},
+    const {'1': 'GetUserIpBlackListDetail', '2': '.pb.GetUserIpBlackListDetailReq', '3': '.pb.GetUserIpBlackListDetailResp', '4': const {}},
+    const {'1': 'AddUserIpBlackList', '2': '.pb.AddUserIpBlackListReq', '3': '.pb.AddUserIpBlackListResp', '4': const {}},
+    const {'1': 'UpdateUserIpBlackList', '2': '.pb.UpdateUserIpBlackListReq', '3': '.pb.UpdateUserIpBlackListResp', '4': const {}},
+    const {'1': 'DeleteUserIpBlackList', '2': '.pb.DeleteUserIpBlackListReq', '3': '.pb.DeleteUserIpBlackListResp', '4': const {}},
+    const {'1': 'GetAllUserDefaultConv', '2': '.pb.GetAllUserDefaultConvReq', '3': '.pb.GetAllUserDefaultConvResp', '4': const {}},
+    const {'1': 'GetUserDefaultConvDetail', '2': '.pb.GetUserDefaultConvDetailReq', '3': '.pb.GetUserDefaultConvDetailResp', '4': const {}},
+    const {'1': 'AddUserDefaultConv', '2': '.pb.AddUserDefaultConvReq', '3': '.pb.AddUserDefaultConvResp', '4': const {}},
+    const {'1': 'UpdateUserDefaultConv', '2': '.pb.UpdateUserDefaultConvReq', '3': '.pb.UpdateUserDefaultConvResp', '4': const {}},
+    const {'1': 'DeleteUserDefaultConv', '2': '.pb.DeleteUserDefaultConvReq', '3': '.pb.DeleteUserDefaultConvResp', '4': const {}},
+    const {'1': 'GetAllUserModel', '2': '.pb.GetAllUserModelReq', '3': '.pb.GetAllUserModelResp', '4': const {}},
+    const {'1': 'GetUserModelDetail', '2': '.pb.GetUserModelDetailReq', '3': '.pb.GetUserModelDetailResp', '4': const {}},
+    const {'1': 'AddUserModel', '2': '.pb.AddUserModelReq', '3': '.pb.AddUserModelResp', '4': const {}},
+    const {'1': 'UpdateUserModel', '2': '.pb.UpdateUserModelReq', '3': '.pb.UpdateUserModelResp', '4': const {}},
+    const {'1': 'DeleteUserModel', '2': '.pb.DeleteUserModelReq', '3': '.pb.DeleteUserModelResp', '4': const {}},
+    const {'1': 'SwitchUserModel', '2': '.pb.SwitchUserModelReq', '3': '.pb.SwitchUserModelResp', '4': const {}},
+    const {'1': 'GetAllLoginRecord', '2': '.pb.GetAllLoginRecordReq', '3': '.pb.GetAllLoginRecordResp', '4': const {}},
   ],
 };
 
@@ -406,13 +1312,15 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> userServic
   '.pb.CommonResp': $0.CommonResp$json,
   '.pb.ConfirmRegisterReq': ConfirmRegisterReq$json,
   '.pb.ConfirmRegisterResp': ConfirmRegisterResp$json,
+  '.pb.RegisterReq': RegisterReq$json,
+  '.pb.BirthdayInfo': BirthdayInfo$json,
+  '.pb.RegisterResp': RegisterResp$json,
   '.pb.MapUserByIdsReq': MapUserByIdsReq$json,
   '.pb.MapUserByIdsResp': MapUserByIdsResp$json,
   '.pb.MapUserByIdsResp.UsersEntry': MapUserByIdsResp_UsersEntry$json,
   '.pb.BatchGetUserBaseInfoReq': BatchGetUserBaseInfoReq$json,
   '.pb.BatchGetUserBaseInfoResp': BatchGetUserBaseInfoResp$json,
   '.pb.UserBaseInfo': UserBaseInfo$json,
-  '.pb.BirthdayInfo': BirthdayInfo$json,
   '.pb.IpRegion': $0.IpRegion$json,
   '.pb.SearchUsersByKeywordReq': SearchUsersByKeywordReq$json,
   '.pb.SearchUsersByKeywordResp': SearchUsersByKeywordResp$json,
@@ -434,7 +1342,78 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> userServic
   '.pb.BatchGetUserAllDevicesResp.AllDevices': BatchGetUserAllDevicesResp_AllDevices$json,
   '.pb.UpdateUserInfoReq': UpdateUserInfoReq$json,
   '.pb.UpdateUserInfoResp': UpdateUserInfoResp$json,
+  '.pb.GetAllUserInvitationCodeReq': GetAllUserInvitationCodeReq$json,
+  '.pb.Page': $0.Page$json,
+  '.pb.GetAllUserInvitationCodeReq.FilterEntry': GetAllUserInvitationCodeReq_FilterEntry$json,
+  '.pb.GetAllUserInvitationCodeResp': GetAllUserInvitationCodeResp$json,
+  '.pb.UserInvitationCode': UserInvitationCode$json,
+  '.pb.GetUserInvitationCodeDetailReq': GetUserInvitationCodeDetailReq$json,
+  '.pb.GetUserInvitationCodeDetailResp': GetUserInvitationCodeDetailResp$json,
+  '.pb.AddUserInvitationCodeReq': AddUserInvitationCodeReq$json,
+  '.pb.AddUserInvitationCodeResp': AddUserInvitationCodeResp$json,
+  '.pb.UpdateUserInvitationCodeReq': UpdateUserInvitationCodeReq$json,
+  '.pb.UpdateUserInvitationCodeResp': UpdateUserInvitationCodeResp$json,
+  '.pb.DeleteUserInvitationCodeReq': DeleteUserInvitationCodeReq$json,
+  '.pb.DeleteUserInvitationCodeResp': DeleteUserInvitationCodeResp$json,
+  '.pb.GetAllUserIpWhiteListReq': GetAllUserIpWhiteListReq$json,
+  '.pb.GetAllUserIpWhiteListReq.FilterEntry': GetAllUserIpWhiteListReq_FilterEntry$json,
+  '.pb.GetAllUserIpWhiteListResp': GetAllUserIpWhiteListResp$json,
+  '.pb.UserIpList': UserIpList$json,
+  '.pb.GetUserIpWhiteListDetailReq': GetUserIpWhiteListDetailReq$json,
+  '.pb.GetUserIpWhiteListDetailResp': GetUserIpWhiteListDetailResp$json,
+  '.pb.AddUserIpWhiteListReq': AddUserIpWhiteListReq$json,
+  '.pb.AddUserIpWhiteListResp': AddUserIpWhiteListResp$json,
+  '.pb.UpdateUserIpWhiteListReq': UpdateUserIpWhiteListReq$json,
+  '.pb.UpdateUserIpWhiteListResp': UpdateUserIpWhiteListResp$json,
+  '.pb.DeleteUserIpWhiteListReq': DeleteUserIpWhiteListReq$json,
+  '.pb.DeleteUserIpWhiteListResp': DeleteUserIpWhiteListResp$json,
+  '.pb.GetAllUserIpBlackListReq': GetAllUserIpBlackListReq$json,
+  '.pb.GetAllUserIpBlackListReq.FilterEntry': GetAllUserIpBlackListReq_FilterEntry$json,
+  '.pb.GetAllUserIpBlackListResp': GetAllUserIpBlackListResp$json,
+  '.pb.GetUserIpBlackListDetailReq': GetUserIpBlackListDetailReq$json,
+  '.pb.GetUserIpBlackListDetailResp': GetUserIpBlackListDetailResp$json,
+  '.pb.AddUserIpBlackListReq': AddUserIpBlackListReq$json,
+  '.pb.AddUserIpBlackListResp': AddUserIpBlackListResp$json,
+  '.pb.UpdateUserIpBlackListReq': UpdateUserIpBlackListReq$json,
+  '.pb.UpdateUserIpBlackListResp': UpdateUserIpBlackListResp$json,
+  '.pb.DeleteUserIpBlackListReq': DeleteUserIpBlackListReq$json,
+  '.pb.DeleteUserIpBlackListResp': DeleteUserIpBlackListResp$json,
+  '.pb.GetAllUserDefaultConvReq': GetAllUserDefaultConvReq$json,
+  '.pb.GetAllUserDefaultConvReq.FilterEntry': GetAllUserDefaultConvReq_FilterEntry$json,
+  '.pb.GetAllUserDefaultConvResp': GetAllUserDefaultConvResp$json,
+  '.pb.UserDefaultConv': UserDefaultConv$json,
+  '.pb.GetUserDefaultConvDetailReq': GetUserDefaultConvDetailReq$json,
+  '.pb.GetUserDefaultConvDetailResp': GetUserDefaultConvDetailResp$json,
+  '.pb.AddUserDefaultConvReq': AddUserDefaultConvReq$json,
+  '.pb.AddUserDefaultConvResp': AddUserDefaultConvResp$json,
+  '.pb.UpdateUserDefaultConvReq': UpdateUserDefaultConvReq$json,
+  '.pb.UpdateUserDefaultConvResp': UpdateUserDefaultConvResp$json,
+  '.pb.DeleteUserDefaultConvReq': DeleteUserDefaultConvReq$json,
+  '.pb.DeleteUserDefaultConvResp': DeleteUserDefaultConvResp$json,
+  '.pb.GetAllUserModelReq': GetAllUserModelReq$json,
+  '.pb.GetAllUserModelReq.FilterEntry': GetAllUserModelReq_FilterEntry$json,
+  '.pb.GetAllUserModelResp': GetAllUserModelResp$json,
+  '.pb.UserModel': UserModel$json,
+  '.pb.UserLoginInfo': UserLoginInfo$json,
+  '.pb.UserBirthdayInfo': UserBirthdayInfo$json,
+  '.pb.UserModel.InfoMapEntry': UserModel_InfoMapEntry$json,
+  '.pb.UserLevelInfo': UserLevelInfo$json,
+  '.pb.UserLoginRecord': UserLoginRecord$json,
+  '.pb.GetUserModelDetailReq': GetUserModelDetailReq$json,
+  '.pb.GetUserModelDetailResp': GetUserModelDetailResp$json,
+  '.pb.AddUserModelReq': AddUserModelReq$json,
+  '.pb.AddUserModelResp': AddUserModelResp$json,
+  '.pb.UpdateUserModelReq': UpdateUserModelReq$json,
+  '.pb.UpdateUserModelResp': UpdateUserModelResp$json,
+  '.pb.DeleteUserModelReq': DeleteUserModelReq$json,
+  '.pb.DeleteUserModelResp': DeleteUserModelResp$json,
+  '.pb.SwitchUserModelReq': SwitchUserModelReq$json,
+  '.pb.SwitchUserModelResp': SwitchUserModelResp$json,
+  '.pb.GetAllLoginRecordReq': GetAllLoginRecordReq$json,
+  '.pb.GetAllLoginRecordReq.FilterEntry': GetAllLoginRecordReq_FilterEntry$json,
+  '.pb.GetAllLoginRecordResp': GetAllLoginRecordResp$json,
+  '.pb.LoginRecord': LoginRecord$json,
 };
 
 /// Descriptor for `userService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List userServiceDescriptor = $convert.base64Decode('Cgt1c2VyU2VydmljZRImCgVMb2dpbhIMLnBiLkxvZ2luUmVxGg0ucGIuTG9naW5SZXNwIgASRAoPQ29uZmlybVJlZ2lzdGVyEhYucGIuQ29uZmlybVJlZ2lzdGVyUmVxGhcucGIuQ29uZmlybVJlZ2lzdGVyUmVzcCIAEjsKDE1hcFVzZXJCeUlkcxITLnBiLk1hcFVzZXJCeUlkc1JlcRoULnBiLk1hcFVzZXJCeUlkc1Jlc3AiABJTChRCYXRjaEdldFVzZXJCYXNlSW5mbxIbLnBiLkJhdGNoR2V0VXNlckJhc2VJbmZvUmVxGhwucGIuQmF0Y2hHZXRVc2VyQmFzZUluZm9SZXNwIgASUwoUU2VhcmNoVXNlcnNCeUtleXdvcmQSGy5wYi5TZWFyY2hVc2Vyc0J5S2V5d29yZFJlcRocLnBiLlNlYXJjaFVzZXJzQnlLZXl3b3JkUmVzcCIAEjgKC0dldFVzZXJIb21lEhIucGIuR2V0VXNlckhvbWVSZXEaEy5wYi5HZXRVc2VySG9tZVJlc3AiABJECg9HZXRVc2VyU2V0dGluZ3MSFi5wYi5HZXRVc2VyU2V0dGluZ3NSZXEaFy5wYi5HZXRVc2VyU2V0dGluZ3NSZXNwIgASRAoPU2V0VXNlclNldHRpbmdzEhYucGIuU2V0VXNlclNldHRpbmdzUmVxGhcucGIuU2V0VXNlclNldHRpbmdzUmVzcCIAEjMKDEFmdGVyQ29ubmVjdBITLnBiLkFmdGVyQ29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASOQoPQWZ0ZXJEaXNjb25uZWN0EhYucGIuQWZ0ZXJEaXNjb25uZWN0UmVxGg4ucGIuQ29tbW9uUmVzcBJZChZCYXRjaEdldFVzZXJBbGxEZXZpY2VzEh0ucGIuQmF0Y2hHZXRVc2VyQWxsRGV2aWNlc1JlcRoeLnBiLkJhdGNoR2V0VXNlckFsbERldmljZXNSZXNwIgASQQoOVXBkYXRlVXNlckluZm8SFS5wYi5VcGRhdGVVc2VySW5mb1JlcRoWLnBiLlVwZGF0ZVVzZXJJbmZvUmVzcCIA');
+final $typed_data.Uint8List userServiceDescriptor = $convert.base64Decode('Cgt1c2VyU2VydmljZRImCgVMb2dpbhIMLnBiLkxvZ2luUmVxGg0ucGIuTG9naW5SZXNwIgASRAoPQ29uZmlybVJlZ2lzdGVyEhYucGIuQ29uZmlybVJlZ2lzdGVyUmVxGhcucGIuQ29uZmlybVJlZ2lzdGVyUmVzcCIAEi8KCFJlZ2lzdGVyEg8ucGIuUmVnaXN0ZXJSZXEaEC5wYi5SZWdpc3RlclJlc3AiABI7CgxNYXBVc2VyQnlJZHMSEy5wYi5NYXBVc2VyQnlJZHNSZXEaFC5wYi5NYXBVc2VyQnlJZHNSZXNwIgASUwoUQmF0Y2hHZXRVc2VyQmFzZUluZm8SGy5wYi5CYXRjaEdldFVzZXJCYXNlSW5mb1JlcRocLnBiLkJhdGNoR2V0VXNlckJhc2VJbmZvUmVzcCIAElMKFFNlYXJjaFVzZXJzQnlLZXl3b3JkEhsucGIuU2VhcmNoVXNlcnNCeUtleXdvcmRSZXEaHC5wYi5TZWFyY2hVc2Vyc0J5S2V5d29yZFJlc3AiABI4CgtHZXRVc2VySG9tZRISLnBiLkdldFVzZXJIb21lUmVxGhMucGIuR2V0VXNlckhvbWVSZXNwIgASRAoPR2V0VXNlclNldHRpbmdzEhYucGIuR2V0VXNlclNldHRpbmdzUmVxGhcucGIuR2V0VXNlclNldHRpbmdzUmVzcCIAEkQKD1NldFVzZXJTZXR0aW5ncxIWLnBiLlNldFVzZXJTZXR0aW5nc1JlcRoXLnBiLlNldFVzZXJTZXR0aW5nc1Jlc3AiABIzCgxBZnRlckNvbm5lY3QSEy5wYi5BZnRlckNvbm5lY3RSZXEaDi5wYi5Db21tb25SZXNwEjkKD0FmdGVyRGlzY29ubmVjdBIWLnBiLkFmdGVyRGlzY29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASWQoWQmF0Y2hHZXRVc2VyQWxsRGV2aWNlcxIdLnBiLkJhdGNoR2V0VXNlckFsbERldmljZXNSZXEaHi5wYi5CYXRjaEdldFVzZXJBbGxEZXZpY2VzUmVzcCIAEkEKDlVwZGF0ZVVzZXJJbmZvEhUucGIuVXBkYXRlVXNlckluZm9SZXEaFi5wYi5VcGRhdGVVc2VySW5mb1Jlc3AiABJfChhHZXRBbGxVc2VySW52aXRhdGlvbkNvZGUSHy5wYi5HZXRBbGxVc2VySW52aXRhdGlvbkNvZGVSZXEaIC5wYi5HZXRBbGxVc2VySW52aXRhdGlvbkNvZGVSZXNwIgASaAobR2V0VXNlckludml0YXRpb25Db2RlRGV0YWlsEiIucGIuR2V0VXNlckludml0YXRpb25Db2RlRGV0YWlsUmVxGiMucGIuR2V0VXNlckludml0YXRpb25Db2RlRGV0YWlsUmVzcCIAElYKFUFkZFVzZXJJbnZpdGF0aW9uQ29kZRIcLnBiLkFkZFVzZXJJbnZpdGF0aW9uQ29kZVJlcRodLnBiLkFkZFVzZXJJbnZpdGF0aW9uQ29kZVJlc3AiABJfChhVcGRhdGVVc2VySW52aXRhdGlvbkNvZGUSHy5wYi5VcGRhdGVVc2VySW52aXRhdGlvbkNvZGVSZXEaIC5wYi5VcGRhdGVVc2VySW52aXRhdGlvbkNvZGVSZXNwIgASXwoYRGVsZXRlVXNlckludml0YXRpb25Db2RlEh8ucGIuRGVsZXRlVXNlckludml0YXRpb25Db2RlUmVxGiAucGIuRGVsZXRlVXNlckludml0YXRpb25Db2RlUmVzcCIAElYKFUdldEFsbFVzZXJJcFdoaXRlTGlzdBIcLnBiLkdldEFsbFVzZXJJcFdoaXRlTGlzdFJlcRodLnBiLkdldEFsbFVzZXJJcFdoaXRlTGlzdFJlc3AiABJfChhHZXRVc2VySXBXaGl0ZUxpc3REZXRhaWwSHy5wYi5HZXRVc2VySXBXaGl0ZUxpc3REZXRhaWxSZXEaIC5wYi5HZXRVc2VySXBXaGl0ZUxpc3REZXRhaWxSZXNwIgASTQoSQWRkVXNlcklwV2hpdGVMaXN0EhkucGIuQWRkVXNlcklwV2hpdGVMaXN0UmVxGhoucGIuQWRkVXNlcklwV2hpdGVMaXN0UmVzcCIAElYKFVVwZGF0ZVVzZXJJcFdoaXRlTGlzdBIcLnBiLlVwZGF0ZVVzZXJJcFdoaXRlTGlzdFJlcRodLnBiLlVwZGF0ZVVzZXJJcFdoaXRlTGlzdFJlc3AiABJWChVEZWxldGVVc2VySXBXaGl0ZUxpc3QSHC5wYi5EZWxldGVVc2VySXBXaGl0ZUxpc3RSZXEaHS5wYi5EZWxldGVVc2VySXBXaGl0ZUxpc3RSZXNwIgASVgoVR2V0QWxsVXNlcklwQmxhY2tMaXN0EhwucGIuR2V0QWxsVXNlcklwQmxhY2tMaXN0UmVxGh0ucGIuR2V0QWxsVXNlcklwQmxhY2tMaXN0UmVzcCIAEl8KGEdldFVzZXJJcEJsYWNrTGlzdERldGFpbBIfLnBiLkdldFVzZXJJcEJsYWNrTGlzdERldGFpbFJlcRogLnBiLkdldFVzZXJJcEJsYWNrTGlzdERldGFpbFJlc3AiABJNChJBZGRVc2VySXBCbGFja0xpc3QSGS5wYi5BZGRVc2VySXBCbGFja0xpc3RSZXEaGi5wYi5BZGRVc2VySXBCbGFja0xpc3RSZXNwIgASVgoVVXBkYXRlVXNlcklwQmxhY2tMaXN0EhwucGIuVXBkYXRlVXNlcklwQmxhY2tMaXN0UmVxGh0ucGIuVXBkYXRlVXNlcklwQmxhY2tMaXN0UmVzcCIAElYKFURlbGV0ZVVzZXJJcEJsYWNrTGlzdBIcLnBiLkRlbGV0ZVVzZXJJcEJsYWNrTGlzdFJlcRodLnBiLkRlbGV0ZVVzZXJJcEJsYWNrTGlzdFJlc3AiABJWChVHZXRBbGxVc2VyRGVmYXVsdENvbnYSHC5wYi5HZXRBbGxVc2VyRGVmYXVsdENvbnZSZXEaHS5wYi5HZXRBbGxVc2VyRGVmYXVsdENvbnZSZXNwIgASXwoYR2V0VXNlckRlZmF1bHRDb252RGV0YWlsEh8ucGIuR2V0VXNlckRlZmF1bHRDb252RGV0YWlsUmVxGiAucGIuR2V0VXNlckRlZmF1bHRDb252RGV0YWlsUmVzcCIAEk0KEkFkZFVzZXJEZWZhdWx0Q29udhIZLnBiLkFkZFVzZXJEZWZhdWx0Q29udlJlcRoaLnBiLkFkZFVzZXJEZWZhdWx0Q29udlJlc3AiABJWChVVcGRhdGVVc2VyRGVmYXVsdENvbnYSHC5wYi5VcGRhdGVVc2VyRGVmYXVsdENvbnZSZXEaHS5wYi5VcGRhdGVVc2VyRGVmYXVsdENvbnZSZXNwIgASVgoVRGVsZXRlVXNlckRlZmF1bHRDb252EhwucGIuRGVsZXRlVXNlckRlZmF1bHRDb252UmVxGh0ucGIuRGVsZXRlVXNlckRlZmF1bHRDb252UmVzcCIAEkQKD0dldEFsbFVzZXJNb2RlbBIWLnBiLkdldEFsbFVzZXJNb2RlbFJlcRoXLnBiLkdldEFsbFVzZXJNb2RlbFJlc3AiABJNChJHZXRVc2VyTW9kZWxEZXRhaWwSGS5wYi5HZXRVc2VyTW9kZWxEZXRhaWxSZXEaGi5wYi5HZXRVc2VyTW9kZWxEZXRhaWxSZXNwIgASOwoMQWRkVXNlck1vZGVsEhMucGIuQWRkVXNlck1vZGVsUmVxGhQucGIuQWRkVXNlck1vZGVsUmVzcCIAEkQKD1VwZGF0ZVVzZXJNb2RlbBIWLnBiLlVwZGF0ZVVzZXJNb2RlbFJlcRoXLnBiLlVwZGF0ZVVzZXJNb2RlbFJlc3AiABJECg9EZWxldGVVc2VyTW9kZWwSFi5wYi5EZWxldGVVc2VyTW9kZWxSZXEaFy5wYi5EZWxldGVVc2VyTW9kZWxSZXNwIgASRAoPU3dpdGNoVXNlck1vZGVsEhYucGIuU3dpdGNoVXNlck1vZGVsUmVxGhcucGIuU3dpdGNoVXNlck1vZGVsUmVzcCIAEkoKEUdldEFsbExvZ2luUmVjb3JkEhgucGIuR2V0QWxsTG9naW5SZWNvcmRSZXEaGS5wYi5HZXRBbGxMb2dpblJlY29yZFJlc3AiAA==');

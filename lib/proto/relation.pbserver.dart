@@ -29,6 +29,7 @@ abstract class relationServiceBase extends $pb.GeneratedService {
   $async.Future<$2.GetSingleConvSettingResp> getSingleConvSetting($pb.ServerContext ctx, $2.GetSingleConvSettingReq request);
   $async.Future<$2.GetFriendListResp> getFriendList($pb.ServerContext ctx, $2.GetFriendListReq request);
   $async.Future<$2.GetMyFriendEventListResp> getMyFriendEventList($pb.ServerContext ctx, $2.GetMyFriendEventListReq request);
+  $async.Future<$2.GetFriendListByUserIdResp> getFriendListByUserId($pb.ServerContext ctx, $2.GetFriendListByUserIdReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -45,6 +46,7 @@ abstract class relationServiceBase extends $pb.GeneratedService {
       case 'GetSingleConvSetting': return $2.GetSingleConvSettingReq();
       case 'GetFriendList': return $2.GetFriendListReq();
       case 'GetMyFriendEventList': return $2.GetMyFriendEventListReq();
+      case 'GetFriendListByUserId': return $2.GetFriendListByUserIdReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -64,6 +66,7 @@ abstract class relationServiceBase extends $pb.GeneratedService {
       case 'GetSingleConvSetting': return this.getSingleConvSetting(ctx, request as $2.GetSingleConvSettingReq);
       case 'GetFriendList': return this.getFriendList(ctx, request as $2.GetFriendListReq);
       case 'GetMyFriendEventList': return this.getMyFriendEventList(ctx, request as $2.GetMyFriendEventListReq);
+      case 'GetFriendListByUserId': return this.getFriendListByUserId(ctx, request as $2.GetFriendListByUserIdReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

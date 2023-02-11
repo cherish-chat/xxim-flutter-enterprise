@@ -21,14 +21,14 @@ class HiveTool {
   /// 用户信息
   static Box get userBox => HiveService.service(HiveService.user);
 
-  static String userToken = "userToken";
   static String userId = "userId";
-
-  static String getUserToken() => userBox.get(userToken, defaultValue: "");
+  static String userToken = "userToken";
 
   static String getUserId() => userBox.get(userId, defaultValue: "");
 
-  static bool isLogin() => getUserToken().isNotEmpty && getUserId().isNotEmpty;
+  static String getUserToken() => userBox.get(userToken, defaultValue: "");
+
+  static bool isLogin() => getUserId().isNotEmpty && getUserToken().isNotEmpty;
 
   static void login(
     String userId,

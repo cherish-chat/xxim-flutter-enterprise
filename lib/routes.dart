@@ -1,6 +1,7 @@
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/launch.dart';
 import 'package:xxim_flutter_enterprise/pages/login.dart';
+import 'package:xxim_flutter_enterprise/pages/login/register.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/public/photo_view.dart';
 import 'package:xxim_flutter_enterprise/pages/public/web_view.dart';
@@ -10,6 +11,7 @@ export 'package:xxim_flutter_enterprise/pages/unknown.dart';
 class Routes {
   static String launch = "/launch";
   static String login = "/login";
+  static String register = "/register";
   static String menu = "/menu";
 
   static String photoView = "/public/photo_view";
@@ -25,6 +27,12 @@ class Routes {
       GetPage(
         name: login,
         page: () => const LoginPage(),
+        transition: Transition.fade,
+        showCupertinoParallax: false,
+      ),
+      GetPage(
+        name: register,
+        page: () => const RegisterPage(),
         transition: Transition.fade,
         showCupertinoParallax: false,
       ),

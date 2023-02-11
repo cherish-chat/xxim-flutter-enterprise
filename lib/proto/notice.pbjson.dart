@@ -32,12 +32,12 @@ const NoticeData_Options$json = const {
   '1': 'Options',
   '2': const [
     const {'1': 'storageForClient', '3': 1, '4': 1, '5': 8, '10': 'storageForClient'},
-    const {'1': 'updateConvMsg', '3': 2, '4': 1, '5': 8, '10': 'updateConvMsg'},
+    const {'1': 'updateConvNotice', '3': 2, '4': 1, '5': 8, '10': 'updateConvNotice'},
   ],
 };
 
 /// Descriptor for `NoticeData`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List noticeDataDescriptor = $convert.base64Decode('CgpOb3RpY2VEYXRhEhYKBmNvbnZJZBgBIAEoCVIGY29udklkEhoKCG5vdGljZUlkGAsgASgJUghub3RpY2VJZBIeCgpjcmVhdGVUaW1lGAwgASgJUgpjcmVhdGVUaW1lEhQKBXRpdGxlGA0gASgJUgV0aXRsZRIgCgtjb250ZW50VHlwZRgOIAEoBVILY29udGVudFR5cGUSGAoHY29udGVudBgPIAEoDFIHY29udGVudBIwCgdvcHRpb25zGBUgASgLMhYucGIuTm90aWNlRGF0YS5PcHRpb25zUgdvcHRpb25zEhAKA2V4dBhlIAEoDFIDZXh0GlsKB09wdGlvbnMSKgoQc3RvcmFnZUZvckNsaWVudBgBIAEoCFIQc3RvcmFnZUZvckNsaWVudBIkCg11cGRhdGVDb252TXNnGAIgASgIUg11cGRhdGVDb252TXNn');
+final $typed_data.Uint8List noticeDataDescriptor = $convert.base64Decode('CgpOb3RpY2VEYXRhEhYKBmNvbnZJZBgBIAEoCVIGY29udklkEhoKCG5vdGljZUlkGAsgASgJUghub3RpY2VJZBIeCgpjcmVhdGVUaW1lGAwgASgJUgpjcmVhdGVUaW1lEhQKBXRpdGxlGA0gASgJUgV0aXRsZRIgCgtjb250ZW50VHlwZRgOIAEoBVILY29udGVudFR5cGUSGAoHY29udGVudBgPIAEoDFIHY29udGVudBIwCgdvcHRpb25zGBUgASgLMhYucGIuTm90aWNlRGF0YS5PcHRpb25zUgdvcHRpb25zEhAKA2V4dBhlIAEoDFIDZXh0GmEKB09wdGlvbnMSKgoQc3RvcmFnZUZvckNsaWVudBgBIAEoCFIQc3RvcmFnZUZvckNsaWVudBIqChB1cGRhdGVDb252Tm90aWNlGAIgASgIUhB1cGRhdGVDb252Tm90aWNl');
 @$core.Deprecated('Use noticeDataListDescriptor instead')
 const NoticeDataList$json = const {
   '1': 'NoticeDataList',
@@ -103,6 +103,7 @@ const $core.Map<$core.String, $core.dynamic> noticeServiceBase$json = const {
   '2': const [
     const {'1': 'AfterConnect', '2': '.pb.AfterConnectReq', '3': '.pb.CommonResp'},
     const {'1': 'AfterDisconnect', '2': '.pb.AfterDisconnectReq', '3': '.pb.CommonResp'},
+    const {'1': 'KeepAlive', '2': '.pb.KeepAliveReq', '3': '.pb.KeepAliveResp'},
     const {'1': 'GetUserNoticeData', '2': '.pb.GetUserNoticeDataReq', '3': '.pb.GetUserNoticeDataResp'},
     const {'1': 'AckNoticeData', '2': '.pb.AckNoticeDataReq', '3': '.pb.AckNoticeDataResp'},
   ],
@@ -115,8 +116,10 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> noticeServ
   '.pb.ConnParam.HeadersEntry': $1.ConnParam_HeadersEntry$json,
   '.pb.CommonResp': $0.CommonResp$json,
   '.pb.AfterDisconnectReq': $1.AfterDisconnectReq$json,
-  '.pb.GetUserNoticeDataReq': GetUserNoticeDataReq$json,
+  '.pb.KeepAliveReq': $1.KeepAliveReq$json,
   '.pb.CommonReq': $0.CommonReq$json,
+  '.pb.KeepAliveResp': $1.KeepAliveResp$json,
+  '.pb.GetUserNoticeDataReq': GetUserNoticeDataReq$json,
   '.pb.GetUserNoticeDataResp': GetUserNoticeDataResp$json,
   '.pb.NoticeData': NoticeData$json,
   '.pb.NoticeData.Options': NoticeData_Options$json,
@@ -125,4 +128,4 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> noticeServ
 };
 
 /// Descriptor for `noticeService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List noticeServiceDescriptor = $convert.base64Decode('Cg1ub3RpY2VTZXJ2aWNlEjMKDEFmdGVyQ29ubmVjdBITLnBiLkFmdGVyQ29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASOQoPQWZ0ZXJEaXNjb25uZWN0EhYucGIuQWZ0ZXJEaXNjb25uZWN0UmVxGg4ucGIuQ29tbW9uUmVzcBJIChFHZXRVc2VyTm90aWNlRGF0YRIYLnBiLkdldFVzZXJOb3RpY2VEYXRhUmVxGhkucGIuR2V0VXNlck5vdGljZURhdGFSZXNwEjwKDUFja05vdGljZURhdGESFC5wYi5BY2tOb3RpY2VEYXRhUmVxGhUucGIuQWNrTm90aWNlRGF0YVJlc3A=');
+final $typed_data.Uint8List noticeServiceDescriptor = $convert.base64Decode('Cg1ub3RpY2VTZXJ2aWNlEjMKDEFmdGVyQ29ubmVjdBITLnBiLkFmdGVyQ29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASOQoPQWZ0ZXJEaXNjb25uZWN0EhYucGIuQWZ0ZXJEaXNjb25uZWN0UmVxGg4ucGIuQ29tbW9uUmVzcBIwCglLZWVwQWxpdmUSEC5wYi5LZWVwQWxpdmVSZXEaES5wYi5LZWVwQWxpdmVSZXNwEkgKEUdldFVzZXJOb3RpY2VEYXRhEhgucGIuR2V0VXNlck5vdGljZURhdGFSZXEaGS5wYi5HZXRVc2VyTm90aWNlRGF0YVJlc3ASPAoNQWNrTm90aWNlRGF0YRIULnBiLkFja05vdGljZURhdGFSZXEaFS5wYi5BY2tOb3RpY2VEYXRhUmVzcA==');

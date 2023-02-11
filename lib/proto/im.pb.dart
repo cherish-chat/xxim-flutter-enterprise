@@ -368,6 +368,118 @@ class GetUserLatestConnResp extends $pb.GeneratedMessage {
   void clearDeviceId() => clearField(7);
 }
 
+class BeforeRequestReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BeforeRequestReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$1.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $1.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'method')
+    ..hasRequiredFields = false
+  ;
+
+  BeforeRequestReq._() : super();
+  factory BeforeRequestReq({
+    $1.CommonReq? commonReq,
+    $core.String? method,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (method != null) {
+      _result.method = method;
+    }
+    return _result;
+  }
+  factory BeforeRequestReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BeforeRequestReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  BeforeRequestReq clone() => BeforeRequestReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  BeforeRequestReq copyWith(void Function(BeforeRequestReq) updates) => super.copyWith((message) => updates(message as BeforeRequestReq)) as BeforeRequestReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static BeforeRequestReq create() => BeforeRequestReq._();
+  BeforeRequestReq createEmptyInstance() => create();
+  static $pb.PbList<BeforeRequestReq> createRepeated() => $pb.PbList<BeforeRequestReq>();
+  @$core.pragma('dart2js:noInline')
+  static BeforeRequestReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BeforeRequestReq>(create);
+  static BeforeRequestReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $1.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($1.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $1.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get method => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set method($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasMethod() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMethod() => clearField(2);
+}
+
+class BeforeRequestResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BeforeRequestResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$1.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $1.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  BeforeRequestResp._() : super();
+  factory BeforeRequestResp({
+    $1.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory BeforeRequestResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BeforeRequestResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  BeforeRequestResp clone() => BeforeRequestResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  BeforeRequestResp copyWith(void Function(BeforeRequestResp) updates) => super.copyWith((message) => updates(message as BeforeRequestResp)) as BeforeRequestResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static BeforeRequestResp create() => BeforeRequestResp._();
+  BeforeRequestResp createEmptyInstance() => create();
+  static $pb.PbList<BeforeRequestResp> createRepeated() => $pb.PbList<BeforeRequestResp>();
+  @$core.pragma('dart2js:noInline')
+  static BeforeRequestResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BeforeRequestResp>(create);
+  static BeforeRequestResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $1.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($1.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $1.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
 class BatchGetUserLatestConnReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BatchGetUserLatestConnReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userIds', protoName: 'userIds')
@@ -569,112 +681,6 @@ class MsgNotifyOpt extends $pb.GeneratedMessage {
   void clearVibrate() => clearField(5);
 }
 
-class GetAppSystemConfigReq extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetAppSystemConfigReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$1.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $1.CommonReq.create)
-    ..hasRequiredFields = false
-  ;
-
-  GetAppSystemConfigReq._() : super();
-  factory GetAppSystemConfigReq({
-    $1.CommonReq? commonReq,
-  }) {
-    final _result = create();
-    if (commonReq != null) {
-      _result.commonReq = commonReq;
-    }
-    return _result;
-  }
-  factory GetAppSystemConfigReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory GetAppSystemConfigReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  GetAppSystemConfigReq clone() => GetAppSystemConfigReq()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  GetAppSystemConfigReq copyWith(void Function(GetAppSystemConfigReq) updates) => super.copyWith((message) => updates(message as GetAppSystemConfigReq)) as GetAppSystemConfigReq; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static GetAppSystemConfigReq create() => GetAppSystemConfigReq._();
-  GetAppSystemConfigReq createEmptyInstance() => create();
-  static $pb.PbList<GetAppSystemConfigReq> createRepeated() => $pb.PbList<GetAppSystemConfigReq>();
-  @$core.pragma('dart2js:noInline')
-  static GetAppSystemConfigReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetAppSystemConfigReq>(create);
-  static GetAppSystemConfigReq? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $1.CommonReq get commonReq => $_getN(0);
-  @$pb.TagNumber(1)
-  set commonReq($1.CommonReq v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasCommonReq() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearCommonReq() => clearField(1);
-  @$pb.TagNumber(1)
-  $1.CommonReq ensureCommonReq() => $_ensure(0);
-}
-
-class GetAppSystemConfigResp extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetAppSystemConfigResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$1.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $1.CommonResp.create)
-    ..m<$core.String, $core.String>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'configs', entryClassName: 'GetAppSystemConfigResp.ConfigsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
-    ..hasRequiredFields = false
-  ;
-
-  GetAppSystemConfigResp._() : super();
-  factory GetAppSystemConfigResp({
-    $1.CommonResp? commonResp,
-    $core.Map<$core.String, $core.String>? configs,
-  }) {
-    final _result = create();
-    if (commonResp != null) {
-      _result.commonResp = commonResp;
-    }
-    if (configs != null) {
-      _result.configs.addAll(configs);
-    }
-    return _result;
-  }
-  factory GetAppSystemConfigResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory GetAppSystemConfigResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  GetAppSystemConfigResp clone() => GetAppSystemConfigResp()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  GetAppSystemConfigResp copyWith(void Function(GetAppSystemConfigResp) updates) => super.copyWith((message) => updates(message as GetAppSystemConfigResp)) as GetAppSystemConfigResp; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static GetAppSystemConfigResp create() => GetAppSystemConfigResp._();
-  GetAppSystemConfigResp createEmptyInstance() => create();
-  static $pb.PbList<GetAppSystemConfigResp> createRepeated() => $pb.PbList<GetAppSystemConfigResp>();
-  @$core.pragma('dart2js:noInline')
-  static GetAppSystemConfigResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetAppSystemConfigResp>(create);
-  static GetAppSystemConfigResp? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $1.CommonResp get commonResp => $_getN(0);
-  @$pb.TagNumber(1)
-  set commonResp($1.CommonResp v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasCommonResp() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearCommonResp() => clearField(1);
-  @$pb.TagNumber(1)
-  $1.CommonResp ensureCommonResp() => $_ensure(0);
-
-  @$pb.TagNumber(2)
-  $core.Map<$core.String, $core.String> get configs => $_getMap(1);
-}
-
 class GetAllConvIdOfUserReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetAllConvIdOfUserReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOM<$1.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $1.CommonReq.create)
@@ -835,6 +841,10 @@ class imServiceApi {
     var emptyResponse = $1.CommonResp();
     return _client.invoke<$1.CommonResp>(ctx, 'imService', 'AfterDisconnect', request, emptyResponse);
   }
+  $async.Future<$0.KeepAliveResp> keepAlive($pb.ClientContext? ctx, $0.KeepAliveReq request) {
+    var emptyResponse = $0.KeepAliveResp();
+    return _client.invoke<$0.KeepAliveResp>(ctx, 'imService', 'KeepAlive', request, emptyResponse);
+  }
   $async.Future<$0.KickUserConnResp> kickUserConn($pb.ClientContext? ctx, $0.KickUserConnReq request) {
     var emptyResponse = $0.KickUserConnResp();
     return _client.invoke<$0.KickUserConnResp>(ctx, 'imService', 'KickUserConn', request, emptyResponse);
@@ -842,6 +852,10 @@ class imServiceApi {
   $async.Future<$0.GetUserConnResp> getUserConn($pb.ClientContext? ctx, $0.GetUserConnReq request) {
     var emptyResponse = $0.GetUserConnResp();
     return _client.invoke<$0.GetUserConnResp>(ctx, 'imService', 'GetUserConn', request, emptyResponse);
+  }
+  $async.Future<BeforeRequestResp> beforeRequest($pb.ClientContext? ctx, BeforeRequestReq request) {
+    var emptyResponse = BeforeRequestResp();
+    return _client.invoke<BeforeRequestResp>(ctx, 'imService', 'BeforeRequest', request, emptyResponse);
   }
   $async.Future<GetUserLatestConnResp> getUserLatestConn($pb.ClientContext? ctx, GetUserLatestConnReq request) {
     var emptyResponse = GetUserLatestConnResp();
@@ -854,10 +868,6 @@ class imServiceApi {
   $async.Future<$0.SendMsgResp> sendMsg($pb.ClientContext? ctx, $0.SendMsgReq request) {
     var emptyResponse = $0.SendMsgResp();
     return _client.invoke<$0.SendMsgResp>(ctx, 'imService', 'SendMsg', request, emptyResponse);
-  }
-  $async.Future<GetAppSystemConfigResp> getAppSystemConfig($pb.ClientContext? ctx, GetAppSystemConfigReq request) {
-    var emptyResponse = GetAppSystemConfigResp();
-    return _client.invoke<GetAppSystemConfigResp>(ctx, 'imService', 'GetAppSystemConfig', request, emptyResponse);
   }
   $async.Future<GetAllConvIdOfUserResp> getAllConvIdOfUser($pb.ClientContext? ctx, GetAllConvIdOfUserReq request) {
     var emptyResponse = GetAllConvIdOfUserResp();

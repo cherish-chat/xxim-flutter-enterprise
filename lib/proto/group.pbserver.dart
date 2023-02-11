@@ -33,6 +33,11 @@ abstract class groupServiceBase extends $pb.GeneratedService {
   $async.Future<$2.SyncGroupMemberCountResp> syncGroupMemberCount($pb.ServerContext ctx, $2.SyncGroupMemberCountReq request);
   $async.Future<$2.ApplyToBeGroupMemberResp> applyToBeGroupMember($pb.ServerContext ctx, $2.ApplyToBeGroupMemberReq request);
   $async.Future<$2.HandleGroupApplyResp> handleGroupApply($pb.ServerContext ctx, $2.HandleGroupApplyReq request);
+  $async.Future<$2.GetGroupListByUserIdResp> getGroupListByUserId($pb.ServerContext ctx, $2.GetGroupListByUserIdReq request);
+  $async.Future<$2.GetAllGroupModelResp> getAllGroupModel($pb.ServerContext ctx, $2.GetAllGroupModelReq request);
+  $async.Future<$2.GetGroupModelDetailResp> getGroupModelDetail($pb.ServerContext ctx, $2.GetGroupModelDetailReq request);
+  $async.Future<$2.UpdateGroupModelResp> updateGroupModel($pb.ServerContext ctx, $2.UpdateGroupModelReq request);
+  $async.Future<$2.DismissGroupModelResp> dismissGroupModel($pb.ServerContext ctx, $2.DismissGroupModelReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -53,6 +58,11 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'SyncGroupMemberCount': return $2.SyncGroupMemberCountReq();
       case 'ApplyToBeGroupMember': return $2.ApplyToBeGroupMemberReq();
       case 'HandleGroupApply': return $2.HandleGroupApplyReq();
+      case 'GetGroupListByUserId': return $2.GetGroupListByUserIdReq();
+      case 'GetAllGroupModel': return $2.GetAllGroupModelReq();
+      case 'GetGroupModelDetail': return $2.GetGroupModelDetailReq();
+      case 'UpdateGroupModel': return $2.UpdateGroupModelReq();
+      case 'DismissGroupModel': return $2.DismissGroupModelReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -76,6 +86,11 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'SyncGroupMemberCount': return this.syncGroupMemberCount(ctx, request as $2.SyncGroupMemberCountReq);
       case 'ApplyToBeGroupMember': return this.applyToBeGroupMember(ctx, request as $2.ApplyToBeGroupMemberReq);
       case 'HandleGroupApply': return this.handleGroupApply(ctx, request as $2.HandleGroupApplyReq);
+      case 'GetGroupListByUserId': return this.getGroupListByUserId(ctx, request as $2.GetGroupListByUserIdReq);
+      case 'GetAllGroupModel': return this.getAllGroupModel(ctx, request as $2.GetAllGroupModelReq);
+      case 'GetGroupModelDetail': return this.getGroupModelDetail(ctx, request as $2.GetGroupModelDetailReq);
+      case 'UpdateGroupModel': return this.updateGroupModel(ctx, request as $2.UpdateGroupModelReq);
+      case 'DismissGroupModel': return this.dismissGroupModel(ctx, request as $2.DismissGroupModelReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

@@ -16,21 +16,21 @@ import 'conn.pb.dart' as $1;
 class NoticeData_Options extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'NoticeData.Options', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'storageForClient', protoName: 'storageForClient')
-    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updateConvMsg', protoName: 'updateConvMsg')
+    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updateConvNotice', protoName: 'updateConvNotice')
     ..hasRequiredFields = false
   ;
 
   NoticeData_Options._() : super();
   factory NoticeData_Options({
     $core.bool? storageForClient,
-    $core.bool? updateConvMsg,
+    $core.bool? updateConvNotice,
   }) {
     final _result = create();
     if (storageForClient != null) {
       _result.storageForClient = storageForClient;
     }
-    if (updateConvMsg != null) {
-      _result.updateConvMsg = updateConvMsg;
+    if (updateConvNotice != null) {
+      _result.updateConvNotice = updateConvNotice;
     }
     return _result;
   }
@@ -65,13 +65,13 @@ class NoticeData_Options extends $pb.GeneratedMessage {
   void clearStorageForClient() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.bool get updateConvMsg => $_getBF(1);
+  $core.bool get updateConvNotice => $_getBF(1);
   @$pb.TagNumber(2)
-  set updateConvMsg($core.bool v) { $_setBool(1, v); }
+  set updateConvNotice($core.bool v) { $_setBool(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasUpdateConvMsg() => $_has(1);
+  $core.bool hasUpdateConvNotice() => $_has(1);
   @$pb.TagNumber(2)
-  void clearUpdateConvMsg() => clearField(2);
+  void clearUpdateConvNotice() => clearField(2);
 }
 
 class NoticeData extends $pb.GeneratedMessage {
@@ -561,6 +561,10 @@ class noticeServiceApi {
   $async.Future<$0.CommonResp> afterDisconnect($pb.ClientContext? ctx, $1.AfterDisconnectReq request) {
     var emptyResponse = $0.CommonResp();
     return _client.invoke<$0.CommonResp>(ctx, 'noticeService', 'AfterDisconnect', request, emptyResponse);
+  }
+  $async.Future<$1.KeepAliveResp> keepAlive($pb.ClientContext? ctx, $1.KeepAliveReq request) {
+    var emptyResponse = $1.KeepAliveResp();
+    return _client.invoke<$1.KeepAliveResp>(ctx, 'noticeService', 'KeepAlive', request, emptyResponse);
   }
   $async.Future<GetUserNoticeDataResp> getUserNoticeData($pb.ClientContext? ctx, GetUserNoticeDataReq request) {
     var emptyResponse = GetUserNoticeDataResp();

@@ -8,6 +8,7 @@
 import 'dart:async' as $async;
 import 'dart:core' as $core;
 
+import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'common.pb.dart' as $0;
@@ -2030,6 +2031,253 @@ class GetMyFriendEventListResp extends $pb.GeneratedMessage {
   void clearPageIndex() => clearField(3);
 }
 
+class GetFriendListByUserIdReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetFriendListByUserIdReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOM<$0.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
+    ..m<$core.String, $core.String>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'filter', entryClassName: 'GetFriendListByUserIdReq.FilterEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
+    ..hasRequiredFields = false
+  ;
+
+  GetFriendListByUserIdReq._() : super();
+  factory GetFriendListByUserIdReq({
+    $0.CommonReq? commonReq,
+    $0.Page? page,
+    $core.Map<$core.String, $core.String>? filter,
+    $core.String? userId,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (page != null) {
+      _result.page = page;
+    }
+    if (filter != null) {
+      _result.filter.addAll(filter);
+    }
+    if (userId != null) {
+      _result.userId = userId;
+    }
+    return _result;
+  }
+  factory GetFriendListByUserIdReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetFriendListByUserIdReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetFriendListByUserIdReq clone() => GetFriendListByUserIdReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetFriendListByUserIdReq copyWith(void Function(GetFriendListByUserIdReq) updates) => super.copyWith((message) => updates(message as GetFriendListByUserIdReq)) as GetFriendListByUserIdReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetFriendListByUserIdReq create() => GetFriendListByUserIdReq._();
+  GetFriendListByUserIdReq createEmptyInstance() => create();
+  static $pb.PbList<GetFriendListByUserIdReq> createRepeated() => $pb.PbList<GetFriendListByUserIdReq>();
+  @$core.pragma('dart2js:noInline')
+  static GetFriendListByUserIdReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetFriendListByUserIdReq>(create);
+  static GetFriendListByUserIdReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $0.Page get page => $_getN(1);
+  @$pb.TagNumber(2)
+  set page($0.Page v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPage() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPage() => clearField(2);
+  @$pb.TagNumber(2)
+  $0.Page ensurePage() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $core.Map<$core.String, $core.String> get filter => $_getMap(2);
+
+  @$pb.TagNumber(4)
+  $core.String get userId => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set userId($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasUserId() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUserId() => clearField(4);
+}
+
+class GetFriendListByUserIdItem extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetFriendListByUserIdItem', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'avatar')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nickname')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role')
+    ..hasRequiredFields = false
+  ;
+
+  GetFriendListByUserIdItem._() : super();
+  factory GetFriendListByUserIdItem({
+    $core.String? userId,
+    $core.String? avatar,
+    $core.String? nickname,
+    $core.String? role,
+  }) {
+    final _result = create();
+    if (userId != null) {
+      _result.userId = userId;
+    }
+    if (avatar != null) {
+      _result.avatar = avatar;
+    }
+    if (nickname != null) {
+      _result.nickname = nickname;
+    }
+    if (role != null) {
+      _result.role = role;
+    }
+    return _result;
+  }
+  factory GetFriendListByUserIdItem.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetFriendListByUserIdItem.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetFriendListByUserIdItem clone() => GetFriendListByUserIdItem()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetFriendListByUserIdItem copyWith(void Function(GetFriendListByUserIdItem) updates) => super.copyWith((message) => updates(message as GetFriendListByUserIdItem)) as GetFriendListByUserIdItem; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetFriendListByUserIdItem create() => GetFriendListByUserIdItem._();
+  GetFriendListByUserIdItem createEmptyInstance() => create();
+  static $pb.PbList<GetFriendListByUserIdItem> createRepeated() => $pb.PbList<GetFriendListByUserIdItem>();
+  @$core.pragma('dart2js:noInline')
+  static GetFriendListByUserIdItem getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetFriendListByUserIdItem>(create);
+  static GetFriendListByUserIdItem? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get userId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set userId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get avatar => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set avatar($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasAvatar() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearAvatar() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get nickname => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set nickname($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasNickname() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearNickname() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get role => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set role($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasRole() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearRole() => clearField(4);
+}
+
+class GetFriendListByUserIdResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetFriendListByUserIdResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..pc<GetFriendListByUserIdItem>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'friendList', $pb.PbFieldType.PM, protoName: 'friendList', subBuilder: GetFriendListByUserIdItem.create)
+    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'total')
+    ..hasRequiredFields = false
+  ;
+
+  GetFriendListByUserIdResp._() : super();
+  factory GetFriendListByUserIdResp({
+    $0.CommonResp? commonResp,
+    $core.Iterable<GetFriendListByUserIdItem>? friendList,
+    $fixnum.Int64? total,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    if (friendList != null) {
+      _result.friendList.addAll(friendList);
+    }
+    if (total != null) {
+      _result.total = total;
+    }
+    return _result;
+  }
+  factory GetFriendListByUserIdResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetFriendListByUserIdResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetFriendListByUserIdResp clone() => GetFriendListByUserIdResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetFriendListByUserIdResp copyWith(void Function(GetFriendListByUserIdResp) updates) => super.copyWith((message) => updates(message as GetFriendListByUserIdResp)) as GetFriendListByUserIdResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetFriendListByUserIdResp create() => GetFriendListByUserIdResp._();
+  GetFriendListByUserIdResp createEmptyInstance() => create();
+  static $pb.PbList<GetFriendListByUserIdResp> createRepeated() => $pb.PbList<GetFriendListByUserIdResp>();
+  @$core.pragma('dart2js:noInline')
+  static GetFriendListByUserIdResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetFriendListByUserIdResp>(create);
+  static GetFriendListByUserIdResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.List<GetFriendListByUserIdItem> get friendList => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get total => $_getI64(2);
+  @$pb.TagNumber(3)
+  set total($fixnum.Int64 v) { $_setInt64(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasTotal() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearTotal() => clearField(3);
+}
+
 class relationServiceApi {
   $pb.RpcClient _client;
   relationServiceApi(this._client);
@@ -2085,6 +2333,10 @@ class relationServiceApi {
   $async.Future<GetMyFriendEventListResp> getMyFriendEventList($pb.ClientContext? ctx, GetMyFriendEventListReq request) {
     var emptyResponse = GetMyFriendEventListResp();
     return _client.invoke<GetMyFriendEventListResp>(ctx, 'relationService', 'GetMyFriendEventList', request, emptyResponse);
+  }
+  $async.Future<GetFriendListByUserIdResp> getFriendListByUserId($pb.ClientContext? ctx, GetFriendListByUserIdReq request) {
+    var emptyResponse = GetFriendListByUserIdResp();
+    return _client.invoke<GetFriendListByUserIdResp>(ctx, 'relationService', 'GetFriendListByUserId', request, emptyResponse);
   }
 }
 

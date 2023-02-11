@@ -3240,6 +3240,1199 @@ class HandleGroupApplyResp extends $pb.GeneratedMessage {
   $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
+class GetGroupListByUserIdReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupListByUserIdReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOM<$0.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
+    ..m<$core.String, $core.String>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'filter', entryClassName: 'GetGroupListByUserIdReq.FilterEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
+    ..hasRequiredFields = false
+  ;
+
+  GetGroupListByUserIdReq._() : super();
+  factory GetGroupListByUserIdReq({
+    $0.CommonReq? commonReq,
+    $0.Page? page,
+    $core.Map<$core.String, $core.String>? filter,
+    $core.String? userId,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (page != null) {
+      _result.page = page;
+    }
+    if (filter != null) {
+      _result.filter.addAll(filter);
+    }
+    if (userId != null) {
+      _result.userId = userId;
+    }
+    return _result;
+  }
+  factory GetGroupListByUserIdReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetGroupListByUserIdReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetGroupListByUserIdReq clone() => GetGroupListByUserIdReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetGroupListByUserIdReq copyWith(void Function(GetGroupListByUserIdReq) updates) => super.copyWith((message) => updates(message as GetGroupListByUserIdReq)) as GetGroupListByUserIdReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetGroupListByUserIdReq create() => GetGroupListByUserIdReq._();
+  GetGroupListByUserIdReq createEmptyInstance() => create();
+  static $pb.PbList<GetGroupListByUserIdReq> createRepeated() => $pb.PbList<GetGroupListByUserIdReq>();
+  @$core.pragma('dart2js:noInline')
+  static GetGroupListByUserIdReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetGroupListByUserIdReq>(create);
+  static GetGroupListByUserIdReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $0.Page get page => $_getN(1);
+  @$pb.TagNumber(2)
+  set page($0.Page v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPage() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPage() => clearField(2);
+  @$pb.TagNumber(2)
+  $0.Page ensurePage() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $core.Map<$core.String, $core.String> get filter => $_getMap(2);
+
+  @$pb.TagNumber(4)
+  $core.String get userId => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set userId($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasUserId() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUserId() => clearField(4);
+}
+
+class GetGroupListByUserIdItem extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupListByUserIdItem', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'avatar')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
+    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberCount', protoName: 'memberCount')
+    ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'joinTime', protoName: 'joinTime')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'joinTimeStr', protoName: 'joinTimeStr')
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner')
+    ..aInt64(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createTime', protoName: 'createTime')
+    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createTimeStr', protoName: 'createTimeStr')
+    ..hasRequiredFields = false
+  ;
+
+  GetGroupListByUserIdItem._() : super();
+  factory GetGroupListByUserIdItem({
+    $core.String? groupId,
+    $core.String? avatar,
+    $core.String? name,
+    $fixnum.Int64? memberCount,
+    $fixnum.Int64? joinTime,
+    $core.String? joinTimeStr,
+    $core.String? owner,
+    $fixnum.Int64? createTime,
+    $core.String? createTimeStr,
+  }) {
+    final _result = create();
+    if (groupId != null) {
+      _result.groupId = groupId;
+    }
+    if (avatar != null) {
+      _result.avatar = avatar;
+    }
+    if (name != null) {
+      _result.name = name;
+    }
+    if (memberCount != null) {
+      _result.memberCount = memberCount;
+    }
+    if (joinTime != null) {
+      _result.joinTime = joinTime;
+    }
+    if (joinTimeStr != null) {
+      _result.joinTimeStr = joinTimeStr;
+    }
+    if (owner != null) {
+      _result.owner = owner;
+    }
+    if (createTime != null) {
+      _result.createTime = createTime;
+    }
+    if (createTimeStr != null) {
+      _result.createTimeStr = createTimeStr;
+    }
+    return _result;
+  }
+  factory GetGroupListByUserIdItem.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetGroupListByUserIdItem.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetGroupListByUserIdItem clone() => GetGroupListByUserIdItem()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetGroupListByUserIdItem copyWith(void Function(GetGroupListByUserIdItem) updates) => super.copyWith((message) => updates(message as GetGroupListByUserIdItem)) as GetGroupListByUserIdItem; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetGroupListByUserIdItem create() => GetGroupListByUserIdItem._();
+  GetGroupListByUserIdItem createEmptyInstance() => create();
+  static $pb.PbList<GetGroupListByUserIdItem> createRepeated() => $pb.PbList<GetGroupListByUserIdItem>();
+  @$core.pragma('dart2js:noInline')
+  static GetGroupListByUserIdItem getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetGroupListByUserIdItem>(create);
+  static GetGroupListByUserIdItem? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get groupId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set groupId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasGroupId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearGroupId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get avatar => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set avatar($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasAvatar() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearAvatar() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get name => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set name($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasName() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearName() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $fixnum.Int64 get memberCount => $_getI64(3);
+  @$pb.TagNumber(4)
+  set memberCount($fixnum.Int64 v) { $_setInt64(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasMemberCount() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearMemberCount() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $fixnum.Int64 get joinTime => $_getI64(4);
+  @$pb.TagNumber(5)
+  set joinTime($fixnum.Int64 v) { $_setInt64(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasJoinTime() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearJoinTime() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.String get joinTimeStr => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set joinTimeStr($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasJoinTimeStr() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearJoinTimeStr() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get owner => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set owner($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasOwner() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearOwner() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $fixnum.Int64 get createTime => $_getI64(7);
+  @$pb.TagNumber(8)
+  set createTime($fixnum.Int64 v) { $_setInt64(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasCreateTime() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearCreateTime() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.String get createTimeStr => $_getSZ(8);
+  @$pb.TagNumber(9)
+  set createTimeStr($core.String v) { $_setString(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasCreateTimeStr() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearCreateTimeStr() => clearField(9);
+}
+
+class GetGroupListByUserIdResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupListByUserIdResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..pc<GetGroupListByUserIdItem>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupList', $pb.PbFieldType.PM, protoName: 'groupList', subBuilder: GetGroupListByUserIdItem.create)
+    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'total')
+    ..hasRequiredFields = false
+  ;
+
+  GetGroupListByUserIdResp._() : super();
+  factory GetGroupListByUserIdResp({
+    $0.CommonResp? commonResp,
+    $core.Iterable<GetGroupListByUserIdItem>? groupList,
+    $fixnum.Int64? total,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    if (groupList != null) {
+      _result.groupList.addAll(groupList);
+    }
+    if (total != null) {
+      _result.total = total;
+    }
+    return _result;
+  }
+  factory GetGroupListByUserIdResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetGroupListByUserIdResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetGroupListByUserIdResp clone() => GetGroupListByUserIdResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetGroupListByUserIdResp copyWith(void Function(GetGroupListByUserIdResp) updates) => super.copyWith((message) => updates(message as GetGroupListByUserIdResp)) as GetGroupListByUserIdResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetGroupListByUserIdResp create() => GetGroupListByUserIdResp._();
+  GetGroupListByUserIdResp createEmptyInstance() => create();
+  static $pb.PbList<GetGroupListByUserIdResp> createRepeated() => $pb.PbList<GetGroupListByUserIdResp>();
+  @$core.pragma('dart2js:noInline')
+  static GetGroupListByUserIdResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetGroupListByUserIdResp>(create);
+  static GetGroupListByUserIdResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.List<GetGroupListByUserIdItem> get groupList => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get total => $_getI64(2);
+  @$pb.TagNumber(3)
+  set total($fixnum.Int64 v) { $_setInt64(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasTotal() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearTotal() => clearField(3);
+}
+
+class GroupModel_JoinGroupOption extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GroupModel.JoinGroupOption', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.O3)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'question')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'answer')
+    ..hasRequiredFields = false
+  ;
+
+  GroupModel_JoinGroupOption._() : super();
+  factory GroupModel_JoinGroupOption({
+    $core.int? type,
+    $core.String? question,
+    $core.String? answer,
+  }) {
+    final _result = create();
+    if (type != null) {
+      _result.type = type;
+    }
+    if (question != null) {
+      _result.question = question;
+    }
+    if (answer != null) {
+      _result.answer = answer;
+    }
+    return _result;
+  }
+  factory GroupModel_JoinGroupOption.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GroupModel_JoinGroupOption.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GroupModel_JoinGroupOption clone() => GroupModel_JoinGroupOption()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GroupModel_JoinGroupOption copyWith(void Function(GroupModel_JoinGroupOption) updates) => super.copyWith((message) => updates(message as GroupModel_JoinGroupOption)) as GroupModel_JoinGroupOption; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GroupModel_JoinGroupOption create() => GroupModel_JoinGroupOption._();
+  GroupModel_JoinGroupOption createEmptyInstance() => create();
+  static $pb.PbList<GroupModel_JoinGroupOption> createRepeated() => $pb.PbList<GroupModel_JoinGroupOption>();
+  @$core.pragma('dart2js:noInline')
+  static GroupModel_JoinGroupOption getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GroupModel_JoinGroupOption>(create);
+  static GroupModel_JoinGroupOption? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get type => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set type($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasType() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearType() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get question => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set question($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasQuestion() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearQuestion() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get answer => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set answer($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasAnswer() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearAnswer() => clearField(3);
+}
+
+class GroupModel extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GroupModel', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'avatar')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner')
+    ..pPS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'managers')
+    ..aInt64(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createTime', protoName: 'createTime')
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createTimeStr', protoName: 'createTimeStr')
+    ..aInt64(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dismissTime', protoName: 'dismissTime')
+    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dismissTimeStr', protoName: 'dismissTimeStr')
+    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
+    ..a<$core.int>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberCount', $pb.PbFieldType.O3, protoName: 'memberCount')
+    ..aOB(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'allMute', protoName: 'allMute')
+    ..a<$core.int>(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'speakLimit', $pb.PbFieldType.O3, protoName: 'speakLimit')
+    ..a<$core.int>(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'maxMember', $pb.PbFieldType.O3, protoName: 'maxMember')
+    ..aOB(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberCanStartTempChat', protoName: 'memberCanStartTempChat')
+    ..aOB(16, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberCanInviteFriend', protoName: 'memberCanInviteFriend')
+    ..a<$core.int>(17, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'newMemberHistoryMsgCount', $pb.PbFieldType.O3, protoName: 'newMemberHistoryMsgCount')
+    ..aOB(18, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'anonymousChat', protoName: 'anonymousChat')
+    ..aOM<GroupModel_JoinGroupOption>(19, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'joinGroupOption', protoName: 'joinGroupOption', subBuilder: GroupModel_JoinGroupOption.create)
+    ..aOS(20, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'adminRemark', protoName: 'adminRemark')
+    ..hasRequiredFields = false
+  ;
+
+  GroupModel._() : super();
+  factory GroupModel({
+    $core.String? id,
+    $core.String? name,
+    $core.String? avatar,
+    $core.String? owner,
+    $core.Iterable<$core.String>? managers,
+    $fixnum.Int64? createTime,
+    $core.String? createTimeStr,
+    $fixnum.Int64? dismissTime,
+    $core.String? dismissTimeStr,
+    $core.String? description,
+    $core.int? memberCount,
+    $core.bool? allMute,
+    $core.int? speakLimit,
+    $core.int? maxMember,
+    $core.bool? memberCanStartTempChat,
+    $core.bool? memberCanInviteFriend,
+    $core.int? newMemberHistoryMsgCount,
+    $core.bool? anonymousChat,
+    GroupModel_JoinGroupOption? joinGroupOption,
+    $core.String? adminRemark,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (name != null) {
+      _result.name = name;
+    }
+    if (avatar != null) {
+      _result.avatar = avatar;
+    }
+    if (owner != null) {
+      _result.owner = owner;
+    }
+    if (managers != null) {
+      _result.managers.addAll(managers);
+    }
+    if (createTime != null) {
+      _result.createTime = createTime;
+    }
+    if (createTimeStr != null) {
+      _result.createTimeStr = createTimeStr;
+    }
+    if (dismissTime != null) {
+      _result.dismissTime = dismissTime;
+    }
+    if (dismissTimeStr != null) {
+      _result.dismissTimeStr = dismissTimeStr;
+    }
+    if (description != null) {
+      _result.description = description;
+    }
+    if (memberCount != null) {
+      _result.memberCount = memberCount;
+    }
+    if (allMute != null) {
+      _result.allMute = allMute;
+    }
+    if (speakLimit != null) {
+      _result.speakLimit = speakLimit;
+    }
+    if (maxMember != null) {
+      _result.maxMember = maxMember;
+    }
+    if (memberCanStartTempChat != null) {
+      _result.memberCanStartTempChat = memberCanStartTempChat;
+    }
+    if (memberCanInviteFriend != null) {
+      _result.memberCanInviteFriend = memberCanInviteFriend;
+    }
+    if (newMemberHistoryMsgCount != null) {
+      _result.newMemberHistoryMsgCount = newMemberHistoryMsgCount;
+    }
+    if (anonymousChat != null) {
+      _result.anonymousChat = anonymousChat;
+    }
+    if (joinGroupOption != null) {
+      _result.joinGroupOption = joinGroupOption;
+    }
+    if (adminRemark != null) {
+      _result.adminRemark = adminRemark;
+    }
+    return _result;
+  }
+  factory GroupModel.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GroupModel.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GroupModel clone() => GroupModel()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GroupModel copyWith(void Function(GroupModel) updates) => super.copyWith((message) => updates(message as GroupModel)) as GroupModel; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GroupModel create() => GroupModel._();
+  GroupModel createEmptyInstance() => create();
+  static $pb.PbList<GroupModel> createRepeated() => $pb.PbList<GroupModel>();
+  @$core.pragma('dart2js:noInline')
+  static GroupModel getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GroupModel>(create);
+  static GroupModel? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get name => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set name($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearName() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get avatar => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set avatar($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasAvatar() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearAvatar() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get owner => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set owner($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasOwner() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearOwner() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.List<$core.String> get managers => $_getList(4);
+
+  @$pb.TagNumber(6)
+  $fixnum.Int64 get createTime => $_getI64(5);
+  @$pb.TagNumber(6)
+  set createTime($fixnum.Int64 v) { $_setInt64(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasCreateTime() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearCreateTime() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get createTimeStr => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set createTimeStr($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasCreateTimeStr() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearCreateTimeStr() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $fixnum.Int64 get dismissTime => $_getI64(7);
+  @$pb.TagNumber(8)
+  set dismissTime($fixnum.Int64 v) { $_setInt64(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasDismissTime() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearDismissTime() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.String get dismissTimeStr => $_getSZ(8);
+  @$pb.TagNumber(9)
+  set dismissTimeStr($core.String v) { $_setString(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasDismissTimeStr() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearDismissTimeStr() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.String get description => $_getSZ(9);
+  @$pb.TagNumber(10)
+  set description($core.String v) { $_setString(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasDescription() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearDescription() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.int get memberCount => $_getIZ(10);
+  @$pb.TagNumber(11)
+  set memberCount($core.int v) { $_setSignedInt32(10, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasMemberCount() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearMemberCount() => clearField(11);
+
+  @$pb.TagNumber(12)
+  $core.bool get allMute => $_getBF(11);
+  @$pb.TagNumber(12)
+  set allMute($core.bool v) { $_setBool(11, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasAllMute() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearAllMute() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.int get speakLimit => $_getIZ(12);
+  @$pb.TagNumber(13)
+  set speakLimit($core.int v) { $_setSignedInt32(12, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasSpeakLimit() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearSpeakLimit() => clearField(13);
+
+  @$pb.TagNumber(14)
+  $core.int get maxMember => $_getIZ(13);
+  @$pb.TagNumber(14)
+  set maxMember($core.int v) { $_setSignedInt32(13, v); }
+  @$pb.TagNumber(14)
+  $core.bool hasMaxMember() => $_has(13);
+  @$pb.TagNumber(14)
+  void clearMaxMember() => clearField(14);
+
+  @$pb.TagNumber(15)
+  $core.bool get memberCanStartTempChat => $_getBF(14);
+  @$pb.TagNumber(15)
+  set memberCanStartTempChat($core.bool v) { $_setBool(14, v); }
+  @$pb.TagNumber(15)
+  $core.bool hasMemberCanStartTempChat() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearMemberCanStartTempChat() => clearField(15);
+
+  @$pb.TagNumber(16)
+  $core.bool get memberCanInviteFriend => $_getBF(15);
+  @$pb.TagNumber(16)
+  set memberCanInviteFriend($core.bool v) { $_setBool(15, v); }
+  @$pb.TagNumber(16)
+  $core.bool hasMemberCanInviteFriend() => $_has(15);
+  @$pb.TagNumber(16)
+  void clearMemberCanInviteFriend() => clearField(16);
+
+  @$pb.TagNumber(17)
+  $core.int get newMemberHistoryMsgCount => $_getIZ(16);
+  @$pb.TagNumber(17)
+  set newMemberHistoryMsgCount($core.int v) { $_setSignedInt32(16, v); }
+  @$pb.TagNumber(17)
+  $core.bool hasNewMemberHistoryMsgCount() => $_has(16);
+  @$pb.TagNumber(17)
+  void clearNewMemberHistoryMsgCount() => clearField(17);
+
+  @$pb.TagNumber(18)
+  $core.bool get anonymousChat => $_getBF(17);
+  @$pb.TagNumber(18)
+  set anonymousChat($core.bool v) { $_setBool(17, v); }
+  @$pb.TagNumber(18)
+  $core.bool hasAnonymousChat() => $_has(17);
+  @$pb.TagNumber(18)
+  void clearAnonymousChat() => clearField(18);
+
+  @$pb.TagNumber(19)
+  GroupModel_JoinGroupOption get joinGroupOption => $_getN(18);
+  @$pb.TagNumber(19)
+  set joinGroupOption(GroupModel_JoinGroupOption v) { setField(19, v); }
+  @$pb.TagNumber(19)
+  $core.bool hasJoinGroupOption() => $_has(18);
+  @$pb.TagNumber(19)
+  void clearJoinGroupOption() => clearField(19);
+  @$pb.TagNumber(19)
+  GroupModel_JoinGroupOption ensureJoinGroupOption() => $_ensure(18);
+
+  @$pb.TagNumber(20)
+  $core.String get adminRemark => $_getSZ(19);
+  @$pb.TagNumber(20)
+  set adminRemark($core.String v) { $_setString(19, v); }
+  @$pb.TagNumber(20)
+  $core.bool hasAdminRemark() => $_has(19);
+  @$pb.TagNumber(20)
+  void clearAdminRemark() => clearField(20);
+}
+
+class GetAllGroupModelReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetAllGroupModelReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOM<$0.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
+    ..m<$core.String, $core.String>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'filter', entryClassName: 'GetAllGroupModelReq.FilterEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
+    ..hasRequiredFields = false
+  ;
+
+  GetAllGroupModelReq._() : super();
+  factory GetAllGroupModelReq({
+    $0.CommonReq? commonReq,
+    $0.Page? page,
+    $core.Map<$core.String, $core.String>? filter,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (page != null) {
+      _result.page = page;
+    }
+    if (filter != null) {
+      _result.filter.addAll(filter);
+    }
+    return _result;
+  }
+  factory GetAllGroupModelReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetAllGroupModelReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetAllGroupModelReq clone() => GetAllGroupModelReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetAllGroupModelReq copyWith(void Function(GetAllGroupModelReq) updates) => super.copyWith((message) => updates(message as GetAllGroupModelReq)) as GetAllGroupModelReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetAllGroupModelReq create() => GetAllGroupModelReq._();
+  GetAllGroupModelReq createEmptyInstance() => create();
+  static $pb.PbList<GetAllGroupModelReq> createRepeated() => $pb.PbList<GetAllGroupModelReq>();
+  @$core.pragma('dart2js:noInline')
+  static GetAllGroupModelReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetAllGroupModelReq>(create);
+  static GetAllGroupModelReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $0.Page get page => $_getN(1);
+  @$pb.TagNumber(2)
+  set page($0.Page v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPage() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPage() => clearField(2);
+  @$pb.TagNumber(2)
+  $0.Page ensurePage() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $core.Map<$core.String, $core.String> get filter => $_getMap(2);
+}
+
+class GetAllGroupModelResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetAllGroupModelResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..pc<GroupModel>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupModels', $pb.PbFieldType.PM, protoName: 'groupModels', subBuilder: GroupModel.create)
+    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'total')
+    ..hasRequiredFields = false
+  ;
+
+  GetAllGroupModelResp._() : super();
+  factory GetAllGroupModelResp({
+    $0.CommonResp? commonResp,
+    $core.Iterable<GroupModel>? groupModels,
+    $fixnum.Int64? total,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    if (groupModels != null) {
+      _result.groupModels.addAll(groupModels);
+    }
+    if (total != null) {
+      _result.total = total;
+    }
+    return _result;
+  }
+  factory GetAllGroupModelResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetAllGroupModelResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetAllGroupModelResp clone() => GetAllGroupModelResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetAllGroupModelResp copyWith(void Function(GetAllGroupModelResp) updates) => super.copyWith((message) => updates(message as GetAllGroupModelResp)) as GetAllGroupModelResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetAllGroupModelResp create() => GetAllGroupModelResp._();
+  GetAllGroupModelResp createEmptyInstance() => create();
+  static $pb.PbList<GetAllGroupModelResp> createRepeated() => $pb.PbList<GetAllGroupModelResp>();
+  @$core.pragma('dart2js:noInline')
+  static GetAllGroupModelResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetAllGroupModelResp>(create);
+  static GetAllGroupModelResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.List<GroupModel> get groupModels => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get total => $_getI64(2);
+  @$pb.TagNumber(3)
+  set total($fixnum.Int64 v) { $_setInt64(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasTotal() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearTotal() => clearField(3);
+}
+
+class GetGroupModelDetailReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupModelDetailReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..hasRequiredFields = false
+  ;
+
+  GetGroupModelDetailReq._() : super();
+  factory GetGroupModelDetailReq({
+    $0.CommonReq? commonReq,
+    $core.String? id,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (id != null) {
+      _result.id = id;
+    }
+    return _result;
+  }
+  factory GetGroupModelDetailReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetGroupModelDetailReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetGroupModelDetailReq clone() => GetGroupModelDetailReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetGroupModelDetailReq copyWith(void Function(GetGroupModelDetailReq) updates) => super.copyWith((message) => updates(message as GetGroupModelDetailReq)) as GetGroupModelDetailReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetGroupModelDetailReq create() => GetGroupModelDetailReq._();
+  GetGroupModelDetailReq createEmptyInstance() => create();
+  static $pb.PbList<GetGroupModelDetailReq> createRepeated() => $pb.PbList<GetGroupModelDetailReq>();
+  @$core.pragma('dart2js:noInline')
+  static GetGroupModelDetailReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetGroupModelDetailReq>(create);
+  static GetGroupModelDetailReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get id => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set id($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearId() => clearField(2);
+}
+
+class GetGroupModelDetailResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupModelDetailResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..aOM<GroupModel>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupModel', protoName: 'groupModel', subBuilder: GroupModel.create)
+    ..hasRequiredFields = false
+  ;
+
+  GetGroupModelDetailResp._() : super();
+  factory GetGroupModelDetailResp({
+    $0.CommonResp? commonResp,
+    GroupModel? groupModel,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    if (groupModel != null) {
+      _result.groupModel = groupModel;
+    }
+    return _result;
+  }
+  factory GetGroupModelDetailResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetGroupModelDetailResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetGroupModelDetailResp clone() => GetGroupModelDetailResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetGroupModelDetailResp copyWith(void Function(GetGroupModelDetailResp) updates) => super.copyWith((message) => updates(message as GetGroupModelDetailResp)) as GetGroupModelDetailResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetGroupModelDetailResp create() => GetGroupModelDetailResp._();
+  GetGroupModelDetailResp createEmptyInstance() => create();
+  static $pb.PbList<GetGroupModelDetailResp> createRepeated() => $pb.PbList<GetGroupModelDetailResp>();
+  @$core.pragma('dart2js:noInline')
+  static GetGroupModelDetailResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetGroupModelDetailResp>(create);
+  static GetGroupModelDetailResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  GroupModel get groupModel => $_getN(1);
+  @$pb.TagNumber(2)
+  set groupModel(GroupModel v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasGroupModel() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearGroupModel() => clearField(2);
+  @$pb.TagNumber(2)
+  GroupModel ensureGroupModel() => $_ensure(1);
+}
+
+class UpdateGroupModelReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateGroupModelReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOM<GroupModel>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupModel', protoName: 'groupModel', subBuilder: GroupModel.create)
+    ..hasRequiredFields = false
+  ;
+
+  UpdateGroupModelReq._() : super();
+  factory UpdateGroupModelReq({
+    $0.CommonReq? commonReq,
+    GroupModel? groupModel,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (groupModel != null) {
+      _result.groupModel = groupModel;
+    }
+    return _result;
+  }
+  factory UpdateGroupModelReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateGroupModelReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateGroupModelReq clone() => UpdateGroupModelReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateGroupModelReq copyWith(void Function(UpdateGroupModelReq) updates) => super.copyWith((message) => updates(message as UpdateGroupModelReq)) as UpdateGroupModelReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UpdateGroupModelReq create() => UpdateGroupModelReq._();
+  UpdateGroupModelReq createEmptyInstance() => create();
+  static $pb.PbList<UpdateGroupModelReq> createRepeated() => $pb.PbList<UpdateGroupModelReq>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateGroupModelReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateGroupModelReq>(create);
+  static UpdateGroupModelReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  GroupModel get groupModel => $_getN(1);
+  @$pb.TagNumber(2)
+  set groupModel(GroupModel v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasGroupModel() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearGroupModel() => clearField(2);
+  @$pb.TagNumber(2)
+  GroupModel ensureGroupModel() => $_ensure(1);
+}
+
+class UpdateGroupModelResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateGroupModelResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  UpdateGroupModelResp._() : super();
+  factory UpdateGroupModelResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory UpdateGroupModelResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateGroupModelResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateGroupModelResp clone() => UpdateGroupModelResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateGroupModelResp copyWith(void Function(UpdateGroupModelResp) updates) => super.copyWith((message) => updates(message as UpdateGroupModelResp)) as UpdateGroupModelResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UpdateGroupModelResp create() => UpdateGroupModelResp._();
+  UpdateGroupModelResp createEmptyInstance() => create();
+  static $pb.PbList<UpdateGroupModelResp> createRepeated() => $pb.PbList<UpdateGroupModelResp>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateGroupModelResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateGroupModelResp>(create);
+  static UpdateGroupModelResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
+class DismissGroupModelReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DismissGroupModelReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ids')
+    ..hasRequiredFields = false
+  ;
+
+  DismissGroupModelReq._() : super();
+  factory DismissGroupModelReq({
+    $0.CommonReq? commonReq,
+    $core.Iterable<$core.String>? ids,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (ids != null) {
+      _result.ids.addAll(ids);
+    }
+    return _result;
+  }
+  factory DismissGroupModelReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DismissGroupModelReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DismissGroupModelReq clone() => DismissGroupModelReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DismissGroupModelReq copyWith(void Function(DismissGroupModelReq) updates) => super.copyWith((message) => updates(message as DismissGroupModelReq)) as DismissGroupModelReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DismissGroupModelReq create() => DismissGroupModelReq._();
+  DismissGroupModelReq createEmptyInstance() => create();
+  static $pb.PbList<DismissGroupModelReq> createRepeated() => $pb.PbList<DismissGroupModelReq>();
+  @$core.pragma('dart2js:noInline')
+  static DismissGroupModelReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DismissGroupModelReq>(create);
+  static DismissGroupModelReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get ids => $_getList(1);
+}
+
+class DismissGroupModelResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DismissGroupModelResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  DismissGroupModelResp._() : super();
+  factory DismissGroupModelResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory DismissGroupModelResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DismissGroupModelResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DismissGroupModelResp clone() => DismissGroupModelResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DismissGroupModelResp copyWith(void Function(DismissGroupModelResp) updates) => super.copyWith((message) => updates(message as DismissGroupModelResp)) as DismissGroupModelResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DismissGroupModelResp create() => DismissGroupModelResp._();
+  DismissGroupModelResp createEmptyInstance() => create();
+  static $pb.PbList<DismissGroupModelResp> createRepeated() => $pb.PbList<DismissGroupModelResp>();
+  @$core.pragma('dart2js:noInline')
+  static DismissGroupModelResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DismissGroupModelResp>(create);
+  static DismissGroupModelResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
 class groupServiceApi {
   $pb.RpcClient _client;
   groupServiceApi(this._client);
@@ -3311,6 +4504,26 @@ class groupServiceApi {
   $async.Future<HandleGroupApplyResp> handleGroupApply($pb.ClientContext? ctx, HandleGroupApplyReq request) {
     var emptyResponse = HandleGroupApplyResp();
     return _client.invoke<HandleGroupApplyResp>(ctx, 'groupService', 'HandleGroupApply', request, emptyResponse);
+  }
+  $async.Future<GetGroupListByUserIdResp> getGroupListByUserId($pb.ClientContext? ctx, GetGroupListByUserIdReq request) {
+    var emptyResponse = GetGroupListByUserIdResp();
+    return _client.invoke<GetGroupListByUserIdResp>(ctx, 'groupService', 'GetGroupListByUserId', request, emptyResponse);
+  }
+  $async.Future<GetAllGroupModelResp> getAllGroupModel($pb.ClientContext? ctx, GetAllGroupModelReq request) {
+    var emptyResponse = GetAllGroupModelResp();
+    return _client.invoke<GetAllGroupModelResp>(ctx, 'groupService', 'GetAllGroupModel', request, emptyResponse);
+  }
+  $async.Future<GetGroupModelDetailResp> getGroupModelDetail($pb.ClientContext? ctx, GetGroupModelDetailReq request) {
+    var emptyResponse = GetGroupModelDetailResp();
+    return _client.invoke<GetGroupModelDetailResp>(ctx, 'groupService', 'GetGroupModelDetail', request, emptyResponse);
+  }
+  $async.Future<UpdateGroupModelResp> updateGroupModel($pb.ClientContext? ctx, UpdateGroupModelReq request) {
+    var emptyResponse = UpdateGroupModelResp();
+    return _client.invoke<UpdateGroupModelResp>(ctx, 'groupService', 'UpdateGroupModel', request, emptyResponse);
+  }
+  $async.Future<DismissGroupModelResp> dismissGroupModel($pb.ClientContext? ctx, DismissGroupModelReq request) {
+    var emptyResponse = DismissGroupModelResp();
+    return _client.invoke<DismissGroupModelResp>(ctx, 'groupService', 'DismissGroupModel', request, emptyResponse);
   }
 }
 

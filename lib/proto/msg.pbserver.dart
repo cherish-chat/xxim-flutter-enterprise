@@ -28,10 +28,14 @@ abstract class msgServiceBase extends $pb.GeneratedService {
   $async.Future<$2.BatchGetConvSeqResp> batchGetConvSeq($pb.ServerContext ctx, $2.BatchGetConvSeqReq request);
   $async.Future<$0.CommonResp> afterConnect($pb.ServerContext ctx, $1.AfterConnectReq request);
   $async.Future<$0.CommonResp> afterDisconnect($pb.ServerContext ctx, $1.AfterDisconnectReq request);
+  $async.Future<$1.KeepAliveResp> keepAlive($pb.ServerContext ctx, $1.KeepAliveReq request);
   $async.Future<$2.GetConvSubscribersResp> getConvSubscribers($pb.ServerContext ctx, $2.GetConvSubscribersReq request);
   $async.Future<$2.OfflinePushMsgResp> offlinePushMsg($pb.ServerContext ctx, $2.OfflinePushMsgReq request);
   $async.Future<$2.GetConvOnlineCountResp> getConvOnlineCount($pb.ServerContext ctx, $2.GetConvOnlineCountReq request);
   $async.Future<$0.CommonResp> flushUsersSubConv($pb.ServerContext ctx, $2.FlushUsersSubConvReq request);
+  $async.Future<$2.GetAllMsgListResp> getAllMsgList($pb.ServerContext ctx, $2.GetAllMsgListReq request);
+  $async.Future<$2.ReadMsgResp> readMsg($pb.ServerContext ctx, $2.ReadMsgReq request);
+  $async.Future<$2.EditMsgResp> editMsg($pb.ServerContext ctx, $2.EditMsgReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -45,10 +49,14 @@ abstract class msgServiceBase extends $pb.GeneratedService {
       case 'BatchGetConvSeq': return $2.BatchGetConvSeqReq();
       case 'AfterConnect': return $1.AfterConnectReq();
       case 'AfterDisconnect': return $1.AfterDisconnectReq();
+      case 'KeepAlive': return $1.KeepAliveReq();
       case 'GetConvSubscribers': return $2.GetConvSubscribersReq();
       case 'OfflinePushMsg': return $2.OfflinePushMsgReq();
       case 'GetConvOnlineCount': return $2.GetConvOnlineCountReq();
       case 'FlushUsersSubConv': return $2.FlushUsersSubConvReq();
+      case 'GetAllMsgList': return $2.GetAllMsgListReq();
+      case 'ReadMsg': return $2.ReadMsgReq();
+      case 'EditMsg': return $2.EditMsgReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -65,10 +73,14 @@ abstract class msgServiceBase extends $pb.GeneratedService {
       case 'BatchGetConvSeq': return this.batchGetConvSeq(ctx, request as $2.BatchGetConvSeqReq);
       case 'AfterConnect': return this.afterConnect(ctx, request as $1.AfterConnectReq);
       case 'AfterDisconnect': return this.afterDisconnect(ctx, request as $1.AfterDisconnectReq);
+      case 'KeepAlive': return this.keepAlive(ctx, request as $1.KeepAliveReq);
       case 'GetConvSubscribers': return this.getConvSubscribers(ctx, request as $2.GetConvSubscribersReq);
       case 'OfflinePushMsg': return this.offlinePushMsg(ctx, request as $2.OfflinePushMsgReq);
       case 'GetConvOnlineCount': return this.getConvOnlineCount(ctx, request as $2.GetConvOnlineCountReq);
       case 'FlushUsersSubConv': return this.flushUsersSubConv(ctx, request as $2.FlushUsersSubConvReq);
+      case 'GetAllMsgList': return this.getAllMsgList(ctx, request as $2.GetAllMsgListReq);
+      case 'ReadMsg': return this.readMsg(ctx, request as $2.ReadMsgReq);
+      case 'EditMsg': return this.editMsg(ctx, request as $2.EditMsgReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

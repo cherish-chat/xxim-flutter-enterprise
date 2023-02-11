@@ -8,6 +8,7 @@
 import 'dart:async' as $async;
 import 'dart:core' as $core;
 
+import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'common.pb.dart' as $0;
@@ -91,6 +92,7 @@ class ConnParam extends $pb.GeneratedMessage {
     ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'osVersion', protoName: 'osVersion')
     ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appVersion', protoName: 'appVersion')
     ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'language')
+    ..aInt64(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp')
     ..hasRequiredFields = false
   ;
 
@@ -108,6 +110,7 @@ class ConnParam extends $pb.GeneratedMessage {
     $core.String? osVersion,
     $core.String? appVersion,
     $core.String? language,
+    $fixnum.Int64? timestamp,
   }) {
     final _result = create();
     if (userId != null) {
@@ -145,6 +148,9 @@ class ConnParam extends $pb.GeneratedMessage {
     }
     if (language != null) {
       _result.language = language;
+    }
+    if (timestamp != null) {
+      _result.timestamp = timestamp;
     }
     return _result;
   }
@@ -270,6 +276,15 @@ class ConnParam extends $pb.GeneratedMessage {
   $core.bool hasLanguage() => $_has(11);
   @$pb.TagNumber(12)
   void clearLanguage() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $fixnum.Int64 get timestamp => $_getI64(12);
+  @$pb.TagNumber(13)
+  set timestamp($fixnum.Int64 v) { $_setInt64(12, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasTimestamp() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearTimestamp() => clearField(13);
 }
 
 class GetUserConnReq extends $pb.GeneratedMessage {
@@ -711,19 +726,21 @@ class ResponseBody extends $pb.GeneratedMessage {
 
 class SetCxnParamsReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SetCxnParamsReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'platform')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceId', protoName: 'deviceId')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceModel', protoName: 'deviceModel')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'osVersion', protoName: 'osVersion')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appVersion', protoName: 'appVersion')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'language')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'networkUsed', protoName: 'networkUsed')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'packageId', protoName: 'packageId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'platform')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceId', protoName: 'deviceId')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceModel', protoName: 'deviceModel')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'osVersion', protoName: 'osVersion')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appVersion', protoName: 'appVersion')
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'language')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'networkUsed', protoName: 'networkUsed')
     ..a<$core.List<$core.int>>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ext', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;
 
   SetCxnParamsReq._() : super();
   factory SetCxnParamsReq({
+    $core.String? packageId,
     $core.String? platform,
     $core.String? deviceId,
     $core.String? deviceModel,
@@ -734,6 +751,9 @@ class SetCxnParamsReq extends $pb.GeneratedMessage {
     $core.List<$core.int>? ext,
   }) {
     final _result = create();
+    if (packageId != null) {
+      _result.packageId = packageId;
+    }
     if (platform != null) {
       _result.platform = platform;
     }
@@ -782,74 +802,83 @@ class SetCxnParamsReq extends $pb.GeneratedMessage {
   static SetCxnParamsReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get platform => $_getSZ(0);
+  $core.String get packageId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set platform($core.String v) { $_setString(0, v); }
+  set packageId($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasPlatform() => $_has(0);
+  $core.bool hasPackageId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearPlatform() => clearField(1);
+  void clearPackageId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get deviceId => $_getSZ(1);
+  $core.String get platform => $_getSZ(1);
   @$pb.TagNumber(2)
-  set deviceId($core.String v) { $_setString(1, v); }
+  set platform($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasDeviceId() => $_has(1);
+  $core.bool hasPlatform() => $_has(1);
   @$pb.TagNumber(2)
-  void clearDeviceId() => clearField(2);
+  void clearPlatform() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get deviceModel => $_getSZ(2);
+  $core.String get deviceId => $_getSZ(2);
   @$pb.TagNumber(3)
-  set deviceModel($core.String v) { $_setString(2, v); }
+  set deviceId($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasDeviceModel() => $_has(2);
+  $core.bool hasDeviceId() => $_has(2);
   @$pb.TagNumber(3)
-  void clearDeviceModel() => clearField(3);
+  void clearDeviceId() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get osVersion => $_getSZ(3);
+  $core.String get deviceModel => $_getSZ(3);
   @$pb.TagNumber(4)
-  set osVersion($core.String v) { $_setString(3, v); }
+  set deviceModel($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasOsVersion() => $_has(3);
+  $core.bool hasDeviceModel() => $_has(3);
   @$pb.TagNumber(4)
-  void clearOsVersion() => clearField(4);
+  void clearDeviceModel() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get appVersion => $_getSZ(4);
+  $core.String get osVersion => $_getSZ(4);
   @$pb.TagNumber(5)
-  set appVersion($core.String v) { $_setString(4, v); }
+  set osVersion($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasAppVersion() => $_has(4);
+  $core.bool hasOsVersion() => $_has(4);
   @$pb.TagNumber(5)
-  void clearAppVersion() => clearField(5);
+  void clearOsVersion() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get language => $_getSZ(5);
+  $core.String get appVersion => $_getSZ(5);
   @$pb.TagNumber(6)
-  set language($core.String v) { $_setString(5, v); }
+  set appVersion($core.String v) { $_setString(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasLanguage() => $_has(5);
+  $core.bool hasAppVersion() => $_has(5);
   @$pb.TagNumber(6)
-  void clearLanguage() => clearField(6);
+  void clearAppVersion() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.String get networkUsed => $_getSZ(6);
+  $core.String get language => $_getSZ(6);
   @$pb.TagNumber(7)
-  set networkUsed($core.String v) { $_setString(6, v); }
+  set language($core.String v) { $_setString(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasNetworkUsed() => $_has(6);
+  $core.bool hasLanguage() => $_has(6);
   @$pb.TagNumber(7)
-  void clearNetworkUsed() => clearField(7);
+  void clearLanguage() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.String get networkUsed => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set networkUsed($core.String v) { $_setString(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasNetworkUsed() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearNetworkUsed() => clearField(8);
 
   @$pb.TagNumber(11)
-  $core.List<$core.int> get ext => $_getN(7);
+  $core.List<$core.int> get ext => $_getN(8);
   @$pb.TagNumber(11)
-  set ext($core.List<$core.int> v) { $_setBytes(7, v); }
+  set ext($core.List<$core.int> v) { $_setBytes(8, v); }
   @$pb.TagNumber(11)
-  $core.bool hasExt() => $_has(7);
+  $core.bool hasExt() => $_has(8);
   @$pb.TagNumber(11)
   void clearExt() => clearField(11);
 }
@@ -1431,6 +1460,104 @@ class AfterDisconnectReq extends $pb.GeneratedMessage {
   void clearDisconnectedAt() => clearField(3);
 }
 
+class KeepAliveReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'KeepAliveReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..hasRequiredFields = false
+  ;
+
+  KeepAliveReq._() : super();
+  factory KeepAliveReq({
+    $0.CommonReq? commonReq,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    return _result;
+  }
+  factory KeepAliveReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory KeepAliveReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  KeepAliveReq clone() => KeepAliveReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  KeepAliveReq copyWith(void Function(KeepAliveReq) updates) => super.copyWith((message) => updates(message as KeepAliveReq)) as KeepAliveReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static KeepAliveReq create() => KeepAliveReq._();
+  KeepAliveReq createEmptyInstance() => create();
+  static $pb.PbList<KeepAliveReq> createRepeated() => $pb.PbList<KeepAliveReq>();
+  @$core.pragma('dart2js:noInline')
+  static KeepAliveReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<KeepAliveReq>(create);
+  static KeepAliveReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+}
+
+class KeepAliveResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'KeepAliveResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  KeepAliveResp._() : super();
+  factory KeepAliveResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory KeepAliveResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory KeepAliveResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  KeepAliveResp clone() => KeepAliveResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  KeepAliveResp copyWith(void Function(KeepAliveResp) updates) => super.copyWith((message) => updates(message as KeepAliveResp)) as KeepAliveResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static KeepAliveResp create() => KeepAliveResp._();
+  KeepAliveResp createEmptyInstance() => create();
+  static $pb.PbList<KeepAliveResp> createRepeated() => $pb.PbList<KeepAliveResp>();
+  @$core.pragma('dart2js:noInline')
+  static KeepAliveResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<KeepAliveResp>(create);
+  static KeepAliveResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
 class connServiceApi {
   $pb.RpcClient _client;
   connServiceApi(this._client);
@@ -1446,6 +1573,10 @@ class connServiceApi {
   $async.Future<SendMsgResp> sendMsg($pb.ClientContext? ctx, SendMsgReq request) {
     var emptyResponse = SendMsgResp();
     return _client.invoke<SendMsgResp>(ctx, 'connService', 'SendMsg', request, emptyResponse);
+  }
+  $async.Future<KeepAliveResp> keepAlive($pb.ClientContext? ctx, KeepAliveReq request) {
+    var emptyResponse = KeepAliveResp();
+    return _client.invoke<KeepAliveResp>(ctx, 'connService', 'KeepAlive', request, emptyResponse);
   }
 }
 

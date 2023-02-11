@@ -82,3 +82,20 @@ class UserSettingKey extends $pb.ProtobufEnum {
   const UserSettingKey._($core.int v, $core.String n) : super(v, n);
 }
 
+class UserRole extends $pb.ProtobufEnum {
+  static const UserRole User = UserRole._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'User');
+  static const UserRole Service = UserRole._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'Service');
+  static const UserRole Guest = UserRole._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'Guest');
+
+  static const $core.List<UserRole> values = <UserRole> [
+    User,
+    Service,
+    Guest,
+  ];
+
+  static final $core.Map<$core.int, UserRole> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static UserRole? valueOf($core.int value) => _byValue[value];
+
+  const UserRole._($core.int v, $core.String n) : super(v, n);
+}
+

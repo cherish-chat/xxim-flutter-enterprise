@@ -19,12 +19,14 @@ abstract class connServiceBase extends $pb.GeneratedService {
   $async.Future<$1.KickUserConnResp> kickUserConn($pb.ServerContext ctx, $1.KickUserConnReq request);
   $async.Future<$1.GetUserConnResp> getUserConn($pb.ServerContext ctx, $1.GetUserConnReq request);
   $async.Future<$1.SendMsgResp> sendMsg($pb.ServerContext ctx, $1.SendMsgReq request);
+  $async.Future<$1.KeepAliveResp> keepAlive($pb.ServerContext ctx, $1.KeepAliveReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
       case 'KickUserConn': return $1.KickUserConnReq();
       case 'GetUserConn': return $1.GetUserConnReq();
       case 'SendMsg': return $1.SendMsgReq();
+      case 'KeepAlive': return $1.KeepAliveReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -34,6 +36,7 @@ abstract class connServiceBase extends $pb.GeneratedService {
       case 'KickUserConn': return this.kickUserConn(ctx, request as $1.KickUserConnReq);
       case 'GetUserConn': return this.getUserConn(ctx, request as $1.GetUserConnReq);
       case 'SendMsg': return this.sendMsg(ctx, request as $1.SendMsgReq);
+      case 'KeepAlive': return this.keepAlive(ctx, request as $1.KeepAliveReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

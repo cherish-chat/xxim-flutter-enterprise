@@ -53,7 +53,7 @@ const CreateGroupReq$json = const {
   '2': const [
     const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
     const {'1': 'members', '3': 2, '4': 3, '5': 9, '10': 'members'},
-    const {'1': 'name', '3': 3, '4': 1, '5': 9, '8': const {}, '9': 0, '10': 'name', '17': true},
+    const {'1': 'name', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'name', '17': true},
     const {'1': 'avatar', '3': 4, '4': 1, '5': 9, '9': 1, '10': 'avatar', '17': true},
   ],
   '8': const [
@@ -63,7 +63,7 @@ const CreateGroupReq$json = const {
 };
 
 /// Descriptor for `CreateGroupReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createGroupReqDescriptor = $convert.base64Decode('Cg5DcmVhdGVHcm91cFJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIYCgdtZW1iZXJzGAIgAygJUgdtZW1iZXJzEi4KBG5hbWUYAyABKAlCFfpCEnIQMg5eW1xzXFNdezEsMTZ9JEgAUgRuYW1liAEBEhsKBmF2YXRhchgEIAEoCUgBUgZhdmF0YXKIAQFCBwoFX25hbWVCCQoHX2F2YXRhcg==');
+final $typed_data.Uint8List createGroupReqDescriptor = $convert.base64Decode('Cg5DcmVhdGVHcm91cFJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIYCgdtZW1iZXJzGAIgAygJUgdtZW1iZXJzEhcKBG5hbWUYAyABKAlIAFIEbmFtZYgBARIbCgZhdmF0YXIYBCABKAlIAVIGYXZhdGFyiAEBQgcKBV9uYW1lQgkKB19hdmF0YXI=');
 @$core.Deprecated('Use createGroupRespDescriptor instead')
 const CreateGroupResp$json = const {
   '1': 'CreateGroupResp',
@@ -83,12 +83,12 @@ const GetGroupHomeReq$json = const {
   '1': 'GetGroupHomeReq',
   '2': const [
     const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
-    const {'1': 'groupId', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'groupId'},
+    const {'1': 'groupId', '3': 2, '4': 1, '5': 9, '10': 'groupId'},
   ],
 };
 
 /// Descriptor for `GetGroupHomeReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getGroupHomeReqDescriptor = $convert.base64Decode('Cg9HZXRHcm91cEhvbWVSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESIQoHZ3JvdXBJZBgCIAEoCUIH+kIEcgIQAVIHZ3JvdXBJZA==');
+final $typed_data.Uint8List getGroupHomeReqDescriptor = $convert.base64Decode('Cg9HZXRHcm91cEhvbWVSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESGAoHZ3JvdXBJZBgCIAEoCVIHZ3JvdXBJZA==');
 @$core.Deprecated('Use getGroupHomeRespDescriptor instead')
 const GetGroupHomeResp$json = const {
   '1': 'GetGroupHomeResp',
@@ -624,6 +624,199 @@ const HandleGroupApplyResp$json = const {
 
 /// Descriptor for `HandleGroupApplyResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List handleGroupApplyRespDescriptor = $convert.base64Decode('ChRIYW5kbGVHcm91cEFwcGx5UmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcA==');
+@$core.Deprecated('Use getGroupListByUserIdReqDescriptor instead')
+const GetGroupListByUserIdReq$json = const {
+  '1': 'GetGroupListByUserIdReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'page', '3': 2, '4': 1, '5': 11, '6': '.pb.Page', '10': 'page'},
+    const {'1': 'filter', '3': 3, '4': 3, '5': 11, '6': '.pb.GetGroupListByUserIdReq.FilterEntry', '10': 'filter'},
+    const {'1': 'userId', '3': 4, '4': 1, '5': 9, '10': 'userId'},
+  ],
+  '3': const [GetGroupListByUserIdReq_FilterEntry$json],
+};
+
+@$core.Deprecated('Use getGroupListByUserIdReqDescriptor instead')
+const GetGroupListByUserIdReq_FilterEntry$json = const {
+  '1': 'FilterEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `GetGroupListByUserIdReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getGroupListByUserIdReqDescriptor = $convert.base64Decode('ChdHZXRHcm91cExpc3RCeVVzZXJJZFJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIcCgRwYWdlGAIgASgLMggucGIuUGFnZVIEcGFnZRI/CgZmaWx0ZXIYAyADKAsyJy5wYi5HZXRHcm91cExpc3RCeVVzZXJJZFJlcS5GaWx0ZXJFbnRyeVIGZmlsdGVyEhYKBnVzZXJJZBgEIAEoCVIGdXNlcklkGjkKC0ZpbHRlckVudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgJUgV2YWx1ZToCOAE=');
+@$core.Deprecated('Use getGroupListByUserIdItemDescriptor instead')
+const GetGroupListByUserIdItem$json = const {
+  '1': 'GetGroupListByUserIdItem',
+  '2': const [
+    const {'1': 'groupId', '3': 1, '4': 1, '5': 9, '10': 'groupId'},
+    const {'1': 'avatar', '3': 2, '4': 1, '5': 9, '10': 'avatar'},
+    const {'1': 'name', '3': 3, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'memberCount', '3': 4, '4': 1, '5': 3, '10': 'memberCount'},
+    const {'1': 'joinTime', '3': 5, '4': 1, '5': 3, '10': 'joinTime'},
+    const {'1': 'joinTimeStr', '3': 6, '4': 1, '5': 9, '10': 'joinTimeStr'},
+    const {'1': 'owner', '3': 7, '4': 1, '5': 9, '10': 'owner'},
+    const {'1': 'createTime', '3': 8, '4': 1, '5': 3, '10': 'createTime'},
+    const {'1': 'createTimeStr', '3': 9, '4': 1, '5': 9, '10': 'createTimeStr'},
+  ],
+};
+
+/// Descriptor for `GetGroupListByUserIdItem`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getGroupListByUserIdItemDescriptor = $convert.base64Decode('ChhHZXRHcm91cExpc3RCeVVzZXJJZEl0ZW0SGAoHZ3JvdXBJZBgBIAEoCVIHZ3JvdXBJZBIWCgZhdmF0YXIYAiABKAlSBmF2YXRhchISCgRuYW1lGAMgASgJUgRuYW1lEiAKC21lbWJlckNvdW50GAQgASgDUgttZW1iZXJDb3VudBIaCghqb2luVGltZRgFIAEoA1IIam9pblRpbWUSIAoLam9pblRpbWVTdHIYBiABKAlSC2pvaW5UaW1lU3RyEhQKBW93bmVyGAcgASgJUgVvd25lchIeCgpjcmVhdGVUaW1lGAggASgDUgpjcmVhdGVUaW1lEiQKDWNyZWF0ZVRpbWVTdHIYCSABKAlSDWNyZWF0ZVRpbWVTdHI=');
+@$core.Deprecated('Use getGroupListByUserIdRespDescriptor instead')
+const GetGroupListByUserIdResp$json = const {
+  '1': 'GetGroupListByUserIdResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'groupList', '3': 2, '4': 3, '5': 11, '6': '.pb.GetGroupListByUserIdItem', '10': 'groupList'},
+    const {'1': 'total', '3': 3, '4': 1, '5': 3, '10': 'total'},
+  ],
+};
+
+/// Descriptor for `GetGroupListByUserIdResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getGroupListByUserIdRespDescriptor = $convert.base64Decode('ChhHZXRHcm91cExpc3RCeVVzZXJJZFJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASOgoJZ3JvdXBMaXN0GAIgAygLMhwucGIuR2V0R3JvdXBMaXN0QnlVc2VySWRJdGVtUglncm91cExpc3QSFAoFdG90YWwYAyABKANSBXRvdGFs');
+@$core.Deprecated('Use groupModelDescriptor instead')
+const GroupModel$json = const {
+  '1': 'GroupModel',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'avatar', '3': 3, '4': 1, '5': 9, '10': 'avatar'},
+    const {'1': 'owner', '3': 4, '4': 1, '5': 9, '10': 'owner'},
+    const {'1': 'managers', '3': 5, '4': 3, '5': 9, '10': 'managers'},
+    const {'1': 'createTime', '3': 6, '4': 1, '5': 3, '10': 'createTime'},
+    const {'1': 'createTimeStr', '3': 7, '4': 1, '5': 9, '10': 'createTimeStr'},
+    const {'1': 'dismissTime', '3': 8, '4': 1, '5': 3, '10': 'dismissTime'},
+    const {'1': 'dismissTimeStr', '3': 9, '4': 1, '5': 9, '10': 'dismissTimeStr'},
+    const {'1': 'description', '3': 10, '4': 1, '5': 9, '10': 'description'},
+    const {'1': 'memberCount', '3': 11, '4': 1, '5': 5, '10': 'memberCount'},
+    const {'1': 'allMute', '3': 12, '4': 1, '5': 8, '10': 'allMute'},
+    const {'1': 'speakLimit', '3': 13, '4': 1, '5': 5, '10': 'speakLimit'},
+    const {'1': 'maxMember', '3': 14, '4': 1, '5': 5, '10': 'maxMember'},
+    const {'1': 'memberCanStartTempChat', '3': 15, '4': 1, '5': 8, '10': 'memberCanStartTempChat'},
+    const {'1': 'memberCanInviteFriend', '3': 16, '4': 1, '5': 8, '10': 'memberCanInviteFriend'},
+    const {'1': 'newMemberHistoryMsgCount', '3': 17, '4': 1, '5': 5, '10': 'newMemberHistoryMsgCount'},
+    const {'1': 'anonymousChat', '3': 18, '4': 1, '5': 8, '10': 'anonymousChat'},
+    const {'1': 'joinGroupOption', '3': 19, '4': 1, '5': 11, '6': '.pb.GroupModel.JoinGroupOption', '10': 'joinGroupOption'},
+    const {'1': 'adminRemark', '3': 20, '4': 1, '5': 9, '10': 'adminRemark'},
+  ],
+  '3': const [GroupModel_JoinGroupOption$json],
+};
+
+@$core.Deprecated('Use groupModelDescriptor instead')
+const GroupModel_JoinGroupOption$json = const {
+  '1': 'JoinGroupOption',
+  '2': const [
+    const {'1': 'type', '3': 1, '4': 1, '5': 5, '10': 'type'},
+    const {'1': 'question', '3': 2, '4': 1, '5': 9, '10': 'question'},
+    const {'1': 'answer', '3': 3, '4': 1, '5': 9, '10': 'answer'},
+  ],
+};
+
+/// Descriptor for `GroupModel`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List groupModelDescriptor = $convert.base64Decode('CgpHcm91cE1vZGVsEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEhYKBmF2YXRhchgDIAEoCVIGYXZhdGFyEhQKBW93bmVyGAQgASgJUgVvd25lchIaCghtYW5hZ2VycxgFIAMoCVIIbWFuYWdlcnMSHgoKY3JlYXRlVGltZRgGIAEoA1IKY3JlYXRlVGltZRIkCg1jcmVhdGVUaW1lU3RyGAcgASgJUg1jcmVhdGVUaW1lU3RyEiAKC2Rpc21pc3NUaW1lGAggASgDUgtkaXNtaXNzVGltZRImCg5kaXNtaXNzVGltZVN0chgJIAEoCVIOZGlzbWlzc1RpbWVTdHISIAoLZGVzY3JpcHRpb24YCiABKAlSC2Rlc2NyaXB0aW9uEiAKC21lbWJlckNvdW50GAsgASgFUgttZW1iZXJDb3VudBIYCgdhbGxNdXRlGAwgASgIUgdhbGxNdXRlEh4KCnNwZWFrTGltaXQYDSABKAVSCnNwZWFrTGltaXQSHAoJbWF4TWVtYmVyGA4gASgFUgltYXhNZW1iZXISNgoWbWVtYmVyQ2FuU3RhcnRUZW1wQ2hhdBgPIAEoCFIWbWVtYmVyQ2FuU3RhcnRUZW1wQ2hhdBI0ChVtZW1iZXJDYW5JbnZpdGVGcmllbmQYECABKAhSFW1lbWJlckNhbkludml0ZUZyaWVuZBI6ChhuZXdNZW1iZXJIaXN0b3J5TXNnQ291bnQYESABKAVSGG5ld01lbWJlckhpc3RvcnlNc2dDb3VudBIkCg1hbm9ueW1vdXNDaGF0GBIgASgIUg1hbm9ueW1vdXNDaGF0EkgKD2pvaW5Hcm91cE9wdGlvbhgTIAEoCzIeLnBiLkdyb3VwTW9kZWwuSm9pbkdyb3VwT3B0aW9uUg9qb2luR3JvdXBPcHRpb24SIAoLYWRtaW5SZW1hcmsYFCABKAlSC2FkbWluUmVtYXJrGlkKD0pvaW5Hcm91cE9wdGlvbhISCgR0eXBlGAEgASgFUgR0eXBlEhoKCHF1ZXN0aW9uGAIgASgJUghxdWVzdGlvbhIWCgZhbnN3ZXIYAyABKAlSBmFuc3dlcg==');
+@$core.Deprecated('Use getAllGroupModelReqDescriptor instead')
+const GetAllGroupModelReq$json = const {
+  '1': 'GetAllGroupModelReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'page', '3': 2, '4': 1, '5': 11, '6': '.pb.Page', '10': 'page'},
+    const {'1': 'filter', '3': 3, '4': 3, '5': 11, '6': '.pb.GetAllGroupModelReq.FilterEntry', '10': 'filter'},
+  ],
+  '3': const [GetAllGroupModelReq_FilterEntry$json],
+};
+
+@$core.Deprecated('Use getAllGroupModelReqDescriptor instead')
+const GetAllGroupModelReq_FilterEntry$json = const {
+  '1': 'FilterEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `GetAllGroupModelReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllGroupModelReqDescriptor = $convert.base64Decode('ChNHZXRBbGxHcm91cE1vZGVsUmVxEisKCWNvbW1vblJlcRgBIAEoCzINLnBiLkNvbW1vblJlcVIJY29tbW9uUmVxEhwKBHBhZ2UYAiABKAsyCC5wYi5QYWdlUgRwYWdlEjsKBmZpbHRlchgDIAMoCzIjLnBiLkdldEFsbEdyb3VwTW9kZWxSZXEuRmlsdGVyRW50cnlSBmZpbHRlcho5CgtGaWx0ZXJFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgB');
+@$core.Deprecated('Use getAllGroupModelRespDescriptor instead')
+const GetAllGroupModelResp$json = const {
+  '1': 'GetAllGroupModelResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'groupModels', '3': 2, '4': 3, '5': 11, '6': '.pb.GroupModel', '10': 'groupModels'},
+    const {'1': 'total', '3': 3, '4': 1, '5': 3, '10': 'total'},
+  ],
+};
+
+/// Descriptor for `GetAllGroupModelResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllGroupModelRespDescriptor = $convert.base64Decode('ChRHZXRBbGxHcm91cE1vZGVsUmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcBIwCgtncm91cE1vZGVscxgCIAMoCzIOLnBiLkdyb3VwTW9kZWxSC2dyb3VwTW9kZWxzEhQKBXRvdGFsGAMgASgDUgV0b3RhbA==');
+@$core.Deprecated('Use getGroupModelDetailReqDescriptor instead')
+const GetGroupModelDetailReq$json = const {
+  '1': 'GetGroupModelDetailReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'id', '3': 2, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `GetGroupModelDetailReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getGroupModelDetailReqDescriptor = $convert.base64Decode('ChZHZXRHcm91cE1vZGVsRGV0YWlsUmVxEisKCWNvbW1vblJlcRgBIAEoCzINLnBiLkNvbW1vblJlcVIJY29tbW9uUmVxEg4KAmlkGAIgASgJUgJpZA==');
+@$core.Deprecated('Use getGroupModelDetailRespDescriptor instead')
+const GetGroupModelDetailResp$json = const {
+  '1': 'GetGroupModelDetailResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'groupModel', '3': 2, '4': 1, '5': 11, '6': '.pb.GroupModel', '10': 'groupModel'},
+  ],
+};
+
+/// Descriptor for `GetGroupModelDetailResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getGroupModelDetailRespDescriptor = $convert.base64Decode('ChdHZXRHcm91cE1vZGVsRGV0YWlsUmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcBIuCgpncm91cE1vZGVsGAIgASgLMg4ucGIuR3JvdXBNb2RlbFIKZ3JvdXBNb2RlbA==');
+@$core.Deprecated('Use updateGroupModelReqDescriptor instead')
+const UpdateGroupModelReq$json = const {
+  '1': 'UpdateGroupModelReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'groupModel', '3': 2, '4': 1, '5': 11, '6': '.pb.GroupModel', '10': 'groupModel'},
+  ],
+};
+
+/// Descriptor for `UpdateGroupModelReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateGroupModelReqDescriptor = $convert.base64Decode('ChNVcGRhdGVHcm91cE1vZGVsUmVxEisKCWNvbW1vblJlcRgBIAEoCzINLnBiLkNvbW1vblJlcVIJY29tbW9uUmVxEi4KCmdyb3VwTW9kZWwYAiABKAsyDi5wYi5Hcm91cE1vZGVsUgpncm91cE1vZGVs');
+@$core.Deprecated('Use updateGroupModelRespDescriptor instead')
+const UpdateGroupModelResp$json = const {
+  '1': 'UpdateGroupModelResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `UpdateGroupModelResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateGroupModelRespDescriptor = $convert.base64Decode('ChRVcGRhdGVHcm91cE1vZGVsUmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcA==');
+@$core.Deprecated('Use dismissGroupModelReqDescriptor instead')
+const DismissGroupModelReq$json = const {
+  '1': 'DismissGroupModelReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'ids', '3': 2, '4': 3, '5': 9, '10': 'ids'},
+  ],
+};
+
+/// Descriptor for `DismissGroupModelReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List dismissGroupModelReqDescriptor = $convert.base64Decode('ChREaXNtaXNzR3JvdXBNb2RlbFJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIQCgNpZHMYAiADKAlSA2lkcw==');
+@$core.Deprecated('Use dismissGroupModelRespDescriptor instead')
+const DismissGroupModelResp$json = const {
+  '1': 'DismissGroupModelResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `DismissGroupModelResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List dismissGroupModelRespDescriptor = $convert.base64Decode('ChVEaXNtaXNzR3JvdXBNb2RlbFJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
 const $core.Map<$core.String, $core.dynamic> groupServiceBase$json = const {
   '1': 'groupService',
   '2': const [
@@ -644,6 +837,11 @@ const $core.Map<$core.String, $core.dynamic> groupServiceBase$json = const {
     const {'1': 'SyncGroupMemberCount', '2': '.pb.SyncGroupMemberCountReq', '3': '.pb.SyncGroupMemberCountResp', '4': const {}},
     const {'1': 'ApplyToBeGroupMember', '2': '.pb.ApplyToBeGroupMemberReq', '3': '.pb.ApplyToBeGroupMemberResp', '4': const {}},
     const {'1': 'HandleGroupApply', '2': '.pb.HandleGroupApplyReq', '3': '.pb.HandleGroupApplyResp', '4': const {}},
+    const {'1': 'GetGroupListByUserId', '2': '.pb.GetGroupListByUserIdReq', '3': '.pb.GetGroupListByUserIdResp', '4': const {}},
+    const {'1': 'GetAllGroupModel', '2': '.pb.GetAllGroupModelReq', '3': '.pb.GetAllGroupModelResp', '4': const {}},
+    const {'1': 'GetGroupModelDetail', '2': '.pb.GetGroupModelDetailReq', '3': '.pb.GetGroupModelDetailResp', '4': const {}},
+    const {'1': 'UpdateGroupModel', '2': '.pb.UpdateGroupModelReq', '3': '.pb.UpdateGroupModelResp', '4': const {}},
+    const {'1': 'DismissGroupModel', '2': '.pb.DismissGroupModelReq', '3': '.pb.DismissGroupModelResp', '4': const {}},
   ],
 };
 
@@ -697,7 +895,22 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> groupServi
   '.pb.ApplyToBeGroupMemberResp': ApplyToBeGroupMemberResp$json,
   '.pb.HandleGroupApplyReq': HandleGroupApplyReq$json,
   '.pb.HandleGroupApplyResp': HandleGroupApplyResp$json,
+  '.pb.GetGroupListByUserIdReq': GetGroupListByUserIdReq$json,
+  '.pb.GetGroupListByUserIdReq.FilterEntry': GetGroupListByUserIdReq_FilterEntry$json,
+  '.pb.GetGroupListByUserIdResp': GetGroupListByUserIdResp$json,
+  '.pb.GetGroupListByUserIdItem': GetGroupListByUserIdItem$json,
+  '.pb.GetAllGroupModelReq': GetAllGroupModelReq$json,
+  '.pb.GetAllGroupModelReq.FilterEntry': GetAllGroupModelReq_FilterEntry$json,
+  '.pb.GetAllGroupModelResp': GetAllGroupModelResp$json,
+  '.pb.GroupModel': GroupModel$json,
+  '.pb.GroupModel.JoinGroupOption': GroupModel_JoinGroupOption$json,
+  '.pb.GetGroupModelDetailReq': GetGroupModelDetailReq$json,
+  '.pb.GetGroupModelDetailResp': GetGroupModelDetailResp$json,
+  '.pb.UpdateGroupModelReq': UpdateGroupModelReq$json,
+  '.pb.UpdateGroupModelResp': UpdateGroupModelResp$json,
+  '.pb.DismissGroupModelReq': DismissGroupModelReq$json,
+  '.pb.DismissGroupModelResp': DismissGroupModelResp$json,
 };
 
 /// Descriptor for `groupService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List groupServiceDescriptor = $convert.base64Decode('Cgxncm91cFNlcnZpY2USOAoLQ3JlYXRlR3JvdXASEi5wYi5DcmVhdGVHcm91cFJlcRoTLnBiLkNyZWF0ZUdyb3VwUmVzcCIAEjsKDEdldEdyb3VwSG9tZRITLnBiLkdldEdyb3VwSG9tZVJlcRoULnBiLkdldEdyb3VwSG9tZVJlc3AiABJQChNJbnZpdGVGcmllbmRUb0dyb3VwEhoucGIuSW52aXRlRnJpZW5kVG9Hcm91cFJlcRobLnBiLkludml0ZUZyaWVuZFRvR3JvdXBSZXNwIgASSgoRQ3JlYXRlR3JvdXBOb3RpY2USGC5wYi5DcmVhdGVHcm91cE5vdGljZVJlcRoZLnBiLkNyZWF0ZUdyb3VwTm90aWNlUmVzcCIAEkoKEURlbGV0ZUdyb3VwTm90aWNlEhgucGIuRGVsZXRlR3JvdXBOb3RpY2VSZXEaGS5wYi5EZWxldGVHcm91cE5vdGljZVJlc3AiABJNChJHZXRHcm91cE5vdGljZUxpc3QSGS5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXEaGi5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXNwIgASTQoSU2V0R3JvdXBNZW1iZXJJbmZvEhkucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVxGhoucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVzcCIAEk0KEkdldEdyb3VwTWVtYmVySW5mbxIZLnBiLkdldEdyb3VwTWVtYmVySW5mb1JlcRoaLnBiLkdldEdyb3VwTWVtYmVySW5mb1Jlc3AiABI+Cg1FZGl0R3JvdXBJbmZvEhQucGIuRWRpdEdyb3VwSW5mb1JlcRoVLnBiLkVkaXRHcm91cEluZm9SZXNwIgASTQoSVHJhbnNmZXJHcm91cE93bmVyEhkucGIuVHJhbnNmZXJHcm91cE93bmVyUmVxGhoucGIuVHJhbnNmZXJHcm91cE93bmVyUmVzcCIAEkQKD0tpY2tHcm91cE1lbWJlchIWLnBiLktpY2tHcm91cE1lbWJlclJlcRoXLnBiLktpY2tHcm91cE1lbWJlclJlc3AiABJNChJHZXRHcm91cE1lbWJlckxpc3QSGS5wYi5HZXRHcm91cE1lbWJlckxpc3RSZXEaGi5wYi5HZXRHcm91cE1lbWJlckxpc3RSZXNwIgASQQoOR2V0TXlHcm91cExpc3QSFS5wYi5HZXRNeUdyb3VwTGlzdFJlcRoWLnBiLkdldE15R3JvdXBMaXN0UmVzcCIAEj4KDU1hcEdyb3VwQnlJZHMSFC5wYi5NYXBHcm91cEJ5SWRzUmVxGhUucGIuTWFwR3JvdXBCeUlkc1Jlc3AiABJTChRTeW5jR3JvdXBNZW1iZXJDb3VudBIbLnBiLlN5bmNHcm91cE1lbWJlckNvdW50UmVxGhwucGIuU3luY0dyb3VwTWVtYmVyQ291bnRSZXNwIgASUwoUQXBwbHlUb0JlR3JvdXBNZW1iZXISGy5wYi5BcHBseVRvQmVHcm91cE1lbWJlclJlcRocLnBiLkFwcGx5VG9CZUdyb3VwTWVtYmVyUmVzcCIAEkcKEEhhbmRsZUdyb3VwQXBwbHkSFy5wYi5IYW5kbGVHcm91cEFwcGx5UmVxGhgucGIuSGFuZGxlR3JvdXBBcHBseVJlc3AiAA==');
+final $typed_data.Uint8List groupServiceDescriptor = $convert.base64Decode('Cgxncm91cFNlcnZpY2USOAoLQ3JlYXRlR3JvdXASEi5wYi5DcmVhdGVHcm91cFJlcRoTLnBiLkNyZWF0ZUdyb3VwUmVzcCIAEjsKDEdldEdyb3VwSG9tZRITLnBiLkdldEdyb3VwSG9tZVJlcRoULnBiLkdldEdyb3VwSG9tZVJlc3AiABJQChNJbnZpdGVGcmllbmRUb0dyb3VwEhoucGIuSW52aXRlRnJpZW5kVG9Hcm91cFJlcRobLnBiLkludml0ZUZyaWVuZFRvR3JvdXBSZXNwIgASSgoRQ3JlYXRlR3JvdXBOb3RpY2USGC5wYi5DcmVhdGVHcm91cE5vdGljZVJlcRoZLnBiLkNyZWF0ZUdyb3VwTm90aWNlUmVzcCIAEkoKEURlbGV0ZUdyb3VwTm90aWNlEhgucGIuRGVsZXRlR3JvdXBOb3RpY2VSZXEaGS5wYi5EZWxldGVHcm91cE5vdGljZVJlc3AiABJNChJHZXRHcm91cE5vdGljZUxpc3QSGS5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXEaGi5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXNwIgASTQoSU2V0R3JvdXBNZW1iZXJJbmZvEhkucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVxGhoucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVzcCIAEk0KEkdldEdyb3VwTWVtYmVySW5mbxIZLnBiLkdldEdyb3VwTWVtYmVySW5mb1JlcRoaLnBiLkdldEdyb3VwTWVtYmVySW5mb1Jlc3AiABI+Cg1FZGl0R3JvdXBJbmZvEhQucGIuRWRpdEdyb3VwSW5mb1JlcRoVLnBiLkVkaXRHcm91cEluZm9SZXNwIgASTQoSVHJhbnNmZXJHcm91cE93bmVyEhkucGIuVHJhbnNmZXJHcm91cE93bmVyUmVxGhoucGIuVHJhbnNmZXJHcm91cE93bmVyUmVzcCIAEkQKD0tpY2tHcm91cE1lbWJlchIWLnBiLktpY2tHcm91cE1lbWJlclJlcRoXLnBiLktpY2tHcm91cE1lbWJlclJlc3AiABJNChJHZXRHcm91cE1lbWJlckxpc3QSGS5wYi5HZXRHcm91cE1lbWJlckxpc3RSZXEaGi5wYi5HZXRHcm91cE1lbWJlckxpc3RSZXNwIgASQQoOR2V0TXlHcm91cExpc3QSFS5wYi5HZXRNeUdyb3VwTGlzdFJlcRoWLnBiLkdldE15R3JvdXBMaXN0UmVzcCIAEj4KDU1hcEdyb3VwQnlJZHMSFC5wYi5NYXBHcm91cEJ5SWRzUmVxGhUucGIuTWFwR3JvdXBCeUlkc1Jlc3AiABJTChRTeW5jR3JvdXBNZW1iZXJDb3VudBIbLnBiLlN5bmNHcm91cE1lbWJlckNvdW50UmVxGhwucGIuU3luY0dyb3VwTWVtYmVyQ291bnRSZXNwIgASUwoUQXBwbHlUb0JlR3JvdXBNZW1iZXISGy5wYi5BcHBseVRvQmVHcm91cE1lbWJlclJlcRocLnBiLkFwcGx5VG9CZUdyb3VwTWVtYmVyUmVzcCIAEkcKEEhhbmRsZUdyb3VwQXBwbHkSFy5wYi5IYW5kbGVHcm91cEFwcGx5UmVxGhgucGIuSGFuZGxlR3JvdXBBcHBseVJlc3AiABJTChRHZXRHcm91cExpc3RCeVVzZXJJZBIbLnBiLkdldEdyb3VwTGlzdEJ5VXNlcklkUmVxGhwucGIuR2V0R3JvdXBMaXN0QnlVc2VySWRSZXNwIgASRwoQR2V0QWxsR3JvdXBNb2RlbBIXLnBiLkdldEFsbEdyb3VwTW9kZWxSZXEaGC5wYi5HZXRBbGxHcm91cE1vZGVsUmVzcCIAElAKE0dldEdyb3VwTW9kZWxEZXRhaWwSGi5wYi5HZXRHcm91cE1vZGVsRGV0YWlsUmVxGhsucGIuR2V0R3JvdXBNb2RlbERldGFpbFJlc3AiABJHChBVcGRhdGVHcm91cE1vZGVsEhcucGIuVXBkYXRlR3JvdXBNb2RlbFJlcRoYLnBiLlVwZGF0ZUdyb3VwTW9kZWxSZXNwIgASSgoRRGlzbWlzc0dyb3VwTW9kZWwSGC5wYi5EaXNtaXNzR3JvdXBNb2RlbFJlcRoZLnBiLkRpc21pc3NHcm91cE1vZGVsUmVzcCIA');

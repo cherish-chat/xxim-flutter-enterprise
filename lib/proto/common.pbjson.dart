@@ -23,11 +23,9 @@ final $typed_data.Uint8List convTypeDescriptor = $convert.base64Decode('CghDb252
 const ContentType$json = const {
   '1': 'ContentType',
   '2': const [
-    const {'1': 'UNKNOWN_Content', '2': 0},
+    const {'1': 'UNKNOWN', '2': 0},
     const {'1': 'TYPING', '2': 1},
-    const {'1': 'READ', '2': 2},
-    const {'1': 'REVOKE', '2': 3},
-    const {'1': 'Tip', '2': 4},
+    const {'1': 'TIP', '2': 2},
     const {'1': 'TEXT', '2': 11},
     const {'1': 'IMAGE', '2': 12},
     const {'1': 'AUDIO', '2': 13},
@@ -38,14 +36,47 @@ const ContentType$json = const {
     const {'1': 'MERGE', '2': 18},
     const {'1': 'EMOJI', '2': 19},
     const {'1': 'COMMAND', '2': 20},
-    const {'1': 'RICH_TXT', '2': 21},
+    const {'1': 'RICH_TEXT', '2': 21},
     const {'1': 'MARKDOWN', '2': 22},
     const {'1': 'CUSTOM', '2': 100},
   ],
 };
 
 /// Descriptor for `ContentType`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List contentTypeDescriptor = $convert.base64Decode('CgtDb250ZW50VHlwZRITCg9VTktOT1dOX0NvbnRlbnQQABIKCgZUWVBJTkcQARIICgRSRUFEEAISCgoGUkVWT0tFEAMSBwoDVGlwEAQSCAoEVEVYVBALEgkKBUlNQUdFEAwSCQoFQVVESU8QDRIJCgVWSURFTxAOEggKBEZJTEUQDxIMCghMT0NBVElPThAQEggKBENBUkQQERIJCgVNRVJHRRASEgkKBUVNT0pJEBMSCwoHQ09NTUFORBAUEgwKCFJJQ0hfVFhUEBUSDAoITUFSS0RPV04QFhIKCgZDVVNUT00QZA==');
+final $typed_data.Uint8List contentTypeDescriptor = $convert.base64Decode('CgtDb250ZW50VHlwZRILCgdVTktOT1dOEAASCgoGVFlQSU5HEAESBwoDVElQEAISCAoEVEVYVBALEgkKBUlNQUdFEAwSCQoFQVVESU8QDRIJCgVWSURFTxAOEggKBEZJTEUQDxIMCghMT0NBVElPThAQEggKBENBUkQQERIJCgVNRVJHRRASEgkKBUVNT0pJEBMSCwoHQ09NTUFORBAUEg0KCVJJQ0hfVEVYVBAVEgwKCE1BUktET1dOEBYSCgoGQ1VTVE9NEGQ=');
+@$core.Deprecated('Use noticeTypeDescriptor instead')
+const NoticeType$json = const {
+  '1': 'NoticeType',
+  '2': const [
+    const {'1': 'INVALID', '2': 0},
+    const {'1': 'READ', '2': 1},
+    const {'1': 'EDIT', '2': 2},
+  ],
+};
+
+/// Descriptor for `NoticeType`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List noticeTypeDescriptor = $convert.base64Decode('CgpOb3RpY2VUeXBlEgsKB0lOVkFMSUQQABIICgRSRUFEEAESCAoERURJVBAC');
+@$core.Deprecated('Use mStrDescriptor instead')
+const MStr$json = const {
+  '1': 'MStr',
+  '2': const [
+    const {'1': 'm', '3': 1, '4': 3, '5': 11, '6': '.pb.MStr.MEntry', '10': 'm'},
+  ],
+  '3': const [MStr_MEntry$json],
+};
+
+@$core.Deprecated('Use mStrDescriptor instead')
+const MStr_MEntry$json = const {
+  '1': 'MEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `MStr`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List mStrDescriptor = $convert.base64Decode('CgRNU3RyEh0KAW0YASADKAsyDy5wYi5NU3RyLk1FbnRyeVIBbRo0CgZNRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');
 @$core.Deprecated('Use commonRespDescriptor instead')
 const CommonResp$json = const {
   '1': 'CommonResp',
@@ -72,11 +103,13 @@ const CommonResp_Code$json = const {
     const {'1': 'ToastError', '2': 5},
     const {'1': 'AlertError', '2': 7},
     const {'1': 'RetryError', '2': 8},
+    const {'1': 'ForbiddenError', '2': 9},
+    const {'1': 'NeedSecondPasswordError', '2': 10},
   ],
 };
 
 /// Descriptor for `CommonResp`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List commonRespDescriptor = $convert.base64Decode('CgpDb21tb25SZXNwEicKBGNvZGUYASABKA4yEy5wYi5Db21tb25SZXNwLkNvZGVSBGNvZGUSFQoDbXNnGAIgASgJSABSA21zZ4gBARISCgRkYXRhGAMgASgMUgRkYXRhIokBCgRDb2RlEgsKB1N1Y2Nlc3MQABIQCgxVbmtub3duRXJyb3IQARIRCg1JbnRlcm5hbEVycm9yEAISEAoMUmVxdWVzdEVycm9yEAMSDQoJQXV0aEVycm9yEAQSDgoKVG9hc3RFcnJvchAFEg4KCkFsZXJ0RXJyb3IQBxIOCgpSZXRyeUVycm9yEAhCBgoEX21zZw==');
+final $typed_data.Uint8List commonRespDescriptor = $convert.base64Decode('CgpDb21tb25SZXNwEicKBGNvZGUYASABKA4yEy5wYi5Db21tb25SZXNwLkNvZGVSBGNvZGUSFQoDbXNnGAIgASgJSABSA21zZ4gBARISCgRkYXRhGAMgASgMUgRkYXRhIroBCgRDb2RlEgsKB1N1Y2Nlc3MQABIQCgxVbmtub3duRXJyb3IQARIRCg1JbnRlcm5hbEVycm9yEAISEAoMUmVxdWVzdEVycm9yEAMSDQoJQXV0aEVycm9yEAQSDgoKVG9hc3RFcnJvchAFEg4KCkFsZXJ0RXJyb3IQBxIOCgpSZXRyeUVycm9yEAgSEgoORm9yYmlkZGVuRXJyb3IQCRIbChdOZWVkU2Vjb25kUGFzc3dvcmRFcnJvchAKQgYKBF9tc2c=');
 @$core.Deprecated('Use alertActionDescriptor instead')
 const AlertAction$json = const {
   '1': 'AlertAction',
@@ -111,6 +144,7 @@ const CommonReq$json = const {
     const {'1': 'deviceId', '3': 12, '4': 1, '5': 9, '10': 'deviceId'},
     const {'1': 'osVersion', '3': 13, '4': 1, '5': 9, '10': 'osVersion'},
     const {'1': 'platform', '3': 14, '4': 1, '5': 9, '10': 'platform'},
+    const {'1': 'packageId', '3': 15, '4': 1, '5': 9, '10': 'packageId'},
     const {'1': 'appVersion', '3': 21, '4': 1, '5': 9, '10': 'appVersion'},
     const {'1': 'language', '3': 22, '4': 1, '5': 9, '10': 'language'},
     const {'1': 'data', '3': 31, '4': 1, '5': 12, '10': 'data'},
@@ -120,7 +154,7 @@ const CommonReq$json = const {
 };
 
 /// Descriptor for `CommonReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List commonReqDescriptor = $convert.base64Decode('CglDb21tb25SZXESFgoGdXNlcklkGAEgASgJUgZ1c2VySWQSFAoFdG9rZW4YAiABKAlSBXRva2VuEiAKC2RldmljZU1vZGVsGAsgASgJUgtkZXZpY2VNb2RlbBIaCghkZXZpY2VJZBgMIAEoCVIIZGV2aWNlSWQSHAoJb3NWZXJzaW9uGA0gASgJUglvc1ZlcnNpb24SGgoIcGxhdGZvcm0YDiABKAlSCHBsYXRmb3JtEh4KCmFwcFZlcnNpb24YFSABKAlSCmFwcFZlcnNpb24SGgoIbGFuZ3VhZ2UYFiABKAlSCGxhbmd1YWdlEhIKBGRhdGEYHyABKAxSBGRhdGESDgoCaXAYKSABKAlSAmlwEhwKCXVzZXJBZ2VudBgqIAEoCVIJdXNlckFnZW50');
+final $typed_data.Uint8List commonReqDescriptor = $convert.base64Decode('CglDb21tb25SZXESFgoGdXNlcklkGAEgASgJUgZ1c2VySWQSFAoFdG9rZW4YAiABKAlSBXRva2VuEiAKC2RldmljZU1vZGVsGAsgASgJUgtkZXZpY2VNb2RlbBIaCghkZXZpY2VJZBgMIAEoCVIIZGV2aWNlSWQSHAoJb3NWZXJzaW9uGA0gASgJUglvc1ZlcnNpb24SGgoIcGxhdGZvcm0YDiABKAlSCHBsYXRmb3JtEhwKCXBhY2thZ2VJZBgPIAEoCVIJcGFja2FnZUlkEh4KCmFwcFZlcnNpb24YFSABKAlSCmFwcFZlcnNpb24SGgoIbGFuZ3VhZ2UYFiABKAlSCGxhbmd1YWdlEhIKBGRhdGEYHyABKAxSBGRhdGESDgoCaXAYKSABKAlSAmlwEhwKCXVzZXJBZ2VudBgqIAEoCVIJdXNlckFnZW50');
 @$core.Deprecated('Use ipRegionDescriptor instead')
 const IpRegion$json = const {
   '1': 'IpRegion',

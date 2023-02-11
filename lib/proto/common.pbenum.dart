@@ -25,11 +25,9 @@ class ConvType extends $pb.ProtobufEnum {
 }
 
 class ContentType extends $pb.ProtobufEnum {
-  static const ContentType UNKNOWN_Content = ContentType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNKNOWN_Content');
+  static const ContentType UNKNOWN = ContentType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNKNOWN');
   static const ContentType TYPING = ContentType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TYPING');
-  static const ContentType READ = ContentType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'READ');
-  static const ContentType REVOKE = ContentType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REVOKE');
-  static const ContentType Tip = ContentType._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'Tip');
+  static const ContentType TIP = ContentType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TIP');
   static const ContentType TEXT = ContentType._(11, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TEXT');
   static const ContentType IMAGE = ContentType._(12, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'IMAGE');
   static const ContentType AUDIO = ContentType._(13, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'AUDIO');
@@ -40,16 +38,14 @@ class ContentType extends $pb.ProtobufEnum {
   static const ContentType MERGE = ContentType._(18, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MERGE');
   static const ContentType EMOJI = ContentType._(19, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EMOJI');
   static const ContentType COMMAND = ContentType._(20, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'COMMAND');
-  static const ContentType RICH_TXT = ContentType._(21, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'RICH_TXT');
+  static const ContentType RICH_TEXT = ContentType._(21, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'RICH_TEXT');
   static const ContentType MARKDOWN = ContentType._(22, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MARKDOWN');
   static const ContentType CUSTOM = ContentType._(100, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CUSTOM');
 
   static const $core.List<ContentType> values = <ContentType> [
-    UNKNOWN_Content,
+    UNKNOWN,
     TYPING,
-    READ,
-    REVOKE,
-    Tip,
+    TIP,
     TEXT,
     IMAGE,
     AUDIO,
@@ -60,7 +56,7 @@ class ContentType extends $pb.ProtobufEnum {
     MERGE,
     EMOJI,
     COMMAND,
-    RICH_TXT,
+    RICH_TEXT,
     MARKDOWN,
     CUSTOM,
   ];
@@ -69,6 +65,23 @@ class ContentType extends $pb.ProtobufEnum {
   static ContentType? valueOf($core.int value) => _byValue[value];
 
   const ContentType._($core.int v, $core.String n) : super(v, n);
+}
+
+class NoticeType extends $pb.ProtobufEnum {
+  static const NoticeType INVALID = NoticeType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'INVALID');
+  static const NoticeType READ = NoticeType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'READ');
+  static const NoticeType EDIT = NoticeType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EDIT');
+
+  static const $core.List<NoticeType> values = <NoticeType> [
+    INVALID,
+    READ,
+    EDIT,
+  ];
+
+  static final $core.Map<$core.int, NoticeType> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static NoticeType? valueOf($core.int value) => _byValue[value];
+
+  const NoticeType._($core.int v, $core.String n) : super(v, n);
 }
 
 class CommonResp_Code extends $pb.ProtobufEnum {
@@ -80,6 +93,8 @@ class CommonResp_Code extends $pb.ProtobufEnum {
   static const CommonResp_Code ToastError = CommonResp_Code._(5, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ToastError');
   static const CommonResp_Code AlertError = CommonResp_Code._(7, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'AlertError');
   static const CommonResp_Code RetryError = CommonResp_Code._(8, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'RetryError');
+  static const CommonResp_Code ForbiddenError = CommonResp_Code._(9, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ForbiddenError');
+  static const CommonResp_Code NeedSecondPasswordError = CommonResp_Code._(10, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'NeedSecondPasswordError');
 
   static const $core.List<CommonResp_Code> values = <CommonResp_Code> [
     Success,
@@ -90,6 +105,8 @@ class CommonResp_Code extends $pb.ProtobufEnum {
     ToastError,
     AlertError,
     RetryError,
+    ForbiddenError,
+    NeedSecondPasswordError,
   ];
 
   static final $core.Map<$core.int, CommonResp_Code> _byValue = $pb.ProtobufEnum.initByValue(values);

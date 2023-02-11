@@ -20,6 +20,7 @@ export 'notice.pb.dart';
 abstract class noticeServiceBase extends $pb.GeneratedService {
   $async.Future<$0.CommonResp> afterConnect($pb.ServerContext ctx, $1.AfterConnectReq request);
   $async.Future<$0.CommonResp> afterDisconnect($pb.ServerContext ctx, $1.AfterDisconnectReq request);
+  $async.Future<$1.KeepAliveResp> keepAlive($pb.ServerContext ctx, $1.KeepAliveReq request);
   $async.Future<$2.GetUserNoticeDataResp> getUserNoticeData($pb.ServerContext ctx, $2.GetUserNoticeDataReq request);
   $async.Future<$2.AckNoticeDataResp> ackNoticeData($pb.ServerContext ctx, $2.AckNoticeDataReq request);
 
@@ -27,6 +28,7 @@ abstract class noticeServiceBase extends $pb.GeneratedService {
     switch (method) {
       case 'AfterConnect': return $1.AfterConnectReq();
       case 'AfterDisconnect': return $1.AfterDisconnectReq();
+      case 'KeepAlive': return $1.KeepAliveReq();
       case 'GetUserNoticeData': return $2.GetUserNoticeDataReq();
       case 'AckNoticeData': return $2.AckNoticeDataReq();
       default: throw $core.ArgumentError('Unknown method: $method');
@@ -37,6 +39,7 @@ abstract class noticeServiceBase extends $pb.GeneratedService {
     switch (method) {
       case 'AfterConnect': return this.afterConnect(ctx, request as $1.AfterConnectReq);
       case 'AfterDisconnect': return this.afterDisconnect(ctx, request as $1.AfterDisconnectReq);
+      case 'KeepAlive': return this.keepAlive(ctx, request as $1.KeepAliveReq);
       case 'GetUserNoticeData': return this.getUserNoticeData(ctx, request as $2.GetUserNoticeDataReq);
       case 'AckNoticeData': return this.ackNoticeData(ctx, request as $2.AckNoticeDataReq);
       default: throw $core.ArgumentError('Unknown method: $method');

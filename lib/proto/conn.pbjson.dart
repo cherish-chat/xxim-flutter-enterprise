@@ -58,6 +58,7 @@ const ConnParam$json = const {
     const {'1': 'osVersion', '3': 10, '4': 1, '5': 9, '10': 'osVersion'},
     const {'1': 'appVersion', '3': 11, '4': 1, '5': 9, '10': 'appVersion'},
     const {'1': 'language', '3': 12, '4': 1, '5': 9, '10': 'language'},
+    const {'1': 'timestamp', '3': 13, '4': 1, '5': 3, '10': 'timestamp'},
   ],
   '3': const [ConnParam_HeadersEntry$json],
 };
@@ -73,7 +74,7 @@ const ConnParam_HeadersEntry$json = const {
 };
 
 /// Descriptor for `ConnParam`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List connParamDescriptor = $convert.base64Decode('CglDb25uUGFyYW0SFgoGdXNlcklkGAEgASgJUgZ1c2VySWQSFAoFdG9rZW4YAiABKAlSBXRva2VuEhoKCGRldmljZUlkGAMgASgJUghkZXZpY2VJZBIaCghwbGF0Zm9ybRgEIAEoCVIIcGxhdGZvcm0SEAoDaXBzGAUgASgJUgNpcHMSIAoLbmV0d29ya1VzZWQYBiABKAlSC25ldHdvcmtVc2VkEjQKB2hlYWRlcnMYByADKAsyGi5wYi5Db25uUGFyYW0uSGVhZGVyc0VudHJ5UgdoZWFkZXJzEhQKBXBvZElwGAggASgJUgVwb2RJcBIgCgtkZXZpY2VNb2RlbBgJIAEoCVILZGV2aWNlTW9kZWwSHAoJb3NWZXJzaW9uGAogASgJUglvc1ZlcnNpb24SHgoKYXBwVmVyc2lvbhgLIAEoCVIKYXBwVmVyc2lvbhIaCghsYW5ndWFnZRgMIAEoCVIIbGFuZ3VhZ2UaOgoMSGVhZGVyc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgJUgV2YWx1ZToCOAE=');
+final $typed_data.Uint8List connParamDescriptor = $convert.base64Decode('CglDb25uUGFyYW0SFgoGdXNlcklkGAEgASgJUgZ1c2VySWQSFAoFdG9rZW4YAiABKAlSBXRva2VuEhoKCGRldmljZUlkGAMgASgJUghkZXZpY2VJZBIaCghwbGF0Zm9ybRgEIAEoCVIIcGxhdGZvcm0SEAoDaXBzGAUgASgJUgNpcHMSIAoLbmV0d29ya1VzZWQYBiABKAlSC25ldHdvcmtVc2VkEjQKB2hlYWRlcnMYByADKAsyGi5wYi5Db25uUGFyYW0uSGVhZGVyc0VudHJ5UgdoZWFkZXJzEhQKBXBvZElwGAggASgJUgVwb2RJcBIgCgtkZXZpY2VNb2RlbBgJIAEoCVILZGV2aWNlTW9kZWwSHAoJb3NWZXJzaW9uGAogASgJUglvc1ZlcnNpb24SHgoKYXBwVmVyc2lvbhgLIAEoCVIKYXBwVmVyc2lvbhIaCghsYW5ndWFnZRgMIAEoCVIIbGFuZ3VhZ2USHAoJdGltZXN0YW1wGA0gASgDUgl0aW1lc3RhbXAaOgoMSGVhZGVyc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgJUgV2YWx1ZToCOAE=');
 @$core.Deprecated('Use getUserConnReqDescriptor instead')
 const GetUserConnReq$json = const {
   '1': 'GetUserConnReq',
@@ -173,19 +174,20 @@ final $typed_data.Uint8List responseBodyDescriptor = $convert.base64Decode('CgxS
 const SetCxnParamsReq$json = const {
   '1': 'SetCxnParamsReq',
   '2': const [
-    const {'1': 'platform', '3': 1, '4': 1, '5': 9, '10': 'platform'},
-    const {'1': 'deviceId', '3': 2, '4': 1, '5': 9, '10': 'deviceId'},
-    const {'1': 'deviceModel', '3': 3, '4': 1, '5': 9, '10': 'deviceModel'},
-    const {'1': 'osVersion', '3': 4, '4': 1, '5': 9, '10': 'osVersion'},
-    const {'1': 'appVersion', '3': 5, '4': 1, '5': 9, '10': 'appVersion'},
-    const {'1': 'language', '3': 6, '4': 1, '5': 9, '10': 'language'},
-    const {'1': 'networkUsed', '3': 7, '4': 1, '5': 9, '10': 'networkUsed'},
+    const {'1': 'packageId', '3': 1, '4': 1, '5': 9, '10': 'packageId'},
+    const {'1': 'platform', '3': 2, '4': 1, '5': 9, '10': 'platform'},
+    const {'1': 'deviceId', '3': 3, '4': 1, '5': 9, '10': 'deviceId'},
+    const {'1': 'deviceModel', '3': 4, '4': 1, '5': 9, '10': 'deviceModel'},
+    const {'1': 'osVersion', '3': 5, '4': 1, '5': 9, '10': 'osVersion'},
+    const {'1': 'appVersion', '3': 6, '4': 1, '5': 9, '10': 'appVersion'},
+    const {'1': 'language', '3': 7, '4': 1, '5': 9, '10': 'language'},
+    const {'1': 'networkUsed', '3': 8, '4': 1, '5': 9, '10': 'networkUsed'},
     const {'1': 'ext', '3': 11, '4': 1, '5': 12, '10': 'ext'},
   ],
 };
 
 /// Descriptor for `SetCxnParamsReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List setCxnParamsReqDescriptor = $convert.base64Decode('Cg9TZXRDeG5QYXJhbXNSZXESGgoIcGxhdGZvcm0YASABKAlSCHBsYXRmb3JtEhoKCGRldmljZUlkGAIgASgJUghkZXZpY2VJZBIgCgtkZXZpY2VNb2RlbBgDIAEoCVILZGV2aWNlTW9kZWwSHAoJb3NWZXJzaW9uGAQgASgJUglvc1ZlcnNpb24SHgoKYXBwVmVyc2lvbhgFIAEoCVIKYXBwVmVyc2lvbhIaCghsYW5ndWFnZRgGIAEoCVIIbGFuZ3VhZ2USIAoLbmV0d29ya1VzZWQYByABKAlSC25ldHdvcmtVc2VkEhAKA2V4dBgLIAEoDFIDZXh0');
+final $typed_data.Uint8List setCxnParamsReqDescriptor = $convert.base64Decode('Cg9TZXRDeG5QYXJhbXNSZXESHAoJcGFja2FnZUlkGAEgASgJUglwYWNrYWdlSWQSGgoIcGxhdGZvcm0YAiABKAlSCHBsYXRmb3JtEhoKCGRldmljZUlkGAMgASgJUghkZXZpY2VJZBIgCgtkZXZpY2VNb2RlbBgEIAEoCVILZGV2aWNlTW9kZWwSHAoJb3NWZXJzaW9uGAUgASgJUglvc1ZlcnNpb24SHgoKYXBwVmVyc2lvbhgGIAEoCVIKYXBwVmVyc2lvbhIaCghsYW5ndWFnZRgHIAEoCVIIbGFuZ3VhZ2USIAoLbmV0d29ya1VzZWQYCCABKAlSC25ldHdvcmtVc2VkEhAKA2V4dBgLIAEoDFIDZXh0');
 @$core.Deprecated('Use setCxnParamsRespDescriptor instead')
 const SetCxnParamsResp$json = const {
   '1': 'SetCxnParamsResp',
@@ -274,12 +276,33 @@ const AfterDisconnectReq$json = const {
 
 /// Descriptor for `AfterDisconnectReq`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List afterDisconnectReqDescriptor = $convert.base64Decode('ChJBZnRlckRpc2Nvbm5lY3RSZXESKwoJY29ublBhcmFtGAEgASgLMg0ucGIuQ29ublBhcmFtUgljb25uUGFyYW0SIAoLY29ubmVjdGVkQXQYAiABKAlSC2Nvbm5lY3RlZEF0EiYKDmRpc2Nvbm5lY3RlZEF0GAMgASgJUg5kaXNjb25uZWN0ZWRBdA==');
+@$core.Deprecated('Use keepAliveReqDescriptor instead')
+const KeepAliveReq$json = const {
+  '1': 'KeepAliveReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+  ],
+};
+
+/// Descriptor for `KeepAliveReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List keepAliveReqDescriptor = $convert.base64Decode('CgxLZWVwQWxpdmVSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXE=');
+@$core.Deprecated('Use keepAliveRespDescriptor instead')
+const KeepAliveResp$json = const {
+  '1': 'KeepAliveResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `KeepAliveResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List keepAliveRespDescriptor = $convert.base64Decode('Cg1LZWVwQWxpdmVSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
 const $core.Map<$core.String, $core.dynamic> connServiceBase$json = const {
   '1': 'connService',
   '2': const [
     const {'1': 'KickUserConn', '2': '.pb.KickUserConnReq', '3': '.pb.KickUserConnResp'},
     const {'1': 'GetUserConn', '2': '.pb.GetUserConnReq', '3': '.pb.GetUserConnResp'},
     const {'1': 'SendMsg', '2': '.pb.SendMsgReq', '3': '.pb.SendMsgResp'},
+    const {'1': 'KeepAlive', '2': '.pb.KeepAliveReq', '3': '.pb.KeepAliveResp'},
   ],
 };
 
@@ -294,7 +317,10 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> connServic
   '.pb.ConnParam.HeadersEntry': ConnParam_HeadersEntry$json,
   '.pb.SendMsgReq': SendMsgReq$json,
   '.pb.SendMsgResp': SendMsgResp$json,
+  '.pb.KeepAliveReq': KeepAliveReq$json,
+  '.pb.CommonReq': $0.CommonReq$json,
+  '.pb.KeepAliveResp': KeepAliveResp$json,
 };
 
 /// Descriptor for `connService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List connServiceDescriptor = $convert.base64Decode('Cgtjb25uU2VydmljZRI5CgxLaWNrVXNlckNvbm4SEy5wYi5LaWNrVXNlckNvbm5SZXEaFC5wYi5LaWNrVXNlckNvbm5SZXNwEjYKC0dldFVzZXJDb25uEhIucGIuR2V0VXNlckNvbm5SZXEaEy5wYi5HZXRVc2VyQ29ublJlc3ASKgoHU2VuZE1zZxIOLnBiLlNlbmRNc2dSZXEaDy5wYi5TZW5kTXNnUmVzcA==');
+final $typed_data.Uint8List connServiceDescriptor = $convert.base64Decode('Cgtjb25uU2VydmljZRI5CgxLaWNrVXNlckNvbm4SEy5wYi5LaWNrVXNlckNvbm5SZXEaFC5wYi5LaWNrVXNlckNvbm5SZXNwEjYKC0dldFVzZXJDb25uEhIucGIuR2V0VXNlckNvbm5SZXEaEy5wYi5HZXRVc2VyQ29ublJlc3ASKgoHU2VuZE1zZxIOLnBiLlNlbmRNc2dSZXEaDy5wYi5TZW5kTXNnUmVzcBIwCglLZWVwQWxpdmUSEC5wYi5LZWVwQWxpdmVSZXEaES5wYi5LZWVwQWxpdmVSZXNw');
