@@ -21,8 +21,8 @@ class Paths {
 class Routes {
   static String launch = "/launch";
   static String login = "/login";
-  static String registerAccount = "/login/register_account";
-  static String modifyPassword = "/login/modify_password";
+  static String registerAccount = "/register_account";
+  static String modifyPassword = "/modify_password";
 
   static String menu = "/menu";
   static String news = menu + Paths.news;
