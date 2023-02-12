@@ -60,6 +60,7 @@ class LoginLogic extends GetxController {
         //   return;
         // }
         HiveTool.login(data.userId, data.token);
+        Get.offNamed(Routes.menu);
       },
       onError: (code, error) {
         GetLoadingDialog.hide();
