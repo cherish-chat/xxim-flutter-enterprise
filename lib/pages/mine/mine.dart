@@ -10,6 +10,8 @@ class MinePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MineLogic logic = Get.put(MineLogic());
-    return Container();
+    return Container(
+      color: Colors.yellow,
+    );
   }
 }

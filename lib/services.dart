@@ -8,15 +8,12 @@ Future initServices() async {
       (await getApplicationDocumentsDirectory()).path,
     );
   }
-  await Get.putAsync(
-    () => HiveService().init(HiveService.config),
-    tag: HiveService.config,
-  );
-  await Get.putAsync(
-    () => HiveService().init(HiveService.user),
-    tag: HiveService.user,
-  );
-  await Get.putAsync(() => HttpService().init());
+  Box configBox = await HiveService().init(HiveService.config);
+  Get.create(() => configBox, tag: HiveService.config);
+  Box userBox = await HiveService().init(HiveService.user);
+  Get.create(() => userBox, tag: HiveService.user);
+  HttpService httpService = await HttpService().init();
+  Get.create(() => httpService);
   await XXIM.instance.init();
 }
 

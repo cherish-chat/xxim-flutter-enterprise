@@ -10,6 +10,8 @@ class NewsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     NewsLogic logic = Get.put(NewsLogic());
-    return Container();
+    return Container(
+      color: Colors.red,
+    );
   }
 }

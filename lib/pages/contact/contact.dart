@@ -10,6 +10,8 @@ class ContactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ContactLogic logic = Get.put(ContactLogic());
-    return Container();
+    return Container(
+      color: Colors.blue,
+    );
   }
 }

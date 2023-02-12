@@ -12,7 +12,8 @@ import 'package:get/get.dart';
 export 'package:flutter/material.dart';
 export 'package:flutter/cupertino.dart' hide RefreshCallback;
 export 'package:flutter/services.dart' hide TextInput;
-export 'package:get/get.dart' hide Response, MultipartFile, FormData;
+export 'package:get/get.dart'
+    hide Response, MultipartFile, FormData, VoidCallback;
 export 'package:xxim_flutter_enterprise/component/component.dart';
 export 'package:xxim_flutter_enterprise/pages/widgets/widgets.dart';
 export 'package:xxim_flutter_enterprise/tool/tool.dart';

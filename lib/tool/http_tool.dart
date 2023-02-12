@@ -14,7 +14,7 @@ const String errorMsg = "网络开小差啦，请稍后重试！";
 typedef SuccessCallback = Function(dynamic body);
 typedef ErrorCallback = Function(ErrorType type, String error);
 
-class HttpTool extends GetLifeCycle {
+class HttpTool with GetLifeCycleMixin {
   static HttpTool getHttp(Type type, {String? tag}) {
     String text;
     if (tag == null) {
@@ -27,10 +27,6 @@ class HttpTool extends GetLifeCycle {
 
   final Dio _dio = HttpService.service.getDio();
   final CancelToken _cancelToken = CancelToken();
-
-  HttpTool() {
-    $configureLifeCycle();
-  }
 
   Future<Response?> get(
     String path, {
