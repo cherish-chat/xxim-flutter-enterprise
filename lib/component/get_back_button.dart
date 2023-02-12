@@ -24,7 +24,7 @@ class GetBackButton extends StatelessWidget {
         if (onPressed != null) {
           onPressed!();
         } else {
-          Navigator.maybePop(context);
+          Get.back();
         }
       },
     );
