@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:protobuf/protobuf.dart';
+import 'package:xxim_flutter_enterprise/main.dart'
+    hide SuccessCallback, ErrorCallback;
 import 'package:xxim_flutter_enterprise/proto/common.pb.dart';
 import 'package:xxim_flutter_enterprise/xxim/xxim_tool.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
@@ -140,28 +144,26 @@ class XXIM {
         onSuccess(resp()..mergeFromBuffer(data));
       },
       onError: (code, error) {
+        try {
+          CommonResp commonResp = CommonResp.fromBuffer(utf8.encode(error));
+          code = commonResp.code.value;
+          error = commonResp.msg;
+        } catch (_) {}
         switch (CommonResp_Code.valueOf(code)) {
           case CommonResp_Code.Success:
-            break;
-          case CommonResp_Code.UnknownError:
-            onError?.call(code, error);
-            break;
-          case CommonResp_Code.InternalError:
-            onError?.call(code, error);
-            break;
-          case CommonResp_Code.RequestError:
-            onError?.call(code, error);
             break;
           case CommonResp_Code.AuthError:
             // onError?.call(code, error);
             break;
           case CommonResp_Code.ToastError:
             onError?.call(code, error);
+            Tool.showToast(error);
             break;
           case CommonResp_Code.AlertError:
             onError?.call(code, error);
+            alertError(error);
             break;
-          case CommonResp_Code.RetryError:
+          default:
             onError?.call(code, error);
             break;
         }
@@ -169,5 +171,46 @@ class XXIM {
     );
     if (data == null) return null;
     return resp()..mergeFromBuffer(data);
+  }
+
+  void alertError(String error) {
+    Map jsonMap = json.decode(error);
+    List<dynamic> actions = jsonMap["actions"];
+    GetAlertDialog.show(
+      Column(
+        children: [
+          Text(
+            jsonMap["title"],
+            style: const TextStyle(
+              color: getTextBlack,
+              fontSize: 16,
+              fontWeight: getMedium,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 16),
+          Text(
+            jsonMap["msg"],
+            style: const TextStyle(
+              color: getTextBlack,
+              fontSize: 14,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+      actions: actions.map((e) {
+        return TextButton(
+          onPressed: GetAlertDialog.hide,
+          child: Text(
+            e["title"],
+            style: const TextStyle(
+              color: getTextBlack,
+              fontSize: 14,
+            ),
+          ),
+        );
+      }).toList(),
+    );
   }
 }

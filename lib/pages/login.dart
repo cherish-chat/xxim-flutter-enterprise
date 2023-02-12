@@ -51,19 +51,18 @@ class LoginLogic extends GetxController {
           Tool.showToast("账号异常，请重试");
           return;
         }
-        bool status = await XXIM.instance.setUserParams(
-          userId: data.userId,
-          token: data.token,
-        );
-        if (!status) {
-          Tool.showToast("登录失败，请重试");
-          return;
-        }
+        // bool status = await XXIM.instance.setUserParams(
+        //   userId: data.userId,
+        //   token: data.token,
+        // );
+        // if (!status) {
+        //   Tool.showToast("登录失败，请重试");
+        //   return;
+        // }
         HiveTool.login(data.userId, data.token);
       },
       onError: (code, error) {
         GetLoadingDialog.hide();
-        Tool.showToast(error);
       },
     );
   }
