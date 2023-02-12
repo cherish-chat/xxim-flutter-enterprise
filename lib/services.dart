@@ -4,9 +4,7 @@ import 'package:path_provider/path_provider.dart';
 
 Future initServices() async {
   if (!kIsWeb) {
-    Hive.init(
-      (await getApplicationDocumentsDirectory()).path,
-    );
+    Hive.init((await getApplicationDocumentsDirectory()).path);
   }
   Box configBox = await HiveService().init(HiveService.config);
   Get.create(() => configBox, tag: HiveService.config);
