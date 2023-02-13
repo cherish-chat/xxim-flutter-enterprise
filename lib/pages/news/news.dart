@@ -5,13 +5,35 @@ class NewsLogic extends GetxController {
 }
 
 class NewsPage extends StatelessWidget {
-  const NewsPage({Key? key}) : super(key: key);
+  final Function() onClosePane;
+  final GetDelegate delegate;
+
+  const NewsPage({
+    Key? key,
+    required this.onClosePane,
+    required this.delegate,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     NewsLogic logic = Get.put(NewsLogic());
     return Container(
+      alignment: Alignment.center,
       color: Colors.red,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          onClosePane();
+          delegate.toNamed(
+            Routes.chat(Tool.getUUId()),
+          );
+        },
+        child: Container(
+          width: 50,
+          height: 50,
+          color: Colors.black,
+        ),
+      ),
     );
   }
 }

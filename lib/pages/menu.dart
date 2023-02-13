@@ -1,8 +1,41 @@
 import 'package:badges/badges.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
+import 'package:xxim_flutter_enterprise/pages/contact/contact.dart';
+import 'package:xxim_flutter_enterprise/pages/mine/mine.dart';
+import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 
 class MenuLogic extends GetxController {
   static MenuLogic? logic() => Tool.capture(Get.find);
+
+  SlidableController? slidableController;
+  bool isOpenStartPane = false;
+
+  RxInt pageIndex = 0.obs;
+  PageController? pageController;
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  @override
+  void onClose() {
+    slidableController?.dispose();
+    pageController?.dispose();
+    super.onClose();
+  }
+
+  void switchPage(int index) {
+    if (pageIndex.value == index) return;
+    pageController?.jumpToPage(index);
+    pageIndex.value = index;
+  }
+
+  void openStartPane() async {
+    // await Future.delayed(kThemeChangeDuration);
+    // slidableController?.openStartActionPane();
+  }
 }
 
 class MenuPage extends StatelessWidget with GetResponsiveMixin {
@@ -14,7 +47,7 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
   MenuPage({this.alwaysUseBuilder = true, Key? key})
       : screen = ResponsiveScreen(
           const ResponsiveScreenSettings(
-            tabletChangePoint: 800,
+            tabletChangePoint: 700,
           ),
         ),
         super(key: key);
@@ -26,10 +59,11 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
       routerDelegate: Get.nestedKey(Routes.menu),
       builder: (context) {
         GetDelegate delegate = context.navigation;
-        String location = context.location;
-        return screen.isPhone
-            ? _buildPhone(logic, delegate, location)
-            : _buildTable(logic, delegate, location);
+        return Scaffold(
+          body: screen.isPhone
+              ? _buildPhone(logic, delegate)
+              : _buildTable(logic, delegate),
+        );
       },
     );
   }
@@ -37,100 +71,119 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
   Widget _buildPhone(
     MenuLogic logic,
     GetDelegate delegate,
-    String location,
   ) {
-    return Scaffold(
-      body: GetRouterOutlet(
-        anchorRoute: Routes.menu,
-        initialRoute: Routes.news,
+    return Slidable(
+      startActionPane: ActionPane(
+        extentRatio: 0.75,
+        motion: const BehindMotion(),
+        children: [
+          SizedBox(
+            width: Get.width * 0.75,
+            child: Column(
+              children: [
+                Expanded(
+                  child: _buildPageView(logic, delegate),
+                ),
+                _buildNavigationBar(logic),
+              ],
+            ),
+          ),
+        ],
       ),
-      bottomNavigationBar: _buildNavigationBar(
-        logic,
-        delegate,
-        location,
-      ),
+      child: Builder(builder: (context) {
+        logic.slidableController = Slidable.of(context);
+        if (logic.isOpenStartPane) {
+          logic.isOpenStartPane = false;
+          logic.openStartPane();
+        }
+        return GetRouterOutlet(
+          anchorRoute: Routes.menu,
+          initialRoute: Routes.empty,
+        );
+      }),
     );
   }
 
   Widget _buildTable(
     MenuLogic logic,
     GetDelegate delegate,
-    String location,
   ) {
-    return Scaffold(
-      body: Row(
-        children: [
-          SizedBox(
-            width: 300,
-            child: Column(
-              children: [
-                Expanded(
-                  child: Container(
-                    color: Colors.deepPurple,
-                  ),
-                ),
-                _buildNavigationBar(
-                  logic,
-                  delegate,
-                  location,
-                ),
-              ],
-            ),
+    if (logic.slidableController?.direction.value != 0) {
+      logic.isOpenStartPane = true;
+    }
+    return Row(
+      children: [
+        SizedBox(
+          width: 350,
+          child: Column(
+            children: [
+              Expanded(
+                child: _buildPageView(logic, delegate),
+              ),
+              _buildNavigationBar(logic),
+            ],
           ),
-          Expanded(
-            child: GetRouterOutlet(
-              anchorRoute: Routes.menu,
-              initialRoute: Routes.news,
-            ),
+        ),
+        Expanded(
+          child: GetRouterOutlet(
+            anchorRoute: Routes.menu,
+            initialRoute: Routes.empty,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
-  Widget _buildNavigationBar(
+  Widget _buildPageView(
     MenuLogic logic,
     GetDelegate delegate,
-    String location,
   ) {
+    if (logic.pageController != null) {
+      logic.pageController?.dispose();
+      logic.pageController = null;
+    }
+    logic.pageController = PageController(
+      initialPage: logic.pageIndex.value,
+    );
+    return PageView(
+      controller: logic.pageController,
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        GetKeepAlive(
+          child: NewsPage(
+            onClosePane: () {
+              logic.slidableController?.close();
+            },
+            delegate: delegate,
+          ),
+        ),
+        const GetKeepAlive(child: ContactPage()),
+        const GetKeepAlive(child: MinePage()),
+      ],
+    );
+  }
+
+  Widget _buildNavigationBar(MenuLogic logic) {
     double height = getNavigationBarHeight + SafeTool.instance.safeBtm;
-    int currentIndex = 0;
-    if (location.startsWith(Routes.contact)) {
-      currentIndex = 1;
-    }
-    if (location.startsWith(Routes.mine)) {
-      currentIndex = 2;
-    }
-    return Container(
+    return ConstrainedBox(
       constraints: BoxConstraints(
         minHeight: height,
         maxHeight: height,
       ),
-      color: getPlaceholderColor,
-      child: BottomNavigationBar(
-        items: _buildItems(logic),
-        onTap: (value) {
-          switch (value) {
-            case 0:
-              delegate.toNamed(Routes.menu);
-              break;
-            case 1:
-              delegate.toNamed(Routes.contact);
-              break;
-            case 2:
-              delegate.toNamed(Routes.mine);
-              break;
-          }
-        },
-        currentIndex: currentIndex,
-        elevation: 0,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        iconSize: 30,
-        selectedItemColor: getMainColor,
-        unselectedItemColor: const Color(0xFF2E2E2E),
-        selectedFontSize: 10,
-        unselectedFontSize: 10,
+      child: Obx(
+        () => BottomNavigationBar(
+          items: _buildItems(logic),
+          onTap: logic.switchPage,
+          currentIndex: logic.pageIndex.value,
+          elevation: 0,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: getPlaceholderColor,
+          iconSize: 30,
+          selectedItemColor: getMainColor,
+          unselectedItemColor: const Color(0xFF2E2E2E),
+          selectedFontSize: 10,
+          unselectedFontSize: 10,
+        ),
       ),
     );
   }
