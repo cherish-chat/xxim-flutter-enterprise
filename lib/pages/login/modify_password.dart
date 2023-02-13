@@ -52,7 +52,6 @@ class ModifyPasswordLogic extends GetxController {
     //   },
     //   onError: (code, error) {
     //     GetLoadingDialog.hide();
-    //     Tool.showToast(error);
     //   },
     // );
   }

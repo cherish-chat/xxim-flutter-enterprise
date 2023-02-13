@@ -72,7 +72,6 @@ class RegisterAccountLogic extends GetxController {
       },
       onError: (code, error) {
         GetLoadingDialog.hide();
-        Tool.showToast(error);
       },
     );
   }

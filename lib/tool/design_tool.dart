@@ -38,7 +38,7 @@ class DesignTool {
       splashColor: Colors.transparent,
       appBarTheme: const AppBarTheme(
         backgroundColor: getToolbarColor,
-        elevation: 0,
+        elevation: 1,
         shadowColor: getDividerColor,
         centerTitle: true,
         toolbarHeight: getToolbarHeight,

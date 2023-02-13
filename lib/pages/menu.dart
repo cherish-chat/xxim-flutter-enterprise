@@ -8,6 +8,8 @@ import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 class MenuLogic extends GetxController {
   static MenuLogic? logic() => Tool.capture(Get.find);
 
+  GetDelegate? getDelegate;
+
   SlidableController? slidableController;
   bool isOpenStartPane = false;
 
@@ -53,31 +55,26 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
     return GetRouterOutlet.builder(
       routerDelegate: Get.nestedKey(Routes.menu),
       builder: (context) {
-        GetDelegate delegate = context.navigation;
+        logic.getDelegate = context.navigation;
         return Scaffold(
-          body: screen.isPhone
-              ? _buildPhone(logic, delegate)
-              : _buildTable(logic, delegate),
+          body: screen.isPhone ? _buildPhone(logic) : _buildTable(logic),
         );
       },
     );
   }
 
-  Widget _buildPhone(
-    MenuLogic logic,
-    GetDelegate delegate,
-  ) {
+  Widget _buildPhone(MenuLogic logic) {
     return Slidable(
       startActionPane: ActionPane(
-        extentRatio: 0.8,
+        extentRatio: 0.86,
         motion: const BehindMotion(),
         children: [
           SizedBox(
-            width: Get.width * 0.8,
+            width: Get.width * 0.86,
             child: Column(
               children: [
                 Expanded(
-                  child: _buildPageView(logic, delegate),
+                  child: _buildPageView(logic),
                 ),
                 _buildNavigationBar(logic),
               ],
@@ -99,10 +96,7 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
     );
   }
 
-  Widget _buildTable(
-    MenuLogic logic,
-    GetDelegate delegate,
-  ) {
+  Widget _buildTable(MenuLogic logic) {
     if (logic.slidableController?.direction.value != 0) {
       logic.isOpenStartPane = true;
     }
@@ -113,7 +107,7 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
           child: Column(
             children: [
               Expanded(
-                child: _buildPageView(logic, delegate),
+                child: _buildPageView(logic),
               ),
               _buildNavigationBar(logic),
             ],
@@ -129,10 +123,7 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
     );
   }
 
-  Widget _buildPageView(
-    MenuLogic logic,
-    GetDelegate delegate,
-  ) {
+  Widget _buildPageView(MenuLogic logic) {
     if (logic.pageController != null) {
       logic.pageController?.dispose();
       logic.pageController = null;
@@ -143,17 +134,10 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
     return PageView(
       controller: logic.pageController,
       physics: const NeverScrollableScrollPhysics(),
-      children: [
-        GetKeepAlive(
-          child: NewsPage(
-            onClosePane: () {
-              logic.slidableController?.close();
-            },
-            delegate: delegate,
-          ),
-        ),
-        const GetKeepAlive(child: ContactPage()),
-        const GetKeepAlive(child: MinePage()),
+      children: const [
+        GetKeepAlive(child: NewsPage()),
+        GetKeepAlive(child: ContactPage()),
+        GetKeepAlive(child: MinePage()),
       ],
     );
   }
