@@ -66,11 +66,11 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
   Widget _buildPhone(MenuLogic logic) {
     return Slidable(
       startActionPane: ActionPane(
-        extentRatio: 0.86,
+        extentRatio: 0.85,
         motion: const BehindMotion(),
         children: [
           SizedBox(
-            width: Get.width * 0.86,
+            width: Get.width * 0.85,
             child: Column(
               children: [
                 Expanded(

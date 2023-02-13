@@ -83,7 +83,7 @@ class NewsPage extends StatelessWidget {
       ),
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTap: () async {
+        onTap: () {
           MenuLogic? logic = MenuLogic.logic();
           if (logic == null) return;
           logic.slidableController?.close();

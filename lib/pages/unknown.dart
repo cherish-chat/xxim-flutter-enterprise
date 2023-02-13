@@ -10,24 +10,11 @@ class UnknownPage extends StatelessWidget {
         leading: const GetBackButton(),
         title: const Text("404"),
       ),
-      body: Empty(
-        child: Column(
-          children: const [
-            SizedBox(height: 120),
-            Icon(
-              Icons.error,
-              color: Colors.black,
-              size: 50,
-            ),
-            SizedBox(height: 20),
-            Text(
-              "页面找不到了",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-              ),
-            ),
-          ],
+      body: Center(
+        child: Image.asset(
+          "assets/images/ic_unknown_150.webp",
+          width: 200,
+          height: 200,
         ),
       ),
       backgroundColor: Colors.white,
