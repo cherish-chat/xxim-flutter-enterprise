@@ -77,27 +77,29 @@ class LoginPage extends StatelessWidget {
     LoginLogic logic = Get.put(LoginLogic());
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text(
-              "欢迎光临",
-              style: TextStyle(
-                color: getTextBlack,
-                fontSize: 35,
-                fontWeight: getBold,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                "欢迎光临",
+                style: TextStyle(
+                  color: getTextBlack,
+                  fontSize: 35,
+                  fontWeight: getBold,
+                ),
               ),
-            ),
-            const SizedBox(height: 50),
-            _buildUsername(logic),
-            const SizedBox(height: 25),
-            _buildPassword(logic),
-            const SizedBox(height: 50),
-            _buildLogin(logic),
-            const SizedBox(height: 10),
-            _buildRegister(logic),
-            const SizedBox(height: 100),
-          ],
+              const SizedBox(height: 50),
+              _buildUsername(logic),
+              const SizedBox(height: 25),
+              _buildPassword(logic),
+              const SizedBox(height: 50),
+              _buildLogin(logic),
+              const SizedBox(height: 10),
+              _buildRegister(logic),
+              const SizedBox(height: 100),
+            ],
+          ),
         ),
       ),
     );

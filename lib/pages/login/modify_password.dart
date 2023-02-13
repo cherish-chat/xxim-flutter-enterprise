@@ -69,18 +69,20 @@ class ModifyPasswordPage extends StatelessWidget {
         title: const Text("修改密码"),
       ),
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildUsername(logic),
-            const SizedBox(height: 25),
-            _buildOldPwd(logic),
-            const SizedBox(height: 25),
-            _buildNewPwd(logic),
-            const SizedBox(height: 50),
-            _buildModify(logic),
-            const SizedBox(height: 100),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _buildUsername(logic),
+              const SizedBox(height: 25),
+              _buildOldPwd(logic),
+              const SizedBox(height: 25),
+              _buildNewPwd(logic),
+              const SizedBox(height: 50),
+              _buildModify(logic),
+              const SizedBox(height: 100),
+            ],
+          ),
         ),
       ),
     );

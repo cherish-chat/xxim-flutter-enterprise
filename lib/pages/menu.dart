@@ -124,21 +124,25 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
   }
 
   Widget _buildPageView(MenuLogic logic) {
-    if (logic.pageController != null) {
-      logic.pageController?.dispose();
-      logic.pageController = null;
-    }
-    logic.pageController = PageController(
-      initialPage: logic.pageIndex.value,
-    );
-    return PageView(
-      controller: logic.pageController,
-      physics: const NeverScrollableScrollPhysics(),
-      children: const [
-        GetKeepAlive(child: NewsPage()),
-        GetKeepAlive(child: ContactPage()),
-        GetKeepAlive(child: MinePage()),
-      ],
+    return GetBuilder<MenuLogic>(
+      builder: (controller) {
+        if (logic.pageController != null) {
+          logic.pageController?.dispose();
+          logic.pageController = null;
+        }
+        logic.pageController = PageController(
+          initialPage: logic.pageIndex.value,
+        );
+        return PageView(
+          controller: logic.pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: const [
+            GetKeepAlive(child: NewsPage()),
+            GetKeepAlive(child: ContactPage()),
+            GetKeepAlive(child: MinePage()),
+          ],
+        );
+      },
     );
   }
 

@@ -83,11 +83,13 @@ class NewsPage extends StatelessWidget {
       ),
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTap: () {
-          MenuLogic.logic()?.slidableController?.close();
-          MenuLogic.logic()?.getDelegate?.toNamed(
-                Routes.chat(Tool.getUUId()),
-              );
+        onTap: () async {
+          MenuLogic? logic = MenuLogic.logic();
+          if (logic == null) return;
+          logic.slidableController?.close();
+          logic.getDelegate?.toNamed(
+            Routes.chat(Tool.getUUId()),
+          );
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),

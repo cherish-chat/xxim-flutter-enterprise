@@ -89,20 +89,22 @@ class RegisterAccountPage extends StatelessWidget {
         title: const Text("注册"),
       ),
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildUsername(logic),
-            const SizedBox(height: 25),
-            _buildFirstPwd(logic),
-            const SizedBox(height: 25),
-            _buildConfirmPwd(logic),
-            const SizedBox(height: 25),
-            _buildInvitation(logic),
-            const SizedBox(height: 50),
-            _buildRegister(logic),
-            const SizedBox(height: 100),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _buildUsername(logic),
+              const SizedBox(height: 25),
+              _buildFirstPwd(logic),
+              const SizedBox(height: 25),
+              _buildConfirmPwd(logic),
+              const SizedBox(height: 25),
+              _buildInvitation(logic),
+              const SizedBox(height: 50),
+              _buildRegister(logic),
+              const SizedBox(height: 100),
+            ],
+          ),
         ),
       ),
     );
