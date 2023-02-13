@@ -17,23 +17,41 @@ class NewsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     NewsLogic logic = Get.put(NewsLogic());
-    return Container(
-      alignment: Alignment.center,
-      color: Colors.red,
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () {
-          onClosePane();
-          delegate.toNamed(
-            Routes.chat(Tool.getUUId()),
-          );
-        },
-        child: Container(
-          width: 50,
-          height: 50,
-          color: Colors.black,
+    return Column(
+      children: [
+        _buildAppBar(logic),
+        Expanded(
+          child: Container(
+            alignment: Alignment.center,
+            color: Colors.red,
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                onClosePane();
+                delegate.toNamed(
+                  Routes.chat(Tool.getUUId()),
+                );
+              },
+              child: Container(
+                width: 50,
+                height: 50,
+                color: Colors.black,
+              ),
+            ),
+          ),
         ),
-      ),
+      ],
     );
+  }
+
+  Widget _buildAppBar(NewsLogic logic) {
+    return AppBar(
+      title: const Text("会话"),
+      actions: _buildActions(logic),
+    );
+  }
+
+  List<Widget> _buildActions(NewsLogic logic) {
+    return [];
   }
 }

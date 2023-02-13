@@ -15,11 +15,6 @@ class MenuLogic extends GetxController {
   PageController? pageController;
 
   @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
   void onClose() {
     slidableController?.dispose();
     pageController?.dispose();
@@ -98,7 +93,7 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
         }
         return GetRouterOutlet(
           anchorRoute: Routes.menu,
-          initialRoute: Routes.empty,
+          initialRoute: Routes.outlet,
         );
       }),
     );
@@ -127,7 +122,7 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
         Expanded(
           child: GetRouterOutlet(
             anchorRoute: Routes.menu,
-            initialRoute: Routes.empty,
+            initialRoute: Routes.outlet,
           ),
         ),
       ],

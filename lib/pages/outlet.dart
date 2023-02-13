@@ -1,7 +1,7 @@
 import 'package:xxim_flutter_enterprise/main.dart';
 
-class EmptyPage extends StatelessWidget {
-  const EmptyPage({Key? key}) : super(key: key);
+class OutletPage extends StatelessWidget {
+  const OutletPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,18 +1,18 @@
 import 'package:xxim_flutter_enterprise/main.dart';
-import 'package:xxim_flutter_enterprise/pages/empty.dart';
 import 'package:xxim_flutter_enterprise/pages/launch.dart';
 import 'package:xxim_flutter_enterprise/pages/login.dart';
 import 'package:xxim_flutter_enterprise/pages/login/modify_password.dart';
 import 'package:xxim_flutter_enterprise/pages/login/register_account.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
+import 'package:xxim_flutter_enterprise/pages/outlet.dart';
 import 'package:xxim_flutter_enterprise/pages/public/photo_view.dart';
 import 'package:xxim_flutter_enterprise/pages/public/web_view.dart';
 
 export 'package:xxim_flutter_enterprise/pages/unknown.dart';
 
 class Paths {
-  static String empty = "/empty";
+  static String outlet = "/outlet";
   static String chat = "/:userId";
 }
 
@@ -23,7 +23,7 @@ class Routes {
   static String modifyPassword = "/modify_password";
 
   static String menu = "/menu";
-  static String empty = menu + Paths.empty;
+  static String outlet = menu + Paths.outlet;
 
   static String chat(String userId) => '$menu/$userId';
 
@@ -78,8 +78,8 @@ class Routes {
             transition: Transition.noTransition,
             children: [
               GetPage(
-                name: Paths.empty,
-                page: () => const EmptyPage(),
+                name: Paths.outlet,
+                page: () => const OutletPage(),
                 showCupertinoParallax: false,
               ),
               GetPage(
