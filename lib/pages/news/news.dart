@@ -86,7 +86,7 @@ class NewsPage extends StatelessWidget {
         onTap: () {
           MenuLogic? logic = MenuLogic.logic();
           if (logic == null) return;
-          logic.slidableController?.close();
+          logic.sliderKey?.currentState?.closeSlider();
           logic.getDelegate?.toNamed(
             Routes.chat(Tool.getUUId()),
           );

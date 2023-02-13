@@ -25,13 +25,7 @@ class OutletPage extends StatelessWidget {
           height: 24,
         ),
         onPressed: () {
-          MenuLogic? logic = MenuLogic.logic();
-          if (logic == null) return;
-          if (logic.slidableController?.direction.value == 0) {
-            logic.slidableController?.openStartActionPane();
-          } else {
-            logic.slidableController?.close();
-          }
+          MenuLogic.logic()?.sliderKey?.currentState?.toggle();
         },
       ),
       title: const Text("空空如也"),

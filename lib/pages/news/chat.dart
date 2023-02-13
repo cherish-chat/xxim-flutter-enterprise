@@ -28,7 +28,7 @@ class ChatPage extends StatelessWidget {
     );
     return Column(
       children: [
-        _buildAppBar(),
+        _buildAppBar(logic),
         Expanded(
           child: Container(
             alignment: Alignment.center,
@@ -58,7 +58,7 @@ class ChatPage extends StatelessWidget {
     );
   }
 
-  Widget _buildAppBar() {
+  Widget _buildAppBar(ChatLogic logic) {
     return AppBar(
       leading: IconButton(
         icon: Image.asset(
@@ -67,13 +67,7 @@ class ChatPage extends StatelessWidget {
           height: 24,
         ),
         onPressed: () {
-          MenuLogic? logic = MenuLogic.logic();
-          if (logic == null) return;
-          if (logic.slidableController?.direction.value == 0) {
-            logic.slidableController?.openStartActionPane();
-          } else {
-            logic.slidableController?.close();
-          }
+          MenuLogic.logic()?.sliderKey?.currentState?.toggle();
         },
       ),
       title: const Text("聊天"),

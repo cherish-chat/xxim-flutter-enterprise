@@ -1,5 +1,5 @@
 import 'package:badges/badges.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/contact.dart';
 import 'package:xxim_flutter_enterprise/pages/mine/mine.dart';
@@ -10,15 +10,14 @@ class MenuLogic extends GetxController {
 
   GetDelegate? getDelegate;
 
-  SlidableController? slidableController;
-  bool isOpenStartPane = false;
+  GlobalKey<SliderDrawerState>? sliderKey;
+  double sliderOpenSize = 0;
 
   RxInt pageIndex = 0.obs;
   PageController? pageController;
 
   @override
   void onClose() {
-    slidableController?.dispose();
     pageController?.dispose();
     super.onClose();
   }
@@ -27,11 +26,6 @@ class MenuLogic extends GetxController {
     if (pageIndex.value == index) return;
     pageController?.jumpToPage(index);
     pageIndex.value = index;
-  }
-
-  void openStartPane() async {
-    // await Future.delayed(kThemeChangeDuration);
-    // slidableController?.openStartActionPane();
   }
 }
 
@@ -64,42 +58,32 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
   }
 
   Widget _buildPhone(MenuLogic logic) {
-    return Slidable(
-      startActionPane: ActionPane(
-        extentRatio: 0.85,
-        motion: const BehindMotion(),
+    double sliderOpenSize = Get.width * 0.85;
+    if (logic.sliderOpenSize != sliderOpenSize) {
+      logic.sliderKey = GlobalKey<SliderDrawerState>();
+      logic.sliderOpenSize = sliderOpenSize;
+    }
+    return SliderDrawer(
+      key: logic.sliderKey,
+      animationDuration: 200,
+      sliderOpenSize: logic.sliderOpenSize,
+      appBar: const SizedBox(),
+      slider: Column(
         children: [
-          SizedBox(
-            width: Get.width * 0.85,
-            child: Column(
-              children: [
-                Expanded(
-                  child: _buildPageView(logic),
-                ),
-                _buildNavigationBar(logic),
-              ],
-            ),
+          Expanded(
+            child: _buildPageView(logic),
           ),
+          _buildNavigationBar(logic),
         ],
       ),
-      child: Builder(builder: (context) {
-        logic.slidableController = Slidable.of(context);
-        if (logic.isOpenStartPane) {
-          logic.isOpenStartPane = false;
-          logic.openStartPane();
-        }
-        return GetRouterOutlet(
-          anchorRoute: Routes.menu,
-          initialRoute: Routes.outlet,
-        );
-      }),
+      child: GetRouterOutlet(
+        anchorRoute: Routes.menu,
+        initialRoute: Routes.outlet,
+      ),
     );
   }
 
   Widget _buildTable(MenuLogic logic) {
-    if (logic.slidableController?.direction.value != 0) {
-      logic.isOpenStartPane = true;
-    }
     return Row(
       children: [
         SizedBox(
@@ -124,25 +108,21 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
   }
 
   Widget _buildPageView(MenuLogic logic) {
-    return GetBuilder<MenuLogic>(
-      builder: (controller) {
-        if (logic.pageController != null) {
-          logic.pageController?.dispose();
-          logic.pageController = null;
-        }
-        logic.pageController = PageController(
-          initialPage: logic.pageIndex.value,
-        );
-        return PageView(
-          controller: logic.pageController,
-          physics: const NeverScrollableScrollPhysics(),
-          children: const [
-            GetKeepAlive(child: NewsPage()),
-            GetKeepAlive(child: ContactPage()),
-            GetKeepAlive(child: MinePage()),
-          ],
-        );
-      },
+    if (logic.pageController != null) {
+      logic.pageController?.dispose();
+      logic.pageController = null;
+    }
+    logic.pageController = PageController(
+      initialPage: logic.pageIndex.value,
+    );
+    return PageView(
+      controller: logic.pageController,
+      physics: const NeverScrollableScrollPhysics(),
+      children: const [
+        GetKeepAlive(child: NewsPage()),
+        GetKeepAlive(child: ContactPage()),
+        GetKeepAlive(child: MinePage()),
+      ],
     );
   }
 
