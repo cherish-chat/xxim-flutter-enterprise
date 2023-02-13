@@ -115,6 +115,8 @@ class NewsPage extends StatelessWidget {
                         fontSize: 16,
                         fontWeight: getSemiBold,
                       ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     SizedBox(height: 5),
                     Text(
