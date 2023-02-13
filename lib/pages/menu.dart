@@ -69,11 +69,11 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
   ) {
     return Slidable(
       startActionPane: ActionPane(
-        extentRatio: 0.75,
+        extentRatio: 0.8,
         motion: const BehindMotion(),
         children: [
           SizedBox(
-            width: Get.width * 0.75,
+            width: Get.width * 0.8,
             child: Column(
               children: [
                 Expanded(
