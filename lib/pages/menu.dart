@@ -8,6 +8,7 @@ import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 class MenuLogic extends GetxController {
   static MenuLogic? logic() => Tool.capture(Get.find);
 
+  RxBool isPhone = false.obs;
   GetDelegate? getDelegate;
 
   GlobalKey<SliderDrawerState>? sliderKey;
@@ -46,6 +47,7 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
   @override
   Widget? builder() {
     MenuLogic logic = Get.put(MenuLogic());
+    logic.isPhone.value = screen.isPhone;
     return GetRouterOutlet.builder(
       routerDelegate: Get.nestedKey(Routes.menu),
       builder: (context) {
@@ -84,6 +86,7 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
   }
 
   Widget _buildTable(MenuLogic logic) {
+    logic.sliderKey = null;
     return Row(
       children: [
         SizedBox(

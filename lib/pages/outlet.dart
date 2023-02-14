@@ -18,16 +18,21 @@ class OutletPage extends StatelessWidget {
 
   Widget _buildAppBar() {
     return AppBar(
-      leading: IconButton(
-        icon: Image.asset(
-          "assets/images/ic_menu_24.webp",
-          width: 24,
-          height: 24,
-        ),
-        onPressed: () {
-          MenuLogic.logic()?.sliderKey?.currentState?.toggle();
-        },
-      ),
+      leading: Obx(() {
+        if (MenuLogic.logic()?.isPhone.value == true) {
+          return IconButton(
+            icon: Image.asset(
+              "assets/images/ic_menu_24.webp",
+              width: 24,
+              height: 24,
+            ),
+            onPressed: () {
+              MenuLogic.logic()?.sliderKey?.currentState?.toggle();
+            },
+          );
+        }
+        return const SizedBox();
+      }),
       title: const Text("空空如也"),
     );
   }
