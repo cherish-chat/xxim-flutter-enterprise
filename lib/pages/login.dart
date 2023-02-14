@@ -15,12 +15,6 @@ class LoginLogic extends GetxController {
   }
 
   @override
-  void onReady() {
-    super.onReady();
-    XXIM.instance.connect(Tool.getWsUrl());
-  }
-
-  @override
   void onClose() {
     username.dispose();
     password.dispose();
@@ -38,6 +32,16 @@ class LoginLogic extends GetxController {
       return;
     }
     GetLoadingDialog.show("登录中");
+    XXIM.instance.connect();
+    bool isConnect = false;
+    await for (bool result in XXIM.instance.connectStream) {
+      isConnect = result;
+      break;
+    }
+    if (!isConnect) {
+      login();
+      return;
+    }
     XXIM.instance.customRequest<LoginResp>(
       method: "/v1/user/white/login",
       req: LoginReq(
@@ -51,14 +55,14 @@ class LoginLogic extends GetxController {
           Tool.showToast("账号异常，请重试");
           return;
         }
-        // bool status = await XXIM.instance.setUserParams(
-        //   userId: data.userId,
-        //   token: data.token,
-        // );
-        // if (!status) {
-        //   Tool.showToast("登录失败，请重试");
-        //   return;
-        // }
+        bool status = await XXIM.instance.setUserParams(
+          userId: data.userId,
+          token: data.token,
+        );
+        if (!status) {
+          Tool.showToast("登录失败，请重试");
+          return;
+        }
         HiveTool.login(data.userId, data.token);
         Get.offNamed(Routes.menu);
       },

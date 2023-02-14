@@ -7,10 +7,10 @@ class ChatLogic extends GetxController {
         tag: tag,
       );
   final String tag;
-  final String userId;
+  final String convId;
   late final HttpTool http;
 
-  ChatLogic(this.tag, this.userId) {
+  ChatLogic(this.tag, this.convId) {
     http = HttpTool.getHttp(ChatLogic, tag: tag);
   }
 }
@@ -21,10 +21,10 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Map pars = Get.parameters;
-    String userId = pars["userId"];
+    String convId = pars["convId"];
     ChatLogic logic = Get.put(
-      ChatLogic(userId, userId),
-      tag: userId,
+      ChatLogic(convId, convId),
+      tag: convId,
     );
     return Column(
       children: [
@@ -44,7 +44,7 @@ class ChatPage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  userId,
+                  convId,
                   style: const TextStyle(
                     color: getTextWhite,
                     fontSize: 20,

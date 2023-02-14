@@ -33,14 +33,24 @@ class LaunchLogic extends GetxController with StateMixin {
 
   void _gotoPage() async {
     if (HiveTool.isLogin()) {
-      // bool status = await XXIM.instance.setUserParams(
-      //   userId: HiveTool.getUserId(),
-      //   token: HiveTool.getToken(),
-      // );
-      // if (!status) {
-      //   _gotoPage();
-      //   return;
-      // }
+      XXIM.instance.connect();
+      bool isConnect = false;
+      await for (bool result in XXIM.instance.connectStream) {
+        isConnect = result;
+        break;
+      }
+      if (!isConnect) {
+        _gotoPage();
+        return;
+      }
+      bool status = await XXIM.instance.setUserParams(
+        userId: HiveTool.getUserId(),
+        token: HiveTool.getToken(),
+      );
+      if (!status) {
+        _gotoPage();
+        return;
+      }
       Get.offNamed(Routes.menu);
     } else {
       Get.offNamed(Routes.login);

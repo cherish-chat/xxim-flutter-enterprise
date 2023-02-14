@@ -1,5 +1,5 @@
+import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:protobuf/protobuf.dart';
@@ -21,6 +21,8 @@ class XXIM {
 
   XXIM._internal();
 
+  late Stream connectStream;
+
   late XXIMSDK _sdk;
   late ConvManager convManager;
   late MsgManager msgManager;
@@ -31,6 +33,8 @@ class XXIM {
     if (!kIsWeb) {
       directory = (await getApplicationDocumentsDirectory()).path;
     }
+    StreamController controller = StreamController<bool>();
+    connectStream = controller.stream;
     _sdk = XXIMSDK()
       ..init(
         directory: directory,
@@ -39,8 +43,12 @@ class XXIM {
         isarSchemas: [],
         connectListener: ConnectListener(
           onConnecting: () {},
-          onSuccess: () {},
-          onClose: (code, error) {},
+          onSuccess: () {
+            controller.add(true);
+          },
+          onClose: (code, error) {
+            controller.add(false);
+          },
         ),
         subscribeCallback: SubscribeCallback(
           onConvParams: () async {
@@ -82,8 +90,25 @@ class XXIM {
     noticeManager = _sdk.noticeManager;
   }
 
-  void connect(String wsUrl) {
-    _sdk.connect(wsUrl);
+  Future<bool> connect() async {
+    if (!isConnect()) {
+      _sdk.connect(Tool.getWsUrl());
+      bool toContinue = true;
+      await Future.doWhile(() async {
+        await Future.delayed(const Duration(milliseconds: 10));
+        if (isConnect()) {
+          return false;
+        }
+        return toContinue;
+      }).timeout(
+        const Duration(milliseconds: 500),
+        onTimeout: () {
+          toContinue = false;
+        },
+      );
+    }
+    await Future.delayed(const Duration(milliseconds: 500));
+    return isConnect();
   }
 
   void disconnect() {
@@ -141,7 +166,11 @@ class XXIM {
       method: method,
       bytes: req.writeToBuffer(),
       onSuccess: (data) {
-        onSuccess(resp()..mergeFromBuffer(data));
+        T t = resp()..mergeFromBuffer(data);
+        if (environment == Environment.debug) {
+          debugPrint("onSuccess:$t");
+        }
+        onSuccess(t);
       },
       onError: (code, error) {
         try {
@@ -149,6 +178,9 @@ class XXIM {
           code = commonResp.code.value;
           error = commonResp.msg;
         } catch (_) {}
+        if (environment == Environment.debug) {
+          debugPrint("onError:$code - $error");
+        }
         switch (CommonResp_Code.valueOf(code)) {
           case CommonResp_Code.Success:
             break;

@@ -25,7 +25,7 @@ class Routes {
   static String menu = "/menu";
   static String outlet = menu + Paths.outlet;
 
-  static String chat(String userId) => '$menu/$userId';
+  static String chat(String convId) => '$menu/$convId';
 
   static String photoView = "/photo_view";
   static String webView = "/web_view";

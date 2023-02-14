@@ -52,7 +52,7 @@ class ContactLogic extends GetxController with StateMixin {
       ),
     );
     update(["list"]);
-    // loadList();
+    loadList();
   }
 
   void loadList() {
@@ -63,7 +63,6 @@ class ContactLogic extends GetxController with StateMixin {
       ),
       resp: GetFriendListResp.create,
       onSuccess: (data) {
-        print("什么：${data.userMap}");
         contactList.clear();
         data.userMap.forEach((key, value) {
           ContactModel model = ContactModel.fromProto(value);
@@ -92,7 +91,6 @@ class ContactLogic extends GetxController with StateMixin {
         change(GetStatus.success({}));
       },
       onError: (code, error) {
-        print("什么：$code - $error");
         loadList();
       },
     );
@@ -326,6 +324,7 @@ class ContactPage extends StatelessWidget {
             const SizedBox(width: 16),
             Expanded(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text(
                     "这是老板",
