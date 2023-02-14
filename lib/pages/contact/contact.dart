@@ -64,8 +64,10 @@ class ContactLogic extends GetxController with StateMixin {
       resp: GetFriendListResp.create,
       onSuccess: (data) {
         contactList.clear();
-        data.userMap.forEach((key, value) {
-          ContactModel model = ContactModel.fromProto(value);
+        List<UserBaseInfo> list = data.userMap.values.toList();
+        for (UserBaseInfo info in list) {
+          if (info.id.isEmpty || info.nickname.isEmpty) continue;
+          ContactModel model = ContactModel.fromProto(info);
           String pinyin = PinyinHelper.getPinyinE(model.nickname);
           String index = pinyin.substring(0, 1).toUpperCase();
           model.pinyin = pinyin;
@@ -75,7 +77,7 @@ class ContactLogic extends GetxController with StateMixin {
             model.index = "#";
           }
           contactList.add(model);
-        });
+        }
         SuspensionUtil.sortListBySuspensionTag(contactList);
         SuspensionUtil.setShowSuspensionStatus(contactList);
         contactList.insert(
