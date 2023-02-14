@@ -274,23 +274,31 @@ class ContactPage extends StatelessWidget {
             "assets/images/ic_new_friends_30.webp",
             "好友申请",
             count: 9,
-            onTap: () {},
+            onTap: () {
+              // 好友申请
+            },
           ),
           buildItem(
             "assets/images/ic_new_group_30.webp",
             "群聊申请",
             count: 9,
-            onTap: () {},
+            onTap: () {
+              // 群聊申请
+            },
           ),
           buildItem(
             "assets/images/ic_my_code_30.webp",
             "我的名片",
-            onTap: () {},
+            onTap: () {
+              // 我的名片
+            },
           ),
           buildItem(
             "assets/images/ic_scan_code_30.webp",
             "扫一扫",
-            onTap: () {},
+            onTap: () {
+              // 扫一扫
+            },
           ),
         ],
       ),
