@@ -1,3 +1,4 @@
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 
 class GetLoadingDialog extends StatelessWidget {
@@ -62,10 +63,9 @@ class GetLoadingDialog extends StatelessWidget {
 
   List<Widget> _buildChildren() {
     List<Widget> children = [
-      const Icon(
-        Icons.circle_notifications_outlined,
+      const SpinKitSquareCircle(
         size: 40,
-        color: Colors.orange,
+        color: getMainColor,
       ),
     ];
     if (text != null && text!.isNotEmpty) {
