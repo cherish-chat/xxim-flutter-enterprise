@@ -25,7 +25,7 @@ export 'translation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (GetPlatform.isDesktop) {
+  if (!kIsWeb && GetPlatform.isDesktop) {
     await windowManager.ensureInitialized();
     windowManager.waitUntilReadyToShow(
       const WindowOptions(

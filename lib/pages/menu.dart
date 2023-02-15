@@ -4,6 +4,10 @@ import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/contact.dart';
 import 'package:xxim_flutter_enterprise/pages/mine/mine.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
+import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
+import 'package:xxim_flutter_enterprise/proto/relation.pb.dart';
+import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
+import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 class MenuLogic extends GetxController {
   static MenuLogic? logic() => Tool.capture(Get.find);
@@ -17,10 +21,89 @@ class MenuLogic extends GetxController {
   RxInt pageIndex = 0.obs;
   PageController? pageController;
 
+  List<UserBaseInfo> userInfoList = [];
+  List<GroupBaseInfo> groupInfoList = [];
+  Map<String, AesParams> convParams = {};
+
+  RxInt newsUnreadCount = 0.obs;
+
+  @override
+  void onReady() {
+    super.onReady();
+    loadConvIdList();
+    loadNewsUnreadCount();
+  }
+
   @override
   void onClose() {
     pageController?.dispose();
     super.onClose();
+  }
+
+  void loadConvIdList() async {
+    await loadFriendList();
+    await loadGroupList();
+    XXIM.instance.openPullSubscribe(
+      convParams: convParams,
+    );
+    NewsLogic.logic()?.loadList();
+  }
+
+  Future loadFriendList() async {
+    await XXIM.instance.customRequest<GetFriendListResp>(
+      method: "/v1/relation/getFriendList",
+      req: GetFriendListReq(
+        opt: GetFriendListReq_Opt.WithBaseInfo,
+      ),
+      resp: GetFriendListResp.create,
+      onSuccess: (data) {
+        userInfoList = data.userMap.values.toList();
+        for (UserBaseInfo info in userInfoList) {
+          if (info.id.isEmpty || info.nickname.isEmpty) continue;
+          String convId = SDKTool.singleConvId(HiveTool.getUserId(), info.id);
+          if (convParams.containsKey(convId)) {
+            convParams[convId] = const AesParams(
+              key: "key",
+              iv: "iv",
+            );
+          } else {
+            convParams.remove(convId);
+          }
+        }
+        ContactLogic.logic()?.loadList();
+      },
+    );
+  }
+
+  Future loadGroupList() async {
+    await XXIM.instance.customRequest<GetMyGroupListResp>(
+      method: "/v1/group/getMyGroupList",
+      req: GetMyGroupListReq(
+        opt: GetMyGroupListReq_Opt.DEFAULT,
+      ),
+      resp: GetMyGroupListResp.create,
+      onSuccess: (data) {
+        groupInfoList = data.groupMap.values.toList();
+        for (GroupBaseInfo info in groupInfoList) {
+          if (info.id.isEmpty) continue;
+          String convId = SDKTool.groupConvId(info.id);
+          if (convParams.containsKey(convId)) {
+            convParams[convId] = const AesParams(
+              key: "key",
+              iv: "iv",
+            );
+          } else {
+            convParams.remove(convId);
+          }
+        }
+      },
+    );
+  }
+
+  void loadNewsUnreadCount() {
+    XXIM.instance.convManager.getUnreadCount().then((value) {
+      newsUnreadCount.value = value;
+    });
   }
 
   void switchPage(int index) {
@@ -160,7 +243,7 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
         "assets/images/ic_news_30_nor.webp",
         "assets/images/ic_news_30_sel.webp",
         "消息",
-        count: 999,
+        count: logic.newsUnreadCount.value,
       ),
       _buildItem(
         "assets/images/ic_contact_30_nor.webp",

@@ -2,7 +2,6 @@ import 'package:azlistview/azlistview.dart';
 import 'package:lpinyin/lpinyin.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
-import 'package:xxim_flutter_enterprise/proto/relation.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 
 class ContactModel extends ISuspensionBean {
@@ -42,7 +41,31 @@ class ContactLogic extends GetxController with StateMixin {
   @override
   void onReady() {
     super.onReady();
-    change(GetStatus.success({}));
+    loadList();
+  }
+
+  void loadList() {
+    contactList.clear();
+    List<UserBaseInfo> userInfoList = MenuLogic.logic()?.userInfoList ?? [];
+    if (userInfoList.isEmpty) {
+      change(GetStatus.error(""));
+      return;
+    }
+    for (UserBaseInfo info in userInfoList) {
+      if (info.id.isEmpty || info.nickname.isEmpty) continue;
+      ContactModel model = ContactModel.fromProto(info);
+      String pinyin = PinyinHelper.getPinyinE(model.nickname);
+      String index = pinyin.substring(0, 1).toUpperCase();
+      model.pinyin = pinyin;
+      if (RegExp("[A-Z]").hasMatch(index)) {
+        model.index = index;
+      } else {
+        model.index = "#";
+      }
+      contactList.add(model);
+    }
+    SuspensionUtil.sortListBySuspensionTag(contactList);
+    SuspensionUtil.setShowSuspensionStatus(contactList);
     contactList.insert(
       0,
       ContactModel(
@@ -53,50 +76,7 @@ class ContactLogic extends GetxController with StateMixin {
       ),
     );
     update(["list"]);
-    loadList();
-  }
-
-  void loadList() {
-    XXIM.instance.customRequest<GetFriendListResp>(
-      method: "/v1/relation/getFriendList",
-      req: GetFriendListReq(
-        opt: GetFriendListReq_Opt.WithBaseInfo,
-      ),
-      resp: GetFriendListResp.create,
-      onSuccess: (data) {
-        contactList.clear();
-        List<UserBaseInfo> list = data.userMap.values.toList();
-        for (UserBaseInfo info in list) {
-          if (info.id.isEmpty || info.nickname.isEmpty) continue;
-          ContactModel model = ContactModel.fromProto(info);
-          String pinyin = PinyinHelper.getPinyinE(model.nickname);
-          String index = pinyin.substring(0, 1).toUpperCase();
-          model.pinyin = pinyin;
-          if (RegExp("[A-Z]").hasMatch(index)) {
-            model.index = index;
-          } else {
-            model.index = "#";
-          }
-          contactList.add(model);
-        }
-        SuspensionUtil.sortListBySuspensionTag(contactList);
-        SuspensionUtil.setShowSuspensionStatus(contactList);
-        contactList.insert(
-          0,
-          ContactModel(
-            userId: "",
-            nickname: "",
-            avatar: "",
-            index: "↑",
-          ),
-        );
-        update(["list"]);
-        change(GetStatus.success({}));
-      },
-      onError: (code, error) {
-        loadList();
-      },
-    );
+    change(GetStatus.success({}));
   }
 }
 
@@ -206,7 +186,7 @@ class ContactPage extends StatelessWidget {
       onLoading: const Loading(),
       onEmpty: const SizedBox(),
       onError: (error) => Error(
-        onRetry: logic.loadList,
+        onRetry: MenuLogic.logic()?.loadFriendList,
       ),
     );
   }

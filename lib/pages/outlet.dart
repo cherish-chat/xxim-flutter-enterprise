@@ -6,13 +6,18 @@ class OutletPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _buildAppBar(),
-        Expanded(
-          child: _buildBody(),
-        ),
-      ],
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        color: getBackgroundColor,
+      ),
+      child: Column(
+        children: [
+          _buildAppBar(),
+          Expanded(
+            child: _buildBody(),
+          ),
+        ],
+      ),
     );
   }
 

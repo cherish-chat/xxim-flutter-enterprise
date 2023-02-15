@@ -13,7 +13,7 @@ export 'package:xxim_flutter_enterprise/pages/unknown.dart';
 
 class Paths {
   static String outlet = "/outlet";
-  static String chat = "/:userId";
+  static String chat = "/:convId";
 }
 
 class Routes {

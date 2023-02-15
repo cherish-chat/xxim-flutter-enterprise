@@ -5,6 +5,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:protobuf/protobuf.dart';
 import 'package:xxim_flutter_enterprise/main.dart'
     hide SuccessCallback, ErrorCallback;
+import 'package:xxim_flutter_enterprise/pages/menu.dart';
+import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 import 'package:xxim_flutter_enterprise/proto/common.pb.dart';
 import 'package:xxim_flutter_enterprise/xxim/xxim_tool.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
@@ -52,20 +54,16 @@ class XXIM {
         ),
         subscribeCallback: SubscribeCallback(
           onConvParams: () async {
-            return {
-              SDKTool.singleConvId("test123456", "test1234567890"):
-                  const AesParams(
-                key: "123",
-                iv: "456",
-              ),
-            };
+            return MenuLogic.logic()?.convParams ?? {};
           },
         ),
         isarListener: IsarListener(
           onCreate: (isar) {},
         ),
         convListener: ConvListener(
-          onUpdate: () {},
+          onUpdate: () {
+            NewsLogic.logic()?.loadList();
+          },
         ),
         msgListener: MsgListener(
           onReceive: (msgModelList) {},
