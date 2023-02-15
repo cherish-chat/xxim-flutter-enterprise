@@ -92,12 +92,7 @@ class XXIM {
 
   Future<bool> connect() async {
     _sdk.connect(Tool.getWsUrl());
-    bool isConnect = false;
-    await for (bool result in connectStream) {
-      isConnect = result;
-      break;
-    }
-    return isConnect;
+    return await connectStream.first;
   }
 
   void disconnect() {

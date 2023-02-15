@@ -318,7 +318,7 @@ class ContactPage extends StatelessWidget {
         // 个人详情
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           children: [
             ClipRRect(
