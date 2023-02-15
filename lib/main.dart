@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:window_manager/window_manager.dart';
 import 'package:xxim_flutter_enterprise/component/component.dart';
 import 'package:xxim_flutter_enterprise/routes.dart';
 import 'package:xxim_flutter_enterprise/services.dart';
@@ -24,6 +25,18 @@ export 'translation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  if (GetPlatform.isDesktop) {
+    await windowManager.ensureInitialized();
+    windowManager.waitUntilReadyToShow(
+      const WindowOptions(
+        minimumSize: Size(375, 812),
+      ),
+      () async {
+        await windowManager.show();
+        await windowManager.focus();
+      },
+    );
+  }
   await initServices();
   runApp(const MyApp());
   errorWidget();
