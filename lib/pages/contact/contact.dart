@@ -303,8 +303,8 @@ class ContactPage extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: const ImageWidget(
-                "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fcbu01.alicdn.com%2Fimg%2Fibank%2F2020%2F720%2F681%2F22278186027_368534779.jpg&refer=http%3A%2F%2Fcbu01.alicdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1678881029&t=1b8b989667b0c99c6d677aefc97c1cb2",
+              child: ImageWidget(
+                item.avatar,
                 width: 55,
                 height: 55,
               ),
@@ -313,10 +313,10 @@ class ContactPage extends StatelessWidget {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
-                    "这是老板",
-                    style: TextStyle(
+                    item.nickname,
+                    style: const TextStyle(
                       color: getTextBlack,
                       fontSize: 16,
                       fontWeight: getSemiBold,
@@ -326,8 +326,8 @@ class ContactPage extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    "1234567890",
-                    style: TextStyle(
+                    item.userId,
+                    style: const TextStyle(
                       color: getHintBlack,
                       fontSize: 14,
                     ),
