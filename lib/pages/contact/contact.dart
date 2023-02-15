@@ -324,7 +324,7 @@ class ContactPage extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Text(
                     item.userId,
                     style: const TextStyle(
