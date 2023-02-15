@@ -33,8 +33,8 @@ class XXIM {
     if (!kIsWeb) {
       directory = (await getApplicationDocumentsDirectory()).path;
     }
-    StreamController controller = StreamController<bool>();
-    connectStream = controller.stream;
+    StreamController connectController = StreamController<bool>();
+    connectStream = connectController.stream;
     _sdk = XXIMSDK()
       ..init(
         directory: directory,
@@ -44,10 +44,10 @@ class XXIM {
         connectListener: ConnectListener(
           onConnecting: () {},
           onSuccess: () {
-            controller.add(true);
+            connectController.add(true);
           },
           onClose: (code, error) {
-            controller.add(false);
+            connectController.add(false);
           },
         ),
         subscribeCallback: SubscribeCallback(
@@ -91,24 +91,13 @@ class XXIM {
   }
 
   Future<bool> connect() async {
-    if (!isConnect()) {
-      _sdk.connect(Tool.getWsUrl());
-      bool toContinue = true;
-      await Future.doWhile(() async {
-        await Future.delayed(const Duration(milliseconds: 10));
-        if (isConnect()) {
-          return false;
-        }
-        return toContinue;
-      }).timeout(
-        const Duration(milliseconds: 500),
-        onTimeout: () {
-          toContinue = false;
-        },
-      );
+    _sdk.connect(Tool.getWsUrl());
+    bool isConnect = false;
+    await for (bool result in connectStream) {
+      isConnect = result;
+      break;
     }
-    await Future.delayed(const Duration(milliseconds: 500));
-    return isConnect();
+    return isConnect;
   }
 
   void disconnect() {
@@ -162,6 +151,38 @@ class XXIM {
     required SuccessCallback<T> onSuccess,
     ErrorCallback? onError,
   }) async {
+    if (!isConnect()) {
+      bool isConnect = await XXIM.instance.connect();
+      if (!isConnect) {
+        if (environment == Environment.debug) {
+          debugPrint(
+              "onError:${CommonResp_Code.UnknownError.value} - Socket连接失败");
+        }
+        onError?.call(
+          CommonResp_Code.UnknownError.value,
+          "Socket连接失败",
+        );
+        return null;
+      } else {
+        if (HiveTool.isLogin()) {
+          bool status = await XXIM.instance.setUserParams(
+            userId: HiveTool.getUserId(),
+            token: HiveTool.getToken(),
+          );
+          if (!status) {
+            if (environment == Environment.debug) {
+              debugPrint(
+                  "onError:${CommonResp_Code.UnknownError.value} - 设置用户参数失败");
+            }
+            onError?.call(
+              CommonResp_Code.UnknownError.value,
+              "设置用户参数失败",
+            );
+            return null;
+          }
+        }
+      }
+    }
     List<int>? data = await _sdk.customRequest(
       method: method,
       bytes: req.writeToBuffer(),

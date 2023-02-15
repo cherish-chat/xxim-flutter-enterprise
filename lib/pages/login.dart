@@ -32,12 +32,7 @@ class LoginLogic extends GetxController {
       return;
     }
     GetLoadingDialog.show("登录中");
-    XXIM.instance.connect();
-    bool isConnect = false;
-    await for (bool result in XXIM.instance.connectStream) {
-      isConnect = result;
-      break;
-    }
+    bool isConnect = await XXIM.instance.connect();
     if (!isConnect) {
       login();
       return;

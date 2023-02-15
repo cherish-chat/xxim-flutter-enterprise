@@ -4,29 +4,29 @@ export 'package:hive/hive.dart';
 
 class HiveTool {
   /// 配置信息
-  static Box get configBox => HiveService.service(HiveService.config);
+  static Box get _configBox => HiveService.service(HiveService.config);
 
-  static String configList = "configList";
+  static const String _configList = "configList";
 
-  static List getConfigList() => configBox.get(
-        configList,
+  static List getConfigList() => _configBox.get(
+        _configList,
         defaultValue: defConfigList,
       );
 
-  static void setConfigList(List configList) => configBox.put(
-        HiveTool.configList,
+  static void setConfigList(List configList) => _configBox.put(
+        _configList,
         configList,
       );
 
   /// 用户信息
-  static Box get userBox => HiveService.service(HiveService.user);
+  static Box get _userBox => HiveService.service(HiveService.user);
 
-  static String userId = "userId";
-  static String token = "token";
+  static const String _userId = "userId";
+  static const String _token = "token";
 
-  static String getUserId() => userBox.get(userId, defaultValue: "");
+  static String getUserId() => _userBox.get(_userId, defaultValue: "");
 
-  static String getToken() => userBox.get(token, defaultValue: "");
+  static String getToken() => _userBox.get(_token, defaultValue: "");
 
   static bool isLogin() => getUserId().isNotEmpty && getToken().isNotEmpty;
 
@@ -34,9 +34,9 @@ class HiveTool {
     String userId,
     String token,
   ) {
-    userBox.put(HiveTool.userId, userId);
-    userBox.put(HiveTool.token, token);
+    _userBox.put(_userId, userId);
+    _userBox.put(_token, token);
   }
 
-  static void logout() => userBox.clear();
+  static void logout() => _userBox.clear();
 }

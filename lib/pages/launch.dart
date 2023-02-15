@@ -33,12 +33,7 @@ class LaunchLogic extends GetxController with StateMixin {
 
   void _gotoPage() async {
     if (HiveTool.isLogin()) {
-      XXIM.instance.connect();
-      bool isConnect = false;
-      await for (bool result in XXIM.instance.connectStream) {
-        isConnect = result;
-        break;
-      }
+      bool isConnect = await XXIM.instance.connect();
       if (!isConnect) {
         _gotoPage();
         return;

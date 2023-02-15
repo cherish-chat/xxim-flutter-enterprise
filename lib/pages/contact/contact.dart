@@ -1,6 +1,7 @@
 import 'package:azlistview/azlistview.dart';
 import 'package:lpinyin/lpinyin.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
+import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/proto/relation.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 
@@ -157,13 +158,17 @@ class ContactPage extends StatelessWidget {
             indexBarOptions: IndexBarOptions(
               textStyle: const TextStyle(
                 fontSize: 14,
-                color: getHintWhite,
+                color: getMainColor,
               ),
               indexHintDecoration: BoxDecoration(
-                color: getToolbarColor,
+                color: getMainColor,
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(8),
               ),
+              indexHintPosition: MenuLogic.logic()?.isPhone.value == true
+                  ? Offset(
+                      Get.width * 0.85 / 2 - 72 / 2, Get.height / 2 - 72 / 2)
+                  : Offset(350 / 2 - 72 / 2, Get.height / 2 - 72 / 2),
             ),
             indexBarData: const [
               "↑",
@@ -293,13 +298,14 @@ class ContactPage extends StatelessWidget {
               // 我的名片
             },
           ),
-          buildItem(
-            "assets/images/ic_scan_code_30.webp",
-            "扫一扫",
-            onTap: () {
-              // 扫一扫
-            },
-          ),
+          if (MenuLogic.logic()?.isPhone.value == true)
+            buildItem(
+              "assets/images/ic_scan_code_30.webp",
+              "扫一扫",
+              onTap: () {
+                // 扫一扫
+              },
+            ),
         ],
       ),
     );
