@@ -6,7 +6,8 @@ import 'package:xxim_flutter_enterprise/pages/contact/my_card.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/scan_card.dart';
 import 'package:xxim_flutter_enterprise/pages/launch.dart';
 import 'package:xxim_flutter_enterprise/pages/login.dart';
-import 'package:xxim_flutter_enterprise/pages/login/modify_password.dart';
+import 'package:xxim_flutter_enterprise/pages/mine/modify_info.dart';
+import 'package:xxim_flutter_enterprise/pages/mine/modify_pwd.dart';
 import 'package:xxim_flutter_enterprise/pages/login/register_account.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
@@ -24,13 +25,14 @@ class Paths {
   static String groupChat = "/group_chat";
   static String myCard = "/my_card";
   static String scanCard = "/scan_card";
+  static String modifyInfo = "/modify_info";
+  static String modifyPwd = "/modify_pwd";
 }
 
 class Routes {
   static String launch = "/launch";
   static String login = "/login";
   static String registerAccount = "/register_account";
-  static String modifyPassword = "/modify_password";
 
   static String menu = "/menu";
   static String outlet = menu + Paths.outlet;
@@ -42,6 +44,8 @@ class Routes {
   static String groupChat = menu + Paths.groupChat;
   static String myCard = menu + Paths.myCard;
   static String scanCard = menu + Paths.scanCard;
+  static String modifyInfo = menu + Paths.modifyInfo;
+  static String modifyPwd = menu + Paths.modifyPwd;
 
   static String photoView = "/photo_view";
   static String webView = "/web_view";
@@ -83,12 +87,6 @@ class Routes {
             showCupertinoParallax: false,
           ),
           GetPage(
-            name: modifyPassword,
-            page: () => const ModifyPasswordPage(),
-            transition: Transition.fade,
-            showCupertinoParallax: false,
-          ),
-          GetPage(
             name: menu,
             page: () => MenuPage(),
             transition: Transition.noTransition,
@@ -126,6 +124,16 @@ class Routes {
               GetPage(
                 name: Paths.scanCard,
                 page: () => const ScanCardPage(),
+                showCupertinoParallax: false,
+              ),
+              GetPage(
+                name: Paths.modifyInfo,
+                page: () => const ModifyInfoPage(),
+                showCupertinoParallax: false,
+              ),
+              GetPage(
+                name: Paths.modifyPwd,
+                page: () => const ModifyPwdPage(),
                 showCupertinoParallax: false,
               ),
             ],

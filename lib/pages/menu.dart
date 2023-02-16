@@ -31,6 +31,7 @@ class MenuLogic extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    loadUserInfo();
     loadConvIdList();
     loadNewsUnreadCount();
   }
@@ -39,6 +40,23 @@ class MenuLogic extends GetxController {
   void onClose() {
     pageController?.dispose();
     super.onClose();
+  }
+
+  void loadUserInfo() {
+    XXIM.instance.customRequest<GetUserHomeResp>(
+      method: "/v1/user/getUserHome",
+      req: GetUserHomeReq(
+        id: HiveTool.getUserId(),
+      ),
+      resp: GetUserHomeResp.create,
+      onSuccess: (data) {
+        HiveTool.setAvatarUrl(data.avatar);
+        HiveTool.setNickname(data.nickname);
+      },
+      onError: (code, error) {
+        loadUserInfo();
+      },
+    );
   }
 
   void loadConvIdList() async {
@@ -50,8 +68,8 @@ class MenuLogic extends GetxController {
     NewsLogic.logic()?.loadList();
   }
 
-  Future loadFriendList() async {
-    await XXIM.instance.customRequest<GetFriendListResp>(
+  Future loadFriendList() {
+    return XXIM.instance.customRequest<GetFriendListResp>(
       method: "/v1/relation/getFriendList",
       req: GetFriendListReq(
         opt: GetFriendListReq_Opt.WithBaseInfo,
@@ -79,8 +97,8 @@ class MenuLogic extends GetxController {
     );
   }
 
-  Future loadGroupList() async {
-    await XXIM.instance.customRequest<GetMyGroupListResp>(
+  Future loadGroupList() {
+    return XXIM.instance.customRequest<GetMyGroupListResp>(
       method: "/v1/group/getMyGroupList",
       req: GetMyGroupListReq(
         opt: GetMyGroupListReq_Opt.DEFAULT,

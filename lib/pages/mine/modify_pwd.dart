@@ -1,15 +1,15 @@
 import 'package:xxim_flutter_enterprise/main.dart';
+import 'package:xxim_flutter_enterprise/pages/menu.dart';
+import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 
-class ModifyPasswordLogic extends GetxController {
-  static ModifyPasswordLogic? logic() => Tool.capture(Get.find);
+class ModifyPwdLogic extends GetxController {
+  static ModifyPwdLogic? logic() => Tool.capture(Get.find);
 
-  late TextEditingController username;
   late TextEditingController oldPwd;
   late TextEditingController newPwd;
 
   @override
   void onInit() {
-    username = TextEditingController();
     oldPwd = TextEditingController();
     newPwd = TextEditingController();
     super.onInit();
@@ -17,7 +17,6 @@ class ModifyPasswordLogic extends GetxController {
 
   @override
   void onClose() {
-    username.dispose();
     oldPwd.dispose();
     newPwd.dispose();
     super.onClose();
@@ -25,10 +24,6 @@ class ModifyPasswordLogic extends GetxController {
 
   void modify() {
     Tool.hideKeyboard();
-    if (username.text.isEmpty) {
-      Tool.showToast("请输入用户名");
-      return;
-    }
     if (oldPwd.text.isEmpty) {
       Tool.showToast("请输入原密码");
       return;
@@ -38,79 +33,81 @@ class ModifyPasswordLogic extends GetxController {
       return;
     }
     GetLoadingDialog.show("修改中");
-    // XXIM.instance.customRequest<RegisterResp>(
-    //   method: "/v1/user/white/register",
-    //   req: RegisterReq(
-    //     nickname: username.text,
-    //     password: EncryptTool.cryptoMD5(confirmPwd.text),
-    //   ),
-    //   resp: RegisterResp.create,
-    //   onSuccess: (data) {
-    //     GetLoadingDialog.hide();
-    //     Tool.showToast("修改成功");
-    //     Get.back();
-    //   },
-    //   onError: (code, error) {
-    //     GetLoadingDialog.hide();
-    //   },
-    // );
+    XXIM.instance.customRequest<UpdateUserPasswordResp>(
+      method: "/v1/user/white/register",
+      req: UpdateUserPasswordReq(
+        oldPassword: EncryptTool.cryptoMD5(oldPwd.text),
+        newPassword: EncryptTool.cryptoMD5(newPwd.text),
+      ),
+      resp: UpdateUserPasswordResp.create,
+      onSuccess: (data) {
+        GetLoadingDialog.hide();
+        Tool.showToast("修改成功");
+        Get.back();
+      },
+      onError: (code, error) {
+        GetLoadingDialog.hide();
+      },
+    );
   }
 }
 
-class ModifyPasswordPage extends StatelessWidget {
-  const ModifyPasswordPage({Key? key}) : super(key: key);
+class ModifyPwdPage extends StatelessWidget {
+  const ModifyPwdPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    ModifyPasswordLogic logic = Get.put(ModifyPasswordLogic());
-    return Scaffold(
-      appBar: AppBar(
-        leading: const GetCloseButton(),
-        title: const Text("修改密码"),
+    ModifyPwdLogic logic = Get.put(ModifyPwdLogic());
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        color: getBackgroundColor,
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _buildUsername(logic),
-              const SizedBox(height: 25),
-              _buildOldPwd(logic),
-              const SizedBox(height: 25),
-              _buildNewPwd(logic),
-              const SizedBox(height: 50),
-              _buildModify(logic),
-              const SizedBox(height: 100),
-            ],
+      child: Column(
+        children: [
+          _buildAppBar(logic),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const SizedBox(height: 50),
+                  _buildOldPwd(logic),
+                  const SizedBox(height: 25),
+                  _buildNewPwd(logic),
+                  const SizedBox(height: 50),
+                  _buildModify(logic),
+                  const SizedBox(height: 100),
+                ],
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
 
-  Widget _buildUsername(ModifyPasswordLogic logic) {
-    return Container(
-      width: 280,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black,
-        ),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: InputWidget(
-        logic.username,
-        "请输入用户名",
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: 18,
-          horizontal: 16,
-        ),
-        textInputType: TextInputType.text,
-        textInputAction: TextInputAction.next,
-      ),
+  Widget _buildAppBar(ModifyPwdLogic logic) {
+    return AppBar(
+      leading: Obx(() {
+        if (MenuLogic.logic()?.isPhone.value == true) {
+          return IconButton(
+            icon: Image.asset(
+              "assets/images/ic_menu_24.webp",
+              width: 24,
+              height: 24,
+            ),
+            onPressed: () {
+              MenuLogic.logic()?.sliderKey?.currentState?.toggle();
+            },
+          );
+        }
+        return const GetBackButton();
+      }),
+      title: const Text("修改密码"),
     );
   }
 
-  Widget _buildOldPwd(ModifyPasswordLogic logic) {
+  Widget _buildOldPwd(ModifyPwdLogic logic) {
     return Container(
       width: 280,
       decoration: BoxDecoration(
@@ -133,7 +130,7 @@ class ModifyPasswordPage extends StatelessWidget {
     );
   }
 
-  Widget _buildNewPwd(ModifyPasswordLogic logic) {
+  Widget _buildNewPwd(ModifyPwdLogic logic) {
     return Container(
       width: 280,
       decoration: BoxDecoration(
@@ -156,7 +153,7 @@ class ModifyPasswordPage extends StatelessWidget {
     );
   }
 
-  Widget _buildModify(ModifyPasswordLogic logic) {
+  Widget _buildModify(ModifyPwdLogic logic) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: logic.modify,

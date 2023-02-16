@@ -143,14 +143,16 @@ const AcceptAddFriendReq$json = const {
     const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
     const {'1': 'applyUserId', '3': 2, '4': 1, '5': 9, '10': 'applyUserId'},
     const {'1': 'requestId', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'requestId', '17': true},
+    const {'1': 'sendTextMsg', '3': 4, '4': 1, '5': 9, '9': 1, '10': 'sendTextMsg', '17': true},
   ],
   '8': const [
     const {'1': '_requestId'},
+    const {'1': '_sendTextMsg'},
   ],
 };
 
 /// Descriptor for `AcceptAddFriendReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List acceptAddFriendReqDescriptor = $convert.base64Decode('ChJBY2NlcHRBZGRGcmllbmRSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESIAoLYXBwbHlVc2VySWQYAiABKAlSC2FwcGx5VXNlcklkEiEKCXJlcXVlc3RJZBgDIAEoCUgAUglyZXF1ZXN0SWSIAQFCDAoKX3JlcXVlc3RJZA==');
+final $typed_data.Uint8List acceptAddFriendReqDescriptor = $convert.base64Decode('ChJBY2NlcHRBZGRGcmllbmRSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESIAoLYXBwbHlVc2VySWQYAiABKAlSC2FwcGx5VXNlcklkEiEKCXJlcXVlc3RJZBgDIAEoCUgAUglyZXF1ZXN0SWSIAQESJQoLc2VuZFRleHRNc2cYBCABKAlIAVILc2VuZFRleHRNc2eIAQFCDAoKX3JlcXVlc3RJZEIOCgxfc2VuZFRleHRNc2c=');
 @$core.Deprecated('Use acceptAddFriendRespDescriptor instead')
 const AcceptAddFriendResp$json = const {
   '1': 'AcceptAddFriendResp',

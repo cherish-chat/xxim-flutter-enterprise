@@ -91,6 +91,11 @@ message RegisterReq {
   optional string nickname = 4;
   optional XB xb = 5;
   optional BirthdayInfo birthday = 6;
+  optional string invitationCode = 7;
+  optional string mobile = 8;
+  optional string mobileCountryCode = 9;
+  optional string smsCode = 10;
+  optional string avatar = 11;
 }
 
 message RegisterResp {
@@ -219,6 +224,17 @@ message UpdateUserInfoResp {
   CommonResp commonResp = 1;
 }
 
+//UpdateUserPasswordReq 更新用户密码
+message UpdateUserPasswordReq {
+  CommonReq commonReq = 1;
+  string oldPassword = 2;
+  string newPassword = 3;
+}
+
+message UpdateUserPasswordResp {
+  CommonResp commonResp = 1;
+}
+
 /*
 type InvitationCode struct {
 	Code        string `gorm:"column:code;type:varchar(32);not null;primary_key;" json:"code"`
@@ -236,7 +252,8 @@ message UserInvitationCode {
   string creator = 3;
   int32 creatorType = 4;
   bool isEnable = 5;
-  int64 createTime = 6;
+  int32 defaultConvMode = 6; // 默认会话模式 0:添加所有预设会话 1:只添加一个会话(轮询) 2:只添加一个会话(随机) 3:不添加会话
+  int64 createTime = 7;
 
   int64 createdAt = 21;
   string createdAtStr = 22;
@@ -465,6 +482,7 @@ message UserDefaultConv {
   int32 filterType = 3;
   string invitationCode = 4;
   string convId = 5;
+  string textMsg = 6;
 
   int64 createdAt = 21;
   string createdAtStr = 22;
@@ -803,6 +821,40 @@ message GetAllLoginRecordResp {
   int64 total = 3;
 }
 
+//SendSmsReq 发送短信请求
+message SendSmsReq {
+  CommonReq commonReq = 1;
+  string phone = 2;
+  optional string countryCode = 3;
+  // 业务场景
+  string scene = 4;
+  // 失效时间 分钟 默认5
+  optional int32 expireMinute = 5;
+}
+
+//SendSmsResp 发送短信响应
+message SendSmsResp {
+  CommonResp commonResp = 1;
+}
+
+//VerifySmsReq 验证短信请求
+message VerifySmsReq {
+  CommonReq commonReq = 1;
+  string phone = 2;
+  optional string countryCode = 3;
+  // 业务场景
+  string scene = 4;
+  // 验证码
+  string code = 5;
+  // 验证后是否删除
+  bool delete = 6;
+}
+
+//VerifySmsResp 验证短信响应
+message VerifySmsResp {
+  CommonResp commonResp = 1;
+}
+
 service userService {
   rpc Login(LoginReq) returns (LoginResp) {}
   rpc ConfirmRegister(ConfirmRegisterReq) returns (ConfirmRegisterResp) {}
@@ -820,6 +872,7 @@ service userService {
   rpc AfterDisconnect(AfterDisconnectReq) returns (CommonResp);
   rpc BatchGetUserAllDevices(BatchGetUserAllDevicesReq) returns (BatchGetUserAllDevicesResp) {}
   rpc UpdateUserInfo(UpdateUserInfoReq) returns (UpdateUserInfoResp) {}
+  rpc UpdateUserPassword(UpdateUserPasswordReq) returns (UpdateUserPasswordResp) {}
 
   rpc GetAllUserInvitationCode(GetAllUserInvitationCodeReq) returns (GetAllUserInvitationCodeResp) {}
   rpc GetUserInvitationCodeDetail(GetUserInvitationCodeDetailReq) returns (GetUserInvitationCodeDetailResp) {}
@@ -853,4 +906,7 @@ service userService {
   rpc SwitchUserModel(SwitchUserModelReq) returns (SwitchUserModelResp) {}
 
   rpc GetAllLoginRecord(GetAllLoginRecordReq) returns (GetAllLoginRecordResp) {}
+
+  rpc SendSms(SendSmsReq) returns (SendSmsResp) {}
+  rpc VerifySms(VerifySmsReq) returns (VerifySmsResp) {}
 }

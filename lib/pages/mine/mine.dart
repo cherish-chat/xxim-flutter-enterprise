@@ -24,6 +24,8 @@ class MineLogic extends GetxController {
       onSuccess: (data) {
         avatarUrl.value = data.avatar;
         nickname.value = data.nickname;
+        HiveTool.setAvatarUrl(data.avatar);
+        HiveTool.setNickname(data.nickname);
       },
       onError: (code, error) {
         loadData();
@@ -53,16 +55,30 @@ class MinePage extends StatelessWidget {
                 indent: 16,
                 endIndent: 16,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 10),
               _buildItem(
                 "assets/images/ic_edit_25.webp",
                 "编辑资料",
-                () {},
+                () {
+                  MenuLogic? logic = MenuLogic.logic();
+                  if (logic == null) return;
+                  logic.sliderKey?.currentState?.closeSlider();
+                  logic.getDelegate?.toNamed(
+                    Routes.modifyInfo,
+                  );
+                },
               ),
               _buildItem(
                 "assets/images/ic_lock_25.webp",
                 "修改密码",
-                () {},
+                () {
+                  MenuLogic? logic = MenuLogic.logic();
+                  if (logic == null) return;
+                  logic.sliderKey?.currentState?.closeSlider();
+                  logic.getDelegate?.toNamed(
+                    Routes.modifyPwd,
+                  );
+                },
               ),
               _buildItem(
                 "assets/images/ic_settings_25.webp",
@@ -174,7 +190,7 @@ class MinePage extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
         child: Row(
           children: [
             Image.asset(

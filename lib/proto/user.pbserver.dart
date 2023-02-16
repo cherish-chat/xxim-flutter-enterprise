@@ -31,6 +31,7 @@ abstract class userServiceBase extends $pb.GeneratedService {
   $async.Future<$0.CommonResp> afterDisconnect($pb.ServerContext ctx, $1.AfterDisconnectReq request);
   $async.Future<$2.BatchGetUserAllDevicesResp> batchGetUserAllDevices($pb.ServerContext ctx, $2.BatchGetUserAllDevicesReq request);
   $async.Future<$2.UpdateUserInfoResp> updateUserInfo($pb.ServerContext ctx, $2.UpdateUserInfoReq request);
+  $async.Future<$2.UpdateUserPasswordResp> updateUserPassword($pb.ServerContext ctx, $2.UpdateUserPasswordReq request);
   $async.Future<$2.GetAllUserInvitationCodeResp> getAllUserInvitationCode($pb.ServerContext ctx, $2.GetAllUserInvitationCodeReq request);
   $async.Future<$2.GetUserInvitationCodeDetailResp> getUserInvitationCodeDetail($pb.ServerContext ctx, $2.GetUserInvitationCodeDetailReq request);
   $async.Future<$2.AddUserInvitationCodeResp> addUserInvitationCode($pb.ServerContext ctx, $2.AddUserInvitationCodeReq request);
@@ -58,6 +59,8 @@ abstract class userServiceBase extends $pb.GeneratedService {
   $async.Future<$2.DeleteUserModelResp> deleteUserModel($pb.ServerContext ctx, $2.DeleteUserModelReq request);
   $async.Future<$2.SwitchUserModelResp> switchUserModel($pb.ServerContext ctx, $2.SwitchUserModelReq request);
   $async.Future<$2.GetAllLoginRecordResp> getAllLoginRecord($pb.ServerContext ctx, $2.GetAllLoginRecordReq request);
+  $async.Future<$2.SendSmsResp> sendSms($pb.ServerContext ctx, $2.SendSmsReq request);
+  $async.Future<$2.VerifySmsResp> verifySms($pb.ServerContext ctx, $2.VerifySmsReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -74,6 +77,7 @@ abstract class userServiceBase extends $pb.GeneratedService {
       case 'AfterDisconnect': return $1.AfterDisconnectReq();
       case 'BatchGetUserAllDevices': return $2.BatchGetUserAllDevicesReq();
       case 'UpdateUserInfo': return $2.UpdateUserInfoReq();
+      case 'UpdateUserPassword': return $2.UpdateUserPasswordReq();
       case 'GetAllUserInvitationCode': return $2.GetAllUserInvitationCodeReq();
       case 'GetUserInvitationCodeDetail': return $2.GetUserInvitationCodeDetailReq();
       case 'AddUserInvitationCode': return $2.AddUserInvitationCodeReq();
@@ -101,6 +105,8 @@ abstract class userServiceBase extends $pb.GeneratedService {
       case 'DeleteUserModel': return $2.DeleteUserModelReq();
       case 'SwitchUserModel': return $2.SwitchUserModelReq();
       case 'GetAllLoginRecord': return $2.GetAllLoginRecordReq();
+      case 'SendSms': return $2.SendSmsReq();
+      case 'VerifySms': return $2.VerifySmsReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -120,6 +126,7 @@ abstract class userServiceBase extends $pb.GeneratedService {
       case 'AfterDisconnect': return this.afterDisconnect(ctx, request as $1.AfterDisconnectReq);
       case 'BatchGetUserAllDevices': return this.batchGetUserAllDevices(ctx, request as $2.BatchGetUserAllDevicesReq);
       case 'UpdateUserInfo': return this.updateUserInfo(ctx, request as $2.UpdateUserInfoReq);
+      case 'UpdateUserPassword': return this.updateUserPassword(ctx, request as $2.UpdateUserPasswordReq);
       case 'GetAllUserInvitationCode': return this.getAllUserInvitationCode(ctx, request as $2.GetAllUserInvitationCodeReq);
       case 'GetUserInvitationCodeDetail': return this.getUserInvitationCodeDetail(ctx, request as $2.GetUserInvitationCodeDetailReq);
       case 'AddUserInvitationCode': return this.addUserInvitationCode(ctx, request as $2.AddUserInvitationCodeReq);
@@ -147,6 +154,8 @@ abstract class userServiceBase extends $pb.GeneratedService {
       case 'DeleteUserModel': return this.deleteUserModel(ctx, request as $2.DeleteUserModelReq);
       case 'SwitchUserModel': return this.switchUserModel(ctx, request as $2.SwitchUserModelReq);
       case 'GetAllLoginRecord': return this.getAllLoginRecord(ctx, request as $2.GetAllLoginRecordReq);
+      case 'SendSms': return this.sendSms(ctx, request as $2.SendSmsReq);
+      case 'VerifySms': return this.verifySms(ctx, request as $2.VerifySmsReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

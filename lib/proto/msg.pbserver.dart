@@ -36,6 +36,7 @@ abstract class msgServiceBase extends $pb.GeneratedService {
   $async.Future<$2.GetAllMsgListResp> getAllMsgList($pb.ServerContext ctx, $2.GetAllMsgListReq request);
   $async.Future<$2.ReadMsgResp> readMsg($pb.ServerContext ctx, $2.ReadMsgReq request);
   $async.Future<$2.EditMsgResp> editMsg($pb.ServerContext ctx, $2.EditMsgReq request);
+  $async.Future<$2.FlushShieldWordTireTreeResp> flushShieldWordTireTree($pb.ServerContext ctx, $2.FlushShieldWordTireTreeReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -57,6 +58,7 @@ abstract class msgServiceBase extends $pb.GeneratedService {
       case 'GetAllMsgList': return $2.GetAllMsgListReq();
       case 'ReadMsg': return $2.ReadMsgReq();
       case 'EditMsg': return $2.EditMsgReq();
+      case 'FlushShieldWordTireTree': return $2.FlushShieldWordTireTreeReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -81,6 +83,7 @@ abstract class msgServiceBase extends $pb.GeneratedService {
       case 'GetAllMsgList': return this.getAllMsgList(ctx, request as $2.GetAllMsgListReq);
       case 'ReadMsg': return this.readMsg(ctx, request as $2.ReadMsgReq);
       case 'EditMsg': return this.editMsg(ctx, request as $2.EditMsgReq);
+      case 'FlushShieldWordTireTree': return this.flushShieldWordTireTree(ctx, request as $2.FlushShieldWordTireTreeReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

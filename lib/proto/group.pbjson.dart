@@ -817,6 +817,50 @@ const DismissGroupModelResp$json = const {
 
 /// Descriptor for `DismissGroupModelResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List dismissGroupModelRespDescriptor = $convert.base64Decode('ChVEaXNtaXNzR3JvdXBNb2RlbFJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
+@$core.Deprecated('Use searchGroupsByKeywordReqDescriptor instead')
+const SearchGroupsByKeywordReq$json = const {
+  '1': 'SearchGroupsByKeywordReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'keyword', '3': 2, '4': 1, '5': 9, '10': 'keyword'},
+  ],
+};
+
+/// Descriptor for `SearchGroupsByKeywordReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List searchGroupsByKeywordReqDescriptor = $convert.base64Decode('ChhTZWFyY2hHcm91cHNCeUtleXdvcmRSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESGAoHa2V5d29yZBgCIAEoCVIHa2V5d29yZA==');
+@$core.Deprecated('Use searchGroupsByKeywordRespDescriptor instead')
+const SearchGroupsByKeywordResp$json = const {
+  '1': 'SearchGroupsByKeywordResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'groups', '3': 2, '4': 3, '5': 11, '6': '.pb.GroupBaseInfo', '10': 'groups'},
+  ],
+};
+
+/// Descriptor for `SearchGroupsByKeywordResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List searchGroupsByKeywordRespDescriptor = $convert.base64Decode('ChlTZWFyY2hHcm91cHNCeUtleXdvcmRSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEikKBmdyb3VwcxgCIAMoCzIRLnBiLkdyb3VwQmFzZUluZm9SBmdyb3Vwcw==');
+@$core.Deprecated('Use addGroupMemberReqDescriptor instead')
+const AddGroupMemberReq$json = const {
+  '1': 'AddGroupMemberReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'groupId', '3': 2, '4': 1, '5': 9, '10': 'groupId'},
+    const {'1': 'userId', '3': 3, '4': 1, '5': 9, '10': 'userId'},
+  ],
+};
+
+/// Descriptor for `AddGroupMemberReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addGroupMemberReqDescriptor = $convert.base64Decode('ChFBZGRHcm91cE1lbWJlclJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIYCgdncm91cElkGAIgASgJUgdncm91cElkEhYKBnVzZXJJZBgDIAEoCVIGdXNlcklk');
+@$core.Deprecated('Use addGroupMemberRespDescriptor instead')
+const AddGroupMemberResp$json = const {
+  '1': 'AddGroupMemberResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `AddGroupMemberResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addGroupMemberRespDescriptor = $convert.base64Decode('ChJBZGRHcm91cE1lbWJlclJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
 const $core.Map<$core.String, $core.dynamic> groupServiceBase$json = const {
   '1': 'groupService',
   '2': const [
@@ -842,6 +886,8 @@ const $core.Map<$core.String, $core.dynamic> groupServiceBase$json = const {
     const {'1': 'GetGroupModelDetail', '2': '.pb.GetGroupModelDetailReq', '3': '.pb.GetGroupModelDetailResp', '4': const {}},
     const {'1': 'UpdateGroupModel', '2': '.pb.UpdateGroupModelReq', '3': '.pb.UpdateGroupModelResp', '4': const {}},
     const {'1': 'DismissGroupModel', '2': '.pb.DismissGroupModelReq', '3': '.pb.DismissGroupModelResp', '4': const {}},
+    const {'1': 'SearchGroupsByKeyword', '2': '.pb.SearchGroupsByKeywordReq', '3': '.pb.SearchGroupsByKeywordResp', '4': const {}},
+    const {'1': 'AddGroupMember', '2': '.pb.AddGroupMemberReq', '3': '.pb.AddGroupMemberResp', '4': const {}},
   ],
 };
 
@@ -910,7 +956,11 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> groupServi
   '.pb.UpdateGroupModelResp': UpdateGroupModelResp$json,
   '.pb.DismissGroupModelReq': DismissGroupModelReq$json,
   '.pb.DismissGroupModelResp': DismissGroupModelResp$json,
+  '.pb.SearchGroupsByKeywordReq': SearchGroupsByKeywordReq$json,
+  '.pb.SearchGroupsByKeywordResp': SearchGroupsByKeywordResp$json,
+  '.pb.AddGroupMemberReq': AddGroupMemberReq$json,
+  '.pb.AddGroupMemberResp': AddGroupMemberResp$json,
 };
 
 /// Descriptor for `groupService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List groupServiceDescriptor = $convert.base64Decode('Cgxncm91cFNlcnZpY2USOAoLQ3JlYXRlR3JvdXASEi5wYi5DcmVhdGVHcm91cFJlcRoTLnBiLkNyZWF0ZUdyb3VwUmVzcCIAEjsKDEdldEdyb3VwSG9tZRITLnBiLkdldEdyb3VwSG9tZVJlcRoULnBiLkdldEdyb3VwSG9tZVJlc3AiABJQChNJbnZpdGVGcmllbmRUb0dyb3VwEhoucGIuSW52aXRlRnJpZW5kVG9Hcm91cFJlcRobLnBiLkludml0ZUZyaWVuZFRvR3JvdXBSZXNwIgASSgoRQ3JlYXRlR3JvdXBOb3RpY2USGC5wYi5DcmVhdGVHcm91cE5vdGljZVJlcRoZLnBiLkNyZWF0ZUdyb3VwTm90aWNlUmVzcCIAEkoKEURlbGV0ZUdyb3VwTm90aWNlEhgucGIuRGVsZXRlR3JvdXBOb3RpY2VSZXEaGS5wYi5EZWxldGVHcm91cE5vdGljZVJlc3AiABJNChJHZXRHcm91cE5vdGljZUxpc3QSGS5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXEaGi5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXNwIgASTQoSU2V0R3JvdXBNZW1iZXJJbmZvEhkucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVxGhoucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVzcCIAEk0KEkdldEdyb3VwTWVtYmVySW5mbxIZLnBiLkdldEdyb3VwTWVtYmVySW5mb1JlcRoaLnBiLkdldEdyb3VwTWVtYmVySW5mb1Jlc3AiABI+Cg1FZGl0R3JvdXBJbmZvEhQucGIuRWRpdEdyb3VwSW5mb1JlcRoVLnBiLkVkaXRHcm91cEluZm9SZXNwIgASTQoSVHJhbnNmZXJHcm91cE93bmVyEhkucGIuVHJhbnNmZXJHcm91cE93bmVyUmVxGhoucGIuVHJhbnNmZXJHcm91cE93bmVyUmVzcCIAEkQKD0tpY2tHcm91cE1lbWJlchIWLnBiLktpY2tHcm91cE1lbWJlclJlcRoXLnBiLktpY2tHcm91cE1lbWJlclJlc3AiABJNChJHZXRHcm91cE1lbWJlckxpc3QSGS5wYi5HZXRHcm91cE1lbWJlckxpc3RSZXEaGi5wYi5HZXRHcm91cE1lbWJlckxpc3RSZXNwIgASQQoOR2V0TXlHcm91cExpc3QSFS5wYi5HZXRNeUdyb3VwTGlzdFJlcRoWLnBiLkdldE15R3JvdXBMaXN0UmVzcCIAEj4KDU1hcEdyb3VwQnlJZHMSFC5wYi5NYXBHcm91cEJ5SWRzUmVxGhUucGIuTWFwR3JvdXBCeUlkc1Jlc3AiABJTChRTeW5jR3JvdXBNZW1iZXJDb3VudBIbLnBiLlN5bmNHcm91cE1lbWJlckNvdW50UmVxGhwucGIuU3luY0dyb3VwTWVtYmVyQ291bnRSZXNwIgASUwoUQXBwbHlUb0JlR3JvdXBNZW1iZXISGy5wYi5BcHBseVRvQmVHcm91cE1lbWJlclJlcRocLnBiLkFwcGx5VG9CZUdyb3VwTWVtYmVyUmVzcCIAEkcKEEhhbmRsZUdyb3VwQXBwbHkSFy5wYi5IYW5kbGVHcm91cEFwcGx5UmVxGhgucGIuSGFuZGxlR3JvdXBBcHBseVJlc3AiABJTChRHZXRHcm91cExpc3RCeVVzZXJJZBIbLnBiLkdldEdyb3VwTGlzdEJ5VXNlcklkUmVxGhwucGIuR2V0R3JvdXBMaXN0QnlVc2VySWRSZXNwIgASRwoQR2V0QWxsR3JvdXBNb2RlbBIXLnBiLkdldEFsbEdyb3VwTW9kZWxSZXEaGC5wYi5HZXRBbGxHcm91cE1vZGVsUmVzcCIAElAKE0dldEdyb3VwTW9kZWxEZXRhaWwSGi5wYi5HZXRHcm91cE1vZGVsRGV0YWlsUmVxGhsucGIuR2V0R3JvdXBNb2RlbERldGFpbFJlc3AiABJHChBVcGRhdGVHcm91cE1vZGVsEhcucGIuVXBkYXRlR3JvdXBNb2RlbFJlcRoYLnBiLlVwZGF0ZUdyb3VwTW9kZWxSZXNwIgASSgoRRGlzbWlzc0dyb3VwTW9kZWwSGC5wYi5EaXNtaXNzR3JvdXBNb2RlbFJlcRoZLnBiLkRpc21pc3NHcm91cE1vZGVsUmVzcCIA');
+final $typed_data.Uint8List groupServiceDescriptor = $convert.base64Decode('Cgxncm91cFNlcnZpY2USOAoLQ3JlYXRlR3JvdXASEi5wYi5DcmVhdGVHcm91cFJlcRoTLnBiLkNyZWF0ZUdyb3VwUmVzcCIAEjsKDEdldEdyb3VwSG9tZRITLnBiLkdldEdyb3VwSG9tZVJlcRoULnBiLkdldEdyb3VwSG9tZVJlc3AiABJQChNJbnZpdGVGcmllbmRUb0dyb3VwEhoucGIuSW52aXRlRnJpZW5kVG9Hcm91cFJlcRobLnBiLkludml0ZUZyaWVuZFRvR3JvdXBSZXNwIgASSgoRQ3JlYXRlR3JvdXBOb3RpY2USGC5wYi5DcmVhdGVHcm91cE5vdGljZVJlcRoZLnBiLkNyZWF0ZUdyb3VwTm90aWNlUmVzcCIAEkoKEURlbGV0ZUdyb3VwTm90aWNlEhgucGIuRGVsZXRlR3JvdXBOb3RpY2VSZXEaGS5wYi5EZWxldGVHcm91cE5vdGljZVJlc3AiABJNChJHZXRHcm91cE5vdGljZUxpc3QSGS5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXEaGi5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXNwIgASTQoSU2V0R3JvdXBNZW1iZXJJbmZvEhkucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVxGhoucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVzcCIAEk0KEkdldEdyb3VwTWVtYmVySW5mbxIZLnBiLkdldEdyb3VwTWVtYmVySW5mb1JlcRoaLnBiLkdldEdyb3VwTWVtYmVySW5mb1Jlc3AiABI+Cg1FZGl0R3JvdXBJbmZvEhQucGIuRWRpdEdyb3VwSW5mb1JlcRoVLnBiLkVkaXRHcm91cEluZm9SZXNwIgASTQoSVHJhbnNmZXJHcm91cE93bmVyEhkucGIuVHJhbnNmZXJHcm91cE93bmVyUmVxGhoucGIuVHJhbnNmZXJHcm91cE93bmVyUmVzcCIAEkQKD0tpY2tHcm91cE1lbWJlchIWLnBiLktpY2tHcm91cE1lbWJlclJlcRoXLnBiLktpY2tHcm91cE1lbWJlclJlc3AiABJNChJHZXRHcm91cE1lbWJlckxpc3QSGS5wYi5HZXRHcm91cE1lbWJlckxpc3RSZXEaGi5wYi5HZXRHcm91cE1lbWJlckxpc3RSZXNwIgASQQoOR2V0TXlHcm91cExpc3QSFS5wYi5HZXRNeUdyb3VwTGlzdFJlcRoWLnBiLkdldE15R3JvdXBMaXN0UmVzcCIAEj4KDU1hcEdyb3VwQnlJZHMSFC5wYi5NYXBHcm91cEJ5SWRzUmVxGhUucGIuTWFwR3JvdXBCeUlkc1Jlc3AiABJTChRTeW5jR3JvdXBNZW1iZXJDb3VudBIbLnBiLlN5bmNHcm91cE1lbWJlckNvdW50UmVxGhwucGIuU3luY0dyb3VwTWVtYmVyQ291bnRSZXNwIgASUwoUQXBwbHlUb0JlR3JvdXBNZW1iZXISGy5wYi5BcHBseVRvQmVHcm91cE1lbWJlclJlcRocLnBiLkFwcGx5VG9CZUdyb3VwTWVtYmVyUmVzcCIAEkcKEEhhbmRsZUdyb3VwQXBwbHkSFy5wYi5IYW5kbGVHcm91cEFwcGx5UmVxGhgucGIuSGFuZGxlR3JvdXBBcHBseVJlc3AiABJTChRHZXRHcm91cExpc3RCeVVzZXJJZBIbLnBiLkdldEdyb3VwTGlzdEJ5VXNlcklkUmVxGhwucGIuR2V0R3JvdXBMaXN0QnlVc2VySWRSZXNwIgASRwoQR2V0QWxsR3JvdXBNb2RlbBIXLnBiLkdldEFsbEdyb3VwTW9kZWxSZXEaGC5wYi5HZXRBbGxHcm91cE1vZGVsUmVzcCIAElAKE0dldEdyb3VwTW9kZWxEZXRhaWwSGi5wYi5HZXRHcm91cE1vZGVsRGV0YWlsUmVxGhsucGIuR2V0R3JvdXBNb2RlbERldGFpbFJlc3AiABJHChBVcGRhdGVHcm91cE1vZGVsEhcucGIuVXBkYXRlR3JvdXBNb2RlbFJlcRoYLnBiLlVwZGF0ZUdyb3VwTW9kZWxSZXNwIgASSgoRRGlzbWlzc0dyb3VwTW9kZWwSGC5wYi5EaXNtaXNzR3JvdXBNb2RlbFJlcRoZLnBiLkRpc21pc3NHcm91cE1vZGVsUmVzcCIAElYKFVNlYXJjaEdyb3Vwc0J5S2V5d29yZBIcLnBiLlNlYXJjaEdyb3Vwc0J5S2V5d29yZFJlcRodLnBiLlNlYXJjaEdyb3Vwc0J5S2V5d29yZFJlc3AiABJBCg5BZGRHcm91cE1lbWJlchIVLnBiLkFkZEdyb3VwTWVtYmVyUmVxGhYucGIuQWRkR3JvdXBNZW1iZXJSZXNwIgA=');

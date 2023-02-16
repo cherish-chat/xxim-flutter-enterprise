@@ -466,6 +466,7 @@ class AcceptAddFriendReq extends $pb.GeneratedMessage {
     ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'applyUserId', protoName: 'applyUserId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'requestId', protoName: 'requestId')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sendTextMsg', protoName: 'sendTextMsg')
     ..hasRequiredFields = false
   ;
 
@@ -474,6 +475,7 @@ class AcceptAddFriendReq extends $pb.GeneratedMessage {
     $0.CommonReq? commonReq,
     $core.String? applyUserId,
     $core.String? requestId,
+    $core.String? sendTextMsg,
   }) {
     final _result = create();
     if (commonReq != null) {
@@ -484,6 +486,9 @@ class AcceptAddFriendReq extends $pb.GeneratedMessage {
     }
     if (requestId != null) {
       _result.requestId = requestId;
+    }
+    if (sendTextMsg != null) {
+      _result.sendTextMsg = sendTextMsg;
     }
     return _result;
   }
@@ -536,6 +541,15 @@ class AcceptAddFriendReq extends $pb.GeneratedMessage {
   $core.bool hasRequestId() => $_has(2);
   @$pb.TagNumber(3)
   void clearRequestId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get sendTextMsg => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set sendTextMsg($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasSendTextMsg() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearSendTextMsg() => clearField(4);
 }
 
 class AcceptAddFriendResp extends $pb.GeneratedMessage {

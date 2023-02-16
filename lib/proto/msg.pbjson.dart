@@ -434,6 +434,26 @@ const EditMsgResp$json = const {
 
 /// Descriptor for `EditMsgResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List editMsgRespDescriptor = $convert.base64Decode('CgtFZGl0TXNnUmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcA==');
+@$core.Deprecated('Use flushShieldWordTireTreeReqDescriptor instead')
+const FlushShieldWordTireTreeReq$json = const {
+  '1': 'FlushShieldWordTireTreeReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+  ],
+};
+
+/// Descriptor for `FlushShieldWordTireTreeReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List flushShieldWordTireTreeReqDescriptor = $convert.base64Decode('ChpGbHVzaFNoaWVsZFdvcmRUaXJlVHJlZVJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcQ==');
+@$core.Deprecated('Use flushShieldWordTireTreeRespDescriptor instead')
+const FlushShieldWordTireTreeResp$json = const {
+  '1': 'FlushShieldWordTireTreeResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `FlushShieldWordTireTreeResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List flushShieldWordTireTreeRespDescriptor = $convert.base64Decode('ChtGbHVzaFNoaWVsZFdvcmRUaXJlVHJlZVJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
 const $core.Map<$core.String, $core.dynamic> msgServiceBase$json = const {
   '1': 'msgService',
   '2': const [
@@ -455,6 +475,7 @@ const $core.Map<$core.String, $core.dynamic> msgServiceBase$json = const {
     const {'1': 'GetAllMsgList', '2': '.pb.GetAllMsgListReq', '3': '.pb.GetAllMsgListResp', '4': const {}},
     const {'1': 'ReadMsg', '2': '.pb.ReadMsgReq', '3': '.pb.ReadMsgResp', '4': const {}},
     const {'1': 'EditMsg', '2': '.pb.EditMsgReq', '3': '.pb.EditMsgResp', '4': const {}},
+    const {'1': 'FlushShieldWordTireTree', '2': '.pb.FlushShieldWordTireTreeReq', '3': '.pb.FlushShieldWordTireTreeResp', '4': const {}},
   ],
 };
 
@@ -502,7 +523,9 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> msgService
   '.pb.ReadMsgResp': ReadMsgResp$json,
   '.pb.EditMsgReq': EditMsgReq$json,
   '.pb.EditMsgResp': EditMsgResp$json,
+  '.pb.FlushShieldWordTireTreeReq': FlushShieldWordTireTreeReq$json,
+  '.pb.FlushShieldWordTireTreeResp': FlushShieldWordTireTreeResp$json,
 };
 
 /// Descriptor for `msgService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List msgServiceDescriptor = $convert.base64Decode('Cgptc2dTZXJ2aWNlEjcKEUluc2VydE1zZ0RhdGFMaXN0Eg8ucGIuTXNnRGF0YUxpc3QaDy5wYi5Nc2dEYXRhTGlzdCIAEjwKD1NlbmRNc2dMaXN0U3luYxISLnBiLlNlbmRNc2dMaXN0UmVxGhMucGIuU2VuZE1zZ0xpc3RSZXNwIgASPQoQU2VuZE1zZ0xpc3RBc3luYxISLnBiLlNlbmRNc2dMaXN0UmVxGhMucGIuU2VuZE1zZ0xpc3RSZXNwIgASMwoLUHVzaE1zZ0xpc3QSEi5wYi5QdXNoTXNnTGlzdFJlcRoOLnBiLkNvbW1vblJlc3AiABJPChdCYXRjaEdldE1zZ0xpc3RCeUNvbnZJZBIeLnBiLkJhdGNoR2V0TXNnTGlzdEJ5Q29udklkUmVxGhIucGIuR2V0TXNnTGlzdFJlc3AiABI1CgpHZXRNc2dCeUlkEhEucGIuR2V0TXNnQnlJZFJlcRoSLnBiLkdldE1zZ0J5SWRSZXNwIgASQQoOQmF0Y2hTZXRNaW5TZXESFS5wYi5CYXRjaFNldE1pblNlcVJlcRoWLnBiLkJhdGNoU2V0TWluU2VxUmVzcCIAEkQKD0JhdGNoR2V0Q29udlNlcRIWLnBiLkJhdGNoR2V0Q29udlNlcVJlcRoXLnBiLkJhdGNoR2V0Q29udlNlcVJlc3AiABIzCgxBZnRlckNvbm5lY3QSEy5wYi5BZnRlckNvbm5lY3RSZXEaDi5wYi5Db21tb25SZXNwEjkKD0FmdGVyRGlzY29ubmVjdBIWLnBiLkFmdGVyRGlzY29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASMAoJS2VlcEFsaXZlEhAucGIuS2VlcEFsaXZlUmVxGhEucGIuS2VlcEFsaXZlUmVzcBJNChJHZXRDb252U3Vic2NyaWJlcnMSGS5wYi5HZXRDb252U3Vic2NyaWJlcnNSZXEaGi5wYi5HZXRDb252U3Vic2NyaWJlcnNSZXNwIgASQQoOT2ZmbGluZVB1c2hNc2cSFS5wYi5PZmZsaW5lUHVzaE1zZ1JlcRoWLnBiLk9mZmxpbmVQdXNoTXNnUmVzcCIAEk0KEkdldENvbnZPbmxpbmVDb3VudBIZLnBiLkdldENvbnZPbmxpbmVDb3VudFJlcRoaLnBiLkdldENvbnZPbmxpbmVDb3VudFJlc3AiABI/ChFGbHVzaFVzZXJzU3ViQ29udhIYLnBiLkZsdXNoVXNlcnNTdWJDb252UmVxGg4ucGIuQ29tbW9uUmVzcCIAEj4KDUdldEFsbE1zZ0xpc3QSFC5wYi5HZXRBbGxNc2dMaXN0UmVxGhUucGIuR2V0QWxsTXNnTGlzdFJlc3AiABIsCgdSZWFkTXNnEg4ucGIuUmVhZE1zZ1JlcRoPLnBiLlJlYWRNc2dSZXNwIgASLAoHRWRpdE1zZxIOLnBiLkVkaXRNc2dSZXEaDy5wYi5FZGl0TXNnUmVzcCIA');
+final $typed_data.Uint8List msgServiceDescriptor = $convert.base64Decode('Cgptc2dTZXJ2aWNlEjcKEUluc2VydE1zZ0RhdGFMaXN0Eg8ucGIuTXNnRGF0YUxpc3QaDy5wYi5Nc2dEYXRhTGlzdCIAEjwKD1NlbmRNc2dMaXN0U3luYxISLnBiLlNlbmRNc2dMaXN0UmVxGhMucGIuU2VuZE1zZ0xpc3RSZXNwIgASPQoQU2VuZE1zZ0xpc3RBc3luYxISLnBiLlNlbmRNc2dMaXN0UmVxGhMucGIuU2VuZE1zZ0xpc3RSZXNwIgASMwoLUHVzaE1zZ0xpc3QSEi5wYi5QdXNoTXNnTGlzdFJlcRoOLnBiLkNvbW1vblJlc3AiABJPChdCYXRjaEdldE1zZ0xpc3RCeUNvbnZJZBIeLnBiLkJhdGNoR2V0TXNnTGlzdEJ5Q29udklkUmVxGhIucGIuR2V0TXNnTGlzdFJlc3AiABI1CgpHZXRNc2dCeUlkEhEucGIuR2V0TXNnQnlJZFJlcRoSLnBiLkdldE1zZ0J5SWRSZXNwIgASQQoOQmF0Y2hTZXRNaW5TZXESFS5wYi5CYXRjaFNldE1pblNlcVJlcRoWLnBiLkJhdGNoU2V0TWluU2VxUmVzcCIAEkQKD0JhdGNoR2V0Q29udlNlcRIWLnBiLkJhdGNoR2V0Q29udlNlcVJlcRoXLnBiLkJhdGNoR2V0Q29udlNlcVJlc3AiABIzCgxBZnRlckNvbm5lY3QSEy5wYi5BZnRlckNvbm5lY3RSZXEaDi5wYi5Db21tb25SZXNwEjkKD0FmdGVyRGlzY29ubmVjdBIWLnBiLkFmdGVyRGlzY29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASMAoJS2VlcEFsaXZlEhAucGIuS2VlcEFsaXZlUmVxGhEucGIuS2VlcEFsaXZlUmVzcBJNChJHZXRDb252U3Vic2NyaWJlcnMSGS5wYi5HZXRDb252U3Vic2NyaWJlcnNSZXEaGi5wYi5HZXRDb252U3Vic2NyaWJlcnNSZXNwIgASQQoOT2ZmbGluZVB1c2hNc2cSFS5wYi5PZmZsaW5lUHVzaE1zZ1JlcRoWLnBiLk9mZmxpbmVQdXNoTXNnUmVzcCIAEk0KEkdldENvbnZPbmxpbmVDb3VudBIZLnBiLkdldENvbnZPbmxpbmVDb3VudFJlcRoaLnBiLkdldENvbnZPbmxpbmVDb3VudFJlc3AiABI/ChFGbHVzaFVzZXJzU3ViQ29udhIYLnBiLkZsdXNoVXNlcnNTdWJDb252UmVxGg4ucGIuQ29tbW9uUmVzcCIAEj4KDUdldEFsbE1zZ0xpc3QSFC5wYi5HZXRBbGxNc2dMaXN0UmVxGhUucGIuR2V0QWxsTXNnTGlzdFJlc3AiABIsCgdSZWFkTXNnEg4ucGIuUmVhZE1zZ1JlcRoPLnBiLlJlYWRNc2dSZXNwIgASLAoHRWRpdE1zZxIOLnBiLkVkaXRNc2dSZXEaDy5wYi5FZGl0TXNnUmVzcCIAElwKF0ZsdXNoU2hpZWxkV29yZFRpcmVUcmVlEh4ucGIuRmx1c2hTaGllbGRXb3JkVGlyZVRyZWVSZXEaHy5wYi5GbHVzaFNoaWVsZFdvcmRUaXJlVHJlZVJlc3AiAA==');

@@ -23,10 +23,21 @@ class HiveTool {
 
   static const String _userId = "userId";
   static const String _token = "token";
+  static const String _avatarUrl = "avatarUrl";
+  static const String _nickname = "nickname";
 
   static String getUserId() => _userBox.get(_userId, defaultValue: "");
 
   static String getToken() => _userBox.get(_token, defaultValue: "");
+
+  static String getAvatarUrl() => _userBox.get(_avatarUrl, defaultValue: "");
+
+  static void setAvatarUrl(String avatarUrl) =>
+      _userBox.put(_avatarUrl, avatarUrl);
+
+  static String getNickname() => _userBox.get(_nickname, defaultValue: "");
+
+  static void setNickname(String nickname) => _userBox.put(_nickname, nickname);
 
   static bool isLogin() => getUserId().isNotEmpty && getToken().isNotEmpty;
 

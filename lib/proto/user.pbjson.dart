@@ -170,16 +170,26 @@ const RegisterReq$json = const {
     const {'1': 'nickname', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'nickname', '17': true},
     const {'1': 'xb', '3': 5, '4': 1, '5': 14, '6': '.pb.XB', '9': 1, '10': 'xb', '17': true},
     const {'1': 'birthday', '3': 6, '4': 1, '5': 11, '6': '.pb.BirthdayInfo', '9': 2, '10': 'birthday', '17': true},
+    const {'1': 'invitationCode', '3': 7, '4': 1, '5': 9, '9': 3, '10': 'invitationCode', '17': true},
+    const {'1': 'mobile', '3': 8, '4': 1, '5': 9, '9': 4, '10': 'mobile', '17': true},
+    const {'1': 'mobileCountryCode', '3': 9, '4': 1, '5': 9, '9': 5, '10': 'mobileCountryCode', '17': true},
+    const {'1': 'smsCode', '3': 10, '4': 1, '5': 9, '9': 6, '10': 'smsCode', '17': true},
+    const {'1': 'avatar', '3': 11, '4': 1, '5': 9, '9': 7, '10': 'avatar', '17': true},
   ],
   '8': const [
     const {'1': '_nickname'},
     const {'1': '_xb'},
     const {'1': '_birthday'},
+    const {'1': '_invitationCode'},
+    const {'1': '_mobile'},
+    const {'1': '_mobileCountryCode'},
+    const {'1': '_smsCode'},
+    const {'1': '_avatar'},
   ],
 };
 
 /// Descriptor for `RegisterReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List registerReqDescriptor = $convert.base64Decode('CgtSZWdpc3RlclJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIOCgJpZBgCIAEoCVICaWQSGgoIcGFzc3dvcmQYAyABKAlSCHBhc3N3b3JkEh8KCG5pY2tuYW1lGAQgASgJSABSCG5pY2tuYW1liAEBEhsKAnhiGAUgASgOMgYucGIuWEJIAVICeGKIAQESMQoIYmlydGhkYXkYBiABKAsyEC5wYi5CaXJ0aGRheUluZm9IAlIIYmlydGhkYXmIAQFCCwoJX25pY2tuYW1lQgUKA194YkILCglfYmlydGhkYXk=');
+final $typed_data.Uint8List registerReqDescriptor = $convert.base64Decode('CgtSZWdpc3RlclJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIOCgJpZBgCIAEoCVICaWQSGgoIcGFzc3dvcmQYAyABKAlSCHBhc3N3b3JkEh8KCG5pY2tuYW1lGAQgASgJSABSCG5pY2tuYW1liAEBEhsKAnhiGAUgASgOMgYucGIuWEJIAVICeGKIAQESMQoIYmlydGhkYXkYBiABKAsyEC5wYi5CaXJ0aGRheUluZm9IAlIIYmlydGhkYXmIAQESKwoOaW52aXRhdGlvbkNvZGUYByABKAlIA1IOaW52aXRhdGlvbkNvZGWIAQESGwoGbW9iaWxlGAggASgJSARSBm1vYmlsZYgBARIxChFtb2JpbGVDb3VudHJ5Q29kZRgJIAEoCUgFUhFtb2JpbGVDb3VudHJ5Q29kZYgBARIdCgdzbXNDb2RlGAogASgJSAZSB3Ntc0NvZGWIAQESGwoGYXZhdGFyGAsgASgJSAdSBmF2YXRhcogBAUILCglfbmlja25hbWVCBQoDX3hiQgsKCV9iaXJ0aGRheUIRCg9faW52aXRhdGlvbkNvZGVCCQoHX21vYmlsZUIUChJfbW9iaWxlQ291bnRyeUNvZGVCCgoIX3Ntc0NvZGVCCQoHX2F2YXRhcg==');
 @$core.Deprecated('Use registerRespDescriptor instead')
 const RegisterResp$json = const {
   '1': 'RegisterResp',
@@ -424,6 +434,28 @@ const UpdateUserInfoResp$json = const {
 
 /// Descriptor for `UpdateUserInfoResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List updateUserInfoRespDescriptor = $convert.base64Decode('ChJVcGRhdGVVc2VySW5mb1Jlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
+@$core.Deprecated('Use updateUserPasswordReqDescriptor instead')
+const UpdateUserPasswordReq$json = const {
+  '1': 'UpdateUserPasswordReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'oldPassword', '3': 2, '4': 1, '5': 9, '10': 'oldPassword'},
+    const {'1': 'newPassword', '3': 3, '4': 1, '5': 9, '10': 'newPassword'},
+  ],
+};
+
+/// Descriptor for `UpdateUserPasswordReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserPasswordReqDescriptor = $convert.base64Decode('ChVVcGRhdGVVc2VyUGFzc3dvcmRSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESIAoLb2xkUGFzc3dvcmQYAiABKAlSC29sZFBhc3N3b3JkEiAKC25ld1Bhc3N3b3JkGAMgASgJUgtuZXdQYXNzd29yZA==');
+@$core.Deprecated('Use updateUserPasswordRespDescriptor instead')
+const UpdateUserPasswordResp$json = const {
+  '1': 'UpdateUserPasswordResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `UpdateUserPasswordResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserPasswordRespDescriptor = $convert.base64Decode('ChZVcGRhdGVVc2VyUGFzc3dvcmRSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
 @$core.Deprecated('Use userInvitationCodeDescriptor instead')
 const UserInvitationCode$json = const {
   '1': 'UserInvitationCode',
@@ -433,14 +465,15 @@ const UserInvitationCode$json = const {
     const {'1': 'creator', '3': 3, '4': 1, '5': 9, '10': 'creator'},
     const {'1': 'creatorType', '3': 4, '4': 1, '5': 5, '10': 'creatorType'},
     const {'1': 'isEnable', '3': 5, '4': 1, '5': 8, '10': 'isEnable'},
-    const {'1': 'createTime', '3': 6, '4': 1, '5': 3, '10': 'createTime'},
+    const {'1': 'defaultConvMode', '3': 6, '4': 1, '5': 5, '10': 'defaultConvMode'},
+    const {'1': 'createTime', '3': 7, '4': 1, '5': 3, '10': 'createTime'},
     const {'1': 'createdAt', '3': 21, '4': 1, '5': 3, '10': 'createdAt'},
     const {'1': 'createdAtStr', '3': 22, '4': 1, '5': 9, '10': 'createdAtStr'},
   ],
 };
 
 /// Descriptor for `UserInvitationCode`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List userInvitationCodeDescriptor = $convert.base64Decode('ChJVc2VySW52aXRhdGlvbkNvZGUSEgoEY29kZRgBIAEoCVIEY29kZRIWCgZyZW1hcmsYAiABKAlSBnJlbWFyaxIYCgdjcmVhdG9yGAMgASgJUgdjcmVhdG9yEiAKC2NyZWF0b3JUeXBlGAQgASgFUgtjcmVhdG9yVHlwZRIaCghpc0VuYWJsZRgFIAEoCFIIaXNFbmFibGUSHgoKY3JlYXRlVGltZRgGIAEoA1IKY3JlYXRlVGltZRIcCgljcmVhdGVkQXQYFSABKANSCWNyZWF0ZWRBdBIiCgxjcmVhdGVkQXRTdHIYFiABKAlSDGNyZWF0ZWRBdFN0cg==');
+final $typed_data.Uint8List userInvitationCodeDescriptor = $convert.base64Decode('ChJVc2VySW52aXRhdGlvbkNvZGUSEgoEY29kZRgBIAEoCVIEY29kZRIWCgZyZW1hcmsYAiABKAlSBnJlbWFyaxIYCgdjcmVhdG9yGAMgASgJUgdjcmVhdG9yEiAKC2NyZWF0b3JUeXBlGAQgASgFUgtjcmVhdG9yVHlwZRIaCghpc0VuYWJsZRgFIAEoCFIIaXNFbmFibGUSKAoPZGVmYXVsdENvbnZNb2RlGAYgASgFUg9kZWZhdWx0Q29udk1vZGUSHgoKY3JlYXRlVGltZRgHIAEoA1IKY3JlYXRlVGltZRIcCgljcmVhdGVkQXQYFSABKANSCWNyZWF0ZWRBdBIiCgxjcmVhdGVkQXRTdHIYFiABKAlSDGNyZWF0ZWRBdFN0cg==');
 @$core.Deprecated('Use getAllUserInvitationCodeReqDescriptor instead')
 const GetAllUserInvitationCodeReq$json = const {
   '1': 'GetAllUserInvitationCodeReq',
@@ -829,13 +862,14 @@ const UserDefaultConv$json = const {
     const {'1': 'filterType', '3': 3, '4': 1, '5': 5, '10': 'filterType'},
     const {'1': 'invitationCode', '3': 4, '4': 1, '5': 9, '10': 'invitationCode'},
     const {'1': 'convId', '3': 5, '4': 1, '5': 9, '10': 'convId'},
+    const {'1': 'textMsg', '3': 6, '4': 1, '5': 9, '10': 'textMsg'},
     const {'1': 'createdAt', '3': 21, '4': 1, '5': 3, '10': 'createdAt'},
     const {'1': 'createdAtStr', '3': 22, '4': 1, '5': 9, '10': 'createdAtStr'},
   ],
 };
 
 /// Descriptor for `UserDefaultConv`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List userDefaultConvDescriptor = $convert.base64Decode('Cg9Vc2VyRGVmYXVsdENvbnYSDgoCaWQYASABKAlSAmlkEhoKCGNvbnZUeXBlGAIgASgFUghjb252VHlwZRIeCgpmaWx0ZXJUeXBlGAMgASgFUgpmaWx0ZXJUeXBlEiYKDmludml0YXRpb25Db2RlGAQgASgJUg5pbnZpdGF0aW9uQ29kZRIWCgZjb252SWQYBSABKAlSBmNvbnZJZBIcCgljcmVhdGVkQXQYFSABKANSCWNyZWF0ZWRBdBIiCgxjcmVhdGVkQXRTdHIYFiABKAlSDGNyZWF0ZWRBdFN0cg==');
+final $typed_data.Uint8List userDefaultConvDescriptor = $convert.base64Decode('Cg9Vc2VyRGVmYXVsdENvbnYSDgoCaWQYASABKAlSAmlkEhoKCGNvbnZUeXBlGAIgASgFUghjb252VHlwZRIeCgpmaWx0ZXJUeXBlGAMgASgFUgpmaWx0ZXJUeXBlEiYKDmludml0YXRpb25Db2RlGAQgASgJUg5pbnZpdGF0aW9uQ29kZRIWCgZjb252SWQYBSABKAlSBmNvbnZJZBIYCgd0ZXh0TXNnGAYgASgJUgd0ZXh0TXNnEhwKCWNyZWF0ZWRBdBgVIAEoA1IJY3JlYXRlZEF0EiIKDGNyZWF0ZWRBdFN0chgWIAEoCVIMY3JlYXRlZEF0U3Ry');
 @$core.Deprecated('Use getAllUserDefaultConvReqDescriptor instead')
 const GetAllUserDefaultConvReq$json = const {
   '1': 'GetAllUserDefaultConvReq',
@@ -1258,6 +1292,62 @@ const GetAllLoginRecordResp$json = const {
 
 /// Descriptor for `GetAllLoginRecordResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getAllLoginRecordRespDescriptor = $convert.base64Decode('ChVHZXRBbGxMb2dpblJlY29yZFJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASOQoPbG9naW5SZWNvcmRMaXN0GAIgAygLMg8ucGIuTG9naW5SZWNvcmRSD2xvZ2luUmVjb3JkTGlzdBIUCgV0b3RhbBgDIAEoA1IFdG90YWw=');
+@$core.Deprecated('Use sendSmsReqDescriptor instead')
+const SendSmsReq$json = const {
+  '1': 'SendSmsReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'phone', '3': 2, '4': 1, '5': 9, '10': 'phone'},
+    const {'1': 'countryCode', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'countryCode', '17': true},
+    const {'1': 'scene', '3': 4, '4': 1, '5': 9, '10': 'scene'},
+    const {'1': 'expireMinute', '3': 5, '4': 1, '5': 5, '9': 1, '10': 'expireMinute', '17': true},
+  ],
+  '8': const [
+    const {'1': '_countryCode'},
+    const {'1': '_expireMinute'},
+  ],
+};
+
+/// Descriptor for `SendSmsReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sendSmsReqDescriptor = $convert.base64Decode('CgpTZW5kU21zUmVxEisKCWNvbW1vblJlcRgBIAEoCzINLnBiLkNvbW1vblJlcVIJY29tbW9uUmVxEhQKBXBob25lGAIgASgJUgVwaG9uZRIlCgtjb3VudHJ5Q29kZRgDIAEoCUgAUgtjb3VudHJ5Q29kZYgBARIUCgVzY2VuZRgEIAEoCVIFc2NlbmUSJwoMZXhwaXJlTWludXRlGAUgASgFSAFSDGV4cGlyZU1pbnV0ZYgBAUIOCgxfY291bnRyeUNvZGVCDwoNX2V4cGlyZU1pbnV0ZQ==');
+@$core.Deprecated('Use sendSmsRespDescriptor instead')
+const SendSmsResp$json = const {
+  '1': 'SendSmsResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `SendSmsResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sendSmsRespDescriptor = $convert.base64Decode('CgtTZW5kU21zUmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcA==');
+@$core.Deprecated('Use verifySmsReqDescriptor instead')
+const VerifySmsReq$json = const {
+  '1': 'VerifySmsReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'phone', '3': 2, '4': 1, '5': 9, '10': 'phone'},
+    const {'1': 'countryCode', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'countryCode', '17': true},
+    const {'1': 'scene', '3': 4, '4': 1, '5': 9, '10': 'scene'},
+    const {'1': 'code', '3': 5, '4': 1, '5': 9, '10': 'code'},
+    const {'1': 'delete', '3': 6, '4': 1, '5': 8, '10': 'delete'},
+  ],
+  '8': const [
+    const {'1': '_countryCode'},
+  ],
+};
+
+/// Descriptor for `VerifySmsReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List verifySmsReqDescriptor = $convert.base64Decode('CgxWZXJpZnlTbXNSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESFAoFcGhvbmUYAiABKAlSBXBob25lEiUKC2NvdW50cnlDb2RlGAMgASgJSABSC2NvdW50cnlDb2RliAEBEhQKBXNjZW5lGAQgASgJUgVzY2VuZRISCgRjb2RlGAUgASgJUgRjb2RlEhYKBmRlbGV0ZRgGIAEoCFIGZGVsZXRlQg4KDF9jb3VudHJ5Q29kZQ==');
+@$core.Deprecated('Use verifySmsRespDescriptor instead')
+const VerifySmsResp$json = const {
+  '1': 'VerifySmsResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `VerifySmsResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List verifySmsRespDescriptor = $convert.base64Decode('Cg1WZXJpZnlTbXNSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
 const $core.Map<$core.String, $core.dynamic> userServiceBase$json = const {
   '1': 'userService',
   '2': const [
@@ -1274,6 +1364,7 @@ const $core.Map<$core.String, $core.dynamic> userServiceBase$json = const {
     const {'1': 'AfterDisconnect', '2': '.pb.AfterDisconnectReq', '3': '.pb.CommonResp'},
     const {'1': 'BatchGetUserAllDevices', '2': '.pb.BatchGetUserAllDevicesReq', '3': '.pb.BatchGetUserAllDevicesResp', '4': const {}},
     const {'1': 'UpdateUserInfo', '2': '.pb.UpdateUserInfoReq', '3': '.pb.UpdateUserInfoResp', '4': const {}},
+    const {'1': 'UpdateUserPassword', '2': '.pb.UpdateUserPasswordReq', '3': '.pb.UpdateUserPasswordResp', '4': const {}},
     const {'1': 'GetAllUserInvitationCode', '2': '.pb.GetAllUserInvitationCodeReq', '3': '.pb.GetAllUserInvitationCodeResp', '4': const {}},
     const {'1': 'GetUserInvitationCodeDetail', '2': '.pb.GetUserInvitationCodeDetailReq', '3': '.pb.GetUserInvitationCodeDetailResp', '4': const {}},
     const {'1': 'AddUserInvitationCode', '2': '.pb.AddUserInvitationCodeReq', '3': '.pb.AddUserInvitationCodeResp', '4': const {}},
@@ -1301,6 +1392,8 @@ const $core.Map<$core.String, $core.dynamic> userServiceBase$json = const {
     const {'1': 'DeleteUserModel', '2': '.pb.DeleteUserModelReq', '3': '.pb.DeleteUserModelResp', '4': const {}},
     const {'1': 'SwitchUserModel', '2': '.pb.SwitchUserModelReq', '3': '.pb.SwitchUserModelResp', '4': const {}},
     const {'1': 'GetAllLoginRecord', '2': '.pb.GetAllLoginRecordReq', '3': '.pb.GetAllLoginRecordResp', '4': const {}},
+    const {'1': 'SendSms', '2': '.pb.SendSmsReq', '3': '.pb.SendSmsResp', '4': const {}},
+    const {'1': 'VerifySms', '2': '.pb.VerifySmsReq', '3': '.pb.VerifySmsResp', '4': const {}},
   ],
 };
 
@@ -1342,6 +1435,8 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> userServic
   '.pb.BatchGetUserAllDevicesResp.AllDevices': BatchGetUserAllDevicesResp_AllDevices$json,
   '.pb.UpdateUserInfoReq': UpdateUserInfoReq$json,
   '.pb.UpdateUserInfoResp': UpdateUserInfoResp$json,
+  '.pb.UpdateUserPasswordReq': UpdateUserPasswordReq$json,
+  '.pb.UpdateUserPasswordResp': UpdateUserPasswordResp$json,
   '.pb.GetAllUserInvitationCodeReq': GetAllUserInvitationCodeReq$json,
   '.pb.Page': $0.Page$json,
   '.pb.GetAllUserInvitationCodeReq.FilterEntry': GetAllUserInvitationCodeReq_FilterEntry$json,
@@ -1413,7 +1508,11 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> userServic
   '.pb.GetAllLoginRecordReq.FilterEntry': GetAllLoginRecordReq_FilterEntry$json,
   '.pb.GetAllLoginRecordResp': GetAllLoginRecordResp$json,
   '.pb.LoginRecord': LoginRecord$json,
+  '.pb.SendSmsReq': SendSmsReq$json,
+  '.pb.SendSmsResp': SendSmsResp$json,
+  '.pb.VerifySmsReq': VerifySmsReq$json,
+  '.pb.VerifySmsResp': VerifySmsResp$json,
 };
 
 /// Descriptor for `userService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List userServiceDescriptor = $convert.base64Decode('Cgt1c2VyU2VydmljZRImCgVMb2dpbhIMLnBiLkxvZ2luUmVxGg0ucGIuTG9naW5SZXNwIgASRAoPQ29uZmlybVJlZ2lzdGVyEhYucGIuQ29uZmlybVJlZ2lzdGVyUmVxGhcucGIuQ29uZmlybVJlZ2lzdGVyUmVzcCIAEi8KCFJlZ2lzdGVyEg8ucGIuUmVnaXN0ZXJSZXEaEC5wYi5SZWdpc3RlclJlc3AiABI7CgxNYXBVc2VyQnlJZHMSEy5wYi5NYXBVc2VyQnlJZHNSZXEaFC5wYi5NYXBVc2VyQnlJZHNSZXNwIgASUwoUQmF0Y2hHZXRVc2VyQmFzZUluZm8SGy5wYi5CYXRjaEdldFVzZXJCYXNlSW5mb1JlcRocLnBiLkJhdGNoR2V0VXNlckJhc2VJbmZvUmVzcCIAElMKFFNlYXJjaFVzZXJzQnlLZXl3b3JkEhsucGIuU2VhcmNoVXNlcnNCeUtleXdvcmRSZXEaHC5wYi5TZWFyY2hVc2Vyc0J5S2V5d29yZFJlc3AiABI4CgtHZXRVc2VySG9tZRISLnBiLkdldFVzZXJIb21lUmVxGhMucGIuR2V0VXNlckhvbWVSZXNwIgASRAoPR2V0VXNlclNldHRpbmdzEhYucGIuR2V0VXNlclNldHRpbmdzUmVxGhcucGIuR2V0VXNlclNldHRpbmdzUmVzcCIAEkQKD1NldFVzZXJTZXR0aW5ncxIWLnBiLlNldFVzZXJTZXR0aW5nc1JlcRoXLnBiLlNldFVzZXJTZXR0aW5nc1Jlc3AiABIzCgxBZnRlckNvbm5lY3QSEy5wYi5BZnRlckNvbm5lY3RSZXEaDi5wYi5Db21tb25SZXNwEjkKD0FmdGVyRGlzY29ubmVjdBIWLnBiLkFmdGVyRGlzY29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASWQoWQmF0Y2hHZXRVc2VyQWxsRGV2aWNlcxIdLnBiLkJhdGNoR2V0VXNlckFsbERldmljZXNSZXEaHi5wYi5CYXRjaEdldFVzZXJBbGxEZXZpY2VzUmVzcCIAEkEKDlVwZGF0ZVVzZXJJbmZvEhUucGIuVXBkYXRlVXNlckluZm9SZXEaFi5wYi5VcGRhdGVVc2VySW5mb1Jlc3AiABJfChhHZXRBbGxVc2VySW52aXRhdGlvbkNvZGUSHy5wYi5HZXRBbGxVc2VySW52aXRhdGlvbkNvZGVSZXEaIC5wYi5HZXRBbGxVc2VySW52aXRhdGlvbkNvZGVSZXNwIgASaAobR2V0VXNlckludml0YXRpb25Db2RlRGV0YWlsEiIucGIuR2V0VXNlckludml0YXRpb25Db2RlRGV0YWlsUmVxGiMucGIuR2V0VXNlckludml0YXRpb25Db2RlRGV0YWlsUmVzcCIAElYKFUFkZFVzZXJJbnZpdGF0aW9uQ29kZRIcLnBiLkFkZFVzZXJJbnZpdGF0aW9uQ29kZVJlcRodLnBiLkFkZFVzZXJJbnZpdGF0aW9uQ29kZVJlc3AiABJfChhVcGRhdGVVc2VySW52aXRhdGlvbkNvZGUSHy5wYi5VcGRhdGVVc2VySW52aXRhdGlvbkNvZGVSZXEaIC5wYi5VcGRhdGVVc2VySW52aXRhdGlvbkNvZGVSZXNwIgASXwoYRGVsZXRlVXNlckludml0YXRpb25Db2RlEh8ucGIuRGVsZXRlVXNlckludml0YXRpb25Db2RlUmVxGiAucGIuRGVsZXRlVXNlckludml0YXRpb25Db2RlUmVzcCIAElYKFUdldEFsbFVzZXJJcFdoaXRlTGlzdBIcLnBiLkdldEFsbFVzZXJJcFdoaXRlTGlzdFJlcRodLnBiLkdldEFsbFVzZXJJcFdoaXRlTGlzdFJlc3AiABJfChhHZXRVc2VySXBXaGl0ZUxpc3REZXRhaWwSHy5wYi5HZXRVc2VySXBXaGl0ZUxpc3REZXRhaWxSZXEaIC5wYi5HZXRVc2VySXBXaGl0ZUxpc3REZXRhaWxSZXNwIgASTQoSQWRkVXNlcklwV2hpdGVMaXN0EhkucGIuQWRkVXNlcklwV2hpdGVMaXN0UmVxGhoucGIuQWRkVXNlcklwV2hpdGVMaXN0UmVzcCIAElYKFVVwZGF0ZVVzZXJJcFdoaXRlTGlzdBIcLnBiLlVwZGF0ZVVzZXJJcFdoaXRlTGlzdFJlcRodLnBiLlVwZGF0ZVVzZXJJcFdoaXRlTGlzdFJlc3AiABJWChVEZWxldGVVc2VySXBXaGl0ZUxpc3QSHC5wYi5EZWxldGVVc2VySXBXaGl0ZUxpc3RSZXEaHS5wYi5EZWxldGVVc2VySXBXaGl0ZUxpc3RSZXNwIgASVgoVR2V0QWxsVXNlcklwQmxhY2tMaXN0EhwucGIuR2V0QWxsVXNlcklwQmxhY2tMaXN0UmVxGh0ucGIuR2V0QWxsVXNlcklwQmxhY2tMaXN0UmVzcCIAEl8KGEdldFVzZXJJcEJsYWNrTGlzdERldGFpbBIfLnBiLkdldFVzZXJJcEJsYWNrTGlzdERldGFpbFJlcRogLnBiLkdldFVzZXJJcEJsYWNrTGlzdERldGFpbFJlc3AiABJNChJBZGRVc2VySXBCbGFja0xpc3QSGS5wYi5BZGRVc2VySXBCbGFja0xpc3RSZXEaGi5wYi5BZGRVc2VySXBCbGFja0xpc3RSZXNwIgASVgoVVXBkYXRlVXNlcklwQmxhY2tMaXN0EhwucGIuVXBkYXRlVXNlcklwQmxhY2tMaXN0UmVxGh0ucGIuVXBkYXRlVXNlcklwQmxhY2tMaXN0UmVzcCIAElYKFURlbGV0ZVVzZXJJcEJsYWNrTGlzdBIcLnBiLkRlbGV0ZVVzZXJJcEJsYWNrTGlzdFJlcRodLnBiLkRlbGV0ZVVzZXJJcEJsYWNrTGlzdFJlc3AiABJWChVHZXRBbGxVc2VyRGVmYXVsdENvbnYSHC5wYi5HZXRBbGxVc2VyRGVmYXVsdENvbnZSZXEaHS5wYi5HZXRBbGxVc2VyRGVmYXVsdENvbnZSZXNwIgASXwoYR2V0VXNlckRlZmF1bHRDb252RGV0YWlsEh8ucGIuR2V0VXNlckRlZmF1bHRDb252RGV0YWlsUmVxGiAucGIuR2V0VXNlckRlZmF1bHRDb252RGV0YWlsUmVzcCIAEk0KEkFkZFVzZXJEZWZhdWx0Q29udhIZLnBiLkFkZFVzZXJEZWZhdWx0Q29udlJlcRoaLnBiLkFkZFVzZXJEZWZhdWx0Q29udlJlc3AiABJWChVVcGRhdGVVc2VyRGVmYXVsdENvbnYSHC5wYi5VcGRhdGVVc2VyRGVmYXVsdENvbnZSZXEaHS5wYi5VcGRhdGVVc2VyRGVmYXVsdENvbnZSZXNwIgASVgoVRGVsZXRlVXNlckRlZmF1bHRDb252EhwucGIuRGVsZXRlVXNlckRlZmF1bHRDb252UmVxGh0ucGIuRGVsZXRlVXNlckRlZmF1bHRDb252UmVzcCIAEkQKD0dldEFsbFVzZXJNb2RlbBIWLnBiLkdldEFsbFVzZXJNb2RlbFJlcRoXLnBiLkdldEFsbFVzZXJNb2RlbFJlc3AiABJNChJHZXRVc2VyTW9kZWxEZXRhaWwSGS5wYi5HZXRVc2VyTW9kZWxEZXRhaWxSZXEaGi5wYi5HZXRVc2VyTW9kZWxEZXRhaWxSZXNwIgASOwoMQWRkVXNlck1vZGVsEhMucGIuQWRkVXNlck1vZGVsUmVxGhQucGIuQWRkVXNlck1vZGVsUmVzcCIAEkQKD1VwZGF0ZVVzZXJNb2RlbBIWLnBiLlVwZGF0ZVVzZXJNb2RlbFJlcRoXLnBiLlVwZGF0ZVVzZXJNb2RlbFJlc3AiABJECg9EZWxldGVVc2VyTW9kZWwSFi5wYi5EZWxldGVVc2VyTW9kZWxSZXEaFy5wYi5EZWxldGVVc2VyTW9kZWxSZXNwIgASRAoPU3dpdGNoVXNlck1vZGVsEhYucGIuU3dpdGNoVXNlck1vZGVsUmVxGhcucGIuU3dpdGNoVXNlck1vZGVsUmVzcCIAEkoKEUdldEFsbExvZ2luUmVjb3JkEhgucGIuR2V0QWxsTG9naW5SZWNvcmRSZXEaGS5wYi5HZXRBbGxMb2dpblJlY29yZFJlc3AiAA==');
+final $typed_data.Uint8List userServiceDescriptor = $convert.base64Decode('Cgt1c2VyU2VydmljZRImCgVMb2dpbhIMLnBiLkxvZ2luUmVxGg0ucGIuTG9naW5SZXNwIgASRAoPQ29uZmlybVJlZ2lzdGVyEhYucGIuQ29uZmlybVJlZ2lzdGVyUmVxGhcucGIuQ29uZmlybVJlZ2lzdGVyUmVzcCIAEi8KCFJlZ2lzdGVyEg8ucGIuUmVnaXN0ZXJSZXEaEC5wYi5SZWdpc3RlclJlc3AiABI7CgxNYXBVc2VyQnlJZHMSEy5wYi5NYXBVc2VyQnlJZHNSZXEaFC5wYi5NYXBVc2VyQnlJZHNSZXNwIgASUwoUQmF0Y2hHZXRVc2VyQmFzZUluZm8SGy5wYi5CYXRjaEdldFVzZXJCYXNlSW5mb1JlcRocLnBiLkJhdGNoR2V0VXNlckJhc2VJbmZvUmVzcCIAElMKFFNlYXJjaFVzZXJzQnlLZXl3b3JkEhsucGIuU2VhcmNoVXNlcnNCeUtleXdvcmRSZXEaHC5wYi5TZWFyY2hVc2Vyc0J5S2V5d29yZFJlc3AiABI4CgtHZXRVc2VySG9tZRISLnBiLkdldFVzZXJIb21lUmVxGhMucGIuR2V0VXNlckhvbWVSZXNwIgASRAoPR2V0VXNlclNldHRpbmdzEhYucGIuR2V0VXNlclNldHRpbmdzUmVxGhcucGIuR2V0VXNlclNldHRpbmdzUmVzcCIAEkQKD1NldFVzZXJTZXR0aW5ncxIWLnBiLlNldFVzZXJTZXR0aW5nc1JlcRoXLnBiLlNldFVzZXJTZXR0aW5nc1Jlc3AiABIzCgxBZnRlckNvbm5lY3QSEy5wYi5BZnRlckNvbm5lY3RSZXEaDi5wYi5Db21tb25SZXNwEjkKD0FmdGVyRGlzY29ubmVjdBIWLnBiLkFmdGVyRGlzY29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASWQoWQmF0Y2hHZXRVc2VyQWxsRGV2aWNlcxIdLnBiLkJhdGNoR2V0VXNlckFsbERldmljZXNSZXEaHi5wYi5CYXRjaEdldFVzZXJBbGxEZXZpY2VzUmVzcCIAEkEKDlVwZGF0ZVVzZXJJbmZvEhUucGIuVXBkYXRlVXNlckluZm9SZXEaFi5wYi5VcGRhdGVVc2VySW5mb1Jlc3AiABJNChJVcGRhdGVVc2VyUGFzc3dvcmQSGS5wYi5VcGRhdGVVc2VyUGFzc3dvcmRSZXEaGi5wYi5VcGRhdGVVc2VyUGFzc3dvcmRSZXNwIgASXwoYR2V0QWxsVXNlckludml0YXRpb25Db2RlEh8ucGIuR2V0QWxsVXNlckludml0YXRpb25Db2RlUmVxGiAucGIuR2V0QWxsVXNlckludml0YXRpb25Db2RlUmVzcCIAEmgKG0dldFVzZXJJbnZpdGF0aW9uQ29kZURldGFpbBIiLnBiLkdldFVzZXJJbnZpdGF0aW9uQ29kZURldGFpbFJlcRojLnBiLkdldFVzZXJJbnZpdGF0aW9uQ29kZURldGFpbFJlc3AiABJWChVBZGRVc2VySW52aXRhdGlvbkNvZGUSHC5wYi5BZGRVc2VySW52aXRhdGlvbkNvZGVSZXEaHS5wYi5BZGRVc2VySW52aXRhdGlvbkNvZGVSZXNwIgASXwoYVXBkYXRlVXNlckludml0YXRpb25Db2RlEh8ucGIuVXBkYXRlVXNlckludml0YXRpb25Db2RlUmVxGiAucGIuVXBkYXRlVXNlckludml0YXRpb25Db2RlUmVzcCIAEl8KGERlbGV0ZVVzZXJJbnZpdGF0aW9uQ29kZRIfLnBiLkRlbGV0ZVVzZXJJbnZpdGF0aW9uQ29kZVJlcRogLnBiLkRlbGV0ZVVzZXJJbnZpdGF0aW9uQ29kZVJlc3AiABJWChVHZXRBbGxVc2VySXBXaGl0ZUxpc3QSHC5wYi5HZXRBbGxVc2VySXBXaGl0ZUxpc3RSZXEaHS5wYi5HZXRBbGxVc2VySXBXaGl0ZUxpc3RSZXNwIgASXwoYR2V0VXNlcklwV2hpdGVMaXN0RGV0YWlsEh8ucGIuR2V0VXNlcklwV2hpdGVMaXN0RGV0YWlsUmVxGiAucGIuR2V0VXNlcklwV2hpdGVMaXN0RGV0YWlsUmVzcCIAEk0KEkFkZFVzZXJJcFdoaXRlTGlzdBIZLnBiLkFkZFVzZXJJcFdoaXRlTGlzdFJlcRoaLnBiLkFkZFVzZXJJcFdoaXRlTGlzdFJlc3AiABJWChVVcGRhdGVVc2VySXBXaGl0ZUxpc3QSHC5wYi5VcGRhdGVVc2VySXBXaGl0ZUxpc3RSZXEaHS5wYi5VcGRhdGVVc2VySXBXaGl0ZUxpc3RSZXNwIgASVgoVRGVsZXRlVXNlcklwV2hpdGVMaXN0EhwucGIuRGVsZXRlVXNlcklwV2hpdGVMaXN0UmVxGh0ucGIuRGVsZXRlVXNlcklwV2hpdGVMaXN0UmVzcCIAElYKFUdldEFsbFVzZXJJcEJsYWNrTGlzdBIcLnBiLkdldEFsbFVzZXJJcEJsYWNrTGlzdFJlcRodLnBiLkdldEFsbFVzZXJJcEJsYWNrTGlzdFJlc3AiABJfChhHZXRVc2VySXBCbGFja0xpc3REZXRhaWwSHy5wYi5HZXRVc2VySXBCbGFja0xpc3REZXRhaWxSZXEaIC5wYi5HZXRVc2VySXBCbGFja0xpc3REZXRhaWxSZXNwIgASTQoSQWRkVXNlcklwQmxhY2tMaXN0EhkucGIuQWRkVXNlcklwQmxhY2tMaXN0UmVxGhoucGIuQWRkVXNlcklwQmxhY2tMaXN0UmVzcCIAElYKFVVwZGF0ZVVzZXJJcEJsYWNrTGlzdBIcLnBiLlVwZGF0ZVVzZXJJcEJsYWNrTGlzdFJlcRodLnBiLlVwZGF0ZVVzZXJJcEJsYWNrTGlzdFJlc3AiABJWChVEZWxldGVVc2VySXBCbGFja0xpc3QSHC5wYi5EZWxldGVVc2VySXBCbGFja0xpc3RSZXEaHS5wYi5EZWxldGVVc2VySXBCbGFja0xpc3RSZXNwIgASVgoVR2V0QWxsVXNlckRlZmF1bHRDb252EhwucGIuR2V0QWxsVXNlckRlZmF1bHRDb252UmVxGh0ucGIuR2V0QWxsVXNlckRlZmF1bHRDb252UmVzcCIAEl8KGEdldFVzZXJEZWZhdWx0Q29udkRldGFpbBIfLnBiLkdldFVzZXJEZWZhdWx0Q29udkRldGFpbFJlcRogLnBiLkdldFVzZXJEZWZhdWx0Q29udkRldGFpbFJlc3AiABJNChJBZGRVc2VyRGVmYXVsdENvbnYSGS5wYi5BZGRVc2VyRGVmYXVsdENvbnZSZXEaGi5wYi5BZGRVc2VyRGVmYXVsdENvbnZSZXNwIgASVgoVVXBkYXRlVXNlckRlZmF1bHRDb252EhwucGIuVXBkYXRlVXNlckRlZmF1bHRDb252UmVxGh0ucGIuVXBkYXRlVXNlckRlZmF1bHRDb252UmVzcCIAElYKFURlbGV0ZVVzZXJEZWZhdWx0Q29udhIcLnBiLkRlbGV0ZVVzZXJEZWZhdWx0Q29udlJlcRodLnBiLkRlbGV0ZVVzZXJEZWZhdWx0Q29udlJlc3AiABJECg9HZXRBbGxVc2VyTW9kZWwSFi5wYi5HZXRBbGxVc2VyTW9kZWxSZXEaFy5wYi5HZXRBbGxVc2VyTW9kZWxSZXNwIgASTQoSR2V0VXNlck1vZGVsRGV0YWlsEhkucGIuR2V0VXNlck1vZGVsRGV0YWlsUmVxGhoucGIuR2V0VXNlck1vZGVsRGV0YWlsUmVzcCIAEjsKDEFkZFVzZXJNb2RlbBITLnBiLkFkZFVzZXJNb2RlbFJlcRoULnBiLkFkZFVzZXJNb2RlbFJlc3AiABJECg9VcGRhdGVVc2VyTW9kZWwSFi5wYi5VcGRhdGVVc2VyTW9kZWxSZXEaFy5wYi5VcGRhdGVVc2VyTW9kZWxSZXNwIgASRAoPRGVsZXRlVXNlck1vZGVsEhYucGIuRGVsZXRlVXNlck1vZGVsUmVxGhcucGIuRGVsZXRlVXNlck1vZGVsUmVzcCIAEkQKD1N3aXRjaFVzZXJNb2RlbBIWLnBiLlN3aXRjaFVzZXJNb2RlbFJlcRoXLnBiLlN3aXRjaFVzZXJNb2RlbFJlc3AiABJKChFHZXRBbGxMb2dpblJlY29yZBIYLnBiLkdldEFsbExvZ2luUmVjb3JkUmVxGhkucGIuR2V0QWxsTG9naW5SZWNvcmRSZXNwIgASLAoHU2VuZFNtcxIOLnBiLlNlbmRTbXNSZXEaDy5wYi5TZW5kU21zUmVzcCIAEjIKCVZlcmlmeVNtcxIQLnBiLlZlcmlmeVNtc1JlcRoRLnBiLlZlcmlmeVNtc1Jlc3AiAA==');

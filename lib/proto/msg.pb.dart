@@ -2371,6 +2371,104 @@ class EditMsgResp extends $pb.GeneratedMessage {
   $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
+class FlushShieldWordTireTreeReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FlushShieldWordTireTreeReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..hasRequiredFields = false
+  ;
+
+  FlushShieldWordTireTreeReq._() : super();
+  factory FlushShieldWordTireTreeReq({
+    $0.CommonReq? commonReq,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    return _result;
+  }
+  factory FlushShieldWordTireTreeReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FlushShieldWordTireTreeReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  FlushShieldWordTireTreeReq clone() => FlushShieldWordTireTreeReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  FlushShieldWordTireTreeReq copyWith(void Function(FlushShieldWordTireTreeReq) updates) => super.copyWith((message) => updates(message as FlushShieldWordTireTreeReq)) as FlushShieldWordTireTreeReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FlushShieldWordTireTreeReq create() => FlushShieldWordTireTreeReq._();
+  FlushShieldWordTireTreeReq createEmptyInstance() => create();
+  static $pb.PbList<FlushShieldWordTireTreeReq> createRepeated() => $pb.PbList<FlushShieldWordTireTreeReq>();
+  @$core.pragma('dart2js:noInline')
+  static FlushShieldWordTireTreeReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FlushShieldWordTireTreeReq>(create);
+  static FlushShieldWordTireTreeReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+}
+
+class FlushShieldWordTireTreeResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FlushShieldWordTireTreeResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  FlushShieldWordTireTreeResp._() : super();
+  factory FlushShieldWordTireTreeResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory FlushShieldWordTireTreeResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FlushShieldWordTireTreeResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  FlushShieldWordTireTreeResp clone() => FlushShieldWordTireTreeResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  FlushShieldWordTireTreeResp copyWith(void Function(FlushShieldWordTireTreeResp) updates) => super.copyWith((message) => updates(message as FlushShieldWordTireTreeResp)) as FlushShieldWordTireTreeResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FlushShieldWordTireTreeResp create() => FlushShieldWordTireTreeResp._();
+  FlushShieldWordTireTreeResp createEmptyInstance() => create();
+  static $pb.PbList<FlushShieldWordTireTreeResp> createRepeated() => $pb.PbList<FlushShieldWordTireTreeResp>();
+  @$core.pragma('dart2js:noInline')
+  static FlushShieldWordTireTreeResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FlushShieldWordTireTreeResp>(create);
+  static FlushShieldWordTireTreeResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
 class msgServiceApi {
   $pb.RpcClient _client;
   msgServiceApi(this._client);
@@ -2446,6 +2544,10 @@ class msgServiceApi {
   $async.Future<EditMsgResp> editMsg($pb.ClientContext? ctx, EditMsgReq request) {
     var emptyResponse = EditMsgResp();
     return _client.invoke<EditMsgResp>(ctx, 'msgService', 'EditMsg', request, emptyResponse);
+  }
+  $async.Future<FlushShieldWordTireTreeResp> flushShieldWordTireTree($pb.ClientContext? ctx, FlushShieldWordTireTreeReq request) {
+    var emptyResponse = FlushShieldWordTireTreeResp();
+    return _client.invoke<FlushShieldWordTireTreeResp>(ctx, 'msgService', 'FlushShieldWordTireTree', request, emptyResponse);
   }
 }
 

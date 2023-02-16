@@ -38,6 +38,8 @@ abstract class groupServiceBase extends $pb.GeneratedService {
   $async.Future<$2.GetGroupModelDetailResp> getGroupModelDetail($pb.ServerContext ctx, $2.GetGroupModelDetailReq request);
   $async.Future<$2.UpdateGroupModelResp> updateGroupModel($pb.ServerContext ctx, $2.UpdateGroupModelReq request);
   $async.Future<$2.DismissGroupModelResp> dismissGroupModel($pb.ServerContext ctx, $2.DismissGroupModelReq request);
+  $async.Future<$2.SearchGroupsByKeywordResp> searchGroupsByKeyword($pb.ServerContext ctx, $2.SearchGroupsByKeywordReq request);
+  $async.Future<$2.AddGroupMemberResp> addGroupMember($pb.ServerContext ctx, $2.AddGroupMemberReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -63,6 +65,8 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'GetGroupModelDetail': return $2.GetGroupModelDetailReq();
       case 'UpdateGroupModel': return $2.UpdateGroupModelReq();
       case 'DismissGroupModel': return $2.DismissGroupModelReq();
+      case 'SearchGroupsByKeyword': return $2.SearchGroupsByKeywordReq();
+      case 'AddGroupMember': return $2.AddGroupMemberReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -91,6 +95,8 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'GetGroupModelDetail': return this.getGroupModelDetail(ctx, request as $2.GetGroupModelDetailReq);
       case 'UpdateGroupModel': return this.updateGroupModel(ctx, request as $2.UpdateGroupModelReq);
       case 'DismissGroupModel': return this.dismissGroupModel(ctx, request as $2.DismissGroupModelReq);
+      case 'SearchGroupsByKeyword': return this.searchGroupsByKeyword(ctx, request as $2.SearchGroupsByKeywordReq);
+      case 'AddGroupMember': return this.addGroupMember(ctx, request as $2.AddGroupMemberReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

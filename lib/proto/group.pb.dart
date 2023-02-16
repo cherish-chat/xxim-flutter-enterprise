@@ -4433,6 +4433,252 @@ class DismissGroupModelResp extends $pb.GeneratedMessage {
   $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
+class SearchGroupsByKeywordReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SearchGroupsByKeywordReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'keyword')
+    ..hasRequiredFields = false
+  ;
+
+  SearchGroupsByKeywordReq._() : super();
+  factory SearchGroupsByKeywordReq({
+    $0.CommonReq? commonReq,
+    $core.String? keyword,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (keyword != null) {
+      _result.keyword = keyword;
+    }
+    return _result;
+  }
+  factory SearchGroupsByKeywordReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SearchGroupsByKeywordReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SearchGroupsByKeywordReq clone() => SearchGroupsByKeywordReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SearchGroupsByKeywordReq copyWith(void Function(SearchGroupsByKeywordReq) updates) => super.copyWith((message) => updates(message as SearchGroupsByKeywordReq)) as SearchGroupsByKeywordReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SearchGroupsByKeywordReq create() => SearchGroupsByKeywordReq._();
+  SearchGroupsByKeywordReq createEmptyInstance() => create();
+  static $pb.PbList<SearchGroupsByKeywordReq> createRepeated() => $pb.PbList<SearchGroupsByKeywordReq>();
+  @$core.pragma('dart2js:noInline')
+  static SearchGroupsByKeywordReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SearchGroupsByKeywordReq>(create);
+  static SearchGroupsByKeywordReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get keyword => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set keyword($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasKeyword() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearKeyword() => clearField(2);
+}
+
+class SearchGroupsByKeywordResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SearchGroupsByKeywordResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..pc<GroupBaseInfo>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groups', $pb.PbFieldType.PM, subBuilder: GroupBaseInfo.create)
+    ..hasRequiredFields = false
+  ;
+
+  SearchGroupsByKeywordResp._() : super();
+  factory SearchGroupsByKeywordResp({
+    $0.CommonResp? commonResp,
+    $core.Iterable<GroupBaseInfo>? groups,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    if (groups != null) {
+      _result.groups.addAll(groups);
+    }
+    return _result;
+  }
+  factory SearchGroupsByKeywordResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SearchGroupsByKeywordResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SearchGroupsByKeywordResp clone() => SearchGroupsByKeywordResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SearchGroupsByKeywordResp copyWith(void Function(SearchGroupsByKeywordResp) updates) => super.copyWith((message) => updates(message as SearchGroupsByKeywordResp)) as SearchGroupsByKeywordResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SearchGroupsByKeywordResp create() => SearchGroupsByKeywordResp._();
+  SearchGroupsByKeywordResp createEmptyInstance() => create();
+  static $pb.PbList<SearchGroupsByKeywordResp> createRepeated() => $pb.PbList<SearchGroupsByKeywordResp>();
+  @$core.pragma('dart2js:noInline')
+  static SearchGroupsByKeywordResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SearchGroupsByKeywordResp>(create);
+  static SearchGroupsByKeywordResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.List<GroupBaseInfo> get groups => $_getList(1);
+}
+
+class AddGroupMemberReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AddGroupMemberReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
+    ..hasRequiredFields = false
+  ;
+
+  AddGroupMemberReq._() : super();
+  factory AddGroupMemberReq({
+    $0.CommonReq? commonReq,
+    $core.String? groupId,
+    $core.String? userId,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (groupId != null) {
+      _result.groupId = groupId;
+    }
+    if (userId != null) {
+      _result.userId = userId;
+    }
+    return _result;
+  }
+  factory AddGroupMemberReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AddGroupMemberReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AddGroupMemberReq clone() => AddGroupMemberReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AddGroupMemberReq copyWith(void Function(AddGroupMemberReq) updates) => super.copyWith((message) => updates(message as AddGroupMemberReq)) as AddGroupMemberReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AddGroupMemberReq create() => AddGroupMemberReq._();
+  AddGroupMemberReq createEmptyInstance() => create();
+  static $pb.PbList<AddGroupMemberReq> createRepeated() => $pb.PbList<AddGroupMemberReq>();
+  @$core.pragma('dart2js:noInline')
+  static AddGroupMemberReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AddGroupMemberReq>(create);
+  static AddGroupMemberReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get groupId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set groupId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasGroupId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearGroupId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get userId => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set userId($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasUserId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearUserId() => clearField(3);
+}
+
+class AddGroupMemberResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AddGroupMemberResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  AddGroupMemberResp._() : super();
+  factory AddGroupMemberResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory AddGroupMemberResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AddGroupMemberResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AddGroupMemberResp clone() => AddGroupMemberResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AddGroupMemberResp copyWith(void Function(AddGroupMemberResp) updates) => super.copyWith((message) => updates(message as AddGroupMemberResp)) as AddGroupMemberResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AddGroupMemberResp create() => AddGroupMemberResp._();
+  AddGroupMemberResp createEmptyInstance() => create();
+  static $pb.PbList<AddGroupMemberResp> createRepeated() => $pb.PbList<AddGroupMemberResp>();
+  @$core.pragma('dart2js:noInline')
+  static AddGroupMemberResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AddGroupMemberResp>(create);
+  static AddGroupMemberResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
 class groupServiceApi {
   $pb.RpcClient _client;
   groupServiceApi(this._client);
@@ -4524,6 +4770,14 @@ class groupServiceApi {
   $async.Future<DismissGroupModelResp> dismissGroupModel($pb.ClientContext? ctx, DismissGroupModelReq request) {
     var emptyResponse = DismissGroupModelResp();
     return _client.invoke<DismissGroupModelResp>(ctx, 'groupService', 'DismissGroupModel', request, emptyResponse);
+  }
+  $async.Future<SearchGroupsByKeywordResp> searchGroupsByKeyword($pb.ClientContext? ctx, SearchGroupsByKeywordReq request) {
+    var emptyResponse = SearchGroupsByKeywordResp();
+    return _client.invoke<SearchGroupsByKeywordResp>(ctx, 'groupService', 'SearchGroupsByKeyword', request, emptyResponse);
+  }
+  $async.Future<AddGroupMemberResp> addGroupMember($pb.ClientContext? ctx, AddGroupMemberReq request) {
+    var emptyResponse = AddGroupMemberResp();
+    return _client.invoke<AddGroupMemberResp>(ctx, 'groupService', 'AddGroupMember', request, emptyResponse);
   }
 }
 

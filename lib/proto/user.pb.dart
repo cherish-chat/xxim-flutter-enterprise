@@ -647,6 +647,11 @@ class RegisterReq extends $pb.GeneratedMessage {
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nickname')
     ..e<XB>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'xb', $pb.PbFieldType.OE, defaultOrMaker: XB.UnknownXB, valueOf: XB.valueOf, enumValues: XB.values)
     ..aOM<BirthdayInfo>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'birthday', subBuilder: BirthdayInfo.create)
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'invitationCode', protoName: 'invitationCode')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mobile')
+    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mobileCountryCode', protoName: 'mobileCountryCode')
+    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'smsCode', protoName: 'smsCode')
+    ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'avatar')
     ..hasRequiredFields = false
   ;
 
@@ -658,6 +663,11 @@ class RegisterReq extends $pb.GeneratedMessage {
     $core.String? nickname,
     XB? xb,
     BirthdayInfo? birthday,
+    $core.String? invitationCode,
+    $core.String? mobile,
+    $core.String? mobileCountryCode,
+    $core.String? smsCode,
+    $core.String? avatar,
   }) {
     final _result = create();
     if (commonReq != null) {
@@ -677,6 +687,21 @@ class RegisterReq extends $pb.GeneratedMessage {
     }
     if (birthday != null) {
       _result.birthday = birthday;
+    }
+    if (invitationCode != null) {
+      _result.invitationCode = invitationCode;
+    }
+    if (mobile != null) {
+      _result.mobile = mobile;
+    }
+    if (mobileCountryCode != null) {
+      _result.mobileCountryCode = mobileCountryCode;
+    }
+    if (smsCode != null) {
+      _result.smsCode = smsCode;
+    }
+    if (avatar != null) {
+      _result.avatar = avatar;
     }
     return _result;
   }
@@ -758,6 +783,51 @@ class RegisterReq extends $pb.GeneratedMessage {
   void clearBirthday() => clearField(6);
   @$pb.TagNumber(6)
   BirthdayInfo ensureBirthday() => $_ensure(5);
+
+  @$pb.TagNumber(7)
+  $core.String get invitationCode => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set invitationCode($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasInvitationCode() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearInvitationCode() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.String get mobile => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set mobile($core.String v) { $_setString(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasMobile() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearMobile() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.String get mobileCountryCode => $_getSZ(8);
+  @$pb.TagNumber(9)
+  set mobileCountryCode($core.String v) { $_setString(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasMobileCountryCode() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearMobileCountryCode() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.String get smsCode => $_getSZ(9);
+  @$pb.TagNumber(10)
+  set smsCode($core.String v) { $_setString(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasSmsCode() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearSmsCode() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.String get avatar => $_getSZ(10);
+  @$pb.TagNumber(11)
+  set avatar($core.String v) { $_setString(10, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasAvatar() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearAvatar() => clearField(11);
 }
 
 class RegisterResp extends $pb.GeneratedMessage {
@@ -2019,6 +2089,132 @@ class UpdateUserInfoResp extends $pb.GeneratedMessage {
   $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
+class UpdateUserPasswordReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateUserPasswordReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'oldPassword', protoName: 'oldPassword')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'newPassword', protoName: 'newPassword')
+    ..hasRequiredFields = false
+  ;
+
+  UpdateUserPasswordReq._() : super();
+  factory UpdateUserPasswordReq({
+    $0.CommonReq? commonReq,
+    $core.String? oldPassword,
+    $core.String? newPassword,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (oldPassword != null) {
+      _result.oldPassword = oldPassword;
+    }
+    if (newPassword != null) {
+      _result.newPassword = newPassword;
+    }
+    return _result;
+  }
+  factory UpdateUserPasswordReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateUserPasswordReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateUserPasswordReq clone() => UpdateUserPasswordReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateUserPasswordReq copyWith(void Function(UpdateUserPasswordReq) updates) => super.copyWith((message) => updates(message as UpdateUserPasswordReq)) as UpdateUserPasswordReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UpdateUserPasswordReq create() => UpdateUserPasswordReq._();
+  UpdateUserPasswordReq createEmptyInstance() => create();
+  static $pb.PbList<UpdateUserPasswordReq> createRepeated() => $pb.PbList<UpdateUserPasswordReq>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateUserPasswordReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateUserPasswordReq>(create);
+  static UpdateUserPasswordReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get oldPassword => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set oldPassword($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasOldPassword() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearOldPassword() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get newPassword => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set newPassword($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasNewPassword() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearNewPassword() => clearField(3);
+}
+
+class UpdateUserPasswordResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateUserPasswordResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  UpdateUserPasswordResp._() : super();
+  factory UpdateUserPasswordResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory UpdateUserPasswordResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateUserPasswordResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateUserPasswordResp clone() => UpdateUserPasswordResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateUserPasswordResp copyWith(void Function(UpdateUserPasswordResp) updates) => super.copyWith((message) => updates(message as UpdateUserPasswordResp)) as UpdateUserPasswordResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UpdateUserPasswordResp create() => UpdateUserPasswordResp._();
+  UpdateUserPasswordResp createEmptyInstance() => create();
+  static $pb.PbList<UpdateUserPasswordResp> createRepeated() => $pb.PbList<UpdateUserPasswordResp>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateUserPasswordResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateUserPasswordResp>(create);
+  static UpdateUserPasswordResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
 class UserInvitationCode extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserInvitationCode', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'code')
@@ -2026,7 +2222,8 @@ class UserInvitationCode extends $pb.GeneratedMessage {
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
     ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creatorType', $pb.PbFieldType.O3, protoName: 'creatorType')
     ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isEnable', protoName: 'isEnable')
-    ..aInt64(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createTime', protoName: 'createTime')
+    ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'defaultConvMode', $pb.PbFieldType.O3, protoName: 'defaultConvMode')
+    ..aInt64(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createTime', protoName: 'createTime')
     ..aInt64(21, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
     ..aOS(22, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAtStr', protoName: 'createdAtStr')
     ..hasRequiredFields = false
@@ -2039,6 +2236,7 @@ class UserInvitationCode extends $pb.GeneratedMessage {
     $core.String? creator,
     $core.int? creatorType,
     $core.bool? isEnable,
+    $core.int? defaultConvMode,
     $fixnum.Int64? createTime,
     $fixnum.Int64? createdAt,
     $core.String? createdAtStr,
@@ -2058,6 +2256,9 @@ class UserInvitationCode extends $pb.GeneratedMessage {
     }
     if (isEnable != null) {
       _result.isEnable = isEnable;
+    }
+    if (defaultConvMode != null) {
+      _result.defaultConvMode = defaultConvMode;
     }
     if (createTime != null) {
       _result.createTime = createTime;
@@ -2137,29 +2338,38 @@ class UserInvitationCode extends $pb.GeneratedMessage {
   void clearIsEnable() => clearField(5);
 
   @$pb.TagNumber(6)
-  $fixnum.Int64 get createTime => $_getI64(5);
+  $core.int get defaultConvMode => $_getIZ(5);
   @$pb.TagNumber(6)
-  set createTime($fixnum.Int64 v) { $_setInt64(5, v); }
+  set defaultConvMode($core.int v) { $_setSignedInt32(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasCreateTime() => $_has(5);
+  $core.bool hasDefaultConvMode() => $_has(5);
   @$pb.TagNumber(6)
-  void clearCreateTime() => clearField(6);
+  void clearDefaultConvMode() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $fixnum.Int64 get createTime => $_getI64(6);
+  @$pb.TagNumber(7)
+  set createTime($fixnum.Int64 v) { $_setInt64(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasCreateTime() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearCreateTime() => clearField(7);
 
   @$pb.TagNumber(21)
-  $fixnum.Int64 get createdAt => $_getI64(6);
+  $fixnum.Int64 get createdAt => $_getI64(7);
   @$pb.TagNumber(21)
-  set createdAt($fixnum.Int64 v) { $_setInt64(6, v); }
+  set createdAt($fixnum.Int64 v) { $_setInt64(7, v); }
   @$pb.TagNumber(21)
-  $core.bool hasCreatedAt() => $_has(6);
+  $core.bool hasCreatedAt() => $_has(7);
   @$pb.TagNumber(21)
   void clearCreatedAt() => clearField(21);
 
   @$pb.TagNumber(22)
-  $core.String get createdAtStr => $_getSZ(7);
+  $core.String get createdAtStr => $_getSZ(8);
   @$pb.TagNumber(22)
-  set createdAtStr($core.String v) { $_setString(7, v); }
+  set createdAtStr($core.String v) { $_setString(8, v); }
   @$pb.TagNumber(22)
-  $core.bool hasCreatedAtStr() => $_has(7);
+  $core.bool hasCreatedAtStr() => $_has(8);
   @$pb.TagNumber(22)
   void clearCreatedAtStr() => clearField(22);
 }
@@ -4162,6 +4372,7 @@ class UserDefaultConv extends $pb.GeneratedMessage {
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'filterType', $pb.PbFieldType.O3, protoName: 'filterType')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'invitationCode', protoName: 'invitationCode')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convId', protoName: 'convId')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'textMsg', protoName: 'textMsg')
     ..aInt64(21, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
     ..aOS(22, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAtStr', protoName: 'createdAtStr')
     ..hasRequiredFields = false
@@ -4174,6 +4385,7 @@ class UserDefaultConv extends $pb.GeneratedMessage {
     $core.int? filterType,
     $core.String? invitationCode,
     $core.String? convId,
+    $core.String? textMsg,
     $fixnum.Int64? createdAt,
     $core.String? createdAtStr,
   }) {
@@ -4192,6 +4404,9 @@ class UserDefaultConv extends $pb.GeneratedMessage {
     }
     if (convId != null) {
       _result.convId = convId;
+    }
+    if (textMsg != null) {
+      _result.textMsg = textMsg;
     }
     if (createdAt != null) {
       _result.createdAt = createdAt;
@@ -4267,21 +4482,30 @@ class UserDefaultConv extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearConvId() => clearField(5);
 
+  @$pb.TagNumber(6)
+  $core.String get textMsg => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set textMsg($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasTextMsg() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearTextMsg() => clearField(6);
+
   @$pb.TagNumber(21)
-  $fixnum.Int64 get createdAt => $_getI64(5);
+  $fixnum.Int64 get createdAt => $_getI64(6);
   @$pb.TagNumber(21)
-  set createdAt($fixnum.Int64 v) { $_setInt64(5, v); }
+  set createdAt($fixnum.Int64 v) { $_setInt64(6, v); }
   @$pb.TagNumber(21)
-  $core.bool hasCreatedAt() => $_has(5);
+  $core.bool hasCreatedAt() => $_has(6);
   @$pb.TagNumber(21)
   void clearCreatedAt() => clearField(21);
 
   @$pb.TagNumber(22)
-  $core.String get createdAtStr => $_getSZ(6);
+  $core.String get createdAtStr => $_getSZ(7);
   @$pb.TagNumber(22)
-  set createdAtStr($core.String v) { $_setString(6, v); }
+  set createdAtStr($core.String v) { $_setString(7, v); }
   @$pb.TagNumber(22)
-  $core.bool hasCreatedAtStr() => $_has(6);
+  $core.bool hasCreatedAtStr() => $_has(7);
   @$pb.TagNumber(22)
   void clearCreatedAtStr() => clearField(22);
 }
@@ -6808,6 +7032,328 @@ class GetAllLoginRecordResp extends $pb.GeneratedMessage {
   void clearTotal() => clearField(3);
 }
 
+class SendSmsReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SendSmsReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'phone')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'countryCode', protoName: 'countryCode')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'scene')
+    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'expireMinute', $pb.PbFieldType.O3, protoName: 'expireMinute')
+    ..hasRequiredFields = false
+  ;
+
+  SendSmsReq._() : super();
+  factory SendSmsReq({
+    $0.CommonReq? commonReq,
+    $core.String? phone,
+    $core.String? countryCode,
+    $core.String? scene,
+    $core.int? expireMinute,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (phone != null) {
+      _result.phone = phone;
+    }
+    if (countryCode != null) {
+      _result.countryCode = countryCode;
+    }
+    if (scene != null) {
+      _result.scene = scene;
+    }
+    if (expireMinute != null) {
+      _result.expireMinute = expireMinute;
+    }
+    return _result;
+  }
+  factory SendSmsReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SendSmsReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SendSmsReq clone() => SendSmsReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SendSmsReq copyWith(void Function(SendSmsReq) updates) => super.copyWith((message) => updates(message as SendSmsReq)) as SendSmsReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SendSmsReq create() => SendSmsReq._();
+  SendSmsReq createEmptyInstance() => create();
+  static $pb.PbList<SendSmsReq> createRepeated() => $pb.PbList<SendSmsReq>();
+  @$core.pragma('dart2js:noInline')
+  static SendSmsReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendSmsReq>(create);
+  static SendSmsReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get phone => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set phone($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPhone() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPhone() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get countryCode => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set countryCode($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasCountryCode() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearCountryCode() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get scene => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set scene($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasScene() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearScene() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.int get expireMinute => $_getIZ(4);
+  @$pb.TagNumber(5)
+  set expireMinute($core.int v) { $_setSignedInt32(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasExpireMinute() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearExpireMinute() => clearField(5);
+}
+
+class SendSmsResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SendSmsResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  SendSmsResp._() : super();
+  factory SendSmsResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory SendSmsResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SendSmsResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SendSmsResp clone() => SendSmsResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SendSmsResp copyWith(void Function(SendSmsResp) updates) => super.copyWith((message) => updates(message as SendSmsResp)) as SendSmsResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SendSmsResp create() => SendSmsResp._();
+  SendSmsResp createEmptyInstance() => create();
+  static $pb.PbList<SendSmsResp> createRepeated() => $pb.PbList<SendSmsResp>();
+  @$core.pragma('dart2js:noInline')
+  static SendSmsResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendSmsResp>(create);
+  static SendSmsResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
+class VerifySmsReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'VerifySmsReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'phone')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'countryCode', protoName: 'countryCode')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'scene')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'code')
+    ..aOB(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'delete')
+    ..hasRequiredFields = false
+  ;
+
+  VerifySmsReq._() : super();
+  factory VerifySmsReq({
+    $0.CommonReq? commonReq,
+    $core.String? phone,
+    $core.String? countryCode,
+    $core.String? scene,
+    $core.String? code,
+    $core.bool? delete,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (phone != null) {
+      _result.phone = phone;
+    }
+    if (countryCode != null) {
+      _result.countryCode = countryCode;
+    }
+    if (scene != null) {
+      _result.scene = scene;
+    }
+    if (code != null) {
+      _result.code = code;
+    }
+    if (delete != null) {
+      _result.delete = delete;
+    }
+    return _result;
+  }
+  factory VerifySmsReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory VerifySmsReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  VerifySmsReq clone() => VerifySmsReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  VerifySmsReq copyWith(void Function(VerifySmsReq) updates) => super.copyWith((message) => updates(message as VerifySmsReq)) as VerifySmsReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static VerifySmsReq create() => VerifySmsReq._();
+  VerifySmsReq createEmptyInstance() => create();
+  static $pb.PbList<VerifySmsReq> createRepeated() => $pb.PbList<VerifySmsReq>();
+  @$core.pragma('dart2js:noInline')
+  static VerifySmsReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<VerifySmsReq>(create);
+  static VerifySmsReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get phone => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set phone($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPhone() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPhone() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get countryCode => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set countryCode($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasCountryCode() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearCountryCode() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get scene => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set scene($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasScene() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearScene() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get code => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set code($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasCode() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearCode() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.bool get delete => $_getBF(5);
+  @$pb.TagNumber(6)
+  set delete($core.bool v) { $_setBool(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasDelete() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearDelete() => clearField(6);
+}
+
+class VerifySmsResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'VerifySmsResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  VerifySmsResp._() : super();
+  factory VerifySmsResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory VerifySmsResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory VerifySmsResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  VerifySmsResp clone() => VerifySmsResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  VerifySmsResp copyWith(void Function(VerifySmsResp) updates) => super.copyWith((message) => updates(message as VerifySmsResp)) as VerifySmsResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static VerifySmsResp create() => VerifySmsResp._();
+  VerifySmsResp createEmptyInstance() => create();
+  static $pb.PbList<VerifySmsResp> createRepeated() => $pb.PbList<VerifySmsResp>();
+  @$core.pragma('dart2js:noInline')
+  static VerifySmsResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<VerifySmsResp>(create);
+  static VerifySmsResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
 class userServiceApi {
   $pb.RpcClient _client;
   userServiceApi(this._client);
@@ -6863,6 +7409,10 @@ class userServiceApi {
   $async.Future<UpdateUserInfoResp> updateUserInfo($pb.ClientContext? ctx, UpdateUserInfoReq request) {
     var emptyResponse = UpdateUserInfoResp();
     return _client.invoke<UpdateUserInfoResp>(ctx, 'userService', 'UpdateUserInfo', request, emptyResponse);
+  }
+  $async.Future<UpdateUserPasswordResp> updateUserPassword($pb.ClientContext? ctx, UpdateUserPasswordReq request) {
+    var emptyResponse = UpdateUserPasswordResp();
+    return _client.invoke<UpdateUserPasswordResp>(ctx, 'userService', 'UpdateUserPassword', request, emptyResponse);
   }
   $async.Future<GetAllUserInvitationCodeResp> getAllUserInvitationCode($pb.ClientContext? ctx, GetAllUserInvitationCodeReq request) {
     var emptyResponse = GetAllUserInvitationCodeResp();
@@ -6971,6 +7521,14 @@ class userServiceApi {
   $async.Future<GetAllLoginRecordResp> getAllLoginRecord($pb.ClientContext? ctx, GetAllLoginRecordReq request) {
     var emptyResponse = GetAllLoginRecordResp();
     return _client.invoke<GetAllLoginRecordResp>(ctx, 'userService', 'GetAllLoginRecord', request, emptyResponse);
+  }
+  $async.Future<SendSmsResp> sendSms($pb.ClientContext? ctx, SendSmsReq request) {
+    var emptyResponse = SendSmsResp();
+    return _client.invoke<SendSmsResp>(ctx, 'userService', 'SendSms', request, emptyResponse);
+  }
+  $async.Future<VerifySmsResp> verifySms($pb.ClientContext? ctx, VerifySmsReq request) {
+    var emptyResponse = VerifySmsResp();
+    return _client.invoke<VerifySmsResp>(ctx, 'userService', 'VerifySms', request, emptyResponse);
   }
 }
 
