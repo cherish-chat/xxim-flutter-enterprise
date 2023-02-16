@@ -61,7 +61,10 @@ class MenuLogic extends GetxController {
         userInfoList = data.userMap.values.toList();
         for (UserBaseInfo info in userInfoList) {
           if (info.id.isEmpty || info.nickname.isEmpty) continue;
-          String convId = SDKTool.singleConvId(HiveTool.getUserId(), info.id);
+          String convId = SDKTool.singleConvId(
+            HiveTool.getUserId(),
+            info.id,
+          );
           if (convParams.containsKey(convId)) {
             convParams[convId] = const AesParams(
               key: "key",

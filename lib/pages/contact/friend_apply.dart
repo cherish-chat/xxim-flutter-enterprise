@@ -185,118 +185,114 @@ class FriendApplyPage extends StatelessWidget {
     } else if (event.status == RequestAddFriendStatus.Refused) {
       status = "已拒绝";
     }
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () {},
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        child: Row(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: ImageWidget(
-                event.otherUserInfo.avatar,
-                width: 55,
-                height: 55,
-              ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: ImageWidget(
+              event.otherUserInfo.avatar,
+              width: 55,
+              height: 55,
             ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    event.otherUserInfo.nickname,
-                    style: const TextStyle(
-                      color: getTextBlack,
-                      fontSize: 16,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  event.otherUserInfo.nickname,
+                  style: const TextStyle(
+                    color: getTextBlack,
+                    fontSize: 16,
                   ),
-                  const SizedBox(height: 3),
-                  Text(
-                    event.fromUserId == HiveTool.getUserId()
-                        ? "请求添加对方为好友"
-                        : event.extra.content,
-                    style: const TextStyle(
-                      color: getHintBlack,
-                      fontSize: 14,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 3),
+                Text(
+                  event.fromUserId == HiveTool.getUserId()
+                      ? "请求添加对方为好友"
+                      : event.extra.content,
+                  style: const TextStyle(
+                    color: getHintBlack,
+                    fontSize: 14,
                   ),
-                ],
-              ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ),
-            if (event.fromUserId == HiveTool.getUserId())
-              Text(
-                status,
-                style: const TextStyle(
-                  color: getHintBlack,
-                  fontSize: 14,
-                ),
-              )
-            else if (event.status == RequestAddFriendStatus.Agreed)
-              Text(
-                status,
-                style: const TextStyle(
-                  color: getHintBlack,
-                  fontSize: 14,
-                ),
-              )
-            else
-              Row(
-                children: [
-                  GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                    onTap: () {
-                      logic.refuse("", event.otherUserInfo.id);
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      width: 55,
-                      height: 25,
-                      decoration: BoxDecoration(
-                        color: getMainColor,
-                        borderRadius: BorderRadius.circular(12.5),
-                      ),
-                      child: const Text(
-                        "拒绝",
-                        style: TextStyle(
-                          color: getTextWhite,
-                          fontSize: 12,
-                        ),
+          ),
+          if (event.fromUserId == HiveTool.getUserId())
+            Text(
+              status,
+              style: const TextStyle(
+                color: getHintBlack,
+                fontSize: 14,
+              ),
+            )
+          else if (event.status == RequestAddFriendStatus.Agreed)
+            Text(
+              status,
+              style: const TextStyle(
+                color: getHintBlack,
+                fontSize: 14,
+              ),
+            )
+          else
+            Row(
+              children: [
+                GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
+                    logic.refuse("", event.otherUserInfo.id);
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 55,
+                    height: 25,
+                    decoration: BoxDecoration(
+                      color: getMainColor,
+                      borderRadius: BorderRadius.circular(12.5),
+                    ),
+                    child: const Text(
+                      "拒绝",
+                      style: TextStyle(
+                        color: getTextWhite,
+                        fontSize: 12,
                       ),
                     ),
                   ),
-                  const SizedBox(width: 16),
-                  GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                    onTap: () {
-                      logic.agree("", event.otherUserInfo.id);
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      width: 55,
-                      height: 25,
-                      decoration: BoxDecoration(
-                        color: getMainColor,
-                        borderRadius: BorderRadius.circular(12.5),
-                      ),
-                      child: const Text(
-                        "同意",
-                        style: TextStyle(
-                          color: getTextWhite,
-                          fontSize: 12,
-                        ),
+                ),
+                const SizedBox(width: 16),
+                GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
+                    logic.agree("", event.otherUserInfo.id);
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 55,
+                    height: 25,
+                    decoration: BoxDecoration(
+                      color: getMainColor,
+                      borderRadius: BorderRadius.circular(12.5),
+                    ),
+                    child: const Text(
+                      "同意",
+                      style: TextStyle(
+                        color: getTextWhite,
+                        fontSize: 12,
                       ),
                     ),
                   ),
-                ],
-              )
-          ],
-        ),
+                ),
+              ],
+            )
+        ],
       ),
     );
   }

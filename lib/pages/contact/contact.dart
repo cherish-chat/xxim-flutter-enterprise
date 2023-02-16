@@ -3,6 +3,7 @@ import 'package:lpinyin/lpinyin.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
+import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 class ContactModel extends ISuspensionBean {
   String userId;
@@ -308,7 +309,15 @@ class ContactPage extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        // 个人详情
+        MenuLogic? logic = MenuLogic.logic();
+        if (logic == null) return;
+        logic.sliderKey?.currentState?.closeSlider();
+        logic.getDelegate?.toNamed(
+          Routes.chat(SDKTool.singleConvId(
+            HiveTool.getUserId(),
+            item.userId,
+          )),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),

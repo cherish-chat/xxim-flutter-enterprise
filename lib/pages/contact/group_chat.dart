@@ -2,6 +2,7 @@ import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
+import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 class GroupChatLogic extends GetxController {
   static GroupChatLogic? logic() => Tool.capture(Get.find);
@@ -83,7 +84,12 @@ class GroupChatPage extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        // 群聊详情
+        MenuLogic? logic = MenuLogic.logic();
+        if (logic == null) return;
+        logic.sliderKey?.currentState?.closeSlider();
+        logic.getDelegate?.toNamed(
+          Routes.chat(SDKTool.groupConvId(item.id)),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
