@@ -259,7 +259,7 @@ class ContactPage extends StatelessWidget {
           buildItem(
             "assets/images/ic_new_friends_30.webp",
             "好友申请",
-            count: 9,
+            // count: 9,
             onTap: () {
               MenuLogic? logic = MenuLogic.logic();
               if (logic == null) return;
@@ -272,7 +272,7 @@ class ContactPage extends StatelessWidget {
           buildItem(
             "assets/images/ic_new_group_30.webp",
             "群聊申请",
-            count: 9,
+            // count: 9,
             onTap: () {
               MenuLogic? logic = MenuLogic.logic();
               if (logic == null) return;
