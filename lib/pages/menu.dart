@@ -2,6 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/contact.dart';
+import 'package:xxim_flutter_enterprise/pages/contact/group_chat.dart';
 import 'package:xxim_flutter_enterprise/pages/mine/mine.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
@@ -96,6 +97,7 @@ class MenuLogic extends GetxController {
             convParams.remove(convId);
           }
         }
+        GroupChatLogic.logic()?.loadList();
       },
     );
   }

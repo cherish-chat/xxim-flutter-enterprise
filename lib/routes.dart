@@ -1,6 +1,7 @@
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/friend_apply.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/group_apply.dart';
+import 'package:xxim_flutter_enterprise/pages/contact/group_chat.dart';
 import 'package:xxim_flutter_enterprise/pages/launch.dart';
 import 'package:xxim_flutter_enterprise/pages/login.dart';
 import 'package:xxim_flutter_enterprise/pages/login/modify_password.dart';
@@ -18,6 +19,7 @@ class Paths {
   static String chat = "/chat/:convId";
   static String friendApply = "/friend_apply";
   static String groupApply = "/group_apply";
+  static String groupChat = "/group_chat";
 }
 
 class Routes {
@@ -33,6 +35,7 @@ class Routes {
       menu + Paths.chat.replaceFirst(":convId", "") + convId;
   static String friendApply = menu + Paths.friendApply;
   static String groupApply = menu + Paths.groupApply;
+  static String groupChat = menu + Paths.groupChat;
 
   static String photoView = "/photo_view";
   static String webView = "/web_view";
@@ -102,6 +105,11 @@ class Routes {
               GetPage(
                 name: Paths.groupApply,
                 page: () => const GroupApplyPage(),
+                showCupertinoParallax: false,
+              ),
+              GetPage(
+                name: Paths.groupChat,
+                page: () => const GroupChatPage(),
                 showCupertinoParallax: false,
               ),
             ],

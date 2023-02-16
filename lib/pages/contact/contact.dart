@@ -33,7 +33,7 @@ class ContactModel extends ISuspensionBean {
   }
 }
 
-class ContactLogic extends GetxController with StateMixin {
+class ContactLogic extends GetxController {
   static ContactLogic? logic() => Tool.capture(Get.find);
 
   List<ContactModel> contactList = [];
@@ -48,7 +48,6 @@ class ContactLogic extends GetxController with StateMixin {
     contactList.clear();
     List<UserBaseInfo> userInfoList = MenuLogic.logic()?.userInfoList ?? [];
     if (userInfoList.isEmpty) {
-      change(GetStatus.error(""));
       return;
     }
     for (UserBaseInfo info in userInfoList) {
@@ -76,7 +75,6 @@ class ContactLogic extends GetxController with StateMixin {
       ),
     );
     update(["list"]);
-    change(GetStatus.success({}));
   }
 }
 
@@ -120,75 +118,67 @@ class ContactPage extends StatelessWidget {
   }
 
   Widget _buildListView(ContactLogic logic) {
-    return logic.obx(
-      (state) => GetBuilder<ContactLogic>(
-        id: "list",
-        builder: (logic) {
-          return AzListView(
-            physics: const ClampingScrollPhysics(),
-            data: logic.contactList,
-            itemCount: logic.contactList.length,
-            itemBuilder: (context, index) {
-              if (index == 0) return _buildHeader(logic);
-              return _buildItem(logic.contactList[index]);
-            },
-            susItemHeight: 40,
-            susItemBuilder: (context, index) {
-              return _buildSusItem(logic.contactList[index]);
-            },
-            indexBarOptions: IndexBarOptions(
-              textStyle: const TextStyle(
-                fontSize: 14,
-                color: getMainColor,
-              ),
-              indexHintDecoration: BoxDecoration(
-                color: getMainColor,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              indexHintPosition: MenuLogic.logic()?.isPhone.value == true
-                  ? Offset(
-                      Get.width * 0.85 / 2 - 72 / 2, Get.height / 2 - 72 / 2)
-                  : Offset(350 / 2 - 72 / 2, Get.height / 2 - 72 / 2),
+    return GetBuilder<ContactLogic>(
+      id: "list",
+      builder: (logic) {
+        return AzListView(
+          physics: const ClampingScrollPhysics(),
+          data: logic.contactList,
+          itemCount: logic.contactList.length,
+          itemBuilder: (context, index) {
+            if (index == 0) return _buildHeader(logic);
+            return _buildItem(logic.contactList[index]);
+          },
+          susItemHeight: 40,
+          susItemBuilder: (context, index) {
+            return _buildSusItem(logic.contactList[index]);
+          },
+          indexBarOptions: IndexBarOptions(
+            textStyle: const TextStyle(
+              fontSize: 14,
+              color: getMainColor,
             ),
-            indexBarData: const [
-              "↑",
-              "A",
-              "B",
-              "C",
-              "D",
-              "E",
-              "F",
-              "G",
-              "H",
-              "I",
-              "J",
-              "K",
-              "L",
-              "M",
-              "N",
-              "O",
-              "P",
-              "Q",
-              "R",
-              "S",
-              "T",
-              "U",
-              "V",
-              "W",
-              "X",
-              "Y",
-              "Z",
-              "#"
-            ],
-          );
-        },
-      ),
-      onLoading: const Loading(),
-      onEmpty: const SizedBox(),
-      onError: (error) => Error(
-        onRetry: MenuLogic.logic()?.loadFriendList,
-      ),
+            indexHintDecoration: BoxDecoration(
+              color: getMainColor,
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            indexHintPosition: MenuLogic.logic()?.isPhone.value == true
+                ? Offset(Get.width * 0.85 / 2 - 72 / 2, Get.height / 2 - 72 / 2)
+                : Offset(350 / 2 - 72 / 2, Get.height / 2 - 72 / 2),
+          ),
+          indexBarData: const [
+            "↑",
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z",
+            "#"
+          ],
+        );
+      },
     );
   }
 
@@ -259,7 +249,7 @@ class ContactPage extends StatelessWidget {
           buildItem(
             "assets/images/ic_new_friends_30.webp",
             "好友申请",
-            // count: 9,
+            count: 0,
             onTap: () {
               MenuLogic? logic = MenuLogic.logic();
               if (logic == null) return;
@@ -269,16 +259,28 @@ class ContactPage extends StatelessWidget {
               );
             },
           ),
+          // buildItem(
+          //   "assets/images/ic_new_group_30.webp",
+          //   "群聊申请",
+          //   count: 0,
+          //   onTap: () {
+          //     MenuLogic? logic = MenuLogic.logic();
+          //     if (logic == null) return;
+          //     logic.sliderKey?.currentState?.closeSlider();
+          //     logic.getDelegate?.toNamed(
+          //       Routes.groupApply,
+          //     );
+          //   },
+          // ),
           buildItem(
-            "assets/images/ic_new_group_30.webp",
-            "群聊申请",
-            // count: 9,
+            "assets/images/ic_group_30.webp",
+            "我的群聊",
             onTap: () {
               MenuLogic? logic = MenuLogic.logic();
               if (logic == null) return;
               logic.sliderKey?.currentState?.closeSlider();
               logic.getDelegate?.toNamed(
-                Routes.groupApply,
+                Routes.groupChat,
               );
             },
           ),
