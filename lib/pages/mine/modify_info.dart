@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 
@@ -13,6 +14,15 @@ class ModifyInfoLogic extends GetxController {
     avatarUrl = HiveTool.getAvatarUrl().obs;
     nickname = TextEditingController()..text = HiveTool.getNickname();
   }
+
+  void modifyAvatar() {
+    PickTool.pickFiles(
+      type: FileType.image,
+      onSuccess: (result) {},
+    );
+  }
+
+  void modifyNickname() {}
 }
 
 class ModifyInfoPage extends StatelessWidget {
@@ -67,7 +77,7 @@ class ModifyInfoPage extends StatelessWidget {
   Widget _buildAvatar(ModifyInfoLogic logic) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: () {},
+      onTap: logic.modifyAvatar,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: Row(
@@ -125,7 +135,7 @@ class ModifyInfoPage extends StatelessWidget {
             textAlign: TextAlign.end,
             textInputType: TextInputType.text,
             onSubmitted: (value) {
-              // 修改
+              logic.modifyNickname();
             },
           ),
         ),
