@@ -99,9 +99,7 @@ class ContactPage extends StatelessWidget {
     List<Widget> buildActions() {
       return [
         IconButton(
-          onPressed: () {
-            // 更多
-          },
+          onPressed: MoreDialog.show,
           icon: Image.asset(
             "assets/images/ic_more_24.webp",
             width: 24,
@@ -297,7 +295,7 @@ class ContactPage extends StatelessWidget {
               );
             },
           ),
-          if (MenuLogic.logic()?.isPhone.value == true)
+          if (GetPlatform.isMobile)
             buildItem(
               "assets/images/ic_scan_code_30.webp",
               "扫一扫",

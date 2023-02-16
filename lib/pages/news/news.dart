@@ -64,9 +64,7 @@ class NewsPage extends StatelessWidget {
     List<Widget> buildActions() {
       return [
         IconButton(
-          onPressed: () {
-            // 更多
-          },
+          onPressed: MoreDialog.show,
           icon: Image.asset(
             "assets/images/ic_more_24.webp",
             width: 24,
