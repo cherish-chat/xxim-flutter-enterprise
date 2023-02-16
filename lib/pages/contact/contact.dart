@@ -289,7 +289,12 @@ class ContactPage extends StatelessWidget {
             "assets/images/ic_my_code_30.webp",
             "我的名片",
             onTap: () {
-              // 我的名片
+              MenuLogic? logic = MenuLogic.logic();
+              if (logic == null) return;
+              logic.sliderKey?.currentState?.closeSlider();
+              logic.getDelegate?.toNamed(
+                Routes.myCard,
+              );
             },
           ),
           if (MenuLogic.logic()?.isPhone.value == true)
@@ -297,7 +302,12 @@ class ContactPage extends StatelessWidget {
               "assets/images/ic_scan_code_30.webp",
               "扫一扫",
               onTap: () {
-                // 扫一扫
+                MenuLogic? logic = MenuLogic.logic();
+                if (logic == null) return;
+                logic.sliderKey?.currentState?.closeSlider();
+                logic.getDelegate?.toNamed(
+                  Routes.scanCard,
+                );
               },
             ),
         ],

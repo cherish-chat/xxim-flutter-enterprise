@@ -1,4 +1,5 @@
 import 'package:xxim_flutter_enterprise/main.dart';
+import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 
 class MineLogic extends GetxController {
@@ -43,6 +44,7 @@ class MinePage extends StatelessWidget {
         Expanded(
           child: ListView(
             physics: const ClampingScrollPhysics(),
+            padding: EdgeInsets.zero,
             children: [
               _buildInfo(logic),
               const Divider(
@@ -145,7 +147,12 @@ class MinePage extends StatelessWidget {
           GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () {
-              // 我的名片
+              MenuLogic? logic = MenuLogic.logic();
+              if (logic == null) return;
+              logic.sliderKey?.currentState?.closeSlider();
+              logic.getDelegate?.toNamed(
+                Routes.myCard,
+              );
             },
             child: Image.asset(
               "assets/images/ic_my_code_30.webp",

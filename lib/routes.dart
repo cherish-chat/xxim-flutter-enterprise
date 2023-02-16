@@ -2,6 +2,8 @@ import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/friend_apply.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/group_apply.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/group_chat.dart';
+import 'package:xxim_flutter_enterprise/pages/contact/my_card.dart';
+import 'package:xxim_flutter_enterprise/pages/contact/scan_card.dart';
 import 'package:xxim_flutter_enterprise/pages/launch.dart';
 import 'package:xxim_flutter_enterprise/pages/login.dart';
 import 'package:xxim_flutter_enterprise/pages/login/modify_password.dart';
@@ -20,6 +22,8 @@ class Paths {
   static String friendApply = "/friend_apply";
   static String groupApply = "/group_apply";
   static String groupChat = "/group_chat";
+  static String myCard = "/my_card";
+  static String scanCard = "/scan_card";
 }
 
 class Routes {
@@ -36,6 +40,8 @@ class Routes {
   static String friendApply = menu + Paths.friendApply;
   static String groupApply = menu + Paths.groupApply;
   static String groupChat = menu + Paths.groupChat;
+  static String myCard = menu + Paths.myCard;
+  static String scanCard = menu + Paths.scanCard;
 
   static String photoView = "/photo_view";
   static String webView = "/web_view";
@@ -110,6 +116,16 @@ class Routes {
               GetPage(
                 name: Paths.groupChat,
                 page: () => const GroupChatPage(),
+                showCupertinoParallax: false,
+              ),
+              GetPage(
+                name: Paths.myCard,
+                page: () => const MyCardPage(),
+                showCupertinoParallax: false,
+              ),
+              GetPage(
+                name: Paths.scanCard,
+                page: () => const ScanCardPage(),
                 showCupertinoParallax: false,
               ),
             ],
