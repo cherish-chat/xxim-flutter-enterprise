@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
