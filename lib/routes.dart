@@ -1,4 +1,6 @@
 import 'package:xxim_flutter_enterprise/main.dart';
+import 'package:xxim_flutter_enterprise/pages/contact/friend_apply.dart';
+import 'package:xxim_flutter_enterprise/pages/contact/group_apply.dart';
 import 'package:xxim_flutter_enterprise/pages/launch.dart';
 import 'package:xxim_flutter_enterprise/pages/login.dart';
 import 'package:xxim_flutter_enterprise/pages/login/modify_password.dart';
@@ -13,7 +15,9 @@ export 'package:xxim_flutter_enterprise/pages/unknown.dart';
 
 class Paths {
   static String outlet = "/outlet";
-  static String chat = "/:convId";
+  static String chat = "/chat/:convId";
+  static String friendApply = "/friend_apply";
+  static String groupApply = "/group_apply";
 }
 
 class Routes {
@@ -25,7 +29,10 @@ class Routes {
   static String menu = "/menu";
   static String outlet = menu + Paths.outlet;
 
-  static String chat(String convId) => '$menu/$convId';
+  static String chat(String convId) =>
+      menu + Paths.chat.replaceFirst(":convId", "") + convId;
+  static String friendApply = menu + Paths.friendApply;
+  static String groupApply = menu + Paths.groupApply;
 
   static String photoView = "/photo_view";
   static String webView = "/web_view";
@@ -85,6 +92,16 @@ class Routes {
               GetPage(
                 name: Paths.chat,
                 page: () => const ChatPage(),
+                showCupertinoParallax: false,
+              ),
+              GetPage(
+                name: Paths.friendApply,
+                page: () => const FriendApplyPage(),
+                showCupertinoParallax: false,
+              ),
+              GetPage(
+                name: Paths.groupApply,
+                page: () => const GroupApplyPage(),
                 showCupertinoParallax: false,
               ),
             ],

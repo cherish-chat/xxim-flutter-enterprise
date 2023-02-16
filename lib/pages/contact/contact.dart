@@ -261,7 +261,12 @@ class ContactPage extends StatelessWidget {
             "好友申请",
             count: 9,
             onTap: () {
-              // 好友申请
+              MenuLogic? logic = MenuLogic.logic();
+              if (logic == null) return;
+              logic.sliderKey?.currentState?.closeSlider();
+              logic.getDelegate?.toNamed(
+                Routes.friendApply,
+              );
             },
           ),
           buildItem(
@@ -269,7 +274,12 @@ class ContactPage extends StatelessWidget {
             "群聊申请",
             count: 9,
             onTap: () {
-              // 群聊申请
+              MenuLogic? logic = MenuLogic.logic();
+              if (logic == null) return;
+              logic.sliderKey?.currentState?.closeSlider();
+              logic.getDelegate?.toNamed(
+                Routes.groupApply,
+              );
             },
           ),
           buildItem(

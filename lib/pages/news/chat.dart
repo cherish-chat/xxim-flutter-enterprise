@@ -26,35 +26,40 @@ class ChatPage extends StatelessWidget {
       ChatLogic(convId, convId),
       tag: convId,
     );
-    return Column(
-      children: [
-        _buildAppBar(logic),
-        Expanded(
-          child: Container(
-            alignment: Alignment.center,
-            color: Colors.deepPurple,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text(
-                  "这是聊天页面",
-                  style: TextStyle(
-                    color: getTextWhite,
-                    fontSize: 50,
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        color: getBackgroundColor,
+      ),
+      child: Column(
+        children: [
+          _buildAppBar(logic),
+          Expanded(
+            child: Container(
+              alignment: Alignment.center,
+              color: Colors.deepPurple,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text(
+                    "这是聊天页面",
+                    style: TextStyle(
+                      color: getTextWhite,
+                      fontSize: 50,
+                    ),
                   ),
-                ),
-                Text(
-                  convId,
-                  style: const TextStyle(
-                    color: getTextWhite,
-                    fontSize: 20,
+                  Text(
+                    convId,
+                    style: const TextStyle(
+                      color: getTextWhite,
+                      fontSize: 20,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
