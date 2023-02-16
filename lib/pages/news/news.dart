@@ -79,6 +79,7 @@ class NewsPage extends StatelessWidget {
     return AppBar(
       title: const Text("会话"),
       actions: buildActions(),
+      centerTitle: false,
     );
   }
 

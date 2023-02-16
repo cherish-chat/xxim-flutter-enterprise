@@ -61,7 +61,7 @@ class LaunchPage extends StatelessWidget {
     Get.put(LaunchLogic());
     return const Scaffold(
       body: Loading(),
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
     );
   }

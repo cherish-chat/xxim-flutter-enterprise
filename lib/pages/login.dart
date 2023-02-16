@@ -47,7 +47,7 @@ class LoginLogic extends GetxController {
       onSuccess: (data) async {
         GetLoadingDialog.hide();
         if (data.token.isEmpty) {
-          Tool.showToast("账号异常，请重试");
+          Tool.showToast("此账号暂未注册");
           return;
         }
         bool status = await XXIM.instance.setUserParams(

@@ -115,6 +115,7 @@ class ContactPage extends StatelessWidget {
     return AppBar(
       title: const Text("通讯录"),
       actions: buildActions(),
+      centerTitle: false,
     );
   }
 
