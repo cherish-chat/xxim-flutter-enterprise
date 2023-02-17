@@ -35,7 +35,7 @@ class XXIM {
     if (!kIsWeb) {
       directory = (await getApplicationDocumentsDirectory()).path;
     }
-    StreamController connectController = StreamController<bool>();
+    StreamController connectController = StreamController<bool>.broadcast();
     connectStream = connectController.stream;
     _sdk = XXIMSDK()
       ..init(

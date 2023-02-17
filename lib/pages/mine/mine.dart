@@ -32,6 +32,47 @@ class MineLogic extends GetxController {
       },
     );
   }
+
+  void exit() {
+    GetAlertDialog.show(
+      const Text(
+        "你确定要退出登录吗？",
+        style: TextStyle(
+          color: getTextBlack,
+          fontSize: 16,
+          fontWeight: getMedium,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      actions: [
+        const TextButton(
+          onPressed: GetAlertDialog.hide,
+          child: Text(
+            "取消",
+            style: TextStyle(
+              color: getTextBlack,
+              fontSize: 14,
+            ),
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            GetAlertDialog.hide();
+            HiveTool.logout();
+            XXIM.instance.disconnect();
+            Get.offAllNamed(Routes.login);
+          },
+          child: const Text(
+            "确定",
+            style: TextStyle(
+              color: getTextBlack,
+              fontSize: 14,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
 
 class MinePage extends StatelessWidget {
@@ -80,10 +121,15 @@ class MinePage extends StatelessWidget {
                   );
                 },
               ),
+              // _buildItem(
+              //   "assets/images/ic_settings_25.webp",
+              //   "系统设置",
+              //   () {},
+              // ),
               _buildItem(
-                "assets/images/ic_settings_25.webp",
-                "系统设置",
-                () {},
+                "assets/images/ic_exit_25.webp",
+                "退出登录",
+                logic.exit,
               ),
             ],
           ),
