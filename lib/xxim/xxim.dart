@@ -187,11 +187,15 @@ class XXIM {
         onSuccess(t);
       },
       onError: (code, error) {
-        try {
-          CommonResp commonResp = CommonResp.fromBuffer(utf8.encode(error));
-          code = commonResp.code.value;
-          error = commonResp.msg;
-        } catch (_) {}
+        if (error != CommonResp_Code.UnknownError.name) {
+          try {
+            CommonResp commonResp = CommonResp.fromBuffer(
+              utf8.encode(error),
+            );
+            code = commonResp.code.value;
+            error = commonResp.msg;
+          } catch (_) {}
+        }
         if (environment == Environment.debug) {
           debugPrint("onError:$code - $error");
         }
