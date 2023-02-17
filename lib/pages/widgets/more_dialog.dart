@@ -55,13 +55,25 @@ class MoreDialog extends StatelessWidget {
                     "添加好友",
                     () {
                       hide();
+                      MenuLogic? logic = MenuLogic.logic();
+                      if (logic == null) return;
+                      logic.sliderKey?.currentState?.closeSlider();
+                      logic.getDelegate?.toNamed(
+                        Routes.addFriend,
+                      );
                     },
                   ),
                   _buildItem(
                     "assets/images/ic_new_group_30.webp",
-                    "发起群聊",
+                    "添加群聊",
                     () {
                       hide();
+                      MenuLogic? logic = MenuLogic.logic();
+                      if (logic == null) return;
+                      logic.sliderKey?.currentState?.closeSlider();
+                      logic.getDelegate?.toNamed(
+                        Routes.addGroup,
+                      );
                     },
                   ),
                 ],
