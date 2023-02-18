@@ -4,6 +4,7 @@ import 'package:uuid/uuid.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 export 'design_tool.dart';
+export 'emoji_tool.dart';
 export 'encrypt_tool.dart';
 export 'hive_tool.dart';
 export 'http_tool.dart';

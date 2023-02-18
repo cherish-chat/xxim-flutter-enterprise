@@ -35,4 +35,32 @@ class TimeTool {
       return DateFormat("yyyy-MM-dd HH:mm").format(time);
     }
   }
+
+  static String formatMediaSeconds(int seconds) {
+    int hours = seconds ~/ 3600;
+    seconds = seconds % 3600;
+    int minutes = seconds ~/ 60;
+    seconds = seconds % 60;
+    String hoursValue = hours >= 10
+        ? "$hours"
+        : hours == 0
+            ? "00"
+            : "0$hours";
+    if (hoursValue == "00") {
+      hoursValue = "";
+    } else {
+      hoursValue = "$hoursValue:";
+    }
+    String minutesValue = minutes >= 10
+        ? "$minutes"
+        : minutes == 0
+            ? "00"
+            : "0$minutes";
+    String secondsValue = seconds >= 10
+        ? "$seconds"
+        : seconds == 0
+            ? "00"
+            : "0$seconds";
+    return "$hoursValue$minutesValue:$secondsValue";
+  }
 }

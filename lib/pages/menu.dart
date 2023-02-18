@@ -160,6 +160,7 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
         logic.getDelegate = context.navigation;
         return Scaffold(
           body: screen.isPhone ? _buildPhone(logic) : _buildTable(logic),
+          resizeToAvoidBottomInset: false,
         );
       },
     );
