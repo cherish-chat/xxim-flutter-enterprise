@@ -154,15 +154,9 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
   Widget? builder() {
     MenuLogic logic = Get.put(MenuLogic());
     logic.isPhone.value = screen.isPhone;
-    return GetRouterOutlet.builder(
-      routerDelegate: Get.nestedKey(Routes.menu),
-      builder: (context) {
-        logic.getDelegate = context.navigation;
-        return Scaffold(
-          body: screen.isPhone ? _buildPhone(logic) : _buildTable(logic),
-          resizeToAvoidBottomInset: false,
-        );
-      },
+    return Scaffold(
+      body: screen.isPhone ? _buildPhone(logic) : _buildTable(logic),
+      resizeToAvoidBottomInset: false,
     );
   }
 
@@ -185,12 +179,18 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
           _buildNavigationBar(logic),
         ],
       ),
-      child: GetRouterOutlet(
-        anchorRoute: Routes.menu,
-        initialRoute: Routes.outlet,
-        delegate: Get.nestedKey(Routes.menu),
-        filterPages: (afterAnchor) {
-          return afterAnchor.take(1);
+      child: GetRouterOutlet.builder(
+        routerDelegate: Get.nestedKey(Routes.menu),
+        builder: (context) {
+          logic.getDelegate = context.navigation;
+          return GetRouterOutlet(
+            anchorRoute: Routes.menu,
+            initialRoute: Routes.outlet,
+            delegate: Get.nestedKey(Routes.menu),
+            filterPages: (afterAnchor) {
+              return afterAnchor.take(1);
+            },
+          );
         },
       ),
     );
@@ -212,12 +212,18 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
           ),
         ),
         Expanded(
-          child: GetRouterOutlet(
-            anchorRoute: Routes.menu,
-            initialRoute: Routes.outlet,
-            delegate: Get.nestedKey(Routes.menu),
-            filterPages: (afterAnchor) {
-              return afterAnchor.take(1);
+          child: GetRouterOutlet.builder(
+            routerDelegate: Get.nestedKey(Routes.menu),
+            builder: (context) {
+              logic.getDelegate = context.navigation;
+              return GetRouterOutlet(
+                anchorRoute: Routes.menu,
+                initialRoute: Routes.outlet,
+                delegate: Get.nestedKey(Routes.menu),
+                filterPages: (afterAnchor) {
+                  return afterAnchor.take(1);
+                },
+              );
             },
           ),
         ),

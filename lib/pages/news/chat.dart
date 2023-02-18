@@ -5,6 +5,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
+import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
@@ -39,6 +40,8 @@ class ChatLogic extends GetxController {
   late SpaceLasting spaceLasting;
   late StreamSubscription keyboardEvent;
 
+  List<MsgModel> msgModelList = [];
+
   @override
   void onInit() {
     scrollController = FlutterListViewController()
@@ -48,7 +51,7 @@ class ChatLogic extends GetxController {
         if (position.pixels >= position.maxScrollExtent && !isLoadMore) {
           isLoadMore = true;
           Future.delayed(kThemeChangeDuration, () {
-            // 加载更多
+            loadList();
             isLoadMore = false;
           });
         }
@@ -77,11 +80,37 @@ class ChatLogic extends GetxController {
   }
 
   @override
-  void onClose() {
+  void onReady() {
+    super.onReady();
+    XXIM.instance.convManager.getSingleConv(convId: convId).then(
+      (value) {
+        if (value == null) return;
+        DraftModel? draftModel = value.draftModel;
+        if (draftModel == null) return;
+        if (draftModel.content.isEmpty) return;
+        inputController.text = draftModel.content;
+      },
+    );
+    XXIM.instance.convManager.setConvRead(convId: convId);
+    loadList();
+  }
+
+  @override
+  void onClose() async {
     scrollController.dispose();
     inputController.dispose();
     inputFocusNode.dispose();
     keyboardEvent.cancel();
+    await XXIM.instance.convManager.setConvDraft(
+      convId: convId,
+      draftModel: inputController.text.isNotEmpty
+          ? DraftModel(
+              content: inputController.text,
+            )
+          : null,
+    );
+    await XXIM.instance.convManager.setConvRead(convId: convId);
+    NewsLogic.logic()?.loadList();
     super.onClose();
   }
 
@@ -93,6 +122,17 @@ class ChatLogic extends GetxController {
       chatOperate.value = ChatOperate.none;
     }
     return Future.delayed(kThemeChangeDuration);
+  }
+
+  void loadList() async {
+    List<MsgModel> msgList = await XXIM.instance.msgManager.getMsgList(
+      convId: convId,
+      maxSeq: msgModelList.isEmpty ? null : msgModelList.last.seq,
+      size: 20,
+    );
+    msgModelList.addAll(msgList);
+    update(["list"]);
+    isLoadMore = false;
   }
 }
 
@@ -180,51 +220,69 @@ class ChatPage extends StatelessWidget {
             controller: logic.scrollController,
             reverse: true,
             itemBuilder: (context, index) {
-              if (index <= 10) {
+              MsgModel msgModel = logic.msgModelList[index];
+              ChatDirection direction = ChatDirection.left;
+              if (msgModel.senderId == HiveTool.getUserId()) {
+                direction = ChatDirection.right;
+              }
+              int contentType = msgModel.contentType;
+              if (contentType == MsgContentType.text) {
                 return ChatTextItem<ChatLogic>(
                   tag: logic.tag,
                   index: index,
-                  direction:
-                      index % 2 == 0 ? ChatDirection.left : ChatDirection.right,
+                  direction: direction,
+                  msgModel: msgModel,
                 );
-              } else if (index <= 20) {
-                return ChatAudioItem<ChatLogic>(
-                  tag: logic.tag,
-                  index: index,
-                  direction:
-                      index % 2 == 0 ? ChatDirection.left : ChatDirection.right,
-                );
-              } else if (index <= 30) {
+              } else if (contentType == MsgContentType.image) {
                 return ChatImageItem<ChatLogic>(
                   tag: logic.tag,
                   index: index,
-                  direction:
-                      index % 2 == 0 ? ChatDirection.left : ChatDirection.right,
+                  direction: direction,
+                  msgModel: msgModel,
                 );
-              } else if (index <= 40) {
+              } else if (contentType == MsgContentType.audio) {
+                return ChatAudioItem<ChatLogic>(
+                  tag: logic.tag,
+                  index: index,
+                  direction: direction,
+                  msgModel: msgModel,
+                );
+              } else if (contentType == MsgContentType.video) {
                 return ChatVideoItem<ChatLogic>(
                   tag: logic.tag,
                   index: index,
-                  direction:
-                      index % 2 == 0 ? ChatDirection.left : ChatDirection.right,
-                );
-              } else if (index <= 50) {
-                return ChatLocationItem<ChatLogic>(
-                  tag: logic.tag,
-                  index: index,
-                  direction:
-                      index % 2 == 0 ? ChatDirection.left : ChatDirection.right,
+                  direction: direction,
+                  msgModel: msgModel,
                 );
               }
+              // else if (contentType == MsgContentType.file) {
+              //   return const SizedBox();
+              // } else if (contentType == MsgContentType.location) {
+              //   return ChatLocationItem<ChatLogic>(
+              //     tag: logic.tag,
+              //     index: index,
+              //     direction: direction,
+              //     msgModel: msgModel,
+              //   );
+              // }
               return const SizedBox();
             },
             separatorBuilder: (context, index) {
-              return const ChatTimeItem(
-                timestamp: 0,
-              );
-              // return const SizedBox(height: 16);
+              MsgModel msgModel = logic.msgModelList[index];
+              MsgModel? lastMsgModel = logic.msgModelList[index + 1];
+              // ignore: unnecessary_null_comparison
+              if (lastMsgModel != null) {
+                int time = msgModel.serverTime;
+                int lastTime = lastMsgModel.serverTime;
+                if ((lastTime - time).abs() >= 300000) {
+                  return ChatTimeItem(
+                    timestamp: time,
+                  );
+                }
+              }
+              return const SizedBox(height: 16);
             },
-            itemCount: 60,
+            itemCount: logic.msgModelList.length,
           );
         },
       ),

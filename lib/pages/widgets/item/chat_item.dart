@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
@@ -41,6 +43,7 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
   final int index;
   final ChatDirection direction;
   final bool showAvatar;
+  final String avatar;
 
   const ChatAvatarItem({
     Key? key,
@@ -48,6 +51,7 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
     required this.index,
     required this.direction,
     required this.showAvatar,
+    required this.avatar,
   }) : super(key: key);
 
   @override
@@ -68,9 +72,9 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
             onTap: () {
               // 个人详情
             },
-            child: const ClipOval(
+            child: ClipOval(
               child: ImageWidget(
-                "https://images.unsplash.com/photo-1591947026851-2d50ab78eb9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+                avatar,
                 width: 35,
                 height: 35,
               ),
@@ -89,11 +93,13 @@ class ChatNameItem<T extends GetxController> extends StatelessWidget {
 
   final String? tag;
   final int index;
+  final String name;
 
   const ChatNameItem({
     Key? key,
     this.tag,
     required this.index,
+    required this.name,
   }) : super(key: key);
 
   @override
@@ -102,11 +108,11 @@ class ChatNameItem<T extends GetxController> extends StatelessWidget {
       tag: tag,
       id: ChatNameItem.getId(index),
       builder: (logic) {
-        return const Padding(
-          padding: EdgeInsets.only(bottom: 2),
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 2),
           child: Text(
-            "昵称",
-            style: TextStyle(
+            name,
+            style: const TextStyle(
               color: getTextBlack,
               fontSize: 12,
             ),
@@ -125,16 +131,22 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
   final String? tag;
   final int index;
   final ChatDirection direction;
+  final MsgModel msgModel;
 
   const ChatTextItem({
     Key? key,
     this.tag,
     required this.index,
     required this.direction,
+    required this.msgModel,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Map senderInfo = {};
+    if (msgModel.senderInfo.isNotEmpty) {
+      senderInfo = json.decode(msgModel.senderInfo);
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
@@ -145,6 +157,7 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
             index: index,
             direction: direction,
             showAvatar: direction == ChatDirection.left,
+            avatar: senderInfo["avatar"] ?? "",
           ),
           Expanded(
             child: GetBuilder<T>(
@@ -160,6 +173,7 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
                     ChatNameItem<T>(
                       tag: tag,
                       index: index,
+                      name: senderInfo["name"] ?? "",
                     ),
                     Flexible(
                       child: Builder(
@@ -169,8 +183,8 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
                             onLongPress: () {
                               PopupTool.show(
                                 context,
-                                contentType: MsgContentType.text,
-                                content: "",
+                                contentType: msgModel.contentType,
+                                content: msgModel.content,
                               );
                             },
                             child: Container(
@@ -192,7 +206,7 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
                                       ),
                               ),
                               child: ExtendedTextWidget(
-                                "北冥有鱼[亲亲]，其名为鲲。鲲之大，不知其几千里也。化而为鸟，其名为鹏。鹏之背，不知其几千里也。怒而飞，其翼若垂天之云。是鸟也...",
+                                msgModel.content,
                                 style: TextStyle(
                                   color: direction == ChatDirection.left
                                       ? getTextBlack
@@ -205,11 +219,14 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
                         },
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 5, top: 2, right: 5),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
                       child: Text(
-                        "12:00",
-                        style: TextStyle(
+                        TimeTool.formatTimestamp(
+                          msgModel.serverTime,
+                          pattern: "HH:mm:ss",
+                        ),
+                        style: const TextStyle(
                           color: getHintBlack,
                           fontSize: 8,
                         ),
@@ -225,6 +242,147 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
             index: index,
             direction: direction,
             showAvatar: direction == ChatDirection.right,
+            avatar: senderInfo["avatar"] ?? "",
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ChatImageItem<T extends GetxController> extends StatelessWidget {
+  static String getId(int index) {
+    return "$ChatImageItem$index";
+  }
+
+  final String? tag;
+  final int index;
+  final ChatDirection direction;
+  final MsgModel msgModel;
+
+  const ChatImageItem({
+    Key? key,
+    this.tag,
+    required this.index,
+    required this.direction,
+    required this.msgModel,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Map senderInfo = {};
+    if (msgModel.senderInfo.isNotEmpty) {
+      senderInfo = json.decode(msgModel.senderInfo);
+    }
+    ImageContent content = ImageContent.fromJson(msgModel.content);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ChatAvatarItem<T>(
+            tag: tag,
+            index: index,
+            direction: direction,
+            showAvatar: direction == ChatDirection.left,
+            avatar: senderInfo["avatar"] ?? "",
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: direction == ChatDirection.left
+                  ? CrossAxisAlignment.start
+                  : CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ChatNameItem<T>(
+                  tag: tag,
+                  index: index,
+                  name: senderInfo["name"] ?? "",
+                ),
+                GetBuilder<T>(
+                  tag: tag,
+                  id: ChatImageItem.getId(index),
+                  builder: (logic) {
+                    double maxWidth = Get.width - 128;
+                    double maxHeight = maxWidth * 1.5;
+                    double width = content.width.toDouble();
+                    double height = content.height.toDouble();
+                    if (width == 0 || height == 0) {
+                      width = maxWidth;
+                      height = maxHeight;
+                    } else {
+                      double scale = width / height;
+                      if (width > height) {
+                        width = maxWidth;
+                        height = width / scale;
+                      }
+                      if (height > maxHeight) {
+                        height = maxHeight;
+                        width = maxHeight * scale;
+                      }
+                    }
+                    return GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () {
+                        // 预览照片
+                      },
+                      child: ClipRRect(
+                        borderRadius: direction == ChatDirection.left
+                            ? const BorderRadius.only(
+                                topRight: Radius.circular(8),
+                                bottomLeft: Radius.circular(8),
+                                bottomRight: Radius.circular(8),
+                              )
+                            : const BorderRadius.only(
+                                topLeft: Radius.circular(8),
+                                bottomLeft: Radius.circular(8),
+                                bottomRight: Radius.circular(8),
+                              ),
+                        child: content.imagePath.isNotEmpty
+                            ? Image.file(
+                                File(content.imagePath),
+                                width: width,
+                                height: height,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Container(
+                                    width: width,
+                                    height: height,
+                                    color: getPlaceholderColor,
+                                  );
+                                },
+                              )
+                            : ImageWidget(
+                                content.imageUrl,
+                                width: width,
+                                height: height,
+                              ),
+                      ),
+                    );
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
+                  child: Text(
+                    TimeTool.formatTimestamp(
+                      msgModel.serverTime,
+                      pattern: "HH:mm:ss",
+                    ),
+                    style: const TextStyle(
+                      color: getHintBlack,
+                      fontSize: 8,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          ChatAvatarItem<T>(
+            tag: tag,
+            index: index,
+            direction: direction,
+            showAvatar: direction == ChatDirection.right,
+            avatar: senderInfo["avatar"] ?? "",
           ),
         ],
       ),
@@ -240,12 +398,14 @@ class ChatAudioItem<T extends GetxController> extends StatefulWidget {
   final String? tag;
   final int index;
   final ChatDirection direction;
+  final MsgModel msgModel;
 
   const ChatAudioItem({
     Key? key,
     this.tag,
     required this.index,
     required this.direction,
+    required this.msgModel,
   }) : super(key: key);
 
   @override
@@ -256,6 +416,8 @@ class _ChatAudioItemState<T extends GetxController>
     extends State<ChatAudioItem> {
   late int _index;
   late ChatDirection _direction;
+  late MsgModel _msgModel;
+  late AudioContent _content;
 
   Timer? _timer;
   int _timerIndex = 5;
@@ -264,6 +426,8 @@ class _ChatAudioItemState<T extends GetxController>
   void initState() {
     _index = widget.index;
     _direction = widget.direction;
+    _msgModel = widget.msgModel;
+    _content = AudioContent.fromJson(_msgModel.content);
     super.initState();
   }
 
@@ -305,6 +469,10 @@ class _ChatAudioItemState<T extends GetxController>
 
   @override
   Widget build(BuildContext context) {
+    Map senderInfo = {};
+    if (_msgModel.senderInfo.isNotEmpty) {
+      senderInfo = json.decode(_msgModel.senderInfo);
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
@@ -315,6 +483,7 @@ class _ChatAudioItemState<T extends GetxController>
             index: _index,
             direction: _direction,
             showAvatar: _direction == ChatDirection.left,
+            avatar: senderInfo["avatar"] ?? "",
           ),
           Expanded(
             child: GetBuilder<T>(
@@ -323,7 +492,7 @@ class _ChatAudioItemState<T extends GetxController>
               builder: (logic) {
                 double minWidth = 91;
                 double maxWidth = Get.width - 128;
-                double duration = 10;
+                double duration = _content.duration.toDouble();
                 double width = minWidth + (maxWidth / minWidth) * duration;
                 if (width > maxWidth) {
                   width = maxWidth;
@@ -346,6 +515,7 @@ class _ChatAudioItemState<T extends GetxController>
                       ChatNameItem<T>(
                         tag: widget.tag,
                         index: _index,
+                        name: senderInfo["name"] ?? "",
                       ),
                       Flexible(
                         child: Container(
@@ -388,11 +558,18 @@ class _ChatAudioItemState<T extends GetxController>
                           ),
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 5, top: 2, right: 5),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 5,
+                          top: 2,
+                          right: 5,
+                        ),
                         child: Text(
-                          "12:00",
-                          style: TextStyle(
+                          TimeTool.formatTimestamp(
+                            _msgModel.serverTime,
+                            pattern: "HH:mm:ss",
+                          ),
+                          style: const TextStyle(
                             color: getHintBlack,
                             fontSize: 8,
                           ),
@@ -409,6 +586,7 @@ class _ChatAudioItemState<T extends GetxController>
             index: _index,
             direction: _direction,
             showAvatar: _direction == ChatDirection.right,
+            avatar: senderInfo["avatar"] ?? "",
           ),
         ],
       ),
@@ -443,119 +621,6 @@ class _ChatAudioItemState<T extends GetxController>
   }
 }
 
-class ChatImageItem<T extends GetxController> extends StatelessWidget {
-  static String getId(int index) {
-    return "$ChatImageItem$index";
-  }
-
-  final String? tag;
-  final int index;
-  final ChatDirection direction;
-
-  const ChatImageItem({
-    Key? key,
-    this.tag,
-    required this.index,
-    required this.direction,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ChatAvatarItem<T>(
-            tag: tag,
-            index: index,
-            direction: direction,
-            showAvatar: direction == ChatDirection.left,
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: direction == ChatDirection.left
-                  ? CrossAxisAlignment.start
-                  : CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ChatNameItem<T>(
-                  tag: tag,
-                  index: index,
-                ),
-                GetBuilder<T>(
-                  tag: tag,
-                  id: ChatImageItem.getId(index),
-                  builder: (logic) {
-                    double maxWidth = Get.width - 128;
-                    double maxHeight = maxWidth * 1.5;
-                    double width = 200;
-                    double height = 250;
-                    if (width == 0 || height == 0) {
-                      width = maxWidth;
-                      height = maxHeight;
-                    } else {
-                      double scale = width / height;
-                      if (width > height) {
-                        width = maxWidth;
-                        height = width / scale;
-                      }
-                      if (height > maxHeight) {
-                        height = maxHeight;
-                        width = maxHeight * scale;
-                      }
-                    }
-                    return GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () {
-                        // 预览照片
-                      },
-                      child: ClipRRect(
-                        borderRadius: direction == ChatDirection.left
-                            ? const BorderRadius.only(
-                                topRight: Radius.circular(8),
-                                bottomLeft: Radius.circular(8),
-                                bottomRight: Radius.circular(8),
-                              )
-                            : const BorderRadius.only(
-                                topLeft: Radius.circular(8),
-                                bottomLeft: Radius.circular(8),
-                                bottomRight: Radius.circular(8),
-                              ),
-                        child: ImageWidget(
-                          "https://images.unsplash.com/photo-1591947026851-2d50ab78eb9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
-                          width: width,
-                          height: height,
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 5, top: 2, right: 5),
-                  child: Text(
-                    "12:00",
-                    style: TextStyle(
-                      color: getHintBlack,
-                      fontSize: 8,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          ChatAvatarItem<T>(
-            tag: tag,
-            index: index,
-            direction: direction,
-            showAvatar: direction == ChatDirection.right,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class ChatVideoItem<T extends GetxController> extends StatelessWidget {
   static String getId(int index) {
     return "$ChatVideoItem$index";
@@ -564,16 +629,23 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
   final String? tag;
   final int index;
   final ChatDirection direction;
+  final MsgModel msgModel;
 
   const ChatVideoItem({
     Key? key,
     this.tag,
     required this.index,
     required this.direction,
+    required this.msgModel,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Map senderInfo = {};
+    if (msgModel.senderInfo.isNotEmpty) {
+      senderInfo = json.decode(msgModel.senderInfo);
+    }
+    VideoContent content = VideoContent.fromJson(msgModel.content);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
@@ -584,6 +656,7 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
             index: index,
             direction: direction,
             showAvatar: direction == ChatDirection.left,
+            avatar: senderInfo["avatar"] ?? "",
           ),
           Expanded(
             child: Column(
@@ -595,6 +668,7 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
                 ChatNameItem<T>(
                   tag: tag,
                   index: index,
+                  name: senderInfo["name"] ?? "",
                 ),
                 GetBuilder<T>(
                   tag: tag,
@@ -641,11 +715,26 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
                           child: Stack(
                             alignment: Alignment.center,
                             children: [
-                              const ImageWidget(
-                                "https://images.unsplash.com/photo-1591947026851-2d50ab78eb9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
-                                width: double.infinity,
-                                height: double.infinity,
-                              ),
+                              if (content.coverPath.isNotEmpty)
+                                Image.file(
+                                  File(content.coverPath),
+                                  width: width,
+                                  height: height,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Container(
+                                      width: width,
+                                      height: height,
+                                      color: getPlaceholderColor,
+                                    );
+                                  },
+                                )
+                              else
+                                ImageWidget(
+                                  content.coverUrl,
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                ),
                               Image.asset(
                                 "assets/images/ic_play_29.webp",
                                 width: 29,
@@ -658,11 +747,18 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
                     );
                   },
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 5, top: 2, right: 5),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 5,
+                    top: 2,
+                    right: 5,
+                  ),
                   child: Text(
-                    "12:00",
-                    style: TextStyle(
+                    TimeTool.formatTimestamp(
+                      msgModel.serverTime,
+                      pattern: "HH:mm:ss",
+                    ),
+                    style: const TextStyle(
                       color: getHintBlack,
                       fontSize: 8,
                     ),
@@ -676,6 +772,7 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
             index: index,
             direction: direction,
             showAvatar: direction == ChatDirection.right,
+            avatar: senderInfo["avatar"] ?? "",
           ),
         ],
       ),
@@ -691,16 +788,23 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
   final String? tag;
   final int index;
   final ChatDirection direction;
+  final MsgModel msgModel;
 
   const ChatLocationItem({
     Key? key,
     this.tag,
     required this.index,
     required this.direction,
+    required this.msgModel,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Map senderInfo = {};
+    if (msgModel.senderInfo.isNotEmpty) {
+      senderInfo = json.decode(msgModel.senderInfo);
+    }
+    LocationContent content = LocationContent.fromJson(msgModel.content);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
@@ -711,6 +815,7 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
             index: index,
             direction: direction,
             showAvatar: direction == ChatDirection.left,
+            avatar: senderInfo["avatar"] ?? "",
           ),
           Expanded(
             child: Column(
@@ -722,6 +827,7 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
                 ChatNameItem<T>(
                   tag: tag,
                   index: index,
+                  name: senderInfo["name"] ?? "",
                 ),
                 GetBuilder<T>(
                   tag: tag,
@@ -756,11 +862,18 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
                     );
                   },
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 5, top: 2, right: 5),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 5,
+                    top: 2,
+                    right: 5,
+                  ),
                   child: Text(
-                    "12:00",
-                    style: TextStyle(
+                    TimeTool.formatTimestamp(
+                      msgModel.serverTime,
+                      pattern: "HH:mm:ss",
+                    ),
+                    style: const TextStyle(
                       color: getHintBlack,
                       fontSize: 8,
                     ),
@@ -774,6 +887,7 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
             index: index,
             direction: direction,
             showAvatar: direction == ChatDirection.right,
+            avatar: senderInfo["avatar"] ?? "",
           ),
         ],
       ),

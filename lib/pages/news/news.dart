@@ -10,7 +10,7 @@ class NewsLogic extends GetxController {
   static NewsLogic? logic() => Tool.capture(Get.find);
 
   late RxInt loadRandom = 0.obs;
-  List<ConvModel> list = [];
+  List<ConvModel> convModelList = [];
 
   @override
   void onInit() {
@@ -32,15 +32,13 @@ class NewsLogic extends GetxController {
 
   void loadList({
     bool refresh = false,
-  }) {
+  }) async {
     if (!refresh) {
       loadRandom.value = DateTime.now().millisecondsSinceEpoch;
       return;
     }
-    XXIM.instance.convManager.getConvList().then((value) {
-      list = value;
-      update(["list"]);
-    });
+    convModelList = await XXIM.instance.convManager.getConvList();
+    update(["list"]);
   }
 }
 
@@ -49,7 +47,10 @@ class NewsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NewsLogic logic = Get.put(NewsLogic());
+    NewsLogic logic = Get.put(
+      NewsLogic(),
+      permanent: true,
+    );
     return Column(
       children: [
         _buildAppBar(logic),
@@ -88,38 +89,38 @@ class NewsPage extends StatelessWidget {
         return SlidableAutoCloseBehavior(
           child: FlutterListView.builder(
             itemBuilder: (context, index) {
-              ConvModel item = logic.list[index];
+              ConvModel convModel = logic.convModelList[index];
               UserBaseInfo? userInfo;
               GroupBaseInfo? groupInfo;
-              if (SDKTool.isSingleConv(item.convId)) {
+              if (SDKTool.isSingleConv(convModel.convId)) {
                 List<UserBaseInfo> userInfoList =
                     MenuLogic.logic()?.userInfoList ?? [];
                 if (userInfoList.isNotEmpty) {
                   userInfo = userInfoList.where((element) {
                     return element.id ==
                         SDKTool.getSingleId(
-                          item.convId,
+                          convModel.convId,
                           HiveTool.getUserId(),
                         );
                   }).first;
                 }
-              } else if (SDKTool.isGroupConv(item.convId)) {
+              } else if (SDKTool.isGroupConv(convModel.convId)) {
                 List<GroupBaseInfo> groupInfoList =
                     MenuLogic.logic()?.groupInfoList ?? [];
                 if (groupInfoList.isNotEmpty) {
                   groupInfo = groupInfoList.where((element) {
-                    return element.id == SDKTool.getGroupId(item.convId);
+                    return element.id == SDKTool.getGroupId(convModel.convId);
                   }).first;
                 }
               }
               return _buildItem(
                 logic,
-                item,
+                convModel,
                 userInfo: userInfo,
                 groupInfo: groupInfo,
               );
             },
-            itemCount: logic.list.length,
+            itemCount: logic.convModelList.length,
           ),
         );
       },
@@ -128,7 +129,7 @@ class NewsPage extends StatelessWidget {
 
   Widget _buildItem(
     NewsLogic logic,
-    ConvModel item, {
+    ConvModel convModel, {
     UserBaseInfo? userInfo,
     GroupBaseInfo? groupInfo,
   }) {
@@ -144,12 +145,12 @@ class NewsPage extends StatelessWidget {
       convAvatar = groupInfo.avatar;
       convName = groupInfo.name;
     }
-    DraftModel? draftModel = item.draftModel;
+    DraftModel? draftModel = convModel.draftModel;
     if (draftModel != null) {
       prefix = "[草稿] ";
       content = draftModel.content;
     } else {
-      MsgModel? msgModel = item.msgModel;
+      MsgModel? msgModel = convModel.msgModel;
       if (msgModel != null) {
         int contentType = msgModel.contentType;
         List<String> atUsers = msgModel.atUsers;
@@ -191,8 +192,8 @@ class NewsPage extends StatelessWidget {
         }
       }
     }
-    if (item.time != 0) {
-      msgTime = TimeTool.formatMessageTimestamp(item.time);
+    if (convModel.time != 0) {
+      msgTime = TimeTool.formatMessageTimestamp(convModel.time);
     }
     return Slidable(
       endActionPane: ActionPane(
@@ -216,7 +217,7 @@ class NewsPage extends StatelessWidget {
           if (logic == null) return;
           logic.sliderKey?.currentState?.closeSlider();
           logic.getDelegate?.toNamed(
-            Routes.chat(item.convId),
+            Routes.chat(convModel.convId),
           );
         },
         child: Padding(
@@ -277,7 +278,7 @@ class NewsPage extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  if (item.unreadCount != 0)
+                  if (convModel.unreadCount != 0)
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 3),
                       alignment: Alignment.center,
@@ -291,9 +292,9 @@ class NewsPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(9),
                       ),
                       child: Text(
-                        item.unreadCount >= 99
+                        convModel.unreadCount >= 99
                             ? "99+"
-                            : item.unreadCount.toString(),
+                            : convModel.unreadCount.toString(),
                         style: const TextStyle(
                           color: getTextWhite,
                           fontSize: 10,

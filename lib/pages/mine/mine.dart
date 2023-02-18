@@ -80,7 +80,10 @@ class MinePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MineLogic logic = Get.put(MineLogic());
+    MineLogic logic = Get.put(
+      MineLogic(),
+      permanent: true,
+    );
     return Column(
       children: [
         _buildAppBar(logic),

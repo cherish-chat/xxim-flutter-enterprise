@@ -84,7 +84,10 @@ class ContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ContactLogic logic = Get.put(ContactLogic());
+    ContactLogic logic = Get.put(
+      ContactLogic(),
+      permanent: true,
+    );
     return Column(
       children: [
         _buildAppBar(logic),
