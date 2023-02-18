@@ -259,7 +259,7 @@ class NewsPage extends StatelessWidget {
                             ),
                           ),
                         Flexible(
-                          child: Text(
+                          child: ExtendedTextWidget(
                             content,
                             style: const TextStyle(
                               color: getHintBlack,
