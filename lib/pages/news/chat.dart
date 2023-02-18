@@ -101,13 +101,15 @@ class ChatLogic extends GetxController {
     inputController.dispose();
     inputFocusNode.dispose();
     keyboardEvent.cancel();
+    DraftModel? draftModel;
+    if (inputController.text.isNotEmpty) {
+      draftModel = DraftModel(
+        content: inputController.text,
+      );
+    }
     await XXIM.instance.convManager.setConvDraft(
       convId: convId,
-      draftModel: inputController.text.isNotEmpty
-          ? DraftModel(
-              content: inputController.text,
-            )
-          : null,
+      draftModel: draftModel,
     );
     await XXIM.instance.convManager.setConvRead(convId: convId);
     NewsLogic.logic()?.loadList();
