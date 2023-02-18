@@ -17,7 +17,7 @@ class NewsLogic extends GetxController {
     interval(
       loadRandom,
       (callback) {
-        loadList(refresh: true);
+        loadList(force: true);
       },
       time: const Duration(seconds: 1),
     );
@@ -27,13 +27,13 @@ class NewsLogic extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    loadList(refresh: true);
+    loadList(force: true);
   }
 
   void loadList({
-    bool refresh = false,
+    bool force = false,
   }) async {
-    if (!refresh) {
+    if (!force) {
       loadRandom.value = DateTime.now().millisecondsSinceEpoch;
       return;
     }
@@ -202,7 +202,31 @@ class NewsPage extends StatelessWidget {
         children: [
           SlidableAction(
             onPressed: (context) {
-              // 删除
+              MenuLogic? menuLogic = MenuLogic.logic();
+              if (menuLogic == null) return;
+              List<RouteDecoder>? activePages =
+                  menuLogic.getDelegate?.activePages;
+              if (activePages != null) {
+                RouteDecoder routeDecoder = RouteDecoder.fromRoute(
+                  Routes.chat(convModel.convId),
+                );
+                if (activePages.contains(routeDecoder)) {
+                  menuLogic.getDelegate?.removeRoute(
+                    Routes.chat(convModel.convId),
+                  );
+                  // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
+                  menuLogic.getDelegate?.notifyListeners();
+                }
+              }
+              XXIM.instance.convManager
+                  .deleteConv(
+                convId: convModel.convId,
+              )
+                  .then(
+                (value) {
+                  logic.loadList(force: true);
+                },
+              );
             },
             icon: Icons.delete_outline,
             backgroundColor: Colors.red,

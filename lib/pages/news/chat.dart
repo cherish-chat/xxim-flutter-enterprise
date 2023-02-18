@@ -92,7 +92,7 @@ class ChatLogic extends GetxController {
       },
     );
     XXIM.instance.convManager.setConvRead(convId: convId);
-    NewsLogic.logic()?.loadList();
+    NewsLogic.logic()?.loadList(force: true);
     loadList();
   }
 
@@ -113,7 +113,7 @@ class ChatLogic extends GetxController {
       draftModel: draftModel,
     );
     await XXIM.instance.convManager.setConvRead(convId: convId);
-    NewsLogic.logic()?.loadList();
+    NewsLogic.logic()?.loadList(force: true);
     super.onClose();
   }
 
