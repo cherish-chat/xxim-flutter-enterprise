@@ -59,115 +59,97 @@ class Routes {
   static List<GetPage> get pages {
     return [
       GetPage(
-        name: '/',
-        page: () => RouterOutlet.builder(
-          delegate: Get.nestedKey(null),
-          builder: (context) {
-            return GetRouterOutlet(
-              initialRoute: Routes.launch,
-              delegate: Get.nestedKey(null),
-              anchorRoute: '/',
-              filterPages: (afterAnchor) {
-                return afterAnchor.take(1);
-              },
-            );
-          },
-        ),
+        name: launch,
+        page: () => const LaunchPage(),
+        transition: Transition.noTransition,
+      ),
+      GetPage(
+        name: login,
+        page: () => const LoginPage(),
+        transition: Transition.fade,
+        showCupertinoParallax: false,
+      ),
+      GetPage(
+        name: registerAccount,
+        page: () => const RegisterAccountPage(),
+        transition: Transition.fade,
+        showCupertinoParallax: false,
+      ),
+      GetPage(
+        name: menu,
+        page: () => MenuPage(),
+        transition: Transition.noTransition,
         participatesInRootNavigator: true,
         children: [
           GetPage(
-            name: launch,
-            page: () => const LaunchPage(),
-            transition: Transition.noTransition,
-          ),
-          GetPage(
-            name: login,
-            page: () => const LoginPage(),
-            transition: Transition.fade,
+            name: Paths.outlet,
+            page: () => const OutletPage(),
             showCupertinoParallax: false,
           ),
           GetPage(
-            name: registerAccount,
-            page: () => const RegisterAccountPage(),
-            transition: Transition.fade,
+            name: Paths.chat,
+            page: () => const ChatPage(),
             showCupertinoParallax: false,
           ),
           GetPage(
-            name: menu,
-            page: () => MenuPage(),
-            transition: Transition.noTransition,
-            children: [
-              GetPage(
-                name: Paths.outlet,
-                page: () => const OutletPage(),
-                showCupertinoParallax: false,
-              ),
-              GetPage(
-                name: Paths.chat,
-                page: () => const ChatPage(),
-                showCupertinoParallax: false,
-              ),
-              GetPage(
-                name: Paths.addFriend,
-                page: () => const AddFriendPage(),
-                showCupertinoParallax: false,
-              ),
-              GetPage(
-                name: Paths.addGroup,
-                page: () => const AddGroupPage(),
-                showCupertinoParallax: false,
-              ),
-              GetPage(
-                name: Paths.friendApply,
-                page: () => const FriendApplyPage(),
-                showCupertinoParallax: false,
-              ),
-              GetPage(
-                name: Paths.groupApply,
-                page: () => const GroupApplyPage(),
-                showCupertinoParallax: false,
-              ),
-              GetPage(
-                name: Paths.groupChat,
-                page: () => const GroupChatPage(),
-                showCupertinoParallax: false,
-              ),
-              GetPage(
-                name: Paths.myCard,
-                page: () => const MyCardPage(),
-                showCupertinoParallax: false,
-              ),
-              GetPage(
-                name: Paths.scanCard,
-                page: () => const ScanCardPage(),
-                showCupertinoParallax: false,
-              ),
-              GetPage(
-                name: Paths.modifyInfo,
-                page: () => const ModifyInfoPage(),
-                showCupertinoParallax: false,
-              ),
-              GetPage(
-                name: Paths.modifyPwd,
-                page: () => const ModifyPwdPage(),
-                showCupertinoParallax: false,
-              ),
-            ],
-          ),
-          GetPage(
-            name: photoView,
-            page: () => const PhotoViewPage(),
-            opaque: false,
-            transition: Transition.noTransition,
+            name: Paths.addFriend,
+            page: () => const AddFriendPage(),
             showCupertinoParallax: false,
           ),
           GetPage(
-            name: webView,
-            page: () => const WebViewPage(),
-            transition: Transition.fade,
+            name: Paths.addGroup,
+            page: () => const AddGroupPage(),
+            showCupertinoParallax: false,
+          ),
+          GetPage(
+            name: Paths.friendApply,
+            page: () => const FriendApplyPage(),
+            showCupertinoParallax: false,
+          ),
+          GetPage(
+            name: Paths.groupApply,
+            page: () => const GroupApplyPage(),
+            showCupertinoParallax: false,
+          ),
+          GetPage(
+            name: Paths.groupChat,
+            page: () => const GroupChatPage(),
+            showCupertinoParallax: false,
+          ),
+          GetPage(
+            name: Paths.myCard,
+            page: () => const MyCardPage(),
+            showCupertinoParallax: false,
+          ),
+          GetPage(
+            name: Paths.scanCard,
+            page: () => const ScanCardPage(),
+            showCupertinoParallax: false,
+          ),
+          GetPage(
+            name: Paths.modifyInfo,
+            page: () => const ModifyInfoPage(),
+            showCupertinoParallax: false,
+          ),
+          GetPage(
+            name: Paths.modifyPwd,
+            page: () => const ModifyPwdPage(),
             showCupertinoParallax: false,
           ),
         ],
+      ),
+      GetPage(
+        name: photoView,
+        page: () => const PhotoViewPage(),
+        opaque: false,
+        transition: Transition.noTransition,
+        showCupertinoParallax: false,
+      ),
+      GetPage(
+        name: webView,
+        page: () => const WebViewPage(),
+        transition: Transition.fade,
+        showCupertinoParallax: false,
       ),
     ];
   }

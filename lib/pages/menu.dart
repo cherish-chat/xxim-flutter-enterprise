@@ -187,6 +187,10 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
       child: GetRouterOutlet(
         anchorRoute: Routes.menu,
         initialRoute: Routes.outlet,
+        delegate: Get.nestedKey(Routes.menu),
+        filterPages: (afterAnchor) {
+          return afterAnchor.take(1);
+        },
       ),
     );
   }
@@ -210,6 +214,10 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
           child: GetRouterOutlet(
             anchorRoute: Routes.menu,
             initialRoute: Routes.outlet,
+            delegate: Get.nestedKey(Routes.menu),
+            filterPages: (afterAnchor) {
+              return afterAnchor.take(1);
+            },
           ),
         ),
       ],
