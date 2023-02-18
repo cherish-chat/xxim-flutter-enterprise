@@ -83,14 +83,10 @@ class MenuLogic extends GetxController {
             HiveTool.getUserId(),
             info.id,
           );
-          if (convParams.containsKey(convId)) {
-            convParams[convId] = const AesParams(
-              key: "key",
-              iv: "iv",
-            );
-          } else {
-            convParams.remove(convId);
-          }
+          convParams[convId] = const AesParams(
+            key: "key",
+            iv: "iv",
+          );
         }
         ContactLogic.logic()?.loadList();
       },
@@ -109,14 +105,10 @@ class MenuLogic extends GetxController {
         for (GroupBaseInfo info in groupInfoList) {
           if (info.id.isEmpty) continue;
           String convId = SDKTool.groupConvId(info.id);
-          if (convParams.containsKey(convId)) {
-            convParams[convId] = const AesParams(
-              key: "key",
-              iv: "iv",
-            );
-          } else {
-            convParams.remove(convId);
-          }
+          convParams[convId] = const AesParams(
+            key: "key",
+            iv: "iv",
+          );
         }
         GroupChatLogic.logic()?.loadList();
       },

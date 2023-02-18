@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'dart:convert';
 import 'package:extended_text/extended_text.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_list_view/flutter_list_view.dart';
@@ -135,6 +135,95 @@ class ChatLogic extends GetxController {
     msgModelList.addAll(msgList);
     update(["list"]);
     isLoadMore = false;
+  }
+
+  void receiveMsg(MsgModel msgModel) {
+    if (msgModel.convId != convId) return;
+    int index = msgModelList.indexWhere((element) {
+      return msgModel.clientMsgId == element.clientMsgId;
+    });
+    if (index != -1) {
+      msgModelList[index] = msgModel;
+    } else {
+      msgModelList.insert(0, msgModel);
+    }
+    update(["list"]);
+  }
+
+  Future<MsgModel> createText(String text) {
+    return XXIM.instance.msgManager.createText(
+      convId: convId,
+      text: text,
+      offlinePush: MsgOfflinePushModel(
+        title: HiveTool.getNickname(),
+        content: text,
+      ),
+    );
+  }
+
+  Future<MsgModel> createImage(ImageContent content) {
+    return XXIM.instance.msgManager.createImage(
+      convId: convId,
+      content: content,
+      offlinePush: MsgOfflinePushModel(
+        title: HiveTool.getNickname(),
+        content: "[图片]",
+      ),
+    );
+  }
+
+  Future<MsgModel> createAudio(AudioContent content) {
+    return XXIM.instance.msgManager.createAudio(
+      convId: convId,
+      content: content,
+      offlinePush: MsgOfflinePushModel(
+        title: HiveTool.getNickname(),
+        content: "[语音]",
+      ),
+    );
+  }
+
+  Future<MsgModel> createVideo(VideoContent content) {
+    return XXIM.instance.msgManager.createVideo(
+      convId: convId,
+      content: content,
+      offlinePush: MsgOfflinePushModel(
+        title: HiveTool.getNickname(),
+        content: "[视频]",
+      ),
+    );
+  }
+
+  Future<MsgModel> createFile(FileContent content) {
+    return XXIM.instance.msgManager.createFile(
+      convId: convId,
+      content: content,
+      offlinePush: MsgOfflinePushModel(
+        title: HiveTool.getNickname(),
+        content: "[文件]",
+      ),
+    );
+  }
+
+  Future<MsgModel> createLocation(LocationContent content) {
+    return XXIM.instance.msgManager.createLocation(
+      convId: convId,
+      content: content,
+      offlinePush: MsgOfflinePushModel(
+        title: HiveTool.getNickname(),
+        content: "[位置]",
+      ),
+    );
+  }
+
+  void sendMsgList(List<MsgModel> msgModelList) {
+    XXIM.instance.msgManager.sendMsgList(
+      senderInfo: json.encode({
+        "avatar": HiveTool.getAvatarUrl(),
+        "name": HiveTool.getNickname(),
+      }),
+      msgModelList: msgModelList,
+    );
   }
 }
 
@@ -392,7 +481,9 @@ class ChatPage extends StatelessWidget {
         onEditingComplete: () {
           String value = logic.inputController.text;
           if (value.isNotEmpty) {
-            // 发送消息
+            logic.createText(value).then((value) {
+              logic.sendMsgList([value]);
+            });
             logic.inputController.clear();
           }
         },

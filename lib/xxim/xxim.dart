@@ -6,6 +6,7 @@ import 'package:protobuf/protobuf.dart';
 import 'package:xxim_flutter_enterprise/main.dart'
     hide SuccessCallback, ErrorCallback;
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
+import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 import 'package:xxim_flutter_enterprise/proto/common.pb.dart';
 import 'package:xxim_flutter_enterprise/xxim/xxim_tool.dart';
@@ -50,6 +51,7 @@ class XXIM {
           },
           onClose: (code, error) {
             connectController.add(false);
+            XXIM.instance.connect();
           },
         ),
         subscribeCallback: SubscribeCallback(
@@ -66,7 +68,11 @@ class XXIM {
           },
         ),
         msgListener: MsgListener(
-          onReceive: (msgModelList) {},
+          onReceive: (msgModelList) {
+            for (MsgModel msgModel in msgModelList) {
+              ChatLogic.logic(msgModel.convId)?.receiveMsg(msgModel);
+            }
+          },
         ),
         noticeListener: NoticeListener(
           onReadMsg: (readContent) async {
@@ -80,7 +86,9 @@ class XXIM {
           },
         ),
         unreadListener: UnreadListener(
-          onUnreadCount: (count) {},
+          onUnreadCount: (count) {
+            MenuLogic.logic()?.newsUnreadCount.value = count;
+          },
         ),
       );
     convManager = _sdk.convManager;
