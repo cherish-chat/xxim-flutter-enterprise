@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:xxim_flutter_enterprise/main.dart';
+import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 enum ChatDirection {
   left,
@@ -161,33 +162,47 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
                       index: index,
                     ),
                     Flexible(
-                      child: Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: direction == ChatDirection.left
-                              ? getPlaceholderColor
-                              : getMainColor,
-                          borderRadius: direction == ChatDirection.left
-                              ? const BorderRadius.only(
-                                  topRight: Radius.circular(8),
-                                  bottomLeft: Radius.circular(8),
-                                  bottomRight: Radius.circular(8),
-                                )
-                              : const BorderRadius.only(
-                                  topLeft: Radius.circular(8),
-                                  bottomLeft: Radius.circular(8),
-                                  bottomRight: Radius.circular(8),
+                      child: Builder(
+                        builder: (context) {
+                          return GestureDetector(
+                            behavior: HitTestBehavior.opaque,
+                            onLongPress: () {
+                              PopupTool.show(
+                                context,
+                                contentType: MsgContentType.text,
+                                content: "",
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: direction == ChatDirection.left
+                                    ? getPlaceholderColor
+                                    : getMainColor,
+                                borderRadius: direction == ChatDirection.left
+                                    ? const BorderRadius.only(
+                                        topRight: Radius.circular(8),
+                                        bottomLeft: Radius.circular(8),
+                                        bottomRight: Radius.circular(8),
+                                      )
+                                    : const BorderRadius.only(
+                                        topLeft: Radius.circular(8),
+                                        bottomLeft: Radius.circular(8),
+                                        bottomRight: Radius.circular(8),
+                                      ),
+                              ),
+                              child: ExtendedTextWidget(
+                                "北冥有鱼[亲亲]，其名为鲲。鲲之大，不知其几千里也。化而为鸟，其名为鹏。鹏之背，不知其几千里也。怒而飞，其翼若垂天之云。是鸟也...",
+                                style: TextStyle(
+                                  color: direction == ChatDirection.left
+                                      ? getTextBlack
+                                      : getTextWhite,
+                                  fontSize: 14,
                                 ),
-                        ),
-                        child: ExtendedTextWidget(
-                          "北冥有鱼[亲亲]，其名为鲲。鲲之大，不知其几千里也。化而为鸟，其名为鹏。鹏之背，不知其几千里也。怒而飞，其翼若垂天之云。是鸟也...",
-                          style: TextStyle(
-                            color: direction == ChatDirection.left
-                                ? getTextBlack
-                                : getTextWhite,
-                            fontSize: 14,
-                          ),
-                        ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
                     const Padding(

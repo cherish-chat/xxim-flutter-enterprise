@@ -9,6 +9,7 @@ export 'encrypt_tool.dart';
 export 'hive_tool.dart';
 export 'http_tool.dart';
 export 'pick_tool.dart';
+export 'popup_tool.dart';
 export 'safe_tool.dart';
 export 'time_tool.dart';
 
