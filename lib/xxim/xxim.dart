@@ -156,8 +156,9 @@ class XXIM {
       bool isConnect = await XXIM.instance.connect();
       if (!isConnect) {
         if (environment == Environment.debug) {
+          debugPrint("customRequest:$method");
           debugPrint(
-              "onError:${CommonResp_Code.UnknownError.value} - Socket连接失败");
+              "customRequest-onError:${CommonResp_Code.UnknownError.value} - Socket连接失败");
         }
         onError?.call(
           CommonResp_Code.UnknownError.value,
@@ -172,8 +173,9 @@ class XXIM {
           );
           if (!status) {
             if (environment == Environment.debug) {
+              debugPrint("customRequest:$method");
               debugPrint(
-                  "onError:${CommonResp_Code.UnknownError.value} - 设置用户参数失败");
+                  "customRequest-onError:${CommonResp_Code.UnknownError.value} - 设置用户参数失败");
             }
             onError?.call(
               CommonResp_Code.UnknownError.value,
@@ -190,7 +192,8 @@ class XXIM {
       onSuccess: (data) {
         T t = resp()..mergeFromBuffer(data);
         if (environment == Environment.debug) {
-          debugPrint("onSuccess:$t");
+          debugPrint("customRequest:$method");
+          debugPrint("customRequest-onSuccess:$t");
         }
         onSuccess(t);
       },
@@ -205,7 +208,8 @@ class XXIM {
           } catch (_) {}
         }
         if (environment == Environment.debug) {
-          debugPrint("onError:$code - $error");
+          debugPrint("customRequest:$method");
+          debugPrint("customRequest-onError:$code - $error");
         }
         switch (CommonResp_Code.valueOf(code)) {
           case CommonResp_Code.Success:

@@ -220,7 +220,7 @@ class ChatLogic extends GetxController {
     XXIM.instance.msgManager.sendMsgList(
       senderInfo: json.encode({
         "avatar": HiveTool.getAvatarUrl(),
-        "name": HiveTool.getNickname(),
+        "nickname": HiveTool.getNickname(),
       }),
       msgModelList: msgModelList,
     );

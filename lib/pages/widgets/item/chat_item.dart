@@ -173,7 +173,7 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
                     ChatNameItem<T>(
                       tag: tag,
                       index: index,
-                      name: senderInfo["name"] ?? "",
+                      name: senderInfo["nickname"] ?? "",
                     ),
                     Flexible(
                       child: Builder(
@@ -297,7 +297,7 @@ class ChatImageItem<T extends GetxController> extends StatelessWidget {
                 ChatNameItem<T>(
                   tag: tag,
                   index: index,
-                  name: senderInfo["name"] ?? "",
+                  name: senderInfo["nickname"] ?? "",
                 ),
                 GetBuilder<T>(
                   tag: tag,
@@ -515,7 +515,7 @@ class _ChatAudioItemState<T extends GetxController>
                       ChatNameItem<T>(
                         tag: widget.tag,
                         index: _index,
-                        name: senderInfo["name"] ?? "",
+                        name: senderInfo["nickname"] ?? "",
                       ),
                       Flexible(
                         child: Container(
@@ -668,7 +668,7 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
                 ChatNameItem<T>(
                   tag: tag,
                   index: index,
-                  name: senderInfo["name"] ?? "",
+                  name: senderInfo["nickname"] ?? "",
                 ),
                 GetBuilder<T>(
                   tag: tag,
@@ -827,7 +827,7 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
                 ChatNameItem<T>(
                   tag: tag,
                   index: index,
-                  name: senderInfo["name"] ?? "",
+                  name: senderInfo["nickname"] ?? "",
                 ),
                 GetBuilder<T>(
                   tag: tag,
