@@ -218,6 +218,10 @@ class ChatLogic extends GetxController {
   }
 
   void sendMsgList(List<MsgModel> msgModelList) {
+    XXIM.instance.convManager.setConvRead(
+      convId: convId,
+      isSync: false,
+    );
     for (MsgModel msgModel in msgModelList) {
       int index = this.msgModelList.indexWhere((element) {
         return msgModel.clientMsgId == element.clientMsgId;
