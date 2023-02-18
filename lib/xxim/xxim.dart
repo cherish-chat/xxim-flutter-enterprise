@@ -203,7 +203,8 @@ class XXIM {
           case CommonResp_Code.Success:
             break;
           case CommonResp_Code.AuthError:
-            // onError?.call(code, error);
+            onError?.call(code, error);
+            _authError();
             break;
           case CommonResp_Code.ToastError:
             onError?.call(code, error);
@@ -211,7 +212,7 @@ class XXIM {
             break;
           case CommonResp_Code.AlertError:
             onError?.call(code, error);
-            alertError(error);
+            _alertError(error);
             break;
           default:
             onError?.call(code, error);
@@ -223,7 +224,40 @@ class XXIM {
     return resp()..mergeFromBuffer(data);
   }
 
-  void alertError(String error) {
+  void _authError() {
+    GetAlertDialog.show(
+      const Text(
+        "账号认证异常，请重新登录",
+        style: TextStyle(
+          color: getTextBlack,
+          fontSize: 16,
+          fontWeight: getMedium,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            GetAlertDialog.hide();
+            HiveTool.logout();
+            XXIM.instance.disconnect();
+            Get.offAllNamed(Routes.login);
+          },
+          child: const Text(
+            "好的",
+            style: TextStyle(
+              color: getTextWhite,
+              fontSize: 14,
+            ),
+          ),
+        ),
+      ],
+      willPop: false,
+      barrierDismissible: false,
+    );
+  }
+
+  void _alertError(String error) {
     Map jsonMap = json.decode(error);
     List<dynamic> actions = jsonMap["actions"];
     GetAlertDialog.show(
