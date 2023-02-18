@@ -217,6 +217,41 @@ class ChatLogic extends GetxController {
   }
 
   void sendMsgList(List<MsgModel> msgModelList) {
+    for (MsgModel msgModel in msgModelList) {
+      int index = this.msgModelList.indexWhere((element) {
+        return msgModel.clientMsgId == element.clientMsgId;
+      });
+      if (index == -1) {
+        this.msgModelList.insert(0, msgModel);
+        update(["list"]);
+      } else {
+        this.msgModelList[index].sendStatus = SendStatus.sending;
+        int contentType = msgModel.contentType;
+        String itemId = "";
+        if (contentType == MsgContentType.tip) {
+        } else if (contentType == MsgContentType.text) {
+          itemId = ChatTextItem.getId(msgModel.clientMsgId);
+        } else if (contentType == MsgContentType.image) {
+          itemId = ChatImageItem.getId(msgModel.clientMsgId);
+        } else if (contentType == MsgContentType.audio) {
+          itemId = ChatAudioItem.getId(msgModel.clientMsgId);
+        } else if (contentType == MsgContentType.video) {
+          itemId = ChatVideoItem.getId(msgModel.clientMsgId);
+        } else if (contentType == MsgContentType.file) {
+        } else if (contentType == MsgContentType.location) {
+          itemId = ChatLocationItem.getId(msgModel.clientMsgId);
+        } else if (contentType == MsgContentType.card) {
+        } else if (contentType == MsgContentType.merge) {
+        } else if (contentType == MsgContentType.emoji) {
+        } else if (contentType == MsgContentType.command) {
+        } else if (contentType == MsgContentType.richText) {
+        } else if (contentType == MsgContentType.markdown) {
+        } else if (contentType == MsgContentType.custom) {}
+        if (itemId.isNotEmpty) {
+          update([itemId]);
+        }
+      }
+    }
     XXIM.instance.msgManager.sendMsgList(
       senderInfo: json.encode({
         "avatar": HiveTool.getAvatarUrl(),
@@ -320,28 +355,24 @@ class ChatPage extends StatelessWidget {
               if (contentType == MsgContentType.text) {
                 return ChatTextItem<ChatLogic>(
                   tag: logic.tag,
-                  index: index,
                   direction: direction,
                   msgModel: msgModel,
                 );
               } else if (contentType == MsgContentType.image) {
                 return ChatImageItem<ChatLogic>(
                   tag: logic.tag,
-                  index: index,
                   direction: direction,
                   msgModel: msgModel,
                 );
               } else if (contentType == MsgContentType.audio) {
                 return ChatAudioItem<ChatLogic>(
                   tag: logic.tag,
-                  index: index,
                   direction: direction,
                   msgModel: msgModel,
                 );
               } else if (contentType == MsgContentType.video) {
                 return ChatVideoItem<ChatLogic>(
                   tag: logic.tag,
-                  index: index,
                   direction: direction,
                   msgModel: msgModel,
                 );

@@ -35,12 +35,12 @@ class ChatTimeItem extends StatelessWidget {
 }
 
 class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
-  static String getId(int index) {
-    return "ChatUserItem$index";
+  static String getId(String userId) {
+    return "ChatUserItem$userId";
   }
 
   final String? tag;
-  final int index;
+  final String userId;
   final ChatDirection direction;
   final bool showAvatar;
   final String avatar;
@@ -48,7 +48,7 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
   const ChatAvatarItem({
     Key? key,
     this.tag,
-    required this.index,
+    required this.userId,
     required this.direction,
     required this.showAvatar,
     required this.avatar,
@@ -58,7 +58,7 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<T>(
       tag: tag,
-      id: ChatAvatarItem.getId(index),
+      id: ChatAvatarItem.getId(userId),
       builder: (logic) {
         if (!showAvatar) {
           return const SizedBox(width: 35 + 8);
@@ -87,18 +87,18 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
 }
 
 class ChatNameItem<T extends GetxController> extends StatelessWidget {
-  static String getId(int index) {
-    return "ChatUserItem$index";
+  static String getId(String userId) {
+    return "ChatUserItem$userId";
   }
 
   final String? tag;
-  final int index;
+  final String userId;
   final String name;
 
   const ChatNameItem({
     Key? key,
     this.tag,
-    required this.index,
+    required this.userId,
     required this.name,
   }) : super(key: key);
 
@@ -106,7 +106,7 @@ class ChatNameItem<T extends GetxController> extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<T>(
       tag: tag,
-      id: ChatNameItem.getId(index),
+      id: ChatNameItem.getId(userId),
       builder: (logic) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 2),
@@ -124,19 +124,17 @@ class ChatNameItem<T extends GetxController> extends StatelessWidget {
 }
 
 class ChatTextItem<T extends GetxController> extends StatelessWidget {
-  static String getId(int index) {
-    return "$ChatTextItem$index";
+  static String getId(String clientMsgId) {
+    return "$ChatTextItem$clientMsgId";
   }
 
   final String? tag;
-  final int index;
   final ChatDirection direction;
   final MsgModel msgModel;
 
   const ChatTextItem({
     Key? key,
     this.tag,
-    required this.index,
     required this.direction,
     required this.msgModel,
   }) : super(key: key);
@@ -154,7 +152,7 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
         children: [
           ChatAvatarItem<T>(
             tag: tag,
-            index: index,
+            userId: msgModel.senderId,
             direction: direction,
             showAvatar: direction == ChatDirection.left,
             avatar: senderInfo["avatar"] ?? "",
@@ -162,7 +160,7 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
           Expanded(
             child: GetBuilder<T>(
               tag: tag,
-              id: ChatTextItem.getId(index),
+              id: ChatTextItem.getId(msgModel.clientMsgId),
               builder: (logic) {
                 return Column(
                   crossAxisAlignment: direction == ChatDirection.left
@@ -172,7 +170,7 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
                   children: [
                     ChatNameItem<T>(
                       tag: tag,
-                      index: index,
+                      userId: msgModel.senderId,
                       name: senderInfo["nickname"] ?? "",
                     ),
                     Flexible(
@@ -239,7 +237,7 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
           ),
           ChatAvatarItem<T>(
             tag: tag,
-            index: index,
+            userId: msgModel.senderId,
             direction: direction,
             showAvatar: direction == ChatDirection.right,
             avatar: senderInfo["avatar"] ?? "",
@@ -251,19 +249,17 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
 }
 
 class ChatImageItem<T extends GetxController> extends StatelessWidget {
-  static String getId(int index) {
-    return "$ChatImageItem$index";
+  static String getId(String clientMsgId) {
+    return "$ChatImageItem$clientMsgId";
   }
 
   final String? tag;
-  final int index;
   final ChatDirection direction;
   final MsgModel msgModel;
 
   const ChatImageItem({
     Key? key,
     this.tag,
-    required this.index,
     required this.direction,
     required this.msgModel,
   }) : super(key: key);
@@ -282,7 +278,7 @@ class ChatImageItem<T extends GetxController> extends StatelessWidget {
         children: [
           ChatAvatarItem<T>(
             tag: tag,
-            index: index,
+            userId: msgModel.senderId,
             direction: direction,
             showAvatar: direction == ChatDirection.left,
             avatar: senderInfo["avatar"] ?? "",
@@ -296,12 +292,12 @@ class ChatImageItem<T extends GetxController> extends StatelessWidget {
               children: [
                 ChatNameItem<T>(
                   tag: tag,
-                  index: index,
+                  userId: msgModel.senderId,
                   name: senderInfo["nickname"] ?? "",
                 ),
                 GetBuilder<T>(
                   tag: tag,
-                  id: ChatImageItem.getId(index),
+                  id: ChatImageItem.getId(msgModel.clientMsgId),
                   builder: (logic) {
                     double maxWidth = Get.width - 128;
                     double maxHeight = maxWidth * 1.5;
@@ -379,7 +375,7 @@ class ChatImageItem<T extends GetxController> extends StatelessWidget {
           ),
           ChatAvatarItem<T>(
             tag: tag,
-            index: index,
+            userId: msgModel.senderId,
             direction: direction,
             showAvatar: direction == ChatDirection.right,
             avatar: senderInfo["avatar"] ?? "",
@@ -391,19 +387,17 @@ class ChatImageItem<T extends GetxController> extends StatelessWidget {
 }
 
 class ChatAudioItem<T extends GetxController> extends StatefulWidget {
-  static String getId(int index) {
-    return "$ChatAudioItem$index";
+  static String getId(String clientMsgId) {
+    return "$ChatAudioItem$clientMsgId";
   }
 
   final String? tag;
-  final int index;
   final ChatDirection direction;
   final MsgModel msgModel;
 
   const ChatAudioItem({
     Key? key,
     this.tag,
-    required this.index,
     required this.direction,
     required this.msgModel,
   }) : super(key: key);
@@ -414,7 +408,6 @@ class ChatAudioItem<T extends GetxController> extends StatefulWidget {
 
 class _ChatAudioItemState<T extends GetxController>
     extends State<ChatAudioItem> {
-  late int _index;
   late ChatDirection _direction;
   late MsgModel _msgModel;
   late AudioContent _content;
@@ -424,7 +417,6 @@ class _ChatAudioItemState<T extends GetxController>
 
   @override
   void initState() {
-    _index = widget.index;
     _direction = widget.direction;
     _msgModel = widget.msgModel;
     _content = AudioContent.fromJson(_msgModel.content);
@@ -480,7 +472,7 @@ class _ChatAudioItemState<T extends GetxController>
         children: [
           ChatAvatarItem<T>(
             tag: widget.tag,
-            index: _index,
+            userId: _msgModel.senderId,
             direction: _direction,
             showAvatar: _direction == ChatDirection.left,
             avatar: senderInfo["avatar"] ?? "",
@@ -488,7 +480,7 @@ class _ChatAudioItemState<T extends GetxController>
           Expanded(
             child: GetBuilder<T>(
               tag: widget.tag,
-              id: ChatAudioItem.getId(_index),
+              id: ChatAudioItem.getId(_msgModel.clientMsgId),
               builder: (logic) {
                 double minWidth = 91;
                 double maxWidth = Get.width - 128;
@@ -514,7 +506,7 @@ class _ChatAudioItemState<T extends GetxController>
                     children: [
                       ChatNameItem<T>(
                         tag: widget.tag,
-                        index: _index,
+                        userId: _msgModel.senderId,
                         name: senderInfo["nickname"] ?? "",
                       ),
                       Flexible(
@@ -583,7 +575,7 @@ class _ChatAudioItemState<T extends GetxController>
           ),
           ChatAvatarItem<T>(
             tag: widget.tag,
-            index: _index,
+            userId: _msgModel.senderId,
             direction: _direction,
             showAvatar: _direction == ChatDirection.right,
             avatar: senderInfo["avatar"] ?? "",
@@ -622,19 +614,17 @@ class _ChatAudioItemState<T extends GetxController>
 }
 
 class ChatVideoItem<T extends GetxController> extends StatelessWidget {
-  static String getId(int index) {
-    return "$ChatVideoItem$index";
+  static String getId(String clientMsgId) {
+    return "$ChatVideoItem$clientMsgId";
   }
 
   final String? tag;
-  final int index;
   final ChatDirection direction;
   final MsgModel msgModel;
 
   const ChatVideoItem({
     Key? key,
     this.tag,
-    required this.index,
     required this.direction,
     required this.msgModel,
   }) : super(key: key);
@@ -653,7 +643,7 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
         children: [
           ChatAvatarItem<T>(
             tag: tag,
-            index: index,
+            userId: msgModel.senderId,
             direction: direction,
             showAvatar: direction == ChatDirection.left,
             avatar: senderInfo["avatar"] ?? "",
@@ -667,12 +657,12 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
               children: [
                 ChatNameItem<T>(
                   tag: tag,
-                  index: index,
+                  userId: msgModel.senderId,
                   name: senderInfo["nickname"] ?? "",
                 ),
                 GetBuilder<T>(
                   tag: tag,
-                  id: ChatVideoItem.getId(index),
+                  id: ChatVideoItem.getId(msgModel.clientMsgId),
                   builder: (logic) {
                     double maxWidth = Get.width - 128;
                     double maxHeight = maxWidth * 1.5;
@@ -769,7 +759,7 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
           ),
           ChatAvatarItem<T>(
             tag: tag,
-            index: index,
+            userId: msgModel.senderId,
             direction: direction,
             showAvatar: direction == ChatDirection.right,
             avatar: senderInfo["avatar"] ?? "",
@@ -781,19 +771,17 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
 }
 
 class ChatLocationItem<T extends GetxController> extends StatelessWidget {
-  static String getId(int index) {
-    return "$ChatLocationItem$index";
+  static String getId(String clientMsgId) {
+    return "$ChatLocationItem$clientMsgId";
   }
 
   final String? tag;
-  final int index;
   final ChatDirection direction;
   final MsgModel msgModel;
 
   const ChatLocationItem({
     Key? key,
     this.tag,
-    required this.index,
     required this.direction,
     required this.msgModel,
   }) : super(key: key);
@@ -804,7 +792,7 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
     if (msgModel.senderInfo.isNotEmpty) {
       senderInfo = json.decode(msgModel.senderInfo);
     }
-    LocationContent content = LocationContent.fromJson(msgModel.content);
+    // LocationContent content = LocationContent.fromJson(msgModel.content);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
@@ -812,7 +800,7 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
         children: [
           ChatAvatarItem<T>(
             tag: tag,
-            index: index,
+            userId: msgModel.senderId,
             direction: direction,
             showAvatar: direction == ChatDirection.left,
             avatar: senderInfo["avatar"] ?? "",
@@ -826,12 +814,12 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
               children: [
                 ChatNameItem<T>(
                   tag: tag,
-                  index: index,
+                  userId: msgModel.senderId,
                   name: senderInfo["nickname"] ?? "",
                 ),
                 GetBuilder<T>(
                   tag: tag,
-                  id: ChatLocationItem.getId(index),
+                  id: ChatLocationItem.getId(msgModel.clientMsgId),
                   builder: (logic) {
                     return GestureDetector(
                       behavior: HitTestBehavior.opaque,
@@ -884,7 +872,7 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
           ),
           ChatAvatarItem<T>(
             tag: tag,
-            index: index,
+            userId: msgModel.senderId,
             direction: direction,
             showAvatar: direction == ChatDirection.right,
             avatar: senderInfo["avatar"] ?? "",
