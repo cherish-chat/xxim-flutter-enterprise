@@ -426,7 +426,7 @@ class ChatPage extends StatelessWidget {
                   logic.scrollController.jumpTo(0);
                   if (logic.chatOperate.value == ChatOperate.record) {
                     logic.inputFocusNode.requestFocus();
-                    if (MenuLogic.logic()?.isPhone.value == true) {
+                    if (GetPlatform.isMobile) {
                       logic.chatOperate.value = ChatOperate.input;
                     } else {
                       logic.chatOperate.value = ChatOperate.none;
@@ -451,7 +451,7 @@ class ChatPage extends StatelessWidget {
                   logic.scrollController.jumpTo(0);
                   if (logic.chatOperate.value == ChatOperate.emoji) {
                     logic.inputFocusNode.requestFocus();
-                    if (MenuLogic.logic()?.isPhone.value == true) {
+                    if (GetPlatform.isMobile) {
                       logic.chatOperate.value = ChatOperate.input;
                     } else {
                       logic.chatOperate.value = ChatOperate.none;
