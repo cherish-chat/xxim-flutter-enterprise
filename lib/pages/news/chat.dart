@@ -92,6 +92,7 @@ class ChatLogic extends GetxController {
       },
     );
     XXIM.instance.convManager.setConvRead(convId: convId);
+    NewsLogic.logic()?.loadList();
     loadList();
   }
 
