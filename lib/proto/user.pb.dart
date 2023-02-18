@@ -204,6 +204,7 @@ class UserBaseInfo extends $pb.GeneratedMessage {
     ..e<XB>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'xb', $pb.PbFieldType.OE, defaultOrMaker: XB.UnknownXB, valueOf: XB.valueOf, enumValues: XB.values)
     ..aOM<BirthdayInfo>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'birthday', subBuilder: BirthdayInfo.create)
     ..aOM<$0.IpRegion>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ipRegion', protoName: 'ipRegion', subBuilder: $0.IpRegion.create)
+    ..a<$core.int>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -215,6 +216,7 @@ class UserBaseInfo extends $pb.GeneratedMessage {
     XB? xb,
     BirthdayInfo? birthday,
     $0.IpRegion? ipRegion,
+    $core.int? role,
   }) {
     final _result = create();
     if (id != null) {
@@ -234,6 +236,9 @@ class UserBaseInfo extends $pb.GeneratedMessage {
     }
     if (ipRegion != null) {
       _result.ipRegion = ipRegion;
+    }
+    if (role != null) {
+      _result.role = role;
     }
     return _result;
   }
@@ -315,6 +320,15 @@ class UserBaseInfo extends $pb.GeneratedMessage {
   void clearIpRegion() => clearField(6);
   @$pb.TagNumber(6)
   $0.IpRegion ensureIpRegion() => $_ensure(5);
+
+  @$pb.TagNumber(7)
+  $core.int get role => $_getIZ(6);
+  @$pb.TagNumber(7)
+  set role($core.int v) { $_setSignedInt32(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasRole() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearRole() => clearField(7);
 }
 
 class LoginReq extends $pb.GeneratedMessage {
@@ -1329,6 +1343,7 @@ class GetUserHomeResp extends $pb.GeneratedMessage {
     ..aOM<$0.IpRegion>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ipRegion', protoName: 'ipRegion', subBuilder: $0.IpRegion.create)
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature')
     ..aOM<LevelInfo>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'levelInfo', protoName: 'levelInfo', subBuilder: LevelInfo.create)
+    ..a<$core.int>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -1343,6 +1358,7 @@ class GetUserHomeResp extends $pb.GeneratedMessage {
     $0.IpRegion? ipRegion,
     $core.String? signature,
     LevelInfo? levelInfo,
+    $core.int? role,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -1371,6 +1387,9 @@ class GetUserHomeResp extends $pb.GeneratedMessage {
     }
     if (levelInfo != null) {
       _result.levelInfo = levelInfo;
+    }
+    if (role != null) {
+      _result.role = role;
     }
     return _result;
   }
@@ -1483,6 +1502,15 @@ class GetUserHomeResp extends $pb.GeneratedMessage {
   void clearLevelInfo() => clearField(9);
   @$pb.TagNumber(9)
   LevelInfo ensureLevelInfo() => $_ensure(8);
+
+  @$pb.TagNumber(10)
+  $core.int get role => $_getIZ(9);
+  @$pb.TagNumber(10)
+  set role($core.int v) { $_setSignedInt32(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasRole() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearRole() => clearField(10);
 }
 
 class GetUserSettingsReq extends $pb.GeneratedMessage {
@@ -2224,6 +2252,7 @@ class UserInvitationCode extends $pb.GeneratedMessage {
     ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isEnable', protoName: 'isEnable')
     ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'defaultConvMode', $pb.PbFieldType.O3, protoName: 'defaultConvMode')
     ..aInt64(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createTime', protoName: 'createTime')
+    ..aInt64(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'successUserCount', protoName: 'successUserCount')
     ..aInt64(21, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
     ..aOS(22, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAtStr', protoName: 'createdAtStr')
     ..hasRequiredFields = false
@@ -2238,6 +2267,7 @@ class UserInvitationCode extends $pb.GeneratedMessage {
     $core.bool? isEnable,
     $core.int? defaultConvMode,
     $fixnum.Int64? createTime,
+    $fixnum.Int64? successUserCount,
     $fixnum.Int64? createdAt,
     $core.String? createdAtStr,
   }) {
@@ -2262,6 +2292,9 @@ class UserInvitationCode extends $pb.GeneratedMessage {
     }
     if (createTime != null) {
       _result.createTime = createTime;
+    }
+    if (successUserCount != null) {
+      _result.successUserCount = successUserCount;
     }
     if (createdAt != null) {
       _result.createdAt = createdAt;
@@ -2355,21 +2388,30 @@ class UserInvitationCode extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   void clearCreateTime() => clearField(7);
 
+  @$pb.TagNumber(8)
+  $fixnum.Int64 get successUserCount => $_getI64(7);
+  @$pb.TagNumber(8)
+  set successUserCount($fixnum.Int64 v) { $_setInt64(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasSuccessUserCount() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearSuccessUserCount() => clearField(8);
+
   @$pb.TagNumber(21)
-  $fixnum.Int64 get createdAt => $_getI64(7);
+  $fixnum.Int64 get createdAt => $_getI64(8);
   @$pb.TagNumber(21)
-  set createdAt($fixnum.Int64 v) { $_setInt64(7, v); }
+  set createdAt($fixnum.Int64 v) { $_setInt64(8, v); }
   @$pb.TagNumber(21)
-  $core.bool hasCreatedAt() => $_has(7);
+  $core.bool hasCreatedAt() => $_has(8);
   @$pb.TagNumber(21)
   void clearCreatedAt() => clearField(21);
 
   @$pb.TagNumber(22)
-  $core.String get createdAtStr => $_getSZ(8);
+  $core.String get createdAtStr => $_getSZ(9);
   @$pb.TagNumber(22)
-  set createdAtStr($core.String v) { $_setString(8, v); }
+  set createdAtStr($core.String v) { $_setString(9, v); }
   @$pb.TagNumber(22)
-  $core.bool hasCreatedAtStr() => $_has(8);
+  $core.bool hasCreatedAtStr() => $_has(9);
   @$pb.TagNumber(22)
   void clearCreatedAtStr() => clearField(22);
 }

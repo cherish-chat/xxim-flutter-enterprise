@@ -49,22 +49,22 @@ class AddGroupLogic extends GetxController {
   }
 
   void apply(String id) {
-    // GetLoadingDialog.show("请稍等");
-    // XXIM.instance.customRequest<RequestAddFriendResp>(
-    //   method: "/v1/relation/requestAddFriend",
-    //   req: RequestAddFriendReq(
-    //     to: "id",
-    //     message: "请求加入群聊",
-    //   ),
-    //   resp: RequestAddFriendResp.create,
-    //   onSuccess: (data) {
-    //     GetLoadingDialog.hide();
-    //     Tool.showToast("申请成功");
-    //   },
-    //   onError: (code, error) {
-    //     GetLoadingDialog.hide();
-    //   },
-    // );
+    GetLoadingDialog.show("请稍等");
+    XXIM.instance.customRequest<ApplyToBeGroupMemberResp>(
+      method: "/v1/group/applyToBeGroupMember",
+      req: ApplyToBeGroupMemberReq(
+        groupId: id,
+        reason: "请求加入群聊",
+      ),
+      resp: ApplyToBeGroupMemberResp.create,
+      onSuccess: (data) {
+        GetLoadingDialog.hide();
+        Tool.showToast("申请成功");
+      },
+      onError: (code, error) {
+        GetLoadingDialog.hide();
+      },
+    );
   }
 }
 

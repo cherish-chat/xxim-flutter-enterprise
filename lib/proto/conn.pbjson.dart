@@ -281,11 +281,12 @@ const KeepAliveReq$json = const {
   '1': 'KeepAliveReq',
   '2': const [
     const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'convIdList', '3': 2, '4': 3, '5': 9, '10': 'convIdList'},
   ],
 };
 
 /// Descriptor for `KeepAliveReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List keepAliveReqDescriptor = $convert.base64Decode('CgxLZWVwQWxpdmVSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXE=');
+final $typed_data.Uint8List keepAliveReqDescriptor = $convert.base64Decode('CgxLZWVwQWxpdmVSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESHgoKY29udklkTGlzdBgCIAMoCVIKY29udklkTGlzdA==');
 @$core.Deprecated('Use keepAliveRespDescriptor instead')
 const KeepAliveResp$json = const {
   '1': 'KeepAliveResp',

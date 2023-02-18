@@ -331,11 +331,12 @@ const FlushUsersSubConvReq$json = const {
   '2': const [
     const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
     const {'1': 'userIds', '3': 2, '4': 3, '5': 9, '10': 'userIds'},
+    const {'1': 'compareConvIds', '3': 3, '4': 3, '5': 9, '10': 'compareConvIds'},
   ],
 };
 
 /// Descriptor for `FlushUsersSubConvReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List flushUsersSubConvReqDescriptor = $convert.base64Decode('ChRGbHVzaFVzZXJzU3ViQ29udlJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIYCgd1c2VySWRzGAIgAygJUgd1c2VySWRz');
+final $typed_data.Uint8List flushUsersSubConvReqDescriptor = $convert.base64Decode('ChRGbHVzaFVzZXJzU3ViQ29udlJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIYCgd1c2VySWRzGAIgAygJUgd1c2VySWRzEiYKDmNvbXBhcmVDb252SWRzGAMgAygJUg5jb21wYXJlQ29udklkcw==');
 @$core.Deprecated('Use getAllMsgListReqDescriptor instead')
 const GetAllMsgListReq$json = const {
   '1': 'GetAllMsgListReq',

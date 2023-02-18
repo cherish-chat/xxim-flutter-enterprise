@@ -106,11 +106,12 @@ const UserBaseInfo$json = const {
     const {'1': 'xb', '3': 4, '4': 1, '5': 14, '6': '.pb.XB', '10': 'xb'},
     const {'1': 'birthday', '3': 5, '4': 1, '5': 11, '6': '.pb.BirthdayInfo', '10': 'birthday'},
     const {'1': 'ipRegion', '3': 6, '4': 1, '5': 11, '6': '.pb.IpRegion', '10': 'ipRegion'},
+    const {'1': 'role', '3': 7, '4': 1, '5': 5, '10': 'role'},
   ],
 };
 
 /// Descriptor for `UserBaseInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List userBaseInfoDescriptor = $convert.base64Decode('CgxVc2VyQmFzZUluZm8SDgoCaWQYASABKAlSAmlkEhoKCG5pY2tuYW1lGAIgASgJUghuaWNrbmFtZRIWCgZhdmF0YXIYAyABKAlSBmF2YXRhchIWCgJ4YhgEIAEoDjIGLnBiLlhCUgJ4YhIsCghiaXJ0aGRheRgFIAEoCzIQLnBiLkJpcnRoZGF5SW5mb1IIYmlydGhkYXkSKAoIaXBSZWdpb24YBiABKAsyDC5wYi5JcFJlZ2lvblIIaXBSZWdpb24=');
+final $typed_data.Uint8List userBaseInfoDescriptor = $convert.base64Decode('CgxVc2VyQmFzZUluZm8SDgoCaWQYASABKAlSAmlkEhoKCG5pY2tuYW1lGAIgASgJUghuaWNrbmFtZRIWCgZhdmF0YXIYAyABKAlSBmF2YXRhchIWCgJ4YhgEIAEoDjIGLnBiLlhCUgJ4YhIsCghiaXJ0aGRheRgFIAEoCzIQLnBiLkJpcnRoZGF5SW5mb1IIYmlydGhkYXkSKAoIaXBSZWdpb24YBiABKAsyDC5wYi5JcFJlZ2lvblIIaXBSZWdpb24SEgoEcm9sZRgHIAEoBVIEcm9sZQ==');
 @$core.Deprecated('Use loginReqDescriptor instead')
 const LoginReq$json = const {
   '1': 'LoginReq',
@@ -303,11 +304,12 @@ const GetUserHomeResp$json = const {
     const {'1': 'ipRegion', '3': 7, '4': 1, '5': 11, '6': '.pb.IpRegion', '10': 'ipRegion'},
     const {'1': 'signature', '3': 8, '4': 1, '5': 9, '10': 'signature'},
     const {'1': 'levelInfo', '3': 9, '4': 1, '5': 11, '6': '.pb.LevelInfo', '10': 'levelInfo'},
+    const {'1': 'role', '3': 10, '4': 1, '5': 5, '10': 'role'},
   ],
 };
 
 /// Descriptor for `GetUserHomeResp`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getUserHomeRespDescriptor = $convert.base64Decode('Cg9HZXRVc2VySG9tZVJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASDgoCaWQYAiABKAlSAmlkEhoKCG5pY2tuYW1lGAMgASgJUghuaWNrbmFtZRIWCgZhdmF0YXIYBCABKAlSBmF2YXRhchIWCgJ4YhgFIAEoDjIGLnBiLlhCUgJ4YhIsCghiaXJ0aGRheRgGIAEoCzIQLnBiLkJpcnRoZGF5SW5mb1IIYmlydGhkYXkSKAoIaXBSZWdpb24YByABKAsyDC5wYi5JcFJlZ2lvblIIaXBSZWdpb24SHAoJc2lnbmF0dXJlGAggASgJUglzaWduYXR1cmUSKwoJbGV2ZWxJbmZvGAkgASgLMg0ucGIuTGV2ZWxJbmZvUglsZXZlbEluZm8=');
+final $typed_data.Uint8List getUserHomeRespDescriptor = $convert.base64Decode('Cg9HZXRVc2VySG9tZVJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASDgoCaWQYAiABKAlSAmlkEhoKCG5pY2tuYW1lGAMgASgJUghuaWNrbmFtZRIWCgZhdmF0YXIYBCABKAlSBmF2YXRhchIWCgJ4YhgFIAEoDjIGLnBiLlhCUgJ4YhIsCghiaXJ0aGRheRgGIAEoCzIQLnBiLkJpcnRoZGF5SW5mb1IIYmlydGhkYXkSKAoIaXBSZWdpb24YByABKAsyDC5wYi5JcFJlZ2lvblIIaXBSZWdpb24SHAoJc2lnbmF0dXJlGAggASgJUglzaWduYXR1cmUSKwoJbGV2ZWxJbmZvGAkgASgLMg0ucGIuTGV2ZWxJbmZvUglsZXZlbEluZm8SEgoEcm9sZRgKIAEoBVIEcm9sZQ==');
 @$core.Deprecated('Use getUserSettingsReqDescriptor instead')
 const GetUserSettingsReq$json = const {
   '1': 'GetUserSettingsReq',
@@ -467,13 +469,14 @@ const UserInvitationCode$json = const {
     const {'1': 'isEnable', '3': 5, '4': 1, '5': 8, '10': 'isEnable'},
     const {'1': 'defaultConvMode', '3': 6, '4': 1, '5': 5, '10': 'defaultConvMode'},
     const {'1': 'createTime', '3': 7, '4': 1, '5': 3, '10': 'createTime'},
+    const {'1': 'successUserCount', '3': 8, '4': 1, '5': 3, '10': 'successUserCount'},
     const {'1': 'createdAt', '3': 21, '4': 1, '5': 3, '10': 'createdAt'},
     const {'1': 'createdAtStr', '3': 22, '4': 1, '5': 9, '10': 'createdAtStr'},
   ],
 };
 
 /// Descriptor for `UserInvitationCode`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List userInvitationCodeDescriptor = $convert.base64Decode('ChJVc2VySW52aXRhdGlvbkNvZGUSEgoEY29kZRgBIAEoCVIEY29kZRIWCgZyZW1hcmsYAiABKAlSBnJlbWFyaxIYCgdjcmVhdG9yGAMgASgJUgdjcmVhdG9yEiAKC2NyZWF0b3JUeXBlGAQgASgFUgtjcmVhdG9yVHlwZRIaCghpc0VuYWJsZRgFIAEoCFIIaXNFbmFibGUSKAoPZGVmYXVsdENvbnZNb2RlGAYgASgFUg9kZWZhdWx0Q29udk1vZGUSHgoKY3JlYXRlVGltZRgHIAEoA1IKY3JlYXRlVGltZRIcCgljcmVhdGVkQXQYFSABKANSCWNyZWF0ZWRBdBIiCgxjcmVhdGVkQXRTdHIYFiABKAlSDGNyZWF0ZWRBdFN0cg==');
+final $typed_data.Uint8List userInvitationCodeDescriptor = $convert.base64Decode('ChJVc2VySW52aXRhdGlvbkNvZGUSEgoEY29kZRgBIAEoCVIEY29kZRIWCgZyZW1hcmsYAiABKAlSBnJlbWFyaxIYCgdjcmVhdG9yGAMgASgJUgdjcmVhdG9yEiAKC2NyZWF0b3JUeXBlGAQgASgFUgtjcmVhdG9yVHlwZRIaCghpc0VuYWJsZRgFIAEoCFIIaXNFbmFibGUSKAoPZGVmYXVsdENvbnZNb2RlGAYgASgFUg9kZWZhdWx0Q29udk1vZGUSHgoKY3JlYXRlVGltZRgHIAEoA1IKY3JlYXRlVGltZRIqChBzdWNjZXNzVXNlckNvdW50GAggASgDUhBzdWNjZXNzVXNlckNvdW50EhwKCWNyZWF0ZWRBdBgVIAEoA1IJY3JlYXRlZEF0EiIKDGNyZWF0ZWRBdFN0chgWIAEoCVIMY3JlYXRlZEF0U3Ry');
 @$core.Deprecated('Use getAllUserInvitationCodeReqDescriptor instead')
 const GetAllUserInvitationCodeReq$json = const {
   '1': 'GetAllUserInvitationCodeReq',

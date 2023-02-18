@@ -1816,6 +1816,7 @@ class FlushUsersSubConvReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FlushUsersSubConvReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userIds', protoName: 'userIds')
+    ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'compareConvIds', protoName: 'compareConvIds')
     ..hasRequiredFields = false
   ;
 
@@ -1823,6 +1824,7 @@ class FlushUsersSubConvReq extends $pb.GeneratedMessage {
   factory FlushUsersSubConvReq({
     $0.CommonReq? commonReq,
     $core.Iterable<$core.String>? userIds,
+    $core.Iterable<$core.String>? compareConvIds,
   }) {
     final _result = create();
     if (commonReq != null) {
@@ -1830,6 +1832,9 @@ class FlushUsersSubConvReq extends $pb.GeneratedMessage {
     }
     if (userIds != null) {
       _result.userIds.addAll(userIds);
+    }
+    if (compareConvIds != null) {
+      _result.compareConvIds.addAll(compareConvIds);
     }
     return _result;
   }
@@ -1867,6 +1872,9 @@ class FlushUsersSubConvReq extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(2)
   $core.List<$core.String> get userIds => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.String> get compareConvIds => $_getList(2);
 }
 
 class GetAllMsgListReq extends $pb.GeneratedMessage {

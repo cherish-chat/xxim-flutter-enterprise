@@ -261,19 +261,19 @@ class ContactPage extends StatelessWidget {
               );
             },
           ),
-          // buildItem(
-          //   "assets/images/ic_new_group_30.webp",
-          //   "群聊申请",
-          //   count: 0,
-          //   onTap: () {
-          //     MenuLogic? logic = MenuLogic.logic();
-          //     if (logic == null) return;
-          //     logic.sliderKey?.currentState?.closeSlider();
-          //     logic.getDelegate?.toNamed(
-          //       Routes.groupApply,
-          //     );
-          //   },
-          // ),
+          buildItem(
+            "assets/images/ic_new_group_30.webp",
+            "群聊申请",
+            count: 0,
+            onTap: () {
+              MenuLogic? logic = MenuLogic.logic();
+              if (logic == null) return;
+              logic.sliderKey?.currentState?.closeSlider();
+              logic.getDelegate?.toNamed(
+                Routes.groupApply,
+              );
+            },
+          ),
           buildItem(
             "assets/images/ic_group_30.webp",
             "我的群聊",

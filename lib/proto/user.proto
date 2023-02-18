@@ -52,6 +52,8 @@ message UserBaseInfo {
   BirthdayInfo birthday = 5;
   // 最后一次连接 ip所在地
   IpRegion ipRegion = 6;
+  // 角色
+  int32 role = 7; // 0:普通用户 1:客服/管理员 2:游客
 }
 
 // 登录 如果没有注册过，会暂存到临时表，等待用户确认后注册成功
@@ -154,6 +156,8 @@ message GetUserHomeResp {
   string signature = 8;
   // 等级信息
   LevelInfo levelInfo = 9;
+  // 角色
+  int32 role = 10; // 0:普通用户 1:客服/管理员 2:游客
 }
 
 // ************ userSettings ************ //
@@ -254,6 +258,7 @@ message UserInvitationCode {
   bool isEnable = 5;
   int32 defaultConvMode = 6; // 默认会话模式 0:添加所有预设会话 1:只添加一个会话(轮询) 2:只添加一个会话(随机) 3:不添加会话
   int64 createTime = 7;
+  int64 successUserCount = 8;
 
   int64 createdAt = 21;
   string createdAtStr = 22;

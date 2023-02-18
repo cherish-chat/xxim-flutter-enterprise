@@ -24,6 +24,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
   $async.Future<$2.GetGroupNoticeListResp> getGroupNoticeList($pb.ServerContext ctx, $2.GetGroupNoticeListReq request);
   $async.Future<$2.SetGroupMemberInfoResp> setGroupMemberInfo($pb.ServerContext ctx, $2.SetGroupMemberInfoReq request);
   $async.Future<$2.GetGroupMemberInfoResp> getGroupMemberInfo($pb.ServerContext ctx, $2.GetGroupMemberInfoReq request);
+  $async.Future<$2.MapGroupMemberInfoByIdsResp> mapGroupMemberInfoByIds($pb.ServerContext ctx, $2.MapGroupMemberInfoByIdsReq request);
   $async.Future<$2.EditGroupInfoResp> editGroupInfo($pb.ServerContext ctx, $2.EditGroupInfoReq request);
   $async.Future<$2.TransferGroupOwnerResp> transferGroupOwner($pb.ServerContext ctx, $2.TransferGroupOwnerReq request);
   $async.Future<$2.KickGroupMemberResp> kickGroupMember($pb.ServerContext ctx, $2.KickGroupMemberReq request);
@@ -33,6 +34,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
   $async.Future<$2.SyncGroupMemberCountResp> syncGroupMemberCount($pb.ServerContext ctx, $2.SyncGroupMemberCountReq request);
   $async.Future<$2.ApplyToBeGroupMemberResp> applyToBeGroupMember($pb.ServerContext ctx, $2.ApplyToBeGroupMemberReq request);
   $async.Future<$2.HandleGroupApplyResp> handleGroupApply($pb.ServerContext ctx, $2.HandleGroupApplyReq request);
+  $async.Future<$2.GetGroupApplyListResp> getGroupApplyList($pb.ServerContext ctx, $2.GetGroupApplyListReq request);
   $async.Future<$2.GetGroupListByUserIdResp> getGroupListByUserId($pb.ServerContext ctx, $2.GetGroupListByUserIdReq request);
   $async.Future<$2.GetAllGroupModelResp> getAllGroupModel($pb.ServerContext ctx, $2.GetAllGroupModelReq request);
   $async.Future<$2.GetGroupModelDetailResp> getGroupModelDetail($pb.ServerContext ctx, $2.GetGroupModelDetailReq request);
@@ -51,6 +53,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'GetGroupNoticeList': return $2.GetGroupNoticeListReq();
       case 'SetGroupMemberInfo': return $2.SetGroupMemberInfoReq();
       case 'GetGroupMemberInfo': return $2.GetGroupMemberInfoReq();
+      case 'MapGroupMemberInfoByIds': return $2.MapGroupMemberInfoByIdsReq();
       case 'EditGroupInfo': return $2.EditGroupInfoReq();
       case 'TransferGroupOwner': return $2.TransferGroupOwnerReq();
       case 'KickGroupMember': return $2.KickGroupMemberReq();
@@ -60,6 +63,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'SyncGroupMemberCount': return $2.SyncGroupMemberCountReq();
       case 'ApplyToBeGroupMember': return $2.ApplyToBeGroupMemberReq();
       case 'HandleGroupApply': return $2.HandleGroupApplyReq();
+      case 'GetGroupApplyList': return $2.GetGroupApplyListReq();
       case 'GetGroupListByUserId': return $2.GetGroupListByUserIdReq();
       case 'GetAllGroupModel': return $2.GetAllGroupModelReq();
       case 'GetGroupModelDetail': return $2.GetGroupModelDetailReq();
@@ -81,6 +85,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'GetGroupNoticeList': return this.getGroupNoticeList(ctx, request as $2.GetGroupNoticeListReq);
       case 'SetGroupMemberInfo': return this.setGroupMemberInfo(ctx, request as $2.SetGroupMemberInfoReq);
       case 'GetGroupMemberInfo': return this.getGroupMemberInfo(ctx, request as $2.GetGroupMemberInfoReq);
+      case 'MapGroupMemberInfoByIds': return this.mapGroupMemberInfoByIds(ctx, request as $2.MapGroupMemberInfoByIdsReq);
       case 'EditGroupInfo': return this.editGroupInfo(ctx, request as $2.EditGroupInfoReq);
       case 'TransferGroupOwner': return this.transferGroupOwner(ctx, request as $2.TransferGroupOwnerReq);
       case 'KickGroupMember': return this.kickGroupMember(ctx, request as $2.KickGroupMemberReq);
@@ -90,6 +95,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'SyncGroupMemberCount': return this.syncGroupMemberCount(ctx, request as $2.SyncGroupMemberCountReq);
       case 'ApplyToBeGroupMember': return this.applyToBeGroupMember(ctx, request as $2.ApplyToBeGroupMemberReq);
       case 'HandleGroupApply': return this.handleGroupApply(ctx, request as $2.HandleGroupApplyReq);
+      case 'GetGroupApplyList': return this.getGroupApplyList(ctx, request as $2.GetGroupApplyListReq);
       case 'GetGroupListByUserId': return this.getGroupListByUserId(ctx, request as $2.GetGroupListByUserIdReq);
       case 'GetAllGroupModel': return this.getAllGroupModel(ctx, request as $2.GetAllGroupModelReq);
       case 'GetGroupModelDetail': return this.getGroupModelDetail(ctx, request as $2.GetGroupModelDetailReq);

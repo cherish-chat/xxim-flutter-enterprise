@@ -1463,16 +1463,21 @@ class AfterDisconnectReq extends $pb.GeneratedMessage {
 class KeepAliveReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'KeepAliveReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convIdList', protoName: 'convIdList')
     ..hasRequiredFields = false
   ;
 
   KeepAliveReq._() : super();
   factory KeepAliveReq({
     $0.CommonReq? commonReq,
+    $core.Iterable<$core.String>? convIdList,
   }) {
     final _result = create();
     if (commonReq != null) {
       _result.commonReq = commonReq;
+    }
+    if (convIdList != null) {
+      _result.convIdList.addAll(convIdList);
     }
     return _result;
   }
@@ -1507,6 +1512,9 @@ class KeepAliveReq extends $pb.GeneratedMessage {
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
   $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get convIdList => $_getList(1);
 }
 
 class KeepAliveResp extends $pb.GeneratedMessage {
