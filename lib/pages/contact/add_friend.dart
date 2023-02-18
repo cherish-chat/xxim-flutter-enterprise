@@ -1,13 +1,15 @@
 import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
+import 'package:xxim_flutter_enterprise/proto/relation.pb.dart';
+import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 
 class AddFriendLogic extends GetxController {
   static AddFriendLogic? logic() => Tool.capture(Get.find);
 
   late TextEditingController controller;
 
-  List list = ["", "", "", "", ""];
+  List<UserBaseInfo> list = [];
 
   @override
   void onInit() {
@@ -21,9 +23,50 @@ class AddFriendLogic extends GetxController {
     super.onClose();
   }
 
-  void search() {}
+  void search() {
+    if (controller.text.isEmpty) {
+      Tool.showToast("请输入");
+      return;
+    }
+    GetLoadingDialog.show("请稍等");
+    XXIM.instance.customRequest<SearchUsersByKeywordResp>(
+      method: "/v1/user/searchUsersByKeyword",
+      req: SearchUsersByKeywordReq(
+        keyword: controller.text,
+      ),
+      resp: SearchUsersByKeywordResp.create,
+      onSuccess: (data) {
+        GetLoadingDialog.hide();
+        list = data.users;
+        update(["list"]);
+        if (list.isEmpty) {
+          Tool.showToast("暂未搜索到结果");
+        }
+      },
+      onError: (code, error) {
+        GetLoadingDialog.hide();
+      },
+    );
+  }
 
-  void apply() {}
+  void apply(String id) {
+    GetLoadingDialog.show("请稍等");
+    XXIM.instance.customRequest<RequestAddFriendResp>(
+      method: "/v1/relation/requestAddFriend",
+      req: RequestAddFriendReq(
+        to: id,
+        message: "请求成为好友",
+      ),
+      resp: RequestAddFriendResp.create,
+      onSuccess: (data) {
+        GetLoadingDialog.hide();
+        Tool.showToast("申请成功");
+      },
+      onError: (code, error) {
+        GetLoadingDialog.hide();
+      },
+    );
+  }
 }
 
 class AddFriendPage extends StatelessWidget {
@@ -99,7 +142,7 @@ class AddFriendPage extends StatelessWidget {
       builder: (logic) {
         return FlutterListView.builder(
           itemBuilder: (context, index) {
-            return _buildItem(logic);
+            return _buildItem(logic, logic.list[index]);
           },
           itemCount: logic.list.length,
         );
@@ -107,15 +150,22 @@ class AddFriendPage extends StatelessWidget {
     );
   }
 
-  Widget _buildItem(AddFriendLogic logic) {
+  Widget _buildItem(
+    AddFriendLogic logic,
+    UserBaseInfo userInfo,
+  ) {
+    List<UserBaseInfo> userInfoList = MenuLogic.logic()?.userInfoList ?? [];
+    int index = userInfoList.indexWhere((element) {
+      return userInfo.id == element.id;
+    });
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Row(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: const ImageWidget(
-              "",
+            child: ImageWidget(
+              userInfo.avatar,
               width: 55,
               height: 55,
             ),
@@ -124,20 +174,20 @@ class AddFriendPage extends StatelessWidget {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
-                  "昵称",
-                  style: TextStyle(
+                  userInfo.nickname,
+                  style: const TextStyle(
                     color: getTextBlack,
                     fontSize: 16,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
-                SizedBox(height: 3),
+                const SizedBox(height: 3),
                 Text(
-                  "id",
-                  style: TextStyle(
+                  userInfo.id,
+                  style: const TextStyle(
                     color: getHintBlack,
                     fontSize: 14,
                   ),
@@ -147,9 +197,9 @@ class AddFriendPage extends StatelessWidget {
               ],
             ),
           ),
-          if (false)
+          if (index != -1)
             const Text(
-              "已申请",
+              "已是好友",
               style: TextStyle(
                 color: getHintBlack,
                 fontSize: 14,
@@ -158,7 +208,9 @@ class AddFriendPage extends StatelessWidget {
           else
             GestureDetector(
               behavior: HitTestBehavior.opaque,
-              onTap: logic.apply,
+              onTap: () {
+                logic.apply(userInfo.id);
+              },
               child: Container(
                 alignment: Alignment.center,
                 width: 55,
