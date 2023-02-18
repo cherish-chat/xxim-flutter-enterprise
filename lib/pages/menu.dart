@@ -154,9 +154,18 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
   Widget? builder() {
     MenuLogic logic = Get.put(MenuLogic());
     logic.isPhone.value = screen.isPhone;
-    return Scaffold(
-      body: screen.isPhone ? _buildPhone(logic) : _buildTable(logic),
-      resizeToAvoidBottomInset: false,
+    return GetBuilder<MenuLogic>(
+      dispose: (state) {
+        Get.delete<NewsLogic>(force: true);
+        Get.delete<ContactLogic>(force: true);
+        Get.delete<MineLogic>(force: true);
+      },
+      builder: (logic) {
+        return Scaffold(
+          body: screen.isPhone ? _buildPhone(logic) : _buildTable(logic),
+          resizeToAvoidBottomInset: false,
+        );
+      },
     );
   }
 
