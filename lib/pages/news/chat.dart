@@ -222,41 +222,35 @@ class ChatLogic extends GetxController {
       convId: convId,
       isSync: false,
     );
+    List<Object> ids = [];
     for (MsgModel msgModel in msgModelList) {
       int index = this.msgModelList.indexWhere((element) {
         return msgModel.clientMsgId == element.clientMsgId;
       });
       if (index == -1) {
         this.msgModelList.insert(0, msgModel);
-        update(["list"]);
+        ids.add("list");
       } else {
         this.msgModelList[index].sendStatus = SendStatus.sending;
         int contentType = msgModel.contentType;
-        String itemId = "";
         if (contentType == MsgContentType.tip) {
+          ids.add(ChatTipItem.getId(msgModel.clientMsgId));
         } else if (contentType == MsgContentType.text) {
-          itemId = ChatTextItem.getId(msgModel.clientMsgId);
+          ids.add(ChatTextItem.getId(msgModel.clientMsgId));
         } else if (contentType == MsgContentType.image) {
-          itemId = ChatImageItem.getId(msgModel.clientMsgId);
+          ids.add(ChatImageItem.getId(msgModel.clientMsgId));
         } else if (contentType == MsgContentType.audio) {
-          itemId = ChatAudioItem.getId(msgModel.clientMsgId);
+          ids.add(ChatAudioItem.getId(msgModel.clientMsgId));
         } else if (contentType == MsgContentType.video) {
-          itemId = ChatVideoItem.getId(msgModel.clientMsgId);
+          ids.add(ChatVideoItem.getId(msgModel.clientMsgId));
         } else if (contentType == MsgContentType.file) {
+          ids.add(ChatFileItem.getId(msgModel.clientMsgId));
         } else if (contentType == MsgContentType.location) {
-          itemId = ChatLocationItem.getId(msgModel.clientMsgId);
-        } else if (contentType == MsgContentType.card) {
-        } else if (contentType == MsgContentType.merge) {
-        } else if (contentType == MsgContentType.emoji) {
-        } else if (contentType == MsgContentType.command) {
-        } else if (contentType == MsgContentType.richText) {
-        } else if (contentType == MsgContentType.markdown) {
-        } else if (contentType == MsgContentType.custom) {}
-        if (itemId.isNotEmpty) {
-          update([itemId]);
+          ids.add(ChatLocationItem.getId(msgModel.clientMsgId));
         }
       }
     }
+    update(ids);
     XXIM.instance.msgManager.sendMsgList(
       senderInfo: json.encode({
         "avatar": HiveTool.getAvatarUrl(),
@@ -357,42 +351,54 @@ class ChatPage extends StatelessWidget {
                 direction = ChatDirection.right;
               }
               int contentType = msgModel.contentType;
-              if (contentType == MsgContentType.text) {
-                return ChatTextItem<ChatLogic>(
+              Widget widget = const SizedBox();
+              if (contentType == MsgContentType.tip) {
+                widget = ChatTipItem<ChatLogic>(
+                  tag: logic.tag,
+                  direction: direction,
+                  msgModel: msgModel,
+                );
+              } else if (contentType == MsgContentType.text) {
+                widget = ChatTextItem<ChatLogic>(
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
                 );
               } else if (contentType == MsgContentType.image) {
-                return ChatImageItem<ChatLogic>(
+                widget = ChatImageItem<ChatLogic>(
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
                 );
               } else if (contentType == MsgContentType.audio) {
-                return ChatAudioItem<ChatLogic>(
+                widget = ChatAudioItem<ChatLogic>(
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
                 );
               } else if (contentType == MsgContentType.video) {
-                return ChatVideoItem<ChatLogic>(
+                widget = ChatVideoItem<ChatLogic>(
+                  tag: logic.tag,
+                  direction: direction,
+                  msgModel: msgModel,
+                );
+              } else if (contentType == MsgContentType.file) {
+                widget = ChatFileItem<ChatLogic>(
+                  tag: logic.tag,
+                  direction: direction,
+                  msgModel: msgModel,
+                );
+              } else if (contentType == MsgContentType.location) {
+                widget = ChatLocationItem<ChatLogic>(
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
                 );
               }
-              // else if (contentType == MsgContentType.file) {
-              //   return const SizedBox();
-              // } else if (contentType == MsgContentType.location) {
-              //   return ChatLocationItem<ChatLogic>(
-              //     tag: logic.tag,
-              //     index: index,
-              //     direction: direction,
-              //     msgModel: msgModel,
-              //   );
-              // }
-              return const SizedBox();
+              return Padding(
+                padding: EdgeInsets.only(bottom: index == 0 ? 8 : 0),
+                child: widget,
+              );
             },
             separatorBuilder: (context, index) {
               MsgModel msgModel = logic.msgModelList[index];

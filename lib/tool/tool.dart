@@ -27,6 +27,8 @@ const List defConfigList = [];
 const String encryptAESKey = "";
 const String encryptAESIV = "";
 
+const String gdWebKey = "";
+
 class Tool {
   static List _configList = [];
   static String _wsUrl = "wss://api.cherish.chat";
@@ -114,6 +116,24 @@ class Tool {
       return fileName;
     }
     return "$_fileUrl$fileName";
+  }
+
+  static String getLocationImage({
+    required double latitude,
+    required double longitude,
+  }) {
+    return "https://restapi.amap.com/v3/staticmap?"
+        "location="
+        "$longitude"
+        ","
+        "$latitude"
+        "&zoom=17"
+        "&size=1024*470"
+        "&markers=large,0xFF0000,A:"
+        "$longitude"
+        ","
+        "$latitude"
+        "&key=$gdWebKey";
   }
 
   static Logic? capture<Logic extends GetxController>(

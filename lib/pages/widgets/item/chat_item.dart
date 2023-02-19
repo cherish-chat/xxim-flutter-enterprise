@@ -123,6 +123,40 @@ class ChatNameItem<T extends GetxController> extends StatelessWidget {
   }
 }
 
+class ChatTipItem<T extends GetxController> extends StatelessWidget {
+  static String getId(String clientMsgId) {
+    return "$ChatTipItem$clientMsgId";
+  }
+
+  final String? tag;
+  final ChatDirection direction;
+  final MsgModel msgModel;
+
+  const ChatTipItem({
+    Key? key,
+    this.tag,
+    required this.direction,
+    required this.msgModel,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    TipContent content = TipContent.fromJson(msgModel.content);
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: Text(
+          content.tip,
+          style: const TextStyle(
+            color: getHintBlack,
+            fontSize: 10,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class ChatTextItem<T extends GetxController> extends StatelessWidget {
   static String getId(String clientMsgId) {
     return "$ChatTextItem$clientMsgId";
@@ -158,81 +192,79 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
             avatar: senderInfo["avatar"] ?? "",
           ),
           Expanded(
-            child: GetBuilder<T>(
-              tag: tag,
-              id: ChatTextItem.getId(msgModel.clientMsgId),
-              builder: (logic) {
-                return Column(
-                  crossAxisAlignment: direction == ChatDirection.left
-                      ? CrossAxisAlignment.start
-                      : CrossAxisAlignment.end,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ChatNameItem<T>(
-                      tag: tag,
-                      userId: msgModel.senderId,
-                      name: senderInfo["nickname"] ?? "",
-                    ),
-                    Flexible(
-                      child: Builder(
-                        builder: (context) {
-                          return GestureDetector(
-                            behavior: HitTestBehavior.opaque,
-                            onLongPress: () {
-                              PopupTool.show(
-                                context,
-                                contentType: msgModel.contentType,
-                                content: msgModel.content,
-                              );
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
+            child: Column(
+              crossAxisAlignment: direction == ChatDirection.left
+                  ? CrossAxisAlignment.start
+                  : CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ChatNameItem<T>(
+                  tag: tag,
+                  userId: msgModel.senderId,
+                  name: senderInfo["nickname"] ?? "",
+                ),
+                GetBuilder<T>(
+                  tag: tag,
+                  id: ChatTextItem.getId(msgModel.clientMsgId),
+                  builder: (logic) {
+                    return Builder(
+                      builder: (context) {
+                        return GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onLongPress: () {
+                            PopupTool.show(
+                              context,
+                              contentType: msgModel.contentType,
+                              content: msgModel.content,
+                            );
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: direction == ChatDirection.left
+                                  ? getPlaceholderColor
+                                  : getMainColor,
+                              borderRadius: direction == ChatDirection.left
+                                  ? const BorderRadius.only(
+                                      topRight: Radius.circular(8),
+                                      bottomLeft: Radius.circular(8),
+                                      bottomRight: Radius.circular(8),
+                                    )
+                                  : const BorderRadius.only(
+                                      topLeft: Radius.circular(8),
+                                      bottomLeft: Radius.circular(8),
+                                      bottomRight: Radius.circular(8),
+                                    ),
+                            ),
+                            child: ExtendedTextWidget(
+                              msgModel.content,
+                              style: TextStyle(
                                 color: direction == ChatDirection.left
-                                    ? getPlaceholderColor
-                                    : getMainColor,
-                                borderRadius: direction == ChatDirection.left
-                                    ? const BorderRadius.only(
-                                        topRight: Radius.circular(8),
-                                        bottomLeft: Radius.circular(8),
-                                        bottomRight: Radius.circular(8),
-                                      )
-                                    : const BorderRadius.only(
-                                        topLeft: Radius.circular(8),
-                                        bottomLeft: Radius.circular(8),
-                                        bottomRight: Radius.circular(8),
-                                      ),
-                              ),
-                              child: ExtendedTextWidget(
-                                msgModel.content,
-                                style: TextStyle(
-                                  color: direction == ChatDirection.left
-                                      ? getTextBlack
-                                      : getTextWhite,
-                                  fontSize: 14,
-                                ),
+                                    ? getTextBlack
+                                    : getTextWhite,
+                                fontSize: 14,
                               ),
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
+                  child: Text(
+                    TimeTool.formatTimestamp(
+                      msgModel.serverTime,
+                      pattern: "HH:mm:ss",
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
-                      child: Text(
-                        TimeTool.formatTimestamp(
-                          msgModel.serverTime,
-                          pattern: "HH:mm:ss",
-                        ),
-                        style: const TextStyle(
-                          color: getHintBlack,
-                          fontSize: 8,
-                        ),
-                      ),
+                    style: const TextStyle(
+                      color: getHintBlack,
+                      fontSize: 8,
                     ),
-                  ],
-                );
-              },
+                  ),
+                ),
+              ],
             ),
           ),
           ChatAvatarItem<T>(
@@ -478,99 +510,98 @@ class _ChatAudioItemState<T extends GetxController>
             avatar: senderInfo["avatar"] ?? "",
           ),
           Expanded(
-            child: GetBuilder<T>(
-              tag: widget.tag,
-              id: ChatAudioItem.getId(_msgModel.clientMsgId),
-              builder: (logic) {
-                double minWidth = 91;
-                double maxWidth = Get.width - 128;
-                double duration = _content.duration.toDouble();
-                double width = minWidth + (maxWidth / minWidth) * duration;
-                if (width > maxWidth) {
-                  width = maxWidth;
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                if (_timer != null) {
+                  _cancelTimer();
+                } else {
+                  _startTimer();
                 }
-                return GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: () {
-                    if (_timer != null) {
-                      _cancelTimer();
-                    } else {
-                      _startTimer();
-                    }
-                  },
-                  child: Column(
-                    crossAxisAlignment: _direction == ChatDirection.left
-                        ? CrossAxisAlignment.start
-                        : CrossAxisAlignment.end,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ChatNameItem<T>(
-                        tag: widget.tag,
-                        userId: _msgModel.senderId,
-                        name: senderInfo["nickname"] ?? "",
-                      ),
-                      Flexible(
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          width: width,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: _direction == ChatDirection.left
-                                ? getPlaceholderColor
-                                : getMainColor,
-                            borderRadius: _direction == ChatDirection.left
-                                ? const BorderRadius.only(
-                                    topRight: Radius.circular(8),
-                                    bottomLeft: Radius.circular(8),
-                                    bottomRight: Radius.circular(8),
-                                  )
-                                : const BorderRadius.only(
-                                    topLeft: Radius.circular(8),
-                                    bottomLeft: Radius.circular(8),
-                                    bottomRight: Radius.circular(8),
-                                  ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              if (_direction == ChatDirection.left)
-                                _buildRipple(_direction, _timerIndex),
-                              Text(
-                                "$duration\u{0022}",
-                                style: TextStyle(
-                                  color: _direction == ChatDirection.left
-                                      ? getTextBlack
-                                      : getTextWhite,
-                                  fontSize: 14,
-                                ),
-                              ),
-                              if (_direction == ChatDirection.right)
-                                _buildRipple(_direction, _timerIndex),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 5,
-                          top: 2,
-                          right: 5,
-                        ),
-                        child: Text(
-                          TimeTool.formatTimestamp(
-                            _msgModel.serverTime,
-                            pattern: "HH:mm:ss",
-                          ),
-                          style: const TextStyle(
-                            color: getHintBlack,
-                            fontSize: 8,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
               },
+              child: Column(
+                crossAxisAlignment: _direction == ChatDirection.left
+                    ? CrossAxisAlignment.start
+                    : CrossAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ChatNameItem<T>(
+                    tag: widget.tag,
+                    userId: _msgModel.senderId,
+                    name: senderInfo["nickname"] ?? "",
+                  ),
+                  GetBuilder<T>(
+                    tag: widget.tag,
+                    id: ChatAudioItem.getId(_msgModel.clientMsgId),
+                    builder: (logic) {
+                      double minWidth = 91;
+                      double maxWidth = Get.width - 128;
+                      double duration = _content.duration.toDouble();
+                      double width =
+                          minWidth + (maxWidth / minWidth) * duration;
+                      if (width > maxWidth) {
+                        width = maxWidth;
+                      }
+                      return Container(
+                        padding: const EdgeInsets.all(10),
+                        width: width,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: _direction == ChatDirection.left
+                              ? getPlaceholderColor
+                              : getMainColor,
+                          borderRadius: _direction == ChatDirection.left
+                              ? const BorderRadius.only(
+                                  topRight: Radius.circular(8),
+                                  bottomLeft: Radius.circular(8),
+                                  bottomRight: Radius.circular(8),
+                                )
+                              : const BorderRadius.only(
+                                  topLeft: Radius.circular(8),
+                                  bottomLeft: Radius.circular(8),
+                                  bottomRight: Radius.circular(8),
+                                ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            if (_direction == ChatDirection.left)
+                              _buildRipple(_direction, _timerIndex),
+                            Text(
+                              "$duration\u{0022}",
+                              style: TextStyle(
+                                color: _direction == ChatDirection.left
+                                    ? getTextBlack
+                                    : getTextWhite,
+                                fontSize: 14,
+                              ),
+                            ),
+                            if (_direction == ChatDirection.right)
+                              _buildRipple(_direction, _timerIndex),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 5,
+                      top: 2,
+                      right: 5,
+                    ),
+                    child: Text(
+                      TimeTool.formatTimestamp(
+                        _msgModel.serverTime,
+                        pattern: "HH:mm:ss",
+                      ),
+                      style: const TextStyle(
+                        color: getHintBlack,
+                        fontSize: 8,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           ChatAvatarItem<T>(
@@ -770,6 +801,180 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
   }
 }
 
+class ChatFileItem<T extends GetxController> extends StatelessWidget {
+  static String getId(String clientMsgId) {
+    return "$ChatFileItem$clientMsgId";
+  }
+
+  final String? tag;
+  final ChatDirection direction;
+  final MsgModel msgModel;
+
+  const ChatFileItem({
+    Key? key,
+    this.tag,
+    required this.direction,
+    required this.msgModel,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Map senderInfo = {};
+    if (msgModel.senderInfo.isNotEmpty) {
+      senderInfo = json.decode(msgModel.senderInfo);
+    }
+    FileContent content = FileContent.fromJson(msgModel.content);
+    double size = content.size.toDouble();
+    if (size > 0) {
+      size = size / 1024 / 1024;
+    }
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ChatAvatarItem<T>(
+            tag: tag,
+            userId: msgModel.senderId,
+            direction: direction,
+            showAvatar: direction == ChatDirection.left,
+            avatar: senderInfo["avatar"] ?? "",
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: direction == ChatDirection.left
+                  ? CrossAxisAlignment.start
+                  : CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ChatNameItem<T>(
+                  tag: tag,
+                  userId: msgModel.senderId,
+                  name: senderInfo["nickname"] ?? "",
+                ),
+                GetBuilder<T>(
+                  tag: tag,
+                  id: ChatTextItem.getId(msgModel.clientMsgId),
+                  builder: (logic) {
+                    return Builder(
+                      builder: (context) {
+                        return GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onLongPress: () {
+                            PopupTool.show(
+                              context,
+                              contentType: msgModel.contentType,
+                              content: msgModel.content,
+                            );
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: direction == ChatDirection.left
+                                  ? getPlaceholderColor
+                                  : getMainColor,
+                              borderRadius: direction == ChatDirection.left
+                                  ? const BorderRadius.only(
+                                      topRight: Radius.circular(8),
+                                      bottomLeft: Radius.circular(8),
+                                      bottomRight: Radius.circular(8),
+                                    )
+                                  : const BorderRadius.only(
+                                      topLeft: Radius.circular(8),
+                                      bottomLeft: Radius.circular(8),
+                                      bottomRight: Radius.circular(8),
+                                    ),
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  alignment: Alignment.center,
+                                  width: 55,
+                                  height: 55,
+                                  decoration: BoxDecoration(
+                                    color: getBackgroundColor,
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                  child: Text(
+                                    content.type,
+                                    style: const TextStyle(
+                                      color: getTextWhite,
+                                      fontSize: 20,
+                                      fontWeight: getBold,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Flexible(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        content.fileName,
+                                        style: const TextStyle(
+                                          color: getTextWhite,
+                                          fontSize: 14,
+                                        ),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      const SizedBox(height: 5),
+                                      Text(
+                                        "${size.toStringAsFixed(2)}M",
+                                        style: const TextStyle(
+                                          color: getHintWhite,
+                                          fontSize: 12,
+                                        ),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 5,
+                    top: 2,
+                    right: 5,
+                  ),
+                  child: Text(
+                    TimeTool.formatTimestamp(
+                      msgModel.serverTime,
+                      pattern: "HH:mm:ss",
+                    ),
+                    style: const TextStyle(
+                      color: getHintBlack,
+                      fontSize: 8,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          ChatAvatarItem<T>(
+            tag: tag,
+            userId: msgModel.senderId,
+            direction: direction,
+            showAvatar: direction == ChatDirection.right,
+            avatar: senderInfo["avatar"] ?? "",
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class ChatLocationItem<T extends GetxController> extends StatelessWidget {
   static String getId(String clientMsgId) {
     return "$ChatLocationItem$clientMsgId";
@@ -792,7 +997,7 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
     if (msgModel.senderInfo.isNotEmpty) {
       senderInfo = json.decode(msgModel.senderInfo);
     }
-    // LocationContent content = LocationContent.fromJson(msgModel.content);
+    LocationContent content = LocationContent.fromJson(msgModel.content);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
@@ -840,8 +1045,11 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
                                   bottomLeft: Radius.circular(8),
                                   bottomRight: Radius.circular(8),
                                 ),
-                          child: const ImageWidget(
-                            "https://images.unsplash.com/photo-1591947026851-2d50ab78eb9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
+                          child: ImageWidget(
+                            Tool.getLocationImage(
+                              latitude: content.latitude,
+                              longitude: content.longitude,
+                            ),
                             width: double.infinity,
                             height: double.infinity,
                           ),
