@@ -28,6 +28,7 @@ class MineLogic extends GetxController {
         HiveTool.setNickname(data.nickname);
       },
       onError: (code, error) {
+        if (!HiveTool.isLogin()) return;
         loadData();
       },
     );

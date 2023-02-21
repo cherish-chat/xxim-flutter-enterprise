@@ -251,6 +251,7 @@ class XXIM {
         TextButton(
           onPressed: () {
             GetAlertDialog.hide();
+            if (Get.currentRoute == Routes.login) return;
             HiveTool.logout();
             XXIM.instance.disconnect();
             Get.offAllNamed(Routes.login);
