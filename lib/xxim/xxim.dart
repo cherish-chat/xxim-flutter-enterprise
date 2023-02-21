@@ -156,9 +156,12 @@ class XXIM {
       bool isConnect = await XXIM.instance.connect();
       if (!isConnect) {
         if (environment == Environment.debug) {
+          debugPrint("--------------------------------------------------");
           debugPrint("customRequest:$method");
+          debugPrint("customRequest:$req");
           debugPrint(
               "customRequest-onError:${CommonResp_Code.UnknownError.value} - Socket连接失败");
+          debugPrint("--------------------------------------------------");
         }
         onError?.call(
           CommonResp_Code.UnknownError.value,
@@ -173,9 +176,12 @@ class XXIM {
           );
           if (!status) {
             if (environment == Environment.debug) {
+              debugPrint("--------------------------------------------------");
               debugPrint("customRequest:$method");
+              debugPrint("customRequest:$req");
               debugPrint(
                   "customRequest-onError:${CommonResp_Code.UnknownError.value} - 设置用户参数失败");
+              debugPrint("--------------------------------------------------");
             }
             onError?.call(
               CommonResp_Code.UnknownError.value,
@@ -192,8 +198,11 @@ class XXIM {
       onSuccess: (data) {
         T t = resp()..mergeFromBuffer(data);
         if (environment == Environment.debug) {
+          debugPrint("--------------------------------------------------");
           debugPrint("customRequest:$method");
+          debugPrint("customRequest:$req");
           debugPrint("customRequest-onSuccess:$t");
+          debugPrint("--------------------------------------------------");
         }
         onSuccess(t);
       },
@@ -208,8 +217,11 @@ class XXIM {
           } catch (_) {}
         }
         if (environment == Environment.debug) {
+          debugPrint("--------------------------------------------------");
           debugPrint("customRequest:$method");
+          debugPrint("customRequest:$req");
           debugPrint("customRequest-onError:$code - $error");
+          debugPrint("--------------------------------------------------");
         }
         switch (CommonResp_Code.valueOf(code)) {
           case CommonResp_Code.Success:
