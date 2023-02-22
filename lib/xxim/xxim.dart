@@ -12,6 +12,8 @@ import 'package:xxim_flutter_enterprise/proto/common.pb.dart';
 import 'package:xxim_flutter_enterprise/xxim/xxim_tool.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
+export 'xxim_common.dart';
+
 class XXIM {
   factory XXIM() => _getInstance();
 
@@ -49,9 +51,9 @@ class XXIM {
           onSuccess: () {
             connectController.add(true);
           },
-          onClose: (code, error) {
+          onClose: (code, error) async {
             connectController.add(false);
-            XXIM.instance.connect();
+            _retryConnect();
           },
         ),
         subscribeCallback: SubscribeCallback(
@@ -94,6 +96,24 @@ class XXIM {
     convManager = _sdk.convManager;
     msgManager = _sdk.msgManager;
     noticeManager = _sdk.noticeManager;
+  }
+
+  void _retryConnect() async {
+    // await Tool.loadFastUrl();
+    bool isConnect = await XXIM.instance.connect();
+    if (!isConnect) {
+      Future.delayed(const Duration(seconds: 3), _retryConnect);
+      return;
+    }
+    if (!HiveTool.isLogin()) return;
+    bool status = await XXIM.instance.setUserParams(
+      userId: HiveTool.getUserId(),
+      token: HiveTool.getToken(),
+    );
+    if (!status) {
+      Future.delayed(const Duration(seconds: 3), _retryConnect);
+      return;
+    }
   }
 
   Future<bool> connect() async {
