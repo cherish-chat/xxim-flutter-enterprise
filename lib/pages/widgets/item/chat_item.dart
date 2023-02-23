@@ -127,11 +127,13 @@ class ChatNameItem<T extends GetxController> extends StatelessWidget {
 class ChatStatusItem extends StatelessWidget {
   final int sendStatus;
   final int sendProgress;
+  final Function() onRetry;
 
   const ChatStatusItem({
     Key? key,
     required this.sendStatus,
     required this.sendProgress,
+    required this.onRetry,
   }) : super(key: key);
 
   @override
@@ -143,10 +145,14 @@ class ChatStatusItem extends StatelessWidget {
         height: 15,
       );
     } else if (sendStatus == SendStatus.failed) {
-      return Image.asset(
-        "assets/images/ic_send_failed_15.webp",
-        width: 15,
-        height: 15,
+      return GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: onRetry,
+        child: Image.asset(
+          "assets/images/ic_send_failed_15.webp",
+          width: 15,
+          height: 15,
+        ),
       );
     }
     return const SpinKitFadingCircle(
@@ -198,12 +204,14 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
   final String? tag;
   final ChatDirection direction;
   final MsgModel msgModel;
+  final Function() onRetry;
 
   const ChatTextItem({
     Key? key,
     this.tag,
     required this.direction,
     required this.msgModel,
+    required this.onRetry,
   }) : super(key: key);
 
   @override
@@ -305,6 +313,7 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
                           child: ChatStatusItem(
                             sendStatus: msgModel.sendStatus,
                             sendProgress: msgModel.sendProgress,
+                            onRetry: onRetry,
                           ),
                         ),
                     ],
@@ -334,12 +343,14 @@ class ChatImageItem<T extends GetxController> extends StatelessWidget {
   final String? tag;
   final ChatDirection direction;
   final MsgModel msgModel;
+  final Function() onRetry;
 
   const ChatImageItem({
     Key? key,
     this.tag,
     required this.direction,
     required this.msgModel,
+    required this.onRetry,
   }) : super(key: key);
 
   @override
@@ -437,15 +448,29 @@ class ChatImageItem<T extends GetxController> extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
-                  child: Text(
-                    TimeTool.formatTimestamp(
-                      msgModel.serverTime,
-                      pattern: "HH:mm:ss",
-                    ),
-                    style: const TextStyle(
-                      color: getHintBlack,
-                      fontSize: 8,
-                    ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        TimeTool.formatTimestamp(
+                          msgModel.serverTime,
+                          pattern: "HH:mm:ss",
+                        ),
+                        style: const TextStyle(
+                          color: getHintBlack,
+                          fontSize: 10,
+                        ),
+                      ),
+                      if (direction == ChatDirection.right)
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: ChatStatusItem(
+                            sendStatus: msgModel.sendStatus,
+                            sendProgress: msgModel.sendProgress,
+                            onRetry: onRetry,
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               ],
@@ -472,12 +497,14 @@ class ChatAudioItem<T extends GetxController> extends StatefulWidget {
   final String? tag;
   final ChatDirection direction;
   final MsgModel msgModel;
+  final Function() onRetry;
 
   const ChatAudioItem({
     Key? key,
     this.tag,
     required this.direction,
     required this.msgModel,
+    required this.onRetry,
   }) : super(key: key);
 
   @override
@@ -488,6 +515,7 @@ class _ChatAudioItemState<T extends GetxController>
     extends State<ChatAudioItem> {
   late ChatDirection _direction;
   late MsgModel _msgModel;
+  late Function() _onRetry;
   late AudioContent _content;
 
   Timer? _timer;
@@ -497,6 +525,7 @@ class _ChatAudioItemState<T extends GetxController>
   void initState() {
     _direction = widget.direction;
     _msgModel = widget.msgModel;
+    _onRetry = widget.onRetry;
     _content = AudioContent.fromJson(_msgModel.content);
     super.initState();
   }
@@ -630,20 +659,30 @@ class _ChatAudioItemState<T extends GetxController>
                     },
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                      left: 5,
-                      top: 2,
-                      right: 5,
-                    ),
-                    child: Text(
-                      TimeTool.formatTimestamp(
-                        _msgModel.serverTime,
-                        pattern: "HH:mm:ss",
-                      ),
-                      style: const TextStyle(
-                        color: getHintBlack,
-                        fontSize: 8,
-                      ),
+                    padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          TimeTool.formatTimestamp(
+                            _msgModel.serverTime,
+                            pattern: "HH:mm:ss",
+                          ),
+                          style: const TextStyle(
+                            color: getHintBlack,
+                            fontSize: 10,
+                          ),
+                        ),
+                        if (_direction == ChatDirection.right)
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5),
+                            child: ChatStatusItem(
+                              sendStatus: _msgModel.sendStatus,
+                              sendProgress: _msgModel.sendProgress,
+                              onRetry: _onRetry,
+                            ),
+                          ),
+                      ],
                     ),
                   ),
                 ],
@@ -698,12 +737,14 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
   final String? tag;
   final ChatDirection direction;
   final MsgModel msgModel;
+  final Function() onRetry;
 
   const ChatVideoItem({
     Key? key,
     this.tag,
     required this.direction,
     required this.msgModel,
+    required this.onRetry,
   }) : super(key: key);
 
   @override
@@ -815,20 +856,30 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
                   },
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: 5,
-                    top: 2,
-                    right: 5,
-                  ),
-                  child: Text(
-                    TimeTool.formatTimestamp(
-                      msgModel.serverTime,
-                      pattern: "HH:mm:ss",
-                    ),
-                    style: const TextStyle(
-                      color: getHintBlack,
-                      fontSize: 8,
-                    ),
+                  padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        TimeTool.formatTimestamp(
+                          msgModel.serverTime,
+                          pattern: "HH:mm:ss",
+                        ),
+                        style: const TextStyle(
+                          color: getHintBlack,
+                          fontSize: 10,
+                        ),
+                      ),
+                      if (direction == ChatDirection.right)
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: ChatStatusItem(
+                            sendStatus: msgModel.sendStatus,
+                            sendProgress: msgModel.sendProgress,
+                            onRetry: onRetry,
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               ],
@@ -855,12 +906,14 @@ class ChatFileItem<T extends GetxController> extends StatelessWidget {
   final String? tag;
   final ChatDirection direction;
   final MsgModel msgModel;
+  final Function() onRetry;
 
   const ChatFileItem({
     Key? key,
     this.tag,
     required this.direction,
     required this.msgModel,
+    required this.onRetry,
   }) : super(key: key);
 
   @override
@@ -989,20 +1042,30 @@ class ChatFileItem<T extends GetxController> extends StatelessWidget {
                   },
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: 5,
-                    top: 2,
-                    right: 5,
-                  ),
-                  child: Text(
-                    TimeTool.formatTimestamp(
-                      msgModel.serverTime,
-                      pattern: "HH:mm:ss",
-                    ),
-                    style: const TextStyle(
-                      color: getHintBlack,
-                      fontSize: 8,
-                    ),
+                  padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        TimeTool.formatTimestamp(
+                          msgModel.serverTime,
+                          pattern: "HH:mm:ss",
+                        ),
+                        style: const TextStyle(
+                          color: getHintBlack,
+                          fontSize: 10,
+                        ),
+                      ),
+                      if (direction == ChatDirection.right)
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: ChatStatusItem(
+                            sendStatus: msgModel.sendStatus,
+                            sendProgress: msgModel.sendProgress,
+                            onRetry: onRetry,
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               ],
@@ -1029,12 +1092,14 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
   final String? tag;
   final ChatDirection direction;
   final MsgModel msgModel;
+  final Function() onRetry;
 
   const ChatLocationItem({
     Key? key,
     this.tag,
     required this.direction,
     required this.msgModel,
+    required this.onRetry,
   }) : super(key: key);
 
   @override
@@ -1105,20 +1170,30 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
                   },
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: 5,
-                    top: 2,
-                    right: 5,
-                  ),
-                  child: Text(
-                    TimeTool.formatTimestamp(
-                      msgModel.serverTime,
-                      pattern: "HH:mm:ss",
-                    ),
-                    style: const TextStyle(
-                      color: getHintBlack,
-                      fontSize: 8,
-                    ),
+                  padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        TimeTool.formatTimestamp(
+                          msgModel.serverTime,
+                          pattern: "HH:mm:ss",
+                        ),
+                        style: const TextStyle(
+                          color: getHintBlack,
+                          fontSize: 10,
+                        ),
+                      ),
+                      if (direction == ChatDirection.right)
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: ChatStatusItem(
+                            sendStatus: msgModel.sendStatus,
+                            sendProgress: msgModel.sendProgress,
+                            onRetry: onRetry,
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               ],

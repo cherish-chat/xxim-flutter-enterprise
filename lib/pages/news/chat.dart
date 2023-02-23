@@ -384,36 +384,54 @@ class ChatPage extends StatelessWidget {
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
+                  onRetry: () {
+                    logic.sendMsgList([msgModel]);
+                  },
                 );
               } else if (contentType == MsgContentType.image) {
                 widget = ChatImageItem<ChatLogic>(
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
+                  onRetry: () {
+                    logic.sendMsgList([msgModel]);
+                  },
                 );
               } else if (contentType == MsgContentType.audio) {
                 widget = ChatAudioItem<ChatLogic>(
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
+                  onRetry: () {
+                    logic.sendMsgList([msgModel]);
+                  },
                 );
               } else if (contentType == MsgContentType.video) {
                 widget = ChatVideoItem<ChatLogic>(
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
+                  onRetry: () {
+                    logic.sendMsgList([msgModel]);
+                  },
                 );
               } else if (contentType == MsgContentType.file) {
                 widget = ChatFileItem<ChatLogic>(
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
+                  onRetry: () {
+                    logic.sendMsgList([msgModel]);
+                  },
                 );
               } else if (contentType == MsgContentType.location) {
                 widget = ChatLocationItem<ChatLogic>(
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
+                  onRetry: () {
+                    logic.sendMsgList([msgModel]);
+                  },
                 );
               }
               return Padding(
