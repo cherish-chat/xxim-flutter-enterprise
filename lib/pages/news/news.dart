@@ -9,6 +9,8 @@ import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 class NewsLogic extends GetxController {
   static NewsLogic? logic() => Tool.capture(Get.find);
 
+  Rx<ConnectStatus> connectStatus = ConnectStatus.normal.obs;
+
   late RxInt loadRandom = 0.obs;
   List<ConvModel> convModelList = [];
 
@@ -28,6 +30,9 @@ class NewsLogic extends GetxController {
   void onReady() {
     super.onReady();
     loadList(force: true);
+    if (XXIM.instance.pulling) {
+      connectStatus.value = ConnectStatus.pulling;
+    }
   }
 
   void loadList({
@@ -76,7 +81,14 @@ class NewsPage extends StatelessWidget {
     }
 
     return AppBar(
-      title: const Text("会话"),
+      title: Obx(() {
+        if (logic.connectStatus.value == ConnectStatus.connect) {
+          return const Text("连接中");
+        } else if (logic.connectStatus.value == ConnectStatus.pulling) {
+          return const Text("拉取中");
+        }
+        return const Text("会话");
+      }),
       actions: buildActions(),
       centerTitle: false,
     );

@@ -14,6 +14,12 @@ import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 export 'xxim_common.dart';
 
+enum ConnectStatus {
+  normal,
+  connect,
+  pulling,
+}
+
 class XXIM {
   factory XXIM() => _getInstance();
 
@@ -29,6 +35,8 @@ class XXIM {
   late Stream connectStream;
 
   late XXIMSDK _sdk;
+  bool pulling = true;
+
   late ConvManager convManager;
   late MsgManager msgManager;
   late NoticeManager noticeManager;
@@ -47,12 +55,17 @@ class XXIM {
         pullMsgCount: 20,
         isarSchemas: [],
         connectListener: ConnectListener(
-          onConnecting: () {},
+          onConnecting: () {
+            NewsLogic.logic()?.connectStatus.value = ConnectStatus.connect;
+          },
           onSuccess: () {
             connectController.add(true);
+            NewsLogic.logic()?.connectStatus.value = ConnectStatus.normal;
           },
           onClose: (code, error) async {
             connectController.add(false);
+            NewsLogic.logic()?.connectStatus.value = ConnectStatus.connect;
+            pulling = true;
             _retryConnect();
           },
         ),
@@ -63,6 +76,17 @@ class XXIM {
         ),
         isarListener: IsarListener(
           onCreate: (isar) {},
+        ),
+        pullListener: PullListener(
+          onStart: () {
+            if (pulling) {
+              NewsLogic.logic()?.connectStatus.value = ConnectStatus.pulling;
+            }
+          },
+          onEnd: () {
+            pulling = false;
+            NewsLogic.logic()?.connectStatus.value = ConnectStatus.normal;
+          },
         ),
         convListener: ConvListener(
           onUpdate: () {
@@ -100,10 +124,12 @@ class XXIM {
 
   void _retryConnect() async {
     // await Tool.loadFastUrl();
-    bool isConnect = await XXIM.instance.connect();
-    if (!isConnect) {
-      Future.delayed(const Duration(seconds: 3), _retryConnect);
-      return;
+    if (!XXIM.instance.isConnect()) {
+      bool isConnect = await XXIM.instance.connect();
+      if (!isConnect) {
+        Future.delayed(const Duration(seconds: 3), _retryConnect);
+        return;
+      }
     }
     if (!HiveTool.isLogin()) return;
     bool status = await XXIM.instance.setUserParams(

@@ -80,18 +80,18 @@ class ChatLogic extends GetxController {
   }
 
   @override
-  void onReady() {
+  void onReady() async {
     super.onReady();
-    XXIM.instance.convManager.getSingleConv(convId: convId).then(
-      (value) {
-        if (value == null) return;
-        DraftModel? draftModel = value.draftModel;
-        if (draftModel == null) return;
-        if (draftModel.content.isEmpty) return;
-        inputController.text = draftModel.content;
-      },
+    ConvModel? convModel = await XXIM.instance.convManager.getSingleConv(
+      convId: convId,
     );
-    XXIM.instance.convManager.setConvRead(convId: convId);
+    if (convModel != null) {
+      DraftModel? draftModel = convModel.draftModel;
+      if (draftModel != null && draftModel.content.isNotEmpty) {
+        inputController.text = draftModel.content;
+      }
+    }
+    await XXIM.instance.convManager.setConvRead(convId: convId);
     NewsLogic.logic()?.loadList(force: true);
     loadList();
   }
