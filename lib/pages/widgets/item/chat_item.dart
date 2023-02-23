@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
@@ -119,6 +120,38 @@ class ChatNameItem<T extends GetxController> extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class ChatStatusItem extends StatelessWidget {
+  final int sendStatus;
+  final int sendProgress;
+
+  const ChatStatusItem({
+    Key? key,
+    required this.sendStatus,
+    required this.sendProgress,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (sendStatus == SendStatus.success) {
+      return Image.asset(
+        "assets/images/ic_send_success_15.webp",
+        width: 15,
+        height: 15,
+      );
+    } else if (sendStatus == SendStatus.failed) {
+      return Image.asset(
+        "assets/images/ic_send_failed_15.webp",
+        width: 15,
+        height: 15,
+      );
+    }
+    return const SpinKitFadingCircle(
+      size: 15,
+      color: getMainColor,
     );
   }
 }
@@ -253,15 +286,28 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
-                  child: Text(
-                    TimeTool.formatTimestamp(
-                      msgModel.serverTime,
-                      pattern: "HH:mm:ss",
-                    ),
-                    style: const TextStyle(
-                      color: getHintBlack,
-                      fontSize: 8,
-                    ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        TimeTool.formatTimestamp(
+                          msgModel.serverTime,
+                          pattern: "HH:mm:ss",
+                        ),
+                        style: const TextStyle(
+                          color: getHintBlack,
+                          fontSize: 10,
+                        ),
+                      ),
+                      if (direction == ChatDirection.right)
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: ChatStatusItem(
+                            sendStatus: msgModel.sendStatus,
+                            sendProgress: msgModel.sendProgress,
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               ],

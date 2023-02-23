@@ -217,7 +217,7 @@ class ChatLogic extends GetxController {
     );
   }
 
-  void sendMsgList(List<MsgModel> msgModelList) {
+  void sendMsgList(List<MsgModel> msgModelList) async {
     XXIM.instance.convManager.setConvRead(
       convId: convId,
       isSync: false,
@@ -231,33 +231,54 @@ class ChatLogic extends GetxController {
         this.msgModelList.insert(0, msgModel);
         ids.add("list");
       } else {
-        this.msgModelList[index].sendStatus = SendStatus.sending;
-        int contentType = msgModel.contentType;
-        if (contentType == MsgContentType.tip) {
-          ids.add(ChatTipItem.getId(msgModel.clientMsgId));
-        } else if (contentType == MsgContentType.text) {
-          ids.add(ChatTextItem.getId(msgModel.clientMsgId));
-        } else if (contentType == MsgContentType.image) {
-          ids.add(ChatImageItem.getId(msgModel.clientMsgId));
-        } else if (contentType == MsgContentType.audio) {
-          ids.add(ChatAudioItem.getId(msgModel.clientMsgId));
-        } else if (contentType == MsgContentType.video) {
-          ids.add(ChatVideoItem.getId(msgModel.clientMsgId));
-        } else if (contentType == MsgContentType.file) {
-          ids.add(ChatFileItem.getId(msgModel.clientMsgId));
-        } else if (contentType == MsgContentType.location) {
-          ids.add(ChatLocationItem.getId(msgModel.clientMsgId));
+        msgModel.sendStatus = SendStatus.sending;
+        String id = _getItemId(msgModel);
+        if (id.isNotEmpty) {
+          ids.add(id);
         }
       }
     }
     update(ids);
-    XXIM.instance.msgManager.sendMsgList(
+    bool status = await XXIM.instance.msgManager.sendMsgList(
       senderInfo: json.encode({
         "avatar": HiveTool.getAvatarUrl(),
         "nickname": HiveTool.getNickname(),
       }),
       msgModelList: msgModelList,
     );
+    ids.clear();
+    for (MsgModel msgModel in msgModelList) {
+      if (status) {
+        msgModel.sendStatus = SendStatus.success;
+      } else {
+        msgModel.sendStatus = SendStatus.failed;
+      }
+      String id = _getItemId(msgModel);
+      if (id.isNotEmpty) {
+        ids.add(id);
+      }
+    }
+    update(ids);
+  }
+
+  String _getItemId(MsgModel msgModel) {
+    int contentType = msgModel.contentType;
+    if (contentType == MsgContentType.tip) {
+      return ChatTipItem.getId(msgModel.clientMsgId);
+    } else if (contentType == MsgContentType.text) {
+      return ChatTextItem.getId(msgModel.clientMsgId);
+    } else if (contentType == MsgContentType.image) {
+      return ChatImageItem.getId(msgModel.clientMsgId);
+    } else if (contentType == MsgContentType.audio) {
+      return ChatAudioItem.getId(msgModel.clientMsgId);
+    } else if (contentType == MsgContentType.video) {
+      return ChatVideoItem.getId(msgModel.clientMsgId);
+    } else if (contentType == MsgContentType.file) {
+      return ChatFileItem.getId(msgModel.clientMsgId);
+    } else if (contentType == MsgContentType.location) {
+      return ChatLocationItem.getId(msgModel.clientMsgId);
+    }
+    return "";
   }
 }
 
