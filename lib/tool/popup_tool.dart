@@ -42,22 +42,25 @@ class PopupTool {
             height: 17,
           ),
         ),
-        DefaultMenuItem(
-          title: "回复",
-          image: Image.asset(
-            "assets/images/ic_msg_reply_17.webp",
-            width: 17,
-            height: 17,
+        if (msgModel.senderId != HiveTool.getUserId())
+          DefaultMenuItem(
+            title: "回复",
+            image: Image.asset(
+              "assets/images/ic_msg_reply_17.webp",
+              width: 17,
+              height: 17,
+            ),
           ),
-        ),
-        DefaultMenuItem(
-          title: "撤回",
-          image: Image.asset(
-            "assets/images/ic_msg_revoke_17.webp",
-            width: 17,
-            height: 17,
+        if (msgModel.senderId == HiveTool.getUserId() &&
+            msgModel.sendStatus == SendStatus.success)
+          DefaultMenuItem(
+            title: "撤回",
+            image: Image.asset(
+              "assets/images/ic_msg_revoke_17.webp",
+              width: 17,
+              height: 17,
+            ),
           ),
-        ),
         // DefaultMenuItem(
         //   title: "多选",
         //   image: Image.asset(
@@ -91,9 +94,27 @@ class PopupTool {
           case "回复":
             break;
           case "撤回":
+            MsgModel? model = await XXIM.instance.msgManager.sendRevokeMsg(
+              clientMsgId: msgModel.clientMsgId,
+              content: TipContent(
+                tip: "${HiveTool.getNickname()}撤回了一条消息",
+              ),
+            );
+            if (model == null) {
+              Tool.showToast("撤回消息失败");
+              return;
+            }
+            ChatLogic? logic = ChatLogic.logic(msgModel.convId);
+            if (logic == null) return;
+            int index = logic.msgModelList.indexWhere((element) {
+              return element.clientMsgId == model.clientMsgId;
+            });
+            if (index == -1) return;
+            logic.msgModelList[index] = model;
+            logic.update(["list"]);
             break;
-          case "多选":
-            break;
+          // case "多选":
+          //   break;
           case "删除":
             await XXIM.instance.msgManager.deleteMsg(
               clientMsgId: msgModel.clientMsgId,

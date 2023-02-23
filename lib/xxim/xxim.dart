@@ -105,6 +105,7 @@ class XXIM {
             return true;
           },
           onEditMsg: (msgModel) async {
+            ChatLogic.logic(msgModel.convId)?.receiveMsg(msgModel);
             return true;
           },
           onReceive: (noticeModel) async {
