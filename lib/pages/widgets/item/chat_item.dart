@@ -257,6 +257,15 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
                               context,
                               contentType: msgModel.contentType,
                               content: msgModel.content,
+                              msgModel: msgModel,
+                            );
+                          },
+                          onSecondaryTap: () {
+                            PopupTool.show(
+                              context,
+                              contentType: msgModel.contentType,
+                              content: msgModel.content,
+                              msgModel: msgModel,
                             );
                           },
                           child: Container(
@@ -406,43 +415,63 @@ class ChatImageItem<T extends GetxController> extends StatelessWidget {
                         width = maxHeight * scale;
                       }
                     }
-                    return GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () {
-                        // 预览照片
-                      },
-                      child: ClipRRect(
-                        borderRadius: direction == ChatDirection.left
-                            ? const BorderRadius.only(
-                                topRight: Radius.circular(8),
-                                bottomLeft: Radius.circular(8),
-                                bottomRight: Radius.circular(8),
-                              )
-                            : const BorderRadius.only(
-                                topLeft: Radius.circular(8),
-                                bottomLeft: Radius.circular(8),
-                                bottomRight: Radius.circular(8),
-                              ),
-                        child: content.imagePath.isNotEmpty
-                            ? Image.file(
-                                File(content.imagePath),
-                                width: width,
-                                height: height,
-                                fit: BoxFit.cover,
-                                errorBuilder: (context, error, stackTrace) {
-                                  return Container(
+                    return Builder(
+                      builder: (context) {
+                        return GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () {
+                            // 预览照片
+                          },
+                          onLongPress: () {
+                            PopupTool.show(
+                              context,
+                              contentType: msgModel.contentType,
+                              content: msgModel.content,
+                              msgModel: msgModel,
+                            );
+                          },
+                          onSecondaryTap: () {
+                            PopupTool.show(
+                              context,
+                              contentType: msgModel.contentType,
+                              content: msgModel.content,
+                              msgModel: msgModel,
+                            );
+                          },
+                          child: ClipRRect(
+                            borderRadius: direction == ChatDirection.left
+                                ? const BorderRadius.only(
+                                    topRight: Radius.circular(8),
+                                    bottomLeft: Radius.circular(8),
+                                    bottomRight: Radius.circular(8),
+                                  )
+                                : const BorderRadius.only(
+                                    topLeft: Radius.circular(8),
+                                    bottomLeft: Radius.circular(8),
+                                    bottomRight: Radius.circular(8),
+                                  ),
+                            child: content.imagePath.isNotEmpty
+                                ? Image.file(
+                                    File(content.imagePath),
                                     width: width,
                                     height: height,
-                                    color: getPlaceholderColor,
-                                  );
-                                },
-                              )
-                            : ImageWidget(
-                                content.imageUrl,
-                                width: width,
-                                height: height,
-                              ),
-                      ),
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return Container(
+                                        width: width,
+                                        height: height,
+                                        color: getPlaceholderColor,
+                                      );
+                                    },
+                                  )
+                                : ImageWidget(
+                                    content.imageUrl,
+                                    width: width,
+                                    height: height,
+                                  ),
+                          ),
+                        );
+                      },
                     );
                   },
                 ),
@@ -585,108 +614,127 @@ class _ChatAudioItemState<T extends GetxController>
             avatar: senderInfo["avatar"] ?? "",
           ),
           Expanded(
-            child: GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () {
-                if (_timer != null) {
-                  _cancelTimer();
-                } else {
-                  _startTimer();
-                }
-              },
-              child: Column(
-                crossAxisAlignment: _direction == ChatDirection.left
-                    ? CrossAxisAlignment.start
-                    : CrossAxisAlignment.end,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ChatNameItem<T>(
-                    tag: widget.tag,
-                    userId: _msgModel.senderId,
-                    name: senderInfo["nickname"] ?? "",
-                  ),
-                  GetBuilder<T>(
-                    tag: widget.tag,
-                    id: ChatAudioItem.getId(_msgModel.clientMsgId),
-                    builder: (logic) {
-                      double minWidth = 91;
-                      double maxWidth = Get.width - 128;
-                      double duration = _content.duration.toDouble();
-                      double width =
-                          minWidth + (maxWidth / minWidth) * duration;
-                      if (width > maxWidth) {
-                        width = maxWidth;
-                      }
-                      return Container(
-                        padding: const EdgeInsets.all(10),
-                        width: width,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          color: _direction == ChatDirection.left
-                              ? getPlaceholderColor
-                              : getMainColor,
-                          borderRadius: _direction == ChatDirection.left
-                              ? const BorderRadius.only(
-                                  topRight: Radius.circular(8),
-                                  bottomLeft: Radius.circular(8),
-                                  bottomRight: Radius.circular(8),
-                                )
-                              : const BorderRadius.only(
-                                  topLeft: Radius.circular(8),
-                                  bottomLeft: Radius.circular(8),
-                                  bottomRight: Radius.circular(8),
+            child: Column(
+              crossAxisAlignment: _direction == ChatDirection.left
+                  ? CrossAxisAlignment.start
+                  : CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ChatNameItem<T>(
+                  tag: widget.tag,
+                  userId: _msgModel.senderId,
+                  name: senderInfo["nickname"] ?? "",
+                ),
+                GetBuilder<T>(
+                  tag: widget.tag,
+                  id: ChatAudioItem.getId(_msgModel.clientMsgId),
+                  builder: (logic) {
+                    double minWidth = 91;
+                    double maxWidth = Get.width - 128;
+                    double duration = _content.duration.toDouble();
+                    double width = minWidth + (maxWidth / minWidth) * duration;
+                    if (width > maxWidth) {
+                      width = maxWidth;
+                    }
+                    return Builder(
+                      builder: (context) {
+                        return GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () {
+                            if (_timer != null) {
+                              _cancelTimer();
+                            } else {
+                              _startTimer();
+                            }
+                          },
+                          onLongPress: () {
+                            PopupTool.show(
+                              context,
+                              contentType: _msgModel.contentType,
+                              content: _msgModel.content,
+                              msgModel: _msgModel,
+                            );
+                          },
+                          onSecondaryTap: () {
+                            PopupTool.show(
+                              context,
+                              contentType: _msgModel.contentType,
+                              content: _msgModel.content,
+                              msgModel: _msgModel,
+                            );
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            width: width,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: _direction == ChatDirection.left
+                                  ? getPlaceholderColor
+                                  : getMainColor,
+                              borderRadius: _direction == ChatDirection.left
+                                  ? const BorderRadius.only(
+                                      topRight: Radius.circular(8),
+                                      bottomLeft: Radius.circular(8),
+                                      bottomRight: Radius.circular(8),
+                                    )
+                                  : const BorderRadius.only(
+                                      topLeft: Radius.circular(8),
+                                      bottomLeft: Radius.circular(8),
+                                      bottomRight: Radius.circular(8),
+                                    ),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                if (_direction == ChatDirection.left)
+                                  _buildRipple(_direction, _timerIndex),
+                                Text(
+                                  "$duration\u{0022}",
+                                  style: TextStyle(
+                                    color: _direction == ChatDirection.left
+                                        ? getTextBlack
+                                        : getTextWhite,
+                                    fontSize: 14,
+                                  ),
                                 ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            if (_direction == ChatDirection.left)
-                              _buildRipple(_direction, _timerIndex),
-                            Text(
-                              "$duration\u{0022}",
-                              style: TextStyle(
-                                color: _direction == ChatDirection.left
-                                    ? getTextBlack
-                                    : getTextWhite,
-                                fontSize: 14,
-                              ),
-                            ),
-                            if (_direction == ChatDirection.right)
-                              _buildRipple(_direction, _timerIndex),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          TimeTool.formatTimestamp(
-                            _msgModel.serverTime,
-                            pattern: "HH:mm:ss",
-                          ),
-                          style: const TextStyle(
-                            color: getHintBlack,
-                            fontSize: 10,
-                          ),
-                        ),
-                        if (_direction == ChatDirection.right)
-                          Padding(
-                            padding: const EdgeInsets.only(left: 5),
-                            child: ChatStatusItem(
-                              sendStatus: _msgModel.sendStatus,
-                              sendProgress: _msgModel.sendProgress,
-                              onRetry: _onRetry,
+                                if (_direction == ChatDirection.right)
+                                  _buildRipple(_direction, _timerIndex),
+                              ],
                             ),
                           ),
-                      ],
-                    ),
+                        );
+                      },
+                    );
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        TimeTool.formatTimestamp(
+                          _msgModel.serverTime,
+                          pattern: "HH:mm:ss",
+                        ),
+                        style: const TextStyle(
+                          color: getHintBlack,
+                          fontSize: 10,
+                        ),
+                      ),
+                      if (_direction == ChatDirection.right)
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: ChatStatusItem(
+                            sendStatus: _msgModel.sendStatus,
+                            sendProgress: _msgModel.sendProgress,
+                            onRetry: _onRetry,
+                          ),
+                        ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           ChatAvatarItem<T>(
@@ -800,58 +848,79 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
                         width = maxHeight * scale;
                       }
                     }
-                    return GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () {
-                        // 预览视频
-                      },
-                      child: ClipRRect(
-                        borderRadius: direction == ChatDirection.left
-                            ? const BorderRadius.only(
-                                topRight: Radius.circular(8),
-                                bottomLeft: Radius.circular(8),
-                                bottomRight: Radius.circular(8),
-                              )
-                            : const BorderRadius.only(
-                                topLeft: Radius.circular(8),
-                                bottomLeft: Radius.circular(8),
-                                bottomRight: Radius.circular(8),
-                              ),
-                        child: SizedBox(
-                          width: width,
-                          height: height,
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              if (content.coverPath.isNotEmpty)
-                                Image.file(
-                                  File(content.coverPath),
-                                  width: width,
-                                  height: height,
-                                  fit: BoxFit.cover,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return Container(
+                    return Builder(
+                      builder: (context) {
+                        return GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () {
+                            // 预览视频
+                          },
+                          onLongPress: () {
+                            PopupTool.show(
+                              context,
+                              contentType: msgModel.contentType,
+                              content: msgModel.content,
+                              msgModel: msgModel,
+                            );
+                          },
+                          onSecondaryTap: () {
+                            PopupTool.show(
+                              context,
+                              contentType: msgModel.contentType,
+                              content: msgModel.content,
+                              msgModel: msgModel,
+                            );
+                          },
+                          child: ClipRRect(
+                            borderRadius: direction == ChatDirection.left
+                                ? const BorderRadius.only(
+                                    topRight: Radius.circular(8),
+                                    bottomLeft: Radius.circular(8),
+                                    bottomRight: Radius.circular(8),
+                                  )
+                                : const BorderRadius.only(
+                                    topLeft: Radius.circular(8),
+                                    bottomLeft: Radius.circular(8),
+                                    bottomRight: Radius.circular(8),
+                                  ),
+                            child: SizedBox(
+                              width: width,
+                              height: height,
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  if (content.coverPath.isNotEmpty)
+                                    Image.file(
+                                      File(content.coverPath),
                                       width: width,
                                       height: height,
-                                      color: getPlaceholderColor,
-                                    );
-                                  },
-                                )
-                              else
-                                ImageWidget(
-                                  content.coverUrl,
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                ),
-                              Image.asset(
-                                "assets/images/ic_play_29.webp",
-                                width: 29,
-                                height: 29,
+                                      fit: BoxFit.cover,
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
+                                        return Container(
+                                          width: width,
+                                          height: height,
+                                          color: getPlaceholderColor,
+                                        );
+                                      },
+                                    )
+                                  else
+                                    ImageWidget(
+                                      content.coverUrl,
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                    ),
+                                  Image.asset(
+                                    "assets/images/ic_play_29.webp",
+                                    width: 29,
+                                    height: 29,
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ),
+                        );
+                      },
                     );
                   },
                 ),
@@ -959,11 +1028,23 @@ class ChatFileItem<T extends GetxController> extends StatelessWidget {
                       builder: (context) {
                         return GestureDetector(
                           behavior: HitTestBehavior.opaque,
+                          onTap: () {
+                            // 打开文件
+                          },
                           onLongPress: () {
                             PopupTool.show(
                               context,
                               contentType: msgModel.contentType,
                               content: msgModel.content,
+                              msgModel: msgModel,
+                            );
+                          },
+                          onSecondaryTap: () {
+                            PopupTool.show(
+                              context,
+                              contentType: msgModel.contentType,
+                              content: msgModel.content,
+                              msgModel: msgModel,
                             );
                           },
                           child: Container(
@@ -1137,35 +1218,55 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
                   tag: tag,
                   id: ChatLocationItem.getId(msgModel.clientMsgId),
                   builder: (logic) {
-                    return GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () {
-                        // 预览地图
-                      },
-                      child: AspectRatio(
-                        aspectRatio: 1.5,
-                        child: ClipRRect(
-                          borderRadius: direction == ChatDirection.left
-                              ? const BorderRadius.only(
-                                  topRight: Radius.circular(8),
-                                  bottomLeft: Radius.circular(8),
-                                  bottomRight: Radius.circular(8),
-                                )
-                              : const BorderRadius.only(
-                                  topLeft: Radius.circular(8),
-                                  bottomLeft: Radius.circular(8),
-                                  bottomRight: Radius.circular(8),
+                    return Builder(
+                      builder: (context) {
+                        return GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () {
+                            // 预览地图
+                          },
+                          onLongPress: () {
+                            PopupTool.show(
+                              context,
+                              contentType: msgModel.contentType,
+                              content: msgModel.content,
+                              msgModel: msgModel,
+                            );
+                          },
+                          onSecondaryTap: () {
+                            PopupTool.show(
+                              context,
+                              contentType: msgModel.contentType,
+                              content: msgModel.content,
+                              msgModel: msgModel,
+                            );
+                          },
+                          child: AspectRatio(
+                            aspectRatio: 1.5,
+                            child: ClipRRect(
+                              borderRadius: direction == ChatDirection.left
+                                  ? const BorderRadius.only(
+                                      topRight: Radius.circular(8),
+                                      bottomLeft: Radius.circular(8),
+                                      bottomRight: Radius.circular(8),
+                                    )
+                                  : const BorderRadius.only(
+                                      topLeft: Radius.circular(8),
+                                      bottomLeft: Radius.circular(8),
+                                      bottomRight: Radius.circular(8),
+                                    ),
+                              child: ImageWidget(
+                                Tool.getLocationImage(
+                                  latitude: content.latitude,
+                                  longitude: content.longitude,
                                 ),
-                          child: ImageWidget(
-                            Tool.getLocationImage(
-                              latitude: content.latitude,
-                              longitude: content.longitude,
+                                width: double.infinity,
+                                height: double.infinity,
+                              ),
                             ),
-                            width: double.infinity,
-                            height: double.infinity,
                           ),
-                        ),
-                      ),
+                        );
+                      },
                     );
                   },
                 ),
