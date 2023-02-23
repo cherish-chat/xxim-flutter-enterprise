@@ -145,10 +145,10 @@ class ChatLogic extends GetxController {
     });
     if (index != -1) {
       msgModelList[index] = msgModel;
+      update([_getItemId(msgModel)]);
     } else {
       msgModelList.insert(0, msgModel);
     }
-    update(["list"]);
   }
 
   Future<MsgModel> createText(String text) {
@@ -238,7 +238,7 @@ class ChatLogic extends GetxController {
         }
       }
     }
-    update(ids);
+    if (ids.isNotEmpty) update(ids);
     bool status = await XXIM.instance.msgManager.sendMsgList(
       senderInfo: json.encode({
         "avatar": HiveTool.getAvatarUrl(),
@@ -258,7 +258,7 @@ class ChatLogic extends GetxController {
         ids.add(id);
       }
     }
-    update(ids);
+    if (ids.isNotEmpty) update(ids);
   }
 
   String _getItemId(MsgModel msgModel) {
@@ -375,12 +375,14 @@ class ChatPage extends StatelessWidget {
               Widget widget = const SizedBox();
               if (contentType == MsgContentType.tip) {
                 widget = ChatTipItem<ChatLogic>(
+                  key: ValueKey(msgModel.clientMsgId),
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
                 );
               } else if (contentType == MsgContentType.text) {
                 widget = ChatTextItem<ChatLogic>(
+                  key: ValueKey(msgModel.clientMsgId),
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
@@ -390,6 +392,7 @@ class ChatPage extends StatelessWidget {
                 );
               } else if (contentType == MsgContentType.image) {
                 widget = ChatImageItem<ChatLogic>(
+                  key: ValueKey(msgModel.clientMsgId),
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
@@ -399,6 +402,7 @@ class ChatPage extends StatelessWidget {
                 );
               } else if (contentType == MsgContentType.audio) {
                 widget = ChatAudioItem<ChatLogic>(
+                  key: ValueKey(msgModel.clientMsgId),
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
@@ -408,6 +412,7 @@ class ChatPage extends StatelessWidget {
                 );
               } else if (contentType == MsgContentType.video) {
                 widget = ChatVideoItem<ChatLogic>(
+                  key: ValueKey(msgModel.clientMsgId),
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
@@ -417,6 +422,7 @@ class ChatPage extends StatelessWidget {
                 );
               } else if (contentType == MsgContentType.file) {
                 widget = ChatFileItem<ChatLogic>(
+                  key: ValueKey(msgModel.clientMsgId),
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,
@@ -426,6 +432,7 @@ class ChatPage extends StatelessWidget {
                 );
               } else if (contentType == MsgContentType.location) {
                 widget = ChatLocationItem<ChatLogic>(
+                  key: ValueKey(msgModel.clientMsgId),
                   tag: logic.tag,
                   direction: direction,
                   msgModel: msgModel,

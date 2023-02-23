@@ -164,7 +164,7 @@ class ChatStatusItem extends StatelessWidget {
 
 class ChatTipItem<T extends GetxController> extends StatelessWidget {
   static String getId(String clientMsgId) {
-    return "$ChatTipItem$clientMsgId";
+    return "ChatTipItem$clientMsgId";
   }
 
   final String? tag;
@@ -198,7 +198,7 @@ class ChatTipItem<T extends GetxController> extends StatelessWidget {
 
 class ChatTextItem<T extends GetxController> extends StatelessWidget {
   static String getId(String clientMsgId) {
-    return "$ChatTextItem$clientMsgId";
+    return "ChatTextItem$clientMsgId";
   }
 
   final String? tag;
@@ -233,22 +233,22 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
             avatar: senderInfo["avatar"] ?? "",
           ),
           Expanded(
-            child: Column(
-              crossAxisAlignment: direction == ChatDirection.left
-                  ? CrossAxisAlignment.start
-                  : CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ChatNameItem<T>(
-                  tag: tag,
-                  userId: msgModel.senderId,
-                  name: senderInfo["nickname"] ?? "",
-                ),
-                GetBuilder<T>(
-                  tag: tag,
-                  id: ChatTextItem.getId(msgModel.clientMsgId),
-                  builder: (logic) {
-                    return Builder(
+            child: GetBuilder<T>(
+              tag: tag,
+              id: ChatTextItem.getId(msgModel.clientMsgId),
+              builder: (logic) {
+                return Column(
+                  crossAxisAlignment: direction == ChatDirection.left
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ChatNameItem<T>(
+                      tag: tag,
+                      userId: msgModel.senderId,
+                      name: senderInfo["nickname"] ?? "",
+                    ),
+                    Builder(
                       builder: (context) {
                         return GestureDetector(
                           behavior: HitTestBehavior.opaque,
@@ -298,37 +298,37 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
                           ),
                         );
                       },
-                    );
-                  },
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        TimeTool.formatTimestamp(
-                          msgModel.serverTime,
-                          pattern: "HH:mm:ss",
-                        ),
-                        style: const TextStyle(
-                          color: getHintBlack,
-                          fontSize: 10,
-                        ),
-                      ),
-                      if (direction == ChatDirection.right)
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: ChatStatusItem(
-                            sendStatus: msgModel.sendStatus,
-                            sendProgress: msgModel.sendProgress,
-                            onRetry: onRetry,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            TimeTool.formatTimestamp(
+                              msgModel.serverTime,
+                              pattern: "HH:mm:ss",
+                            ),
+                            style: const TextStyle(
+                              color: getHintBlack,
+                              fontSize: 10,
+                            ),
                           ),
-                        ),
-                    ],
-                  ),
-                ),
-              ],
+                          if (direction == ChatDirection.right)
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5),
+                              child: ChatStatusItem(
+                                sendStatus: msgModel.sendStatus,
+                                sendProgress: msgModel.sendProgress,
+                                onRetry: onRetry,
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
           ChatAvatarItem<T>(
@@ -346,7 +346,7 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
 
 class ChatImageItem<T extends GetxController> extends StatelessWidget {
   static String getId(String clientMsgId) {
-    return "$ChatImageItem$clientMsgId";
+    return "ChatImageItem$clientMsgId";
   }
 
   final String? tag;
@@ -382,41 +382,41 @@ class ChatImageItem<T extends GetxController> extends StatelessWidget {
             avatar: senderInfo["avatar"] ?? "",
           ),
           Expanded(
-            child: Column(
-              crossAxisAlignment: direction == ChatDirection.left
-                  ? CrossAxisAlignment.start
-                  : CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ChatNameItem<T>(
-                  tag: tag,
-                  userId: msgModel.senderId,
-                  name: senderInfo["nickname"] ?? "",
-                ),
-                GetBuilder<T>(
-                  tag: tag,
-                  id: ChatImageItem.getId(msgModel.clientMsgId),
-                  builder: (logic) {
-                    double maxWidth = Get.width - 128;
-                    double maxHeight = maxWidth * 1.5;
-                    double width = content.width.toDouble();
-                    double height = content.height.toDouble();
-                    if (width == 0 || height == 0) {
-                      width = maxWidth;
-                      height = maxHeight;
-                    } else {
-                      double scale = width / height;
-                      if (width > height) {
-                        width = maxWidth;
-                        height = width / scale;
-                      }
-                      if (height > maxHeight) {
-                        height = maxHeight;
-                        width = maxHeight * scale;
-                      }
-                    }
-                    return Builder(
+            child: GetBuilder<T>(
+              tag: tag,
+              id: ChatImageItem.getId(msgModel.clientMsgId),
+              builder: (logic) {
+                return Column(
+                  crossAxisAlignment: direction == ChatDirection.left
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ChatNameItem<T>(
+                      tag: tag,
+                      userId: msgModel.senderId,
+                      name: senderInfo["nickname"] ?? "",
+                    ),
+                    Builder(
                       builder: (context) {
+                        double maxWidth = Get.width - 128;
+                        double maxHeight = maxWidth * 1.5;
+                        double width = content.width.toDouble();
+                        double height = content.height.toDouble();
+                        if (width == 0 || height == 0) {
+                          width = maxWidth;
+                          height = maxHeight;
+                        } else {
+                          double scale = width / height;
+                          if (width > height) {
+                            width = maxWidth;
+                            height = width / scale;
+                          }
+                          if (height > maxHeight) {
+                            height = maxHeight;
+                            width = maxHeight * scale;
+                          }
+                        }
                         return GestureDetector(
                           behavior: HitTestBehavior.opaque,
                           onTap: () {
@@ -472,37 +472,37 @@ class ChatImageItem<T extends GetxController> extends StatelessWidget {
                           ),
                         );
                       },
-                    );
-                  },
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        TimeTool.formatTimestamp(
-                          msgModel.serverTime,
-                          pattern: "HH:mm:ss",
-                        ),
-                        style: const TextStyle(
-                          color: getHintBlack,
-                          fontSize: 10,
-                        ),
-                      ),
-                      if (direction == ChatDirection.right)
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: ChatStatusItem(
-                            sendStatus: msgModel.sendStatus,
-                            sendProgress: msgModel.sendProgress,
-                            onRetry: onRetry,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            TimeTool.formatTimestamp(
+                              msgModel.serverTime,
+                              pattern: "HH:mm:ss",
+                            ),
+                            style: const TextStyle(
+                              color: getHintBlack,
+                              fontSize: 10,
+                            ),
                           ),
-                        ),
-                    ],
-                  ),
-                ),
-              ],
+                          if (direction == ChatDirection.right)
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5),
+                              child: ChatStatusItem(
+                                sendStatus: msgModel.sendStatus,
+                                sendProgress: msgModel.sendProgress,
+                                onRetry: onRetry,
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
           ChatAvatarItem<T>(
@@ -520,7 +520,7 @@ class ChatImageItem<T extends GetxController> extends StatelessWidget {
 
 class ChatAudioItem<T extends GetxController> extends StatefulWidget {
   static String getId(String clientMsgId) {
-    return "$ChatAudioItem$clientMsgId";
+    return "ChatAudioItem$clientMsgId";
   }
 
   final String? tag;
@@ -614,30 +614,31 @@ class _ChatAudioItemState<T extends GetxController>
             avatar: senderInfo["avatar"] ?? "",
           ),
           Expanded(
-            child: Column(
-              crossAxisAlignment: _direction == ChatDirection.left
-                  ? CrossAxisAlignment.start
-                  : CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ChatNameItem<T>(
-                  tag: widget.tag,
-                  userId: _msgModel.senderId,
-                  name: senderInfo["nickname"] ?? "",
-                ),
-                GetBuilder<T>(
-                  tag: widget.tag,
-                  id: ChatAudioItem.getId(_msgModel.clientMsgId),
-                  builder: (logic) {
-                    double minWidth = 91;
-                    double maxWidth = Get.width - 128;
-                    double duration = _content.duration.toDouble();
-                    double width = minWidth + (maxWidth / minWidth) * duration;
-                    if (width > maxWidth) {
-                      width = maxWidth;
-                    }
-                    return Builder(
+            child: GetBuilder<T>(
+              tag: widget.tag,
+              id: ChatAudioItem.getId(_msgModel.clientMsgId),
+              builder: (logic) {
+                return Column(
+                  crossAxisAlignment: _direction == ChatDirection.left
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ChatNameItem<T>(
+                      tag: widget.tag,
+                      userId: _msgModel.senderId,
+                      name: senderInfo["nickname"] ?? "",
+                    ),
+                    Builder(
                       builder: (context) {
+                        double minWidth = 91;
+                        double maxWidth = Get.width - 128;
+                        double duration = _content.duration.toDouble();
+                        double width =
+                            minWidth + (maxWidth / minWidth) * duration;
+                        if (width > maxWidth) {
+                          width = maxWidth;
+                        }
                         return GestureDetector(
                           behavior: HitTestBehavior.opaque,
                           onTap: () {
@@ -704,37 +705,37 @@ class _ChatAudioItemState<T extends GetxController>
                           ),
                         );
                       },
-                    );
-                  },
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        TimeTool.formatTimestamp(
-                          _msgModel.serverTime,
-                          pattern: "HH:mm:ss",
-                        ),
-                        style: const TextStyle(
-                          color: getHintBlack,
-                          fontSize: 10,
-                        ),
-                      ),
-                      if (_direction == ChatDirection.right)
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: ChatStatusItem(
-                            sendStatus: _msgModel.sendStatus,
-                            sendProgress: _msgModel.sendProgress,
-                            onRetry: _onRetry,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            TimeTool.formatTimestamp(
+                              _msgModel.serverTime,
+                              pattern: "HH:mm:ss",
+                            ),
+                            style: const TextStyle(
+                              color: getHintBlack,
+                              fontSize: 10,
+                            ),
                           ),
-                        ),
-                    ],
-                  ),
-                ),
-              ],
+                          if (_direction == ChatDirection.right)
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5),
+                              child: ChatStatusItem(
+                                sendStatus: _msgModel.sendStatus,
+                                sendProgress: _msgModel.sendProgress,
+                                onRetry: _onRetry,
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
           ChatAvatarItem<T>(
@@ -779,7 +780,7 @@ class _ChatAudioItemState<T extends GetxController>
 
 class ChatVideoItem<T extends GetxController> extends StatelessWidget {
   static String getId(String clientMsgId) {
-    return "$ChatVideoItem$clientMsgId";
+    return "ChatVideoItem$clientMsgId";
   }
 
   final String? tag;
@@ -815,41 +816,41 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
             avatar: senderInfo["avatar"] ?? "",
           ),
           Expanded(
-            child: Column(
-              crossAxisAlignment: direction == ChatDirection.left
-                  ? CrossAxisAlignment.start
-                  : CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ChatNameItem<T>(
-                  tag: tag,
-                  userId: msgModel.senderId,
-                  name: senderInfo["nickname"] ?? "",
-                ),
-                GetBuilder<T>(
-                  tag: tag,
-                  id: ChatVideoItem.getId(msgModel.clientMsgId),
-                  builder: (logic) {
-                    double maxWidth = Get.width - 128;
-                    double maxHeight = maxWidth * 1.5;
-                    double width = 200;
-                    double height = 200;
-                    if (width == 0 || height == 0) {
-                      width = maxWidth;
-                      height = maxHeight;
-                    } else {
-                      double scale = width / height;
-                      if (width > height) {
-                        width = maxWidth;
-                        height = width / scale;
-                      }
-                      if (height > maxHeight) {
-                        height = maxHeight;
-                        width = maxHeight * scale;
-                      }
-                    }
-                    return Builder(
+            child: GetBuilder<T>(
+              tag: tag,
+              id: ChatVideoItem.getId(msgModel.clientMsgId),
+              builder: (logic) {
+                return Column(
+                  crossAxisAlignment: direction == ChatDirection.left
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ChatNameItem<T>(
+                      tag: tag,
+                      userId: msgModel.senderId,
+                      name: senderInfo["nickname"] ?? "",
+                    ),
+                    Builder(
                       builder: (context) {
+                        double maxWidth = Get.width - 128;
+                        double maxHeight = maxWidth * 1.5;
+                        double width = 200;
+                        double height = 200;
+                        if (width == 0 || height == 0) {
+                          width = maxWidth;
+                          height = maxHeight;
+                        } else {
+                          double scale = width / height;
+                          if (width > height) {
+                            width = maxWidth;
+                            height = width / scale;
+                          }
+                          if (height > maxHeight) {
+                            height = maxHeight;
+                            width = maxHeight * scale;
+                          }
+                        }
                         return GestureDetector(
                           behavior: HitTestBehavior.opaque,
                           onTap: () {
@@ -921,37 +922,37 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
                           ),
                         );
                       },
-                    );
-                  },
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        TimeTool.formatTimestamp(
-                          msgModel.serverTime,
-                          pattern: "HH:mm:ss",
-                        ),
-                        style: const TextStyle(
-                          color: getHintBlack,
-                          fontSize: 10,
-                        ),
-                      ),
-                      if (direction == ChatDirection.right)
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: ChatStatusItem(
-                            sendStatus: msgModel.sendStatus,
-                            sendProgress: msgModel.sendProgress,
-                            onRetry: onRetry,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            TimeTool.formatTimestamp(
+                              msgModel.serverTime,
+                              pattern: "HH:mm:ss",
+                            ),
+                            style: const TextStyle(
+                              color: getHintBlack,
+                              fontSize: 10,
+                            ),
                           ),
-                        ),
-                    ],
-                  ),
-                ),
-              ],
+                          if (direction == ChatDirection.right)
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5),
+                              child: ChatStatusItem(
+                                sendStatus: msgModel.sendStatus,
+                                sendProgress: msgModel.sendProgress,
+                                onRetry: onRetry,
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
           ChatAvatarItem<T>(
@@ -969,7 +970,7 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
 
 class ChatFileItem<T extends GetxController> extends StatelessWidget {
   static String getId(String clientMsgId) {
-    return "$ChatFileItem$clientMsgId";
+    return "ChatFileItem$clientMsgId";
   }
 
   final String? tag;
@@ -1009,22 +1010,22 @@ class ChatFileItem<T extends GetxController> extends StatelessWidget {
             avatar: senderInfo["avatar"] ?? "",
           ),
           Expanded(
-            child: Column(
-              crossAxisAlignment: direction == ChatDirection.left
-                  ? CrossAxisAlignment.start
-                  : CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ChatNameItem<T>(
-                  tag: tag,
-                  userId: msgModel.senderId,
-                  name: senderInfo["nickname"] ?? "",
-                ),
-                GetBuilder<T>(
-                  tag: tag,
-                  id: ChatTextItem.getId(msgModel.clientMsgId),
-                  builder: (logic) {
-                    return Builder(
+            child: GetBuilder<T>(
+              tag: tag,
+              id: ChatFileItem.getId(msgModel.clientMsgId),
+              builder: (logic) {
+                return Column(
+                  crossAxisAlignment: direction == ChatDirection.left
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ChatNameItem<T>(
+                      tag: tag,
+                      userId: msgModel.senderId,
+                      name: senderInfo["nickname"] ?? "",
+                    ),
+                    Builder(
                       builder: (context) {
                         return GestureDetector(
                           behavior: HitTestBehavior.opaque,
@@ -1119,37 +1120,37 @@ class ChatFileItem<T extends GetxController> extends StatelessWidget {
                           ),
                         );
                       },
-                    );
-                  },
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        TimeTool.formatTimestamp(
-                          msgModel.serverTime,
-                          pattern: "HH:mm:ss",
-                        ),
-                        style: const TextStyle(
-                          color: getHintBlack,
-                          fontSize: 10,
-                        ),
-                      ),
-                      if (direction == ChatDirection.right)
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: ChatStatusItem(
-                            sendStatus: msgModel.sendStatus,
-                            sendProgress: msgModel.sendProgress,
-                            onRetry: onRetry,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            TimeTool.formatTimestamp(
+                              msgModel.serverTime,
+                              pattern: "HH:mm:ss",
+                            ),
+                            style: const TextStyle(
+                              color: getHintBlack,
+                              fontSize: 10,
+                            ),
                           ),
-                        ),
-                    ],
-                  ),
-                ),
-              ],
+                          if (direction == ChatDirection.right)
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5),
+                              child: ChatStatusItem(
+                                sendStatus: msgModel.sendStatus,
+                                sendProgress: msgModel.sendProgress,
+                                onRetry: onRetry,
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
           ChatAvatarItem<T>(
@@ -1167,7 +1168,7 @@ class ChatFileItem<T extends GetxController> extends StatelessWidget {
 
 class ChatLocationItem<T extends GetxController> extends StatelessWidget {
   static String getId(String clientMsgId) {
-    return "$ChatLocationItem$clientMsgId";
+    return "ChatLocationItem$clientMsgId";
   }
 
   final String? tag;
@@ -1203,22 +1204,22 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
             avatar: senderInfo["avatar"] ?? "",
           ),
           Expanded(
-            child: Column(
-              crossAxisAlignment: direction == ChatDirection.left
-                  ? CrossAxisAlignment.start
-                  : CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ChatNameItem<T>(
-                  tag: tag,
-                  userId: msgModel.senderId,
-                  name: senderInfo["nickname"] ?? "",
-                ),
-                GetBuilder<T>(
-                  tag: tag,
-                  id: ChatLocationItem.getId(msgModel.clientMsgId),
-                  builder: (logic) {
-                    return Builder(
+            child: GetBuilder<T>(
+              tag: tag,
+              id: ChatLocationItem.getId(msgModel.clientMsgId),
+              builder: (logic) {
+                return Column(
+                  crossAxisAlignment: direction == ChatDirection.left
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ChatNameItem<T>(
+                      tag: tag,
+                      userId: msgModel.senderId,
+                      name: senderInfo["nickname"] ?? "",
+                    ),
+                    Builder(
                       builder: (context) {
                         return GestureDetector(
                           behavior: HitTestBehavior.opaque,
@@ -1267,37 +1268,37 @@ class ChatLocationItem<T extends GetxController> extends StatelessWidget {
                           ),
                         );
                       },
-                    );
-                  },
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        TimeTool.formatTimestamp(
-                          msgModel.serverTime,
-                          pattern: "HH:mm:ss",
-                        ),
-                        style: const TextStyle(
-                          color: getHintBlack,
-                          fontSize: 10,
-                        ),
-                      ),
-                      if (direction == ChatDirection.right)
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: ChatStatusItem(
-                            sendStatus: msgModel.sendStatus,
-                            sendProgress: msgModel.sendProgress,
-                            onRetry: onRetry,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            TimeTool.formatTimestamp(
+                              msgModel.serverTime,
+                              pattern: "HH:mm:ss",
+                            ),
+                            style: const TextStyle(
+                              color: getHintBlack,
+                              fontSize: 10,
+                            ),
                           ),
-                        ),
-                    ],
-                  ),
-                ),
-              ],
+                          if (direction == ChatDirection.right)
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5),
+                              child: ChatStatusItem(
+                                sendStatus: msgModel.sendStatus,
+                                sendProgress: msgModel.sendProgress,
+                                onRetry: onRetry,
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
           ChatAvatarItem<T>(
