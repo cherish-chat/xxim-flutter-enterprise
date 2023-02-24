@@ -45,6 +45,72 @@ class NewsLogic extends GetxController {
     convModelList = await XXIM.instance.convManager.getConvList();
     update(["list"]);
   }
+
+  void alertDelete(String convId) {
+    GetAlertDialog.show(
+      const Text(
+        "你确定要删除会话吗？",
+        style: TextStyle(
+          color: getTextBlack,
+          fontSize: 16,
+          fontWeight: getMedium,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      actions: [
+        const TextButton(
+          onPressed: GetAlertDialog.hide,
+          child: Text(
+            "取消",
+            style: TextStyle(
+              color: getTextBlack,
+              fontSize: 14,
+            ),
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            GetAlertDialog.hide();
+            deleteConv(convId);
+          },
+          child: const Text(
+            "确定",
+            style: TextStyle(
+              color: getTextBlack,
+              fontSize: 14,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  void deleteConv(String convId) {
+    MenuLogic? menuLogic = MenuLogic.logic();
+    if (menuLogic == null) return;
+    List<RouteDecoder>? activePages = menuLogic.getDelegate?.activePages;
+    if (activePages != null) {
+      RouteDecoder routeDecoder = RouteDecoder.fromRoute(
+        Routes.chat(convId),
+      );
+      if (activePages.contains(routeDecoder)) {
+        menuLogic.getDelegate?.removeRoute(
+          Routes.chat(convId),
+        );
+        // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
+        menuLogic.getDelegate?.notifyListeners();
+      }
+    }
+    XXIM.instance.convManager
+        .deleteConv(
+      convId: convId,
+    )
+        .then(
+      (value) {
+        loadList(force: true);
+      },
+    );
+  }
 }
 
 class NewsPage extends StatelessWidget {
@@ -216,31 +282,7 @@ class NewsPage extends StatelessWidget {
         children: [
           SlidableAction(
             onPressed: (context) {
-              MenuLogic? menuLogic = MenuLogic.logic();
-              if (menuLogic == null) return;
-              List<RouteDecoder>? activePages =
-                  menuLogic.getDelegate?.activePages;
-              if (activePages != null) {
-                RouteDecoder routeDecoder = RouteDecoder.fromRoute(
-                  Routes.chat(convModel.convId),
-                );
-                if (activePages.contains(routeDecoder)) {
-                  menuLogic.getDelegate?.removeRoute(
-                    Routes.chat(convModel.convId),
-                  );
-                  // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
-                  menuLogic.getDelegate?.notifyListeners();
-                }
-              }
-              XXIM.instance.convManager
-                  .deleteConv(
-                convId: convModel.convId,
-              )
-                  .then(
-                (value) {
-                  logic.loadList(force: true);
-                },
-              );
+              logic.alertDelete(convModel.convId);
             },
             icon: Icons.delete_outline,
             backgroundColor: Colors.red,
@@ -257,6 +299,12 @@ class NewsPage extends StatelessWidget {
           logic.getDelegate?.toNamed(
             Routes.chat(convModel.convId),
           );
+        },
+        onLongPress: () {
+          logic.alertDelete(convModel.convId);
+        },
+        onSecondaryTap: () {
+          logic.alertDelete(convModel.convId);
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),

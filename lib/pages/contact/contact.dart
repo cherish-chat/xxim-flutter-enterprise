@@ -1,7 +1,10 @@
 import 'package:azlistview/azlistview.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:lpinyin/lpinyin.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
+import 'package:xxim_flutter_enterprise/pages/news/news.dart';
+import 'package:xxim_flutter_enterprise/proto/relation.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
@@ -77,6 +80,69 @@ class ContactLogic extends GetxController {
     );
     update(["list"]);
   }
+
+  void alertDelete(String userId) {
+    GetAlertDialog.show(
+      const Text(
+        "你确定要删除好友吗？",
+        style: TextStyle(
+          color: getTextBlack,
+          fontSize: 16,
+          fontWeight: getMedium,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      actions: [
+        const TextButton(
+          onPressed: GetAlertDialog.hide,
+          child: Text(
+            "取消",
+            style: TextStyle(
+              color: getTextBlack,
+              fontSize: 14,
+            ),
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            GetAlertDialog.hide();
+            deleteFriend(userId);
+          },
+          child: const Text(
+            "确定",
+            style: TextStyle(
+              color: getTextBlack,
+              fontSize: 14,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  void deleteFriend(String userId) {
+    XXIM.instance.customRequest<DeleteFriendResp>(
+      method: "/v1/relation/deleteFriend",
+      req: DeleteFriendReq(
+        userId: userId,
+      ),
+      resp: DeleteFriendResp.create,
+      onSuccess: (data) {
+        MenuLogic.logic()?.userInfoList.removeWhere((element) {
+          return element.id == userId;
+        });
+        loadList();
+        NewsLogic.logic()?.deleteConv(SDKTool.singleConvId(
+          HiveTool.getUserId(),
+          userId,
+        ));
+        Tool.showToast("删除成功");
+      },
+      onError: (code, error) {
+        Tool.showToast("删除失败");
+      },
+    );
+  }
 }
 
 class ContactPage extends StatelessWidget {
@@ -123,61 +189,64 @@ class ContactPage extends StatelessWidget {
     return GetBuilder<ContactLogic>(
       id: "list",
       builder: (logic) {
-        return AzListView(
-          data: logic.contactList,
-          itemCount: logic.contactList.length,
-          itemBuilder: (context, index) {
-            if (index == 0) return _buildHeader(logic);
-            return _buildItem(logic.contactList[index]);
-          },
-          susItemHeight: 40,
-          susItemBuilder: (context, index) {
-            return _buildSusItem(logic.contactList[index]);
-          },
-          indexBarOptions: IndexBarOptions(
-            textStyle: const TextStyle(
-              fontSize: 14,
-              color: getMainColor,
+        return SlidableAutoCloseBehavior(
+          child: AzListView(
+            data: logic.contactList,
+            itemCount: logic.contactList.length,
+            itemBuilder: (context, index) {
+              if (index == 0) return _buildHeader(logic);
+              return _buildItem(logic, logic.contactList[index]);
+            },
+            susItemHeight: 40,
+            susItemBuilder: (context, index) {
+              return _buildSusItem(logic.contactList[index]);
+            },
+            indexBarOptions: IndexBarOptions(
+              textStyle: const TextStyle(
+                fontSize: 14,
+                color: getMainColor,
+              ),
+              indexHintDecoration: BoxDecoration(
+                color: getMainColor,
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              indexHintPosition: MenuLogic.logic()?.isPhone.value == true
+                  ? Offset(
+                      Get.width * 0.85 / 2 - 72 / 2, Get.height / 2 - 72 / 2)
+                  : Offset(350 / 2 - 72 / 2, Get.height / 2 - 72 / 2),
             ),
-            indexHintDecoration: BoxDecoration(
-              color: getMainColor,
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            indexHintPosition: MenuLogic.logic()?.isPhone.value == true
-                ? Offset(Get.width * 0.85 / 2 - 72 / 2, Get.height / 2 - 72 / 2)
-                : Offset(350 / 2 - 72 / 2, Get.height / 2 - 72 / 2),
+            indexBarData: const [
+              "↑",
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G",
+              "H",
+              "I",
+              "J",
+              "K",
+              "L",
+              "M",
+              "N",
+              "O",
+              "P",
+              "Q",
+              "R",
+              "S",
+              "T",
+              "U",
+              "V",
+              "W",
+              "X",
+              "Y",
+              "Z",
+              "#"
+            ],
           ),
-          indexBarData: const [
-            "↑",
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z",
-            "#"
-          ],
         );
       },
     );
@@ -315,7 +384,10 @@ class ContactPage extends StatelessWidget {
     );
   }
 
-  Widget _buildItem(ContactModel item) {
+  Widget _buildItem(
+    ContactLogic logic,
+    ContactModel item,
+  ) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -328,6 +400,12 @@ class ContactPage extends StatelessWidget {
             item.userId,
           )),
         );
+      },
+      onLongPress: () {
+        logic.alertDelete(item.userId);
+      },
+      onSecondaryTap: () {
+        logic.alertDelete(item.userId);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),

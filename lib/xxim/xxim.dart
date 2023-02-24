@@ -254,7 +254,7 @@ class XXIM {
         onSuccess(t);
       },
       onError: (code, error) {
-        if (error != CommonResp_Code.UnknownError.name) {
+        if (error.isNotEmpty && error != CommonResp_Code.UnknownError.name) {
           try {
             CommonResp commonResp = CommonResp.fromBuffer(
               utf8.encode(error),
