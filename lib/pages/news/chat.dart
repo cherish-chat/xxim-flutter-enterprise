@@ -42,6 +42,8 @@ class ChatLogic extends GetxController {
 
   List<MsgModel> msgModelList = [];
 
+  RxMap replyMsgMap = {}.obs;
+
   @override
   void onInit() {
     scrollController = FlutterListViewController()
@@ -148,7 +150,22 @@ class ChatLogic extends GetxController {
       update([_getItemId(msgModel)]);
     } else {
       msgModelList.insert(0, msgModel);
+      update(["list"]);
     }
+  }
+
+  String _getMsgExt() {
+    Map extMap = {};
+    if (replyMsgMap.isNotEmpty) {
+      MsgModel msgModel = replyMsgMap["msgModel"];
+      extMap["replyMsgModel"] = msgModel.toJson();
+      replyMsgMap.clear();
+    }
+    String ext = "";
+    if (extMap.isNotEmpty) {
+      ext = json.encode(extMap);
+    }
+    return ext;
   }
 
   Future<MsgModel> createText(String text) {
@@ -159,6 +176,7 @@ class ChatLogic extends GetxController {
         title: HiveTool.getNickname(),
         content: text,
       ),
+      ext: _getMsgExt(),
     );
   }
 
@@ -170,6 +188,7 @@ class ChatLogic extends GetxController {
         title: HiveTool.getNickname(),
         content: "[图片]",
       ),
+      ext: _getMsgExt(),
     );
   }
 
@@ -181,6 +200,7 @@ class ChatLogic extends GetxController {
         title: HiveTool.getNickname(),
         content: "[语音]",
       ),
+      ext: _getMsgExt(),
     );
   }
 
@@ -192,6 +212,7 @@ class ChatLogic extends GetxController {
         title: HiveTool.getNickname(),
         content: "[视频]",
       ),
+      ext: _getMsgExt(),
     );
   }
 
@@ -203,6 +224,7 @@ class ChatLogic extends GetxController {
         title: HiveTool.getNickname(),
         content: "[文件]",
       ),
+      ext: _getMsgExt(),
     );
   }
 
@@ -214,6 +236,7 @@ class ChatLogic extends GetxController {
         title: HiveTool.getNickname(),
         content: "[位置]",
       ),
+      ext: _getMsgExt(),
     );
   }
 
@@ -500,7 +523,14 @@ class ChatPage extends StatelessWidget {
                   height: 40,
                 ),
               ),
-              Expanded(child: _buildInput(logic)),
+              Expanded(
+                child: Column(
+                  children: [
+                    _buildReply(logic),
+                    _buildInput(logic),
+                  ],
+                ),
+              ),
               GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () {
@@ -543,6 +573,86 @@ class ChatPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget _buildReply(ChatLogic logic) {
+    return Obx(() {
+      if (logic.replyMsgMap.isEmpty) {
+        return const SizedBox();
+      }
+      MsgModel msgModel = logic.replyMsgMap["msgModel"];
+      String nickname = "";
+      if (msgModel.senderInfo.isNotEmpty) {
+        Map senderInfo = json.decode(msgModel.senderInfo);
+        if (senderInfo["nickname"] != null) {
+          nickname = "${senderInfo["nickname"]}：";
+        }
+      }
+      String content = "";
+      int contentType = msgModel.contentType;
+      if (contentType == MsgContentType.text) {
+        content = msgModel.content;
+      } else if (contentType == MsgContentType.image) {
+        content = "[图片]";
+      } else if (contentType == MsgContentType.audio) {
+        content = "[语音]";
+      } else if (contentType == MsgContentType.video) {
+        content = "[视频]";
+      } else if (contentType == MsgContentType.file) {
+        content = "[文件]";
+      } else if (contentType == MsgContentType.location) {
+        content = "[位置]";
+      } else if (contentType == MsgContentType.card) {
+        content = "[名片]";
+      } else if (contentType == MsgContentType.merge) {
+        content = "[合并消息]";
+      } else if (contentType == MsgContentType.emoji) {
+        content = "[表情消息]";
+      } else if (contentType == MsgContentType.command) {
+        content = "[命令消息]";
+      } else if (contentType == MsgContentType.richText) {
+        content = "[富文本消息]";
+      } else if (contentType == MsgContentType.markdown) {
+        content = "[标记消息]";
+      } else if (contentType == MsgContentType.custom) {
+        content = "[自定义消息]";
+      }
+      return GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          logic.replyMsgMap.clear();
+        },
+        child: Container(
+          margin: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          height: 25,
+          decoration: BoxDecoration(
+            color: getPlaceholderColor,
+            borderRadius: BorderRadius.circular(12.5),
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  "$nickname$content",
+                  style: const TextStyle(
+                    color: getHintBlack,
+                    fontSize: 12,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              const Icon(
+                Icons.clear,
+                size: 18,
+                color: getHintBlack,
+              ),
+            ],
+          ),
+        ),
+      );
+    });
   }
 
   Widget _buildInput(ChatLogic logic) {

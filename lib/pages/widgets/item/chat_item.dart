@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
+import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 enum ChatDirection {
@@ -196,6 +197,105 @@ class ChatTipItem<T extends GetxController> extends StatelessWidget {
   }
 }
 
+class ChatReplyItem extends StatelessWidget {
+  final ChatDirection direction;
+  final String ext;
+
+  const ChatReplyItem({
+    Key? key,
+    required this.ext,
+    required this.direction,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (ext.isEmpty) return const SizedBox();
+    Map extMap = json.decode(ext);
+    String replyMsgModel = extMap["replyMsgModel"] ?? "";
+    if (replyMsgModel.isEmpty) return const SizedBox();
+    MsgModel msgModel = MsgModel.fromJson(replyMsgModel);
+    String nickname = "";
+    if (msgModel.senderInfo.isNotEmpty) {
+      Map senderInfo = json.decode(msgModel.senderInfo);
+      if (senderInfo["nickname"] != null) {
+        nickname = "${senderInfo["nickname"]}：";
+      }
+    }
+    String content = "";
+    int contentType = msgModel.contentType;
+    if (contentType == MsgContentType.text) {
+      content = msgModel.content;
+    } else if (contentType == MsgContentType.image) {
+      content = "[图片]";
+    } else if (contentType == MsgContentType.audio) {
+      content = "[语音]";
+    } else if (contentType == MsgContentType.video) {
+      content = "[视频]";
+    } else if (contentType == MsgContentType.file) {
+      content = "[文件]";
+    } else if (contentType == MsgContentType.location) {
+      content = "[位置]";
+    } else if (contentType == MsgContentType.card) {
+      content = "[名片]";
+    } else if (contentType == MsgContentType.merge) {
+      content = "[合并消息]";
+    } else if (contentType == MsgContentType.emoji) {
+      content = "[表情消息]";
+    } else if (contentType == MsgContentType.command) {
+      content = "[命令消息]";
+    } else if (contentType == MsgContentType.richText) {
+      content = "[富文本消息]";
+    } else if (contentType == MsgContentType.markdown) {
+      content = "[标记消息]";
+    } else if (contentType == MsgContentType.custom) {
+      content = "[自定义消息]";
+    }
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        ChatLogic? logic = ChatLogic.logic(msgModel.convId);
+        if (logic == null) return;
+        int index = logic.msgModelList.indexWhere((element) {
+          return element.clientMsgId == msgModel.clientMsgId;
+        });
+        if (index == -1) return;
+        logic.scrollController.sliverController.animateToIndex(
+          index,
+          duration: kThemeAnimationDuration,
+          curve: Curves.linear,
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.only(top: 5),
+        padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+        decoration: BoxDecoration(
+          color: getPlaceholderColor,
+          borderRadius: direction == ChatDirection.left
+              ? const BorderRadius.only(
+                  topRight: Radius.circular(8),
+                  bottomLeft: Radius.circular(8),
+                  bottomRight: Radius.circular(8),
+                )
+              : const BorderRadius.only(
+                  topLeft: Radius.circular(8),
+                  bottomLeft: Radius.circular(8),
+                  bottomRight: Radius.circular(8),
+                ),
+        ),
+        child: ExtendedTextWidget(
+          "$nickname$content",
+          style: const TextStyle(
+            color: getHintBlack,
+            fontSize: 12,
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
+    );
+  }
+}
+
 class ChatTextItem<T extends GetxController> extends StatelessWidget {
   static String getId(String clientMsgId) {
     return "ChatTextItem$clientMsgId";
@@ -298,6 +398,10 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
                           ),
                         );
                       },
+                    ),
+                    ChatReplyItem(
+                      direction: direction,
+                      ext: msgModel.ext,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 5, top: 2, right: 5),

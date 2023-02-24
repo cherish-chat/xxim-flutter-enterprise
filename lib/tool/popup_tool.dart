@@ -92,6 +92,18 @@ class PopupTool {
             shareMsg(contentType, content);
             break;
           case "回复":
+            ChatLogic? logic = ChatLogic.logic(msgModel.convId);
+            if (logic == null) return;
+            logic.replyMsgMap.value = {
+              "msgModel": msgModel,
+            };
+            logic.scrollController.jumpTo(0);
+            logic.inputFocusNode.requestFocus();
+            if (GetPlatform.isMobile) {
+              logic.chatOperate.value = ChatOperate.input;
+            } else {
+              logic.chatOperate.value = ChatOperate.none;
+            }
             break;
           case "撤回":
             MsgModel? model = await XXIM.instance.msgManager.sendRevokeMsg(

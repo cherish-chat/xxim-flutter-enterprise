@@ -331,7 +331,7 @@ class ContactPage extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: Row(
           children: [
             ClipRRect(
@@ -383,7 +383,7 @@ class ContactPage extends StatelessWidget {
       padding: const EdgeInsets.only(left: 16),
       alignment: Alignment.centerLeft,
       width: Get.width,
-      height: 45,
+      height: 35,
       color: Colors.white,
       child: Text(
         tag,
