@@ -385,106 +385,115 @@ class ChatPage extends StatelessWidget {
         tag: logic.tag,
         id: "list",
         builder: (logic) {
-          return FlutterListView.separated(
+          return FlutterListView(
             controller: logic.scrollController,
             reverse: true,
-            itemBuilder: (context, index) {
-              MsgModel msgModel = logic.msgModelList[index];
-              ChatDirection direction = ChatDirection.left;
-              if (msgModel.senderId == HiveTool.getUserId()) {
-                direction = ChatDirection.right;
-              }
-              int contentType = msgModel.contentType;
-              Widget widget = const SizedBox();
-              if (contentType == MsgContentType.tip) {
-                widget = ChatTipItem<ChatLogic>(
-                  key: ValueKey(msgModel.clientMsgId),
-                  tag: logic.tag,
-                  direction: direction,
-                  msgModel: msgModel,
-                );
-              } else if (contentType == MsgContentType.text) {
-                widget = ChatTextItem<ChatLogic>(
-                  key: ValueKey(msgModel.clientMsgId),
-                  tag: logic.tag,
-                  direction: direction,
-                  msgModel: msgModel,
-                  onRetry: () {
-                    logic.sendMsgList([msgModel]);
-                  },
-                );
-              } else if (contentType == MsgContentType.image) {
-                widget = ChatImageItem<ChatLogic>(
-                  key: ValueKey(msgModel.clientMsgId),
-                  tag: logic.tag,
-                  direction: direction,
-                  msgModel: msgModel,
-                  onRetry: () {
-                    logic.sendMsgList([msgModel]);
-                  },
-                );
-              } else if (contentType == MsgContentType.audio) {
-                widget = ChatAudioItem<ChatLogic>(
-                  key: ValueKey(msgModel.clientMsgId),
-                  tag: logic.tag,
-                  direction: direction,
-                  msgModel: msgModel,
-                  onRetry: () {
-                    logic.sendMsgList([msgModel]);
-                  },
-                );
-              } else if (contentType == MsgContentType.video) {
-                widget = ChatVideoItem<ChatLogic>(
-                  key: ValueKey(msgModel.clientMsgId),
-                  tag: logic.tag,
-                  direction: direction,
-                  msgModel: msgModel,
-                  onRetry: () {
-                    logic.sendMsgList([msgModel]);
-                  },
-                );
-              } else if (contentType == MsgContentType.file) {
-                widget = ChatFileItem<ChatLogic>(
-                  key: ValueKey(msgModel.clientMsgId),
-                  tag: logic.tag,
-                  direction: direction,
-                  msgModel: msgModel,
-                  onRetry: () {
-                    logic.sendMsgList([msgModel]);
-                  },
-                );
-              } else if (contentType == MsgContentType.location) {
-                widget = ChatLocationItem<ChatLogic>(
-                  key: ValueKey(msgModel.clientMsgId),
-                  tag: logic.tag,
-                  direction: direction,
-                  msgModel: msgModel,
-                  onRetry: () {
-                    logic.sendMsgList([msgModel]);
-                  },
-                );
-              }
-              return Padding(
-                padding: EdgeInsets.only(bottom: index == 0 ? 8 : 0),
-                child: widget,
-              );
-            },
-            separatorBuilder: (context, index) {
-              MsgModel msgModel = logic.msgModelList[index];
-              MsgModel? lastMsgModel = logic.msgModelList[index + 1];
-              // ignore: unnecessary_null_comparison
-              if (lastMsgModel != null) {
-                int time = msgModel.serverTime;
-                int lastTime = lastMsgModel.serverTime;
-                if ((lastTime - time).abs() >= 300000) {
-                  return ChatTimeItem(
-                    timestamp: time,
+            delegate: FlutterListViewDelegate(
+              (context, index) {
+                MsgModel msgModel = logic.msgModelList[index];
+                Widget separator = const SizedBox(height: 16);
+                try {
+                  MsgModel? lastMsgModel = logic.msgModelList[index + 1];
+                  int time = msgModel.serverTime;
+                  int lastTime = lastMsgModel.serverTime;
+                  if ((lastTime - time).abs() >= 300000) {
+                    separator = ChatTimeItem(
+                      timestamp: time,
+                    );
+                  }
+                } catch (_) {}
+                ChatDirection direction = ChatDirection.left;
+                if (msgModel.senderId == HiveTool.getUserId()) {
+                  direction = ChatDirection.right;
+                }
+                int contentType = msgModel.contentType;
+                Widget widget = const SizedBox();
+                if (contentType == MsgContentType.tip) {
+                  widget = ChatTipItem<ChatLogic>(
+                    key: ValueKey(msgModel.clientMsgId),
+                    tag: logic.tag,
+                    direction: direction,
+                    msgModel: msgModel,
+                  );
+                } else if (contentType == MsgContentType.text) {
+                  widget = ChatTextItem<ChatLogic>(
+                    key: ValueKey(msgModel.clientMsgId),
+                    tag: logic.tag,
+                    direction: direction,
+                    msgModel: msgModel,
+                    onRetry: () {
+                      logic.sendMsgList([msgModel]);
+                    },
+                  );
+                } else if (contentType == MsgContentType.image) {
+                  widget = ChatImageItem<ChatLogic>(
+                    key: ValueKey(msgModel.clientMsgId),
+                    tag: logic.tag,
+                    direction: direction,
+                    msgModel: msgModel,
+                    onRetry: () {
+                      logic.sendMsgList([msgModel]);
+                    },
+                  );
+                } else if (contentType == MsgContentType.audio) {
+                  widget = ChatAudioItem<ChatLogic>(
+                    key: ValueKey(msgModel.clientMsgId),
+                    tag: logic.tag,
+                    direction: direction,
+                    msgModel: msgModel,
+                    onRetry: () {
+                      logic.sendMsgList([msgModel]);
+                    },
+                  );
+                } else if (contentType == MsgContentType.video) {
+                  widget = ChatVideoItem<ChatLogic>(
+                    key: ValueKey(msgModel.clientMsgId),
+                    tag: logic.tag,
+                    direction: direction,
+                    msgModel: msgModel,
+                    onRetry: () {
+                      logic.sendMsgList([msgModel]);
+                    },
+                  );
+                } else if (contentType == MsgContentType.file) {
+                  widget = ChatFileItem<ChatLogic>(
+                    key: ValueKey(msgModel.clientMsgId),
+                    tag: logic.tag,
+                    direction: direction,
+                    msgModel: msgModel,
+                    onRetry: () {
+                      logic.sendMsgList([msgModel]);
+                    },
+                  );
+                } else if (contentType == MsgContentType.location) {
+                  widget = ChatLocationItem<ChatLogic>(
+                    key: ValueKey(msgModel.clientMsgId),
+                    tag: logic.tag,
+                    direction: direction,
+                    msgModel: msgModel,
+                    onRetry: () {
+                      logic.sendMsgList([msgModel]);
+                    },
                   );
                 }
-              }
-              return const SizedBox(height: 16);
-            },
-            itemCount: logic.msgModelList.length,
+                return Padding(
+                  padding: EdgeInsets.only(bottom: index == 0 ? 8 : 0),
+                  child: Column(
+                    children: [
+                      separator,
+                      widget,
+                    ],
+                  ),
+                );
+              },
+              childCount: logic.msgModelList.length,
+              // onItemKey: (index) {
+              //   return logic.msgModelList[index].clientMsgId;
+              // },
+              // keepPosition: true,
+              // keepPositionOffset: 100,
+              // firstItemAlign: FirstItemAlign.end,
+            ),
           );
         },
       ),

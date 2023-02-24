@@ -99,40 +99,42 @@ class NewsPage extends StatelessWidget {
       id: "list",
       builder: (logic) {
         return SlidableAutoCloseBehavior(
-          child: FlutterListView.builder(
-            itemBuilder: (context, index) {
-              ConvModel convModel = logic.convModelList[index];
-              UserBaseInfo? userInfo;
-              GroupBaseInfo? groupInfo;
-              if (SDKTool.isSingleConv(convModel.convId)) {
-                List<UserBaseInfo> userInfoList =
-                    MenuLogic.logic()?.userInfoList ?? [];
-                if (userInfoList.isNotEmpty) {
-                  userInfo = userInfoList.where((element) {
-                    return element.id ==
-                        SDKTool.getSingleId(
-                          convModel.convId,
-                          HiveTool.getUserId(),
-                        );
-                  }).first;
+          child: FlutterListView(
+            delegate: FlutterListViewDelegate(
+              (context, index) {
+                ConvModel convModel = logic.convModelList[index];
+                UserBaseInfo? userInfo;
+                GroupBaseInfo? groupInfo;
+                if (SDKTool.isSingleConv(convModel.convId)) {
+                  List<UserBaseInfo> userInfoList =
+                      MenuLogic.logic()?.userInfoList ?? [];
+                  if (userInfoList.isNotEmpty) {
+                    userInfo = userInfoList.where((element) {
+                      return element.id ==
+                          SDKTool.getSingleId(
+                            convModel.convId,
+                            HiveTool.getUserId(),
+                          );
+                    }).first;
+                  }
+                } else if (SDKTool.isGroupConv(convModel.convId)) {
+                  List<GroupBaseInfo> groupInfoList =
+                      MenuLogic.logic()?.groupInfoList ?? [];
+                  if (groupInfoList.isNotEmpty) {
+                    groupInfo = groupInfoList.where((element) {
+                      return element.id == SDKTool.getGroupId(convModel.convId);
+                    }).first;
+                  }
                 }
-              } else if (SDKTool.isGroupConv(convModel.convId)) {
-                List<GroupBaseInfo> groupInfoList =
-                    MenuLogic.logic()?.groupInfoList ?? [];
-                if (groupInfoList.isNotEmpty) {
-                  groupInfo = groupInfoList.where((element) {
-                    return element.id == SDKTool.getGroupId(convModel.convId);
-                  }).first;
-                }
-              }
-              return _buildItem(
-                logic,
-                convModel,
-                userInfo: userInfo,
-                groupInfo: groupInfo,
-              );
-            },
-            itemCount: logic.convModelList.length,
+                return _buildItem(
+                  logic,
+                  convModel,
+                  userInfo: userInfo,
+                  groupInfo: groupInfo,
+                );
+              },
+              childCount: logic.convModelList.length,
+            ),
           ),
         );
       },

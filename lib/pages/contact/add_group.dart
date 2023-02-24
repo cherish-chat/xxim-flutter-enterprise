@@ -139,11 +139,13 @@ class AddGroupPage extends StatelessWidget {
     return GetBuilder<AddGroupLogic>(
       id: "list",
       builder: (logic) {
-        return FlutterListView.builder(
-          itemBuilder: (context, index) {
-            return _buildItem(logic, logic.list[index]);
-          },
-          itemCount: logic.list.length,
+        return FlutterListView(
+          delegate: FlutterListViewDelegate(
+            (context, index) {
+              return _buildItem(logic, logic.list[index]);
+            },
+            childCount: logic.list.length,
+          ),
         );
       },
     );

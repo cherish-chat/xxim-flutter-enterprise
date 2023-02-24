@@ -124,7 +124,6 @@ class ContactPage extends StatelessWidget {
       id: "list",
       builder: (logic) {
         return AzListView(
-          physics: const ClampingScrollPhysics(),
           data: logic.contactList,
           itemCount: logic.contactList.length,
           itemBuilder: (context, index) {

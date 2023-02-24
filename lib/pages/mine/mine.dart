@@ -90,7 +90,6 @@ class MinePage extends StatelessWidget {
         _buildAppBar(logic),
         Expanded(
           child: ListView(
-            physics: const ClampingScrollPhysics(),
             padding: EdgeInsets.zero,
             children: [
               _buildInfo(logic),

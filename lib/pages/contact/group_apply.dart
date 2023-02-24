@@ -157,11 +157,13 @@ class GroupApplyPage extends StatelessWidget {
           enablePullUp: true,
           onRefresh: logic.onRefresh,
           onLoading: logic.onLoadMore,
-          child: FlutterListView.builder(
-            itemBuilder: (context, index) {
-              return _buildItem(logic, logic.list[index]);
-            },
-            itemCount: logic.list.length,
+          child: FlutterListView(
+            delegate: FlutterListViewDelegate(
+              (context, index) {
+                return _buildItem(logic, logic.list[index]);
+              },
+              childCount: logic.list.length,
+            ),
           ),
         );
       },

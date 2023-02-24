@@ -70,11 +70,13 @@ class GroupChatPage extends StatelessWidget {
     return GetBuilder<GroupChatLogic>(
       id: "list",
       builder: (logic) {
-        return FlutterListView.builder(
-          itemBuilder: (context, index) {
-            return _buildItem(logic.groupInfoList[index]);
-          },
-          itemCount: logic.groupInfoList.length,
+        return FlutterListView(
+          delegate: FlutterListViewDelegate(
+            (context, index) {
+              return _buildItem(logic.groupInfoList[index]);
+            },
+            childCount: logic.groupInfoList.length,
+          ),
         );
       },
     );
