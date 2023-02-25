@@ -290,7 +290,6 @@ class ChatReplyItem extends StatelessWidget {
           ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          selectionEnabled: true,
         ),
       ),
     );
@@ -395,7 +394,6 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
                                     : getTextWhite,
                                 fontSize: 14,
                               ),
-                              selectionEnabled: true,
                             ),
                           ),
                         );
