@@ -26,6 +26,9 @@ class HiveTool {
   static const String _avatarUrl = "avatarUrl";
   static const String _nickname = "nickname";
 
+  static const String _applyFriendCount = "applyFriendCount";
+  static const String _applyGroupCount = "applyGroupCount";
+
   static String getUserId() => _userBox.get(_userId, defaultValue: "");
 
   static String getToken() => _userBox.get(_token, defaultValue: "");
@@ -40,6 +43,18 @@ class HiveTool {
   static void setNickname(String nickname) => _userBox.put(_nickname, nickname);
 
   static bool isLogin() => getUserId().isNotEmpty && getToken().isNotEmpty;
+
+  static int getApplyFriendCount() =>
+      _userBox.get(_applyFriendCount, defaultValue: 0);
+
+  static void setApplyFriendCount(int count) =>
+      _userBox.put(_applyFriendCount, count);
+
+  static int getApplyGroupCount() =>
+      _userBox.get(_applyGroupCount, defaultValue: 0);
+
+  static void setApplyGroupCount(int count) =>
+      _userBox.put(_applyGroupCount, count);
 
   static void login(
     String userId,

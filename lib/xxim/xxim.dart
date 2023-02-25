@@ -5,6 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:protobuf/protobuf.dart';
 import 'package:xxim_flutter_enterprise/main.dart'
     hide SuccessCallback, ErrorCallback;
+import 'package:xxim_flutter_enterprise/pages/contact/contact.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
@@ -110,6 +111,20 @@ class XXIM {
             return true;
           },
           onReceive: (noticeModel) async {
+            if (noticeModel.contentType == XXIMCommon.applyToBeFriend) {
+              int applyFriendCount = HiveTool.getApplyFriendCount();
+              ++applyFriendCount;
+              HiveTool.setApplyFriendCount(applyFriendCount);
+              ContactLogic.logic()?.applyFriendCount.value = applyFriendCount;
+            } else if (noticeModel.contentType ==
+                XXIMCommon.applyToBeGroupMember) {
+              int applyGroupCount = HiveTool.getApplyGroupCount();
+              ++applyGroupCount;
+              HiveTool.setApplyGroupCount(applyGroupCount);
+              ContactLogic.logic()?.applyGroupCount.value = applyGroupCount;
+            } else {
+              MenuLogic.logic()?.loadConvIdList();
+            }
             return true;
           },
         ),

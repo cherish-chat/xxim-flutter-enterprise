@@ -1,4 +1,4 @@
-class NoticeContentType {
+class XXIMCommon {
   static const int read = 1; // 已读
   static const int edit = 2; // 编辑
 

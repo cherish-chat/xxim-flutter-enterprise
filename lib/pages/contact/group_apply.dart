@@ -76,6 +76,7 @@ class GroupApplyLogic extends GetxController {
       resp: HandleGroupApplyResp.create,
       onSuccess: (data) {
         GetLoadingDialog.hide();
+        MenuLogic.logic()?.loadConvIdList();
         onRefresh();
       },
       onError: (code, error) {
@@ -95,6 +96,7 @@ class GroupApplyLogic extends GetxController {
       resp: HandleGroupApplyResp.create,
       onSuccess: (data) {
         GetLoadingDialog.hide();
+        MenuLogic.logic()?.loadConvIdList();
         onRefresh();
       },
       onError: (code, error) {

@@ -40,7 +40,17 @@ class ContactModel extends ISuspensionBean {
 class ContactLogic extends GetxController {
   static ContactLogic? logic() => Tool.capture(Get.find);
 
+  RxInt applyFriendCount = 0.obs;
+  RxInt applyGroupCount = 0.obs;
+
   List<ContactModel> contactList = [];
+
+  @override
+  void onInit() {
+    applyFriendCount.value = HiveTool.getApplyFriendCount();
+    applyGroupCount.value = HiveTool.getApplyGroupCount();
+    super.onInit();
+  }
 
   @override
   void onReady() {
@@ -316,31 +326,39 @@ class ContactPage extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          buildItem(
-            "assets/images/ic_new_friends_30.webp",
-            "好友申请",
-            count: 0,
-            onTap: () {
-              MenuLogic? logic = MenuLogic.logic();
-              if (logic == null) return;
-              logic.sliderKey?.currentState?.closeSlider();
-              logic.getDelegate?.toNamed(
-                Routes.friendApply,
-              );
-            },
+          Obx(
+            () => buildItem(
+              "assets/images/ic_new_friends_30.webp",
+              "好友申请",
+              count: logic.applyFriendCount.value,
+              onTap: () {
+                MenuLogic? menuLogic = MenuLogic.logic();
+                if (menuLogic == null) return;
+                menuLogic.sliderKey?.currentState?.closeSlider();
+                menuLogic.getDelegate?.toNamed(
+                  Routes.friendApply,
+                );
+                logic.applyFriendCount.value = 0;
+                HiveTool.setApplyFriendCount(0);
+              },
+            ),
           ),
-          buildItem(
-            "assets/images/ic_new_group_30.webp",
-            "群聊申请",
-            count: 0,
-            onTap: () {
-              MenuLogic? logic = MenuLogic.logic();
-              if (logic == null) return;
-              logic.sliderKey?.currentState?.closeSlider();
-              logic.getDelegate?.toNamed(
-                Routes.groupApply,
-              );
-            },
+          Obx(
+            () => buildItem(
+              "assets/images/ic_new_group_30.webp",
+              "群聊申请",
+              count: logic.applyGroupCount.value,
+              onTap: () {
+                MenuLogic? menuLogic = MenuLogic.logic();
+                if (menuLogic == null) return;
+                menuLogic.sliderKey?.currentState?.closeSlider();
+                menuLogic.getDelegate?.toNamed(
+                  Routes.groupApply,
+                );
+                logic.applyGroupCount.value = 0;
+                HiveTool.setApplyGroupCount(0);
+              },
+            ),
           ),
           buildItem(
             "assets/images/ic_group_30.webp",

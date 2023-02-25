@@ -78,6 +78,7 @@ class FriendApplyLogic extends GetxController {
       resp: RejectAddFriendResp.create,
       onSuccess: (data) {
         GetLoadingDialog.hide();
+        MenuLogic.logic()?.loadConvIdList();
         onRefresh();
       },
       onError: (code, error) {
@@ -100,6 +101,7 @@ class FriendApplyLogic extends GetxController {
       resp: AcceptAddFriendResp.create,
       onSuccess: (data) {
         GetLoadingDialog.hide();
+        MenuLogic.logic()?.loadConvIdList();
         onRefresh();
       },
       onError: (code, error) {
