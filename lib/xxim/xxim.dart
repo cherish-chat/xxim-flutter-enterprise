@@ -51,6 +51,7 @@ class XXIM {
     _sdk = XXIMSDK()
       ..init(
         directory: directory,
+        rsaPublicKey: rsaPublicKey,
         cxnParams: await XXIMTool.getCxnParams(),
         pullMsgCount: 20,
         isarSchemas: [],

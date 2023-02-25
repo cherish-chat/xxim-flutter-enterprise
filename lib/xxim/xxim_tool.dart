@@ -62,6 +62,8 @@ class XXIMTool {
       appVersion: appVersion,
       language: language,
       networkUsed: networkUsed,
+      aesKey: Tool.getUUId(),
+      aesIv: Tool.getUUId().substring(8, 24),
     );
   }
 }
