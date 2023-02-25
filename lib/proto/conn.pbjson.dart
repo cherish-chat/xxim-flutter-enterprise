@@ -59,8 +59,14 @@ const ConnParam$json = const {
     const {'1': 'appVersion', '3': 11, '4': 1, '5': 9, '10': 'appVersion'},
     const {'1': 'language', '3': 12, '4': 1, '5': 9, '10': 'language'},
     const {'1': 'timestamp', '3': 13, '4': 1, '5': 3, '10': 'timestamp'},
+    const {'1': 'aesKey', '3': 14, '4': 1, '5': 9, '9': 0, '10': 'aesKey', '17': true},
+    const {'1': 'aesIv', '3': 15, '4': 1, '5': 9, '9': 1, '10': 'aesIv', '17': true},
   ],
   '3': const [ConnParam_HeadersEntry$json],
+  '8': const [
+    const {'1': '_aesKey'},
+    const {'1': '_aesIv'},
+  ],
 };
 
 @$core.Deprecated('Use connParamDescriptor instead')
@@ -74,7 +80,7 @@ const ConnParam_HeadersEntry$json = const {
 };
 
 /// Descriptor for `ConnParam`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List connParamDescriptor = $convert.base64Decode('CglDb25uUGFyYW0SFgoGdXNlcklkGAEgASgJUgZ1c2VySWQSFAoFdG9rZW4YAiABKAlSBXRva2VuEhoKCGRldmljZUlkGAMgASgJUghkZXZpY2VJZBIaCghwbGF0Zm9ybRgEIAEoCVIIcGxhdGZvcm0SEAoDaXBzGAUgASgJUgNpcHMSIAoLbmV0d29ya1VzZWQYBiABKAlSC25ldHdvcmtVc2VkEjQKB2hlYWRlcnMYByADKAsyGi5wYi5Db25uUGFyYW0uSGVhZGVyc0VudHJ5UgdoZWFkZXJzEhQKBXBvZElwGAggASgJUgVwb2RJcBIgCgtkZXZpY2VNb2RlbBgJIAEoCVILZGV2aWNlTW9kZWwSHAoJb3NWZXJzaW9uGAogASgJUglvc1ZlcnNpb24SHgoKYXBwVmVyc2lvbhgLIAEoCVIKYXBwVmVyc2lvbhIaCghsYW5ndWFnZRgMIAEoCVIIbGFuZ3VhZ2USHAoJdGltZXN0YW1wGA0gASgDUgl0aW1lc3RhbXAaOgoMSGVhZGVyc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgJUgV2YWx1ZToCOAE=');
+final $typed_data.Uint8List connParamDescriptor = $convert.base64Decode('CglDb25uUGFyYW0SFgoGdXNlcklkGAEgASgJUgZ1c2VySWQSFAoFdG9rZW4YAiABKAlSBXRva2VuEhoKCGRldmljZUlkGAMgASgJUghkZXZpY2VJZBIaCghwbGF0Zm9ybRgEIAEoCVIIcGxhdGZvcm0SEAoDaXBzGAUgASgJUgNpcHMSIAoLbmV0d29ya1VzZWQYBiABKAlSC25ldHdvcmtVc2VkEjQKB2hlYWRlcnMYByADKAsyGi5wYi5Db25uUGFyYW0uSGVhZGVyc0VudHJ5UgdoZWFkZXJzEhQKBXBvZElwGAggASgJUgVwb2RJcBIgCgtkZXZpY2VNb2RlbBgJIAEoCVILZGV2aWNlTW9kZWwSHAoJb3NWZXJzaW9uGAogASgJUglvc1ZlcnNpb24SHgoKYXBwVmVyc2lvbhgLIAEoCVIKYXBwVmVyc2lvbhIaCghsYW5ndWFnZRgMIAEoCVIIbGFuZ3VhZ2USHAoJdGltZXN0YW1wGA0gASgDUgl0aW1lc3RhbXASGwoGYWVzS2V5GA4gASgJSABSBmFlc0tleYgBARIZCgVhZXNJdhgPIAEoCUgBUgVhZXNJdogBARo6CgxIZWFkZXJzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AUIJCgdfYWVzS2V5QggKBl9hZXNJdg==');
 @$core.Deprecated('Use getUserConnReqDescriptor instead')
 const GetUserConnReq$json = const {
   '1': 'GetUserConnReq',
@@ -182,12 +188,18 @@ const SetCxnParamsReq$json = const {
     const {'1': 'appVersion', '3': 6, '4': 1, '5': 9, '10': 'appVersion'},
     const {'1': 'language', '3': 7, '4': 1, '5': 9, '10': 'language'},
     const {'1': 'networkUsed', '3': 8, '4': 1, '5': 9, '10': 'networkUsed'},
+    const {'1': 'aesKey', '3': 9, '4': 1, '5': 12, '9': 0, '10': 'aesKey', '17': true},
+    const {'1': 'aesIv', '3': 10, '4': 1, '5': 12, '9': 1, '10': 'aesIv', '17': true},
     const {'1': 'ext', '3': 11, '4': 1, '5': 12, '10': 'ext'},
+  ],
+  '8': const [
+    const {'1': '_aesKey'},
+    const {'1': '_aesIv'},
   ],
 };
 
 /// Descriptor for `SetCxnParamsReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List setCxnParamsReqDescriptor = $convert.base64Decode('Cg9TZXRDeG5QYXJhbXNSZXESHAoJcGFja2FnZUlkGAEgASgJUglwYWNrYWdlSWQSGgoIcGxhdGZvcm0YAiABKAlSCHBsYXRmb3JtEhoKCGRldmljZUlkGAMgASgJUghkZXZpY2VJZBIgCgtkZXZpY2VNb2RlbBgEIAEoCVILZGV2aWNlTW9kZWwSHAoJb3NWZXJzaW9uGAUgASgJUglvc1ZlcnNpb24SHgoKYXBwVmVyc2lvbhgGIAEoCVIKYXBwVmVyc2lvbhIaCghsYW5ndWFnZRgHIAEoCVIIbGFuZ3VhZ2USIAoLbmV0d29ya1VzZWQYCCABKAlSC25ldHdvcmtVc2VkEhAKA2V4dBgLIAEoDFIDZXh0');
+final $typed_data.Uint8List setCxnParamsReqDescriptor = $convert.base64Decode('Cg9TZXRDeG5QYXJhbXNSZXESHAoJcGFja2FnZUlkGAEgASgJUglwYWNrYWdlSWQSGgoIcGxhdGZvcm0YAiABKAlSCHBsYXRmb3JtEhoKCGRldmljZUlkGAMgASgJUghkZXZpY2VJZBIgCgtkZXZpY2VNb2RlbBgEIAEoCVILZGV2aWNlTW9kZWwSHAoJb3NWZXJzaW9uGAUgASgJUglvc1ZlcnNpb24SHgoKYXBwVmVyc2lvbhgGIAEoCVIKYXBwVmVyc2lvbhIaCghsYW5ndWFnZRgHIAEoCVIIbGFuZ3VhZ2USIAoLbmV0d29ya1VzZWQYCCABKAlSC25ldHdvcmtVc2VkEhsKBmFlc0tleRgJIAEoDEgAUgZhZXNLZXmIAQESGQoFYWVzSXYYCiABKAxIAVIFYWVzSXaIAQESEAoDZXh0GAsgASgMUgNleHRCCQoHX2Flc0tleUIICgZfYWVzSXY=');
 @$core.Deprecated('Use setCxnParamsRespDescriptor instead')
 const SetCxnParamsResp$json = const {
   '1': 'SetCxnParamsResp',
@@ -199,12 +211,18 @@ const SetCxnParamsResp$json = const {
     const {'1': 'appVersion', '3': 5, '4': 1, '5': 9, '10': 'appVersion'},
     const {'1': 'language', '3': 6, '4': 1, '5': 9, '10': 'language'},
     const {'1': 'networkUsed', '3': 7, '4': 1, '5': 9, '10': 'networkUsed'},
+    const {'1': 'aesKey', '3': 8, '4': 1, '5': 12, '9': 0, '10': 'aesKey', '17': true},
+    const {'1': 'aesIv', '3': 9, '4': 1, '5': 12, '9': 1, '10': 'aesIv', '17': true},
     const {'1': 'ext', '3': 11, '4': 1, '5': 12, '10': 'ext'},
+  ],
+  '8': const [
+    const {'1': '_aesKey'},
+    const {'1': '_aesIv'},
   ],
 };
 
 /// Descriptor for `SetCxnParamsResp`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List setCxnParamsRespDescriptor = $convert.base64Decode('ChBTZXRDeG5QYXJhbXNSZXNwEhoKCHBsYXRmb3JtGAEgASgJUghwbGF0Zm9ybRIaCghkZXZpY2VJZBgCIAEoCVIIZGV2aWNlSWQSIAoLZGV2aWNlTW9kZWwYAyABKAlSC2RldmljZU1vZGVsEhwKCW9zVmVyc2lvbhgEIAEoCVIJb3NWZXJzaW9uEh4KCmFwcFZlcnNpb24YBSABKAlSCmFwcFZlcnNpb24SGgoIbGFuZ3VhZ2UYBiABKAlSCGxhbmd1YWdlEiAKC25ldHdvcmtVc2VkGAcgASgJUgtuZXR3b3JrVXNlZBIQCgNleHQYCyABKAxSA2V4dA==');
+final $typed_data.Uint8List setCxnParamsRespDescriptor = $convert.base64Decode('ChBTZXRDeG5QYXJhbXNSZXNwEhoKCHBsYXRmb3JtGAEgASgJUghwbGF0Zm9ybRIaCghkZXZpY2VJZBgCIAEoCVIIZGV2aWNlSWQSIAoLZGV2aWNlTW9kZWwYAyABKAlSC2RldmljZU1vZGVsEhwKCW9zVmVyc2lvbhgEIAEoCVIJb3NWZXJzaW9uEh4KCmFwcFZlcnNpb24YBSABKAlSCmFwcFZlcnNpb24SGgoIbGFuZ3VhZ2UYBiABKAlSCGxhbmd1YWdlEiAKC25ldHdvcmtVc2VkGAcgASgJUgtuZXR3b3JrVXNlZBIbCgZhZXNLZXkYCCABKAxIAFIGYWVzS2V5iAEBEhkKBWFlc0l2GAkgASgMSAFSBWFlc0l2iAEBEhAKA2V4dBgLIAEoDFIDZXh0QgkKB19hZXNLZXlCCAoGX2Flc0l2');
 @$core.Deprecated('Use setUserParamsReqDescriptor instead')
 const SetUserParamsReq$json = const {
   '1': 'SetUserParamsReq',

@@ -107,6 +107,7 @@ class CreateGroupResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateGroupResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
+    ..aOM<GroupBaseInfo>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'info', subBuilder: GroupBaseInfo.create)
     ..hasRequiredFields = false
   ;
 
@@ -114,6 +115,7 @@ class CreateGroupResp extends $pb.GeneratedMessage {
   factory CreateGroupResp({
     $0.CommonResp? commonResp,
     $core.String? groupId,
+    GroupBaseInfo? info,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -121,6 +123,9 @@ class CreateGroupResp extends $pb.GeneratedMessage {
     }
     if (groupId != null) {
       _result.groupId = groupId;
+    }
+    if (info != null) {
+      _result.info = info;
     }
     return _result;
   }
@@ -164,6 +169,17 @@ class CreateGroupResp extends $pb.GeneratedMessage {
   $core.bool hasGroupId() => $_has(1);
   @$pb.TagNumber(2)
   void clearGroupId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  GroupBaseInfo get info => $_getN(2);
+  @$pb.TagNumber(3)
+  set info(GroupBaseInfo v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasInfo() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearInfo() => clearField(3);
+  @$pb.TagNumber(3)
+  GroupBaseInfo ensureInfo() => $_ensure(2);
 }
 
 class GetGroupHomeReq extends $pb.GeneratedMessage {
@@ -4195,6 +4211,7 @@ class GroupModel extends $pb.GeneratedMessage {
     ..aOB(18, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'anonymousChat', protoName: 'anonymousChat')
     ..aOM<GroupModel_JoinGroupOption>(19, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'joinGroupOption', protoName: 'joinGroupOption', subBuilder: GroupModel_JoinGroupOption.create)
     ..aOS(20, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'adminRemark', protoName: 'adminRemark')
+    ..e<AllMuterType>(21, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'allMuterType', $pb.PbFieldType.OE, protoName: 'allMuterType', defaultOrMaker: AllMuterType.ALL, valueOf: AllMuterType.valueOf, enumValues: AllMuterType.values)
     ..hasRequiredFields = false
   ;
 
@@ -4220,6 +4237,7 @@ class GroupModel extends $pb.GeneratedMessage {
     $core.bool? anonymousChat,
     GroupModel_JoinGroupOption? joinGroupOption,
     $core.String? adminRemark,
+    AllMuterType? allMuterType,
   }) {
     final _result = create();
     if (id != null) {
@@ -4281,6 +4299,9 @@ class GroupModel extends $pb.GeneratedMessage {
     }
     if (adminRemark != null) {
       _result.adminRemark = adminRemark;
+    }
+    if (allMuterType != null) {
+      _result.allMuterType = allMuterType;
     }
     return _result;
   }
@@ -4480,6 +4501,15 @@ class GroupModel extends $pb.GeneratedMessage {
   $core.bool hasAdminRemark() => $_has(19);
   @$pb.TagNumber(20)
   void clearAdminRemark() => clearField(20);
+
+  @$pb.TagNumber(21)
+  AllMuterType get allMuterType => $_getN(20);
+  @$pb.TagNumber(21)
+  set allMuterType(AllMuterType v) { setField(21, v); }
+  @$pb.TagNumber(21)
+  $core.bool hasAllMuterType() => $_has(20);
+  @$pb.TagNumber(21)
+  void clearAllMuterType() => clearField(21);
 }
 
 class GetAllGroupModelReq extends $pb.GeneratedMessage {

@@ -47,6 +47,17 @@ const GroupApplyHandleResult$json = const {
 
 /// Descriptor for `GroupApplyHandleResult`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List groupApplyHandleResultDescriptor = $convert.base64Decode('ChZHcm91cEFwcGx5SGFuZGxlUmVzdWx0Eg0KCVVOSEFORExFRBAAEgkKBUFHUkVFEAESCgoGUkVKRUNUEAI=');
+@$core.Deprecated('Use allMuterTypeDescriptor instead')
+const AllMuterType$json = const {
+  '1': 'AllMuterType',
+  '2': const [
+    const {'1': 'ALL', '2': 0},
+    const {'1': 'NORMAL', '2': 1},
+  ],
+};
+
+/// Descriptor for `AllMuterType`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List allMuterTypeDescriptor = $convert.base64Decode('CgxBbGxNdXRlclR5cGUSBwoDQUxMEAASCgoGTk9STUFMEAE=');
 @$core.Deprecated('Use createGroupReqDescriptor instead')
 const CreateGroupReq$json = const {
   '1': 'CreateGroupReq',
@@ -70,14 +81,16 @@ const CreateGroupResp$json = const {
   '2': const [
     const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
     const {'1': 'groupId', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'groupId', '17': true},
+    const {'1': 'info', '3': 3, '4': 1, '5': 11, '6': '.pb.GroupBaseInfo', '9': 1, '10': 'info', '17': true},
   ],
   '8': const [
     const {'1': '_groupId'},
+    const {'1': '_info'},
   ],
 };
 
 /// Descriptor for `CreateGroupResp`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createGroupRespDescriptor = $convert.base64Decode('Cg9DcmVhdGVHcm91cFJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASHQoHZ3JvdXBJZBgCIAEoCUgAUgdncm91cElkiAEBQgoKCF9ncm91cElk');
+final $typed_data.Uint8List createGroupRespDescriptor = $convert.base64Decode('Cg9DcmVhdGVHcm91cFJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASHQoHZ3JvdXBJZBgCIAEoCUgAUgdncm91cElkiAEBEioKBGluZm8YAyABKAsyES5wYi5Hcm91cEJhc2VJbmZvSAFSBGluZm+IAQFCCgoIX2dyb3VwSWRCBwoFX2luZm8=');
 @$core.Deprecated('Use getGroupHomeReqDescriptor instead')
 const GetGroupHomeReq$json = const {
   '1': 'GetGroupHomeReq',
@@ -795,6 +808,7 @@ const GroupModel$json = const {
     const {'1': 'anonymousChat', '3': 18, '4': 1, '5': 8, '10': 'anonymousChat'},
     const {'1': 'joinGroupOption', '3': 19, '4': 1, '5': 11, '6': '.pb.GroupModel.JoinGroupOption', '10': 'joinGroupOption'},
     const {'1': 'adminRemark', '3': 20, '4': 1, '5': 9, '10': 'adminRemark'},
+    const {'1': 'allMuterType', '3': 21, '4': 1, '5': 14, '6': '.pb.AllMuterType', '10': 'allMuterType'},
   ],
   '3': const [GroupModel_JoinGroupOption$json],
 };
@@ -810,7 +824,7 @@ const GroupModel_JoinGroupOption$json = const {
 };
 
 /// Descriptor for `GroupModel`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List groupModelDescriptor = $convert.base64Decode('CgpHcm91cE1vZGVsEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEhYKBmF2YXRhchgDIAEoCVIGYXZhdGFyEhQKBW93bmVyGAQgASgJUgVvd25lchIaCghtYW5hZ2VycxgFIAMoCVIIbWFuYWdlcnMSHgoKY3JlYXRlVGltZRgGIAEoA1IKY3JlYXRlVGltZRIkCg1jcmVhdGVUaW1lU3RyGAcgASgJUg1jcmVhdGVUaW1lU3RyEiAKC2Rpc21pc3NUaW1lGAggASgDUgtkaXNtaXNzVGltZRImCg5kaXNtaXNzVGltZVN0chgJIAEoCVIOZGlzbWlzc1RpbWVTdHISIAoLZGVzY3JpcHRpb24YCiABKAlSC2Rlc2NyaXB0aW9uEiAKC21lbWJlckNvdW50GAsgASgFUgttZW1iZXJDb3VudBIYCgdhbGxNdXRlGAwgASgIUgdhbGxNdXRlEh4KCnNwZWFrTGltaXQYDSABKAVSCnNwZWFrTGltaXQSHAoJbWF4TWVtYmVyGA4gASgFUgltYXhNZW1iZXISNgoWbWVtYmVyQ2FuU3RhcnRUZW1wQ2hhdBgPIAEoCFIWbWVtYmVyQ2FuU3RhcnRUZW1wQ2hhdBI0ChVtZW1iZXJDYW5JbnZpdGVGcmllbmQYECABKAhSFW1lbWJlckNhbkludml0ZUZyaWVuZBI6ChhuZXdNZW1iZXJIaXN0b3J5TXNnQ291bnQYESABKAVSGG5ld01lbWJlckhpc3RvcnlNc2dDb3VudBIkCg1hbm9ueW1vdXNDaGF0GBIgASgIUg1hbm9ueW1vdXNDaGF0EkgKD2pvaW5Hcm91cE9wdGlvbhgTIAEoCzIeLnBiLkdyb3VwTW9kZWwuSm9pbkdyb3VwT3B0aW9uUg9qb2luR3JvdXBPcHRpb24SIAoLYWRtaW5SZW1hcmsYFCABKAlSC2FkbWluUmVtYXJrGlkKD0pvaW5Hcm91cE9wdGlvbhISCgR0eXBlGAEgASgFUgR0eXBlEhoKCHF1ZXN0aW9uGAIgASgJUghxdWVzdGlvbhIWCgZhbnN3ZXIYAyABKAlSBmFuc3dlcg==');
+final $typed_data.Uint8List groupModelDescriptor = $convert.base64Decode('CgpHcm91cE1vZGVsEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEhYKBmF2YXRhchgDIAEoCVIGYXZhdGFyEhQKBW93bmVyGAQgASgJUgVvd25lchIaCghtYW5hZ2VycxgFIAMoCVIIbWFuYWdlcnMSHgoKY3JlYXRlVGltZRgGIAEoA1IKY3JlYXRlVGltZRIkCg1jcmVhdGVUaW1lU3RyGAcgASgJUg1jcmVhdGVUaW1lU3RyEiAKC2Rpc21pc3NUaW1lGAggASgDUgtkaXNtaXNzVGltZRImCg5kaXNtaXNzVGltZVN0chgJIAEoCVIOZGlzbWlzc1RpbWVTdHISIAoLZGVzY3JpcHRpb24YCiABKAlSC2Rlc2NyaXB0aW9uEiAKC21lbWJlckNvdW50GAsgASgFUgttZW1iZXJDb3VudBIYCgdhbGxNdXRlGAwgASgIUgdhbGxNdXRlEh4KCnNwZWFrTGltaXQYDSABKAVSCnNwZWFrTGltaXQSHAoJbWF4TWVtYmVyGA4gASgFUgltYXhNZW1iZXISNgoWbWVtYmVyQ2FuU3RhcnRUZW1wQ2hhdBgPIAEoCFIWbWVtYmVyQ2FuU3RhcnRUZW1wQ2hhdBI0ChVtZW1iZXJDYW5JbnZpdGVGcmllbmQYECABKAhSFW1lbWJlckNhbkludml0ZUZyaWVuZBI6ChhuZXdNZW1iZXJIaXN0b3J5TXNnQ291bnQYESABKAVSGG5ld01lbWJlckhpc3RvcnlNc2dDb3VudBIkCg1hbm9ueW1vdXNDaGF0GBIgASgIUg1hbm9ueW1vdXNDaGF0EkgKD2pvaW5Hcm91cE9wdGlvbhgTIAEoCzIeLnBiLkdyb3VwTW9kZWwuSm9pbkdyb3VwT3B0aW9uUg9qb2luR3JvdXBPcHRpb24SIAoLYWRtaW5SZW1hcmsYFCABKAlSC2FkbWluUmVtYXJrEjQKDGFsbE11dGVyVHlwZRgVIAEoDjIQLnBiLkFsbE11dGVyVHlwZVIMYWxsTXV0ZXJUeXBlGlkKD0pvaW5Hcm91cE9wdGlvbhISCgR0eXBlGAEgASgFUgR0eXBlEhoKCHF1ZXN0aW9uGAIgASgJUghxdWVzdGlvbhIWCgZhbnN3ZXIYAyABKAlSBmFuc3dlcg==');
 @$core.Deprecated('Use getAllGroupModelReqDescriptor instead')
 const GetAllGroupModelReq$json = const {
   '1': 'GetAllGroupModelReq',
@@ -992,6 +1006,7 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> groupServi
   '.pb.CommonReq': $0.CommonReq$json,
   '.pb.CreateGroupResp': CreateGroupResp$json,
   '.pb.CommonResp': $0.CommonResp$json,
+  '.pb.GroupBaseInfo': GroupBaseInfo$json,
   '.pb.GetGroupHomeReq': GetGroupHomeReq$json,
   '.pb.GetGroupHomeResp': GetGroupHomeResp$json,
   '.pb.GetGroupHomeResp.MemberStatistics': GetGroupHomeResp_MemberStatistics$json,
@@ -1027,7 +1042,6 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> groupServi
   '.pb.GetMyGroupListReq.Filter': GetMyGroupListReq_Filter$json,
   '.pb.GetMyGroupListResp': GetMyGroupListResp$json,
   '.pb.GetMyGroupListResp.GroupMapEntry': GetMyGroupListResp_GroupMapEntry$json,
-  '.pb.GroupBaseInfo': GroupBaseInfo$json,
   '.pb.MapGroupByIdsReq': MapGroupByIdsReq$json,
   '.pb.MapGroupByIdsResp': MapGroupByIdsResp$json,
   '.pb.MapGroupByIdsResp.GroupMapEntry': MapGroupByIdsResp_GroupMapEntry$json,

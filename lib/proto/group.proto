@@ -36,6 +36,7 @@ message CreateGroupResp {
   CommonResp commonResp = 1;
   // 群ID
   optional string groupId = 2;
+  optional GroupBaseInfo info = 3;
 }
 
 //GetGroupHomeReq 获取群聊首页
@@ -546,6 +547,11 @@ type (
 	}
 )
  */
+enum AllMuterType {
+  // 0:禁言所有人 1:只禁言普通用户
+  ALL = 0;
+  NORMAL = 1;
+}
 //GroupModel 群组
 message GroupModel {
   message JoinGroupOption {
@@ -595,6 +601,8 @@ message GroupModel {
   JoinGroupOption joinGroupOption = 19;
 
   string adminRemark = 20;
+
+  AllMuterType allMuterType = 21;
 }
 
 //GetAllGroupModelReq 获取所有群组

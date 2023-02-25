@@ -93,6 +93,8 @@ class ConnParam extends $pb.GeneratedMessage {
     ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appVersion', protoName: 'appVersion')
     ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'language')
     ..aInt64(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp')
+    ..aOS(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'aesKey', protoName: 'aesKey')
+    ..aOS(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'aesIv', protoName: 'aesIv')
     ..hasRequiredFields = false
   ;
 
@@ -111,6 +113,8 @@ class ConnParam extends $pb.GeneratedMessage {
     $core.String? appVersion,
     $core.String? language,
     $fixnum.Int64? timestamp,
+    $core.String? aesKey,
+    $core.String? aesIv,
   }) {
     final _result = create();
     if (userId != null) {
@@ -151,6 +155,12 @@ class ConnParam extends $pb.GeneratedMessage {
     }
     if (timestamp != null) {
       _result.timestamp = timestamp;
+    }
+    if (aesKey != null) {
+      _result.aesKey = aesKey;
+    }
+    if (aesIv != null) {
+      _result.aesIv = aesIv;
     }
     return _result;
   }
@@ -285,6 +295,24 @@ class ConnParam extends $pb.GeneratedMessage {
   $core.bool hasTimestamp() => $_has(12);
   @$pb.TagNumber(13)
   void clearTimestamp() => clearField(13);
+
+  @$pb.TagNumber(14)
+  $core.String get aesKey => $_getSZ(13);
+  @$pb.TagNumber(14)
+  set aesKey($core.String v) { $_setString(13, v); }
+  @$pb.TagNumber(14)
+  $core.bool hasAesKey() => $_has(13);
+  @$pb.TagNumber(14)
+  void clearAesKey() => clearField(14);
+
+  @$pb.TagNumber(15)
+  $core.String get aesIv => $_getSZ(14);
+  @$pb.TagNumber(15)
+  set aesIv($core.String v) { $_setString(14, v); }
+  @$pb.TagNumber(15)
+  $core.bool hasAesIv() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearAesIv() => clearField(15);
 }
 
 class GetUserConnReq extends $pb.GeneratedMessage {
@@ -734,6 +762,8 @@ class SetCxnParamsReq extends $pb.GeneratedMessage {
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appVersion', protoName: 'appVersion')
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'language')
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'networkUsed', protoName: 'networkUsed')
+    ..a<$core.List<$core.int>>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'aesKey', $pb.PbFieldType.OY, protoName: 'aesKey')
+    ..a<$core.List<$core.int>>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'aesIv', $pb.PbFieldType.OY, protoName: 'aesIv')
     ..a<$core.List<$core.int>>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ext', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;
@@ -748,6 +778,8 @@ class SetCxnParamsReq extends $pb.GeneratedMessage {
     $core.String? appVersion,
     $core.String? language,
     $core.String? networkUsed,
+    $core.List<$core.int>? aesKey,
+    $core.List<$core.int>? aesIv,
     $core.List<$core.int>? ext,
   }) {
     final _result = create();
@@ -774,6 +806,12 @@ class SetCxnParamsReq extends $pb.GeneratedMessage {
     }
     if (networkUsed != null) {
       _result.networkUsed = networkUsed;
+    }
+    if (aesKey != null) {
+      _result.aesKey = aesKey;
+    }
+    if (aesIv != null) {
+      _result.aesIv = aesIv;
     }
     if (ext != null) {
       _result.ext = ext;
@@ -873,12 +911,30 @@ class SetCxnParamsReq extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   void clearNetworkUsed() => clearField(8);
 
+  @$pb.TagNumber(9)
+  $core.List<$core.int> get aesKey => $_getN(8);
+  @$pb.TagNumber(9)
+  set aesKey($core.List<$core.int> v) { $_setBytes(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasAesKey() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearAesKey() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.List<$core.int> get aesIv => $_getN(9);
+  @$pb.TagNumber(10)
+  set aesIv($core.List<$core.int> v) { $_setBytes(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasAesIv() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearAesIv() => clearField(10);
+
   @$pb.TagNumber(11)
-  $core.List<$core.int> get ext => $_getN(8);
+  $core.List<$core.int> get ext => $_getN(10);
   @$pb.TagNumber(11)
-  set ext($core.List<$core.int> v) { $_setBytes(8, v); }
+  set ext($core.List<$core.int> v) { $_setBytes(10, v); }
   @$pb.TagNumber(11)
-  $core.bool hasExt() => $_has(8);
+  $core.bool hasExt() => $_has(10);
   @$pb.TagNumber(11)
   void clearExt() => clearField(11);
 }
@@ -892,6 +948,8 @@ class SetCxnParamsResp extends $pb.GeneratedMessage {
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appVersion', protoName: 'appVersion')
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'language')
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'networkUsed', protoName: 'networkUsed')
+    ..a<$core.List<$core.int>>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'aesKey', $pb.PbFieldType.OY, protoName: 'aesKey')
+    ..a<$core.List<$core.int>>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'aesIv', $pb.PbFieldType.OY, protoName: 'aesIv')
     ..a<$core.List<$core.int>>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ext', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;
@@ -905,6 +963,8 @@ class SetCxnParamsResp extends $pb.GeneratedMessage {
     $core.String? appVersion,
     $core.String? language,
     $core.String? networkUsed,
+    $core.List<$core.int>? aesKey,
+    $core.List<$core.int>? aesIv,
     $core.List<$core.int>? ext,
   }) {
     final _result = create();
@@ -928,6 +988,12 @@ class SetCxnParamsResp extends $pb.GeneratedMessage {
     }
     if (networkUsed != null) {
       _result.networkUsed = networkUsed;
+    }
+    if (aesKey != null) {
+      _result.aesKey = aesKey;
+    }
+    if (aesIv != null) {
+      _result.aesIv = aesIv;
     }
     if (ext != null) {
       _result.ext = ext;
@@ -1018,12 +1084,30 @@ class SetCxnParamsResp extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   void clearNetworkUsed() => clearField(7);
 
+  @$pb.TagNumber(8)
+  $core.List<$core.int> get aesKey => $_getN(7);
+  @$pb.TagNumber(8)
+  set aesKey($core.List<$core.int> v) { $_setBytes(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasAesKey() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearAesKey() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.List<$core.int> get aesIv => $_getN(8);
+  @$pb.TagNumber(9)
+  set aesIv($core.List<$core.int> v) { $_setBytes(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasAesIv() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearAesIv() => clearField(9);
+
   @$pb.TagNumber(11)
-  $core.List<$core.int> get ext => $_getN(7);
+  $core.List<$core.int> get ext => $_getN(9);
   @$pb.TagNumber(11)
-  set ext($core.List<$core.int> v) { $_setBytes(7, v); }
+  set ext($core.List<$core.int> v) { $_setBytes(9, v); }
   @$pb.TagNumber(11)
-  $core.bool hasExt() => $_has(7);
+  $core.bool hasExt() => $_has(9);
   @$pb.TagNumber(11)
   void clearExt() => clearField(11);
 }

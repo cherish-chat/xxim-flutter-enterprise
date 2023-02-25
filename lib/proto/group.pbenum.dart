@@ -60,6 +60,21 @@ class GroupApplyHandleResult extends $pb.ProtobufEnum {
   const GroupApplyHandleResult._($core.int v, $core.String n) : super(v, n);
 }
 
+class AllMuterType extends $pb.ProtobufEnum {
+  static const AllMuterType ALL = AllMuterType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ALL');
+  static const AllMuterType NORMAL = AllMuterType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'NORMAL');
+
+  static const $core.List<AllMuterType> values = <AllMuterType> [
+    ALL,
+    NORMAL,
+  ];
+
+  static final $core.Map<$core.int, AllMuterType> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static AllMuterType? valueOf($core.int value) => _byValue[value];
+
+  const AllMuterType._($core.int v, $core.String n) : super(v, n);
+}
+
 class GetMyGroupListReq_Opt extends $pb.ProtobufEnum {
   static const GetMyGroupListReq_Opt DEFAULT = GetMyGroupListReq_Opt._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'DEFAULT');
   static const GetMyGroupListReq_Opt ONLY_ID = GetMyGroupListReq_Opt._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ONLY_ID');
