@@ -3,6 +3,9 @@ import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:uuid/uuid.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+export 'platform/platform_none.dart'
+    if (dart.library.html) 'platform/platform_html.dart'
+    if (dart.library.io) 'platform/platform_io.dart';
 export 'design_tool.dart';
 export 'emoji_tool.dart';
 export 'encrypt_tool.dart';
