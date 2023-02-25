@@ -41,7 +41,20 @@ class Tool {
   static Map _minioMap = {};
   static String _fileUrl = "";
 
-  static Future<bool> loadConfigFile() async {
+  static Future<bool> loadConfigFast() async {
+    if (HiveTool.getConfigList().isEmpty) {
+      if (!(await _loadConfigFile())) {
+        loadConfigFast();
+        return false;
+      }
+    } else {
+      _loadConfigFile();
+    }
+    await _loadFastUrl();
+    return true;
+  }
+
+  static Future<bool> _loadConfigFile() async {
     try {
       Response response = await Dio(BaseOptions(
         connectTimeout: 60000,
@@ -64,7 +77,7 @@ class Tool {
     }
   }
 
-  static Future loadFastUrl() async {
+  static Future _loadFastUrl() async {
     if (Tool._configList.isEmpty) {
       Tool._configList = HiveTool.getConfigList();
     }

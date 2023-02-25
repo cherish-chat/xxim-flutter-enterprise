@@ -13,30 +13,24 @@ class LaunchLogic extends GetxController with StateMixin {
   }
 
   @override
-  void onReady() {
+  void onReady() async {
     super.onReady();
-    _loadConfig();
-  }
-
-  void _loadConfig() async {
-    // if (HiveTool.getConfigList().isEmpty) {
-    //   if (!(await Tool.loadConfigFile())) {
-    //     _loadConfig();
-    //     return;
-    //   }
-    // } else {
-    //   Tool.loadConfigFile();
+    // bool success = await Tool.loadConfigFast();
+    // if (!success) {
+    //   onReady();
+    //   return;
     // }
-    // await Tool.loadFastUrl();
     _gotoPage();
   }
 
   void _gotoPage() async {
     if (HiveTool.isLogin()) {
-      bool isConnect = await XXIM.instance.connect();
-      if (!isConnect) {
-        _gotoPage();
-        return;
+      if (!XXIM.instance.isConnect()) {
+        bool isConnect = await XXIM.instance.connect();
+        if (!isConnect) {
+          _gotoPage();
+          return;
+        }
       }
       bool status = await XXIM.instance.setUserParams(
         userId: HiveTool.getUserId(),

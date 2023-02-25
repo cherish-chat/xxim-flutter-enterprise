@@ -68,7 +68,7 @@ class XXIM {
             connectController.add(false);
             NewsLogic.logic()?.connectStatus.value = ConnectStatus.connect;
             pulling = true;
-            _retryConnect();
+            _reconnect();
           },
         ),
         subscribeCallback: SubscribeCallback(
@@ -137,14 +137,19 @@ class XXIM {
     convManager = _sdk.convManager;
     msgManager = _sdk.msgManager;
     noticeManager = _sdk.noticeManager;
+    await _reconnect();
   }
 
-  void _retryConnect() async {
-    // await Tool.loadFastUrl();
+  Future _reconnect() async {
+    // bool success = await Tool.loadConfigFast();
+    // if (!success) {
+    //   _retryConnect();
+    //   return;
+    // }
     if (!XXIM.instance.isConnect()) {
       bool isConnect = await XXIM.instance.connect();
       if (!isConnect) {
-        Future.delayed(const Duration(seconds: 3), _retryConnect);
+        Future.delayed(const Duration(seconds: 3), _reconnect);
         return;
       }
     }
@@ -154,7 +159,7 @@ class XXIM {
       token: HiveTool.getToken(),
     );
     if (!status) {
-      Future.delayed(const Duration(seconds: 3), _retryConnect);
+      Future.delayed(const Duration(seconds: 3), _reconnect);
       return;
     }
   }
@@ -215,7 +220,7 @@ class XXIM {
     required SuccessCallback<T> onSuccess,
     ErrorCallback? onError,
   }) async {
-    if (!isConnect()) {
+    if (!XXIM.instance.isConnect()) {
       bool isConnect = await XXIM.instance.connect();
       if (!isConnect) {
         if (environment == Environment.debug) {
@@ -231,27 +236,26 @@ class XXIM {
           "Socket连接失败",
         );
         return null;
-      } else {
-        if (HiveTool.isLogin()) {
-          bool status = await XXIM.instance.setUserParams(
-            userId: HiveTool.getUserId(),
-            token: HiveTool.getToken(),
-          );
-          if (!status) {
-            if (environment == Environment.debug) {
-              debugPrint("--------------------------------------------------");
-              debugPrint("customRequest:$method");
-              debugPrint("customRequest:$req");
-              debugPrint(
-                  "customRequest-onError:${CommonResp_Code.UnknownError.value} - 设置用户参数失败");
-              debugPrint("--------------------------------------------------");
-            }
-            onError?.call(
-              CommonResp_Code.UnknownError.value,
-              "设置用户参数失败",
-            );
-            return null;
+      }
+      if (HiveTool.isLogin()) {
+        bool status = await XXIM.instance.setUserParams(
+          userId: HiveTool.getUserId(),
+          token: HiveTool.getToken(),
+        );
+        if (!status) {
+          if (environment == Environment.debug) {
+            debugPrint("--------------------------------------------------");
+            debugPrint("customRequest:$method");
+            debugPrint("customRequest:$req");
+            debugPrint(
+                "customRequest-onError:${CommonResp_Code.UnknownError.value} - 设置用户参数失败");
+            debugPrint("--------------------------------------------------");
           }
+          onError?.call(
+            CommonResp_Code.UnknownError.value,
+            "设置用户参数失败",
+          );
+          return null;
         }
       }
     }
