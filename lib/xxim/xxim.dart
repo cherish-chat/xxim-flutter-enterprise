@@ -334,7 +334,7 @@ class XXIM {
           child: const Text(
             "好的",
             style: TextStyle(
-              color: getTextWhite,
+              color: getTextBlack,
               fontSize: 14,
             ),
           ),
