@@ -1,6 +1,8 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
+import 'package:xxim_flutter_enterprise/pages/mine/mine.dart';
+import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 
 class ModifyInfoLogic extends GetxController {
   static ModifyInfoLogic? logic() => Tool.capture(Get.find);
@@ -22,7 +24,30 @@ class ModifyInfoLogic extends GetxController {
     );
   }
 
-  void modifyNickname() {}
+  void modifyNickname() {
+    Tool.hideKeyboard();
+    if (nickname.text.isEmpty) {
+      Tool.showToast("请输入昵称");
+      return;
+    }
+    GetLoadingDialog.show("修改中");
+    XXIM.instance.customRequest<UpdateUserInfoResp>(
+      method: "/v1/user/updateUserInfo",
+      req: UpdateUserInfoReq(
+        nickname: nickname.text,
+      ),
+      resp: UpdateUserInfoResp.create,
+      onSuccess: (data) {
+        GetLoadingDialog.hide();
+        Tool.showToast("修改成功");
+        MineLogic.logic()?.loadData();
+        MenuLogic.logic()?.loadConvIdList();
+      },
+      onError: (code, error) {
+        GetLoadingDialog.hide();
+      },
+    );
+  }
 }
 
 class ModifyInfoPage extends StatelessWidget {

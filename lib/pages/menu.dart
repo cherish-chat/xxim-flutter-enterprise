@@ -127,6 +127,19 @@ class MenuLogic extends GetxController {
     pageController?.jumpToPage(index);
     pageIndex.value = index;
   }
+
+  // void menuBack() {
+  //   if (getDelegate == null) return;
+  //   List<RouteDecoder> activePages = getDelegate!.activePages;
+  //   RouteDecoder routeDecoder = RouteDecoder.fromRoute(Routes.menu);
+  //   if (activePages.contains(routeDecoder)) {
+  //     Get.back();
+  //   } else {
+  //     getDelegate!.offNamed(
+  //       Routes.menu,
+  //     );
+  //   }
+  // }
 }
 
 class MenuPage extends StatelessWidget with GetResponsiveMixin {
