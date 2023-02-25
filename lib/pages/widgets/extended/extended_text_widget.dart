@@ -10,6 +10,7 @@ class ExtendedTextWidget extends StatelessWidget {
   final int? maxLines;
   final TextOverflow? overflow;
   final SpecialTextGestureTapCallback? onSpecialTextTap;
+  final bool selectionEnabled;
 
   const ExtendedTextWidget(
     this.data, {
@@ -19,6 +20,7 @@ class ExtendedTextWidget extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.onSpecialTextTap,
+    this.selectionEnabled = false,
   }) : super(key: key);
 
   @override
@@ -31,6 +33,7 @@ class ExtendedTextWidget extends StatelessWidget {
       overflow: overflow,
       specialTextSpanBuilder: ExtendedSpecialBuilder(),
       onSpecialTextTap: onSpecialTextTap,
+      selectionEnabled: selectionEnabled,
     );
   }
 }

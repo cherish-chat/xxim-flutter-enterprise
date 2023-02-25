@@ -112,7 +112,7 @@ class ChatNameItem<T extends GetxController> extends StatelessWidget {
       builder: (logic) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 2),
-          child: Text(
+          child: SelectableText(
             name,
             style: const TextStyle(
               color: getTextBlack,
@@ -290,6 +290,7 @@ class ChatReplyItem extends StatelessWidget {
           ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
+          selectionEnabled: true,
         ),
       ),
     );
@@ -394,6 +395,7 @@ class ChatTextItem<T extends GetxController> extends StatelessWidget {
                                     : getTextWhite,
                                 fontSize: 14,
                               ),
+                              selectionEnabled: true,
                             ),
                           ),
                         );
