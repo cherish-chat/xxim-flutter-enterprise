@@ -757,30 +757,30 @@ class ChatPage extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () {
-                  logic.scrollController.jumpTo(0);
-                  if (logic.chatOperate.value == ChatOperate.record) {
-                    logic.inputFocusNode.requestFocus();
-                    if (GetPlatform.isMobile) {
-                      logic.chatOperate.value = ChatOperate.input;
-                    } else {
-                      logic.chatOperate.value = ChatOperate.none;
-                    }
-                  } else {
-                    if (logic.inputFocusNode.hasFocus) {
-                      logic.inputFocusNode.unfocus();
-                    }
-                    logic.chatOperate.value = ChatOperate.record;
-                  }
-                },
-                child: Image.asset(
-                  "assets/images/ic_mic_35.webp",
-                  width: 40,
-                  height: 40,
-                ),
-              ),
+              // GestureDetector(
+              //   behavior: HitTestBehavior.opaque,
+              //   onTap: () {
+              //     logic.scrollController.jumpTo(0);
+              //     if (logic.chatOperate.value == ChatOperate.record) {
+              //       logic.inputFocusNode.requestFocus();
+              //       if (GetPlatform.isMobile) {
+              //         logic.chatOperate.value = ChatOperate.input;
+              //       } else {
+              //         logic.chatOperate.value = ChatOperate.none;
+              //       }
+              //     } else {
+              //       if (logic.inputFocusNode.hasFocus) {
+              //         logic.inputFocusNode.unfocus();
+              //       }
+              //       logic.chatOperate.value = ChatOperate.record;
+              //     }
+              //   },
+              //   child: Image.asset(
+              //     "assets/images/ic_mic_35.webp",
+              //     width: 40,
+              //     height: 40,
+              //   ),
+              // ),
               Expanded(
                 child: Column(
                   children: [
