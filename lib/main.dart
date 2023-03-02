@@ -38,7 +38,7 @@ void main() async {
     );
   }
   PlatformTool.webContextMenu();
-  PlatformTool.webBeforeUnload();
+  // PlatformTool.webBeforeUnload();
   await initServices();
   runApp(const MyApp());
   errorWidget();
