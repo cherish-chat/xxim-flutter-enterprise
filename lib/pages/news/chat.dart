@@ -294,10 +294,7 @@ class ChatLogic extends GetxController {
       update(["list"]);
     } else {
       msgModel.sendStatus = SendStatus.sending;
-      String id = _getItemId(msgModel);
-      if (id.isNotEmpty) {
-        update([id]);
-      }
+      update([_getItemId(msgModel)]);
     }
     try {
       ImageContent content = ImageContent.fromJson(msgModel.content);
@@ -310,10 +307,7 @@ class ChatLogic extends GetxController {
           uint8list,
           onProgress: (progress) {
             msgModel.sendProgress = (progress / uint8list.length * 100).floor();
-            String id = _getItemId(msgModel);
-            if (id.isNotEmpty) {
-              update([id]);
-            }
+            update([ChatStatusItem.getId(msgModel.clientMsgId)]);
           },
         );
         content.imageName = "";
@@ -325,10 +319,7 @@ class ChatLogic extends GetxController {
       sendMsgList([msgModel]);
     } catch (_) {
       msgModel.sendStatus = SendStatus.failed;
-      String id = _getItemId(msgModel);
-      if (id.isNotEmpty) {
-        update([id]);
-      }
+      update([_getItemId(msgModel)]);
     }
   }
 
@@ -353,10 +344,7 @@ class ChatLogic extends GetxController {
       update(["list"]);
     } else {
       msgModel.sendStatus = SendStatus.sending;
-      String id = _getItemId(msgModel);
-      if (id.isNotEmpty) {
-        update([id]);
-      }
+      update([_getItemId(msgModel)]);
     }
     try {
       AudioContent content = AudioContent.fromJson(msgModel.content);
@@ -369,10 +357,7 @@ class ChatLogic extends GetxController {
           uint8list,
           onProgress: (progress) {
             msgModel.sendProgress = (progress / uint8list.length * 100).floor();
-            String id = _getItemId(msgModel);
-            if (id.isNotEmpty) {
-              update([id]);
-            }
+            update([ChatStatusItem.getId(msgModel.clientMsgId)]);
           },
         );
         content.audioName = "";
@@ -384,10 +369,7 @@ class ChatLogic extends GetxController {
       sendMsgList([msgModel]);
     } catch (_) {
       msgModel.sendStatus = SendStatus.failed;
-      String id = _getItemId(msgModel);
-      if (id.isNotEmpty) {
-        update([id]);
-      }
+      update([_getItemId(msgModel)]);
     }
   }
 
@@ -412,10 +394,7 @@ class ChatLogic extends GetxController {
       update(["list"]);
     } else {
       msgModel.sendStatus = SendStatus.sending;
-      String id = _getItemId(msgModel);
-      if (id.isNotEmpty) {
-        update([id]);
-      }
+      update([_getItemId(msgModel)]);
     }
     try {
       VideoContent content = VideoContent.fromJson(msgModel.content);
@@ -438,10 +417,7 @@ class ChatLogic extends GetxController {
           onProgress: (progress) {
             msgModel.sendProgress =
                 (progress / videoUint8list.length * 100).floor();
-            String id = _getItemId(msgModel);
-            if (id.isNotEmpty) {
-              update([id]);
-            }
+            update([ChatStatusItem.getId(msgModel.clientMsgId)]);
           },
         );
         content.coverName = "";
@@ -457,10 +433,7 @@ class ChatLogic extends GetxController {
       sendMsgList([msgModel]);
     } catch (_) {
       msgModel.sendStatus = SendStatus.failed;
-      String id = _getItemId(msgModel);
-      if (id.isNotEmpty) {
-        update([id]);
-      }
+      update([_getItemId(msgModel)]);
     }
   }
 
@@ -503,10 +476,7 @@ class ChatLogic extends GetxController {
         ids.add("list");
       } else {
         msgModel.sendStatus = SendStatus.sending;
-        String id = _getItemId(msgModel);
-        if (id.isNotEmpty) {
-          ids.add(id);
-        }
+        ids.add(_getItemId(msgModel));
       }
     }
     if (ids.isNotEmpty) update(ids);
@@ -524,10 +494,7 @@ class ChatLogic extends GetxController {
       } else {
         msgModel.sendStatus = SendStatus.failed;
       }
-      String id = _getItemId(msgModel);
-      if (id.isNotEmpty) {
-        ids.add(id);
-      }
+      ids.add(_getItemId(msgModel));
     }
     if (ids.isNotEmpty) update(ids);
   }
@@ -536,20 +503,9 @@ class ChatLogic extends GetxController {
     int contentType = msgModel.contentType;
     if (contentType == MsgContentType.tip) {
       return ChatTipItem.getId(msgModel.clientMsgId);
-    } else if (contentType == MsgContentType.text) {
-      return ChatTextItem.getId(msgModel.clientMsgId);
-    } else if (contentType == MsgContentType.image) {
-      return ChatImageItem.getId(msgModel.clientMsgId);
-    } else if (contentType == MsgContentType.audio) {
-      return ChatAudioItem.getId(msgModel.clientMsgId);
-    } else if (contentType == MsgContentType.video) {
-      return ChatVideoItem.getId(msgModel.clientMsgId);
-    } else if (contentType == MsgContentType.file) {
-      return ChatFileItem.getId(msgModel.clientMsgId);
-    } else if (contentType == MsgContentType.location) {
-      return ChatLocationItem.getId(msgModel.clientMsgId);
+    } else {
+      return ChatMsgItem.getId(msgModel.clientMsgId);
     }
-    return "";
   }
 }
 
@@ -664,58 +620,8 @@ class ChatPage extends StatelessWidget {
                     direction: direction,
                     msgModel: msgModel,
                   );
-                } else if (contentType == MsgContentType.text) {
-                  widget = ChatTextItem<ChatLogic>(
-                    key: ValueKey(msgModel.clientMsgId),
-                    tag: logic.tag,
-                    direction: direction,
-                    msgModel: msgModel,
-                    onRetry: () {
-                      logic.sendMsgList([msgModel]);
-                    },
-                  );
-                } else if (contentType == MsgContentType.image) {
-                  widget = ChatImageItem<ChatLogic>(
-                    key: ValueKey(msgModel.clientMsgId),
-                    tag: logic.tag,
-                    direction: direction,
-                    msgModel: msgModel,
-                    onRetry: () {
-                      logic.sendMsgList([msgModel]);
-                    },
-                  );
-                } else if (contentType == MsgContentType.audio) {
-                  widget = ChatAudioItem<ChatLogic>(
-                    key: ValueKey(msgModel.clientMsgId),
-                    tag: logic.tag,
-                    direction: direction,
-                    msgModel: msgModel,
-                    onRetry: () {
-                      logic.sendMsgList([msgModel]);
-                    },
-                  );
-                } else if (contentType == MsgContentType.video) {
-                  widget = ChatVideoItem<ChatLogic>(
-                    key: ValueKey(msgModel.clientMsgId),
-                    tag: logic.tag,
-                    direction: direction,
-                    msgModel: msgModel,
-                    onRetry: () {
-                      logic.sendMsgList([msgModel]);
-                    },
-                  );
-                } else if (contentType == MsgContentType.file) {
-                  widget = ChatFileItem<ChatLogic>(
-                    key: ValueKey(msgModel.clientMsgId),
-                    tag: logic.tag,
-                    direction: direction,
-                    msgModel: msgModel,
-                    onRetry: () {
-                      logic.sendMsgList([msgModel]);
-                    },
-                  );
-                } else if (contentType == MsgContentType.location) {
-                  widget = ChatLocationItem<ChatLogic>(
+                } else {
+                  widget = ChatMsgItem<ChatLogic>(
                     key: ValueKey(msgModel.clientMsgId),
                     tag: logic.tag,
                     direction: direction,
