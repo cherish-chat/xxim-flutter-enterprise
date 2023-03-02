@@ -666,8 +666,27 @@ class _ChatAudioItemState<T extends GetxController>
 
   @override
   void dispose() {
-    _cancelTimer(dispose: true);
+    _stopPlayer(dispose: true);
     super.dispose();
+  }
+
+  void _startPlayer() {
+    PlayerTool.instance.start(
+      Tool.getFileUrl(_content.audioUrl),
+      onComplete: () {
+        _stopPlayer();
+      },
+    );
+    _startTimer();
+  }
+
+  void _stopPlayer({
+    bool dispose = false,
+  }) {
+    PlayerTool.instance.stop();
+    _cancelTimer(
+      dispose: dispose,
+    );
   }
 
   void _startTimer() {
@@ -749,9 +768,9 @@ class _ChatAudioItemState<T extends GetxController>
                           behavior: HitTestBehavior.opaque,
                           onTap: () {
                             if (_timer != null) {
-                              _cancelTimer();
+                              _stopPlayer();
                             } else {
-                              _startTimer();
+                              _startPlayer();
                             }
                           },
                           onLongPress: () {
@@ -909,7 +928,6 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
       senderInfo = json.decode(msgModel.senderInfo);
     }
     VideoContent content = VideoContent.fromJson(msgModel.content);
-    print("什么：${content.toJson()}");
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(

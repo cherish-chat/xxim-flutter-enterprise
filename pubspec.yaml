@@ -73,6 +73,7 @@ dependencies:
   minio:
     path: plugins/minio
   video_thumbnail: 0.5.3
+  audioplayers: 3.0.1
 
   flutter_keyboard_visibility: 5.4.0
   extended_text_library: 9.1.1
