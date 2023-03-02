@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
+import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
@@ -500,9 +501,13 @@ class ChatImageItem<T extends GetxController> extends StatelessWidget {
                       userId: msgModel.senderId,
                       name: senderInfo["nickname"] ?? "",
                     ),
-                    Builder(
-                      builder: (context) {
-                        double maxWidth = Get.width - 128;
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        double maxWidth =
+                            (MenuLogic.logic()?.isPhone.value == true
+                                    ? Get.width
+                                    : Get.width / 2) -
+                                128;
                         double maxHeight = maxWidth * 1.5;
                         double width = content.width.toDouble();
                         double height = content.height.toDouble();
@@ -514,10 +519,12 @@ class ChatImageItem<T extends GetxController> extends StatelessWidget {
                           if (width > height) {
                             width = maxWidth;
                             height = width / scale;
-                          }
-                          if (height > maxHeight) {
+                          } else if (height > width) {
                             height = maxHeight;
                             width = maxHeight * scale;
+                          } else {
+                            width = maxWidth;
+                            height = maxWidth;
                           }
                         }
                         return GestureDetector(
@@ -753,10 +760,14 @@ class _ChatAudioItemState<T extends GetxController>
                       userId: _msgModel.senderId,
                       name: senderInfo["nickname"] ?? "",
                     ),
-                    Builder(
-                      builder: (context) {
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        double maxWidth =
+                            (MenuLogic.logic()?.isPhone.value == true
+                                    ? Get.width
+                                    : Get.width / 2) -
+                                128;
                         double minWidth = 91;
-                        double maxWidth = Get.width - 128;
                         double duration = _content.duration.toDouble();
                         double width = minWidth +
                             (maxWidth / minWidth) *
@@ -956,9 +967,13 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
                       userId: msgModel.senderId,
                       name: senderInfo["nickname"] ?? "",
                     ),
-                    Builder(
-                      builder: (context) {
-                        double maxWidth = Get.width - 128;
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        double maxWidth =
+                            (MenuLogic.logic()?.isPhone.value == true
+                                    ? Get.width
+                                    : Get.width / 2) -
+                                128;
                         double maxHeight = maxWidth * 1.5;
                         double width = 200;
                         double height = 200;
@@ -970,10 +985,12 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
                           if (width > height) {
                             width = maxWidth;
                             height = width / scale;
-                          }
-                          if (height > maxHeight) {
+                          } else if (height > width) {
                             height = maxHeight;
                             width = maxHeight * scale;
+                          } else {
+                            width = maxWidth;
+                            height = maxWidth;
                           }
                         }
                         return GestureDetector(
