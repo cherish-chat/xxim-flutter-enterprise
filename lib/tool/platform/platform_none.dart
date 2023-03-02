@@ -1,3 +1,5 @@
 class PlatformTool {
-  static void hideContextMenu() {}
+  static void webContextMenu() {}
+
+  static void webBeforeUnload() {}
 }

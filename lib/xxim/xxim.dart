@@ -143,7 +143,7 @@ class XXIM {
   Future _reconnect() async {
     // bool success = await Tool.loadConfigFast();
     // if (!success) {
-    //   _retryConnect();
+    //   _reconnect();
     //   return;
     // }
     if (!XXIM.instance.isConnect()) {

@@ -37,7 +37,8 @@ void main() async {
       },
     );
   }
-  PlatformTool.hideContextMenu();
+  PlatformTool.webContextMenu();
+  PlatformTool.webBeforeUnload();
   await initServices();
   runApp(const MyApp());
   errorWidget();
