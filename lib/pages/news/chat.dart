@@ -4,6 +4,7 @@ import 'package:extended_text/extended_text.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_list_view/flutter_list_view.dart';
+import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
@@ -159,7 +160,7 @@ class ChatLogic extends GetxController {
   void pickFiles() {
     PickTool.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ["jpg", "png", "aac", "mp3", "mp4"],
+      allowedExtensions: ["jpg", "png", "aac", "mp3", "mp4", "mov"],
       onSuccess: (result) async {
         List<PlatformFile> files = result.files;
         if (files.isEmpty) return;
@@ -193,13 +194,42 @@ class ChatLogic extends GetxController {
               audioPath: "",
               audioUrl: "",
               audioBytes: bytes,
+              duration: 0,
               size: file.size,
             )).then(
               (value) {
                 sendAudio(value);
               },
             );
-          } else if (extension == "mp4") {}
+          } else if (extension == "mp4" || extension == "mov") {
+            String coverName = "";
+            List<int> coverBytes = [];
+            if (GetPlatform.isMobile && file.path != null) {
+              Uint8List? uint8List = await VideoThumbnail.thumbnailData(
+                video: file.path!,
+                imageFormat: ImageFormat.JPEG,
+                quality: 90,
+              );
+              if (uint8List != null) {
+                coverName = "${Tool.getUUId()}.jpg";
+                coverBytes = uint8List.toList();
+              }
+            }
+            createVideo(VideoContent(
+              coverName: coverName,
+              coverPath: "",
+              coverUrl: "",
+              coverBytes: coverBytes,
+              videoName: file.name,
+              videoPath: "",
+              videoUrl: "",
+              videoBytes: bytes,
+            )).then(
+              (value) {
+                sendVideo(value);
+              },
+            );
+          }
         }
       },
     );
@@ -263,7 +293,7 @@ class ChatLogic extends GetxController {
         Uint8List uint8list = Uint8List.fromList(
           content.imageBytes,
         );
-        String fileName = await MinIOTool.upload(
+        String objectId = await MinIOTool.upload(
           content.imageName,
           uint8list,
           onProgress: (progress) {
@@ -276,7 +306,7 @@ class ChatLogic extends GetxController {
         );
         content.imageName = "";
         content.imagePath = "";
-        content.imageUrl = fileName;
+        content.imageUrl = objectId;
         content.imageBytes = [];
         msgModel.content = content.toJson();
       }
@@ -322,7 +352,7 @@ class ChatLogic extends GetxController {
         Uint8List uint8list = Uint8List.fromList(
           content.audioBytes,
         );
-        String fileName = await MinIOTool.upload(
+        String objectId = await MinIOTool.upload(
           content.audioName,
           uint8list,
           onProgress: (progress) {
@@ -335,7 +365,7 @@ class ChatLogic extends GetxController {
         );
         content.audioName = "";
         content.audioPath = "";
-        content.audioUrl = fileName;
+        content.audioUrl = objectId;
         content.audioBytes = [];
         msgModel.content = content.toJson();
       }
@@ -359,6 +389,67 @@ class ChatLogic extends GetxController {
       ),
       ext: _getMsgExt(),
     );
+  }
+
+  void sendVideo(MsgModel msgModel) async {
+    int index = msgModelList.indexWhere((element) {
+      return msgModel.clientMsgId == element.clientMsgId;
+    });
+    if (index == -1) {
+      msgModelList.insert(0, msgModel);
+      update(["list"]);
+    } else {
+      msgModel.sendStatus = SendStatus.sending;
+      String id = _getItemId(msgModel);
+      if (id.isNotEmpty) {
+        update([id]);
+      }
+    }
+    try {
+      VideoContent content = VideoContent.fromJson(msgModel.content);
+      if (content.videoBytes.isNotEmpty) {
+        String coverObjectId = "";
+        if (content.coverBytes.isNotEmpty) {
+          coverObjectId = await MinIOTool.upload(
+            content.coverName,
+            Uint8List.fromList(
+              content.coverBytes,
+            ),
+          );
+        }
+        Uint8List videoUint8list = Uint8List.fromList(
+          content.videoBytes,
+        );
+        String videoObjectId = await MinIOTool.upload(
+          content.videoName,
+          videoUint8list,
+          onProgress: (progress) {
+            msgModel.sendProgress =
+                (progress / videoUint8list.length * 100).floor();
+            String id = _getItemId(msgModel);
+            if (id.isNotEmpty) {
+              update([id]);
+            }
+          },
+        );
+        content.coverName = "";
+        content.coverPath = "";
+        content.coverUrl = coverObjectId;
+        content.coverBytes = [];
+        content.videoName = "";
+        content.videoPath = "";
+        content.videoUrl = videoObjectId;
+        content.videoBytes = [];
+        msgModel.content = content.toJson();
+      }
+      sendMsgList([msgModel]);
+    } catch (_) {
+      msgModel.sendStatus = SendStatus.failed;
+      String id = _getItemId(msgModel);
+      if (id.isNotEmpty) {
+        update([id]);
+      }
+    }
   }
 
   Future<MsgModel> createFile(FileContent content) {

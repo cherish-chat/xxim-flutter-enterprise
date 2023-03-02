@@ -28,18 +28,18 @@ class ModifyInfoLogic extends GetxController {
         if (bytes == null || bytes.isEmpty) return;
         GetLoadingDialog.show("修改中");
         try {
-          String fileName = await MinIOTool.upload(
+          String objectId = await MinIOTool.upload(
             file.name,
             bytes,
           );
           XXIM.instance.customRequest<UpdateUserInfoResp>(
             method: "/v1/user/updateUserInfo",
             req: UpdateUserInfoReq(
-              avatar: fileName,
+              avatar: objectId,
             ),
             resp: UpdateUserInfoResp.create,
             onSuccess: (data) {
-              avatarUrl.value = fileName;
+              avatarUrl.value = objectId;
               GetLoadingDialog.hide();
               Tool.showToast("修改成功");
               MineLogic.logic()?.loadData();

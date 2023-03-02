@@ -868,7 +868,7 @@ class _ChatAudioItemState<T extends GetxController>
       );
     }
 
-    List<double> list = [4, 8, 10, 12, 14];
+    List<double> list = [4, 6, 8, 10, 12];
     List<Widget> children = List.generate(index, (index) {
       return buildLine(list[index]);
     });
@@ -909,6 +909,7 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
       senderInfo = json.decode(msgModel.senderInfo);
     }
     VideoContent content = VideoContent.fromJson(msgModel.content);
+    print("什么：${content.toJson()}");
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
