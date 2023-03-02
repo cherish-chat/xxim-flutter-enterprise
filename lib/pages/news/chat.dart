@@ -119,6 +119,18 @@ class ChatLogic extends GetxController {
     );
     await XXIM.instance.convManager.setConvRead(convId: convId);
     NewsLogic.logic()?.loadList(force: true);
+    List<MsgModel> modelList = [];
+    for (MsgModel msgModel in msgModelList) {
+      if (msgModel.sendStatus == SendStatus.sending) {
+        msgModel.sendStatus = SendStatus.failed;
+        modelList.add(msgModel);
+      }
+    }
+    if (modelList.isNotEmpty) {
+      await XXIM.instance.msgManager.upsertMsgList(
+        msgModelList: modelList,
+      );
+    }
     super.onClose();
   }
 

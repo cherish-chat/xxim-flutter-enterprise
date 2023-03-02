@@ -111,7 +111,7 @@ class ChatNameItem<T extends GetxController> extends StatelessWidget {
       builder: (logic) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 2),
-          child: SelectableText(
+          child: Text(
             name,
             style: const TextStyle(
               color: getTextBlack,
