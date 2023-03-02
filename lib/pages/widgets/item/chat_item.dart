@@ -248,9 +248,15 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
         if (!showAvatar) {
           return const SizedBox(width: 35 + 8);
         }
-        Map senderInfo = {};
-        if (msgModel.senderInfo.isNotEmpty) {
-          senderInfo = json.decode(msgModel.senderInfo);
+        String avatar = "";
+        if (msgModel.senderId == HiveTool.getUserId()) {
+          avatar = HiveTool.getAvatarUrl();
+        } else {
+          Map senderInfo = {};
+          if (msgModel.senderInfo.isNotEmpty) {
+            senderInfo = json.decode(msgModel.senderInfo);
+          }
+          avatar = senderInfo["avatar"] ?? "";
         }
         return Padding(
           padding: direction == ChatDirection.left
@@ -263,7 +269,7 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
             },
             child: ClipOval(
               child: ImageWidget(
-                senderInfo["avatar"] ?? "",
+                avatar,
                 width: 35,
                 height: 35,
               ),
@@ -295,14 +301,20 @@ class ChatNameItem<T extends GetxController> extends StatelessWidget {
       tag: tag,
       id: ChatNameItem.getId(msgModel.senderId),
       builder: (logic) {
-        Map senderInfo = {};
-        if (msgModel.senderInfo.isNotEmpty) {
-          senderInfo = json.decode(msgModel.senderInfo);
+        String nickname = "";
+        if (msgModel.senderId == HiveTool.getUserId()) {
+          nickname = HiveTool.getNickname();
+        } else {
+          Map senderInfo = {};
+          if (msgModel.senderInfo.isNotEmpty) {
+            senderInfo = json.decode(msgModel.senderInfo);
+          }
+          nickname = senderInfo["nickname"] ?? "";
         }
         return Padding(
           padding: const EdgeInsets.only(bottom: 2),
           child: Text(
-            senderInfo["nickname"] ?? "",
+            nickname,
             style: const TextStyle(
               color: getTextBlack,
               fontSize: 12,
