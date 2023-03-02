@@ -147,7 +147,7 @@ class Tool {
       return fileName;
     }
     // return "$_fileUrl$fileName";
-    return "http://42.194.149.177:9000/xxim/$fileName";
+    return "http://42.194.149.177:9000/xxim$fileName";
   }
 
   static String getLocationImage({

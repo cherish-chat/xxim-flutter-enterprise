@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
@@ -740,8 +739,9 @@ class _ChatAudioItemState<T extends GetxController>
                         double minWidth = 91;
                         double maxWidth = Get.width - 128;
                         double duration = _content.duration.toDouble();
-                        double width =
-                            minWidth + (maxWidth / minWidth) * duration;
+                        double width = minWidth +
+                            (maxWidth / minWidth) *
+                                (duration == 0 ? 10 : duration);
                         if (width > maxWidth) {
                           width = maxWidth;
                         }
@@ -796,7 +796,7 @@ class _ChatAudioItemState<T extends GetxController>
                                 if (_direction == ChatDirection.left)
                                   _buildRipple(_direction, _timerIndex),
                                 Text(
-                                  "$duration\u{0022}",
+                                  "${duration == 0 ? "未知" : duration}\u{0022}",
                                   style: TextStyle(
                                     color: _direction == ChatDirection.left
                                         ? getTextBlack
@@ -996,13 +996,10 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
                               child: Stack(
                                 alignment: Alignment.center,
                                 children: [
-                                  if (content.coverPath.isNotEmpty)
+                                  if (content.coverBytes.isNotEmpty)
                                     Image.memory(
                                       Uint8List.fromList(
-                                        content.coverPath
-                                            .split(',')
-                                            .map(int.parse)
-                                            .toList(),
+                                        content.coverBytes,
                                       ),
                                       width: width,
                                       height: height,

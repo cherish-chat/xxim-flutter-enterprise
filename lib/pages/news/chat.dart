@@ -159,7 +159,7 @@ class ChatLogic extends GetxController {
   void pickFiles() {
     PickTool.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ["jpg", "png", "aac", "mp4"],
+      allowedExtensions: ["jpg", "png", "aac", "mp3", "mp4"],
       onSuccess: (result) async {
         List<PlatformFile> files = result.files;
         if (files.isEmpty) return;
@@ -187,7 +187,18 @@ class ChatLogic extends GetxController {
                 sendImage(value);
               },
             );
-          } else if (extension == "aac") {
+          } else if (extension == "aac" || extension == "mp3") {
+            createAudio(AudioContent(
+              audioName: file.name,
+              audioPath: "",
+              audioUrl: "",
+              audioBytes: bytes,
+              size: file.size,
+            )).then(
+              (value) {
+                sendAudio(value);
+              },
+            );
           } else if (extension == "mp4") {}
         }
       },
@@ -289,6 +300,53 @@ class ChatLogic extends GetxController {
       ),
       ext: _getMsgExt(),
     );
+  }
+
+  void sendAudio(MsgModel msgModel) async {
+    int index = msgModelList.indexWhere((element) {
+      return msgModel.clientMsgId == element.clientMsgId;
+    });
+    if (index == -1) {
+      msgModelList.insert(0, msgModel);
+      update(["list"]);
+    } else {
+      msgModel.sendStatus = SendStatus.sending;
+      String id = _getItemId(msgModel);
+      if (id.isNotEmpty) {
+        update([id]);
+      }
+    }
+    try {
+      AudioContent content = AudioContent.fromJson(msgModel.content);
+      if (content.audioBytes.isNotEmpty) {
+        Uint8List uint8list = Uint8List.fromList(
+          content.audioBytes,
+        );
+        String fileName = await MinIOTool.upload(
+          content.audioName,
+          uint8list,
+          onProgress: (progress) {
+            msgModel.sendProgress = (progress / uint8list.length * 100).floor();
+            String id = _getItemId(msgModel);
+            if (id.isNotEmpty) {
+              update([id]);
+            }
+          },
+        );
+        content.audioName = "";
+        content.audioPath = "";
+        content.audioUrl = fileName;
+        content.audioBytes = [];
+        msgModel.content = content.toJson();
+      }
+      sendMsgList([msgModel]);
+    } catch (_) {
+      msgModel.sendStatus = SendStatus.failed;
+      String id = _getItemId(msgModel);
+      if (id.isNotEmpty) {
+        update([id]);
+      }
+    }
   }
 
   Future<MsgModel> createVideo(VideoContent content) {
