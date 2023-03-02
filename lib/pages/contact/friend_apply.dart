@@ -148,7 +148,8 @@ class FriendApplyPage extends StatelessWidget {
             },
           );
         }
-        return const GetBackButton();
+        // return const GetBackButton();
+        return const SizedBox();
       }),
       title: const Text("好友申请"),
     );

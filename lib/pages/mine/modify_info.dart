@@ -93,7 +93,8 @@ class ModifyInfoPage extends StatelessWidget {
             },
           );
         }
-        return const GetBackButton();
+        // return const GetBackButton();
+        return const SizedBox();
       }),
       title: const Text("编辑资料"),
     );

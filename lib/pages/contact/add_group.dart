@@ -105,7 +105,8 @@ class AddGroupPage extends StatelessWidget {
             },
           );
         }
-        return const GetBackButton();
+        // return const GetBackButton();
+        return const SizedBox();
       }),
       title: const Text("添加群聊"),
     );

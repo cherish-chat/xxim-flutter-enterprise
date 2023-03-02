@@ -371,7 +371,8 @@ class ChatPage extends StatelessWidget {
             },
           );
         }
-        return const GetBackButton();
+        // return const GetBackButton();
+        return const SizedBox();
       }),
       title: Text(text),
     );

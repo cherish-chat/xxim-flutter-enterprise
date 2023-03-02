@@ -123,7 +123,8 @@ class GroupChatPage extends StatelessWidget {
             },
           );
         }
-        return const GetBackButton();
+        // return const GetBackButton();
+        return const SizedBox();
       }),
       title: const Text("我的群聊"),
     );
