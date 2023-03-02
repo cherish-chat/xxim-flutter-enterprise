@@ -20,7 +20,40 @@ class ModifyInfoLogic extends GetxController {
   void modifyAvatar() {
     PickTool.pickFiles(
       type: FileType.image,
-      onSuccess: (result) {},
+      onSuccess: (result) async {
+        List<PlatformFile> files = result.files;
+        if (files.isEmpty) return;
+        PlatformFile file = files.first;
+        Uint8List? bytes = file.bytes;
+        if (bytes == null || bytes.isEmpty) return;
+        GetLoadingDialog.show("修改中");
+        try {
+          String fileName = await MinIOTool.upload(
+            file.name,
+            bytes,
+          );
+          XXIM.instance.customRequest<UpdateUserInfoResp>(
+            method: "/v1/user/updateUserInfo",
+            req: UpdateUserInfoReq(
+              avatar: fileName,
+            ),
+            resp: UpdateUserInfoResp.create,
+            onSuccess: (data) {
+              avatarUrl.value = fileName;
+              GetLoadingDialog.hide();
+              Tool.showToast("修改成功");
+              MineLogic.logic()?.loadData();
+              MenuLogic.logic()?.loadConvIdList();
+            },
+            onError: (code, error) {
+              GetLoadingDialog.hide();
+            },
+          );
+        } catch (_) {
+          GetLoadingDialog.hide();
+          Tool.showToast("修改失败");
+        }
+      },
     );
   }
 

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:extended_text/extended_text.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
@@ -9,6 +10,7 @@ import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
+import 'dart:ui' as ui;
 
 enum ChatOperate {
   none,
@@ -154,6 +156,44 @@ class ChatLogic extends GetxController {
     }
   }
 
+  void pickFiles() {
+    PickTool.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ["jpg", "png", "aac", "mp4"],
+      onSuccess: (result) async {
+        List<PlatformFile> files = result.files;
+        if (files.isEmpty) return;
+        for (PlatformFile file in files) {
+          if (file.bytes == null || file.bytes!.isEmpty) continue;
+          String? extension = file.extension;
+          if (extension == null) continue;
+          List<int> bytes = file.bytes!.toList();
+          if (extension == "jpg" || extension == "png") {
+            Completer<ui.Image> completer = Completer();
+            ui.decodeImageFromList(Uint8List.fromList(bytes), (ui.Image image) {
+              return completer.complete(image);
+            });
+            ui.Image image = await completer.future;
+            createImage(ImageContent(
+              imageName: file.name,
+              imagePath: "",
+              imageUrl: "",
+              imageBytes: bytes,
+              width: image.width,
+              height: image.height,
+              size: file.size,
+            )).then(
+              (value) {
+                sendImage(value);
+              },
+            );
+          } else if (extension == "aac") {
+          } else if (extension == "mp4") {}
+        }
+      },
+    );
+  }
+
   String _getMsgExt() {
     Map extMap = {};
     if (replyMsgMap.isNotEmpty) {
@@ -190,6 +230,53 @@ class ChatLogic extends GetxController {
       ),
       ext: _getMsgExt(),
     );
+  }
+
+  void sendImage(MsgModel msgModel) async {
+    int index = msgModelList.indexWhere((element) {
+      return msgModel.clientMsgId == element.clientMsgId;
+    });
+    if (index == -1) {
+      msgModelList.insert(0, msgModel);
+      update(["list"]);
+    } else {
+      msgModel.sendStatus = SendStatus.sending;
+      String id = _getItemId(msgModel);
+      if (id.isNotEmpty) {
+        update([id]);
+      }
+    }
+    try {
+      ImageContent content = ImageContent.fromJson(msgModel.content);
+      if (content.imageBytes.isNotEmpty) {
+        Uint8List uint8list = Uint8List.fromList(
+          content.imageBytes,
+        );
+        String fileName = await MinIOTool.upload(
+          content.imageName,
+          uint8list,
+          onProgress: (progress) {
+            msgModel.sendProgress = (progress / uint8list.length * 100).floor();
+            String id = _getItemId(msgModel);
+            if (id.isNotEmpty) {
+              update([id]);
+            }
+          },
+        );
+        content.imageName = "";
+        content.imagePath = "";
+        content.imageUrl = fileName;
+        content.imageBytes = [];
+        msgModel.content = content.toJson();
+      }
+      sendMsgList([msgModel]);
+    } catch (_) {
+      msgModel.sendStatus = SendStatus.failed;
+      String id = _getItemId(msgModel);
+      if (id.isNotEmpty) {
+        update([id]);
+      }
+    }
   }
 
   Future<MsgModel> createAudio(AudioContent content) {
@@ -569,7 +656,7 @@ class ChatPage extends StatelessWidget {
               GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () {
-                  // 更多或文件
+                  logic.pickFiles();
                 },
                 child: Image.asset(
                   "assets/images/ic_extended_35.webp",

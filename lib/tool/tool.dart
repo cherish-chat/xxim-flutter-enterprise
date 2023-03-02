@@ -11,6 +11,7 @@ export 'emoji_tool.dart';
 export 'encrypt_tool.dart';
 export 'hive_tool.dart';
 export 'http_tool.dart';
+export 'minio_tool.dart';
 export 'pick_tool.dart';
 export 'popup_tool.dart';
 export 'safe_tool.dart';
@@ -130,14 +131,23 @@ class Tool {
   }
 
   static Map getMinioMap() {
-    return _minioMap;
+    // return _minioMap;
+    return {
+      "endPoint": "42.194.149.177",
+      "port": 9000,
+      "accessKey": "ehpDDDeYekG3SS3q",
+      "secretKey": "vvOn6zY22uQpwDKK9elbvToXu1J2RXzt",
+      "useSSL": false,
+      "bucket": "xxim",
+    };
   }
 
   static String getFileUrl(String fileName) {
     if (fileName.startsWith("http://") || fileName.startsWith("https://")) {
       return fileName;
     }
-    return "$_fileUrl$fileName";
+    // return "$_fileUrl$fileName";
+    return "http://42.194.149.177:9000/xxim/$fileName";
   }
 
   static String getLocationImage({

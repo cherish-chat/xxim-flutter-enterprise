@@ -52,7 +52,7 @@ class PickTool {
     List<String>? allowedExtensions,
     bool allowCompression = true,
     bool allowMultiple = false,
-    bool withData = false,
+    bool withData = true,
     bool withReadStream = false,
     bool lockParentWindow = false,
     required Function(FilePickerResult result) onSuccess,

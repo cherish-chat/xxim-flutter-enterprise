@@ -554,9 +554,11 @@ class ChatImageItem<T extends GetxController> extends StatelessWidget {
                                     bottomLeft: Radius.circular(8),
                                     bottomRight: Radius.circular(8),
                                   ),
-                            child: content.imagePath.isNotEmpty
-                                ? Image.file(
-                                    File(content.imagePath),
+                            child: content.imageBytes.isNotEmpty
+                                ? Image.memory(
+                                    Uint8List.fromList(
+                                      content.imageBytes,
+                                    ),
                                     width: width,
                                     height: height,
                                     fit: BoxFit.cover,
@@ -995,8 +997,13 @@ class ChatVideoItem<T extends GetxController> extends StatelessWidget {
                                 alignment: Alignment.center,
                                 children: [
                                   if (content.coverPath.isNotEmpty)
-                                    Image.file(
-                                      File(content.coverPath),
+                                    Image.memory(
+                                      Uint8List.fromList(
+                                        content.coverPath
+                                            .split(',')
+                                            .map(int.parse)
+                                            .toList(),
+                                      ),
                                       width: width,
                                       height: height,
                                       fit: BoxFit.cover,
