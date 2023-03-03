@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
+import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 
 class ScanCardLogic extends GetxController {
   static ScanCardLogic? logic() => Tool.capture(Get.find);
@@ -17,7 +18,7 @@ class ScanCardLogic extends GetxController {
     ever(code, (callback) {
       if (code.value.isEmpty) return;
       if (!code.value.contains("_")) return;
-      print("什么：${code.value}");
+      _search(code.value);
     });
   }
 
@@ -26,6 +27,28 @@ class ScanCardLogic extends GetxController {
     subscription?.cancel();
     controller?.dispose();
     super.onClose();
+  }
+
+  void _search(String keyword) {
+    XXIM.instance.customRequest<SearchUsersByKeywordResp>(
+      method: "/v1/user/searchUsersByKeyword",
+      req: SearchUsersByKeywordReq(
+        keyword: keyword,
+      ),
+      resp: SearchUsersByKeywordResp.create,
+      onSuccess: (data) {
+        if (data.users.isEmpty) return;
+        MenuLogic? logic = MenuLogic.logic();
+        if (logic == null) return;
+        logic.sliderKey?.currentState?.closeSlider();
+        logic.getDelegate?.toNamed(
+          Routes.addFriend,
+          arguments: {
+            "keyword": keyword,
+          },
+        );
+      },
+    );
   }
 }
 

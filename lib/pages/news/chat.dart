@@ -45,6 +45,7 @@ class ChatLogic extends GetxController {
 
   List<MsgModel> msgModelList = [];
 
+  List<String> atUserList = [];
   RxMap replyMsgMap = {}.obs;
 
   @override
@@ -247,6 +248,10 @@ class ChatLogic extends GetxController {
     );
   }
 
+  List<String> _getMsgAtUsers() {
+    return [];
+  }
+
   String _getMsgExt() {
     Map extMap = {};
     if (replyMsgMap.isNotEmpty) {
@@ -264,6 +269,7 @@ class ChatLogic extends GetxController {
   Future<MsgModel> createText(String text) {
     return XXIM.instance.msgManager.createText(
       convId: convId,
+      atUsers: _getMsgAtUsers(),
       text: text,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
@@ -276,6 +282,7 @@ class ChatLogic extends GetxController {
   Future<MsgModel> createImage(ImageContent content) {
     return XXIM.instance.msgManager.createImage(
       convId: convId,
+      atUsers: _getMsgAtUsers(),
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
@@ -326,6 +333,7 @@ class ChatLogic extends GetxController {
   Future<MsgModel> createAudio(AudioContent content) {
     return XXIM.instance.msgManager.createAudio(
       convId: convId,
+      atUsers: _getMsgAtUsers(),
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
@@ -376,6 +384,7 @@ class ChatLogic extends GetxController {
   Future<MsgModel> createVideo(VideoContent content) {
     return XXIM.instance.msgManager.createVideo(
       convId: convId,
+      atUsers: _getMsgAtUsers(),
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
@@ -440,6 +449,7 @@ class ChatLogic extends GetxController {
   Future<MsgModel> createFile(FileContent content) {
     return XXIM.instance.msgManager.createFile(
       convId: convId,
+      atUsers: _getMsgAtUsers(),
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
@@ -452,6 +462,7 @@ class ChatLogic extends GetxController {
   Future<MsgModel> createLocation(LocationContent content) {
     return XXIM.instance.msgManager.createLocation(
       convId: convId,
+      atUsers: _getMsgAtUsers(),
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
@@ -840,6 +851,11 @@ class ChatPage extends StatelessWidget {
         maxLines: null,
         textInputType: TextInputType.text,
         textInputAction: TextInputAction.send,
+        onChanged: (value) {
+          if (value.endsWith("@")) {
+            logic.hideOperate();
+          }
+        },
         onEditingComplete: () {
           String value = logic.inputController.text;
           if (value.isNotEmpty) {

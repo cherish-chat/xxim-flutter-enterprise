@@ -13,8 +13,18 @@ class AddFriendLogic extends GetxController {
 
   @override
   void onInit() {
-    controller = TextEditingController();
+    Map args = Get.arguments;
+    String keyword = args["keyword"] ?? "";
+    controller = TextEditingController()..text = keyword;
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    if (controller.text.isNotEmpty) {
+      search();
+    }
   }
 
   @override

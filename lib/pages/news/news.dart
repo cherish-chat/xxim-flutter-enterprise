@@ -303,6 +303,7 @@ class NewsPage extends StatelessWidget {
               logic.convPinned(convModel.convId, true);
             },
             icon: Icons.vertical_align_top_outlined,
+            // icon: Icons.vertical_align_bottom_outlined,
             backgroundColor: Colors.blue,
             foregroundColor: Colors.white,
           ),

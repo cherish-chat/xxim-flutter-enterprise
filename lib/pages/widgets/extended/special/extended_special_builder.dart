@@ -11,7 +11,12 @@ class ExtendedSpecialBuilder extends SpecialTextSpanBuilder {
     required int index,
   }) {
     if (flag.isEmpty) return null;
-    if (isStart(flag, EmojiText.emojiStart)) {
+    if (isStart(flag, AtText.flag)) {
+      return AtText(
+        start: index - (AtText.flag.length - 1),
+        onTap: onTap,
+      );
+    } else if (isStart(flag, EmojiText.emojiStart)) {
       return EmojiText(
         start: index - (EmojiText.emojiStart.length - 1),
       );
