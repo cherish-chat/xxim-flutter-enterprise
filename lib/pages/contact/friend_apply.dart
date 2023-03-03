@@ -17,6 +17,12 @@ class FriendApplyLogic extends GetxController {
     onRefresh();
   }
 
+  @override
+  void onClose() {
+    refreshController?.dispose();
+    super.onClose();
+  }
+
   void onRefresh() {
     refreshController?.resetNoData();
     pageNum = 1;

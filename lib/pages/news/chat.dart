@@ -27,11 +27,8 @@ class ChatLogic extends GetxController {
       );
   final String tag;
   final String convId;
-  late final HttpTool http;
 
-  ChatLogic(this.tag, this.convId) {
-    http = HttpTool.getHttp(ChatLogic, tag: tag);
-  }
+  ChatLogic(this.tag, this.convId);
 
   late FlutterListViewController scrollController;
   bool isLoadMore = false;

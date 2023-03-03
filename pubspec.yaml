@@ -38,8 +38,7 @@ dependencies:
   package_info_plus: 3.0.2
   connectivity_plus: 3.0.3
   path_provider: 2.0.12
-  get:
-    git: https://github.com/jonataslaw/getx
+  get: 5.0.0-release-candidate
   dio: 4.0.6
   hive: 2.2.3
   uuid: 3.0.7
