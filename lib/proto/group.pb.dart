@@ -1250,6 +1250,7 @@ class SetGroupMemberInfoReq extends $pb.GeneratedMessage {
     ..e<GroupRole>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role', $pb.PbFieldType.OE, defaultOrMaker: GroupRole.MEMBER, valueOf: GroupRole.valueOf, enumValues: GroupRole.values)
     ..aInt64(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unbanTime', protoName: 'unbanTime')
     ..aOS(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupRemark', protoName: 'groupRemark')
+    ..aOB(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isTop', protoName: 'isTop')
     ..hasRequiredFields = false
   ;
 
@@ -1263,6 +1264,7 @@ class SetGroupMemberInfoReq extends $pb.GeneratedMessage {
     GroupRole? role,
     $fixnum.Int64? unbanTime,
     $core.String? groupRemark,
+    $core.bool? isTop,
   }) {
     final _result = create();
     if (commonReq != null) {
@@ -1288,6 +1290,9 @@ class SetGroupMemberInfoReq extends $pb.GeneratedMessage {
     }
     if (groupRemark != null) {
       _result.groupRemark = groupRemark;
+    }
+    if (isTop != null) {
+      _result.isTop = isTop;
     }
     return _result;
   }
@@ -1385,6 +1390,15 @@ class SetGroupMemberInfoReq extends $pb.GeneratedMessage {
   $core.bool hasGroupRemark() => $_has(7);
   @$pb.TagNumber(14)
   void clearGroupRemark() => clearField(14);
+
+  @$pb.TagNumber(15)
+  $core.bool get isTop => $_getBF(8);
+  @$pb.TagNumber(15)
+  set isTop($core.bool v) { $_setBool(8, v); }
+  @$pb.TagNumber(15)
+  $core.bool hasIsTop() => $_has(8);
+  @$pb.TagNumber(15)
+  void clearIsTop() => clearField(15);
 }
 
 class SetGroupMemberInfoResp extends $pb.GeneratedMessage {
@@ -1526,6 +1540,7 @@ class GroupMemberInfo extends $pb.GeneratedMessage {
     ..e<GroupRole>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role', $pb.PbFieldType.OE, defaultOrMaker: GroupRole.MEMBER, valueOf: GroupRole.valueOf, enumValues: GroupRole.values)
     ..aInt64(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unbanTime', protoName: 'unbanTime')
     ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'preview')
+    ..aOM<$1.UserBaseInfo>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userBaseInfo', protoName: 'userBaseInfo', subBuilder: $1.UserBaseInfo.create)
     ..hasRequiredFields = false
   ;
 
@@ -1542,6 +1557,7 @@ class GroupMemberInfo extends $pb.GeneratedMessage {
     GroupRole? role,
     $fixnum.Int64? unbanTime,
     $core.bool? preview,
+    $1.UserBaseInfo? userBaseInfo,
   }) {
     final _result = create();
     if (groupId != null) {
@@ -1576,6 +1592,9 @@ class GroupMemberInfo extends $pb.GeneratedMessage {
     }
     if (preview != null) {
       _result.preview = preview;
+    }
+    if (userBaseInfo != null) {
+      _result.userBaseInfo = userBaseInfo;
     }
     return _result;
   }
@@ -1698,6 +1717,64 @@ class GroupMemberInfo extends $pb.GeneratedMessage {
   $core.bool hasPreview() => $_has(10);
   @$pb.TagNumber(11)
   void clearPreview() => clearField(11);
+
+  @$pb.TagNumber(12)
+  $1.UserBaseInfo get userBaseInfo => $_getN(11);
+  @$pb.TagNumber(12)
+  set userBaseInfo($1.UserBaseInfo v) { setField(12, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasUserBaseInfo() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearUserBaseInfo() => clearField(12);
+  @$pb.TagNumber(12)
+  $1.UserBaseInfo ensureUserBaseInfo() => $_ensure(11);
+}
+
+class MapGroupMemberInfoByIdsReq_Opt extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MapGroupMemberInfoByIdsReq.Opt', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userBaseInfo', protoName: 'userBaseInfo')
+    ..hasRequiredFields = false
+  ;
+
+  MapGroupMemberInfoByIdsReq_Opt._() : super();
+  factory MapGroupMemberInfoByIdsReq_Opt({
+    $core.bool? userBaseInfo,
+  }) {
+    final _result = create();
+    if (userBaseInfo != null) {
+      _result.userBaseInfo = userBaseInfo;
+    }
+    return _result;
+  }
+  factory MapGroupMemberInfoByIdsReq_Opt.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MapGroupMemberInfoByIdsReq_Opt.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MapGroupMemberInfoByIdsReq_Opt clone() => MapGroupMemberInfoByIdsReq_Opt()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MapGroupMemberInfoByIdsReq_Opt copyWith(void Function(MapGroupMemberInfoByIdsReq_Opt) updates) => super.copyWith((message) => updates(message as MapGroupMemberInfoByIdsReq_Opt)) as MapGroupMemberInfoByIdsReq_Opt; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MapGroupMemberInfoByIdsReq_Opt create() => MapGroupMemberInfoByIdsReq_Opt._();
+  MapGroupMemberInfoByIdsReq_Opt createEmptyInstance() => create();
+  static $pb.PbList<MapGroupMemberInfoByIdsReq_Opt> createRepeated() => $pb.PbList<MapGroupMemberInfoByIdsReq_Opt>();
+  @$core.pragma('dart2js:noInline')
+  static MapGroupMemberInfoByIdsReq_Opt getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MapGroupMemberInfoByIdsReq_Opt>(create);
+  static MapGroupMemberInfoByIdsReq_Opt? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get userBaseInfo => $_getBF(0);
+  @$pb.TagNumber(1)
+  set userBaseInfo($core.bool v) { $_setBool(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserBaseInfo() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserBaseInfo() => clearField(1);
 }
 
 class MapGroupMemberInfoByIdsReq extends $pb.GeneratedMessage {
@@ -1705,6 +1782,7 @@ class MapGroupMemberInfoByIdsReq extends $pb.GeneratedMessage {
     ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberIds', protoName: 'memberIds')
+    ..aOM<MapGroupMemberInfoByIdsReq_Opt>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'opt', subBuilder: MapGroupMemberInfoByIdsReq_Opt.create)
     ..hasRequiredFields = false
   ;
 
@@ -1713,6 +1791,7 @@ class MapGroupMemberInfoByIdsReq extends $pb.GeneratedMessage {
     $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.Iterable<$core.String>? memberIds,
+    MapGroupMemberInfoByIdsReq_Opt? opt,
   }) {
     final _result = create();
     if (commonReq != null) {
@@ -1723,6 +1802,9 @@ class MapGroupMemberInfoByIdsReq extends $pb.GeneratedMessage {
     }
     if (memberIds != null) {
       _result.memberIds.addAll(memberIds);
+    }
+    if (opt != null) {
+      _result.opt = opt;
     }
     return _result;
   }
@@ -1769,6 +1851,17 @@ class MapGroupMemberInfoByIdsReq extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(3)
   $core.List<$core.String> get memberIds => $_getList(2);
+
+  @$pb.TagNumber(4)
+  MapGroupMemberInfoByIdsReq_Opt get opt => $_getN(3);
+  @$pb.TagNumber(4)
+  set opt(MapGroupMemberInfoByIdsReq_Opt v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasOpt() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearOpt() => clearField(4);
+  @$pb.TagNumber(4)
+  MapGroupMemberInfoByIdsReq_Opt ensureOpt() => $_ensure(3);
 }
 
 class MapGroupMemberInfoByIdsResp extends $pb.GeneratedMessage {
@@ -5250,6 +5343,132 @@ class AddGroupMemberResp extends $pb.GeneratedMessage {
   $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
+class ReportGroupReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ReportGroupReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reason')
+    ..hasRequiredFields = false
+  ;
+
+  ReportGroupReq._() : super();
+  factory ReportGroupReq({
+    $0.CommonReq? commonReq,
+    $core.String? groupId,
+    $core.String? reason,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (groupId != null) {
+      _result.groupId = groupId;
+    }
+    if (reason != null) {
+      _result.reason = reason;
+    }
+    return _result;
+  }
+  factory ReportGroupReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReportGroupReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ReportGroupReq clone() => ReportGroupReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ReportGroupReq copyWith(void Function(ReportGroupReq) updates) => super.copyWith((message) => updates(message as ReportGroupReq)) as ReportGroupReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ReportGroupReq create() => ReportGroupReq._();
+  ReportGroupReq createEmptyInstance() => create();
+  static $pb.PbList<ReportGroupReq> createRepeated() => $pb.PbList<ReportGroupReq>();
+  @$core.pragma('dart2js:noInline')
+  static ReportGroupReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReportGroupReq>(create);
+  static ReportGroupReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get groupId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set groupId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasGroupId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearGroupId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get reason => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set reason($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasReason() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearReason() => clearField(3);
+}
+
+class ReportGroupResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ReportGroupResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  ReportGroupResp._() : super();
+  factory ReportGroupResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory ReportGroupResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReportGroupResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ReportGroupResp clone() => ReportGroupResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ReportGroupResp copyWith(void Function(ReportGroupResp) updates) => super.copyWith((message) => updates(message as ReportGroupResp)) as ReportGroupResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ReportGroupResp create() => ReportGroupResp._();
+  ReportGroupResp createEmptyInstance() => create();
+  static $pb.PbList<ReportGroupResp> createRepeated() => $pb.PbList<ReportGroupResp>();
+  @$core.pragma('dart2js:noInline')
+  static ReportGroupResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReportGroupResp>(create);
+  static ReportGroupResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
 class groupServiceApi {
   $pb.RpcClient _client;
   groupServiceApi(this._client);
@@ -5357,6 +5576,10 @@ class groupServiceApi {
   $async.Future<AddGroupMemberResp> addGroupMember($pb.ClientContext? ctx, AddGroupMemberReq request) {
     var emptyResponse = AddGroupMemberResp();
     return _client.invoke<AddGroupMemberResp>(ctx, 'groupService', 'AddGroupMember', request, emptyResponse);
+  }
+  $async.Future<ReportGroupResp> reportGroup($pb.ClientContext? ctx, ReportGroupReq request) {
+    var emptyResponse = ReportGroupResp();
+    return _client.invoke<ReportGroupResp>(ctx, 'groupService', 'ReportGroup', request, emptyResponse);
   }
 }
 

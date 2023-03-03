@@ -3,6 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
+import 'package:xxim_flutter_enterprise/proto/im.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
@@ -44,6 +45,23 @@ class NewsLogic extends GetxController {
     }
     convModelList = await XXIM.instance.convManager.getConvList();
     update(["list"]);
+  }
+
+  void convPinned(String convId, bool isPinned) {
+    GetLoadingDialog.show("请稍等");
+    XXIM.instance.customRequest<UpdateConvSettingResp>(
+      method: "/v1/im/updateConvSetting",
+      req: UpdateConvSettingReq(
+        isTop: isPinned,
+      ),
+      resp: UpdateConvSettingResp.create,
+      onSuccess: (data) {
+        GetLoadingDialog.hide();
+      },
+      onError: (code, error) {
+        GetLoadingDialog.hide();
+      },
+    );
   }
 
   void alertDelete(String convId) {
@@ -277,9 +295,17 @@ class NewsPage extends StatelessWidget {
     }
     return Slidable(
       endActionPane: ActionPane(
-        extentRatio: 0.25,
+        extentRatio: 0.45,
         motion: const ScrollMotion(),
         children: [
+          SlidableAction(
+            onPressed: (context) {
+              logic.convPinned(convModel.convId, true);
+            },
+            icon: Icons.vertical_align_top_outlined,
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
+          ),
           SlidableAction(
             onPressed: (context) {
               logic.alertDelete(convModel.convId);

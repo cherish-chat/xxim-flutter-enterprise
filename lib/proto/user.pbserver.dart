@@ -32,6 +32,7 @@ abstract class userServiceBase extends $pb.GeneratedService {
   $async.Future<$2.BatchGetUserAllDevicesResp> batchGetUserAllDevices($pb.ServerContext ctx, $2.BatchGetUserAllDevicesReq request);
   $async.Future<$2.UpdateUserInfoResp> updateUserInfo($pb.ServerContext ctx, $2.UpdateUserInfoReq request);
   $async.Future<$2.UpdateUserPasswordResp> updateUserPassword($pb.ServerContext ctx, $2.UpdateUserPasswordReq request);
+  $async.Future<$2.ResetPasswordResp> resetPassword($pb.ServerContext ctx, $2.ResetPasswordReq request);
   $async.Future<$2.GetAllUserInvitationCodeResp> getAllUserInvitationCode($pb.ServerContext ctx, $2.GetAllUserInvitationCodeReq request);
   $async.Future<$2.GetUserInvitationCodeDetailResp> getUserInvitationCodeDetail($pb.ServerContext ctx, $2.GetUserInvitationCodeDetailReq request);
   $async.Future<$2.AddUserInvitationCodeResp> addUserInvitationCode($pb.ServerContext ctx, $2.AddUserInvitationCodeReq request);
@@ -61,6 +62,7 @@ abstract class userServiceBase extends $pb.GeneratedService {
   $async.Future<$2.GetAllLoginRecordResp> getAllLoginRecord($pb.ServerContext ctx, $2.GetAllLoginRecordReq request);
   $async.Future<$2.SendSmsResp> sendSms($pb.ServerContext ctx, $2.SendSmsReq request);
   $async.Future<$2.VerifySmsResp> verifySms($pb.ServerContext ctx, $2.VerifySmsReq request);
+  $async.Future<$2.ReportUserResp> reportUser($pb.ServerContext ctx, $2.ReportUserReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -78,6 +80,7 @@ abstract class userServiceBase extends $pb.GeneratedService {
       case 'BatchGetUserAllDevices': return $2.BatchGetUserAllDevicesReq();
       case 'UpdateUserInfo': return $2.UpdateUserInfoReq();
       case 'UpdateUserPassword': return $2.UpdateUserPasswordReq();
+      case 'ResetPassword': return $2.ResetPasswordReq();
       case 'GetAllUserInvitationCode': return $2.GetAllUserInvitationCodeReq();
       case 'GetUserInvitationCodeDetail': return $2.GetUserInvitationCodeDetailReq();
       case 'AddUserInvitationCode': return $2.AddUserInvitationCodeReq();
@@ -107,6 +110,7 @@ abstract class userServiceBase extends $pb.GeneratedService {
       case 'GetAllLoginRecord': return $2.GetAllLoginRecordReq();
       case 'SendSms': return $2.SendSmsReq();
       case 'VerifySms': return $2.VerifySmsReq();
+      case 'ReportUser': return $2.ReportUserReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -127,6 +131,7 @@ abstract class userServiceBase extends $pb.GeneratedService {
       case 'BatchGetUserAllDevices': return this.batchGetUserAllDevices(ctx, request as $2.BatchGetUserAllDevicesReq);
       case 'UpdateUserInfo': return this.updateUserInfo(ctx, request as $2.UpdateUserInfoReq);
       case 'UpdateUserPassword': return this.updateUserPassword(ctx, request as $2.UpdateUserPasswordReq);
+      case 'ResetPassword': return this.resetPassword(ctx, request as $2.ResetPasswordReq);
       case 'GetAllUserInvitationCode': return this.getAllUserInvitationCode(ctx, request as $2.GetAllUserInvitationCodeReq);
       case 'GetUserInvitationCodeDetail': return this.getUserInvitationCodeDetail(ctx, request as $2.GetUserInvitationCodeDetailReq);
       case 'AddUserInvitationCode': return this.addUserInvitationCode(ctx, request as $2.AddUserInvitationCodeReq);
@@ -156,6 +161,7 @@ abstract class userServiceBase extends $pb.GeneratedService {
       case 'GetAllLoginRecord': return this.getAllLoginRecord(ctx, request as $2.GetAllLoginRecordReq);
       case 'SendSms': return this.sendSms(ctx, request as $2.SendSmsReq);
       case 'VerifySms': return this.verifySms(ctx, request as $2.VerifySmsReq);
+      case 'ReportUser': return this.reportUser(ctx, request as $2.ReportUserReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

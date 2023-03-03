@@ -2243,6 +2243,160 @@ class UpdateUserPasswordResp extends $pb.GeneratedMessage {
   $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
+class ResetPasswordReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ResetPasswordReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mobile')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mobileCountryCode', protoName: 'mobileCountryCode')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'smsCode', protoName: 'smsCode')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'newPassword', protoName: 'newPassword')
+    ..hasRequiredFields = false
+  ;
+
+  ResetPasswordReq._() : super();
+  factory ResetPasswordReq({
+    $0.CommonReq? commonReq,
+    $core.String? mobile,
+    $core.String? mobileCountryCode,
+    $core.String? smsCode,
+    $core.String? newPassword,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (mobile != null) {
+      _result.mobile = mobile;
+    }
+    if (mobileCountryCode != null) {
+      _result.mobileCountryCode = mobileCountryCode;
+    }
+    if (smsCode != null) {
+      _result.smsCode = smsCode;
+    }
+    if (newPassword != null) {
+      _result.newPassword = newPassword;
+    }
+    return _result;
+  }
+  factory ResetPasswordReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ResetPasswordReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ResetPasswordReq clone() => ResetPasswordReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ResetPasswordReq copyWith(void Function(ResetPasswordReq) updates) => super.copyWith((message) => updates(message as ResetPasswordReq)) as ResetPasswordReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ResetPasswordReq create() => ResetPasswordReq._();
+  ResetPasswordReq createEmptyInstance() => create();
+  static $pb.PbList<ResetPasswordReq> createRepeated() => $pb.PbList<ResetPasswordReq>();
+  @$core.pragma('dart2js:noInline')
+  static ResetPasswordReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ResetPasswordReq>(create);
+  static ResetPasswordReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get mobile => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set mobile($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasMobile() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMobile() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get mobileCountryCode => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set mobileCountryCode($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasMobileCountryCode() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearMobileCountryCode() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get smsCode => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set smsCode($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasSmsCode() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearSmsCode() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get newPassword => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set newPassword($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasNewPassword() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearNewPassword() => clearField(5);
+}
+
+class ResetPasswordResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ResetPasswordResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  ResetPasswordResp._() : super();
+  factory ResetPasswordResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory ResetPasswordResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ResetPasswordResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ResetPasswordResp clone() => ResetPasswordResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ResetPasswordResp copyWith(void Function(ResetPasswordResp) updates) => super.copyWith((message) => updates(message as ResetPasswordResp)) as ResetPasswordResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ResetPasswordResp create() => ResetPasswordResp._();
+  ResetPasswordResp createEmptyInstance() => create();
+  static $pb.PbList<ResetPasswordResp> createRepeated() => $pb.PbList<ResetPasswordResp>();
+  @$core.pragma('dart2js:noInline')
+  static ResetPasswordResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ResetPasswordResp>(create);
+  static ResetPasswordResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
 class UserInvitationCode extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserInvitationCode', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'code')
@@ -7396,6 +7550,132 @@ class VerifySmsResp extends $pb.GeneratedMessage {
   $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
+class ReportUserReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ReportUserReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reason')
+    ..hasRequiredFields = false
+  ;
+
+  ReportUserReq._() : super();
+  factory ReportUserReq({
+    $0.CommonReq? commonReq,
+    $core.String? userId,
+    $core.String? reason,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (userId != null) {
+      _result.userId = userId;
+    }
+    if (reason != null) {
+      _result.reason = reason;
+    }
+    return _result;
+  }
+  factory ReportUserReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReportUserReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ReportUserReq clone() => ReportUserReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ReportUserReq copyWith(void Function(ReportUserReq) updates) => super.copyWith((message) => updates(message as ReportUserReq)) as ReportUserReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ReportUserReq create() => ReportUserReq._();
+  ReportUserReq createEmptyInstance() => create();
+  static $pb.PbList<ReportUserReq> createRepeated() => $pb.PbList<ReportUserReq>();
+  @$core.pragma('dart2js:noInline')
+  static ReportUserReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReportUserReq>(create);
+  static ReportUserReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get userId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set userId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasUserId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearUserId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get reason => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set reason($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasReason() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearReason() => clearField(3);
+}
+
+class ReportUserResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ReportUserResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  ReportUserResp._() : super();
+  factory ReportUserResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory ReportUserResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReportUserResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ReportUserResp clone() => ReportUserResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ReportUserResp copyWith(void Function(ReportUserResp) updates) => super.copyWith((message) => updates(message as ReportUserResp)) as ReportUserResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ReportUserResp create() => ReportUserResp._();
+  ReportUserResp createEmptyInstance() => create();
+  static $pb.PbList<ReportUserResp> createRepeated() => $pb.PbList<ReportUserResp>();
+  @$core.pragma('dart2js:noInline')
+  static ReportUserResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReportUserResp>(create);
+  static ReportUserResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
 class userServiceApi {
   $pb.RpcClient _client;
   userServiceApi(this._client);
@@ -7455,6 +7735,10 @@ class userServiceApi {
   $async.Future<UpdateUserPasswordResp> updateUserPassword($pb.ClientContext? ctx, UpdateUserPasswordReq request) {
     var emptyResponse = UpdateUserPasswordResp();
     return _client.invoke<UpdateUserPasswordResp>(ctx, 'userService', 'UpdateUserPassword', request, emptyResponse);
+  }
+  $async.Future<ResetPasswordResp> resetPassword($pb.ClientContext? ctx, ResetPasswordReq request) {
+    var emptyResponse = ResetPasswordResp();
+    return _client.invoke<ResetPasswordResp>(ctx, 'userService', 'ResetPassword', request, emptyResponse);
   }
   $async.Future<GetAllUserInvitationCodeResp> getAllUserInvitationCode($pb.ClientContext? ctx, GetAllUserInvitationCodeReq request) {
     var emptyResponse = GetAllUserInvitationCodeResp();
@@ -7571,6 +7855,10 @@ class userServiceApi {
   $async.Future<VerifySmsResp> verifySms($pb.ClientContext? ctx, VerifySmsReq request) {
     var emptyResponse = VerifySmsResp();
     return _client.invoke<VerifySmsResp>(ctx, 'userService', 'VerifySms', request, emptyResponse);
+  }
+  $async.Future<ReportUserResp> reportUser($pb.ClientContext? ctx, ReportUserReq request) {
+    var emptyResponse = ReportUserResp();
+    return _client.invoke<ReportUserResp>(ctx, 'userService', 'ReportUser', request, emptyResponse);
   }
 }
 

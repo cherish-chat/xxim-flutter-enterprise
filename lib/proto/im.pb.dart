@@ -825,6 +825,132 @@ class GetAllConvIdOfUserResp extends $pb.GeneratedMessage {
   $core.List<$core.String> get noticeIds => $_getList(4);
 }
 
+class UpdateConvSettingReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateConvSettingReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$1.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $1.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convId', protoName: 'convId')
+    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isTop', protoName: 'isTop')
+    ..hasRequiredFields = false
+  ;
+
+  UpdateConvSettingReq._() : super();
+  factory UpdateConvSettingReq({
+    $1.CommonReq? commonReq,
+    $core.String? convId,
+    $core.bool? isTop,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (convId != null) {
+      _result.convId = convId;
+    }
+    if (isTop != null) {
+      _result.isTop = isTop;
+    }
+    return _result;
+  }
+  factory UpdateConvSettingReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateConvSettingReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateConvSettingReq clone() => UpdateConvSettingReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateConvSettingReq copyWith(void Function(UpdateConvSettingReq) updates) => super.copyWith((message) => updates(message as UpdateConvSettingReq)) as UpdateConvSettingReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UpdateConvSettingReq create() => UpdateConvSettingReq._();
+  UpdateConvSettingReq createEmptyInstance() => create();
+  static $pb.PbList<UpdateConvSettingReq> createRepeated() => $pb.PbList<UpdateConvSettingReq>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateConvSettingReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateConvSettingReq>(create);
+  static UpdateConvSettingReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $1.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($1.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $1.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get convId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set convId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasConvId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearConvId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.bool get isTop => $_getBF(2);
+  @$pb.TagNumber(3)
+  set isTop($core.bool v) { $_setBool(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasIsTop() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearIsTop() => clearField(3);
+}
+
+class UpdateConvSettingResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateConvSettingResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$1.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $1.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  UpdateConvSettingResp._() : super();
+  factory UpdateConvSettingResp({
+    $1.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory UpdateConvSettingResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateConvSettingResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateConvSettingResp clone() => UpdateConvSettingResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateConvSettingResp copyWith(void Function(UpdateConvSettingResp) updates) => super.copyWith((message) => updates(message as UpdateConvSettingResp)) as UpdateConvSettingResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UpdateConvSettingResp create() => UpdateConvSettingResp._();
+  UpdateConvSettingResp createEmptyInstance() => create();
+  static $pb.PbList<UpdateConvSettingResp> createRepeated() => $pb.PbList<UpdateConvSettingResp>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateConvSettingResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateConvSettingResp>(create);
+  static UpdateConvSettingResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $1.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($1.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $1.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
 class imServiceApi {
   $pb.RpcClient _client;
   imServiceApi(this._client);
@@ -872,6 +998,10 @@ class imServiceApi {
   $async.Future<GetAllConvIdOfUserResp> getAllConvIdOfUser($pb.ClientContext? ctx, GetAllConvIdOfUserReq request) {
     var emptyResponse = GetAllConvIdOfUserResp();
     return _client.invoke<GetAllConvIdOfUserResp>(ctx, 'imService', 'GetAllConvIdOfUser', request, emptyResponse);
+  }
+  $async.Future<UpdateConvSettingResp> updateConvSetting($pb.ClientContext? ctx, UpdateConvSettingReq request) {
+    var emptyResponse = UpdateConvSettingResp();
+    return _client.invoke<UpdateConvSettingResp>(ctx, 'imService', 'UpdateConvSetting', request, emptyResponse);
   }
 }
 

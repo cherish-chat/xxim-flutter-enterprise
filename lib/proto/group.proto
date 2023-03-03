@@ -180,6 +180,8 @@ message SetGroupMemberInfoReq {
   optional int64 unbanTime = 13;
   // 群备注
   optional string groupRemark = 14;
+  // 置顶
+  optional bool isTop = 15;
 }
 
 //SetGroupMemberInfoResp 设置群成员信息
@@ -219,6 +221,8 @@ message GroupMemberInfo {
   int64 unbanTime = 10;
   // 预览
   bool preview = 11;
+  // 用户基本信息
+  UserBaseInfo userBaseInfo = 12;
 }
 
 //MapGroupMemberInfoByIdsReq 批量获取群成员信息
@@ -228,6 +232,12 @@ message MapGroupMemberInfoByIdsReq {
   string groupId = 2;
   // 群成员ID
   repeated string memberIds = 3;
+  // Opt
+  message Opt {
+    // 是否获取用户基本信息
+    bool userBaseInfo = 1;
+  }
+  Opt opt = 4;
 }
 
 //MapGroupMemberInfoByIdsResp 批量获取群成员信息
@@ -676,6 +686,19 @@ message AddGroupMemberResp {
   CommonResp commonResp = 1;
 }
 
+// 举报群
+// ReportGroupReq
+message ReportGroupReq {
+  CommonReq commonReq = 1;
+  string groupId = 2;
+  string reason = 3;
+}
+
+// ReportGroupResp 举报群
+message ReportGroupResp {
+  CommonResp commonResp = 1;
+}
+
 service groupService {
   //CreateGroup 创建群聊
   rpc CreateGroup(CreateGroupReq) returns (CreateGroupResp) {}
@@ -733,4 +756,7 @@ service groupService {
 
   //AddGroupMember 添加群成员
   rpc AddGroupMember(AddGroupMemberReq) returns (AddGroupMemberResp) {}
+
+  // ReportGroup
+  rpc ReportGroup(ReportGroupReq) returns (ReportGroupResp) {}
 }

@@ -29,6 +29,7 @@ abstract class imServiceBase extends $pb.GeneratedService {
   $async.Future<$2.BatchGetUserLatestConnResp> batchGetUserLatestConn($pb.ServerContext ctx, $2.BatchGetUserLatestConnReq request);
   $async.Future<$0.SendMsgResp> sendMsg($pb.ServerContext ctx, $0.SendMsgReq request);
   $async.Future<$2.GetAllConvIdOfUserResp> getAllConvIdOfUser($pb.ServerContext ctx, $2.GetAllConvIdOfUserReq request);
+  $async.Future<$2.UpdateConvSettingResp> updateConvSetting($pb.ServerContext ctx, $2.UpdateConvSettingReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -43,6 +44,7 @@ abstract class imServiceBase extends $pb.GeneratedService {
       case 'BatchGetUserLatestConn': return $2.BatchGetUserLatestConnReq();
       case 'SendMsg': return $0.SendMsgReq();
       case 'GetAllConvIdOfUser': return $2.GetAllConvIdOfUserReq();
+      case 'UpdateConvSetting': return $2.UpdateConvSettingReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -60,6 +62,7 @@ abstract class imServiceBase extends $pb.GeneratedService {
       case 'BatchGetUserLatestConn': return this.batchGetUserLatestConn(ctx, request as $2.BatchGetUserLatestConnReq);
       case 'SendMsg': return this.sendMsg(ctx, request as $0.SendMsgReq);
       case 'GetAllConvIdOfUser': return this.getAllConvIdOfUser(ctx, request as $2.GetAllConvIdOfUserReq);
+      case 'UpdateConvSetting': return this.updateConvSetting(ctx, request as $2.UpdateConvSettingReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
