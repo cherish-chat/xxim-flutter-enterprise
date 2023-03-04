@@ -43,7 +43,7 @@ class ChatLogic extends GetxController {
 
   List<MsgModel> msgModelList = [];
 
-  List<String> atUserList = [];
+  Map atUserMap = {};
   RxMap replyMsgMap = {}.obs;
 
   @override
@@ -93,6 +93,7 @@ class ChatLogic extends GetxController {
       DraftModel? draftModel = convModel.draftModel;
       if (draftModel != null && draftModel.content.isNotEmpty) {
         inputController.text = draftModel.content;
+        atUserMap = json.decode(draftModel.ext);
       }
     }
     await XXIM.instance.convManager.setConvRead(convId: convId);
@@ -110,6 +111,7 @@ class ChatLogic extends GetxController {
     if (inputController.text.isNotEmpty) {
       draftModel = DraftModel(
         content: inputController.text,
+        ext: json.encode(atUserMap),
       );
     }
     await XXIM.instance.convManager.setConvDraft(
@@ -246,10 +248,6 @@ class ChatLogic extends GetxController {
     );
   }
 
-  List<String> _getMsgAtUsers() {
-    return [];
-  }
-
   String _getMsgExt() {
     Map extMap = {};
     if (replyMsgMap.isNotEmpty) {
@@ -267,7 +265,7 @@ class ChatLogic extends GetxController {
   Future<MsgModel> createText(String text) {
     return XXIM.instance.msgManager.createText(
       convId: convId,
-      atUsers: _getMsgAtUsers(),
+      atUsers: atUserMap.values.toList().cast<String>(),
       text: text,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
@@ -280,7 +278,6 @@ class ChatLogic extends GetxController {
   Future<MsgModel> createImage(ImageContent content) {
     return XXIM.instance.msgManager.createImage(
       convId: convId,
-      atUsers: _getMsgAtUsers(),
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
@@ -331,7 +328,6 @@ class ChatLogic extends GetxController {
   Future<MsgModel> createAudio(AudioContent content) {
     return XXIM.instance.msgManager.createAudio(
       convId: convId,
-      atUsers: _getMsgAtUsers(),
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
@@ -382,7 +378,6 @@ class ChatLogic extends GetxController {
   Future<MsgModel> createVideo(VideoContent content) {
     return XXIM.instance.msgManager.createVideo(
       convId: convId,
-      atUsers: _getMsgAtUsers(),
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
@@ -447,7 +442,6 @@ class ChatLogic extends GetxController {
   Future<MsgModel> createFile(FileContent content) {
     return XXIM.instance.msgManager.createFile(
       convId: convId,
-      atUsers: _getMsgAtUsers(),
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
@@ -460,7 +454,6 @@ class ChatLogic extends GetxController {
   Future<MsgModel> createLocation(LocationContent content) {
     return XXIM.instance.msgManager.createLocation(
       convId: convId,
-      atUsers: _getMsgAtUsers(),
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
@@ -471,6 +464,10 @@ class ChatLogic extends GetxController {
   }
 
   void sendMsgList(List<MsgModel> msgModelList) async {
+    XXIM.instance.convManager.setConvDraft(
+      convId: convId,
+      draftModel: null,
+    );
     XXIM.instance.convManager.setConvRead(
       convId: convId,
       isSync: false,
@@ -712,6 +709,7 @@ class ChatPage extends StatelessWidget {
               //     height: 40,
               //   ),
               // ),
+              // const SizedBox(width: 8),
               Expanded(
                 child: Column(
                   children: [
@@ -720,6 +718,7 @@ class ChatPage extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(width: 8),
               GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () {
@@ -812,7 +811,7 @@ class ChatPage extends StatelessWidget {
           logic.replyMsgMap.clear();
         },
         child: Container(
-          margin: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
+          margin: const EdgeInsets.only(bottom: 5),
           padding: const EdgeInsets.symmetric(horizontal: 16),
           height: 25,
           decoration: BoxDecoration(
@@ -846,7 +845,6 @@ class ChatPage extends StatelessWidget {
 
   Widget _buildInput(ChatLogic logic) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 8),
       constraints: const BoxConstraints(
         maxHeight: 150,
       ),
@@ -866,14 +864,42 @@ class ChatPage extends StatelessWidget {
         textInputType: TextInputType.text,
         textInputAction: TextInputAction.send,
         onChanged: (value) {
-          if (SDKTool.isGroupConv(logic.convId) && value.endsWith("@")) {
-            logic.hideOperate();
-            GroupMember.show(
-              groupId: SDKTool.getGroupId(logic.convId),
-              callback: (memberInfo) {
-                print("什么：$memberInfo");
-              },
-            );
+          if (SDKTool.isGroupConv(logic.convId)) {
+            List<String> keyList = [];
+            logic.atUserMap.forEach((key, value) {
+              if (!logic.inputController.text.startsWith(key)) {
+                keyList.add(key);
+              }
+            });
+            for (String key in keyList) {
+              logic.atUserMap.remove(key);
+            }
+            if (value.endsWith("@")) {
+              logic.hideOperate();
+              GroupMember.show(
+                groupId: SDKTool.getGroupId(logic.convId),
+                callback: (memberInfo) {
+                  String text =
+                      "${logic.inputController.text + memberInfo.userBaseInfo.nickname} ";
+                  logic.atUserMap[text] = memberInfo.userBaseInfo.id;
+                  logic.inputController.value = TextEditingValue(
+                    text: text,
+                    selection: TextSelection.fromPosition(
+                      TextPosition(
+                        affinity: TextAffinity.downstream,
+                        offset: text.length,
+                      ),
+                    ),
+                  );
+                  logic.inputFocusNode.requestFocus();
+                  if (GetPlatform.isMobile) {
+                    logic.chatOperate.value = ChatOperate.input;
+                  } else {
+                    logic.chatOperate.value = ChatOperate.none;
+                  }
+                },
+              );
+            }
           }
         },
         onEditingComplete: () {

@@ -3,6 +3,7 @@ class XXIMCommon {
   static const int edit = 2; // 编辑
 
   static const int syncFriendList = 101; // 同步好友列表
+  static const int syncConvSetting = 102; // 同步会话设置
   static const int friendInfoUpdate = 201; // 好友信息更新
 
   static const int groupMemberLeave = 301; // 群聊成员离开

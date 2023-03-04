@@ -132,7 +132,7 @@ class GroupMemberPage extends StatelessWidget {
                       Container(
                         alignment: Alignment.center,
                         width: double.infinity,
-                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
                         decoration: const BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
@@ -166,12 +166,19 @@ class GroupMemberPage extends StatelessWidget {
     return GetBuilder<GroupMemberLogic>(
       id: "list",
       builder: (logic) {
-        return FlutterListView(
-          delegate: FlutterListViewDelegate(
-            (context, index) {
-              return _buildItem(logic.list[index]);
-            },
-            childCount: logic.list.length,
+        return SmartRefresher(
+          controller: logic.refreshController!,
+          enablePullDown: true,
+          enablePullUp: true,
+          onRefresh: logic.onRefresh,
+          onLoading: logic.onLoadMore,
+          child: FlutterListView(
+            delegate: FlutterListViewDelegate(
+              (context, index) {
+                return _buildItem(logic.list[index]);
+              },
+              childCount: logic.list.length,
+            ),
           ),
         );
       },
@@ -202,15 +209,30 @@ class GroupMemberPage extends StatelessWidget {
             ),
             const SizedBox(width: 16),
             Expanded(
-              child: Text(
-                memberInfo.userBaseInfo.nickname,
-                style: const TextStyle(
-                  color: getTextBlack,
-                  fontSize: 16,
-                  fontWeight: getSemiBold,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    memberInfo.userBaseInfo.nickname,
+                    style: const TextStyle(
+                      color: getTextBlack,
+                      fontSize: 16,
+                      fontWeight: getSemiBold,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    memberInfo.userBaseInfo.id,
+                    style: const TextStyle(
+                      color: getHintBlack,
+                      fontSize: 14,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
               ),
             ),
             if (callback != null)

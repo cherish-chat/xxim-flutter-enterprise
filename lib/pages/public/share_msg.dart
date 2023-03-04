@@ -251,15 +251,30 @@ class ShareMsgPage extends StatelessWidget {
             ),
             const SizedBox(width: 16),
             Expanded(
-              child: Text(
-                convName,
-                style: const TextStyle(
-                  color: getTextBlack,
-                  fontSize: 16,
-                  fontWeight: getSemiBold,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    convName,
+                    style: const TextStyle(
+                      color: getTextBlack,
+                      fontSize: 16,
+                      fontWeight: getSemiBold,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    convModel.convId,
+                    style: const TextStyle(
+                      color: getHintBlack,
+                      fontSize: 14,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
               ),
             ),
             Image.asset(
