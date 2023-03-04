@@ -1,5 +1,6 @@
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:xxim_flutter_enterprise/pages/menu.dart';
 
 class WebViewLogic extends GetxController {
   static WebViewLogic? logic() => Tool.capture(Get.find);
@@ -46,36 +47,46 @@ class WebViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WebViewLogic logic = Get.put(WebViewLogic());
-    return WillPopScope(
-      onWillPop: GetPlatform.isIOS
-          ? null
-          : () {
-              logic.goBack();
-              return Future.value(false);
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        color: getBackgroundColor,
+      ),
+      child: Column(
+        children: [
+          _buildAppBar(logic),
+          Expanded(
+            child: _buildWebView(logic),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAppBar(WebViewLogic logic) {
+    return AppBar(
+      leading: Obx(() {
+        if (MenuLogic.logic()?.isPhone.value == true) {
+          return IconButton(
+            icon: Image.asset(
+              "assets/images/ic_menu_24.webp",
+              width: 24,
+              height: 24,
+            ),
+            onPressed: () {
+              MenuLogic.logic()?.sliderKey?.currentState?.toggle();
             },
-      child: Scaffold(
-        appBar: AppBar(
-          leading: GetBackButton(
-            onPressed: logic.goBack,
-          ),
-          title: Obx(
-            () => Text(
-              logic.title.value,
-              style: const TextStyle(
-                color: getTextBlack,
-                fontSize: 18,
-                fontWeight: getSemiBold,
-              ),
-            ),
-          ),
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(2),
-            child: Obx(
-              () => _buildProgress(logic.progress.value),
-            ),
-          ),
+          );
+        }
+        return const GetBackButton();
+      }),
+      title: Obx(
+        () => Text(logic.title.value),
+      ),
+      bottom: PreferredSize(
+        preferredSize: const Size.fromHeight(2),
+        child: Obx(
+          () => _buildProgress(logic.progress.value),
         ),
-        body: _buildWebView(logic),
       ),
     );
   }

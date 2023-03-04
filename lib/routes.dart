@@ -14,6 +14,7 @@ import 'package:xxim_flutter_enterprise/pages/login/register_account.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
 import 'package:xxim_flutter_enterprise/pages/outlet.dart';
+import 'package:xxim_flutter_enterprise/pages/public/web_view.dart';
 
 export 'package:xxim_flutter_enterprise/pages/unknown.dart';
 
@@ -29,6 +30,7 @@ class Paths {
   static String scanCard = "/scan_card";
   static String modifyInfo = "/modify_info";
   static String modifyPwd = "/modify_pwd";
+  static String webView = "/web_view";
 }
 
 class Routes {
@@ -50,6 +52,7 @@ class Routes {
   static String scanCard = menu + Paths.scanCard;
   static String modifyInfo = menu + Paths.modifyInfo;
   static String modifyPwd = menu + Paths.modifyPwd;
+  static String webView = menu + Paths.webView;
 
   static List<GetPage> get pages {
     return [
@@ -129,6 +132,11 @@ class Routes {
           GetPage(
             name: Paths.modifyPwd,
             page: () => const ModifyPwdPage(),
+            showCupertinoParallax: false,
+          ),
+          GetPage(
+            name: Paths.webView,
+            page: () => const WebViewPage(),
             showCupertinoParallax: false,
           ),
         ],

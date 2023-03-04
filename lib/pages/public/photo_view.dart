@@ -1,26 +1,47 @@
+import 'dart:io';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
+class PhotoView {
+  static Future show({
+    required List<dynamic> list,
+    int index = 0,
+    Function(int index)? callback,
+  }) {
+    return Get.dialog(
+      PhotoViewPage(
+        list: list,
+        index: index,
+        callback: callback,
+      ),
+      barrierDismissible: false,
+      barrierColor: Colors.transparent,
+    );
+  }
+
+  static void hide() {
+    Get.back();
+  }
+}
+
 class PhotoViewLogic extends GetxController {
   static PhotoViewLogic? logic() => Tool.capture(Get.find);
+  final List<dynamic> list;
+  final RxInt index;
+  final Function(int index)? callback;
+
+  PhotoViewLogic(this.list, this.index, this.callback);
 
   Rx<Color> color = Colors.black.obs;
   RxBool close = false.obs;
 
   late GlobalKey globalKey;
   late PageController controller;
-  late List<String> list;
-  RxInt index = 0.obs;
-  Function(int index)? callback;
 
   @override
   void onInit() {
     super.onInit();
-    Map args = Get.arguments;
-    list = args["list"];
-    index.value = args["index"] ?? 0;
-    callback = args["callback"];
     globalKey = GlobalKey();
     controller = PageController(
       initialPage: index.value,
@@ -35,55 +56,64 @@ class PhotoViewLogic extends GetxController {
 }
 
 class PhotoViewPage extends StatelessWidget {
-  const PhotoViewPage({Key? key}) : super(key: key);
+  final List<dynamic> list;
+  final int index;
+  final Function(int index)? callback;
+
+  const PhotoViewPage({
+    Key? key,
+    required this.list,
+    this.index = 0,
+    this.callback,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    PhotoViewLogic logic = Get.put(PhotoViewLogic());
-    return Material(
-      type: MaterialType.transparency,
-      child: Stack(
-        children: [
-          Obx(
-            () => AnimatedContainer(
-              duration: kThemeAnimationDuration,
-              width: double.infinity,
-              height: double.infinity,
-              color: logic.color.value,
-            ),
+    return GetBuilder<PhotoViewLogic>(
+      init: PhotoViewLogic(list, 0.obs, callback),
+      dispose: (state) {
+        Get.delete<PhotoViewLogic>();
+      },
+      builder: (logic) {
+        return Material(
+          type: MaterialType.transparency,
+          child: Stack(
+            children: [
+              Obx(
+                () => AnimatedContainer(
+                  duration: kThemeAnimationDuration,
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: logic.color.value,
+                ),
+              ),
+              Draggable(
+                axis: Axis.vertical,
+                childWhenDragging: const SizedBox(),
+                feedback: _buildPhotoView(logic),
+                maxSimultaneousDrags: 1,
+                onDragStarted: () {
+                  logic.color.value = Colors.black38;
+                },
+                onDraggableCanceled: (velocity, offset) {
+                  double dy = offset.dy;
+                  if (dy > -150 && dy < 150) {
+                    logic.color.value = Colors.black;
+                  }
+                },
+                onDragEnd: (details) {
+                  double dy = details.offset.dy;
+                  if (dy <= -150 || dy >= 150) {
+                    logic.close.value = true;
+                    Get.back();
+                  }
+                },
+                child: _buildPhotoView(logic),
+              ),
+            ],
           ),
-          Draggable(
-            axis: Axis.vertical,
-            childWhenDragging: const SizedBox(),
-            feedback: _buildPhotoView(logic),
-            maxSimultaneousDrags: 1,
-            onDragStarted: () {
-              logic.color.value = Colors.black38;
-            },
-            onDraggableCanceled: (velocity, offset) {
-              double dy = offset.dy;
-              if (dy > -150 && dy < 150) {
-                logic.color.value = Colors.black;
-              }
-            },
-            onDragEnd: (details) {
-              double dy = details.offset.dy;
-              if (dy <= -150 || dy >= 150) {
-                logic.close.value = true;
-                Get.back();
-              }
-            },
-            child: _buildPhotoView(logic),
-          ),
-          Positioned.fill(
-            left: 4,
-            top: SafeTool.instance.safeTop,
-            right: null,
-            bottom: null,
-            child: const GetBackButton(),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
@@ -122,13 +152,20 @@ class PhotoViewPage extends StatelessWidget {
     );
   }
 
-  PhotoViewGalleryPageOptions _buildPageOptions(String url) {
+  PhotoViewGalleryPageOptions _buildPageOptions(dynamic photo) {
+    ImageProvider imageProvider;
+    if (photo is File) {
+      imageProvider = FileImage(photo);
+    } else if (photo is Uint8List) {
+      imageProvider = MemoryImage(photo);
+    } else {
+      imageProvider = ExtendedNetworkImageProvider(photo);
+    }
     return PhotoViewGalleryPageOptions(
-      imageProvider: ExtendedNetworkImageProvider(url),
+      imageProvider: imageProvider,
       initialScale: PhotoViewComputedScale.contained,
       minScale: PhotoViewComputedScale.contained,
       maxScale: PhotoViewComputedScale.covered * 2.5,
-      heroAttributes: PhotoViewHeroAttributes(tag: url),
     );
   }
 }

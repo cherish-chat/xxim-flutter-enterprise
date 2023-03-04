@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
+import 'package:xxim_flutter_enterprise/pages/public/photo_view.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 enum ChatDirection {
@@ -576,7 +577,12 @@ class ChatImageItem extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        // 预览照片
+        dynamic photo = content.imageBytes.isNotEmpty
+            ? Uint8List.fromList(content.imageBytes)
+            : Tool.getFileUrl(content.imageUrl);
+        PhotoView.show(
+          list: [photo],
+        );
       },
       child: ClipRRect(
         borderRadius: direction == ChatDirection.left
