@@ -159,21 +159,46 @@ const GetAllConvIdOfUserResp$json = const {
 
 /// Descriptor for `GetAllConvIdOfUserResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getAllConvIdOfUserRespDescriptor = $convert.base64Decode('ChZHZXRBbGxDb252SWRPZlVzZXJSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEhgKB2NvbnZJZHMYAiADKAlSB2NvbnZJZHMSGgoIZ3JvdXBJZHMYAyADKAlSCGdyb3VwSWRzEhwKCWZyaWVuZElkcxgEIAMoCVIJZnJpZW5kSWRzEhwKCW5vdGljZUlkcxgFIAMoCVIJbm90aWNlSWRz');
+@$core.Deprecated('Use convSettingDescriptor instead')
+const ConvSetting$json = const {
+  '1': 'ConvSetting',
+  '2': const [
+    const {'1': 'userId', '3': 1, '4': 1, '5': 9, '10': 'userId'},
+    const {'1': 'convId', '3': 2, '4': 1, '5': 9, '10': 'convId'},
+    const {'1': 'isTop', '3': 3, '4': 1, '5': 8, '9': 0, '10': 'isTop', '17': true},
+    const {'1': 'isDisturb', '3': 4, '4': 1, '5': 8, '9': 1, '10': 'isDisturb', '17': true},
+    const {'1': 'notifyPreview', '3': 5, '4': 1, '5': 8, '9': 2, '10': 'notifyPreview', '17': true},
+    const {'1': 'notifySound', '3': 6, '4': 1, '5': 8, '9': 3, '10': 'notifySound', '17': true},
+    const {'1': 'notifyCustomSound', '3': 7, '4': 1, '5': 9, '9': 4, '10': 'notifyCustomSound', '17': true},
+    const {'1': 'notifyVibrate', '3': 8, '4': 1, '5': 8, '9': 5, '10': 'notifyVibrate', '17': true},
+    const {'1': 'isShield', '3': 9, '4': 1, '5': 8, '9': 6, '10': 'isShield', '17': true},
+    const {'1': 'chatBg', '3': 10, '4': 1, '5': 9, '9': 7, '10': 'chatBg', '17': true},
+  ],
+  '8': const [
+    const {'1': '_isTop'},
+    const {'1': '_isDisturb'},
+    const {'1': '_notifyPreview'},
+    const {'1': '_notifySound'},
+    const {'1': '_notifyCustomSound'},
+    const {'1': '_notifyVibrate'},
+    const {'1': '_isShield'},
+    const {'1': '_chatBg'},
+  ],
+};
+
+/// Descriptor for `ConvSetting`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List convSettingDescriptor = $convert.base64Decode('CgtDb252U2V0dGluZxIWCgZ1c2VySWQYASABKAlSBnVzZXJJZBIWCgZjb252SWQYAiABKAlSBmNvbnZJZBIZCgVpc1RvcBgDIAEoCEgAUgVpc1RvcIgBARIhCglpc0Rpc3R1cmIYBCABKAhIAVIJaXNEaXN0dXJiiAEBEikKDW5vdGlmeVByZXZpZXcYBSABKAhIAlINbm90aWZ5UHJldmlld4gBARIlCgtub3RpZnlTb3VuZBgGIAEoCEgDUgtub3RpZnlTb3VuZIgBARIxChFub3RpZnlDdXN0b21Tb3VuZBgHIAEoCUgEUhFub3RpZnlDdXN0b21Tb3VuZIgBARIpCg1ub3RpZnlWaWJyYXRlGAggASgISAVSDW5vdGlmeVZpYnJhdGWIAQESHwoIaXNTaGllbGQYCSABKAhIBlIIaXNTaGllbGSIAQESGwoGY2hhdEJnGAogASgJSAdSBmNoYXRCZ4gBAUIICgZfaXNUb3BCDAoKX2lzRGlzdHVyYkIQCg5fbm90aWZ5UHJldmlld0IOCgxfbm90aWZ5U291bmRCFAoSX25vdGlmeUN1c3RvbVNvdW5kQhAKDl9ub3RpZnlWaWJyYXRlQgsKCV9pc1NoaWVsZEIJCgdfY2hhdEJn');
 @$core.Deprecated('Use updateConvSettingReqDescriptor instead')
 const UpdateConvSettingReq$json = const {
   '1': 'UpdateConvSettingReq',
   '2': const [
     const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
-    const {'1': 'convId', '3': 2, '4': 1, '5': 9, '10': 'convId'},
-    const {'1': 'isTop', '3': 3, '4': 1, '5': 8, '9': 0, '10': 'isTop', '17': true},
-  ],
-  '8': const [
-    const {'1': '_isTop'},
+    const {'1': 'convSetting', '3': 2, '4': 1, '5': 11, '6': '.pb.ConvSetting', '10': 'convSetting'},
   ],
 };
 
 /// Descriptor for `UpdateConvSettingReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List updateConvSettingReqDescriptor = $convert.base64Decode('ChRVcGRhdGVDb252U2V0dGluZ1JlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIWCgZjb252SWQYAiABKAlSBmNvbnZJZBIZCgVpc1RvcBgDIAEoCEgAUgVpc1RvcIgBAUIICgZfaXNUb3A=');
+final $typed_data.Uint8List updateConvSettingReqDescriptor = $convert.base64Decode('ChRVcGRhdGVDb252U2V0dGluZ1JlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIxCgtjb252U2V0dGluZxgCIAEoCzIPLnBiLkNvbnZTZXR0aW5nUgtjb252U2V0dGluZw==');
 @$core.Deprecated('Use updateConvSettingRespDescriptor instead')
 const UpdateConvSettingResp$json = const {
   '1': 'UpdateConvSettingResp',
@@ -184,6 +209,28 @@ const UpdateConvSettingResp$json = const {
 
 /// Descriptor for `UpdateConvSettingResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List updateConvSettingRespDescriptor = $convert.base64Decode('ChVVcGRhdGVDb252U2V0dGluZ1Jlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
+@$core.Deprecated('Use getConvSettingReqDescriptor instead')
+const GetConvSettingReq$json = const {
+  '1': 'GetConvSettingReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'convIds', '3': 2, '4': 3, '5': 9, '10': 'convIds'},
+  ],
+};
+
+/// Descriptor for `GetConvSettingReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getConvSettingReqDescriptor = $convert.base64Decode('ChFHZXRDb252U2V0dGluZ1JlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIYCgdjb252SWRzGAIgAygJUgdjb252SWRz');
+@$core.Deprecated('Use getConvSettingRespDescriptor instead')
+const GetConvSettingResp$json = const {
+  '1': 'GetConvSettingResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'convSettings', '3': 2, '4': 3, '5': 11, '6': '.pb.ConvSetting', '10': 'convSettings'},
+  ],
+};
+
+/// Descriptor for `GetConvSettingResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getConvSettingRespDescriptor = $convert.base64Decode('ChJHZXRDb252U2V0dGluZ1Jlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASMwoMY29udlNldHRpbmdzGAIgAygLMg8ucGIuQ29udlNldHRpbmdSDGNvbnZTZXR0aW5ncw==');
 const $core.Map<$core.String, $core.dynamic> imServiceBase$json = const {
   '1': 'imService',
   '2': const [
@@ -199,6 +246,7 @@ const $core.Map<$core.String, $core.dynamic> imServiceBase$json = const {
     const {'1': 'SendMsg', '2': '.pb.SendMsgReq', '3': '.pb.SendMsgResp'},
     const {'1': 'GetAllConvIdOfUser', '2': '.pb.GetAllConvIdOfUserReq', '3': '.pb.GetAllConvIdOfUserResp'},
     const {'1': 'UpdateConvSetting', '2': '.pb.UpdateConvSettingReq', '3': '.pb.UpdateConvSettingResp'},
+    const {'1': 'GetConvSetting', '2': '.pb.GetConvSettingReq', '3': '.pb.GetConvSettingResp'},
   ],
 };
 
@@ -230,8 +278,11 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> imServiceB
   '.pb.GetAllConvIdOfUserReq': GetAllConvIdOfUserReq$json,
   '.pb.GetAllConvIdOfUserResp': GetAllConvIdOfUserResp$json,
   '.pb.UpdateConvSettingReq': UpdateConvSettingReq$json,
+  '.pb.ConvSetting': ConvSetting$json,
   '.pb.UpdateConvSettingResp': UpdateConvSettingResp$json,
+  '.pb.GetConvSettingReq': GetConvSettingReq$json,
+  '.pb.GetConvSettingResp': GetConvSettingResp$json,
 };
 
 /// Descriptor for `imService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List imServiceDescriptor = $convert.base64Decode('CglpbVNlcnZpY2USPAoNQmVmb3JlQ29ubmVjdBIULnBiLkJlZm9yZUNvbm5lY3RSZXEaFS5wYi5CZWZvcmVDb25uZWN0UmVzcBIzCgxBZnRlckNvbm5lY3QSEy5wYi5BZnRlckNvbm5lY3RSZXEaDi5wYi5Db21tb25SZXNwEjkKD0FmdGVyRGlzY29ubmVjdBIWLnBiLkFmdGVyRGlzY29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASMAoJS2VlcEFsaXZlEhAucGIuS2VlcEFsaXZlUmVxGhEucGIuS2VlcEFsaXZlUmVzcBI5CgxLaWNrVXNlckNvbm4SEy5wYi5LaWNrVXNlckNvbm5SZXEaFC5wYi5LaWNrVXNlckNvbm5SZXNwEjYKC0dldFVzZXJDb25uEhIucGIuR2V0VXNlckNvbm5SZXEaEy5wYi5HZXRVc2VyQ29ublJlc3ASPAoNQmVmb3JlUmVxdWVzdBIULnBiLkJlZm9yZVJlcXVlc3RSZXEaFS5wYi5CZWZvcmVSZXF1ZXN0UmVzcBJIChFHZXRVc2VyTGF0ZXN0Q29ubhIYLnBiLkdldFVzZXJMYXRlc3RDb25uUmVxGhkucGIuR2V0VXNlckxhdGVzdENvbm5SZXNwElcKFkJhdGNoR2V0VXNlckxhdGVzdENvbm4SHS5wYi5CYXRjaEdldFVzZXJMYXRlc3RDb25uUmVxGh4ucGIuQmF0Y2hHZXRVc2VyTGF0ZXN0Q29ublJlc3ASKgoHU2VuZE1zZxIOLnBiLlNlbmRNc2dSZXEaDy5wYi5TZW5kTXNnUmVzcBJLChJHZXRBbGxDb252SWRPZlVzZXISGS5wYi5HZXRBbGxDb252SWRPZlVzZXJSZXEaGi5wYi5HZXRBbGxDb252SWRPZlVzZXJSZXNwEkgKEVVwZGF0ZUNvbnZTZXR0aW5nEhgucGIuVXBkYXRlQ29udlNldHRpbmdSZXEaGS5wYi5VcGRhdGVDb252U2V0dGluZ1Jlc3A=');
+final $typed_data.Uint8List imServiceDescriptor = $convert.base64Decode('CglpbVNlcnZpY2USPAoNQmVmb3JlQ29ubmVjdBIULnBiLkJlZm9yZUNvbm5lY3RSZXEaFS5wYi5CZWZvcmVDb25uZWN0UmVzcBIzCgxBZnRlckNvbm5lY3QSEy5wYi5BZnRlckNvbm5lY3RSZXEaDi5wYi5Db21tb25SZXNwEjkKD0FmdGVyRGlzY29ubmVjdBIWLnBiLkFmdGVyRGlzY29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASMAoJS2VlcEFsaXZlEhAucGIuS2VlcEFsaXZlUmVxGhEucGIuS2VlcEFsaXZlUmVzcBI5CgxLaWNrVXNlckNvbm4SEy5wYi5LaWNrVXNlckNvbm5SZXEaFC5wYi5LaWNrVXNlckNvbm5SZXNwEjYKC0dldFVzZXJDb25uEhIucGIuR2V0VXNlckNvbm5SZXEaEy5wYi5HZXRVc2VyQ29ublJlc3ASPAoNQmVmb3JlUmVxdWVzdBIULnBiLkJlZm9yZVJlcXVlc3RSZXEaFS5wYi5CZWZvcmVSZXF1ZXN0UmVzcBJIChFHZXRVc2VyTGF0ZXN0Q29ubhIYLnBiLkdldFVzZXJMYXRlc3RDb25uUmVxGhkucGIuR2V0VXNlckxhdGVzdENvbm5SZXNwElcKFkJhdGNoR2V0VXNlckxhdGVzdENvbm4SHS5wYi5CYXRjaEdldFVzZXJMYXRlc3RDb25uUmVxGh4ucGIuQmF0Y2hHZXRVc2VyTGF0ZXN0Q29ublJlc3ASKgoHU2VuZE1zZxIOLnBiLlNlbmRNc2dSZXEaDy5wYi5TZW5kTXNnUmVzcBJLChJHZXRBbGxDb252SWRPZlVzZXISGS5wYi5HZXRBbGxDb252SWRPZlVzZXJSZXEaGi5wYi5HZXRBbGxDb252SWRPZlVzZXJSZXNwEkgKEVVwZGF0ZUNvbnZTZXR0aW5nEhgucGIuVXBkYXRlQ29udlNldHRpbmdSZXEaGS5wYi5VcGRhdGVDb252U2V0dGluZ1Jlc3ASPwoOR2V0Q29udlNldHRpbmcSFS5wYi5HZXRDb252U2V0dGluZ1JlcRoWLnBiLkdldENvbnZTZXR0aW5nUmVzcA==');

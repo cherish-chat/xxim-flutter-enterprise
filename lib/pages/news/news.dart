@@ -14,6 +14,7 @@ class NewsLogic extends GetxController {
 
   late RxInt loadRandom = 0.obs;
   List<ConvModel> convModelList = [];
+  Map<String, ConvSetting> convSettingMap = {};
 
   @override
   void onInit() {
@@ -44,7 +45,41 @@ class NewsLogic extends GetxController {
       return;
     }
     convModelList = await XXIM.instance.convManager.getConvList();
-    update(["list"]);
+    _loadSetting();
+  }
+
+  void _loadSetting() {
+    XXIM.instance.customRequest<GetConvSettingResp>(
+      method: "/v1/im/getConvSetting",
+      req: GetConvSettingReq(
+        convIds: convModelList.map((e) {
+          return e.convId;
+        }).toList(),
+      ),
+      resp: GetConvSettingResp.create,
+      onSuccess: (data) {
+        convSettingMap.clear();
+        List<ConvModel> pinnedConvList = [];
+        for (ConvSetting convSetting in data.convSettings) {
+          convSettingMap[convSetting.convId] = convSetting;
+          if (convSetting.isTop) {
+            int index = convModelList.indexWhere((item) {
+              return item.convId == convSetting.convId;
+            });
+            if (index != -1) {
+              pinnedConvList.add(convModelList.removeAt(index));
+            }
+          }
+        }
+        if (pinnedConvList.isNotEmpty) {
+          convModelList.insertAll(0, pinnedConvList);
+        }
+        update(["list"]);
+      },
+      onError: (code, error) {
+        update(["list"]);
+      },
+    );
   }
 
   void convPinned(String convId, bool isPinned) {
@@ -52,11 +87,16 @@ class NewsLogic extends GetxController {
     XXIM.instance.customRequest<UpdateConvSettingResp>(
       method: "/v1/im/updateConvSetting",
       req: UpdateConvSettingReq(
-        isTop: isPinned,
+        convSetting: ConvSetting(
+          userId: HiveTool.getUserId(),
+          convId: convId,
+          isTop: isPinned,
+        ),
       ),
       resp: UpdateConvSettingResp.create,
       onSuccess: (data) {
         GetLoadingDialog.hide();
+        loadList(force: true);
       },
       onError: (code, error) {
         GetLoadingDialog.hide();
@@ -215,6 +255,7 @@ class NewsPage extends StatelessWidget {
                   convModel,
                   userInfo: userInfo,
                   groupInfo: groupInfo,
+                  convSetting: logic.convSettingMap[convModel.convId],
                 );
               },
               childCount: logic.convModelList.length,
@@ -230,6 +271,7 @@ class NewsPage extends StatelessWidget {
     ConvModel convModel, {
     UserBaseInfo? userInfo,
     GroupBaseInfo? groupInfo,
+    ConvSetting? convSetting,
   }) {
     String convAvatar = "";
     String convName = "";
@@ -300,10 +342,14 @@ class NewsPage extends StatelessWidget {
         children: [
           SlidableAction(
             onPressed: (context) {
-              logic.convPinned(convModel.convId, true);
+              logic.convPinned(
+                convModel.convId,
+                !(convSetting?.isTop == true),
+              );
             },
-            icon: Icons.vertical_align_top_outlined,
-            // icon: Icons.vertical_align_bottom_outlined,
+            icon: (convSetting?.isTop == true)
+                ? Icons.vertical_align_bottom_outlined
+                : Icons.vertical_align_top_outlined,
             backgroundColor: Colors.blue,
             foregroundColor: Colors.white,
           ),
@@ -333,8 +379,9 @@ class NewsPage extends StatelessWidget {
         onSecondaryTap: () {
           logic.alertDelete(convModel.convId);
         },
-        child: Padding(
+        child: Container(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          color: (convSetting?.isTop == true) ? getBlack10 : Colors.transparent,
           child: Row(
             children: [
               ClipRRect(

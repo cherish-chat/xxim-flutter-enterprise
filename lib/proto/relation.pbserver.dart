@@ -25,8 +25,6 @@ abstract class relationServiceBase extends $pb.GeneratedService {
   $async.Future<$2.BlockUserResp> blockUser($pb.ServerContext ctx, $2.BlockUserReq request);
   $async.Future<$2.DeleteBlockUserResp> deleteBlockUser($pb.ServerContext ctx, $2.DeleteBlockUserReq request);
   $async.Future<$2.DeleteFriendResp> deleteFriend($pb.ServerContext ctx, $2.DeleteFriendReq request);
-  $async.Future<$2.SetSingleConvSettingResp> setSingleConvSetting($pb.ServerContext ctx, $2.SetSingleConvSettingReq request);
-  $async.Future<$2.GetSingleConvSettingResp> getSingleConvSetting($pb.ServerContext ctx, $2.GetSingleConvSettingReq request);
   $async.Future<$2.GetFriendListResp> getFriendList($pb.ServerContext ctx, $2.GetFriendListReq request);
   $async.Future<$2.GetMyFriendEventListResp> getMyFriendEventList($pb.ServerContext ctx, $2.GetMyFriendEventListReq request);
   $async.Future<$2.GetFriendListByUserIdResp> getFriendListByUserId($pb.ServerContext ctx, $2.GetFriendListByUserIdReq request);
@@ -42,8 +40,6 @@ abstract class relationServiceBase extends $pb.GeneratedService {
       case 'BlockUser': return $2.BlockUserReq();
       case 'DeleteBlockUser': return $2.DeleteBlockUserReq();
       case 'DeleteFriend': return $2.DeleteFriendReq();
-      case 'SetSingleConvSetting': return $2.SetSingleConvSettingReq();
-      case 'GetSingleConvSetting': return $2.GetSingleConvSettingReq();
       case 'GetFriendList': return $2.GetFriendListReq();
       case 'GetMyFriendEventList': return $2.GetMyFriendEventListReq();
       case 'GetFriendListByUserId': return $2.GetFriendListByUserIdReq();
@@ -62,8 +58,6 @@ abstract class relationServiceBase extends $pb.GeneratedService {
       case 'BlockUser': return this.blockUser(ctx, request as $2.BlockUserReq);
       case 'DeleteBlockUser': return this.deleteBlockUser(ctx, request as $2.DeleteBlockUserReq);
       case 'DeleteFriend': return this.deleteFriend(ctx, request as $2.DeleteFriendReq);
-      case 'SetSingleConvSetting': return this.setSingleConvSetting(ctx, request as $2.SetSingleConvSettingReq);
-      case 'GetSingleConvSetting': return this.getSingleConvSetting(ctx, request as $2.GetSingleConvSettingReq);
       case 'GetFriendList': return this.getFriendList(ctx, request as $2.GetFriendListReq);
       case 'GetMyFriendEventList': return this.getMyFriendEventList(ctx, request as $2.GetMyFriendEventListReq);
       case 'GetFriendListByUserId': return this.getFriendListByUserId(ctx, request as $2.GetFriendListByUserIdReq);

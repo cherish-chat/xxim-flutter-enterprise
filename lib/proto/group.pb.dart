@@ -1245,12 +1245,9 @@ class SetGroupMemberInfoReq extends $pb.GeneratedMessage {
     ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberId', protoName: 'memberId')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'notice')
     ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'remark')
     ..e<GroupRole>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role', $pb.PbFieldType.OE, defaultOrMaker: GroupRole.MEMBER, valueOf: GroupRole.valueOf, enumValues: GroupRole.values)
     ..aInt64(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unbanTime', protoName: 'unbanTime')
-    ..aOS(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupRemark', protoName: 'groupRemark')
-    ..aOB(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isTop', protoName: 'isTop')
     ..hasRequiredFields = false
   ;
 
@@ -1259,12 +1256,9 @@ class SetGroupMemberInfoReq extends $pb.GeneratedMessage {
     $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.String? memberId,
-    $core.String? notice,
     $core.String? remark,
     GroupRole? role,
     $fixnum.Int64? unbanTime,
-    $core.String? groupRemark,
-    $core.bool? isTop,
   }) {
     final _result = create();
     if (commonReq != null) {
@@ -1276,9 +1270,6 @@ class SetGroupMemberInfoReq extends $pb.GeneratedMessage {
     if (memberId != null) {
       _result.memberId = memberId;
     }
-    if (notice != null) {
-      _result.notice = notice;
-    }
     if (remark != null) {
       _result.remark = remark;
     }
@@ -1287,12 +1278,6 @@ class SetGroupMemberInfoReq extends $pb.GeneratedMessage {
     }
     if (unbanTime != null) {
       _result.unbanTime = unbanTime;
-    }
-    if (groupRemark != null) {
-      _result.groupRemark = groupRemark;
-    }
-    if (isTop != null) {
-      _result.isTop = isTop;
     }
     return _result;
   }
@@ -1346,59 +1331,32 @@ class SetGroupMemberInfoReq extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearMemberId() => clearField(3);
 
-  @$pb.TagNumber(4)
-  $core.String get notice => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set notice($core.String v) { $_setString(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasNotice() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearNotice() => clearField(4);
-
   @$pb.TagNumber(11)
-  $core.String get remark => $_getSZ(4);
+  $core.String get remark => $_getSZ(3);
   @$pb.TagNumber(11)
-  set remark($core.String v) { $_setString(4, v); }
+  set remark($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(11)
-  $core.bool hasRemark() => $_has(4);
+  $core.bool hasRemark() => $_has(3);
   @$pb.TagNumber(11)
   void clearRemark() => clearField(11);
 
   @$pb.TagNumber(12)
-  GroupRole get role => $_getN(5);
+  GroupRole get role => $_getN(4);
   @$pb.TagNumber(12)
   set role(GroupRole v) { setField(12, v); }
   @$pb.TagNumber(12)
-  $core.bool hasRole() => $_has(5);
+  $core.bool hasRole() => $_has(4);
   @$pb.TagNumber(12)
   void clearRole() => clearField(12);
 
   @$pb.TagNumber(13)
-  $fixnum.Int64 get unbanTime => $_getI64(6);
+  $fixnum.Int64 get unbanTime => $_getI64(5);
   @$pb.TagNumber(13)
-  set unbanTime($fixnum.Int64 v) { $_setInt64(6, v); }
+  set unbanTime($fixnum.Int64 v) { $_setInt64(5, v); }
   @$pb.TagNumber(13)
-  $core.bool hasUnbanTime() => $_has(6);
+  $core.bool hasUnbanTime() => $_has(5);
   @$pb.TagNumber(13)
   void clearUnbanTime() => clearField(13);
-
-  @$pb.TagNumber(14)
-  $core.String get groupRemark => $_getSZ(7);
-  @$pb.TagNumber(14)
-  set groupRemark($core.String v) { $_setString(7, v); }
-  @$pb.TagNumber(14)
-  $core.bool hasGroupRemark() => $_has(7);
-  @$pb.TagNumber(14)
-  void clearGroupRemark() => clearField(14);
-
-  @$pb.TagNumber(15)
-  $core.bool get isTop => $_getBF(8);
-  @$pb.TagNumber(15)
-  set isTop($core.bool v) { $_setBool(8, v); }
-  @$pb.TagNumber(15)
-  $core.bool hasIsTop() => $_has(8);
-  @$pb.TagNumber(15)
-  void clearIsTop() => clearField(15);
 }
 
 class SetGroupMemberInfoResp extends $pb.GeneratedMessage {
@@ -1532,15 +1490,9 @@ class GroupMemberInfo extends $pb.GeneratedMessage {
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberId', protoName: 'memberId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'remark')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupRemark', protoName: 'groupRemark')
-    ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'top')
-    ..aOB(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'noDisturb', protoName: 'noDisturb')
-    ..e<GroupDisturbOpt>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'disturbMore', $pb.PbFieldType.OE, protoName: 'disturbMore', defaultOrMaker: GroupDisturbOpt.DisturbReceive, valueOf: GroupDisturbOpt.valueOf, enumValues: GroupDisturbOpt.values)
-    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'chatBg', protoName: 'chatBg')
-    ..e<GroupRole>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role', $pb.PbFieldType.OE, defaultOrMaker: GroupRole.MEMBER, valueOf: GroupRole.valueOf, enumValues: GroupRole.values)
-    ..aInt64(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unbanTime', protoName: 'unbanTime')
-    ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'preview')
-    ..aOM<$1.UserBaseInfo>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userBaseInfo', protoName: 'userBaseInfo', subBuilder: $1.UserBaseInfo.create)
+    ..e<GroupRole>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role', $pb.PbFieldType.OE, defaultOrMaker: GroupRole.MEMBER, valueOf: GroupRole.valueOf, enumValues: GroupRole.values)
+    ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unbanTime', protoName: 'unbanTime')
+    ..aOM<$1.UserBaseInfo>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userBaseInfo', protoName: 'userBaseInfo', subBuilder: $1.UserBaseInfo.create)
     ..hasRequiredFields = false
   ;
 
@@ -1549,14 +1501,8 @@ class GroupMemberInfo extends $pb.GeneratedMessage {
     $core.String? groupId,
     $core.String? memberId,
     $core.String? remark,
-    $core.String? groupRemark,
-    $core.bool? top,
-    $core.bool? noDisturb,
-    GroupDisturbOpt? disturbMore,
-    $core.String? chatBg,
     GroupRole? role,
     $fixnum.Int64? unbanTime,
-    $core.bool? preview,
     $1.UserBaseInfo? userBaseInfo,
   }) {
     final _result = create();
@@ -1569,29 +1515,11 @@ class GroupMemberInfo extends $pb.GeneratedMessage {
     if (remark != null) {
       _result.remark = remark;
     }
-    if (groupRemark != null) {
-      _result.groupRemark = groupRemark;
-    }
-    if (top != null) {
-      _result.top = top;
-    }
-    if (noDisturb != null) {
-      _result.noDisturb = noDisturb;
-    }
-    if (disturbMore != null) {
-      _result.disturbMore = disturbMore;
-    }
-    if (chatBg != null) {
-      _result.chatBg = chatBg;
-    }
     if (role != null) {
       _result.role = role;
     }
     if (unbanTime != null) {
       _result.unbanTime = unbanTime;
-    }
-    if (preview != null) {
-      _result.preview = preview;
     }
     if (userBaseInfo != null) {
       _result.userBaseInfo = userBaseInfo;
@@ -1647,87 +1575,33 @@ class GroupMemberInfo extends $pb.GeneratedMessage {
   void clearRemark() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get groupRemark => $_getSZ(3);
+  GroupRole get role => $_getN(3);
   @$pb.TagNumber(4)
-  set groupRemark($core.String v) { $_setString(3, v); }
+  set role(GroupRole v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasGroupRemark() => $_has(3);
+  $core.bool hasRole() => $_has(3);
   @$pb.TagNumber(4)
-  void clearGroupRemark() => clearField(4);
+  void clearRole() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.bool get top => $_getBF(4);
+  $fixnum.Int64 get unbanTime => $_getI64(4);
   @$pb.TagNumber(5)
-  set top($core.bool v) { $_setBool(4, v); }
+  set unbanTime($fixnum.Int64 v) { $_setInt64(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasTop() => $_has(4);
+  $core.bool hasUnbanTime() => $_has(4);
   @$pb.TagNumber(5)
-  void clearTop() => clearField(5);
-
-  @$pb.TagNumber(6)
-  $core.bool get noDisturb => $_getBF(5);
-  @$pb.TagNumber(6)
-  set noDisturb($core.bool v) { $_setBool(5, v); }
-  @$pb.TagNumber(6)
-  $core.bool hasNoDisturb() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearNoDisturb() => clearField(6);
-
-  @$pb.TagNumber(7)
-  GroupDisturbOpt get disturbMore => $_getN(6);
-  @$pb.TagNumber(7)
-  set disturbMore(GroupDisturbOpt v) { setField(7, v); }
-  @$pb.TagNumber(7)
-  $core.bool hasDisturbMore() => $_has(6);
-  @$pb.TagNumber(7)
-  void clearDisturbMore() => clearField(7);
-
-  @$pb.TagNumber(8)
-  $core.String get chatBg => $_getSZ(7);
-  @$pb.TagNumber(8)
-  set chatBg($core.String v) { $_setString(7, v); }
-  @$pb.TagNumber(8)
-  $core.bool hasChatBg() => $_has(7);
-  @$pb.TagNumber(8)
-  void clearChatBg() => clearField(8);
-
-  @$pb.TagNumber(9)
-  GroupRole get role => $_getN(8);
-  @$pb.TagNumber(9)
-  set role(GroupRole v) { setField(9, v); }
-  @$pb.TagNumber(9)
-  $core.bool hasRole() => $_has(8);
-  @$pb.TagNumber(9)
-  void clearRole() => clearField(9);
-
-  @$pb.TagNumber(10)
-  $fixnum.Int64 get unbanTime => $_getI64(9);
-  @$pb.TagNumber(10)
-  set unbanTime($fixnum.Int64 v) { $_setInt64(9, v); }
-  @$pb.TagNumber(10)
-  $core.bool hasUnbanTime() => $_has(9);
-  @$pb.TagNumber(10)
-  void clearUnbanTime() => clearField(10);
+  void clearUnbanTime() => clearField(5);
 
   @$pb.TagNumber(11)
-  $core.bool get preview => $_getBF(10);
+  $1.UserBaseInfo get userBaseInfo => $_getN(5);
   @$pb.TagNumber(11)
-  set preview($core.bool v) { $_setBool(10, v); }
+  set userBaseInfo($1.UserBaseInfo v) { setField(11, v); }
   @$pb.TagNumber(11)
-  $core.bool hasPreview() => $_has(10);
+  $core.bool hasUserBaseInfo() => $_has(5);
   @$pb.TagNumber(11)
-  void clearPreview() => clearField(11);
-
-  @$pb.TagNumber(12)
-  $1.UserBaseInfo get userBaseInfo => $_getN(11);
-  @$pb.TagNumber(12)
-  set userBaseInfo($1.UserBaseInfo v) { setField(12, v); }
-  @$pb.TagNumber(12)
-  $core.bool hasUserBaseInfo() => $_has(11);
-  @$pb.TagNumber(12)
-  void clearUserBaseInfo() => clearField(12);
-  @$pb.TagNumber(12)
-  $1.UserBaseInfo ensureUserBaseInfo() => $_ensure(11);
+  void clearUserBaseInfo() => clearField(11);
+  @$pb.TagNumber(11)
+  $1.UserBaseInfo ensureUserBaseInfo() => $_ensure(5);
 }
 
 class MapGroupMemberInfoByIdsReq_Opt extends $pb.GeneratedMessage {

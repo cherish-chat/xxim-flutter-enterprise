@@ -271,79 +271,6 @@ const DeleteFriendResp$json = const {
 
 /// Descriptor for `DeleteFriendResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List deleteFriendRespDescriptor = $convert.base64Decode('ChBEZWxldGVGcmllbmRSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
-@$core.Deprecated('Use singleConvSettingDescriptor instead')
-const SingleConvSetting$json = const {
-  '1': 'SingleConvSetting',
-  '2': const [
-    const {'1': 'convId', '3': 1, '4': 1, '5': 9, '10': 'convId'},
-    const {'1': 'userId', '3': 2, '4': 1, '5': 9, '10': 'userId'},
-    const {'1': 'isTop', '3': 3, '4': 1, '5': 8, '9': 0, '10': 'isTop', '17': true},
-    const {'1': 'isDisturb', '3': 4, '4': 1, '5': 8, '9': 1, '10': 'isDisturb', '17': true},
-    const {'1': 'notifyPreview', '3': 5, '4': 1, '5': 8, '9': 2, '10': 'notifyPreview', '17': true},
-    const {'1': 'notifySound', '3': 6, '4': 1, '5': 8, '9': 3, '10': 'notifySound', '17': true},
-    const {'1': 'notifyCustomSound', '3': 7, '4': 1, '5': 9, '9': 4, '10': 'notifyCustomSound', '17': true},
-    const {'1': 'notifyVibrate', '3': 8, '4': 1, '5': 8, '9': 5, '10': 'notifyVibrate', '17': true},
-    const {'1': 'isShield', '3': 9, '4': 1, '5': 8, '9': 6, '10': 'isShield', '17': true},
-    const {'1': 'chatBg', '3': 10, '4': 1, '5': 9, '9': 7, '10': 'chatBg', '17': true},
-  ],
-  '8': const [
-    const {'1': '_isTop'},
-    const {'1': '_isDisturb'},
-    const {'1': '_notifyPreview'},
-    const {'1': '_notifySound'},
-    const {'1': '_notifyCustomSound'},
-    const {'1': '_notifyVibrate'},
-    const {'1': '_isShield'},
-    const {'1': '_chatBg'},
-  ],
-};
-
-/// Descriptor for `SingleConvSetting`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List singleConvSettingDescriptor = $convert.base64Decode('ChFTaW5nbGVDb252U2V0dGluZxIWCgZjb252SWQYASABKAlSBmNvbnZJZBIWCgZ1c2VySWQYAiABKAlSBnVzZXJJZBIZCgVpc1RvcBgDIAEoCEgAUgVpc1RvcIgBARIhCglpc0Rpc3R1cmIYBCABKAhIAVIJaXNEaXN0dXJiiAEBEikKDW5vdGlmeVByZXZpZXcYBSABKAhIAlINbm90aWZ5UHJldmlld4gBARIlCgtub3RpZnlTb3VuZBgGIAEoCEgDUgtub3RpZnlTb3VuZIgBARIxChFub3RpZnlDdXN0b21Tb3VuZBgHIAEoCUgEUhFub3RpZnlDdXN0b21Tb3VuZIgBARIpCg1ub3RpZnlWaWJyYXRlGAggASgISAVSDW5vdGlmeVZpYnJhdGWIAQESHwoIaXNTaGllbGQYCSABKAhIBlIIaXNTaGllbGSIAQESGwoGY2hhdEJnGAogASgJSAdSBmNoYXRCZ4gBAUIICgZfaXNUb3BCDAoKX2lzRGlzdHVyYkIQCg5fbm90aWZ5UHJldmlld0IOCgxfbm90aWZ5U291bmRCFAoSX25vdGlmeUN1c3RvbVNvdW5kQhAKDl9ub3RpZnlWaWJyYXRlQgsKCV9pc1NoaWVsZEIJCgdfY2hhdEJn');
-@$core.Deprecated('Use setSingleConvSettingReqDescriptor instead')
-const SetSingleConvSettingReq$json = const {
-  '1': 'SetSingleConvSettingReq',
-  '2': const [
-    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
-    const {'1': 'setting', '3': 2, '4': 1, '5': 11, '6': '.pb.SingleConvSetting', '10': 'setting'},
-  ],
-};
-
-/// Descriptor for `SetSingleConvSettingReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List setSingleConvSettingReqDescriptor = $convert.base64Decode('ChdTZXRTaW5nbGVDb252U2V0dGluZ1JlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIvCgdzZXR0aW5nGAIgASgLMhUucGIuU2luZ2xlQ29udlNldHRpbmdSB3NldHRpbmc=');
-@$core.Deprecated('Use setSingleConvSettingRespDescriptor instead')
-const SetSingleConvSettingResp$json = const {
-  '1': 'SetSingleConvSettingResp',
-  '2': const [
-    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
-  ],
-};
-
-/// Descriptor for `SetSingleConvSettingResp`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List setSingleConvSettingRespDescriptor = $convert.base64Decode('ChhTZXRTaW5nbGVDb252U2V0dGluZ1Jlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
-@$core.Deprecated('Use getSingleConvSettingReqDescriptor instead')
-const GetSingleConvSettingReq$json = const {
-  '1': 'GetSingleConvSettingReq',
-  '2': const [
-    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
-    const {'1': 'convId', '3': 2, '4': 1, '5': 9, '10': 'convId'},
-    const {'1': 'userId', '3': 3, '4': 1, '5': 9, '10': 'userId'},
-  ],
-};
-
-/// Descriptor for `GetSingleConvSettingReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getSingleConvSettingReqDescriptor = $convert.base64Decode('ChdHZXRTaW5nbGVDb252U2V0dGluZ1JlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIWCgZjb252SWQYAiABKAlSBmNvbnZJZBIWCgZ1c2VySWQYAyABKAlSBnVzZXJJZA==');
-@$core.Deprecated('Use getSingleConvSettingRespDescriptor instead')
-const GetSingleConvSettingResp$json = const {
-  '1': 'GetSingleConvSettingResp',
-  '2': const [
-    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
-    const {'1': 'setting', '3': 2, '4': 1, '5': 11, '6': '.pb.SingleConvSetting', '10': 'setting'},
-  ],
-};
-
-/// Descriptor for `GetSingleConvSettingResp`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getSingleConvSettingRespDescriptor = $convert.base64Decode('ChhHZXRTaW5nbGVDb252U2V0dGluZ1Jlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASLwoHc2V0dGluZxgCIAEoCzIVLnBiLlNpbmdsZUNvbnZTZXR0aW5nUgdzZXR0aW5n');
 @$core.Deprecated('Use getFriendListReqDescriptor instead')
 const GetFriendListReq$json = const {
   '1': 'GetFriendListReq',
@@ -489,8 +416,6 @@ const $core.Map<$core.String, $core.dynamic> relationServiceBase$json = const {
     const {'1': 'BlockUser', '2': '.pb.BlockUserReq', '3': '.pb.BlockUserResp', '4': const {}},
     const {'1': 'DeleteBlockUser', '2': '.pb.DeleteBlockUserReq', '3': '.pb.DeleteBlockUserResp', '4': const {}},
     const {'1': 'DeleteFriend', '2': '.pb.DeleteFriendReq', '3': '.pb.DeleteFriendResp', '4': const {}},
-    const {'1': 'SetSingleConvSetting', '2': '.pb.SetSingleConvSettingReq', '3': '.pb.SetSingleConvSettingResp', '4': const {}},
-    const {'1': 'GetSingleConvSetting', '2': '.pb.GetSingleConvSettingReq', '3': '.pb.GetSingleConvSettingResp', '4': const {}},
     const {'1': 'GetFriendList', '2': '.pb.GetFriendListReq', '3': '.pb.GetFriendListResp', '4': const {}},
     const {'1': 'GetMyFriendEventList', '2': '.pb.GetMyFriendEventListReq', '3': '.pb.GetMyFriendEventListResp', '4': const {}},
     const {'1': 'GetFriendListByUserId', '2': '.pb.GetFriendListByUserIdReq', '3': '.pb.GetFriendListByUserIdResp', '4': const {}},
@@ -521,11 +446,6 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> relationSe
   '.pb.DeleteBlockUserResp': DeleteBlockUserResp$json,
   '.pb.DeleteFriendReq': DeleteFriendReq$json,
   '.pb.DeleteFriendResp': DeleteFriendResp$json,
-  '.pb.SetSingleConvSettingReq': SetSingleConvSettingReq$json,
-  '.pb.SingleConvSetting': SingleConvSetting$json,
-  '.pb.SetSingleConvSettingResp': SetSingleConvSettingResp$json,
-  '.pb.GetSingleConvSettingReq': GetSingleConvSettingReq$json,
-  '.pb.GetSingleConvSettingResp': GetSingleConvSettingResp$json,
   '.pb.GetFriendListReq': GetFriendListReq$json,
   '.pb.Page': $0.Page$json,
   '.pb.GetFriendListResp': GetFriendListResp$json,
@@ -544,4 +464,4 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> relationSe
 };
 
 /// Descriptor for `relationService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List relationServiceDescriptor = $convert.base64Decode('Cg9yZWxhdGlvblNlcnZpY2USNQoKQXJlRnJpZW5kcxIRLnBiLkFyZUZyaWVuZHNSZXEaEi5wYi5BcmVGcmllbmRzUmVzcCIAEjsKDEFyZUJsYWNrTGlzdBITLnBiLkFyZUJsYWNrTGlzdFJlcRoULnBiLkFyZUJsYWNrTGlzdFJlc3AiABJHChBSZXF1ZXN0QWRkRnJpZW5kEhcucGIuUmVxdWVzdEFkZEZyaWVuZFJlcRoYLnBiLlJlcXVlc3RBZGRGcmllbmRSZXNwIgASRAoPQWNjZXB0QWRkRnJpZW5kEhYucGIuQWNjZXB0QWRkRnJpZW5kUmVxGhcucGIuQWNjZXB0QWRkRnJpZW5kUmVzcCIAEkQKD1JlamVjdEFkZEZyaWVuZBIWLnBiLlJlamVjdEFkZEZyaWVuZFJlcRoXLnBiLlJlamVjdEFkZEZyaWVuZFJlc3AiABJBCg5HZXRGcmllbmRDb3VudBIVLnBiLkdldEZyaWVuZENvdW50UmVxGhYucGIuR2V0RnJpZW5kQ291bnRSZXNwIgASMgoJQmxvY2tVc2VyEhAucGIuQmxvY2tVc2VyUmVxGhEucGIuQmxvY2tVc2VyUmVzcCIAEkQKD0RlbGV0ZUJsb2NrVXNlchIWLnBiLkRlbGV0ZUJsb2NrVXNlclJlcRoXLnBiLkRlbGV0ZUJsb2NrVXNlclJlc3AiABI7CgxEZWxldGVGcmllbmQSEy5wYi5EZWxldGVGcmllbmRSZXEaFC5wYi5EZWxldGVGcmllbmRSZXNwIgASUwoUU2V0U2luZ2xlQ29udlNldHRpbmcSGy5wYi5TZXRTaW5nbGVDb252U2V0dGluZ1JlcRocLnBiLlNldFNpbmdsZUNvbnZTZXR0aW5nUmVzcCIAElMKFEdldFNpbmdsZUNvbnZTZXR0aW5nEhsucGIuR2V0U2luZ2xlQ29udlNldHRpbmdSZXEaHC5wYi5HZXRTaW5nbGVDb252U2V0dGluZ1Jlc3AiABI+Cg1HZXRGcmllbmRMaXN0EhQucGIuR2V0RnJpZW5kTGlzdFJlcRoVLnBiLkdldEZyaWVuZExpc3RSZXNwIgASUwoUR2V0TXlGcmllbmRFdmVudExpc3QSGy5wYi5HZXRNeUZyaWVuZEV2ZW50TGlzdFJlcRocLnBiLkdldE15RnJpZW5kRXZlbnRMaXN0UmVzcCIAElYKFUdldEZyaWVuZExpc3RCeVVzZXJJZBIcLnBiLkdldEZyaWVuZExpc3RCeVVzZXJJZFJlcRodLnBiLkdldEZyaWVuZExpc3RCeVVzZXJJZFJlc3AiAA==');
+final $typed_data.Uint8List relationServiceDescriptor = $convert.base64Decode('Cg9yZWxhdGlvblNlcnZpY2USNQoKQXJlRnJpZW5kcxIRLnBiLkFyZUZyaWVuZHNSZXEaEi5wYi5BcmVGcmllbmRzUmVzcCIAEjsKDEFyZUJsYWNrTGlzdBITLnBiLkFyZUJsYWNrTGlzdFJlcRoULnBiLkFyZUJsYWNrTGlzdFJlc3AiABJHChBSZXF1ZXN0QWRkRnJpZW5kEhcucGIuUmVxdWVzdEFkZEZyaWVuZFJlcRoYLnBiLlJlcXVlc3RBZGRGcmllbmRSZXNwIgASRAoPQWNjZXB0QWRkRnJpZW5kEhYucGIuQWNjZXB0QWRkRnJpZW5kUmVxGhcucGIuQWNjZXB0QWRkRnJpZW5kUmVzcCIAEkQKD1JlamVjdEFkZEZyaWVuZBIWLnBiLlJlamVjdEFkZEZyaWVuZFJlcRoXLnBiLlJlamVjdEFkZEZyaWVuZFJlc3AiABJBCg5HZXRGcmllbmRDb3VudBIVLnBiLkdldEZyaWVuZENvdW50UmVxGhYucGIuR2V0RnJpZW5kQ291bnRSZXNwIgASMgoJQmxvY2tVc2VyEhAucGIuQmxvY2tVc2VyUmVxGhEucGIuQmxvY2tVc2VyUmVzcCIAEkQKD0RlbGV0ZUJsb2NrVXNlchIWLnBiLkRlbGV0ZUJsb2NrVXNlclJlcRoXLnBiLkRlbGV0ZUJsb2NrVXNlclJlc3AiABI7CgxEZWxldGVGcmllbmQSEy5wYi5EZWxldGVGcmllbmRSZXEaFC5wYi5EZWxldGVGcmllbmRSZXNwIgASPgoNR2V0RnJpZW5kTGlzdBIULnBiLkdldEZyaWVuZExpc3RSZXEaFS5wYi5HZXRGcmllbmRMaXN0UmVzcCIAElMKFEdldE15RnJpZW5kRXZlbnRMaXN0EhsucGIuR2V0TXlGcmllbmRFdmVudExpc3RSZXEaHC5wYi5HZXRNeUZyaWVuZEV2ZW50TGlzdFJlc3AiABJWChVHZXRGcmllbmRMaXN0QnlVc2VySWQSHC5wYi5HZXRGcmllbmRMaXN0QnlVc2VySWRSZXEaHS5wYi5HZXRGcmllbmRMaXN0QnlVc2VySWRSZXNwIgA=');

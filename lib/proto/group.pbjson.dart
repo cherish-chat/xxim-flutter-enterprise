@@ -271,24 +271,19 @@ const SetGroupMemberInfoReq$json = const {
     const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
     const {'1': 'groupId', '3': 2, '4': 1, '5': 9, '10': 'groupId'},
     const {'1': 'memberId', '3': 3, '4': 1, '5': 9, '10': 'memberId'},
-    const {'1': 'notice', '3': 4, '4': 1, '5': 9, '10': 'notice'},
     const {'1': 'remark', '3': 11, '4': 1, '5': 9, '9': 0, '10': 'remark', '17': true},
     const {'1': 'role', '3': 12, '4': 1, '5': 14, '6': '.pb.GroupRole', '9': 1, '10': 'role', '17': true},
     const {'1': 'unbanTime', '3': 13, '4': 1, '5': 3, '9': 2, '10': 'unbanTime', '17': true},
-    const {'1': 'groupRemark', '3': 14, '4': 1, '5': 9, '9': 3, '10': 'groupRemark', '17': true},
-    const {'1': 'isTop', '3': 15, '4': 1, '5': 8, '9': 4, '10': 'isTop', '17': true},
   ],
   '8': const [
     const {'1': '_remark'},
     const {'1': '_role'},
     const {'1': '_unbanTime'},
-    const {'1': '_groupRemark'},
-    const {'1': '_isTop'},
   ],
 };
 
 /// Descriptor for `SetGroupMemberInfoReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List setGroupMemberInfoReqDescriptor = $convert.base64Decode('ChVTZXRHcm91cE1lbWJlckluZm9SZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESGAoHZ3JvdXBJZBgCIAEoCVIHZ3JvdXBJZBIaCghtZW1iZXJJZBgDIAEoCVIIbWVtYmVySWQSFgoGbm90aWNlGAQgASgJUgZub3RpY2USGwoGcmVtYXJrGAsgASgJSABSBnJlbWFya4gBARImCgRyb2xlGAwgASgOMg0ucGIuR3JvdXBSb2xlSAFSBHJvbGWIAQESIQoJdW5iYW5UaW1lGA0gASgDSAJSCXVuYmFuVGltZYgBARIlCgtncm91cFJlbWFyaxgOIAEoCUgDUgtncm91cFJlbWFya4gBARIZCgVpc1RvcBgPIAEoCEgEUgVpc1RvcIgBAUIJCgdfcmVtYXJrQgcKBV9yb2xlQgwKCl91bmJhblRpbWVCDgoMX2dyb3VwUmVtYXJrQggKBl9pc1RvcA==');
+final $typed_data.Uint8List setGroupMemberInfoReqDescriptor = $convert.base64Decode('ChVTZXRHcm91cE1lbWJlckluZm9SZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESGAoHZ3JvdXBJZBgCIAEoCVIHZ3JvdXBJZBIaCghtZW1iZXJJZBgDIAEoCVIIbWVtYmVySWQSGwoGcmVtYXJrGAsgASgJSABSBnJlbWFya4gBARImCgRyb2xlGAwgASgOMg0ucGIuR3JvdXBSb2xlSAFSBHJvbGWIAQESIQoJdW5iYW5UaW1lGA0gASgDSAJSCXVuYmFuVGltZYgBAUIJCgdfcmVtYXJrQgcKBV9yb2xlQgwKCl91bmJhblRpbWU=');
 @$core.Deprecated('Use setGroupMemberInfoRespDescriptor instead')
 const SetGroupMemberInfoResp$json = const {
   '1': 'SetGroupMemberInfoResp',
@@ -318,20 +313,17 @@ const GroupMemberInfo$json = const {
     const {'1': 'groupId', '3': 1, '4': 1, '5': 9, '10': 'groupId'},
     const {'1': 'memberId', '3': 2, '4': 1, '5': 9, '10': 'memberId'},
     const {'1': 'remark', '3': 3, '4': 1, '5': 9, '10': 'remark'},
-    const {'1': 'groupRemark', '3': 4, '4': 1, '5': 9, '10': 'groupRemark'},
-    const {'1': 'top', '3': 5, '4': 1, '5': 8, '10': 'top'},
-    const {'1': 'noDisturb', '3': 6, '4': 1, '5': 8, '10': 'noDisturb'},
-    const {'1': 'disturbMore', '3': 7, '4': 1, '5': 14, '6': '.pb.GroupDisturbOpt', '10': 'disturbMore'},
-    const {'1': 'chatBg', '3': 8, '4': 1, '5': 9, '10': 'chatBg'},
-    const {'1': 'role', '3': 9, '4': 1, '5': 14, '6': '.pb.GroupRole', '10': 'role'},
-    const {'1': 'unbanTime', '3': 10, '4': 1, '5': 3, '10': 'unbanTime'},
-    const {'1': 'preview', '3': 11, '4': 1, '5': 8, '10': 'preview'},
-    const {'1': 'userBaseInfo', '3': 12, '4': 1, '5': 11, '6': '.pb.UserBaseInfo', '10': 'userBaseInfo'},
+    const {'1': 'role', '3': 4, '4': 1, '5': 14, '6': '.pb.GroupRole', '10': 'role'},
+    const {'1': 'unbanTime', '3': 5, '4': 1, '5': 3, '10': 'unbanTime'},
+    const {'1': 'userBaseInfo', '3': 11, '4': 1, '5': 11, '6': '.pb.UserBaseInfo', '9': 0, '10': 'userBaseInfo', '17': true},
+  ],
+  '8': const [
+    const {'1': '_userBaseInfo'},
   ],
 };
 
 /// Descriptor for `GroupMemberInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List groupMemberInfoDescriptor = $convert.base64Decode('Cg9Hcm91cE1lbWJlckluZm8SGAoHZ3JvdXBJZBgBIAEoCVIHZ3JvdXBJZBIaCghtZW1iZXJJZBgCIAEoCVIIbWVtYmVySWQSFgoGcmVtYXJrGAMgASgJUgZyZW1hcmsSIAoLZ3JvdXBSZW1hcmsYBCABKAlSC2dyb3VwUmVtYXJrEhAKA3RvcBgFIAEoCFIDdG9wEhwKCW5vRGlzdHVyYhgGIAEoCFIJbm9EaXN0dXJiEjUKC2Rpc3R1cmJNb3JlGAcgASgOMhMucGIuR3JvdXBEaXN0dXJiT3B0UgtkaXN0dXJiTW9yZRIWCgZjaGF0QmcYCCABKAlSBmNoYXRCZxIhCgRyb2xlGAkgASgOMg0ucGIuR3JvdXBSb2xlUgRyb2xlEhwKCXVuYmFuVGltZRgKIAEoA1IJdW5iYW5UaW1lEhgKB3ByZXZpZXcYCyABKAhSB3ByZXZpZXcSNAoMdXNlckJhc2VJbmZvGAwgASgLMhAucGIuVXNlckJhc2VJbmZvUgx1c2VyQmFzZUluZm8=');
+final $typed_data.Uint8List groupMemberInfoDescriptor = $convert.base64Decode('Cg9Hcm91cE1lbWJlckluZm8SGAoHZ3JvdXBJZBgBIAEoCVIHZ3JvdXBJZBIaCghtZW1iZXJJZBgCIAEoCVIIbWVtYmVySWQSFgoGcmVtYXJrGAMgASgJUgZyZW1hcmsSIQoEcm9sZRgEIAEoDjINLnBiLkdyb3VwUm9sZVIEcm9sZRIcCgl1bmJhblRpbWUYBSABKANSCXVuYmFuVGltZRI5Cgx1c2VyQmFzZUluZm8YCyABKAsyEC5wYi5Vc2VyQmFzZUluZm9IAFIMdXNlckJhc2VJbmZviAEBQg8KDV91c2VyQmFzZUluZm8=');
 @$core.Deprecated('Use mapGroupMemberInfoByIdsReqDescriptor instead')
 const MapGroupMemberInfoByIdsReq$json = const {
   '1': 'MapGroupMemberInfoByIdsReq',

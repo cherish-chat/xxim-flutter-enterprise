@@ -30,6 +30,7 @@ abstract class imServiceBase extends $pb.GeneratedService {
   $async.Future<$0.SendMsgResp> sendMsg($pb.ServerContext ctx, $0.SendMsgReq request);
   $async.Future<$2.GetAllConvIdOfUserResp> getAllConvIdOfUser($pb.ServerContext ctx, $2.GetAllConvIdOfUserReq request);
   $async.Future<$2.UpdateConvSettingResp> updateConvSetting($pb.ServerContext ctx, $2.UpdateConvSettingReq request);
+  $async.Future<$2.GetConvSettingResp> getConvSetting($pb.ServerContext ctx, $2.GetConvSettingReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -45,6 +46,7 @@ abstract class imServiceBase extends $pb.GeneratedService {
       case 'SendMsg': return $0.SendMsgReq();
       case 'GetAllConvIdOfUser': return $2.GetAllConvIdOfUserReq();
       case 'UpdateConvSetting': return $2.UpdateConvSettingReq();
+      case 'GetConvSetting': return $2.GetConvSettingReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -63,6 +65,7 @@ abstract class imServiceBase extends $pb.GeneratedService {
       case 'SendMsg': return this.sendMsg(ctx, request as $0.SendMsgReq);
       case 'GetAllConvIdOfUser': return this.getAllConvIdOfUser(ctx, request as $2.GetAllConvIdOfUserReq);
       case 'UpdateConvSetting': return this.updateConvSetting(ctx, request as $2.UpdateConvSettingReq);
+      case 'GetConvSetting': return this.getConvSetting(ctx, request as $2.GetConvSettingReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
