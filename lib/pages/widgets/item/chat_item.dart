@@ -100,6 +100,11 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
             direction: direction,
             msgModel: msgModel,
             showAvatar: direction == ChatDirection.left,
+            onAtMember: (senderId, avatar, nickname) {
+              ChatLogic? logic = ChatLogic.logic(msgModel.convId);
+              if (logic == null) return;
+              logic.setAtMember(senderId, nickname);
+            },
           ),
           Expanded(
             child: GetBuilder<T>(
@@ -230,6 +235,11 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
   final ChatDirection direction;
   final MsgModel msgModel;
   final bool showAvatar;
+  final Function(
+    String senderId,
+    String avatar,
+    String nickname,
+  )? onAtMember;
 
   const ChatAvatarItem({
     Key? key,
@@ -237,6 +247,7 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
     required this.direction,
     required this.msgModel,
     required this.showAvatar,
+    this.onAtMember,
   }) : super(key: key);
 
   @override
@@ -249,14 +260,17 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
           return const SizedBox(width: 35 + 8);
         }
         String avatar = "";
+        String nickname = "";
         if (msgModel.senderId == HiveTool.getUserId()) {
           avatar = HiveTool.getAvatarUrl();
+          nickname = HiveTool.getNickname();
         } else {
           Map senderInfo = {};
           if (msgModel.senderInfo.isNotEmpty) {
             senderInfo = json.decode(msgModel.senderInfo);
           }
           avatar = senderInfo["avatar"] ?? "";
+          nickname = senderInfo["nickname"] ?? "";
         }
         return Padding(
           padding: direction == ChatDirection.left
@@ -266,6 +280,14 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
             behavior: HitTestBehavior.opaque,
             onTap: () {
               // 个人详情
+            },
+            onLongPress: () {
+              if (onAtMember == null) return;
+              onAtMember!(msgModel.senderId, avatar, nickname);
+            },
+            onSecondaryTap: () {
+              if (onAtMember == null) return;
+              onAtMember!(msgModel.senderId, avatar, nickname);
             },
             child: ClipOval(
               child: ImageWidget(

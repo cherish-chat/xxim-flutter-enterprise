@@ -170,6 +170,31 @@ class ChatLogic extends GetxController {
     }
   }
 
+  void setAtMember(String senderId, String nickname) {
+    String text;
+    if (inputController.text.endsWith("@")) {
+      text = "${inputController.text + nickname} ";
+    } else {
+      text = "${inputController.text}@$nickname ";
+    }
+    atUserMap["@$nickname "] = senderId;
+    inputController.value = TextEditingValue(
+      text: text,
+      selection: TextSelection.fromPosition(
+        TextPosition(
+          affinity: TextAffinity.downstream,
+          offset: text.length,
+        ),
+      ),
+    );
+    inputFocusNode.requestFocus();
+    if (GetPlatform.isMobile) {
+      chatOperate.value = ChatOperate.input;
+    } else {
+      chatOperate.value = ChatOperate.none;
+    }
+  }
+
   void pickFiles() {
     PickTool.pickFiles(
       type: FileType.custom,
@@ -874,29 +899,15 @@ class ChatPage extends StatelessWidget {
             for (String key in keyList) {
               logic.atUserMap.remove(key);
             }
-            if (value.endsWith("@")) {
+            if (logic.inputController.text.endsWith("@")) {
               logic.hideOperate();
               GroupMember.show(
                 groupId: SDKTool.getGroupId(logic.convId),
                 callback: (memberInfo) {
-                  String text =
-                      "${logic.inputController.text + memberInfo.userBaseInfo.nickname} ";
-                  logic.atUserMap[text] = memberInfo.userBaseInfo.id;
-                  logic.inputController.value = TextEditingValue(
-                    text: text,
-                    selection: TextSelection.fromPosition(
-                      TextPosition(
-                        affinity: TextAffinity.downstream,
-                        offset: text.length,
-                      ),
-                    ),
+                  logic.setAtMember(
+                    memberInfo.userBaseInfo.id,
+                    memberInfo.userBaseInfo.nickname,
                   );
-                  logic.inputFocusNode.requestFocus();
-                  if (GetPlatform.isMobile) {
-                    logic.chatOperate.value = ChatOperate.input;
-                  } else {
-                    logic.chatOperate.value = ChatOperate.none;
-                  }
                 },
               );
             }
