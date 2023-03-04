@@ -101,8 +101,7 @@ class ModifyPwdPage extends StatelessWidget {
             },
           );
         }
-        // return const GetBackButton();
-        return const SizedBox();
+        return const GetBackButton();
       }),
       title: const Text("修改密码"),
     );

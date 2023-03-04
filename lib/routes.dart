@@ -14,8 +14,6 @@ import 'package:xxim_flutter_enterprise/pages/login/register_account.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
 import 'package:xxim_flutter_enterprise/pages/outlet.dart';
-import 'package:xxim_flutter_enterprise/pages/public/photo_view.dart';
-import 'package:xxim_flutter_enterprise/pages/public/web_view.dart';
 
 export 'package:xxim_flutter_enterprise/pages/unknown.dart';
 
@@ -53,9 +51,6 @@ class Routes {
   static String modifyInfo = menu + Paths.modifyInfo;
   static String modifyPwd = menu + Paths.modifyPwd;
 
-  static String photoView = "/photo_view";
-  static String webView = "/web_view";
-
   static List<GetPage> get pages {
     return [
       GetPage(
@@ -78,8 +73,8 @@ class Routes {
       GetPage(
         name: menu,
         page: () => MenuPage(),
-        transition: Transition.noTransition,
         participatesInRootNavigator: true,
+        transition: Transition.noTransition,
         children: [
           GetPage(
             name: Paths.outlet,
@@ -137,19 +132,6 @@ class Routes {
             showCupertinoParallax: false,
           ),
         ],
-      ),
-      GetPage(
-        name: photoView,
-        page: () => const PhotoViewPage(),
-        opaque: false,
-        transition: Transition.noTransition,
-        showCupertinoParallax: false,
-      ),
-      GetPage(
-        name: webView,
-        page: () => const WebViewPage(),
-        transition: Transition.fade,
-        showCupertinoParallax: false,
       ),
     ];
   }

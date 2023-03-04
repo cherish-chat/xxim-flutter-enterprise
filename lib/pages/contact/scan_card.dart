@@ -103,8 +103,7 @@ class ScanCardPage extends StatelessWidget {
             },
           );
         }
-        // return const GetBackButton();
-        return const SizedBox();
+        return const GetBackButton();
       }),
       title: const Text("扫一扫"),
     );

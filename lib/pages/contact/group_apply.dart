@@ -149,8 +149,7 @@ class GroupApplyPage extends StatelessWidget {
             },
           );
         }
-        // return const GetBackButton();
-        return const SizedBox();
+        return const GetBackButton();
       }),
       title: const Text("群聊申请"),
     );

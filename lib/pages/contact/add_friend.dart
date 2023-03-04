@@ -13,7 +13,7 @@ class AddFriendLogic extends GetxController {
 
   @override
   void onInit() {
-    Map args = Get.arguments;
+    Map args = Get.arguments ?? {};
     String keyword = args["keyword"] ?? "";
     controller = TextEditingController()..text = keyword;
     super.onInit();
@@ -116,8 +116,7 @@ class AddFriendPage extends StatelessWidget {
             },
           );
         }
-        // return const GetBackButton();
-        return const SizedBox();
+        return const GetBackButton();
       }),
       title: const Text("添加好友"),
     );

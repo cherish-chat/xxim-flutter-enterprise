@@ -295,7 +295,7 @@ class XXIM {
             break;
           case CommonResp_Code.AuthError:
             onError?.call(code, error);
-            _authError();
+            _authError(error);
             break;
           case CommonResp_Code.ToastError:
             onError?.call(code, error);
@@ -315,11 +315,11 @@ class XXIM {
     return resp()..mergeFromBuffer(data);
   }
 
-  void _authError() {
+  void _authError(String error) {
     GetAlertDialog.show(
-      const Text(
-        "账号认证异常，请重新登录",
-        style: TextStyle(
+      Text(
+        error,
+        style: const TextStyle(
           color: getTextBlack,
           fontSize: 16,
           fontWeight: getMedium,

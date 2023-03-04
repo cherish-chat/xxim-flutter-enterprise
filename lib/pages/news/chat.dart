@@ -8,6 +8,7 @@ import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
+import 'package:xxim_flutter_enterprise/pages/public/group_member.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
@@ -583,10 +584,26 @@ class ChatPage extends StatelessWidget {
             },
           );
         }
-        // return const GetBackButton();
         return const SizedBox();
       }),
       title: Text(text),
+      actions: [
+        if (SDKTool.isGroupConv(logic.convId))
+          TextButton(
+            onPressed: () {
+              GroupMember.show(
+                groupId: SDKTool.getGroupId(logic.convId),
+              );
+            },
+            child: const Text(
+              "成员",
+              style: TextStyle(
+                color: getTextBlack,
+                fontSize: 14,
+              ),
+            ),
+          ),
+      ],
     );
   }
 
@@ -849,8 +866,14 @@ class ChatPage extends StatelessWidget {
         textInputType: TextInputType.text,
         textInputAction: TextInputAction.send,
         onChanged: (value) {
-          if (value.endsWith("@")) {
+          if (SDKTool.isGroupConv(logic.convId) && value.endsWith("@")) {
             logic.hideOperate();
+            GroupMember.show(
+              groupId: SDKTool.getGroupId(logic.convId),
+              callback: (memberInfo) {
+                print("什么：$memberInfo");
+              },
+            );
           }
         },
         onEditingComplete: () {
