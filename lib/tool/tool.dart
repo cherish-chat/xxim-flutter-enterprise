@@ -23,7 +23,7 @@ enum Environment {
   debug,
 }
 
-const Environment environment = Environment.debug;
+const Environment environment = Environment.release;
 
 const String defPushAlias = "";
 const String defConfigFile = "";
