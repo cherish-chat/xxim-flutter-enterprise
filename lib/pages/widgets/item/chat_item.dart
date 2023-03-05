@@ -5,6 +5,7 @@ import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
 import 'package:xxim_flutter_enterprise/pages/public/photo_view.dart';
+import 'package:xxim_flutter_enterprise/pages/public/video_view.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 enum ChatDirection {
@@ -836,7 +837,10 @@ class ChatVideoItem extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        // 预览视频
+        dynamic video = content.videoBytes.isNotEmpty
+            ? Uint8List.fromList(content.videoBytes)
+            : Tool.getFileUrl(content.videoUrl);
+        VideoView.show(video: video);
       },
       child: ClipRRect(
         borderRadius: direction == ChatDirection.left

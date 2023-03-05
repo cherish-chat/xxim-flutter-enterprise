@@ -110,6 +110,14 @@ class PhotoViewPage extends StatelessWidget {
                 },
                 child: _buildPhotoView(logic),
               ),
+              const Positioned(
+                left: 16,
+                top: 16,
+                child: GetCloseButton(
+                  color: Colors.white,
+                  onPressed: PhotoView.hide,
+                ),
+              ),
             ],
           ),
         );
