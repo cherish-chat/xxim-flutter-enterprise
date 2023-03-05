@@ -29,9 +29,7 @@ class XXIMTool {
       osVersion = androidInfo.version.release;
     } else if (GetPlatform.isIOS) {
       IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
-      bool isIpad =
-          iosInfo.utsname.machine?.toLowerCase().contains("ipad") ?? false;
-      platform = isIpad ? "ipad" : "ios";
+      platform = "ios";
       deviceId = iosInfo.identifierForVendor!;
       deviceModel = iosInfo.model!;
       osVersion = iosInfo.systemVersion!;
