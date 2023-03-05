@@ -7,6 +7,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   connectivity_plus
   isar_flutter_libs
   screen_retriever
+  url_launcher_windows
   window_manager
 )
 

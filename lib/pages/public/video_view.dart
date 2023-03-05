@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:crypto/crypto.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:video_player/video_player.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 
@@ -11,7 +12,7 @@ import 'package:path/path.dart';
 class VideoView {
   static Future show({
     required dynamic video,
-  }) {
+  }) async {
     if (GetPlatform.isMobile || GetPlatform.isWeb) {
       if (GetPlatform.isWeb && video is Uint8List) {
         return Future.value(false);
@@ -23,6 +24,11 @@ class VideoView {
         barrierDismissible: true,
         barrierColor: Colors.transparent,
       );
+    }
+    if (video is String) {
+      if (await canLaunchUrlString(video)) {
+        await launchUrlString(video);
+      }
     }
     return Future.value(false);
   }
