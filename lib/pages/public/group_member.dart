@@ -1,5 +1,6 @@
 import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:xxim_flutter_enterprise/main.dart' hide Page;
+import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/proto/common.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 
@@ -121,7 +122,9 @@ class GroupMemberPage extends StatelessWidget {
               builder: (context, constraints) {
                 return Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  width: Get.width / 3 * 2,
+                  width: MenuLogic.logic()?.isPhone.value == true
+                      ? Get.width / 5 * 4
+                      : Get.width / 3 * 2,
                   height: Get.height / 3 * 2,
                   decoration: BoxDecoration(
                     color: Colors.white,

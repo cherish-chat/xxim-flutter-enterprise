@@ -16,6 +16,7 @@ class ChatExtendedEmoji extends StatelessWidget {
       children: [
         GridView.builder(
           padding: EdgeInsets.only(
+            top: 8,
             left: 8,
             right: 8,
             bottom: SafeTool.instance.safeBtm + 8,

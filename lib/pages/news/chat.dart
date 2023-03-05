@@ -197,8 +197,7 @@ class ChatLogic extends GetxController {
 
   void pickFiles() {
     PickTool.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ["jpg", "png", "aac", "mp3", "mp4", "mov"],
+      type: FileType.media,
       onSuccess: (result) async {
         List<PlatformFile> files = result.files;
         if (files.isEmpty) return;
@@ -271,6 +270,8 @@ class ChatLogic extends GetxController {
                 sendVideo(value);
               },
             );
+          } else {
+            Tool.showToast("不支持的类型");
           }
         }
       },
@@ -885,8 +886,8 @@ class ChatPage extends StatelessWidget {
         logic.inputController,
         "输入文本",
         focusNode: logic.inputFocusNode,
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: 14,
+        contentPadding: EdgeInsets.symmetric(
+          vertical: GetPlatform.isMobile ? 10 : 14,
           horizontal: 16,
         ),
         maxLines: null,

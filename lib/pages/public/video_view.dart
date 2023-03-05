@@ -23,6 +23,7 @@ class VideoView {
         ),
         barrierDismissible: true,
         barrierColor: Colors.transparent,
+        useSafeArea: false,
       );
     }
     if (video is String) {
@@ -123,10 +124,10 @@ class VideoViewPage extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               _buildVideo(logic),
-              const Positioned(
-                left: 16,
-                top: 16,
-                child: GetCloseButton(
+              Positioned(
+                left: 8,
+                top: 8 + SafeTool.instance.safeTop,
+                child: const GetCloseButton(
                   color: Colors.white,
                   onPressed: VideoView.hide,
                 ),

@@ -17,6 +17,7 @@ class PhotoView {
       ),
       barrierDismissible: false,
       barrierColor: Colors.transparent,
+      useSafeArea: false,
     );
   }
 
@@ -110,10 +111,10 @@ class PhotoViewPage extends StatelessWidget {
                 },
                 child: _buildPhotoView(logic),
               ),
-              const Positioned(
-                left: 16,
-                top: 16,
-                child: GetCloseButton(
+              Positioned(
+                left: 8,
+                top: 8 + SafeTool.instance.safeTop,
+                child: const GetCloseButton(
                   color: Colors.white,
                   onPressed: PhotoView.hide,
                 ),
