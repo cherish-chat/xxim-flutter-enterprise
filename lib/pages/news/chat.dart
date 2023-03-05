@@ -207,6 +207,10 @@ class ChatLogic extends GetxController {
           String? extension = file.extension;
           if (extension == null) continue;
           List<int> bytes = file.bytes!.toList();
+          if (GetPlatform.isWeb && bytes.length > 20000000) {
+            Tool.showToast("网页不支持发送太大的文件");
+            return;
+          }
           if (extension == "jpg" || extension == "png") {
             Completer<ui.Image> completer = Completer();
             ui.decodeImageFromList(Uint8List.fromList(bytes), (ui.Image image) {
