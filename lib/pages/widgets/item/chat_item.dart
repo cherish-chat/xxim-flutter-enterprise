@@ -129,31 +129,37 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
                         Widget child = const SizedBox();
                         if (contentType == MsgContentType.text) {
                           child = ChatTextItem(
+                            key: ValueKey(msgModel.content),
                             direction: direction,
                             msgModel: msgModel,
                           );
                         } else if (contentType == MsgContentType.image) {
                           child = ChatImageItem(
+                            key: ValueKey(msgModel.content),
                             direction: direction,
                             msgModel: msgModel,
                           );
                         } else if (contentType == MsgContentType.audio) {
                           child = ChatAudioItem(
+                            key: ValueKey(msgModel.content),
                             direction: direction,
                             msgModel: msgModel,
                           );
                         } else if (contentType == MsgContentType.video) {
                           child = ChatVideoItem(
+                            key: ValueKey(msgModel.content),
                             direction: direction,
                             msgModel: msgModel,
                           );
                         } else if (contentType == MsgContentType.file) {
                           child = ChatFileItem(
+                            key: ValueKey(msgModel.content),
                             direction: direction,
                             msgModel: msgModel,
                           );
                         } else if (contentType == MsgContentType.location) {
                           child = ChatLocationItem(
+                            key: ValueKey(msgModel.content),
                             direction: direction,
                             msgModel: msgModel,
                           );
@@ -641,6 +647,7 @@ class _ChatAudioItemState extends State<ChatAudioItem> {
   late ChatDirection _direction;
   late MsgModel _msgModel;
   late AudioContent _content;
+  late PlayerListener _listener;
 
   Timer? _timer;
   int _timerIndex = 5;
@@ -650,19 +657,30 @@ class _ChatAudioItemState extends State<ChatAudioItem> {
     _direction = widget.direction;
     _msgModel = widget.msgModel;
     _content = AudioContent.fromJson(_msgModel.content);
+    _listener = (url) {
+      if (url != Tool.getFileUrl(_content.audioUrl)) {
+        _stopPlayer();
+      }
+    };
+    PlayerTool.instance.addListener(_listener);
     super.initState();
   }
 
   @override
   void dispose() {
-    _stopPlayer(dispose: true);
+    if (PlayerTool.instance.isPlaying(
+      Tool.getFileUrl(_content.audioUrl),
+    )) {
+      _stopPlayer(dispose: true);
+    }
+    PlayerTool.instance.removeListener(_listener);
     super.dispose();
   }
 
   void _startPlayer() {
-    PlayerTool.instance.start(
+    PlayerTool.instance.play(
       Tool.getFileUrl(_content.audioUrl),
-      onComplete: () {
+      onComplete: (url) {
         _stopPlayer();
       },
     );
@@ -723,11 +741,14 @@ class _ChatAudioItemState extends State<ChatAudioItem> {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        if (_timer != null) {
+        if (_content.audioUrl.isEmpty) return;
+        if (PlayerTool.instance.isPlaying(
+          Tool.getFileUrl(_content.audioUrl),
+        )) {
           _stopPlayer();
-        } else {
-          _startPlayer();
+          return;
         }
+        _startPlayer();
       },
       child: Container(
         padding: const EdgeInsets.all(10),
