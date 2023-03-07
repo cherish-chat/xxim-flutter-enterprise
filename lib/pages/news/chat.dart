@@ -210,7 +210,7 @@ class ChatLogic extends GetxController {
             Tool.showToast("网页不支持发送太大的文件");
             return;
           }
-          if (extension == "jpg" || extension == "png") {
+          if (extension == "jpg" || extension == "jpeg" || extension == "png") {
             Completer<ui.Image> completer = Completer();
             ui.decodeImageFromList(Uint8List.fromList(bytes), (ui.Image image) {
               return completer.complete(image);
