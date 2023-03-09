@@ -1,18 +1,17 @@
 import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:xxim_flutter_enterprise/main.dart' hide Page;
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
-import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
+import 'package:xxim_flutter_enterprise/proto/common.pb.dart';
+import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 
-class SelectFriends {
+class AtMember {
   static Future show({
-    List<String> memberIdList = const [],
-    List<UserBaseInfo> selectList = const [],
-    required Function(List<UserBaseInfo> list) callback,
+    required String groupId,
+    required Function(GroupMemberInfo memberInfo) callback,
   }) {
     return Get.dialog(
-      SelectFriendsPage(
-        memberIdList: memberIdList,
-        selectList: selectList,
+      AtMemberPage(
+        groupId: groupId,
         callback: callback,
       ),
       barrierDismissible: true,
@@ -25,51 +24,97 @@ class SelectFriends {
   }
 }
 
-class SelectFriendsLogic extends GetxController {
-  static SelectFriendsLogic? logic() => Tool.capture(Get.find);
-  final List<String> memberIdList;
+class AtMemberLogic extends GetxController {
+  static AtMemberLogic? logic() => Tool.capture(Get.find);
+  final String groupId;
 
-  SelectFriendsLogic(this.memberIdList);
+  AtMemberLogic(this.groupId);
 
-  List<UserBaseInfo> list = [];
-  List<UserBaseInfo> selectList = [];
+  RefreshController? refreshController;
+  int pageNum = 1;
+  List<GroupMemberInfo> list = [];
 
   @override
   void onReady() {
     super.onReady();
-    List<UserBaseInfo> userInfoList = MenuLogic.logic()?.userInfoList ?? [];
-    for (UserBaseInfo info in userInfoList) {
-      int index = memberIdList.indexWhere((element) {
-        return element == info.id;
-      });
-      if (index != -1) continue;
-      list.add(info);
-    }
-    update(["list"]);
+    onRefresh();
+  }
+
+  @override
+  void onClose() {
+    refreshController?.dispose();
+    super.onClose();
+  }
+
+  void onRefresh() {
+    refreshController?.resetNoData();
+    pageNum = 1;
+    _loadList();
+  }
+
+  void onLoadMore() {
+    ++pageNum;
+    _loadList();
+  }
+
+  void _loadList() {
+    XXIM.instance.customRequest<GetGroupMemberListResp>(
+      method: "/v1/group/getGroupMemberList",
+      req: GetGroupMemberListReq(
+        groupId: groupId,
+        page: Page(
+          page: pageNum,
+          size: 20,
+        ),
+      ),
+      resp: GetGroupMemberListResp.create,
+      onSuccess: (data) {
+        List<GroupMemberInfo> list = data.groupMemberList;
+        if (pageNum == 1) {
+          this.list = list;
+          update(["list"]);
+          refreshController?.refreshCompleted();
+        } else {
+          if (list.isNotEmpty) {
+            this.list.addAll(list);
+            update(["list"]);
+            refreshController?.loadComplete();
+          } else {
+            refreshController?.loadNoData();
+          }
+        }
+      },
+      onError: (code, error) {
+        if (pageNum == 1) {
+          refreshController?.refreshFailed();
+        } else {
+          --pageNum;
+          refreshController?.loadFailed();
+        }
+      },
+    );
   }
 }
 
-class SelectFriendsPage extends StatelessWidget {
-  final List<String> memberIdList;
-  final List<UserBaseInfo> selectList;
-  final Function(List<UserBaseInfo> list) callback;
+class AtMemberPage extends StatelessWidget {
+  final String groupId;
+  final Function(GroupMemberInfo memberInfo) callback;
 
-  const SelectFriendsPage({
+  const AtMemberPage({
     Key? key,
-    this.memberIdList = const [],
-    this.selectList = const [],
+    required this.groupId,
     required this.callback,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SelectFriendsLogic>(
-      init: SelectFriendsLogic(memberIdList),
+    return GetBuilder<AtMemberLogic>(
+      init: AtMemberLogic(groupId),
       dispose: (state) {
-        Get.delete<SelectFriendsLogic>();
+        Get.delete<AtMemberLogic>();
       },
       builder: (logic) {
-        logic.selectList = selectList.toList();
+        logic.refreshController = RefreshController();
         return Material(
           type: MaterialType.transparency,
           child: Center(
@@ -99,7 +144,7 @@ class SelectFriendsPage extends StatelessWidget {
                           ),
                         ),
                         child: const Text(
-                          "选择成员",
+                          "群聊成员",
                           style: TextStyle(
                             color: getTextBlack,
                             fontSize: 16,
@@ -109,7 +154,6 @@ class SelectFriendsPage extends StatelessWidget {
                       Expanded(
                         child: _buildListView(),
                       ),
-                      _buildConfirm(logic),
                     ],
                   ),
                 );
@@ -122,15 +166,22 @@ class SelectFriendsPage extends StatelessWidget {
   }
 
   Widget _buildListView() {
-    return GetBuilder<SelectFriendsLogic>(
+    return GetBuilder<AtMemberLogic>(
       id: "list",
       builder: (logic) {
-        return FlutterListView(
-          delegate: FlutterListViewDelegate(
-            (context, index) {
-              return _buildItem(logic, logic.list[index]);
-            },
-            childCount: logic.list.length,
+        return SmartRefresher(
+          controller: logic.refreshController!,
+          enablePullDown: true,
+          enablePullUp: true,
+          onRefresh: logic.onRefresh,
+          onLoading: logic.onLoadMore,
+          child: FlutterListView(
+            delegate: FlutterListViewDelegate(
+              (context, index) {
+                return _buildItem(logic.list[index]);
+              },
+              childCount: logic.list.length,
+            ),
           ),
         );
       },
@@ -138,21 +189,13 @@ class SelectFriendsPage extends StatelessWidget {
   }
 
   Widget _buildItem(
-    SelectFriendsLogic logic,
-    UserBaseInfo info,
+    GroupMemberInfo memberInfo,
   ) {
-    if (info.id == HiveTool.getUserId()) {
-      return const SizedBox();
-    }
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        if (logic.selectList.contains(info)) {
-          logic.selectList.remove(info);
-        } else {
-          logic.selectList.add(info);
-        }
-        logic.update(["list"]);
+        callback(memberInfo);
+        AtMember.hide();
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8),
@@ -161,7 +204,7 @@ class SelectFriendsPage extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: ImageWidget(
-                info.avatar,
+                memberInfo.userBaseInfo.avatar,
                 width: 45,
                 height: 45,
               ),
@@ -172,7 +215,7 @@ class SelectFriendsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    info.nickname,
+                    memberInfo.userBaseInfo.nickname,
                     style: const TextStyle(
                       color: getTextBlack,
                       fontSize: 16,
@@ -183,7 +226,7 @@ class SelectFriendsPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    info.id,
+                    memberInfo.userBaseInfo.id,
                     style: const TextStyle(
                       color: getHintBlack,
                       fontSize: 14,
@@ -194,49 +237,24 @@ class SelectFriendsPage extends StatelessWidget {
                 ],
               ),
             ),
-            if (logic.selectList.contains(info))
-              Image.asset(
-                "assets/images/ic_select_sel_20.webp",
-                width: 20,
-                height: 20,
-              )
-            else
-              Image.asset(
-                "assets/images/ic_select_nor_20.webp",
-                width: 20,
-                height: 20,
+            Text(
+              memberInfo.role == GroupRole.OWNER
+                  ? "群主"
+                  : memberInfo.role == GroupRole.MANAGER
+                      ? "管理员"
+                      : "",
+              style: const TextStyle(
+                color: getHintBlack,
+                fontSize: 14,
               ),
+            ),
+            const SizedBox(width: 8),
+            Image.asset(
+              "assets/images/ic_right_20.webp",
+              width: 20,
+              height: 20,
+            ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildConfirm(SelectFriendsLogic logic) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () {
-        if (logic.selectList.isEmpty) {
-          Tool.showToast("请选择成员");
-          return;
-        }
-        callback(logic.selectList);
-        SelectFriends.hide();
-      },
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 8),
-        alignment: Alignment.center,
-        height: 50,
-        decoration: BoxDecoration(
-          color: getMainColor,
-          borderRadius: BorderRadius.circular(25),
-        ),
-        child: const Text(
-          "确认",
-          style: TextStyle(
-            color: getTextWhite,
-            fontSize: 18,
-          ),
         ),
       ),
     );

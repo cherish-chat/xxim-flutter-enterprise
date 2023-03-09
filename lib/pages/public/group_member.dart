@@ -1,18 +1,18 @@
 import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:xxim_flutter_enterprise/main.dart' hide Page;
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
+import 'package:xxim_flutter_enterprise/pages/public/select_friends.dart';
 import 'package:xxim_flutter_enterprise/proto/common.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
+import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 class GroupMember {
   static Future show({
     required String groupId,
-    Function(GroupMemberInfo memberInfo)? callback,
   }) {
     return Get.dialog(
       GroupMemberPage(
         groupId: groupId,
-        callback: callback,
       ),
       barrierDismissible: true,
       barrierColor: getBlack50,
@@ -33,6 +33,7 @@ class GroupMemberLogic extends GetxController {
   RefreshController? refreshController;
   int pageNum = 1;
   List<GroupMemberInfo> list = [];
+  RxBool isPermission = false.obs;
 
   @override
   void onReady() {
@@ -72,6 +73,15 @@ class GroupMemberLogic extends GetxController {
         List<GroupMemberInfo> list = data.groupMemberList;
         if (pageNum == 1) {
           this.list = list;
+          for (GroupMemberInfo info in list) {
+            if (info.userBaseInfo.id == HiveTool.getUserId()) {
+              if (info.role == GroupRole.OWNER ||
+                  info.role == GroupRole.MANAGER) {
+                isPermission.value = true;
+              }
+            }
+            continue;
+          }
           update(["list"]);
           refreshController?.refreshCompleted();
         } else {
@@ -94,16 +104,91 @@ class GroupMemberLogic extends GetxController {
       },
     );
   }
+
+  void alertKick(String memberId, String memberNickname) {
+    GetAlertDialog.show(
+      const Text(
+        "你确定要把对方踢出群聊吗？",
+        style: TextStyle(
+          color: getTextBlack,
+          fontSize: 16,
+          fontWeight: getMedium,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      actions: [
+        const TextButton(
+          onPressed: GetAlertDialog.hide,
+          child: Text(
+            "取消",
+            style: TextStyle(
+              color: getTextBlack,
+              fontSize: 14,
+            ),
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            GetAlertDialog.hide();
+            kickMember(memberId, memberNickname);
+          },
+          child: const Text(
+            "确定",
+            style: TextStyle(
+              color: getTextBlack,
+              fontSize: 14,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  void kickMember(String memberId, String memberNickname) {
+    XXIM.instance.customRequest<KickGroupMemberResp>(
+      method: "/v1/group/kickGroupMember",
+      req: KickGroupMemberReq(
+        groupId: groupId,
+        memberId: memberId,
+      ),
+      resp: KickGroupMemberResp.create,
+      onSuccess: (data) {
+        list.removeWhere((element) {
+          return element.userBaseInfo.id == memberId;
+        });
+        update(["list"]);
+        Tool.showToast("踢出成功");
+        XXIM.instance.msgManager.sendTip(
+          convId: SDKTool.groupConvId(groupId),
+          content: TipContent(
+            tip: "$memberNickname被${HiveTool.getNickname()}踢出群聊",
+          ),
+        );
+      },
+      onError: (code, error) {
+        Tool.showToast("踢出失败");
+      },
+    );
+  }
+
+  void added() {
+    // SelectFriends.show(
+    //   memberIdList: list.map((e) {
+    //     return e.userBaseInfo.id;
+    //   }).toList(),
+    //   callback: (list) {
+    //     print("什么：$list");
+    //   },
+    // );
+  }
 }
 
 class GroupMemberPage extends StatelessWidget {
   final String groupId;
-  final Function(GroupMemberInfo memberInfo)? callback;
 
   const GroupMemberPage({
     Key? key,
     required this.groupId,
-    this.callback,
   }) : super(key: key);
 
   @override
@@ -154,6 +239,12 @@ class GroupMemberPage extends StatelessWidget {
                       Expanded(
                         child: _buildListView(),
                       ),
+                      // Obx(() {
+                      //   if (logic.isPermission.value) {
+                      //     return _buildAdded(logic);
+                      //   }
+                      //   return const SizedBox();
+                      // }),
                     ],
                   ),
                 );
@@ -178,7 +269,10 @@ class GroupMemberPage extends StatelessWidget {
           child: FlutterListView(
             delegate: FlutterListViewDelegate(
               (context, index) {
-                return _buildItem(logic.list[index]);
+                return _buildItem(
+                  logic,
+                  logic.list[index],
+                );
               },
               childCount: logic.list.length,
             ),
@@ -189,13 +283,12 @@ class GroupMemberPage extends StatelessWidget {
   }
 
   Widget _buildItem(
+    GroupMemberLogic logic,
     GroupMemberInfo memberInfo,
   ) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        if (callback == null) return;
-        callback!(memberInfo);
         GroupMember.hide();
       },
       child: Padding(
@@ -249,15 +342,57 @@ class GroupMemberPage extends StatelessWidget {
                 fontSize: 14,
               ),
             ),
-            if (callback != null)
-              Image.asset(
-                "assets/images/ic_right_20.webp",
-                width: 20,
-                height: 20,
-              ),
+            Obx(() {
+              if (logic.isPermission.value &&
+                  memberInfo.userBaseInfo.id != HiveTool.getUserId() &&
+                  memberInfo.role != GroupRole.OWNER &&
+                  memberInfo.role != GroupRole.MANAGER) {
+                return GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
+                    logic.alertKick(
+                      memberInfo.userBaseInfo.id,
+                      memberInfo.userBaseInfo.nickname,
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: Image.asset(
+                      "assets/images/ic_kick_member_20.webp",
+                      width: 20,
+                      height: 20,
+                    ),
+                  ),
+                );
+              }
+              return const SizedBox();
+            }),
           ],
         ),
       ),
     );
   }
+
+// Widget _buildAdded(GroupMemberLogic logic) {
+//   return GestureDetector(
+//     behavior: HitTestBehavior.opaque,
+//     onTap: logic.added,
+//     child: Container(
+//       margin: const EdgeInsets.symmetric(vertical: 8),
+//       alignment: Alignment.center,
+//       height: 50,
+//       decoration: BoxDecoration(
+//         color: getMainColor,
+//         borderRadius: BorderRadius.circular(25),
+//       ),
+//       child: const Text(
+//         "添加成员",
+//         style: TextStyle(
+//           color: getTextWhite,
+//           fontSize: 18,
+//         ),
+//       ),
+//     ),
+//   );
+// }
 }

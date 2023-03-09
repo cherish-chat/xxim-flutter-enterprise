@@ -8,6 +8,7 @@ import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
+import 'package:xxim_flutter_enterprise/pages/public/at_member.dart';
 import 'package:xxim_flutter_enterprise/pages/public/group_member.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
@@ -922,7 +923,7 @@ class ChatPage extends StatelessWidget {
             }
             if (logic.inputController.text.endsWith("@")) {
               logic.hideOperate();
-              GroupMember.show(
+              AtMember.show(
                 groupId: SDKTool.getGroupId(logic.convId),
                 callback: (memberInfo) {
                   logic.setAtMember(
