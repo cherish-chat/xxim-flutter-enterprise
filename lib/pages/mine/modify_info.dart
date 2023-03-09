@@ -12,9 +12,15 @@ class ModifyInfoLogic extends GetxController {
 
   @override
   void onInit() {
-    super.onInit();
     avatarUrl = HiveTool.getAvatarUrl().obs;
     nickname = TextEditingController()..text = HiveTool.getNickname();
+    super.onInit();
+  }
+
+  @override
+  void onClose() {
+    nickname.dispose();
+    super.onClose();
   }
 
   void modifyAvatar() {
@@ -103,6 +109,7 @@ class ModifyInfoPage extends StatelessWidget {
                 _buildAvatar(logic),
                 const Divider(),
                 _buildNickname(logic),
+                const Divider(),
               ],
             ),
           ),
@@ -137,7 +144,7 @@ class ModifyInfoPage extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: logic.modifyAvatar,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 8),
         child: Row(
           children: [
             const Text(
@@ -187,7 +194,7 @@ class ModifyInfoPage extends StatelessWidget {
             logic.nickname,
             "请输入昵称",
             contentPadding: const EdgeInsets.symmetric(
-              vertical: 18,
+              vertical: 20,
               horizontal: 28,
             ),
             textAlign: TextAlign.end,

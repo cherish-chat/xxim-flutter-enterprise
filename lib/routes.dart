@@ -1,6 +1,7 @@
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/add_friend.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/add_group.dart';
+import 'package:xxim_flutter_enterprise/pages/contact/create_group.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/friend_apply.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/group_apply.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/group_chat.dart';
@@ -23,6 +24,7 @@ class Paths {
   static String chat = "/chat/:convId";
   static String addFriend = "/add_friend";
   static String addGroup = "/add_group";
+  static String createGroup = "/create_group";
   static String friendApply = "/friend_apply";
   static String groupApply = "/group_apply";
   static String groupChat = "/group_chat";
@@ -45,6 +47,7 @@ class Routes {
       menu + Paths.chat.replaceFirst(":convId", "") + convId;
   static String addFriend = menu + Paths.addFriend;
   static String addGroup = menu + Paths.addGroup;
+  static String createGroup = menu + Paths.createGroup;
   static String friendApply = menu + Paths.friendApply;
   static String groupApply = menu + Paths.groupApply;
   static String groupChat = menu + Paths.groupChat;
@@ -97,6 +100,11 @@ class Routes {
           GetPage(
             name: Paths.addGroup,
             page: () => const AddGroupPage(),
+            showCupertinoParallax: false,
+          ),
+          GetPage(
+            name: Paths.createGroup,
+            page: () => const CreateGroupPage(),
             showCupertinoParallax: false,
           ),
           GetPage(

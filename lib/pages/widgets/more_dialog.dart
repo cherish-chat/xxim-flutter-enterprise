@@ -76,6 +76,19 @@ class MoreDialog extends StatelessWidget {
                       );
                     },
                   ),
+                  _buildItem(
+                    "assets/images/ic_group_30.webp",
+                    "创建群聊",
+                    () {
+                      hide();
+                      MenuLogic? logic = MenuLogic.logic();
+                      if (logic == null) return;
+                      logic.sliderKey?.currentState?.closeSlider();
+                      logic.getDelegate?.toNamed(
+                        Routes.createGroup,
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
