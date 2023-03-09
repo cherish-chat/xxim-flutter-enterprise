@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:cross_file/cross_file.dart';
 import 'package:extended_text/extended_text.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -1005,14 +1006,27 @@ class ChatPage extends StatelessWidget {
             : logic.chatOperate.value == ChatOperate.record
                 ? ChatExtendedRecord(
                     callback: (
-                      String name,
                       String path,
                       int duration,
                       List<int> decibels,
-                    ) {
-                      print("什么：$name - $path - $duration - $decibels");
-                      // 发送
-                      PlayerTool.instance.play(path);
+                    ) async {
+                      XFile xFile = XFile(path);
+                      Uint8List uint8list = await xFile.readAsBytes();
+                      List<int> audioBytes = uint8list.toList();
+                      logic
+                          .createAudio(AudioContent(
+                        audioName: xFile.name,
+                        audioPath: "",
+                        audioUrl: "",
+                        audioBytes: audioBytes,
+                        duration: 0,
+                        size: audioBytes.length,
+                      ))
+                          .then(
+                        (value) {
+                          logic.sendAudio(value);
+                        },
+                      );
                     },
                   )
                 : const SizedBox(),

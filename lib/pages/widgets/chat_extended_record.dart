@@ -8,7 +8,6 @@ enum RecordStatus {
 
 class ChatExtendedRecord extends StatefulWidget {
   final Function(
-    String name,
     String path,
     int duration,
     List<int> decibels,
@@ -30,7 +29,6 @@ class _ChatExtendedRecordState extends State<ChatExtendedRecord> {
 
   RecordStatus _recordStatus = RecordStatus.none;
 
-  String _toFile = "";
   int _duration = 0;
   List<int> _decibels = [];
 
@@ -46,7 +44,6 @@ class _ChatExtendedRecordState extends State<ChatExtendedRecord> {
   }
 
   Future _startRecord() async {
-    _toFile = "${Tool.getUUId()}.aac";
     _duration = 0;
     _decibels = [];
     await RecorderTool.instance.record(
@@ -77,7 +74,7 @@ class _ChatExtendedRecordState extends State<ChatExtendedRecord> {
           return;
         }
         if (_duration >= 1) {
-          widget.callback(_toFile, value, _duration, _decibels);
+          widget.callback(value, _duration, _decibels);
         } else {
           Tool.showToast("录制时间太短");
         }

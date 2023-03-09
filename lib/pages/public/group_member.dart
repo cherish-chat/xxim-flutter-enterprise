@@ -1,7 +1,6 @@
 import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:xxim_flutter_enterprise/main.dart' hide Page;
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
-import 'package:xxim_flutter_enterprise/pages/public/select_friends.dart';
 import 'package:xxim_flutter_enterprise/proto/common.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
