@@ -41,7 +41,7 @@ class _ChatExtendedRecordState extends State<ChatExtendedRecord> {
 
   @override
   void dispose() {
-    // SoundRecorder.instance.closeRecorder();
+    RecorderTool.instance.stop();
     super.dispose();
   }
 
@@ -49,33 +49,40 @@ class _ChatExtendedRecordState extends State<ChatExtendedRecord> {
     _toFile = "${Tool.getUUId()}.aac";
     _duration = 0;
     _decibels = [];
-    // await SoundRecorder.instance.startRecorder(
-    //   _toFile,
-    //   onProgress: (duration, decibels) {
-    //     _duration = duration;
-    //     _decibels.add(decibels);
-    //     if (_recordStatus == RecordStatus.record) {
-    //       setState(() {});
-    //     }
-    //   },
-    // );
+    await RecorderTool.instance.record(
+      onDuration: (duration) {
+        _duration = duration;
+        if (_recordStatus == RecordStatus.record) {
+          setState(() {});
+        }
+      },
+      onAmplitude: (max, current) {
+        double minValue = -160.0;
+        double maxValue = 0.0;
+        double minTarget = 0.0;
+        double maxTarget = 100.0;
+        double percent = (current - minValue) / (maxValue - minValue);
+        double value = minTarget + percent * (maxTarget - minTarget);
+        _decibels.add(value.floor());
+      },
+    );
   }
 
   Future _stopRecord() async {
-    // await SoundRecorder.instance.stopRecorder().then(
-    //   (value) {
-    //     if (_recordStatus != RecordStatus.record) return;
-    //     if (value == null) {
-    //       Tool.showToast("语音文件异常");
-    //       return;
-    //     }
-    //     if (_duration >= 1) {
-    //       widget.callback(_toFile, value, _duration, _decibels);
-    //     } else {
-    //       Tool.showToast("录制时间太短");
-    //     }
-    //   },
-    // );
+    await RecorderTool.instance.stop().then(
+      (value) {
+        if (_recordStatus != RecordStatus.record) return;
+        if (value == null) {
+          Tool.showToast("语音文件异常");
+          return;
+        }
+        if (_duration >= 1) {
+          widget.callback(_toFile, value, _duration, _decibels);
+        } else {
+          Tool.showToast("录制时间太短");
+        }
+      },
+    );
   }
 
   @override
@@ -95,7 +102,7 @@ class _ChatExtendedRecordState extends State<ChatExtendedRecord> {
   Widget _buildButton() {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onPanStart: (details) async {
+      onPanDown: (details) async {
         _panStartDY = details.globalPosition.dy;
         await _startRecord();
         setState(() {
@@ -121,6 +128,15 @@ class _ChatExtendedRecordState extends State<ChatExtendedRecord> {
         }
       },
       onPanEnd: (details) async {
+        _panStartDY = 0;
+        _panUpdateDY = 0;
+        await _stopRecord();
+        setState(() {
+          _panStatus = false;
+          _recordStatus = RecordStatus.none;
+        });
+      },
+      onPanCancel: () async {
         _panStartDY = 0;
         _panUpdateDY = 0;
         await _stopRecord();

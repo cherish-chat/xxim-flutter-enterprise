@@ -73,6 +73,7 @@ dependencies:
   minio:
     path: plugins/minio
   video_thumbnail: 0.5.3
+  record: 4.4.4
   audioplayers: 3.0.1
 
   flutter_keyboard_visibility: 5.4.0

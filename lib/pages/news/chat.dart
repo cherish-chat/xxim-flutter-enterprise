@@ -211,8 +211,6 @@ class ChatLogic extends GetxController {
         if (files.isEmpty) return;
         for (PlatformFile file in files) {
           if (file.bytes == null || file.bytes!.isEmpty) continue;
-          // String? extension = file.extension;
-          // if (extension == null) continue;
           List<int> bytes = file.bytes!.toList();
           if (GetPlatform.isWeb && bytes.length > 20000000) {
             Tool.showToast("网页不支持发送太大的文件");
@@ -732,31 +730,31 @@ class ChatPage extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              // GestureDetector(
-              //   behavior: HitTestBehavior.opaque,
-              //   onTap: () {
-              //     logic.scrollController.jumpTo(0);
-              //     if (logic.chatOperate.value == ChatOperate.record) {
-              //       logic.inputFocusNode.requestFocus();
-              //       if (GetPlatform.isMobile) {
-              //         logic.chatOperate.value = ChatOperate.input;
-              //       } else {
-              //         logic.chatOperate.value = ChatOperate.none;
-              //       }
-              //     } else {
-              //       if (logic.inputFocusNode.hasFocus) {
-              //         logic.inputFocusNode.unfocus();
-              //       }
-              //       logic.chatOperate.value = ChatOperate.record;
-              //     }
-              //   },
-              //   child: Image.asset(
-              //     "assets/images/ic_mic_35.webp",
-              //     width: 40,
-              //     height: 40,
-              //   ),
-              // ),
-              // const SizedBox(width: 8),
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  logic.scrollController.jumpTo(0);
+                  if (logic.chatOperate.value == ChatOperate.record) {
+                    logic.inputFocusNode.requestFocus();
+                    if (GetPlatform.isMobile) {
+                      logic.chatOperate.value = ChatOperate.input;
+                    } else {
+                      logic.chatOperate.value = ChatOperate.none;
+                    }
+                  } else {
+                    if (logic.inputFocusNode.hasFocus) {
+                      logic.inputFocusNode.unfocus();
+                    }
+                    logic.chatOperate.value = ChatOperate.record;
+                  }
+                },
+                child: Image.asset(
+                  "assets/images/ic_mic_35.webp",
+                  width: 40,
+                  height: 40,
+                ),
+              ),
+              const SizedBox(width: 8),
               Expanded(
                 child: Column(
                   children: [
@@ -1012,8 +1010,9 @@ class ChatPage extends StatelessWidget {
                       int duration,
                       List<int> decibels,
                     ) {
+                      print("什么：$name - $path - $duration - $decibels");
                       // 发送
-                      // SoundPlayer.instance.startPlayer(path);
+                      PlayerTool.instance.play(path);
                     },
                   )
                 : const SizedBox(),
