@@ -196,6 +196,13 @@ class ChatLogic extends GetxController {
   }
 
   void pickFiles() {
+    String getFileHeader(List<int> bytes) {
+      return bytes
+          .map((byte) => byte.toRadixString(16).padLeft(2, '0'))
+          .join()
+          .toUpperCase();
+    }
+
     PickTool.pickFiles(
       type: FileType.media,
       onSuccess: (result) async {
@@ -203,14 +210,18 @@ class ChatLogic extends GetxController {
         if (files.isEmpty) return;
         for (PlatformFile file in files) {
           if (file.bytes == null || file.bytes!.isEmpty) continue;
-          String? extension = file.extension;
-          if (extension == null) continue;
+          // String? extension = file.extension;
+          // if (extension == null) continue;
           List<int> bytes = file.bytes!.toList();
           if (GetPlatform.isWeb && bytes.length > 20000000) {
             Tool.showToast("网页不支持发送太大的文件");
             return;
           }
-          if (extension == "jpg" || extension == "jpeg" || extension == "png") {
+          String header = getFileHeader(bytes);
+          if (header.startsWith("FFD8") ||
+              header.startsWith("89504E470D0A1A0A") ||
+              header.startsWith("47494638")) {
+            // JPEG、PNG、GIF
             Completer<ui.Image> completer = Completer();
             ui.decodeImageFromList(Uint8List.fromList(bytes), (ui.Image image) {
               return completer.complete(image);
@@ -229,7 +240,9 @@ class ChatLogic extends GetxController {
                 sendImage(value);
               },
             );
-          } else if (extension == "aac" || extension == "mp3") {
+          } else if ((header.startsWith("FFF1") || header.startsWith("FFF9")) ||
+              header.startsWith("494433")) {
+            // AAC、MP3
             createAudio(AudioContent(
               audioName: file.name,
               audioPath: "",
@@ -242,7 +255,10 @@ class ChatLogic extends GetxController {
                 sendAudio(value);
               },
             );
-          } else if (extension == "mp4" || extension == "mov") {
+          } else if ((header.startsWith("000000") ||
+                  header.startsWith("66747970")) ||
+              header.startsWith("6D6F6F76")) {
+            // MP4、MOV
             String coverName = "";
             List<int> coverBytes = [];
             if (GetPlatform.isMobile && file.path != null) {
