@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:record/record.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 
@@ -27,6 +29,10 @@ class RecorderTool {
     });
   }
 
+  Future<bool> hasPermission() {
+    return _recorder.hasPermission();
+  }
+
   Future<bool> isRecording() {
     return _recorder.isRecording();
   }
@@ -35,7 +41,7 @@ class RecorderTool {
     Function(int duration)? onDuration,
     Function(double max, double current)? onAmplitude,
   }) async {
-    if (await _recorder.hasPermission()) {
+    if (await hasPermission()) {
       _onDuration = onDuration;
       _onAmplitude = onAmplitude;
       _duration = 0;
@@ -69,11 +75,15 @@ class RecorderTool {
     _timer = null;
   }
 
-  Future<String?> stop() {
+  Future<String?> stop() async {
     _onDuration = null;
     _onAmplitude = null;
     _duration = 0;
     _cancelTimer();
-    return _recorder.stop();
+    String? path = await _recorder.stop();
+    if (!kIsWeb && path != null) {
+      path = File.fromUri(Uri.parse(path)).path;
+    }
+    return path;
   }
 }

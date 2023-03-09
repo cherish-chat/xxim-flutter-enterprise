@@ -733,8 +733,9 @@ class ChatPage extends StatelessWidget {
             children: [
               GestureDetector(
                 behavior: HitTestBehavior.opaque,
-                onTap: () {
+                onTap: () async {
                   logic.scrollController.jumpTo(0);
+                  if (!await RecorderTool.instance.hasPermission()) return;
                   if (logic.chatOperate.value == ChatOperate.record) {
                     logic.inputFocusNode.requestFocus();
                     if (GetPlatform.isMobile) {
@@ -1019,7 +1020,7 @@ class ChatPage extends StatelessWidget {
                         audioPath: "",
                         audioUrl: "",
                         audioBytes: audioBytes,
-                        duration: 0,
+                        duration: duration,
                         size: audioBytes.length,
                       ))
                           .then(
