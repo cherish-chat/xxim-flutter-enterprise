@@ -238,6 +238,17 @@ class GroupMemberPage extends StatelessWidget {
                 ],
               ),
             ),
+            Text(
+              memberInfo.role == GroupRole.OWNER
+                  ? "群主"
+                  : memberInfo.role == GroupRole.MANAGER
+                      ? "管理员"
+                      : "",
+              style: const TextStyle(
+                color: getHintBlack,
+                fontSize: 14,
+              ),
+            ),
             if (callback != null)
               Image.asset(
                 "assets/images/ic_right_20.webp",
