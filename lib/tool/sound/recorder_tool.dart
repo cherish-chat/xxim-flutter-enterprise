@@ -23,6 +23,7 @@ class RecorderTool {
   RecorderTool._internal() {
     _recorder = Record();
     _recorder.onAmplitudeChanged(kThemeChangeDuration).listen((event) {
+      if (event.max.isInfinite || event.current.isInfinite) return;
       if (_onAmplitude != null) {
         _onAmplitude!(event.max, event.current);
       }
