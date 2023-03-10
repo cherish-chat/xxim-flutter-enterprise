@@ -3,7 +3,7 @@ import 'package:xxim_flutter_enterprise/main.dart';
 class SpaceLasting {
   double height;
 
-  SpaceLasting({this.height = 220});
+  SpaceLasting({this.height = 260});
 }
 
 class KeyboardSpace extends StatelessWidget {

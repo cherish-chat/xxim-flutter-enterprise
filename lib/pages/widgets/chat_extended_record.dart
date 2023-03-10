@@ -133,15 +133,6 @@ class _ChatExtendedRecordState extends State<ChatExtendedRecord> {
           _recordStatus = RecordStatus.none;
         });
       },
-      onPanCancel: () async {
-        _panStartDY = 0;
-        _panUpdateDY = 0;
-        await _stopRecord();
-        setState(() {
-          _panStatus = false;
-          _recordStatus = RecordStatus.none;
-        });
-      },
       child: Icon(
         Icons.mic,
         size: 50,
