@@ -19,6 +19,7 @@ export 'package:xxim_flutter_enterprise/component/component.dart';
 export 'package:xxim_flutter_enterprise/pages/widgets/widgets.dart';
 export 'package:xxim_flutter_enterprise/tool/tool.dart';
 export 'xxim/xxim.dart';
+export 'config.dart';
 export 'routes.dart';
 export 'services.dart';
 export 'translation.dart';
