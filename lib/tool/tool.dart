@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:web_socket_channel/status.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:uuid/uuid.dart';
@@ -27,7 +26,7 @@ enum Environment {
   debug,
 }
 
-const Environment environment = Environment.debug;
+const Environment environment = Environment.release;
 
 const String defConfigFile =
     "http://42.194.149.177:9000/xxim/appconfigs/xxim.json";
@@ -113,20 +112,20 @@ class Tool {
                 fastTime = interval;
                 fastMap = map;
               }
-              webSocket.sink.close(goingAway);
+              webSocket.sink.close();
               if (!completer.isCompleted) {
                 completer.complete(true);
               }
             }
           },
           onError: (error) {
-            webSocket.sink.close(goingAway);
+            webSocket.sink.close();
             if (!completer.isCompleted) {
               completer.complete(false);
             }
           },
           onDone: () {
-            webSocket.sink.close(goingAway);
+            webSocket.sink.close();
             if (!completer.isCompleted) {
               completer.complete(false);
             }
