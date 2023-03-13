@@ -141,11 +141,11 @@ class XXIM {
   }
 
   Future _reconnect() async {
-    // bool success = await Tool.loadConfigFast();
-    // if (!success) {
-    //   _reconnect();
-    //   return;
-    // }
+    bool success = await Tool.loadConfigFast();
+    if (!success) {
+      Future.delayed(const Duration(seconds: 3), _reconnect);
+      return;
+    }
     if (!XXIM.instance.isConnect()) {
       bool isConnect = await XXIM.instance.connect();
       if (!isConnect) {

@@ -6,16 +6,16 @@ class HiveTool {
   /// 配置信息
   static Box get _configBox => HiveService.service(HiveService.config);
 
-  static const String _configList = "configList";
+  static const String _configMap = "configMap";
 
-  static List getConfigList() => _configBox.get(
-        _configList,
-        defaultValue: defConfigList,
+  static Map getConfigMap() => _configBox.get(
+        _configMap,
+        defaultValue: defConfigMap,
       );
 
-  static void setConfigList(List configList) => _configBox.put(
-        _configList,
-        configList,
+  static void setConfigMap(Map configMap) => _configBox.put(
+        _configMap,
+        configMap,
       );
 
   /// 用户信息

@@ -4,8 +4,12 @@ import 'package:crypto/crypto.dart';
 import 'package:xxim_flutter_enterprise/main.dart' hide Key;
 
 class EncryptTool {
-  static final Key _key = Key.fromUtf8(encryptAESKey);
-  static final IV _iv = IV.fromUtf8(encryptAESIV);
+  static final Key _key = Key.fromUtf8(
+    EncryptTool.cryptoMD5(encryptAESKey),
+  );
+  static final IV _iv = IV.fromUtf8(
+    EncryptTool.cryptoMD5(encryptAESIV).substring(8, 24),
+  );
 
   static List<int> aesEncode(String value) {
     Encrypter encrypter = Encrypter(AES(

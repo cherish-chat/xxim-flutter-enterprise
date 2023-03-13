@@ -1,4 +1,7 @@
+import 'dart:async';
 import 'dart:convert';
+import 'package:web_socket_channel/status.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:uuid/uuid.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -24,15 +27,15 @@ enum Environment {
   debug,
 }
 
-const Environment environment = Environment.release;
+const Environment environment = Environment.debug;
 
-const String defPushAlias = "";
-const String defConfigFile = "";
-const List defConfigList = [];
+const String defConfigFile =
+    "http://42.194.149.177:9000/xxim/appconfigs/xxim.json";
+const Map defConfigMap = {};
 
 /// config文件解密
-const String encryptAESKey = "";
-const String encryptAESIV = "";
+const String encryptAESKey = "sjkdasjdkjasgdjas";
+const String encryptAESIV = "r123hiwdbqkejw ckn";
 
 /// socket通讯公钥
 const String rsaPublicKey = "-----BEGIN PUBLIC KEY-----\n"
@@ -42,13 +45,13 @@ const String rsaPublicKey = "-----BEGIN PUBLIC KEY-----\n"
 const String gdWebKey = "";
 
 class Tool {
-  static List _configList = [];
-  static String _wsUrl = "wss://api.cherish.chat";
+  static Map _configMap = {};
+  static String _wsUrl = "";
   static Map _minioMap = {};
   static String _fileUrl = "";
 
   static Future<bool> loadConfigFast() async {
-    if (HiveTool.getConfigList().isEmpty) {
+    if (HiveTool.getConfigMap().isEmpty) {
       if (!(await _loadConfigFile())) {
         loadConfigFast();
         return false;
@@ -72,8 +75,8 @@ class Tool {
         Map body = (data is String) ? json.decode(data) : data;
         Uint8List uint8list = base64Decode(body["config"]);
         String value = EncryptTool.aesDecode(uint8list);
-        _configList = json.decode(value);
-        HiveTool.setConfigList(_configList);
+        _configMap = json.decode(value);
+        HiveTool.setConfigMap(_configMap);
         return true;
       } else {
         return false;
@@ -84,48 +87,77 @@ class Tool {
   }
 
   static Future _loadFastUrl() async {
-    if (Tool._configList.isEmpty) {
-      Tool._configList = HiveTool.getConfigList();
+    if (Tool._configMap.isEmpty) {
+      Tool._configMap = HiveTool.getConfigMap();
     }
     int fastTime = -1;
-    Map fastMap = _configList.first;
-    await Future.wait(_configList.map((map) {
+    List apiLines = _configMap["apiLines"];
+    Map fastMap = apiLines.first;
+    await Future.wait(apiLines.map((map) {
       int beginTime = DateTime.now().millisecondsSinceEpoch;
-      return HttpService.service
-          .getDio()
-          .get(
-            map["apiUrl"],
-            options: Options(
-              sendTimeout: 1000,
-              receiveTimeout: 1000,
-            ),
-          )
-          .then(
-        (response) {
-          if (response.statusCode == 200) {
-            int endTime = DateTime.now().millisecondsSinceEpoch;
-            int interval = endTime - beginTime;
-            if (fastTime == -1) {
-              fastTime = interval;
-              fastMap = map;
-            } else if (interval < fastTime) {
-              fastTime = interval;
-              fastMap = map;
+      Completer<bool> completer = Completer<bool>();
+      try {
+        String prefix = map["ssl"] == true ? "wss://" : "ws://";
+        WebSocketChannel webSocket = WebSocketChannel.connect(
+          Uri.parse("$prefix${map["host"]}:${map["wsPort"]}/ws"),
+        );
+        webSocket.stream.listen(
+          (data) {
+            if (data == "connected") {
+              int endTime = DateTime.now().millisecondsSinceEpoch;
+              int interval = endTime - beginTime;
+              if (fastTime == -1) {
+                fastTime = interval;
+                fastMap = map;
+              } else if (interval < fastTime) {
+                fastTime = interval;
+                fastMap = map;
+              }
+              webSocket.sink.close(goingAway);
+              if (!completer.isCompleted) {
+                completer.complete(true);
+              }
             }
-          }
+          },
+          onError: (error) {
+            webSocket.sink.close(goingAway);
+            if (!completer.isCompleted) {
+              completer.complete(false);
+            }
+          },
+          onDone: () {
+            webSocket.sink.close(goingAway);
+            if (!completer.isCompleted) {
+              completer.complete(false);
+            }
+          },
+          cancelOnError: true,
+        );
+      } catch (_) {
+        if (!completer.isCompleted) {
+          completer.complete(false);
+        }
+      }
+      return completer.future.timeout(
+        const Duration(milliseconds: 2000),
+        onTimeout: () {
+          return false;
         },
       ).catchError((error) {});
     }).toList());
-    _wsUrl = fastMap["wsUrl"];
+    String prefix = fastMap["ssl"] == true ? "wss://" : "ws://";
+    _wsUrl = "$prefix${fastMap["host"]}:${fastMap["wsPort"]}";
+    Map minio = _configMap["objectStorage"]["minio"];
+    List endpoint = minio["endpoint"].split(":");
     _minioMap = {
-      "endPoint": fastMap["minioHost"],
-      "port": fastMap["minioPort"],
-      "accessKey": fastMap["accessKey"],
-      "secretKey": fastMap["secretKey"],
-      "useSSL": fastMap["useSSL"],
-      "bucket": fastMap["bucket"],
+      "endPoint": endpoint.first,
+      "port": endpoint.last,
+      "accessKey": minio["accessKeyId"],
+      "secretKey": minio["secretAccessKey"],
+      "useSSL": minio["ssl"],
+      "bucket": minio["bucketName"],
     };
-    _fileUrl = fastMap["fileUrl"];
+    _fileUrl = minio["bucketUrl"];
   }
 
   static String getWsUrl() {
@@ -133,23 +165,14 @@ class Tool {
   }
 
   static Map getMinioMap() {
-    // return _minioMap;
-    return {
-      "endPoint": "42.194.149.177",
-      "port": 9000,
-      "accessKey": "ehpDDDeYekG3SS3q",
-      "secretKey": "vvOn6zY22uQpwDKK9elbvToXu1J2RXzt",
-      "useSSL": false,
-      "bucket": "xxim",
-    };
+    return _minioMap;
   }
 
   static String getFileUrl(String fileName) {
     if (fileName.startsWith("http://") || fileName.startsWith("https://")) {
       return fileName;
     }
-    // return "$_fileUrl$fileName";
-    return "http://42.194.149.177:9000/xxim/$fileName";
+    return "$_fileUrl$fileName";
   }
 
   static String getLocationImage({

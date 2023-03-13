@@ -15,7 +15,7 @@ class MinIOTool {
     String fileName = "$name.$suffix";
     Minio minio = Minio(
       endPoint: minioMap["endPoint"],
-      port: minioMap["port"],
+      port: int.parse(minioMap["port"]),
       accessKey: minioMap["accessKey"],
       secretKey: minioMap["secretKey"],
       useSSL: minioMap["useSSL"],

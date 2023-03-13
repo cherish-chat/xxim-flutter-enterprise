@@ -15,11 +15,13 @@ class LaunchLogic extends GetxController with StateMixin {
   @override
   void onReady() async {
     super.onReady();
-    // bool success = await Tool.loadConfigFast();
-    // if (!success) {
-    //   onReady();
-    //   return;
-    // }
+    bool success = await Tool.loadConfigFast();
+    if (!success) {
+      Future.delayed(const Duration(seconds: 2), () {
+        onReady();
+      });
+      return;
+    }
     _gotoPage();
   }
 

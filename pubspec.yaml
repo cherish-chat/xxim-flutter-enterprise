@@ -81,6 +81,7 @@ dependencies:
   extended_text_library: 9.1.1
   extended_text: 9.1.2
   extended_text_field: 10.2.0
+  web_socket_channel: 2.3.0
   xxim_sdk_flutter:
     git:
       url: https://github.com/cherish-chat/xxim-sdk-flutter
