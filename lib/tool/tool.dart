@@ -172,7 +172,7 @@ class Tool {
     if (fileName.startsWith("http://") || fileName.startsWith("https://")) {
       return fileName;
     }
-    return "$_fileUrl$fileName";
+    return "$_fileUrl/$fileName";
   }
 
   static String getLocationImage({
