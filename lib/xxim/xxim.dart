@@ -52,6 +52,7 @@ class XXIM {
     _sdk = XXIMSDK()
       ..init(
         directory: directory,
+        requestTimeout: const Duration(seconds: 20),
         rsaPublicKey: rsaPublicKey,
         cxnParams: await XXIMTool.getCxnParams(),
         pullMsgCount: 20,

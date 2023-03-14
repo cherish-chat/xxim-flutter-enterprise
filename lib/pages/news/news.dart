@@ -49,6 +49,10 @@ class NewsLogic extends GetxController {
   }
 
   void _loadSetting() {
+    if (convModelList.isEmpty) {
+      update(["list"]);
+      return;
+    }
     XXIM.instance.customRequest<GetConvSettingResp>(
       method: "/v1/im/getConvSetting",
       req: GetConvSettingReq(
