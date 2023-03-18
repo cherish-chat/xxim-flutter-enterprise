@@ -50,9 +50,9 @@ class Tool {
   static Future<bool> _loadConfigFile() async {
     try {
       Response response = await Dio(BaseOptions(
-        connectTimeout: 60000,
-        receiveTimeout: 60000,
-        sendTimeout: 60000,
+        connectTimeout: const Duration(milliseconds: 60000),
+        receiveTimeout: const Duration(milliseconds: 60000),
+        sendTimeout: const Duration(milliseconds: 60000),
       )).get(defConfigFile);
       if (response.statusCode == 200) {
         dynamic data = response.data;
@@ -127,7 +127,9 @@ class Tool {
         onTimeout: () {
           return false;
         },
-      ).catchError((error) {});
+      ).catchError((error) {
+        return false;
+      });
     }).toList());
     String prefix = fastMap["ssl"] == true ? "wss://" : "ws://";
     _wsUrl = "$prefix${fastMap["host"]}:${fastMap["wsPort"]}";

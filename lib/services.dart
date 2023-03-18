@@ -32,9 +32,9 @@ class HttpService extends GetxService {
 
   Future<HttpService> init() async {
     _dio = Dio(BaseOptions(
-      connectTimeout: 2000,
-      receiveTimeout: 600000,
-      sendTimeout: 10000,
+      connectTimeout: const Duration(milliseconds: 2000),
+      receiveTimeout: const Duration(milliseconds: 600000),
+      sendTimeout: const Duration(milliseconds: 10000),
       responseType: ResponseType.json,
     ));
     if (environment != Environment.release) {

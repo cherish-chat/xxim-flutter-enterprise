@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
-export 'package:flutter/material.dart';
+export 'package:flutter/material.dart' hide Badge;
 export 'package:flutter/cupertino.dart' hide RefreshCallback;
 export 'package:flutter/services.dart' hide TextInput;
 export 'package:get/get.dart'
