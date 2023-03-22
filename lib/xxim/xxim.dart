@@ -54,6 +54,7 @@ class XXIM {
         directory: directory,
         requestTimeout: const Duration(seconds: 20),
         rsaPublicKey: rsaPublicKey,
+        aesKey: Tool.getUUId(),
         cxnParams: await XXIMTool.getCxnParams(),
         pullMsgCount: 20,
         isarSchemas: [],
@@ -199,9 +200,13 @@ class XXIM {
   }
 
   Future<bool> setCxnParams({
+    required String rsaPublicKey,
+    required String aesKey,
     required CxnParams cxnParams,
   }) async {
     return _sdk.setCxnParams(
+      rsaPublicKey: rsaPublicKey,
+      aesKey: aesKey,
       cxnParams: cxnParams,
     );
   }
