@@ -237,21 +237,29 @@ class NewsPage extends StatelessWidget {
                   List<UserBaseInfo> userInfoList =
                       MenuLogic.logic()?.userInfoList ?? [];
                   if (userInfoList.isNotEmpty) {
-                    userInfo = userInfoList.where((element) {
+                    List<UserBaseInfo> whereList =
+                        userInfoList.where((element) {
                       return element.id ==
                           SDKTool.getSingleId(
                             convModel.convId,
                             HiveTool.getUserId(),
                           );
-                    }).first;
+                    }).toList();
+                    if (whereList.isNotEmpty) {
+                      userInfo = whereList.first;
+                    }
                   }
                 } else if (SDKTool.isGroupConv(convModel.convId)) {
                   List<GroupBaseInfo> groupInfoList =
                       MenuLogic.logic()?.groupInfoList ?? [];
                   if (groupInfoList.isNotEmpty) {
-                    groupInfo = groupInfoList.where((element) {
+                    List<GroupBaseInfo> whereList =
+                        groupInfoList.where((element) {
                       return element.id == SDKTool.getGroupId(convModel.convId);
-                    }).first;
+                    }).toList();
+                    if (whereList.isNotEmpty) {
+                      groupInfo = whereList.first;
+                    }
                   }
                 }
                 return _buildItem(
