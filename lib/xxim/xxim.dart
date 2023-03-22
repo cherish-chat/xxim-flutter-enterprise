@@ -123,6 +123,26 @@ class XXIM {
               ++applyGroupCount;
               HiveTool.setApplyGroupCount(applyGroupCount);
               ContactLogic.logic()?.applyGroupCount.value = applyGroupCount;
+            } else if (noticeModel.contentType == XXIMCommon.groupMemberLeave) {
+              Map content = json.decode(noticeModel.content);
+              if (content["memberId"] == HiveTool.getUserId()) {
+                String groupId = content["groupId"] ?? "";
+                if (groupId.isNotEmpty) {
+                  MenuLogic.logic()?.groupInfoList.removeWhere((element) {
+                    return element.id == groupId;
+                  });
+                  NewsLogic.logic()?.deleteConv(SDKTool.groupConvId(groupId));
+                }
+              }
+            } else if (noticeModel.contentType == XXIMCommon.dismissGroup) {
+              Map content = json.decode(noticeModel.content);
+              String groupId = content["groupId"] ?? "";
+              if (groupId.isNotEmpty) {
+                MenuLogic.logic()?.groupInfoList.removeWhere((element) {
+                  return element.id == groupId;
+                });
+                NewsLogic.logic()?.deleteConv(SDKTool.groupConvId(groupId));
+              }
             } else {
               MenuLogic.logic()?.loadConvIdList();
             }
