@@ -31,8 +31,9 @@ class MoreDialog extends StatelessWidget {
             top: getToolbarHeight - 8,
             child: Container(
               width: 120,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.white,
+                borderRadius: BorderRadius.circular(4),
               ),
               child: Column(
                 children: [
