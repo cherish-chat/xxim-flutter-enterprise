@@ -1,8 +1,10 @@
 import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:xxim_flutter_enterprise/main.dart' hide Page;
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
+import 'package:xxim_flutter_enterprise/pages/public/select_friends.dart';
 import 'package:xxim_flutter_enterprise/proto/common.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
+import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 class GroupMember {
@@ -171,14 +173,43 @@ class GroupMemberLogic extends GetxController {
   }
 
   void added() {
-    // SelectFriends.show(
-    //   memberIdList: list.map((e) {
-    //     return e.userBaseInfo.id;
-    //   }).toList(),
-    //   callback: (list) {
-    //     print("什么：$list");
-    //   },
-    // );
+    SelectFriends.show(
+      memberIdList: list.map((e) {
+        return e.userBaseInfo.id;
+      }).toList(),
+      callback: (list) {
+        List<String> friendIds = [];
+        List<String> friendNames = [];
+        for (UserBaseInfo info in list) {
+          friendIds.add(info.id);
+          friendNames.add(info.nickname);
+        }
+        inviteMember(friendIds, friendNames);
+      },
+    );
+  }
+
+  void inviteMember(List<String> friendIds, List<String> friendNames) {
+    XXIM.instance.customRequest<InviteFriendToGroupResp>(
+      method: "/v1/group/inviteFriendToGroup",
+      req: InviteFriendToGroupReq(
+        groupId: groupId,
+        friendIds: friendIds,
+      ),
+      resp: InviteFriendToGroupResp.create,
+      onSuccess: (data) {
+        onRefresh();
+        XXIM.instance.msgManager.sendTip(
+          convId: SDKTool.groupConvId(groupId),
+          content: TipContent(
+            tip: "${HiveTool.getNickname()}邀请${friendNames.join("，")}进入群聊",
+          ),
+        );
+      },
+      onError: (code, error) {
+        Tool.showToast("邀请失败");
+      },
+    );
   }
 }
 
@@ -238,12 +269,12 @@ class GroupMemberPage extends StatelessWidget {
                       Expanded(
                         child: _buildListView(),
                       ),
-                      // Obx(() {
-                      //   if (logic.isPermission.value) {
-                      //     return _buildAdded(logic);
-                      //   }
-                      //   return const SizedBox();
-                      // }),
+                      Obx(() {
+                        if (logic.isPermission.value) {
+                          return _buildAdded(logic);
+                        }
+                        return const SizedBox();
+                      }),
                     ],
                   ),
                 );
@@ -372,26 +403,26 @@ class GroupMemberPage extends StatelessWidget {
     );
   }
 
-// Widget _buildAdded(GroupMemberLogic logic) {
-//   return GestureDetector(
-//     behavior: HitTestBehavior.opaque,
-//     onTap: logic.added,
-//     child: Container(
-//       margin: const EdgeInsets.symmetric(vertical: 8),
-//       alignment: Alignment.center,
-//       height: 50,
-//       decoration: BoxDecoration(
-//         color: getMainColor,
-//         borderRadius: BorderRadius.circular(25),
-//       ),
-//       child: const Text(
-//         "添加成员",
-//         style: TextStyle(
-//           color: getTextWhite,
-//           fontSize: 18,
-//         ),
-//       ),
-//     ),
-//   );
-// }
+  Widget _buildAdded(GroupMemberLogic logic) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: logic.added,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        alignment: Alignment.center,
+        height: 50,
+        decoration: BoxDecoration(
+          color: getMainColor,
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: const Text(
+          "添加成员",
+          style: TextStyle(
+            color: getTextWhite,
+            fontSize: 18,
+          ),
+        ),
+      ),
+    );
+  }
 }
