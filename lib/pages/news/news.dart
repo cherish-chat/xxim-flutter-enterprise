@@ -469,7 +469,7 @@ class NewsPage extends StatelessWidget {
                             : convModel.unreadCount.toString(),
                         style: const TextStyle(
                           color: getTextWhite,
-                          fontSize: 10,
+                          fontSize: 12,
                         ),
                       ),
                     ),

@@ -302,7 +302,7 @@ class ContactPage extends StatelessWidget {
                         count.toString(),
                         style: const TextStyle(
                           color: getTextWhite,
-                          fontSize: 10,
+                          fontSize: 12,
                         ),
                       ),
                     ),

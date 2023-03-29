@@ -25,13 +25,14 @@ class ChatTimeItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16),
+        padding: const EdgeInsets.all(16),
         child: Text(
           TimeTool.formatMessageTimestamp(timestamp),
           style: const TextStyle(
             color: getHintBlack,
-            fontSize: 10,
+            fontSize: 12,
           ),
+          textAlign: TextAlign.center,
         ),
       ),
     );
@@ -59,13 +60,14 @@ class ChatTipItem<T extends GetxController> extends StatelessWidget {
     TipContent content = TipContent.fromJson(msgModel.content);
     return Center(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16),
+        padding: const EdgeInsets.all(16),
         child: Text(
           content.tip,
           style: const TextStyle(
             color: getHintBlack,
-            fontSize: 10,
+            fontSize: 12,
           ),
+          textAlign: TextAlign.center,
         ),
       ),
     );
@@ -202,7 +204,7 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
                             ),
                             style: const TextStyle(
                               color: getHintBlack,
-                              fontSize: 10,
+                              fontSize: 12,
                             ),
                           ),
                           if (direction == ChatDirection.right)

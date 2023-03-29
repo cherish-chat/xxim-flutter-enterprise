@@ -128,18 +128,18 @@ class MenuLogic extends GetxController {
     pageIndex.value = index;
   }
 
-  // void menuBack() {
-  //   if (getDelegate == null) return;
-  //   List<RouteDecoder> activePages = getDelegate!.activePages;
-  //   RouteDecoder routeDecoder = RouteDecoder.fromRoute(Routes.menu);
-  //   if (activePages.contains(routeDecoder)) {
-  //     Get.back();
-  //   } else {
-  //     getDelegate!.offNamed(
-  //       Routes.menu,
-  //     );
-  //   }
-  // }
+// void menuBack() {
+//   if (getDelegate == null) return;
+//   List<RouteDecoder> activePages = getDelegate!.activePages;
+//   RouteDecoder routeDecoder = RouteDecoder.fromRoute(Routes.menu);
+//   if (activePages.contains(routeDecoder)) {
+//     Get.back();
+//   } else {
+//     getDelegate!.offNamed(
+//       Routes.menu,
+//     );
+//   }
+// }
 }
 
 class MenuPage extends StatelessWidget with GetResponsiveMixin {
@@ -283,8 +283,8 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
           iconSize: 30,
           selectedItemColor: getMainColor,
           unselectedItemColor: const Color(0xFF2E2E2E),
-          selectedFontSize: 10,
-          unselectedFontSize: 10,
+          selectedFontSize: 12,
+          unselectedFontSize: 12,
         ),
       ),
     );
@@ -293,19 +293,19 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
   List<BottomNavigationBarItem> _buildItems(MenuLogic logic) {
     return [
       _buildItem(
-        "assets/images/ic_news_30_nor.webp",
-        "assets/images/ic_news_30_sel.webp",
+        "assets/images/ic_news_28_nor.webp",
+        "assets/images/ic_news_28_sel.webp",
         "消息",
         count: logic.newsUnreadCount.value,
       ),
       _buildItem(
-        "assets/images/ic_contact_30_nor.webp",
-        "assets/images/ic_contact_30_sel.webp",
+        "assets/images/ic_contact_28_nor.webp",
+        "assets/images/ic_contact_28_sel.webp",
         "通讯录",
       ),
       _buildItem(
-        "assets/images/ic_mine_30_nor.webp",
-        "assets/images/ic_mine_30_sel.webp",
+        "assets/images/ic_mine_28_nor.webp",
+        "assets/images/ic_mine_28_sel.webp",
         "我的",
       ),
     ];
@@ -326,45 +326,42 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
   }
 
   Widget _buildIcon(String icon, int count) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 2),
-      child: Badge(
-        badgeStyle: BadgeStyle(
-          shape: BadgeShape.square,
-          borderRadius: BorderRadius.circular(7.5),
-          badgeColor: getSecondColor,
-          elevation: 0,
-          padding: EdgeInsets.zero,
+    return Badge(
+      badgeStyle: BadgeStyle(
+        shape: BadgeShape.square,
+        borderRadius: BorderRadius.circular(7.5),
+        badgeColor: getSecondColor,
+        elevation: 0,
+        padding: EdgeInsets.zero,
+      ),
+      badgeAnimation: const BadgeAnimation.scale(
+        animationDuration: Duration(milliseconds: 250),
+      ),
+      position: BadgePosition.topStart(
+        top: -2,
+        start: 20,
+      ),
+      showBadge: count > 0,
+      badgeContent: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 3),
+        alignment: Alignment.center,
+        constraints: const BoxConstraints(
+          minWidth: 15,
+          minHeight: 15,
+          maxHeight: 15,
         ),
-        badgeAnimation: const BadgeAnimation.scale(
-          animationDuration: Duration(milliseconds: 250),
-        ),
-        position: BadgePosition.topStart(
-          top: -1.5,
-          start: 21.5,
-        ),
-        showBadge: count > 0,
-        badgeContent: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 3),
-          alignment: Alignment.center,
-          constraints: const BoxConstraints(
-            minWidth: 15,
-            minHeight: 15,
-            maxHeight: 15,
-          ),
-          child: Text(
-            count.toString(),
-            style: const TextStyle(
-              color: getTextWhite,
-              fontSize: 10,
-            ),
+        child: Text(
+          count.toString(),
+          style: const TextStyle(
+            color: getTextWhite,
+            fontSize: 12,
           ),
         ),
-        child: Image.asset(
-          icon,
-          width: 30,
-          height: 30,
-        ),
+      ),
+      child: Image.asset(
+        icon,
+        width: 28,
+        height: 28,
       ),
     );
   }
