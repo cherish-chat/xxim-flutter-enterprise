@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:session_storage/session_storage.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
@@ -10,11 +11,11 @@ class HiveTool {
   static late SessionStorage _userSession;
 
   static Future init() async {
-    if (!GetPlatform.isWeb) {
+    if (!kIsWeb) {
       Hive.init((await getApplicationDocumentsDirectory()).path);
     }
     _configBox = await Hive.openBox("config");
-    if (!GetPlatform.isWeb) {
+    if (!kIsWeb) {
       String name = "user";
       if (GetPlatform.isWindows) {
         name = Tool.getUUId();
@@ -47,45 +48,45 @@ class HiveTool {
   static const String _applyFriendCount = "applyFriendCount";
   static const String _applyGroupCount = "applyGroupCount";
 
-  static String getUserId() => !GetPlatform.isWeb
+  static String getUserId() => !kIsWeb
       ? _userBox.get(_userId, defaultValue: "")
       : _userSession[_userId] ?? "";
 
-  static String getToken() => !GetPlatform.isWeb
+  static String getToken() => !kIsWeb
       ? _userBox.get(_token, defaultValue: "")
       : _userSession[_token] ?? "";
 
-  static String getAvatarUrl() => !GetPlatform.isWeb
+  static String getAvatarUrl() => !kIsWeb
       ? _userBox.get(_avatarUrl, defaultValue: "")
       : _userSession[_avatarUrl] ?? "";
 
-  static void setAvatarUrl(String avatarUrl) => !GetPlatform.isWeb
+  static void setAvatarUrl(String avatarUrl) => !kIsWeb
       ? _userBox.put(_avatarUrl, avatarUrl)
       : _userSession[_avatarUrl] = avatarUrl;
 
-  static String getNickname() => !GetPlatform.isWeb
+  static String getNickname() => !kIsWeb
       ? _userBox.get(_nickname, defaultValue: "")
       : _userSession[_nickname] ?? "";
 
-  static void setNickname(String nickname) => !GetPlatform.isWeb
+  static void setNickname(String nickname) => !kIsWeb
       ? _userBox.put(_nickname, nickname)
       : _userSession[_nickname] = nickname;
 
   static bool isLogin() => getUserId().isNotEmpty && getToken().isNotEmpty;
 
-  static int getApplyFriendCount() => !GetPlatform.isWeb
+  static int getApplyFriendCount() => !kIsWeb
       ? _userBox.get(_applyFriendCount, defaultValue: 0)
       : int.parse(_userSession[_applyFriendCount] ?? "0");
 
-  static void setApplyFriendCount(int count) => !GetPlatform.isWeb
+  static void setApplyFriendCount(int count) => !kIsWeb
       ? _userBox.put(_applyFriendCount, count)
       : _userSession[_applyFriendCount] = count.toString();
 
-  static int getApplyGroupCount() => !GetPlatform.isWeb
+  static int getApplyGroupCount() => !kIsWeb
       ? _userBox.get(_applyGroupCount, defaultValue: 0)
       : int.parse(_userSession[_applyGroupCount] ?? "0");
 
-  static void setApplyGroupCount(int count) => !GetPlatform.isWeb
+  static void setApplyGroupCount(int count) => !kIsWeb
       ? _userBox.put(_applyGroupCount, count)
       : _userSession[_applyGroupCount] = count.toString();
 
@@ -93,7 +94,7 @@ class HiveTool {
     String userId,
     String token,
   ) {
-    if (!GetPlatform.isWeb) {
+    if (!kIsWeb) {
       _userBox.put(_userId, userId);
       _userBox.put(_token, token);
     } else {
@@ -102,6 +103,5 @@ class HiveTool {
     }
   }
 
-  static void logout() =>
-      !GetPlatform.isWeb ? _userBox.clear() : _userSession.clear();
+  static void logout() => !kIsWeb ? _userBox.clear() : _userSession.clear();
 }
