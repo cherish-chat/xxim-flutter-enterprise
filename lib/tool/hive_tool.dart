@@ -1,11 +1,31 @@
+import 'package:path_provider/path_provider.dart';
+import 'package:session_storage/session_storage.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 
 export 'package:hive/hive.dart';
 
 class HiveTool {
-  /// 配置信息
-  static Box get _configBox => HiveService.service(HiveService.config);
+  static late Box _configBox;
+  static late Box _userBox;
+  static late SessionStorage _userSession;
 
+  static Future init() async {
+    if (!GetPlatform.isWeb) {
+      Hive.init((await getApplicationDocumentsDirectory()).path);
+    }
+    _configBox = await Hive.openBox("config");
+    if (!GetPlatform.isWeb) {
+      String name = "user";
+      if (GetPlatform.isWindows) {
+        name = Tool.getUUId();
+      }
+      _userBox = await Hive.openBox(name);
+    } else {
+      _userSession = SessionStorage();
+    }
+  }
+
+  /// 配置信息
   static const String _configMap = "configMap";
 
   static Map getConfigMap() => _configBox.get(
@@ -19,8 +39,6 @@ class HiveTool {
       );
 
   /// 用户信息
-  static Box get _userBox => HiveService.service(HiveService.user);
-
   static const String _userId = "userId";
   static const String _token = "token";
   static const String _avatarUrl = "avatarUrl";
@@ -29,40 +47,61 @@ class HiveTool {
   static const String _applyFriendCount = "applyFriendCount";
   static const String _applyGroupCount = "applyGroupCount";
 
-  static String getUserId() => _userBox.get(_userId, defaultValue: "");
+  static String getUserId() => !GetPlatform.isWeb
+      ? _userBox.get(_userId, defaultValue: "")
+      : _userSession[_userId] ?? "";
 
-  static String getToken() => _userBox.get(_token, defaultValue: "");
+  static String getToken() => !GetPlatform.isWeb
+      ? _userBox.get(_token, defaultValue: "")
+      : _userSession[_token] ?? "";
 
-  static String getAvatarUrl() => _userBox.get(_avatarUrl, defaultValue: "");
+  static String getAvatarUrl() => !GetPlatform.isWeb
+      ? _userBox.get(_avatarUrl, defaultValue: "")
+      : _userSession[_avatarUrl] ?? "";
 
-  static void setAvatarUrl(String avatarUrl) =>
-      _userBox.put(_avatarUrl, avatarUrl);
+  static void setAvatarUrl(String avatarUrl) => !GetPlatform.isWeb
+      ? _userBox.put(_avatarUrl, avatarUrl)
+      : _userSession[_avatarUrl] = avatarUrl;
 
-  static String getNickname() => _userBox.get(_nickname, defaultValue: "");
+  static String getNickname() => !GetPlatform.isWeb
+      ? _userBox.get(_nickname, defaultValue: "")
+      : _userSession[_nickname] ?? "";
 
-  static void setNickname(String nickname) => _userBox.put(_nickname, nickname);
+  static void setNickname(String nickname) => !GetPlatform.isWeb
+      ? _userBox.put(_nickname, nickname)
+      : _userSession[_nickname] = nickname;
 
   static bool isLogin() => getUserId().isNotEmpty && getToken().isNotEmpty;
 
-  static int getApplyFriendCount() =>
-      _userBox.get(_applyFriendCount, defaultValue: 0);
+  static int getApplyFriendCount() => !GetPlatform.isWeb
+      ? _userBox.get(_applyFriendCount, defaultValue: 0)
+      : int.parse(_userSession[_applyFriendCount] ?? "0");
 
-  static void setApplyFriendCount(int count) =>
-      _userBox.put(_applyFriendCount, count);
+  static void setApplyFriendCount(int count) => !GetPlatform.isWeb
+      ? _userBox.put(_applyFriendCount, count)
+      : _userSession[_applyFriendCount] = count.toString();
 
-  static int getApplyGroupCount() =>
-      _userBox.get(_applyGroupCount, defaultValue: 0);
+  static int getApplyGroupCount() => !GetPlatform.isWeb
+      ? _userBox.get(_applyGroupCount, defaultValue: 0)
+      : int.parse(_userSession[_applyGroupCount] ?? "0");
 
-  static void setApplyGroupCount(int count) =>
-      _userBox.put(_applyGroupCount, count);
+  static void setApplyGroupCount(int count) => !GetPlatform.isWeb
+      ? _userBox.put(_applyGroupCount, count)
+      : _userSession[_applyGroupCount] = count.toString();
 
   static void login(
     String userId,
     String token,
   ) {
-    _userBox.put(_userId, userId);
-    _userBox.put(_token, token);
+    if (!GetPlatform.isWeb) {
+      _userBox.put(_userId, userId);
+      _userBox.put(_token, token);
+    } else {
+      _userSession[_userId] = userId;
+      _userSession[_token] = token;
+    }
   }
 
-  static void logout() => _userBox.clear();
+  static void logout() =>
+      !GetPlatform.isWeb ? _userBox.clear() : _userSession.clear();
 }
