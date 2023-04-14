@@ -1,6 +1,6 @@
 {
-    "name": "xxim_flutter_enterprise",
-    "short_name": "xxim_flutter_enterprise",
+    "name": "enterprise",
+    "short_name": "enterprise",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
