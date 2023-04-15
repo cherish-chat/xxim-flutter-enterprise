@@ -32,7 +32,15 @@ class LoginLogic extends GetxController {
     super.onClose();
   }
 
-  void getCaptcha() {
+  void getCaptcha() async {
+    await Future.delayed(const Duration(seconds: 1));
+    if (!XXIM.instance.isConnect()) {
+      bool isConnect = await XXIM.instance.connect();
+      if (!isConnect) {
+        getCaptcha();
+        return;
+      }
+    }
     XXIM.instance.customRequest<GetCaptchaCodeResp>(
       method: "/v1/user/white/getCaptchaCode",
       req: GetCaptchaCodeReq(
@@ -84,6 +92,7 @@ class LoginLogic extends GetxController {
         GetLoadingDialog.hide();
         if (data.token.isEmpty) {
           Tool.showToast("此账号暂未注册");
+          getCaptcha();
           return;
         }
         bool status = await XXIM.instance.setUserParams(
@@ -92,6 +101,7 @@ class LoginLogic extends GetxController {
         );
         if (!status) {
           Tool.showToast("登录失败，请重试");
+          getCaptcha();
           return;
         }
         HiveTool.login(data.userId, data.token);
@@ -99,6 +109,7 @@ class LoginLogic extends GetxController {
       },
       onError: (code, error) {
         GetLoadingDialog.hide();
+        getCaptcha();
       },
     );
   }

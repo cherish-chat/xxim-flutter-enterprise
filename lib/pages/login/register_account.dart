@@ -39,7 +39,8 @@ class RegisterAccountLogic extends GetxController {
     super.onClose();
   }
 
-  void getCaptcha() {
+  void getCaptcha() async {
+    await Future.delayed(const Duration(seconds: 1));
     XXIM.instance.customRequest<GetCaptchaCodeResp>(
       method: "/v1/user/white/getCaptchaCode",
       req: GetCaptchaCodeReq(
@@ -101,12 +102,14 @@ class RegisterAccountLogic extends GetxController {
         GetLoadingDialog.hide();
         if (data.token.isEmpty) {
           Tool.showToast("注册失败，请重试");
+          getCaptcha();
           return;
         }
         Get.back();
       },
       onError: (code, error) {
         GetLoadingDialog.hide();
+        getCaptcha();
       },
     );
   }

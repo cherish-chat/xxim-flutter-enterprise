@@ -252,9 +252,15 @@ class HttpTool with GetLifeCycleMixin {
     try {
       MultipartFile? multipartFile;
       if (file is List<int>) {
-        multipartFile = MultipartFile.fromBytes(file);
+        multipartFile = MultipartFile.fromBytes(
+          file,
+          filename: path.split("/").last,
+        );
       } else if (file is String) {
-        multipartFile = MultipartFile.fromFileSync(file);
+        multipartFile = MultipartFile.fromFileSync(
+          file,
+          filename: path.split("/").last,
+        );
       } else {
         if (onError != null) {
           onError(ErrorType.params, errorMsg);
