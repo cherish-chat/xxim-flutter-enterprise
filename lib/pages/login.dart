@@ -6,19 +6,47 @@ class LoginLogic extends GetxController {
 
   late TextEditingController username;
   late TextEditingController password;
+  late String captchaId = "";
+  late RxList<int> captchaBytes = RxList<int>([]);
+  late TextEditingController captchaText;
 
   @override
   void onInit() {
     username = TextEditingController();
     password = TextEditingController();
+    captchaText = TextEditingController();
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    getCaptcha();
+    super.onReady();
   }
 
   @override
   void onClose() {
     username.dispose();
     password.dispose();
+    captchaText.dispose();
     super.onClose();
+  }
+
+  void getCaptcha() {
+    XXIM.instance.customRequest<GetCaptchaCodeResp>(
+      method: "/v1/user/white/getCaptchaCode",
+      req: GetCaptchaCodeReq(
+        scene: "login",
+      ),
+      resp: GetCaptchaCodeResp.create,
+      onSuccess: (data) {
+        captchaId = data.captchaId;
+        captchaBytes.assignAll(data.captcha);
+      },
+      onError: (code, error) {
+        Tool.showToast("获取验证码失败");
+      },
+    );
   }
 
   void login() async {
@@ -29,6 +57,10 @@ class LoginLogic extends GetxController {
     }
     if (password.text.isEmpty) {
       Tool.showToast("请输入密码");
+      return;
+    }
+    if (captchaText.text.isEmpty) {
+      Tool.showToast("请输入验证码");
       return;
     }
     GetLoadingDialog.show("登录中");
@@ -44,6 +76,8 @@ class LoginLogic extends GetxController {
       req: LoginReq(
         id: username.text,
         password: EncryptTool.cryptoMD5(password.text),
+        captchaId: captchaId,
+        captchaCode: captchaText.text,
       ),
       resp: LoginResp.create,
       onSuccess: (data) async {
@@ -94,6 +128,8 @@ class LoginPage extends StatelessWidget {
               _buildUsername(logic),
               const SizedBox(height: 25),
               _buildPassword(logic),
+              const SizedBox(height: 25),
+              _buildCaptcha(logic),
               const SizedBox(height: 50),
               _buildLogin(logic),
               const SizedBox(height: 10),
@@ -149,6 +185,63 @@ class LoginPage extends StatelessWidget {
         onSubmitted: (value) {
           logic.login();
         },
+      ),
+    );
+  }
+
+  Widget _buildCaptcha(LoginLogic logic) {
+    return Container(
+      width: 280,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.black,
+        ),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: InputWidget(
+              logic.captchaText,
+              "请输入验证码",
+              contentPadding: const EdgeInsets.symmetric(
+                vertical: 18,
+                horizontal: 16,
+              ),
+              textInputType: TextInputType.text,
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              logic.getCaptcha();
+            },
+            child: Obx(
+              () => logic.captchaBytes.value.isEmpty
+                  ? Container(
+                      alignment: Alignment.center,
+                      width: 90,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(17.5),
+                      ),
+                      child: const Text(
+                        "获取验证码",
+                        style: TextStyle(
+                          color: getTextWhite,
+                          fontSize: 14,
+                        ),
+                      ),
+                    )
+                  : Image.memory(
+                      Uint8List.fromList(logic.captchaBytes.value),
+                      width: 90,
+                      height: 30,
+                    ),
+            ),
+          ),
+          const SizedBox(width: 16),
+        ],
       ),
     );
   }

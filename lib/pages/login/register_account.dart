@@ -7,15 +7,26 @@ class RegisterAccountLogic extends GetxController {
   late TextEditingController username;
   late TextEditingController firstPwd;
   late TextEditingController confirmPwd;
-  late TextEditingController invitation;
+  late String captchaId = "";
+  late RxList<int> captchaBytes = RxList<int>([]);
+  late TextEditingController captchaText;
+
+  // late TextEditingController invitation;
 
   @override
   void onInit() {
     username = TextEditingController();
     firstPwd = TextEditingController();
     confirmPwd = TextEditingController();
-    invitation = TextEditingController();
+    captchaText = TextEditingController();
+    // invitation = TextEditingController();
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    getCaptcha();
+    super.onReady();
   }
 
   @override
@@ -23,8 +34,26 @@ class RegisterAccountLogic extends GetxController {
     username.dispose();
     firstPwd.dispose();
     confirmPwd.dispose();
-    invitation.dispose();
+    captchaText.dispose();
+    // invitation.dispose();
     super.onClose();
+  }
+
+  void getCaptcha() {
+    XXIM.instance.customRequest<GetCaptchaCodeResp>(
+      method: "/v1/user/white/getCaptchaCode",
+      req: GetCaptchaCodeReq(
+        scene: "register",
+      ),
+      resp: GetCaptchaCodeResp.create,
+      onSuccess: (data) {
+        captchaId = data.captchaId;
+        captchaBytes.assignAll(data.captcha);
+      },
+      onError: (code, error) {
+        Tool.showToast("获取验证码失败");
+      },
+    );
   }
 
   void register() {
@@ -41,10 +70,14 @@ class RegisterAccountLogic extends GetxController {
       Tool.showToast("请确认密码");
       return;
     }
-    if (invitation.text.isEmpty) {
-      Tool.showToast("请输入邀请码");
+    if (captchaText.text.isEmpty) {
+      Tool.showToast("请输入验证码");
       return;
     }
+    // if (invitation.text.isEmpty) {
+    //   Tool.showToast("请输入邀请码");
+    //   return;
+    // }
     GetLoadingDialog.show("注册中");
     XXIM.instance.customRequest<RegisterResp>(
       method: "/v1/user/white/register",
@@ -60,6 +93,8 @@ class RegisterAccountLogic extends GetxController {
           age: 0,
           constellation: Constellation.UnknownConstellation,
         ),
+        captchaId: captchaId,
+        captchaCode: captchaText.text,
       ),
       resp: RegisterResp.create,
       onSuccess: (data) {
@@ -99,7 +134,8 @@ class RegisterAccountPage extends StatelessWidget {
               const SizedBox(height: 25),
               _buildConfirmPwd(logic),
               const SizedBox(height: 25),
-              _buildInvitation(logic),
+              _buildCaptcha(logic),
+              // _buildInvitation(logic),
               const SizedBox(height: 50),
               _buildRegister(logic),
               const SizedBox(height: 100),
@@ -178,7 +214,7 @@ class RegisterAccountPage extends StatelessWidget {
     );
   }
 
-  Widget _buildInvitation(RegisterAccountLogic logic) {
+  Widget _buildCaptcha(RegisterAccountLogic logic) {
     return Container(
       width: 280,
       decoration: BoxDecoration(
@@ -187,17 +223,74 @@ class RegisterAccountPage extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(8),
       ),
-      child: InputWidget(
-        logic.invitation,
-        "请确认邀请码",
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: 18,
-          horizontal: 16,
-        ),
-        textInputType: TextInputType.text,
+      child: Row(
+        children: [
+          Expanded(
+            child: InputWidget(
+              logic.captchaText,
+              "请输入验证码",
+              contentPadding: const EdgeInsets.symmetric(
+                vertical: 18,
+                horizontal: 16,
+              ),
+              textInputType: TextInputType.text,
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              logic.getCaptcha();
+            },
+            child: Obx(
+              () => logic.captchaBytes.value.isEmpty
+                  ? Container(
+                      alignment: Alignment.center,
+                      width: 90,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(17.5),
+                      ),
+                      child: const Text(
+                        "获取验证码",
+                        style: TextStyle(
+                          color: getTextWhite,
+                          fontSize: 14,
+                        ),
+                      ),
+                    )
+                  : Image.memory(
+                      Uint8List.fromList(logic.captchaBytes.value),
+                      width: 90,
+                      height: 30,
+                    ),
+            ),
+          ),
+          const SizedBox(width: 16),
+        ],
       ),
     );
   }
+
+  // Widget _buildInvitation(RegisterAccountLogic logic) {
+  //   return Container(
+  //     width: 280,
+  //     decoration: BoxDecoration(
+  //       border: Border.all(
+  //         color: Colors.black,
+  //       ),
+  //       borderRadius: BorderRadius.circular(8),
+  //     ),
+  //     child: InputWidget(
+  //       logic.invitation,
+  //       "请确认邀请码",
+  //       contentPadding: const EdgeInsets.symmetric(
+  //         vertical: 18,
+  //         horizontal: 16,
+  //       ),
+  //       textInputType: TextInputType.text,
+  //     ),
+  //   );
+  // }
 
   Widget _buildRegister(RegisterAccountLogic logic) {
     return GestureDetector(
