@@ -34,7 +34,7 @@ class ModifyPwdLogic extends GetxController {
     }
     GetLoadingDialog.show("修改中");
     XXIM.instance.customRequest<UpdateUserPasswordResp>(
-      method: "/v1/user/white/register",
+      method: "/v1/user/updateUserPassword",
       req: UpdateUserPasswordReq(
         oldPassword: EncryptTool.cryptoMD5(oldPwd.text),
         newPassword: EncryptTool.cryptoMD5(newPwd.text),
