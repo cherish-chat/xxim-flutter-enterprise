@@ -28,6 +28,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
   $async.Future<$2.EditGroupInfoResp> editGroupInfo($pb.ServerContext ctx, $2.EditGroupInfoReq request);
   $async.Future<$2.TransferGroupOwnerResp> transferGroupOwner($pb.ServerContext ctx, $2.TransferGroupOwnerReq request);
   $async.Future<$2.KickGroupMemberResp> kickGroupMember($pb.ServerContext ctx, $2.KickGroupMemberReq request);
+  $async.Future<$2.BatchKickGroupMemberResp> batchKickGroupMember($pb.ServerContext ctx, $2.BatchKickGroupMemberReq request);
   $async.Future<$2.GetGroupMemberListResp> getGroupMemberList($pb.ServerContext ctx, $2.GetGroupMemberListReq request);
   $async.Future<$2.GetMyGroupListResp> getMyGroupList($pb.ServerContext ctx, $2.GetMyGroupListReq request);
   $async.Future<$2.MapGroupByIdsResp> mapGroupByIds($pb.ServerContext ctx, $2.MapGroupByIdsReq request);
@@ -43,6 +44,8 @@ abstract class groupServiceBase extends $pb.GeneratedService {
   $async.Future<$2.SearchGroupsByKeywordResp> searchGroupsByKeyword($pb.ServerContext ctx, $2.SearchGroupsByKeywordReq request);
   $async.Future<$2.AddGroupMemberResp> addGroupMember($pb.ServerContext ctx, $2.AddGroupMemberReq request);
   $async.Future<$2.ReportGroupResp> reportGroup($pb.ServerContext ctx, $2.ReportGroupReq request);
+  $async.Future<$2.RandInsertZombieMemberResp> randInsertZombieMember($pb.ServerContext ctx, $2.RandInsertZombieMemberReq request);
+  $async.Future<$2.ClearZombieMemberResp> clearZombieMember($pb.ServerContext ctx, $2.ClearZombieMemberReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -58,6 +61,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'EditGroupInfo': return $2.EditGroupInfoReq();
       case 'TransferGroupOwner': return $2.TransferGroupOwnerReq();
       case 'KickGroupMember': return $2.KickGroupMemberReq();
+      case 'BatchKickGroupMember': return $2.BatchKickGroupMemberReq();
       case 'GetGroupMemberList': return $2.GetGroupMemberListReq();
       case 'GetMyGroupList': return $2.GetMyGroupListReq();
       case 'MapGroupByIds': return $2.MapGroupByIdsReq();
@@ -73,6 +77,8 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'SearchGroupsByKeyword': return $2.SearchGroupsByKeywordReq();
       case 'AddGroupMember': return $2.AddGroupMemberReq();
       case 'ReportGroup': return $2.ReportGroupReq();
+      case 'RandInsertZombieMember': return $2.RandInsertZombieMemberReq();
+      case 'ClearZombieMember': return $2.ClearZombieMemberReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -91,6 +97,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'EditGroupInfo': return this.editGroupInfo(ctx, request as $2.EditGroupInfoReq);
       case 'TransferGroupOwner': return this.transferGroupOwner(ctx, request as $2.TransferGroupOwnerReq);
       case 'KickGroupMember': return this.kickGroupMember(ctx, request as $2.KickGroupMemberReq);
+      case 'BatchKickGroupMember': return this.batchKickGroupMember(ctx, request as $2.BatchKickGroupMemberReq);
       case 'GetGroupMemberList': return this.getGroupMemberList(ctx, request as $2.GetGroupMemberListReq);
       case 'GetMyGroupList': return this.getMyGroupList(ctx, request as $2.GetMyGroupListReq);
       case 'MapGroupByIds': return this.mapGroupByIds(ctx, request as $2.MapGroupByIdsReq);
@@ -106,6 +113,8 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'SearchGroupsByKeyword': return this.searchGroupsByKeyword(ctx, request as $2.SearchGroupsByKeywordReq);
       case 'AddGroupMember': return this.addGroupMember(ctx, request as $2.AddGroupMemberReq);
       case 'ReportGroup': return this.reportGroup(ctx, request as $2.ReportGroupReq);
+      case 'RandInsertZombieMember': return this.randInsertZombieMember(ctx, request as $2.RandInsertZombieMemberReq);
+      case 'ClearZombieMember': return this.clearZombieMember(ctx, request as $2.ClearZombieMemberReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

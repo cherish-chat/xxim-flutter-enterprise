@@ -113,6 +113,8 @@ const GetGroupHomeResp$json = const {
     const {'1': 'createdAt', '3': 5, '4': 1, '5': 9, '10': 'createdAt'},
     const {'1': 'memberCount', '3': 6, '4': 1, '5': 5, '10': 'memberCount'},
     const {'1': 'introduction', '3': 7, '4': 1, '5': 9, '10': 'introduction'},
+    const {'1': 'owner', '3': 8, '4': 1, '5': 9, '10': 'owner'},
+    const {'1': 'dismissTime', '3': 9, '4': 1, '5': 3, '10': 'dismissTime'},
     const {'1': 'memberStatistics', '3': 21, '4': 3, '5': 11, '6': '.pb.GetGroupHomeResp.MemberStatistics', '10': 'memberStatistics'},
   ],
   '3': const [GetGroupHomeResp_MemberStatistics$json],
@@ -129,7 +131,7 @@ const GetGroupHomeResp_MemberStatistics$json = const {
 };
 
 /// Descriptor for `GetGroupHomeResp`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getGroupHomeRespDescriptor = $convert.base64Decode('ChBHZXRHcm91cEhvbWVSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEhgKB2dyb3VwSWQYAiABKAlSB2dyb3VwSWQSEgoEbmFtZRgDIAEoCVIEbmFtZRIWCgZhdmF0YXIYBCABKAlSBmF2YXRhchIcCgljcmVhdGVkQXQYBSABKAlSCWNyZWF0ZWRBdBIgCgttZW1iZXJDb3VudBgGIAEoBVILbWVtYmVyQ291bnQSIgoMaW50cm9kdWN0aW9uGAcgASgJUgxpbnRyb2R1Y3Rpb24SUQoQbWVtYmVyU3RhdGlzdGljcxgVIAMoCzIlLnBiLkdldEdyb3VwSG9tZVJlc3AuTWVtYmVyU3RhdGlzdGljc1IQbWVtYmVyU3RhdGlzdGljcxpeChBNZW1iZXJTdGF0aXN0aWNzEhQKBXRpdGxlGAEgASgJUgV0aXRsZRIUCgVjb3VudBgCIAEoBVIFY291bnQSHgoKcGVyY2VudGFnZRgDIAEoBVIKcGVyY2VudGFnZQ==');
+final $typed_data.Uint8List getGroupHomeRespDescriptor = $convert.base64Decode('ChBHZXRHcm91cEhvbWVSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEhgKB2dyb3VwSWQYAiABKAlSB2dyb3VwSWQSEgoEbmFtZRgDIAEoCVIEbmFtZRIWCgZhdmF0YXIYBCABKAlSBmF2YXRhchIcCgljcmVhdGVkQXQYBSABKAlSCWNyZWF0ZWRBdBIgCgttZW1iZXJDb3VudBgGIAEoBVILbWVtYmVyQ291bnQSIgoMaW50cm9kdWN0aW9uGAcgASgJUgxpbnRyb2R1Y3Rpb24SFAoFb3duZXIYCCABKAlSBW93bmVyEiAKC2Rpc21pc3NUaW1lGAkgASgDUgtkaXNtaXNzVGltZRJRChBtZW1iZXJTdGF0aXN0aWNzGBUgAygLMiUucGIuR2V0R3JvdXBIb21lUmVzcC5NZW1iZXJTdGF0aXN0aWNzUhBtZW1iZXJTdGF0aXN0aWNzGl4KEE1lbWJlclN0YXRpc3RpY3MSFAoFdGl0bGUYASABKAlSBXRpdGxlEhQKBWNvdW50GAIgASgFUgVjb3VudBIeCgpwZXJjZW50YWdlGAMgASgFUgpwZXJjZW50YWdl');
 @$core.Deprecated('Use inviteFriendToGroupReqDescriptor instead')
 const InviteFriendToGroupReq$json = const {
   '1': 'InviteFriendToGroupReq',
@@ -452,6 +454,28 @@ const KickGroupMemberResp$json = const {
 
 /// Descriptor for `KickGroupMemberResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List kickGroupMemberRespDescriptor = $convert.base64Decode('ChNLaWNrR3JvdXBNZW1iZXJSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use batchKickGroupMemberReqDescriptor instead')
+const BatchKickGroupMemberReq$json = const {
+  '1': 'BatchKickGroupMemberReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'groupId', '3': 2, '4': 1, '5': 9, '10': 'groupId'},
+    const {'1': 'memberIds', '3': 3, '4': 3, '5': 9, '10': 'memberIds'},
+  ],
+};
+
+/// Descriptor for `BatchKickGroupMemberReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List batchKickGroupMemberReqDescriptor = $convert.base64Decode('ChdCYXRjaEtpY2tHcm91cE1lbWJlclJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIYCgdncm91cElkGAIgASgJUgdncm91cElkEhwKCW1lbWJlcklkcxgDIAMoCVIJbWVtYmVySWRz');
+@$core.Deprecated('Use batchKickGroupMemberRespDescriptor instead')
+const BatchKickGroupMemberResp$json = const {
+  '1': 'BatchKickGroupMemberResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `BatchKickGroupMemberResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List batchKickGroupMemberRespDescriptor = $convert.base64Decode('ChhCYXRjaEtpY2tHcm91cE1lbWJlclJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
 @$core.Deprecated('Use getGroupMemberListReqDescriptor instead')
 const GetGroupMemberListReq$json = const {
   '1': 'GetGroupMemberListReq',
@@ -546,11 +570,13 @@ const GroupBaseInfo$json = const {
     const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     const {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
     const {'1': 'avatar', '3': 3, '4': 1, '5': 9, '10': 'avatar'},
+    const {'1': 'owner', '3': 4, '4': 1, '5': 9, '10': 'owner'},
+    const {'1': 'dismissTime', '3': 5, '4': 1, '5': 3, '10': 'dismissTime'},
   ],
 };
 
 /// Descriptor for `GroupBaseInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List groupBaseInfoDescriptor = $convert.base64Decode('Cg1Hcm91cEJhc2VJbmZvEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEhYKBmF2YXRhchgDIAEoCVIGYXZhdGFy');
+final $typed_data.Uint8List groupBaseInfoDescriptor = $convert.base64Decode('Cg1Hcm91cEJhc2VJbmZvEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEhYKBmF2YXRhchgDIAEoCVIGYXZhdGFyEhQKBW93bmVyGAQgASgJUgVvd25lchIgCgtkaXNtaXNzVGltZRgFIAEoA1ILZGlzbWlzc1RpbWU=');
 @$core.Deprecated('Use getMyGroupListRespDescriptor instead')
 const GetMyGroupListResp$json = const {
   '1': 'GetMyGroupListResp',
@@ -957,12 +983,12 @@ const AddGroupMemberReq$json = const {
   '2': const [
     const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
     const {'1': 'groupId', '3': 2, '4': 1, '5': 9, '10': 'groupId'},
-    const {'1': 'userId', '3': 3, '4': 1, '5': 9, '10': 'userId'},
+    const {'1': 'userIds', '3': 3, '4': 3, '5': 9, '10': 'userIds'},
   ],
 };
 
 /// Descriptor for `AddGroupMemberReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List addGroupMemberReqDescriptor = $convert.base64Decode('ChFBZGRHcm91cE1lbWJlclJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIYCgdncm91cElkGAIgASgJUgdncm91cElkEhYKBnVzZXJJZBgDIAEoCVIGdXNlcklk');
+final $typed_data.Uint8List addGroupMemberReqDescriptor = $convert.base64Decode('ChFBZGRHcm91cE1lbWJlclJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIYCgdncm91cElkGAIgASgJUgdncm91cElkEhgKB3VzZXJJZHMYAyADKAlSB3VzZXJJZHM=');
 @$core.Deprecated('Use addGroupMemberRespDescriptor instead')
 const AddGroupMemberResp$json = const {
   '1': 'AddGroupMemberResp',
@@ -995,6 +1021,49 @@ const ReportGroupResp$json = const {
 
 /// Descriptor for `ReportGroupResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List reportGroupRespDescriptor = $convert.base64Decode('Cg9SZXBvcnRHcm91cFJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
+@$core.Deprecated('Use randInsertZombieMemberReqDescriptor instead')
+const RandInsertZombieMemberReq$json = const {
+  '1': 'RandInsertZombieMemberReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'groupId', '3': 2, '4': 1, '5': 9, '10': 'groupId'},
+    const {'1': 'count', '3': 3, '4': 1, '5': 5, '10': 'count'},
+  ],
+};
+
+/// Descriptor for `RandInsertZombieMemberReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List randInsertZombieMemberReqDescriptor = $convert.base64Decode('ChlSYW5kSW5zZXJ0Wm9tYmllTWVtYmVyUmVxEisKCWNvbW1vblJlcRgBIAEoCzINLnBiLkNvbW1vblJlcVIJY29tbW9uUmVxEhgKB2dyb3VwSWQYAiABKAlSB2dyb3VwSWQSFAoFY291bnQYAyABKAVSBWNvdW50');
+@$core.Deprecated('Use randInsertZombieMemberRespDescriptor instead')
+const RandInsertZombieMemberResp$json = const {
+  '1': 'RandInsertZombieMemberResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `RandInsertZombieMemberResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List randInsertZombieMemberRespDescriptor = $convert.base64Decode('ChpSYW5kSW5zZXJ0Wm9tYmllTWVtYmVyUmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcA==');
+@$core.Deprecated('Use clearZombieMemberReqDescriptor instead')
+const ClearZombieMemberReq$json = const {
+  '1': 'ClearZombieMemberReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'groupId', '3': 2, '4': 1, '5': 9, '10': 'groupId'},
+  ],
+};
+
+/// Descriptor for `ClearZombieMemberReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List clearZombieMemberReqDescriptor = $convert.base64Decode('ChRDbGVhclpvbWJpZU1lbWJlclJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIYCgdncm91cElkGAIgASgJUgdncm91cElk');
+@$core.Deprecated('Use clearZombieMemberRespDescriptor instead')
+const ClearZombieMemberResp$json = const {
+  '1': 'ClearZombieMemberResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `ClearZombieMemberResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List clearZombieMemberRespDescriptor = $convert.base64Decode('ChVDbGVhclpvbWJpZU1lbWJlclJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
 const $core.Map<$core.String, $core.dynamic> groupServiceBase$json = const {
   '1': 'groupService',
   '2': const [
@@ -1010,6 +1079,7 @@ const $core.Map<$core.String, $core.dynamic> groupServiceBase$json = const {
     const {'1': 'EditGroupInfo', '2': '.pb.EditGroupInfoReq', '3': '.pb.EditGroupInfoResp', '4': const {}},
     const {'1': 'TransferGroupOwner', '2': '.pb.TransferGroupOwnerReq', '3': '.pb.TransferGroupOwnerResp', '4': const {}},
     const {'1': 'KickGroupMember', '2': '.pb.KickGroupMemberReq', '3': '.pb.KickGroupMemberResp', '4': const {}},
+    const {'1': 'BatchKickGroupMember', '2': '.pb.BatchKickGroupMemberReq', '3': '.pb.BatchKickGroupMemberResp', '4': const {}},
     const {'1': 'GetGroupMemberList', '2': '.pb.GetGroupMemberListReq', '3': '.pb.GetGroupMemberListResp', '4': const {}},
     const {'1': 'GetMyGroupList', '2': '.pb.GetMyGroupListReq', '3': '.pb.GetMyGroupListResp', '4': const {}},
     const {'1': 'MapGroupByIds', '2': '.pb.MapGroupByIdsReq', '3': '.pb.MapGroupByIdsResp', '4': const {}},
@@ -1025,6 +1095,8 @@ const $core.Map<$core.String, $core.dynamic> groupServiceBase$json = const {
     const {'1': 'SearchGroupsByKeyword', '2': '.pb.SearchGroupsByKeywordReq', '3': '.pb.SearchGroupsByKeywordResp', '4': const {}},
     const {'1': 'AddGroupMember', '2': '.pb.AddGroupMemberReq', '3': '.pb.AddGroupMemberResp', '4': const {}},
     const {'1': 'ReportGroup', '2': '.pb.ReportGroupReq', '3': '.pb.ReportGroupResp', '4': const {}},
+    const {'1': 'RandInsertZombieMember', '2': '.pb.RandInsertZombieMemberReq', '3': '.pb.RandInsertZombieMemberResp', '4': const {}},
+    const {'1': 'ClearZombieMember', '2': '.pb.ClearZombieMemberReq', '3': '.pb.ClearZombieMemberResp', '4': const {}},
   ],
 };
 
@@ -1066,6 +1138,8 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> groupServi
   '.pb.TransferGroupOwnerResp': TransferGroupOwnerResp$json,
   '.pb.KickGroupMemberReq': KickGroupMemberReq$json,
   '.pb.KickGroupMemberResp': KickGroupMemberResp$json,
+  '.pb.BatchKickGroupMemberReq': BatchKickGroupMemberReq$json,
+  '.pb.BatchKickGroupMemberResp': BatchKickGroupMemberResp$json,
   '.pb.GetGroupMemberListReq': GetGroupMemberListReq$json,
   '.pb.GetGroupMemberListReq.GetGroupMemberListFilter': GetGroupMemberListReq_GetGroupMemberListFilter$json,
   '.pb.GetGroupMemberListReq.GetGroupMemberListOpt': GetGroupMemberListReq_GetGroupMemberListOpt$json,
@@ -1108,7 +1182,11 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> groupServi
   '.pb.AddGroupMemberResp': AddGroupMemberResp$json,
   '.pb.ReportGroupReq': ReportGroupReq$json,
   '.pb.ReportGroupResp': ReportGroupResp$json,
+  '.pb.RandInsertZombieMemberReq': RandInsertZombieMemberReq$json,
+  '.pb.RandInsertZombieMemberResp': RandInsertZombieMemberResp$json,
+  '.pb.ClearZombieMemberReq': ClearZombieMemberReq$json,
+  '.pb.ClearZombieMemberResp': ClearZombieMemberResp$json,
 };
 
 /// Descriptor for `groupService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List groupServiceDescriptor = $convert.base64Decode('Cgxncm91cFNlcnZpY2USOAoLQ3JlYXRlR3JvdXASEi5wYi5DcmVhdGVHcm91cFJlcRoTLnBiLkNyZWF0ZUdyb3VwUmVzcCIAEjsKDEdldEdyb3VwSG9tZRITLnBiLkdldEdyb3VwSG9tZVJlcRoULnBiLkdldEdyb3VwSG9tZVJlc3AiABJQChNJbnZpdGVGcmllbmRUb0dyb3VwEhoucGIuSW52aXRlRnJpZW5kVG9Hcm91cFJlcRobLnBiLkludml0ZUZyaWVuZFRvR3JvdXBSZXNwIgASSgoRQ3JlYXRlR3JvdXBOb3RpY2USGC5wYi5DcmVhdGVHcm91cE5vdGljZVJlcRoZLnBiLkNyZWF0ZUdyb3VwTm90aWNlUmVzcCIAEkoKEURlbGV0ZUdyb3VwTm90aWNlEhgucGIuRGVsZXRlR3JvdXBOb3RpY2VSZXEaGS5wYi5EZWxldGVHcm91cE5vdGljZVJlc3AiABJNChJHZXRHcm91cE5vdGljZUxpc3QSGS5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXEaGi5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXNwIgASTQoSU2V0R3JvdXBNZW1iZXJJbmZvEhkucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVxGhoucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVzcCIAEk0KEkdldEdyb3VwTWVtYmVySW5mbxIZLnBiLkdldEdyb3VwTWVtYmVySW5mb1JlcRoaLnBiLkdldEdyb3VwTWVtYmVySW5mb1Jlc3AiABJcChdNYXBHcm91cE1lbWJlckluZm9CeUlkcxIeLnBiLk1hcEdyb3VwTWVtYmVySW5mb0J5SWRzUmVxGh8ucGIuTWFwR3JvdXBNZW1iZXJJbmZvQnlJZHNSZXNwIgASPgoNRWRpdEdyb3VwSW5mbxIULnBiLkVkaXRHcm91cEluZm9SZXEaFS5wYi5FZGl0R3JvdXBJbmZvUmVzcCIAEk0KElRyYW5zZmVyR3JvdXBPd25lchIZLnBiLlRyYW5zZmVyR3JvdXBPd25lclJlcRoaLnBiLlRyYW5zZmVyR3JvdXBPd25lclJlc3AiABJECg9LaWNrR3JvdXBNZW1iZXISFi5wYi5LaWNrR3JvdXBNZW1iZXJSZXEaFy5wYi5LaWNrR3JvdXBNZW1iZXJSZXNwIgASTQoSR2V0R3JvdXBNZW1iZXJMaXN0EhkucGIuR2V0R3JvdXBNZW1iZXJMaXN0UmVxGhoucGIuR2V0R3JvdXBNZW1iZXJMaXN0UmVzcCIAEkEKDkdldE15R3JvdXBMaXN0EhUucGIuR2V0TXlHcm91cExpc3RSZXEaFi5wYi5HZXRNeUdyb3VwTGlzdFJlc3AiABI+Cg1NYXBHcm91cEJ5SWRzEhQucGIuTWFwR3JvdXBCeUlkc1JlcRoVLnBiLk1hcEdyb3VwQnlJZHNSZXNwIgASUwoUU3luY0dyb3VwTWVtYmVyQ291bnQSGy5wYi5TeW5jR3JvdXBNZW1iZXJDb3VudFJlcRocLnBiLlN5bmNHcm91cE1lbWJlckNvdW50UmVzcCIAElMKFEFwcGx5VG9CZUdyb3VwTWVtYmVyEhsucGIuQXBwbHlUb0JlR3JvdXBNZW1iZXJSZXEaHC5wYi5BcHBseVRvQmVHcm91cE1lbWJlclJlc3AiABJHChBIYW5kbGVHcm91cEFwcGx5EhcucGIuSGFuZGxlR3JvdXBBcHBseVJlcRoYLnBiLkhhbmRsZUdyb3VwQXBwbHlSZXNwIgASSgoRR2V0R3JvdXBBcHBseUxpc3QSGC5wYi5HZXRHcm91cEFwcGx5TGlzdFJlcRoZLnBiLkdldEdyb3VwQXBwbHlMaXN0UmVzcCIAElMKFEdldEdyb3VwTGlzdEJ5VXNlcklkEhsucGIuR2V0R3JvdXBMaXN0QnlVc2VySWRSZXEaHC5wYi5HZXRHcm91cExpc3RCeVVzZXJJZFJlc3AiABJHChBHZXRBbGxHcm91cE1vZGVsEhcucGIuR2V0QWxsR3JvdXBNb2RlbFJlcRoYLnBiLkdldEFsbEdyb3VwTW9kZWxSZXNwIgASUAoTR2V0R3JvdXBNb2RlbERldGFpbBIaLnBiLkdldEdyb3VwTW9kZWxEZXRhaWxSZXEaGy5wYi5HZXRHcm91cE1vZGVsRGV0YWlsUmVzcCIAEkcKEFVwZGF0ZUdyb3VwTW9kZWwSFy5wYi5VcGRhdGVHcm91cE1vZGVsUmVxGhgucGIuVXBkYXRlR3JvdXBNb2RlbFJlc3AiABJKChFEaXNtaXNzR3JvdXBNb2RlbBIYLnBiLkRpc21pc3NHcm91cE1vZGVsUmVxGhkucGIuRGlzbWlzc0dyb3VwTW9kZWxSZXNwIgASVgoVU2VhcmNoR3JvdXBzQnlLZXl3b3JkEhwucGIuU2VhcmNoR3JvdXBzQnlLZXl3b3JkUmVxGh0ucGIuU2VhcmNoR3JvdXBzQnlLZXl3b3JkUmVzcCIAEkEKDkFkZEdyb3VwTWVtYmVyEhUucGIuQWRkR3JvdXBNZW1iZXJSZXEaFi5wYi5BZGRHcm91cE1lbWJlclJlc3AiABI4CgtSZXBvcnRHcm91cBISLnBiLlJlcG9ydEdyb3VwUmVxGhMucGIuUmVwb3J0R3JvdXBSZXNwIgA=');
+final $typed_data.Uint8List groupServiceDescriptor = $convert.base64Decode('Cgxncm91cFNlcnZpY2USOAoLQ3JlYXRlR3JvdXASEi5wYi5DcmVhdGVHcm91cFJlcRoTLnBiLkNyZWF0ZUdyb3VwUmVzcCIAEjsKDEdldEdyb3VwSG9tZRITLnBiLkdldEdyb3VwSG9tZVJlcRoULnBiLkdldEdyb3VwSG9tZVJlc3AiABJQChNJbnZpdGVGcmllbmRUb0dyb3VwEhoucGIuSW52aXRlRnJpZW5kVG9Hcm91cFJlcRobLnBiLkludml0ZUZyaWVuZFRvR3JvdXBSZXNwIgASSgoRQ3JlYXRlR3JvdXBOb3RpY2USGC5wYi5DcmVhdGVHcm91cE5vdGljZVJlcRoZLnBiLkNyZWF0ZUdyb3VwTm90aWNlUmVzcCIAEkoKEURlbGV0ZUdyb3VwTm90aWNlEhgucGIuRGVsZXRlR3JvdXBOb3RpY2VSZXEaGS5wYi5EZWxldGVHcm91cE5vdGljZVJlc3AiABJNChJHZXRHcm91cE5vdGljZUxpc3QSGS5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXEaGi5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXNwIgASTQoSU2V0R3JvdXBNZW1iZXJJbmZvEhkucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVxGhoucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVzcCIAEk0KEkdldEdyb3VwTWVtYmVySW5mbxIZLnBiLkdldEdyb3VwTWVtYmVySW5mb1JlcRoaLnBiLkdldEdyb3VwTWVtYmVySW5mb1Jlc3AiABJcChdNYXBHcm91cE1lbWJlckluZm9CeUlkcxIeLnBiLk1hcEdyb3VwTWVtYmVySW5mb0J5SWRzUmVxGh8ucGIuTWFwR3JvdXBNZW1iZXJJbmZvQnlJZHNSZXNwIgASPgoNRWRpdEdyb3VwSW5mbxIULnBiLkVkaXRHcm91cEluZm9SZXEaFS5wYi5FZGl0R3JvdXBJbmZvUmVzcCIAEk0KElRyYW5zZmVyR3JvdXBPd25lchIZLnBiLlRyYW5zZmVyR3JvdXBPd25lclJlcRoaLnBiLlRyYW5zZmVyR3JvdXBPd25lclJlc3AiABJECg9LaWNrR3JvdXBNZW1iZXISFi5wYi5LaWNrR3JvdXBNZW1iZXJSZXEaFy5wYi5LaWNrR3JvdXBNZW1iZXJSZXNwIgASUwoUQmF0Y2hLaWNrR3JvdXBNZW1iZXISGy5wYi5CYXRjaEtpY2tHcm91cE1lbWJlclJlcRocLnBiLkJhdGNoS2lja0dyb3VwTWVtYmVyUmVzcCIAEk0KEkdldEdyb3VwTWVtYmVyTGlzdBIZLnBiLkdldEdyb3VwTWVtYmVyTGlzdFJlcRoaLnBiLkdldEdyb3VwTWVtYmVyTGlzdFJlc3AiABJBCg5HZXRNeUdyb3VwTGlzdBIVLnBiLkdldE15R3JvdXBMaXN0UmVxGhYucGIuR2V0TXlHcm91cExpc3RSZXNwIgASPgoNTWFwR3JvdXBCeUlkcxIULnBiLk1hcEdyb3VwQnlJZHNSZXEaFS5wYi5NYXBHcm91cEJ5SWRzUmVzcCIAElMKFFN5bmNHcm91cE1lbWJlckNvdW50EhsucGIuU3luY0dyb3VwTWVtYmVyQ291bnRSZXEaHC5wYi5TeW5jR3JvdXBNZW1iZXJDb3VudFJlc3AiABJTChRBcHBseVRvQmVHcm91cE1lbWJlchIbLnBiLkFwcGx5VG9CZUdyb3VwTWVtYmVyUmVxGhwucGIuQXBwbHlUb0JlR3JvdXBNZW1iZXJSZXNwIgASRwoQSGFuZGxlR3JvdXBBcHBseRIXLnBiLkhhbmRsZUdyb3VwQXBwbHlSZXEaGC5wYi5IYW5kbGVHcm91cEFwcGx5UmVzcCIAEkoKEUdldEdyb3VwQXBwbHlMaXN0EhgucGIuR2V0R3JvdXBBcHBseUxpc3RSZXEaGS5wYi5HZXRHcm91cEFwcGx5TGlzdFJlc3AiABJTChRHZXRHcm91cExpc3RCeVVzZXJJZBIbLnBiLkdldEdyb3VwTGlzdEJ5VXNlcklkUmVxGhwucGIuR2V0R3JvdXBMaXN0QnlVc2VySWRSZXNwIgASRwoQR2V0QWxsR3JvdXBNb2RlbBIXLnBiLkdldEFsbEdyb3VwTW9kZWxSZXEaGC5wYi5HZXRBbGxHcm91cE1vZGVsUmVzcCIAElAKE0dldEdyb3VwTW9kZWxEZXRhaWwSGi5wYi5HZXRHcm91cE1vZGVsRGV0YWlsUmVxGhsucGIuR2V0R3JvdXBNb2RlbERldGFpbFJlc3AiABJHChBVcGRhdGVHcm91cE1vZGVsEhcucGIuVXBkYXRlR3JvdXBNb2RlbFJlcRoYLnBiLlVwZGF0ZUdyb3VwTW9kZWxSZXNwIgASSgoRRGlzbWlzc0dyb3VwTW9kZWwSGC5wYi5EaXNtaXNzR3JvdXBNb2RlbFJlcRoZLnBiLkRpc21pc3NHcm91cE1vZGVsUmVzcCIAElYKFVNlYXJjaEdyb3Vwc0J5S2V5d29yZBIcLnBiLlNlYXJjaEdyb3Vwc0J5S2V5d29yZFJlcRodLnBiLlNlYXJjaEdyb3Vwc0J5S2V5d29yZFJlc3AiABJBCg5BZGRHcm91cE1lbWJlchIVLnBiLkFkZEdyb3VwTWVtYmVyUmVxGhYucGIuQWRkR3JvdXBNZW1iZXJSZXNwIgASOAoLUmVwb3J0R3JvdXASEi5wYi5SZXBvcnRHcm91cFJlcRoTLnBiLlJlcG9ydEdyb3VwUmVzcCIAElkKFlJhbmRJbnNlcnRab21iaWVNZW1iZXISHS5wYi5SYW5kSW5zZXJ0Wm9tYmllTWVtYmVyUmVxGh4ucGIuUmFuZEluc2VydFpvbWJpZU1lbWJlclJlc3AiABJKChFDbGVhclpvbWJpZU1lbWJlchIYLnBiLkNsZWFyWm9tYmllTWVtYmVyUmVxGhkucGIuQ2xlYXJab21iaWVNZW1iZXJSZXNwIgA=');

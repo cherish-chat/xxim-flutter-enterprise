@@ -33,3 +33,28 @@ const MsgContentType$json = const {
 
 /// Descriptor for `MsgContentType`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List msgContentTypeDescriptor = $convert.base64Decode('Cg5Nc2dDb250ZW50VHlwZRILCgd1bmtub3duEAASCgoGdHlwaW5nEAESBwoDdGlwEAISCAoEdGV4dBALEgkKBWltYWdlEAwSCQoFYXVkaW8QDRIJCgV2aWRlbxAOEggKBGZpbGUQDxIMCghsb2NhdGlvbhAQEggKBGNhcmQQERIJCgVtZXJnZRASEgkKBWVtb2ppEBMSCwoHY29tbWFuZBAUEgwKCHJpY2hUZXh0EBUSDAoIbWFya2Rvd24QFhIKCgZjdXN0b20QZA==');
+@$core.Deprecated('Use noticeContentTypeDescriptor instead')
+const NoticeContentType$json = const {
+  '1': 'NoticeContentType',
+  '2': const [
+    const {'1': 'unknownNotice', '2': 0},
+    const {'1': 'hasRead', '2': 1},
+    const {'1': 'hasEdited', '2': 2},
+    const {'1': 'syncFriendList', '2': 101},
+    const {'1': 'syncConvSetting', '2': 102},
+    const {'1': 'updateUserInfo', '2': 201},
+    const {'1': 'groupMemberLeave', '2': 301},
+    const {'1': 'createGroup', '2': 302},
+    const {'1': 'newGroupMember', '2': 303},
+    const {'1': 'dismissGroup', '2': 304},
+    const {'1': 'setGroupMemberInfo', '2': 305},
+    const {'1': 'setGroupInfo', '2': 306},
+    const {'1': 'recoverGroup', '2': 307},
+    const {'1': 'updateGroupInfo', '2': 308},
+    const {'1': 'applyToBeGroupMember', '2': 401},
+    const {'1': 'applyToBeFriend', '2': 501},
+  ],
+};
+
+/// Descriptor for `NoticeContentType`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List noticeContentTypeDescriptor = $convert.base64Decode('ChFOb3RpY2VDb250ZW50VHlwZRIRCg11bmtub3duTm90aWNlEAASCwoHaGFzUmVhZBABEg0KCWhhc0VkaXRlZBACEhIKDnN5bmNGcmllbmRMaXN0EGUSEwoPc3luY0NvbnZTZXR0aW5nEGYSEwoOdXBkYXRlVXNlckluZm8QyQESFQoQZ3JvdXBNZW1iZXJMZWF2ZRCtAhIQCgtjcmVhdGVHcm91cBCuAhITCg5uZXdHcm91cE1lbWJlchCvAhIRCgxkaXNtaXNzR3JvdXAQsAISFwoSc2V0R3JvdXBNZW1iZXJJbmZvELECEhEKDHNldEdyb3VwSW5mbxCyAhIRCgxyZWNvdmVyR3JvdXAQswISFAoPdXBkYXRlR3JvdXBJbmZvELQCEhkKFGFwcGx5VG9CZUdyb3VwTWVtYmVyEJEDEhQKD2FwcGx5VG9CZUZyaWVuZBD1Aw==');

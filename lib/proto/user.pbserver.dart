@@ -62,7 +62,12 @@ abstract class userServiceBase extends $pb.GeneratedService {
   $async.Future<$2.GetAllLoginRecordResp> getAllLoginRecord($pb.ServerContext ctx, $2.GetAllLoginRecordReq request);
   $async.Future<$2.SendSmsResp> sendSms($pb.ServerContext ctx, $2.SendSmsReq request);
   $async.Future<$2.VerifySmsResp> verifySms($pb.ServerContext ctx, $2.VerifySmsReq request);
+  $async.Future<$2.GetCaptchaCodeResp> getCaptchaCode($pb.ServerContext ctx, $2.GetCaptchaCodeReq request);
+  $async.Future<$2.VerifyCaptchaCodeResp> verifyCaptchaCode($pb.ServerContext ctx, $2.VerifyCaptchaCodeReq request);
   $async.Future<$2.ReportUserResp> reportUser($pb.ServerContext ctx, $2.ReportUserReq request);
+  $async.Future<$2.BatchCreateZombieUserResp> batchCreateZombieUser($pb.ServerContext ctx, $2.BatchCreateZombieUserReq request);
+  $async.Future<$2.DestroyAccountResp> destroyAccount($pb.ServerContext ctx, $2.DestroyAccountReq request);
+  $async.Future<$2.RecoverAccountResp> recoverAccount($pb.ServerContext ctx, $2.RecoverAccountReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -110,7 +115,12 @@ abstract class userServiceBase extends $pb.GeneratedService {
       case 'GetAllLoginRecord': return $2.GetAllLoginRecordReq();
       case 'SendSms': return $2.SendSmsReq();
       case 'VerifySms': return $2.VerifySmsReq();
+      case 'GetCaptchaCode': return $2.GetCaptchaCodeReq();
+      case 'VerifyCaptchaCode': return $2.VerifyCaptchaCodeReq();
       case 'ReportUser': return $2.ReportUserReq();
+      case 'BatchCreateZombieUser': return $2.BatchCreateZombieUserReq();
+      case 'DestroyAccount': return $2.DestroyAccountReq();
+      case 'RecoverAccount': return $2.RecoverAccountReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -161,7 +171,12 @@ abstract class userServiceBase extends $pb.GeneratedService {
       case 'GetAllLoginRecord': return this.getAllLoginRecord(ctx, request as $2.GetAllLoginRecordReq);
       case 'SendSms': return this.sendSms(ctx, request as $2.SendSmsReq);
       case 'VerifySms': return this.verifySms(ctx, request as $2.VerifySmsReq);
+      case 'GetCaptchaCode': return this.getCaptchaCode(ctx, request as $2.GetCaptchaCodeReq);
+      case 'VerifyCaptchaCode': return this.verifyCaptchaCode(ctx, request as $2.VerifyCaptchaCodeReq);
       case 'ReportUser': return this.reportUser(ctx, request as $2.ReportUserReq);
+      case 'BatchCreateZombieUser': return this.batchCreateZombieUser(ctx, request as $2.BatchCreateZombieUserReq);
+      case 'DestroyAccount': return this.destroyAccount(ctx, request as $2.DestroyAccountReq);
+      case 'RecoverAccount': return this.recoverAccount(ctx, request as $2.RecoverAccountReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

@@ -338,11 +338,12 @@ const FriendEvent$json = const {
     const {'1': 'createTime', '3': 5, '4': 1, '5': 9, '10': 'createTime'},
     const {'1': 'updateTime', '3': 6, '4': 1, '5': 9, '10': 'updateTime'},
     const {'1': 'extra', '3': 7, '4': 1, '5': 11, '6': '.pb.RequestAddFriendExtra', '10': 'extra'},
+    const {'1': 'requestId', '3': 8, '4': 1, '5': 9, '10': 'requestId'},
   ],
 };
 
 /// Descriptor for `FriendEvent`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List friendEventDescriptor = $convert.base64Decode('CgtGcmllbmRFdmVudBIeCgpmcm9tVXNlcklkGAEgASgJUgpmcm9tVXNlcklkEhoKCHRvVXNlcklkGAIgASgJUgh0b1VzZXJJZBI2Cg1vdGhlclVzZXJJbmZvGAMgASgLMhAucGIuVXNlckJhc2VJbmZvUg1vdGhlclVzZXJJbmZvEjIKBnN0YXR1cxgEIAEoDjIaLnBiLlJlcXVlc3RBZGRGcmllbmRTdGF0dXNSBnN0YXR1cxIeCgpjcmVhdGVUaW1lGAUgASgJUgpjcmVhdGVUaW1lEh4KCnVwZGF0ZVRpbWUYBiABKAlSCnVwZGF0ZVRpbWUSLwoFZXh0cmEYByABKAsyGS5wYi5SZXF1ZXN0QWRkRnJpZW5kRXh0cmFSBWV4dHJh');
+final $typed_data.Uint8List friendEventDescriptor = $convert.base64Decode('CgtGcmllbmRFdmVudBIeCgpmcm9tVXNlcklkGAEgASgJUgpmcm9tVXNlcklkEhoKCHRvVXNlcklkGAIgASgJUgh0b1VzZXJJZBI2Cg1vdGhlclVzZXJJbmZvGAMgASgLMhAucGIuVXNlckJhc2VJbmZvUg1vdGhlclVzZXJJbmZvEjIKBnN0YXR1cxgEIAEoDjIaLnBiLlJlcXVlc3RBZGRGcmllbmRTdGF0dXNSBnN0YXR1cxIeCgpjcmVhdGVUaW1lGAUgASgJUgpjcmVhdGVUaW1lEh4KCnVwZGF0ZVRpbWUYBiABKAlSCnVwZGF0ZVRpbWUSLwoFZXh0cmEYByABKAsyGS5wYi5SZXF1ZXN0QWRkRnJpZW5kRXh0cmFSBWV4dHJhEhwKCXJlcXVlc3RJZBgIIAEoCVIJcmVxdWVzdElk');
 @$core.Deprecated('Use getMyFriendEventListRespDescriptor instead')
 const GetMyFriendEventListResp$json = const {
   '1': 'GetMyFriendEventListResp',
@@ -404,6 +405,32 @@ const GetFriendListByUserIdResp$json = const {
 
 /// Descriptor for `GetFriendListByUserIdResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getFriendListByUserIdRespDescriptor = $convert.base64Decode('ChlHZXRGcmllbmRMaXN0QnlVc2VySWRSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEj0KCmZyaWVuZExpc3QYAiADKAsyHS5wYi5HZXRGcmllbmRMaXN0QnlVc2VySWRJdGVtUgpmcmllbmRMaXN0EhQKBXRvdGFsGAMgASgDUgV0b3RhbA==');
+@$core.Deprecated('Use batchMakeFriendReqDescriptor instead')
+const BatchMakeFriendReq$json = const {
+  '1': 'BatchMakeFriendReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'userIdA', '3': 2, '4': 1, '5': 9, '10': 'userIdA'},
+    const {'1': 'userIdBList', '3': 3, '4': 3, '5': 9, '10': 'userIdBList'},
+    const {'1': 'sendTextMsgA', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'sendTextMsgA', '17': true},
+  ],
+  '8': const [
+    const {'1': '_sendTextMsgA'},
+  ],
+};
+
+/// Descriptor for `BatchMakeFriendReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List batchMakeFriendReqDescriptor = $convert.base64Decode('ChJCYXRjaE1ha2VGcmllbmRSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESGAoHdXNlcklkQRgCIAEoCVIHdXNlcklkQRIgCgt1c2VySWRCTGlzdBgDIAMoCVILdXNlcklkQkxpc3QSJwoMc2VuZFRleHRNc2dBGAQgASgJSABSDHNlbmRUZXh0TXNnQYgBAUIPCg1fc2VuZFRleHRNc2dB');
+@$core.Deprecated('Use batchMakeFriendRespDescriptor instead')
+const BatchMakeFriendResp$json = const {
+  '1': 'BatchMakeFriendResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `BatchMakeFriendResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List batchMakeFriendRespDescriptor = $convert.base64Decode('ChNCYXRjaE1ha2VGcmllbmRSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
 const $core.Map<$core.String, $core.dynamic> relationServiceBase$json = const {
   '1': 'relationService',
   '2': const [
@@ -419,6 +446,7 @@ const $core.Map<$core.String, $core.dynamic> relationServiceBase$json = const {
     const {'1': 'GetFriendList', '2': '.pb.GetFriendListReq', '3': '.pb.GetFriendListResp', '4': const {}},
     const {'1': 'GetMyFriendEventList', '2': '.pb.GetMyFriendEventListReq', '3': '.pb.GetMyFriendEventListResp', '4': const {}},
     const {'1': 'GetFriendListByUserId', '2': '.pb.GetFriendListByUserIdReq', '3': '.pb.GetFriendListByUserIdResp', '4': const {}},
+    const {'1': 'BatchMakeFriend', '2': '.pb.BatchMakeFriendReq', '3': '.pb.BatchMakeFriendResp', '4': const {}},
   ],
 };
 
@@ -461,7 +489,9 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> relationSe
   '.pb.GetFriendListByUserIdReq.FilterEntry': GetFriendListByUserIdReq_FilterEntry$json,
   '.pb.GetFriendListByUserIdResp': GetFriendListByUserIdResp$json,
   '.pb.GetFriendListByUserIdItem': GetFriendListByUserIdItem$json,
+  '.pb.BatchMakeFriendReq': BatchMakeFriendReq$json,
+  '.pb.BatchMakeFriendResp': BatchMakeFriendResp$json,
 };
 
 /// Descriptor for `relationService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List relationServiceDescriptor = $convert.base64Decode('Cg9yZWxhdGlvblNlcnZpY2USNQoKQXJlRnJpZW5kcxIRLnBiLkFyZUZyaWVuZHNSZXEaEi5wYi5BcmVGcmllbmRzUmVzcCIAEjsKDEFyZUJsYWNrTGlzdBITLnBiLkFyZUJsYWNrTGlzdFJlcRoULnBiLkFyZUJsYWNrTGlzdFJlc3AiABJHChBSZXF1ZXN0QWRkRnJpZW5kEhcucGIuUmVxdWVzdEFkZEZyaWVuZFJlcRoYLnBiLlJlcXVlc3RBZGRGcmllbmRSZXNwIgASRAoPQWNjZXB0QWRkRnJpZW5kEhYucGIuQWNjZXB0QWRkRnJpZW5kUmVxGhcucGIuQWNjZXB0QWRkRnJpZW5kUmVzcCIAEkQKD1JlamVjdEFkZEZyaWVuZBIWLnBiLlJlamVjdEFkZEZyaWVuZFJlcRoXLnBiLlJlamVjdEFkZEZyaWVuZFJlc3AiABJBCg5HZXRGcmllbmRDb3VudBIVLnBiLkdldEZyaWVuZENvdW50UmVxGhYucGIuR2V0RnJpZW5kQ291bnRSZXNwIgASMgoJQmxvY2tVc2VyEhAucGIuQmxvY2tVc2VyUmVxGhEucGIuQmxvY2tVc2VyUmVzcCIAEkQKD0RlbGV0ZUJsb2NrVXNlchIWLnBiLkRlbGV0ZUJsb2NrVXNlclJlcRoXLnBiLkRlbGV0ZUJsb2NrVXNlclJlc3AiABI7CgxEZWxldGVGcmllbmQSEy5wYi5EZWxldGVGcmllbmRSZXEaFC5wYi5EZWxldGVGcmllbmRSZXNwIgASPgoNR2V0RnJpZW5kTGlzdBIULnBiLkdldEZyaWVuZExpc3RSZXEaFS5wYi5HZXRGcmllbmRMaXN0UmVzcCIAElMKFEdldE15RnJpZW5kRXZlbnRMaXN0EhsucGIuR2V0TXlGcmllbmRFdmVudExpc3RSZXEaHC5wYi5HZXRNeUZyaWVuZEV2ZW50TGlzdFJlc3AiABJWChVHZXRGcmllbmRMaXN0QnlVc2VySWQSHC5wYi5HZXRGcmllbmRMaXN0QnlVc2VySWRSZXEaHS5wYi5HZXRGcmllbmRMaXN0QnlVc2VySWRSZXNwIgA=');
+final $typed_data.Uint8List relationServiceDescriptor = $convert.base64Decode('Cg9yZWxhdGlvblNlcnZpY2USNQoKQXJlRnJpZW5kcxIRLnBiLkFyZUZyaWVuZHNSZXEaEi5wYi5BcmVGcmllbmRzUmVzcCIAEjsKDEFyZUJsYWNrTGlzdBITLnBiLkFyZUJsYWNrTGlzdFJlcRoULnBiLkFyZUJsYWNrTGlzdFJlc3AiABJHChBSZXF1ZXN0QWRkRnJpZW5kEhcucGIuUmVxdWVzdEFkZEZyaWVuZFJlcRoYLnBiLlJlcXVlc3RBZGRGcmllbmRSZXNwIgASRAoPQWNjZXB0QWRkRnJpZW5kEhYucGIuQWNjZXB0QWRkRnJpZW5kUmVxGhcucGIuQWNjZXB0QWRkRnJpZW5kUmVzcCIAEkQKD1JlamVjdEFkZEZyaWVuZBIWLnBiLlJlamVjdEFkZEZyaWVuZFJlcRoXLnBiLlJlamVjdEFkZEZyaWVuZFJlc3AiABJBCg5HZXRGcmllbmRDb3VudBIVLnBiLkdldEZyaWVuZENvdW50UmVxGhYucGIuR2V0RnJpZW5kQ291bnRSZXNwIgASMgoJQmxvY2tVc2VyEhAucGIuQmxvY2tVc2VyUmVxGhEucGIuQmxvY2tVc2VyUmVzcCIAEkQKD0RlbGV0ZUJsb2NrVXNlchIWLnBiLkRlbGV0ZUJsb2NrVXNlclJlcRoXLnBiLkRlbGV0ZUJsb2NrVXNlclJlc3AiABI7CgxEZWxldGVGcmllbmQSEy5wYi5EZWxldGVGcmllbmRSZXEaFC5wYi5EZWxldGVGcmllbmRSZXNwIgASPgoNR2V0RnJpZW5kTGlzdBIULnBiLkdldEZyaWVuZExpc3RSZXEaFS5wYi5HZXRGcmllbmRMaXN0UmVzcCIAElMKFEdldE15RnJpZW5kRXZlbnRMaXN0EhsucGIuR2V0TXlGcmllbmRFdmVudExpc3RSZXEaHC5wYi5HZXRNeUZyaWVuZEV2ZW50TGlzdFJlc3AiABJWChVHZXRGcmllbmRMaXN0QnlVc2VySWQSHC5wYi5HZXRGcmllbmRMaXN0QnlVc2VySWRSZXEaHS5wYi5HZXRGcmllbmRMaXN0QnlVc2VySWRSZXNwIgASRAoPQmF0Y2hNYWtlRnJpZW5kEhYucGIuQmF0Y2hNYWtlRnJpZW5kUmVxGhcucGIuQmF0Y2hNYWtlRnJpZW5kUmVzcCIA');

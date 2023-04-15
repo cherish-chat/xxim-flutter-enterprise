@@ -61,6 +61,9 @@ message GetGroupHomeResp {
   int32 memberCount = 6;
   // 群介绍
   string introduction = 7;
+  // 群主id
+  string owner = 8;
+  int64 dismissTime = 9; // 解散时间 如果为0表示未解散 否则进入会话详情应该提示群已解散
   // 成员统计
   message MemberStatistics {
     // 统计标题
@@ -282,6 +285,20 @@ message KickGroupMemberResp {
   CommonResp commonResp = 1;
 }
 
+//BatchKickGroupMemberReq 批量踢出群成员
+message BatchKickGroupMemberReq {
+  CommonReq commonReq = 1;
+  // 群ID
+  string groupId = 2;
+  // 群成员ID
+  repeated string memberIds = 3;
+}
+
+//BatchKickGroupMemberResp 批量踢出群成员
+message BatchKickGroupMemberResp {
+  CommonResp commonResp = 1;
+}
+
 //GetGroupMemberListReq 获取群成员列表
 message GetGroupMemberListReq {
   CommonReq commonReq = 1;
@@ -343,6 +360,9 @@ message GroupBaseInfo {
   string id = 1;
   string name = 2;
   string avatar = 3;
+  string owner = 4;
+
+  int64 dismissTime = 5; // 解散时间 如果为0表示未解散 否则进入会话详情应该提示群已解散
 }
 
 //GetMyGroupListResp 获取我的群聊列表
@@ -660,7 +680,7 @@ message SearchGroupsByKeywordResp {
 message AddGroupMemberReq {
   CommonReq commonReq = 1;
   string groupId = 2;
-  string userId = 3;
+  repeated string userIds = 3;
 }
 
 //AddGroupMemberResp 添加群成员
@@ -678,6 +698,29 @@ message ReportGroupReq {
 
 // ReportGroupResp 举报群
 message ReportGroupResp {
+  CommonResp commonResp = 1;
+}
+
+// RandInsertZombieMemberReq 随机插入僵尸用户
+message RandInsertZombieMemberReq {
+  CommonReq commonReq = 1;
+  string groupId = 2;
+  int32 count = 3;
+}
+
+// RandInsertZombieMemberResp 随机插入僵尸用户
+message RandInsertZombieMemberResp {
+  CommonResp commonResp = 1;
+}
+
+// ClearZombieMemberReq 清除僵尸用户
+message ClearZombieMemberReq {
+  CommonReq commonReq = 1;
+  string groupId = 2;
+}
+
+// ClearZombieMemberResp 清除僵尸用户
+message ClearZombieMemberResp {
   CommonResp commonResp = 1;
 }
 
@@ -706,6 +749,8 @@ service groupService {
   rpc TransferGroupOwner(TransferGroupOwnerReq) returns (TransferGroupOwnerResp) {}
   //KickGroupMember 踢出群成员
   rpc KickGroupMember(KickGroupMemberReq) returns (KickGroupMemberResp) {}
+  //BatchKickGroupMember 批量踢出群成员
+  rpc BatchKickGroupMember(BatchKickGroupMemberReq) returns (BatchKickGroupMemberResp) {}
   //GetGroupMemberList 获取群成员列表
   rpc GetGroupMemberList(GetGroupMemberListReq) returns (GetGroupMemberListResp) {}
   //GetMyGroupList 获取我的群聊列表
@@ -741,4 +786,9 @@ service groupService {
 
   // ReportGroup
   rpc ReportGroup(ReportGroupReq) returns (ReportGroupResp) {}
+
+  // RandInsertZombieMember 随机插入僵尸用户
+  rpc RandInsertZombieMember(RandInsertZombieMemberReq) returns (RandInsertZombieMemberResp) {}
+  // ClearZombieMember 清除僵尸用户
+  rpc ClearZombieMember(ClearZombieMemberReq) returns (ClearZombieMemberResp) {}
 }

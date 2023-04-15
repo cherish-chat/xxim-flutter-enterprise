@@ -17,11 +17,12 @@ const PushEvent$json = const {
     const {'1': 'PushMsgDataList', '2': 0},
     const {'1': 'PushNoticeData', '2': 1},
     const {'1': 'PushResponseBody', '2': 2},
+    const {'1': 'PushAfterConnect', '2': 3},
   ],
 };
 
 /// Descriptor for `PushEvent`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List pushEventDescriptor = $convert.base64Decode('CglQdXNoRXZlbnQSEwoPUHVzaE1zZ0RhdGFMaXN0EAASEgoOUHVzaE5vdGljZURhdGEQARIUChBQdXNoUmVzcG9uc2VCb2R5EAI=');
+final $typed_data.Uint8List pushEventDescriptor = $convert.base64Decode('CglQdXNoRXZlbnQSEwoPUHVzaE1zZ0RhdGFMaXN0EAASEgoOUHVzaE5vdGljZURhdGEQARIUChBQdXNoUmVzcG9uc2VCb2R5EAISFAoQUHVzaEFmdGVyQ29ubmVjdBAD');
 @$core.Deprecated('Use connMQBodyDescriptor instead')
 const ConnMQBody$json = const {
   '1': 'ConnMQBody',
@@ -176,6 +177,16 @@ const ResponseBody_Code$json = const {
 
 /// Descriptor for `ResponseBody`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List responseBodyDescriptor = $convert.base64Decode('CgxSZXNwb25zZUJvZHkSFAoFcmVxSWQYASABKAlSBXJlcUlkEhYKBm1ldGhvZBgCIAEoCVIGbWV0aG9kEikKBGNvZGUYAyABKA4yFS5wYi5SZXNwb25zZUJvZHkuQ29kZVIEY29kZRISCgRkYXRhGAQgASgMUgRkYXRhIokBCgRDb2RlEgsKB1N1Y2Nlc3MQABIQCgxVbmtub3duRXJyb3IQARIRCg1JbnRlcm5hbEVycm9yEAISEAoMUmVxdWVzdEVycm9yEAMSDQoJQXV0aEVycm9yEAQSDgoKVG9hc3RFcnJvchAFEg4KCkFsZXJ0RXJyb3IQBxIOCgpSZXRyeUVycm9yEAg=');
+@$core.Deprecated('Use afterConnectBodyDescriptor instead')
+const AfterConnectBody$json = const {
+  '1': 'AfterConnectBody',
+  '2': const [
+    const {'1': 'aesIv', '3': 1, '4': 1, '5': 9, '10': 'aesIv'},
+  ],
+};
+
+/// Descriptor for `AfterConnectBody`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List afterConnectBodyDescriptor = $convert.base64Decode('ChBBZnRlckNvbm5lY3RCb2R5EhQKBWFlc0l2GAEgASgJUgVhZXNJdg==');
 @$core.Deprecated('Use setCxnParamsReqDescriptor instead')
 const SetCxnParamsReq$json = const {
   '1': 'SetCxnParamsReq',

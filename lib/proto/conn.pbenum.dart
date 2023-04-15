@@ -13,11 +13,13 @@ class PushEvent extends $pb.ProtobufEnum {
   static const PushEvent PushMsgDataList = PushEvent._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PushMsgDataList');
   static const PushEvent PushNoticeData = PushEvent._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PushNoticeData');
   static const PushEvent PushResponseBody = PushEvent._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PushResponseBody');
+  static const PushEvent PushAfterConnect = PushEvent._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PushAfterConnect');
 
   static const $core.List<PushEvent> values = <PushEvent> [
     PushMsgDataList,
     PushNoticeData,
     PushResponseBody,
+    PushAfterConnect,
   ];
 
   static final $core.Map<$core.int, PushEvent> _byValue = $pb.ProtobufEnum.initByValue(values);

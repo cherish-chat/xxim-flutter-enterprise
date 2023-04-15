@@ -752,6 +752,53 @@ class ResponseBody extends $pb.GeneratedMessage {
   void clearData() => clearField(4);
 }
 
+class AfterConnectBody extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AfterConnectBody', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'aesIv', protoName: 'aesIv')
+    ..hasRequiredFields = false
+  ;
+
+  AfterConnectBody._() : super();
+  factory AfterConnectBody({
+    $core.String? aesIv,
+  }) {
+    final _result = create();
+    if (aesIv != null) {
+      _result.aesIv = aesIv;
+    }
+    return _result;
+  }
+  factory AfterConnectBody.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AfterConnectBody.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AfterConnectBody clone() => AfterConnectBody()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AfterConnectBody copyWith(void Function(AfterConnectBody) updates) => super.copyWith((message) => updates(message as AfterConnectBody)) as AfterConnectBody; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AfterConnectBody create() => AfterConnectBody._();
+  AfterConnectBody createEmptyInstance() => create();
+  static $pb.PbList<AfterConnectBody> createRepeated() => $pb.PbList<AfterConnectBody>();
+  @$core.pragma('dart2js:noInline')
+  static AfterConnectBody getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AfterConnectBody>(create);
+  static AfterConnectBody? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get aesIv => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set aesIv($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasAesIv() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearAesIv() => clearField(1);
+}
+
 class SetCxnParamsReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SetCxnParamsReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'packageId', protoName: 'packageId')

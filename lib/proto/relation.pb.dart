@@ -1419,6 +1419,7 @@ class FriendEvent extends $pb.GeneratedMessage {
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createTime', protoName: 'createTime')
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updateTime', protoName: 'updateTime')
     ..aOM<RequestAddFriendExtra>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'extra', subBuilder: RequestAddFriendExtra.create)
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'requestId', protoName: 'requestId')
     ..hasRequiredFields = false
   ;
 
@@ -1431,6 +1432,7 @@ class FriendEvent extends $pb.GeneratedMessage {
     $core.String? createTime,
     $core.String? updateTime,
     RequestAddFriendExtra? extra,
+    $core.String? requestId,
   }) {
     final _result = create();
     if (fromUserId != null) {
@@ -1453,6 +1455,9 @@ class FriendEvent extends $pb.GeneratedMessage {
     }
     if (extra != null) {
       _result.extra = extra;
+    }
+    if (requestId != null) {
+      _result.requestId = requestId;
     }
     return _result;
   }
@@ -1543,6 +1548,15 @@ class FriendEvent extends $pb.GeneratedMessage {
   void clearExtra() => clearField(7);
   @$pb.TagNumber(7)
   RequestAddFriendExtra ensureExtra() => $_ensure(6);
+
+  @$pb.TagNumber(8)
+  $core.String get requestId => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set requestId($core.String v) { $_setString(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasRequestId() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearRequestId() => clearField(8);
 }
 
 class GetMyFriendEventListResp extends $pb.GeneratedMessage {
@@ -1863,6 +1877,140 @@ class GetFriendListByUserIdResp extends $pb.GeneratedMessage {
   void clearTotal() => clearField(3);
 }
 
+class BatchMakeFriendReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BatchMakeFriendReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userIdA', protoName: 'userIdA')
+    ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userIdBList', protoName: 'userIdBList')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sendTextMsgA', protoName: 'sendTextMsgA')
+    ..hasRequiredFields = false
+  ;
+
+  BatchMakeFriendReq._() : super();
+  factory BatchMakeFriendReq({
+    $0.CommonReq? commonReq,
+    $core.String? userIdA,
+    $core.Iterable<$core.String>? userIdBList,
+    $core.String? sendTextMsgA,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (userIdA != null) {
+      _result.userIdA = userIdA;
+    }
+    if (userIdBList != null) {
+      _result.userIdBList.addAll(userIdBList);
+    }
+    if (sendTextMsgA != null) {
+      _result.sendTextMsgA = sendTextMsgA;
+    }
+    return _result;
+  }
+  factory BatchMakeFriendReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BatchMakeFriendReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  BatchMakeFriendReq clone() => BatchMakeFriendReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  BatchMakeFriendReq copyWith(void Function(BatchMakeFriendReq) updates) => super.copyWith((message) => updates(message as BatchMakeFriendReq)) as BatchMakeFriendReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static BatchMakeFriendReq create() => BatchMakeFriendReq._();
+  BatchMakeFriendReq createEmptyInstance() => create();
+  static $pb.PbList<BatchMakeFriendReq> createRepeated() => $pb.PbList<BatchMakeFriendReq>();
+  @$core.pragma('dart2js:noInline')
+  static BatchMakeFriendReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BatchMakeFriendReq>(create);
+  static BatchMakeFriendReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get userIdA => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set userIdA($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasUserIdA() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearUserIdA() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.String> get userIdBList => $_getList(2);
+
+  @$pb.TagNumber(4)
+  $core.String get sendTextMsgA => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set sendTextMsgA($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasSendTextMsgA() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearSendTextMsgA() => clearField(4);
+}
+
+class BatchMakeFriendResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BatchMakeFriendResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  BatchMakeFriendResp._() : super();
+  factory BatchMakeFriendResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory BatchMakeFriendResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BatchMakeFriendResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  BatchMakeFriendResp clone() => BatchMakeFriendResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  BatchMakeFriendResp copyWith(void Function(BatchMakeFriendResp) updates) => super.copyWith((message) => updates(message as BatchMakeFriendResp)) as BatchMakeFriendResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static BatchMakeFriendResp create() => BatchMakeFriendResp._();
+  BatchMakeFriendResp createEmptyInstance() => create();
+  static $pb.PbList<BatchMakeFriendResp> createRepeated() => $pb.PbList<BatchMakeFriendResp>();
+  @$core.pragma('dart2js:noInline')
+  static BatchMakeFriendResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BatchMakeFriendResp>(create);
+  static BatchMakeFriendResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
 class relationServiceApi {
   $pb.RpcClient _client;
   relationServiceApi(this._client);
@@ -1914,6 +2062,10 @@ class relationServiceApi {
   $async.Future<GetFriendListByUserIdResp> getFriendListByUserId($pb.ClientContext? ctx, GetFriendListByUserIdReq request) {
     var emptyResponse = GetFriendListByUserIdResp();
     return _client.invoke<GetFriendListByUserIdResp>(ctx, 'relationService', 'GetFriendListByUserId', request, emptyResponse);
+  }
+  $async.Future<BatchMakeFriendResp> batchMakeFriend($pb.ClientContext? ctx, BatchMakeFriendReq request) {
+    var emptyResponse = BatchMakeFriendResp();
+    return _client.invoke<BatchMakeFriendResp>(ctx, 'relationService', 'BatchMakeFriend', request, emptyResponse);
   }
 }
 

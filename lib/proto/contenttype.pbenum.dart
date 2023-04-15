@@ -52,3 +52,46 @@ class MsgContentType extends $pb.ProtobufEnum {
   const MsgContentType._($core.int v, $core.String n) : super(v, n);
 }
 
+class NoticeContentType extends $pb.ProtobufEnum {
+  static const NoticeContentType unknownNotice = NoticeContentType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'unknownNotice');
+  static const NoticeContentType hasRead = NoticeContentType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'hasRead');
+  static const NoticeContentType hasEdited = NoticeContentType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'hasEdited');
+  static const NoticeContentType syncFriendList = NoticeContentType._(101, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'syncFriendList');
+  static const NoticeContentType syncConvSetting = NoticeContentType._(102, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'syncConvSetting');
+  static const NoticeContentType updateUserInfo = NoticeContentType._(201, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'updateUserInfo');
+  static const NoticeContentType groupMemberLeave = NoticeContentType._(301, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'groupMemberLeave');
+  static const NoticeContentType createGroup = NoticeContentType._(302, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'createGroup');
+  static const NoticeContentType newGroupMember = NoticeContentType._(303, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'newGroupMember');
+  static const NoticeContentType dismissGroup = NoticeContentType._(304, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'dismissGroup');
+  static const NoticeContentType setGroupMemberInfo = NoticeContentType._(305, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'setGroupMemberInfo');
+  static const NoticeContentType setGroupInfo = NoticeContentType._(306, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'setGroupInfo');
+  static const NoticeContentType recoverGroup = NoticeContentType._(307, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'recoverGroup');
+  static const NoticeContentType updateGroupInfo = NoticeContentType._(308, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'updateGroupInfo');
+  static const NoticeContentType applyToBeGroupMember = NoticeContentType._(401, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'applyToBeGroupMember');
+  static const NoticeContentType applyToBeFriend = NoticeContentType._(501, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'applyToBeFriend');
+
+  static const $core.List<NoticeContentType> values = <NoticeContentType> [
+    unknownNotice,
+    hasRead,
+    hasEdited,
+    syncFriendList,
+    syncConvSetting,
+    updateUserInfo,
+    groupMemberLeave,
+    createGroup,
+    newGroupMember,
+    dismissGroup,
+    setGroupMemberInfo,
+    setGroupInfo,
+    recoverGroup,
+    updateGroupInfo,
+    applyToBeGroupMember,
+    applyToBeFriend,
+  ];
+
+  static final $core.Map<$core.int, NoticeContentType> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static NoticeContentType? valueOf($core.int value) => _byValue[value];
+
+  const NoticeContentType._($core.int v, $core.String n) : super(v, n);
+}
+
