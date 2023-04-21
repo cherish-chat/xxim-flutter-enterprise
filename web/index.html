@@ -160,7 +160,9 @@
       }).then(function(engineInitializer) {
         return engineInitializer.initializeEngine();
       }).then(function(appRunner) {
-        document.getElementById("splash")?.remove();
+        setTimeout(function() {
+          document.getElementById("splash")?.remove();
+        }, 2000);
         return appRunner.runApp();
       });
     });
