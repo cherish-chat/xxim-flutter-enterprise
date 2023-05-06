@@ -231,6 +231,30 @@ const GetConvSettingResp$json = const {
 
 /// Descriptor for `GetConvSettingResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getConvSettingRespDescriptor = $convert.base64Decode('ChJHZXRDb252U2V0dGluZ1Jlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASMwoMY29udlNldHRpbmdzGAIgAygLMg8ucGIuQ29udlNldHRpbmdSDGNvbnZTZXR0aW5ncw==');
+@$core.Deprecated('Use translateTextReqDescriptor instead')
+const TranslateTextReq$json = const {
+  '1': 'TranslateTextReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'q', '3': 2, '4': 1, '5': 9, '10': 'q'},
+    const {'1': 'from', '3': 3, '4': 1, '5': 9, '10': 'from'},
+    const {'1': 'to', '3': 4, '4': 1, '5': 9, '10': 'to'},
+  ],
+};
+
+/// Descriptor for `TranslateTextReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List translateTextReqDescriptor = $convert.base64Decode('ChBUcmFuc2xhdGVUZXh0UmVxEisKCWNvbW1vblJlcRgBIAEoCzINLnBiLkNvbW1vblJlcVIJY29tbW9uUmVxEgwKAXEYAiABKAlSAXESEgoEZnJvbRgDIAEoCVIEZnJvbRIOCgJ0bxgEIAEoCVICdG8=');
+@$core.Deprecated('Use translateTextRespDescriptor instead')
+const TranslateTextResp$json = const {
+  '1': 'TranslateTextResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'result', '3': 2, '4': 1, '5': 9, '10': 'result'},
+  ],
+};
+
+/// Descriptor for `TranslateTextResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List translateTextRespDescriptor = $convert.base64Decode('ChFUcmFuc2xhdGVUZXh0UmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcBIWCgZyZXN1bHQYAiABKAlSBnJlc3VsdA==');
 const $core.Map<$core.String, $core.dynamic> imServiceBase$json = const {
   '1': 'imService',
   '2': const [
@@ -247,6 +271,7 @@ const $core.Map<$core.String, $core.dynamic> imServiceBase$json = const {
     const {'1': 'GetAllConvIdOfUser', '2': '.pb.GetAllConvIdOfUserReq', '3': '.pb.GetAllConvIdOfUserResp'},
     const {'1': 'UpdateConvSetting', '2': '.pb.UpdateConvSettingReq', '3': '.pb.UpdateConvSettingResp'},
     const {'1': 'GetConvSetting', '2': '.pb.GetConvSettingReq', '3': '.pb.GetConvSettingResp'},
+    const {'1': 'TranslateText', '2': '.pb.TranslateTextReq', '3': '.pb.TranslateTextResp'},
   ],
 };
 
@@ -282,7 +307,9 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> imServiceB
   '.pb.UpdateConvSettingResp': UpdateConvSettingResp$json,
   '.pb.GetConvSettingReq': GetConvSettingReq$json,
   '.pb.GetConvSettingResp': GetConvSettingResp$json,
+  '.pb.TranslateTextReq': TranslateTextReq$json,
+  '.pb.TranslateTextResp': TranslateTextResp$json,
 };
 
 /// Descriptor for `imService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List imServiceDescriptor = $convert.base64Decode('CglpbVNlcnZpY2USPAoNQmVmb3JlQ29ubmVjdBIULnBiLkJlZm9yZUNvbm5lY3RSZXEaFS5wYi5CZWZvcmVDb25uZWN0UmVzcBIzCgxBZnRlckNvbm5lY3QSEy5wYi5BZnRlckNvbm5lY3RSZXEaDi5wYi5Db21tb25SZXNwEjkKD0FmdGVyRGlzY29ubmVjdBIWLnBiLkFmdGVyRGlzY29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASMAoJS2VlcEFsaXZlEhAucGIuS2VlcEFsaXZlUmVxGhEucGIuS2VlcEFsaXZlUmVzcBI5CgxLaWNrVXNlckNvbm4SEy5wYi5LaWNrVXNlckNvbm5SZXEaFC5wYi5LaWNrVXNlckNvbm5SZXNwEjYKC0dldFVzZXJDb25uEhIucGIuR2V0VXNlckNvbm5SZXEaEy5wYi5HZXRVc2VyQ29ublJlc3ASPAoNQmVmb3JlUmVxdWVzdBIULnBiLkJlZm9yZVJlcXVlc3RSZXEaFS5wYi5CZWZvcmVSZXF1ZXN0UmVzcBJIChFHZXRVc2VyTGF0ZXN0Q29ubhIYLnBiLkdldFVzZXJMYXRlc3RDb25uUmVxGhkucGIuR2V0VXNlckxhdGVzdENvbm5SZXNwElcKFkJhdGNoR2V0VXNlckxhdGVzdENvbm4SHS5wYi5CYXRjaEdldFVzZXJMYXRlc3RDb25uUmVxGh4ucGIuQmF0Y2hHZXRVc2VyTGF0ZXN0Q29ublJlc3ASKgoHU2VuZE1zZxIOLnBiLlNlbmRNc2dSZXEaDy5wYi5TZW5kTXNnUmVzcBJLChJHZXRBbGxDb252SWRPZlVzZXISGS5wYi5HZXRBbGxDb252SWRPZlVzZXJSZXEaGi5wYi5HZXRBbGxDb252SWRPZlVzZXJSZXNwEkgKEVVwZGF0ZUNvbnZTZXR0aW5nEhgucGIuVXBkYXRlQ29udlNldHRpbmdSZXEaGS5wYi5VcGRhdGVDb252U2V0dGluZ1Jlc3ASPwoOR2V0Q29udlNldHRpbmcSFS5wYi5HZXRDb252U2V0dGluZ1JlcRoWLnBiLkdldENvbnZTZXR0aW5nUmVzcA==');
+final $typed_data.Uint8List imServiceDescriptor = $convert.base64Decode('CglpbVNlcnZpY2USPAoNQmVmb3JlQ29ubmVjdBIULnBiLkJlZm9yZUNvbm5lY3RSZXEaFS5wYi5CZWZvcmVDb25uZWN0UmVzcBIzCgxBZnRlckNvbm5lY3QSEy5wYi5BZnRlckNvbm5lY3RSZXEaDi5wYi5Db21tb25SZXNwEjkKD0FmdGVyRGlzY29ubmVjdBIWLnBiLkFmdGVyRGlzY29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASMAoJS2VlcEFsaXZlEhAucGIuS2VlcEFsaXZlUmVxGhEucGIuS2VlcEFsaXZlUmVzcBI5CgxLaWNrVXNlckNvbm4SEy5wYi5LaWNrVXNlckNvbm5SZXEaFC5wYi5LaWNrVXNlckNvbm5SZXNwEjYKC0dldFVzZXJDb25uEhIucGIuR2V0VXNlckNvbm5SZXEaEy5wYi5HZXRVc2VyQ29ublJlc3ASPAoNQmVmb3JlUmVxdWVzdBIULnBiLkJlZm9yZVJlcXVlc3RSZXEaFS5wYi5CZWZvcmVSZXF1ZXN0UmVzcBJIChFHZXRVc2VyTGF0ZXN0Q29ubhIYLnBiLkdldFVzZXJMYXRlc3RDb25uUmVxGhkucGIuR2V0VXNlckxhdGVzdENvbm5SZXNwElcKFkJhdGNoR2V0VXNlckxhdGVzdENvbm4SHS5wYi5CYXRjaEdldFVzZXJMYXRlc3RDb25uUmVxGh4ucGIuQmF0Y2hHZXRVc2VyTGF0ZXN0Q29ublJlc3ASKgoHU2VuZE1zZxIOLnBiLlNlbmRNc2dSZXEaDy5wYi5TZW5kTXNnUmVzcBJLChJHZXRBbGxDb252SWRPZlVzZXISGS5wYi5HZXRBbGxDb252SWRPZlVzZXJSZXEaGi5wYi5HZXRBbGxDb252SWRPZlVzZXJSZXNwEkgKEVVwZGF0ZUNvbnZTZXR0aW5nEhgucGIuVXBkYXRlQ29udlNldHRpbmdSZXEaGS5wYi5VcGRhdGVDb252U2V0dGluZ1Jlc3ASPwoOR2V0Q29udlNldHRpbmcSFS5wYi5HZXRDb252U2V0dGluZ1JlcRoWLnBiLkdldENvbnZTZXR0aW5nUmVzcBI8Cg1UcmFuc2xhdGVUZXh0EhQucGIuVHJhbnNsYXRlVGV4dFJlcRoVLnBiLlRyYW5zbGF0ZVRleHRSZXNw');

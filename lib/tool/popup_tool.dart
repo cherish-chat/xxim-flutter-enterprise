@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
 import 'package:xxim_flutter_enterprise/pages/public/share_msg.dart';
+import 'package:xxim_flutter_enterprise/proto/im.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 class PopupTool {
@@ -26,6 +28,15 @@ class PopupTool {
             title: "复制",
             image: Image.asset(
               "assets/images/ic_msg_copy_17.webp",
+              width: 17,
+              height: 17,
+            ),
+          ),
+        if (contentType == MsgContentType.text)
+          DefaultMenuItem(
+            title: "翻译",
+            image: Image.asset(
+              "assets/images/ic_msg_translate_17.webp",
               width: 17,
               height: 17,
             ),
@@ -83,6 +94,34 @@ class PopupTool {
               ),
             );
             Tool.showToast("复制成功");
+            break;
+          case "翻译":
+            GetLoadingDialog.show("请稍等");
+            XXIM.instance.customRequest<TranslateTextResp>(
+              method: "/v1/im/translateText",
+              req: TranslateTextReq(
+                q: content,
+                from: "en",
+                to: "zh",
+              ),
+              resp: TranslateTextResp.create,
+              onSuccess: (data) {
+                GetLoadingDialog.hide();
+                Map extMap = {};
+                if (msgModel.ext.isNotEmpty) {
+                  extMap = json.decode(msgModel.ext);
+                }
+                extMap["translateContent"] = data.result;
+                msgModel.ext = json.encode(extMap);
+                ChatLogic.logic(msgModel.convId)?.update(
+                  [ChatMsgItem.getId(msgModel.clientMsgId)],
+                );
+              },
+              onError: (code, error) {
+                GetLoadingDialog.hide();
+                Tool.showToast("翻译失败");
+              },
+            );
             break;
           case "转发":
             ShareMsg.show(contentType, content);

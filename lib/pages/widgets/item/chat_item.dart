@@ -519,31 +519,70 @@ class ChatTextItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: direction == ChatDirection.left
-            ? getPlaceholderColor
-            : getMainColor,
-        borderRadius: direction == ChatDirection.left
-            ? const BorderRadius.only(
-                topRight: Radius.circular(8),
-                bottomLeft: Radius.circular(8),
-                bottomRight: Radius.circular(8),
-              )
-            : const BorderRadius.only(
-                topLeft: Radius.circular(8),
-                bottomLeft: Radius.circular(8),
-                bottomRight: Radius.circular(8),
-              ),
-      ),
-      child: ExtendedTextWidget(
-        msgModel.content,
-        style: TextStyle(
-          color: direction == ChatDirection.left ? getTextBlack : getTextWhite,
-          fontSize: 14,
+    String translateContent = "";
+    if (msgModel.ext.isNotEmpty) {
+      Map extMap = json.decode(msgModel.ext);
+      translateContent = extMap["translateContent"] ?? "";
+    }
+    return Column(
+      crossAxisAlignment: direction == ChatDirection.left
+          ? CrossAxisAlignment.start
+          : CrossAxisAlignment.end,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: direction == ChatDirection.left
+                ? getPlaceholderColor
+                : getMainColor,
+            borderRadius: direction == ChatDirection.left
+                ? const BorderRadius.only(
+                    topRight: Radius.circular(8),
+                    bottomLeft: Radius.circular(8),
+                    bottomRight: Radius.circular(8),
+                  )
+                : const BorderRadius.only(
+                    topLeft: Radius.circular(8),
+                    bottomLeft: Radius.circular(8),
+                    bottomRight: Radius.circular(8),
+                  ),
+          ),
+          child: ExtendedTextWidget(
+            msgModel.content,
+            style: TextStyle(
+              color:
+                  direction == ChatDirection.left ? getTextBlack : getTextWhite,
+              fontSize: 14,
+            ),
+          ),
         ),
-      ),
+        if (translateContent.isNotEmpty)
+          Container(
+            margin: const EdgeInsets.only(top: 5),
+            padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+            decoration: BoxDecoration(
+              color: getPlaceholderColor,
+              borderRadius: direction == ChatDirection.left
+                  ? const BorderRadius.only(
+                      topRight: Radius.circular(8),
+                      bottomLeft: Radius.circular(8),
+                      bottomRight: Radius.circular(8),
+                    )
+                  : const BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      bottomLeft: Radius.circular(8),
+                      bottomRight: Radius.circular(8),
+                    ),
+            ),
+            child: ExtendedTextWidget(
+              translateContent,
+              style: const TextStyle(
+                color: getHintBlack,
+                fontSize: 12,
+              ),
+            ),
+          ),
+      ],
     );
   }
 }
