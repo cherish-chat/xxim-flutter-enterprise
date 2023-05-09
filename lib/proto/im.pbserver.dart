@@ -32,6 +32,7 @@ abstract class imServiceBase extends $pb.GeneratedService {
   $async.Future<$2.UpdateConvSettingResp> updateConvSetting($pb.ServerContext ctx, $2.UpdateConvSettingReq request);
   $async.Future<$2.GetConvSettingResp> getConvSetting($pb.ServerContext ctx, $2.GetConvSettingReq request);
   $async.Future<$2.TranslateTextResp> translateText($pb.ServerContext ctx, $2.TranslateTextReq request);
+  $async.Future<$2.BatchTranslateTextResp> batchTranslateText($pb.ServerContext ctx, $2.BatchTranslateTextReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -49,6 +50,7 @@ abstract class imServiceBase extends $pb.GeneratedService {
       case 'UpdateConvSetting': return $2.UpdateConvSettingReq();
       case 'GetConvSetting': return $2.GetConvSettingReq();
       case 'TranslateText': return $2.TranslateTextReq();
+      case 'BatchTranslateText': return $2.BatchTranslateTextReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -69,6 +71,7 @@ abstract class imServiceBase extends $pb.GeneratedService {
       case 'UpdateConvSetting': return this.updateConvSetting(ctx, request as $2.UpdateConvSettingReq);
       case 'GetConvSetting': return this.getConvSetting(ctx, request as $2.GetConvSettingReq);
       case 'TranslateText': return this.translateText(ctx, request as $2.TranslateTextReq);
+      case 'BatchTranslateText': return this.batchTranslateText(ctx, request as $2.BatchTranslateTextReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

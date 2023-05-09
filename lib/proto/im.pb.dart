@@ -1380,6 +1380,148 @@ class TranslateTextResp extends $pb.GeneratedMessage {
   void clearResult() => clearField(2);
 }
 
+class BatchTranslateTextReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BatchTranslateTextReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$1.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $1.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'q')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from')
+    ..pPS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'toList', protoName: 'toList')
+    ..hasRequiredFields = false
+  ;
+
+  BatchTranslateTextReq._() : super();
+  factory BatchTranslateTextReq({
+    $1.CommonReq? commonReq,
+    $core.String? q,
+    $core.String? from,
+    $core.Iterable<$core.String>? toList,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (q != null) {
+      _result.q = q;
+    }
+    if (from != null) {
+      _result.from = from;
+    }
+    if (toList != null) {
+      _result.toList.addAll(toList);
+    }
+    return _result;
+  }
+  factory BatchTranslateTextReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BatchTranslateTextReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  BatchTranslateTextReq clone() => BatchTranslateTextReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  BatchTranslateTextReq copyWith(void Function(BatchTranslateTextReq) updates) => super.copyWith((message) => updates(message as BatchTranslateTextReq)) as BatchTranslateTextReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static BatchTranslateTextReq create() => BatchTranslateTextReq._();
+  BatchTranslateTextReq createEmptyInstance() => create();
+  static $pb.PbList<BatchTranslateTextReq> createRepeated() => $pb.PbList<BatchTranslateTextReq>();
+  @$core.pragma('dart2js:noInline')
+  static BatchTranslateTextReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BatchTranslateTextReq>(create);
+  static BatchTranslateTextReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $1.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($1.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $1.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get q => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set q($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasQ() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearQ() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get from => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set from($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasFrom() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearFrom() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<$core.String> get toList => $_getList(3);
+}
+
+class BatchTranslateTextResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BatchTranslateTextResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$1.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $1.CommonResp.create)
+    ..m<$core.String, $core.String>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'results', entryClassName: 'BatchTranslateTextResp.ResultsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
+    ..hasRequiredFields = false
+  ;
+
+  BatchTranslateTextResp._() : super();
+  factory BatchTranslateTextResp({
+    $1.CommonResp? commonResp,
+    $core.Map<$core.String, $core.String>? results,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    if (results != null) {
+      _result.results.addAll(results);
+    }
+    return _result;
+  }
+  factory BatchTranslateTextResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BatchTranslateTextResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  BatchTranslateTextResp clone() => BatchTranslateTextResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  BatchTranslateTextResp copyWith(void Function(BatchTranslateTextResp) updates) => super.copyWith((message) => updates(message as BatchTranslateTextResp)) as BatchTranslateTextResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static BatchTranslateTextResp create() => BatchTranslateTextResp._();
+  BatchTranslateTextResp createEmptyInstance() => create();
+  static $pb.PbList<BatchTranslateTextResp> createRepeated() => $pb.PbList<BatchTranslateTextResp>();
+  @$core.pragma('dart2js:noInline')
+  static BatchTranslateTextResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BatchTranslateTextResp>(create);
+  static BatchTranslateTextResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $1.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($1.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $1.CommonResp ensureCommonResp() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.Map<$core.String, $core.String> get results => $_getMap(1);
+}
+
 class imServiceApi {
   $pb.RpcClient _client;
   imServiceApi(this._client);
@@ -1439,6 +1581,10 @@ class imServiceApi {
   $async.Future<TranslateTextResp> translateText($pb.ClientContext? ctx, TranslateTextReq request) {
     var emptyResponse = TranslateTextResp();
     return _client.invoke<TranslateTextResp>(ctx, 'imService', 'TranslateText', request, emptyResponse);
+  }
+  $async.Future<BatchTranslateTextResp> batchTranslateText($pb.ClientContext? ctx, BatchTranslateTextReq request) {
+    var emptyResponse = BatchTranslateTextResp();
+    return _client.invoke<BatchTranslateTextResp>(ctx, 'imService', 'BatchTranslateText', request, emptyResponse);
   }
 }
 

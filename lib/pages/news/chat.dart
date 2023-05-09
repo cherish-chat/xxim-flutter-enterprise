@@ -12,6 +12,7 @@ import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 import 'package:xxim_flutter_enterprise/pages/public/at_member.dart';
 import 'package:xxim_flutter_enterprise/pages/public/group_member.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
+import 'package:xxim_flutter_enterprise/proto/im.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 import 'dart:ui' as ui;
@@ -47,6 +48,7 @@ class ChatLogic extends GetxController {
 
   Map atUserMap = {};
   RxMap replyMsgMap = {}.obs;
+  Map translateMap = {};
 
   @override
   void onInit() {
@@ -301,6 +303,10 @@ class ChatLogic extends GetxController {
       extMap["replyMsgModel"] = msgModel.toJson();
       replyMsgMap.clear();
     }
+    if (translateMap.isNotEmpty) {
+      extMap["translateMap"] = json.encode(translateMap);
+      translateMap.clear();
+    }
     String ext = "";
     if (extMap.isNotEmpty) {
       ext = json.encode(extMap);
@@ -308,7 +314,19 @@ class ChatLogic extends GetxController {
     return ext;
   }
 
-  Future<MsgModel> createText(String text) {
+  Future<MsgModel> createText(String text) async {
+    await XXIM.instance.customRequest<BatchTranslateTextResp>(
+      method: "/v1/im/batchTranslateText",
+      req: BatchTranslateTextReq(
+        q: text,
+        from: fromTranslate,
+        toList: toTranslateList,
+      ),
+      resp: BatchTranslateTextResp.create,
+      onSuccess: (data) {
+        translateMap = data.results;
+      },
+    );
     return XXIM.instance.msgManager.createText(
       convId: convId,
       atUsers: atUserMap.values.toList().cast<String>(),

@@ -32,15 +32,15 @@ class PopupTool {
               height: 17,
             ),
           ),
-        if (contentType == MsgContentType.text)
-          DefaultMenuItem(
-            title: "翻译",
-            image: Image.asset(
-              "assets/images/ic_msg_translate_17.webp",
-              width: 17,
-              height: 17,
-            ),
-          ),
+        // if (contentType == MsgContentType.text)
+        //   DefaultMenuItem(
+        //     title: "翻译",
+        //     image: Image.asset(
+        //       "assets/images/ic_msg_translate_17.webp",
+        //       width: 17,
+        //       height: 17,
+        //     ),
+        //   ),
         DefaultMenuItem(
           title: "转发",
           image: Image.asset(
@@ -95,34 +95,34 @@ class PopupTool {
             );
             Tool.showToast("复制成功");
             break;
-          case "翻译":
-            GetLoadingDialog.show("请稍等");
-            XXIM.instance.customRequest<TranslateTextResp>(
-              method: "/v1/im/translateText",
-              req: TranslateTextReq(
-                q: content,
-                from: "en",
-                to: "zh",
-              ),
-              resp: TranslateTextResp.create,
-              onSuccess: (data) {
-                GetLoadingDialog.hide();
-                Map extMap = {};
-                if (msgModel.ext.isNotEmpty) {
-                  extMap = json.decode(msgModel.ext);
-                }
-                extMap["translateContent"] = data.result;
-                msgModel.ext = json.encode(extMap);
-                ChatLogic.logic(msgModel.convId)?.update(
-                  [ChatMsgItem.getId(msgModel.clientMsgId)],
-                );
-              },
-              onError: (code, error) {
-                GetLoadingDialog.hide();
-                Tool.showToast("翻译失败");
-              },
-            );
-            break;
+          // case "翻译":
+          //   GetLoadingDialog.show("请稍等");
+          //   XXIM.instance.customRequest<TranslateTextResp>(
+          //     method: "/v1/im/translateText",
+          //     req: TranslateTextReq(
+          //       q: content,
+          //       from: "en",
+          //       to: "zh",
+          //     ),
+          //     resp: TranslateTextResp.create,
+          //     onSuccess: (data) {
+          //       GetLoadingDialog.hide();
+          //       Map extMap = {};
+          //       if (msgModel.ext.isNotEmpty) {
+          //         extMap = json.decode(msgModel.ext);
+          //       }
+          //       extMap["translateContent"] = data.result;
+          //       msgModel.ext = json.encode(extMap);
+          //       ChatLogic.logic(msgModel.convId)?.update(
+          //         [ChatMsgItem.getId(msgModel.clientMsgId)],
+          //       );
+          //     },
+          //     onError: (code, error) {
+          //       GetLoadingDialog.hide();
+          //       Tool.showToast("翻译失败");
+          //     },
+          //   );
+          //   break;
           case "转发":
             ShareMsg.show(contentType, content);
             break;
