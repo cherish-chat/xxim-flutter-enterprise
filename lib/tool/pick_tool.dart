@@ -23,13 +23,13 @@ class PickTool {
             fontWeight: getSemiBold,
           ),
         ),
-        cancelText: "取消",
+        cancelText: "取消".tr,
         cancelTextStyle: const TextStyle(
           color: getTextBlack,
           fontSize: 16,
           fontWeight: getMedium,
         ),
-        confirmText: "确定",
+        confirmText: "确定".tr,
         confirmTextStyle: const TextStyle(
           color: getTextBlack,
           fontSize: 16,

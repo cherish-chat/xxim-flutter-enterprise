@@ -35,10 +35,10 @@ class AddFriendLogic extends GetxController {
 
   void search() {
     if (controller.text.isEmpty) {
-      Tool.showToast("请输入");
+      Tool.showToast("请输入".tr);
       return;
     }
-    GetLoadingDialog.show("请稍等");
+    GetLoadingDialog.show("请稍等".tr);
     XXIM.instance.customRequest<SearchUsersByKeywordResp>(
       method: "/v1/user/searchUsersByKeyword",
       req: SearchUsersByKeywordReq(
@@ -50,7 +50,7 @@ class AddFriendLogic extends GetxController {
         list = data.users;
         update(["list"]);
         if (list.isEmpty) {
-          Tool.showToast("暂未搜索到结果");
+          Tool.showToast("暂未搜索到结果".tr);
         }
       },
       onError: (code, error) {
@@ -60,17 +60,17 @@ class AddFriendLogic extends GetxController {
   }
 
   void apply(String id) {
-    GetLoadingDialog.show("请稍等");
+    GetLoadingDialog.show("请稍等".tr);
     XXIM.instance.customRequest<RequestAddFriendResp>(
       method: "/v1/relation/requestAddFriend",
       req: RequestAddFriendReq(
         to: id,
-        message: "请求成为好友",
+        message: "请求成为好友".tr,
       ),
       resp: RequestAddFriendResp.create,
       onSuccess: (data) {
         GetLoadingDialog.hide();
-        Tool.showToast("申请成功");
+        Tool.showToast("申请成功".tr);
       },
       onError: (code, error) {
         GetLoadingDialog.hide();
@@ -118,7 +118,7 @@ class AddFriendPage extends StatelessWidget {
         }
         return const GetBackButton();
       }),
-      title: const Text("添加好友"),
+      title: Text("添加好友".tr),
     );
   }
 
@@ -133,7 +133,7 @@ class AddFriendPage extends StatelessWidget {
       ),
       child: InputWidget(
         logic.controller,
-        "请输入昵称",
+        "请输入昵称".tr,
         contentPadding: const EdgeInsets.symmetric(
           vertical: 16,
           horizontal: 16,
@@ -210,9 +210,9 @@ class AddFriendPage extends StatelessWidget {
             ),
           ),
           if (index != -1)
-            const Text(
-              "已是好友",
-              style: TextStyle(
+            Text(
+              "已是好友".tr,
+              style: const TextStyle(
                 color: getHintBlack,
                 fontSize: 14,
               ),
@@ -231,9 +231,9 @@ class AddFriendPage extends StatelessWidget {
                   color: getMainColor,
                   borderRadius: BorderRadius.circular(12.5),
                 ),
-                child: const Text(
-                  "申请",
-                  style: TextStyle(
+                child: Text(
+                  "申请".tr,
+                  style: const TextStyle(
                     color: getTextWhite,
                     fontSize: 12,
                   ),

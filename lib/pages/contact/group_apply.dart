@@ -72,7 +72,7 @@ class GroupApplyLogic extends GetxController {
   }
 
   void refuse(String applyId) {
-    GetLoadingDialog.show("请稍等");
+    GetLoadingDialog.show("请稍等".tr);
     XXIM.instance.customRequest<HandleGroupApplyResp>(
       method: "/v1/group/handleGroupApply",
       req: HandleGroupApplyReq(
@@ -92,7 +92,7 @@ class GroupApplyLogic extends GetxController {
   }
 
   void agree(String applyId) {
-    GetLoadingDialog.show("请稍等");
+    GetLoadingDialog.show("请稍等".tr);
     XXIM.instance.customRequest<HandleGroupApplyResp>(
       method: "/v1/group/handleGroupApply",
       req: HandleGroupApplyReq(
@@ -151,7 +151,7 @@ class GroupApplyPage extends StatelessWidget {
         }
         return const GetBackButton();
       }),
-      title: const Text("群聊申请"),
+      title: Text("群聊申请".tr),
     );
   }
 
@@ -184,11 +184,11 @@ class GroupApplyPage extends StatelessWidget {
   ) {
     String status = "";
     if (info.result == GroupApplyHandleResult.UNHANDLED) {
-      status = "等待验证";
+      status = "等待验证".tr;
     } else if (info.result == GroupApplyHandleResult.AGREE) {
-      status = "已同意";
+      status = "已同意".tr;
     } else if (info.result == GroupApplyHandleResult.REJECT) {
-      status = "已拒绝";
+      status = "已拒绝".tr;
     }
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -219,7 +219,7 @@ class GroupApplyPage extends StatelessWidget {
                 const SizedBox(height: 3),
                 Text(
                   info.userId == HiveTool.getUserId()
-                      ? "请求加入对方的群聊 - ${info.groupBaseInfo.name}"
+                      ? "${"请求加入对方的群聊".tr} - ${info.groupBaseInfo.name}"
                       : "${info.reason} - ${info.groupBaseInfo.name}",
                   style: const TextStyle(
                     color: getHintBlack,
@@ -263,9 +263,9 @@ class GroupApplyPage extends StatelessWidget {
                       color: getMainColor,
                       borderRadius: BorderRadius.circular(12.5),
                     ),
-                    child: const Text(
-                      "拒绝",
-                      style: TextStyle(
+                    child: Text(
+                      "拒绝".tr,
+                      style: const TextStyle(
                         color: getTextWhite,
                         fontSize: 12,
                       ),
@@ -286,9 +286,9 @@ class GroupApplyPage extends StatelessWidget {
                       color: getMainColor,
                       borderRadius: BorderRadius.circular(12.5),
                     ),
-                    child: const Text(
-                      "同意",
-                      style: TextStyle(
+                    child: Text(
+                      "同意".tr,
+                      style: const TextStyle(
                         color: getTextWhite,
                         fontSize: 12,
                       ),

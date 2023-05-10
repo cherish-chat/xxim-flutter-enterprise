@@ -108,9 +108,9 @@ class GroupMemberLogic extends GetxController {
 
   void alertKick(String memberId, String memberNickname) {
     GetAlertDialog.show(
-      const Text(
-        "你确定要把对方踢出群聊吗？",
-        style: TextStyle(
+      Text(
+        "你确定要把对方踢出群聊吗？".tr,
+        style: const TextStyle(
           color: getTextBlack,
           fontSize: 16,
           fontWeight: getMedium,
@@ -118,11 +118,11 @@ class GroupMemberLogic extends GetxController {
         textAlign: TextAlign.center,
       ),
       actions: [
-        const TextButton(
+        TextButton(
           onPressed: GetAlertDialog.hide,
           child: Text(
-            "取消",
-            style: TextStyle(
+            "取消".tr,
+            style: const TextStyle(
               color: getTextBlack,
               fontSize: 14,
             ),
@@ -133,9 +133,9 @@ class GroupMemberLogic extends GetxController {
             GetAlertDialog.hide();
             kickMember(memberId, memberNickname);
           },
-          child: const Text(
-            "确定",
-            style: TextStyle(
+          child: Text(
+            "确定".tr,
+            style: const TextStyle(
               color: getTextBlack,
               fontSize: 14,
             ),
@@ -158,16 +158,17 @@ class GroupMemberLogic extends GetxController {
           return element.userBaseInfo.id == memberId;
         });
         update(["list"]);
-        Tool.showToast("踢出成功");
+        Tool.showToast("踢出成功".tr);
         XXIM.instance.msgManager.sendTip(
           convId: SDKTool.groupConvId(groupId),
           content: TipContent(
-            tip: "$memberNickname被${HiveTool.getNickname()}踢出群聊",
+            tip:
+                "$memberNickname${"被".tr}${HiveTool.getNickname()}${"踢出群聊".tr}",
           ),
         );
       },
       onError: (code, error) {
-        Tool.showToast("踢出失败");
+        Tool.showToast("踢出失败".tr);
       },
     );
   }
@@ -202,12 +203,13 @@ class GroupMemberLogic extends GetxController {
         XXIM.instance.msgManager.sendTip(
           convId: SDKTool.groupConvId(groupId),
           content: TipContent(
-            tip: "${HiveTool.getNickname()}邀请${friendNames.join("，")}进入群聊",
+            tip:
+                "${HiveTool.getNickname()}${"邀请".tr}${friendNames.join("，")}${"进入群聊".tr}",
           ),
         );
       },
       onError: (code, error) {
-        Tool.showToast("邀请失败");
+        Tool.showToast("邀请失败".tr);
       },
     );
   }
@@ -258,9 +260,9 @@ class GroupMemberPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        child: const Text(
-                          "群聊成员",
-                          style: TextStyle(
+                        child: Text(
+                          "群聊成员".tr,
+                          style: const TextStyle(
                             color: getTextBlack,
                             fontSize: 16,
                           ),
@@ -363,9 +365,9 @@ class GroupMemberPage extends StatelessWidget {
             ),
             Text(
               memberInfo.role == GroupRole.OWNER
-                  ? "群主"
+                  ? "群主".tr
                   : memberInfo.role == GroupRole.MANAGER
-                      ? "管理员"
+                      ? "管理员".tr
                       : "",
               style: const TextStyle(
                 color: getHintBlack,
@@ -415,9 +417,9 @@ class GroupMemberPage extends StatelessWidget {
           color: getMainColor,
           borderRadius: BorderRadius.circular(25),
         ),
-        child: const Text(
-          "添加成员",
-          style: TextStyle(
+        child: Text(
+          "添加成员".tr,
+          style: const TextStyle(
             color: getTextWhite,
             fontSize: 18,
           ),

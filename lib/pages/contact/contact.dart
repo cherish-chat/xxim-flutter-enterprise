@@ -93,9 +93,9 @@ class ContactLogic extends GetxController {
 
   void alertDelete(String userId) {
     GetAlertDialog.show(
-      const Text(
-        "你确定要删除好友吗？",
-        style: TextStyle(
+      Text(
+        "你确定要删除好友吗？".tr,
+        style: const TextStyle(
           color: getTextBlack,
           fontSize: 16,
           fontWeight: getMedium,
@@ -103,11 +103,11 @@ class ContactLogic extends GetxController {
         textAlign: TextAlign.center,
       ),
       actions: [
-        const TextButton(
+        TextButton(
           onPressed: GetAlertDialog.hide,
           child: Text(
-            "取消",
-            style: TextStyle(
+            "取消".tr,
+            style: const TextStyle(
               color: getTextBlack,
               fontSize: 14,
             ),
@@ -118,9 +118,9 @@ class ContactLogic extends GetxController {
             GetAlertDialog.hide();
             deleteFriend(userId);
           },
-          child: const Text(
-            "确定",
-            style: TextStyle(
+          child: Text(
+            "确定".tr,
+            style: const TextStyle(
               color: getTextBlack,
               fontSize: 14,
             ),
@@ -146,10 +146,10 @@ class ContactLogic extends GetxController {
           HiveTool.getUserId(),
           userId,
         ));
-        Tool.showToast("删除成功");
+        Tool.showToast("删除成功".tr);
       },
       onError: (code, error) {
-        Tool.showToast("删除失败");
+        Tool.showToast("删除失败".tr);
       },
     );
   }
@@ -189,7 +189,7 @@ class ContactPage extends StatelessWidget {
     }
 
     return AppBar(
-      title: const Text("通讯录"),
+      title: Text("通讯录".tr),
       actions: buildActions(),
       centerTitle: false,
     );
@@ -329,7 +329,7 @@ class ContactPage extends StatelessWidget {
           Obx(
             () => buildItem(
               "assets/images/ic_new_friends_30.webp",
-              "好友申请",
+              "好友申请".tr,
               count: logic.applyFriendCount.value,
               onTap: () {
                 MenuLogic? menuLogic = MenuLogic.logic();
@@ -346,7 +346,7 @@ class ContactPage extends StatelessWidget {
           Obx(
             () => buildItem(
               "assets/images/ic_new_group_30.webp",
-              "群聊申请",
+              "群聊申请".tr,
               count: logic.applyGroupCount.value,
               onTap: () {
                 MenuLogic? menuLogic = MenuLogic.logic();
@@ -362,7 +362,7 @@ class ContactPage extends StatelessWidget {
           ),
           buildItem(
             "assets/images/ic_group_30.webp",
-            "我的群聊",
+            "我的群聊".tr,
             onTap: () {
               MenuLogic? logic = MenuLogic.logic();
               if (logic == null) return;
@@ -374,7 +374,7 @@ class ContactPage extends StatelessWidget {
           ),
           buildItem(
             "assets/images/ic_my_code_30.webp",
-            "我的名片",
+            "我的名片".tr,
             onTap: () {
               MenuLogic? logic = MenuLogic.logic();
               if (logic == null) return;
@@ -387,7 +387,7 @@ class ContactPage extends StatelessWidget {
           if (GetPlatform.isMobile)
             buildItem(
               "assets/images/ic_scan_code_30.webp",
-              "扫一扫",
+              "扫一扫".tr,
               onTap: () {
                 MenuLogic? logic = MenuLogic.logic();
                 if (logic == null) return;

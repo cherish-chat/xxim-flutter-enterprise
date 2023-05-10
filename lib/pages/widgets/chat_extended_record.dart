@@ -70,13 +70,13 @@ class _ChatExtendedRecordState extends State<ChatExtendedRecord> {
       (value) {
         if (_recordStatus != RecordStatus.record) return;
         if (value == null) {
-          Tool.showToast("语音文件异常");
+          Tool.showToast("语音文件异常".tr);
           return;
         }
         if (_duration >= 1) {
           widget.callback(value, _duration, _decibels);
         } else {
-          Tool.showToast("录制时间太短");
+          Tool.showToast("录制时间太短".tr);
         }
       },
     );
@@ -142,9 +142,9 @@ class _ChatExtendedRecordState extends State<ChatExtendedRecord> {
   }
 
   Widget _buildText() {
-    String text = "按住说话 松手发送";
+    String text = "按住说话 松手发送".tr;
     if (_recordStatus == RecordStatus.cancel) {
-      text = "松开手指 取消录制";
+      text = "松开手指 取消录制".tr;
     } else if (_recordStatus == RecordStatus.record) {
       text = TimeTool.formatMediaSeconds(_duration);
     }

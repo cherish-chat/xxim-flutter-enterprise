@@ -40,7 +40,7 @@ class MoreDialog extends StatelessWidget {
                   if (GetPlatform.isMobile)
                     _buildItem(
                       "assets/images/ic_scan_code_30.webp",
-                      "扫一扫",
+                      "扫一扫".tr,
                       () {
                         hide();
                         MenuLogic? logic = MenuLogic.logic();
@@ -53,7 +53,7 @@ class MoreDialog extends StatelessWidget {
                     ),
                   _buildItem(
                     "assets/images/ic_new_friends_30.webp",
-                    "添加好友",
+                    "添加好友".tr,
                     () {
                       hide();
                       MenuLogic? logic = MenuLogic.logic();
@@ -66,7 +66,7 @@ class MoreDialog extends StatelessWidget {
                   ),
                   _buildItem(
                     "assets/images/ic_new_group_30.webp",
-                    "添加群聊",
+                    "添加群聊".tr,
                     () {
                       hide();
                       MenuLogic? logic = MenuLogic.logic();
@@ -79,7 +79,7 @@ class MoreDialog extends StatelessWidget {
                   ),
                   _buildItem(
                     "assets/images/ic_group_30.webp",
-                    "创建群聊",
+                    "创建群聊".tr,
                     () {
                       hide();
                       MenuLogic? logic = MenuLogic.logic();

@@ -32,9 +32,9 @@ class Empty extends StatelessWidget {
       alignment: Alignment.center,
       decoration: decoration,
       child: child ??
-          const Text(
-            "暂无数据",
-            style: TextStyle(
+          Text(
+            "暂无数据".tr,
+            style: const TextStyle(
               color: getTextBlack,
               fontSize: 12,
             ),

@@ -87,7 +87,7 @@ class NewsLogic extends GetxController {
   }
 
   void convPinned(String convId, bool isPinned) {
-    GetLoadingDialog.show("请稍等");
+    GetLoadingDialog.show("请稍等".tr);
     XXIM.instance.customRequest<UpdateConvSettingResp>(
       method: "/v1/im/updateConvSetting",
       req: UpdateConvSettingReq(
@@ -110,9 +110,9 @@ class NewsLogic extends GetxController {
 
   void alertDelete(String convId) {
     GetAlertDialog.show(
-      const Text(
-        "你确定要删除会话吗？",
-        style: TextStyle(
+      Text(
+        "你确定要删除会话吗？".tr,
+        style: const TextStyle(
           color: getTextBlack,
           fontSize: 16,
           fontWeight: getMedium,
@@ -120,11 +120,11 @@ class NewsLogic extends GetxController {
         textAlign: TextAlign.center,
       ),
       actions: [
-        const TextButton(
+        TextButton(
           onPressed: GetAlertDialog.hide,
           child: Text(
-            "取消",
-            style: TextStyle(
+            "取消".tr,
+            style: const TextStyle(
               color: getTextBlack,
               fontSize: 14,
             ),
@@ -135,9 +135,9 @@ class NewsLogic extends GetxController {
             GetAlertDialog.hide();
             deleteConv(convId);
           },
-          child: const Text(
-            "确定",
-            style: TextStyle(
+          child: Text(
+            "确定".tr,
+            style: const TextStyle(
               color: getTextBlack,
               fontSize: 14,
             ),
@@ -211,11 +211,11 @@ class NewsPage extends StatelessWidget {
     return AppBar(
       title: Obx(() {
         if (logic.connectStatus.value == ConnectStatus.connect) {
-          return const Text("连接中");
+          return Text("连接中".tr);
         } else if (logic.connectStatus.value == ConnectStatus.pulling) {
-          return const Text("拉取中");
+          return Text("拉取中".tr);
         }
-        return const Text("会话");
+        return Text("会话".tr);
       }),
       actions: buildActions(),
       centerTitle: false,
@@ -299,7 +299,7 @@ class NewsPage extends StatelessWidget {
     }
     DraftModel? draftModel = convModel.draftModel;
     if (draftModel != null) {
-      prefix = "[草稿] ";
+      prefix = "[草稿] ".tr;
       content = draftModel.content;
     } else {
       MsgModel? msgModel = convModel.msgModel;
@@ -308,9 +308,9 @@ class NewsPage extends StatelessWidget {
         List<String> atUsers = msgModel.atUsers;
         if (atUsers.isNotEmpty) {
           if (atUsers.contains("all")) {
-            prefix = "[@所有人] ";
+            prefix = "[@所有人] ".tr;
           } else if (atUsers.contains(HiveTool.getUserId())) {
-            prefix = "[@我] ";
+            prefix = "[@我] ".tr;
           }
         }
         if (contentType == MsgContentType.tip) {
@@ -318,29 +318,29 @@ class NewsPage extends StatelessWidget {
         } else if (contentType == MsgContentType.text) {
           content = msgModel.content;
         } else if (contentType == MsgContentType.image) {
-          content = "[图片]";
+          content = "[图片]".tr;
         } else if (contentType == MsgContentType.audio) {
-          content = "[语音]";
+          content = "[语音]".tr;
         } else if (contentType == MsgContentType.video) {
-          content = "[视频]";
+          content = "[视频]".tr;
         } else if (contentType == MsgContentType.file) {
-          content = "[文件]";
+          content = "[文件]".tr;
         } else if (contentType == MsgContentType.location) {
-          content = "[位置]";
+          content = "[位置]".tr;
         } else if (contentType == MsgContentType.card) {
-          content = "[名片]";
+          content = "[名片]".tr;
         } else if (contentType == MsgContentType.merge) {
-          content = "[合并消息]";
+          content = "[合并消息]".tr;
         } else if (contentType == MsgContentType.emoji) {
-          content = "[表情消息]";
+          content = "[表情消息]".tr;
         } else if (contentType == MsgContentType.command) {
-          content = "[命令消息]";
+          content = "[命令消息]".tr;
         } else if (contentType == MsgContentType.richText) {
-          content = "[富文本消息]";
+          content = "[富文本消息]".tr;
         } else if (contentType == MsgContentType.markdown) {
-          content = "[标记消息]";
+          content = "[标记消息]".tr;
         } else if (contentType == MsgContentType.custom) {
-          content = "[自定义消息]";
+          content = "[自定义消息]".tr;
         }
       }
     }

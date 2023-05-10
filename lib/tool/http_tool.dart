@@ -9,7 +9,7 @@ enum ErrorType {
   response,
 }
 
-const String errorMsg = "网络开小差啦，请稍后重试！";
+final String errorMsg = "网络开小差啦，请稍后重试！".tr;
 
 typedef SuccessCallback = Function(dynamic body);
 typedef ErrorCallback = Function(ErrorType type, String error);

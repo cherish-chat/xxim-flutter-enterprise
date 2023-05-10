@@ -28,7 +28,7 @@ class CreateGroupLogic extends GetxController {
         PlatformFile file = files.first;
         Uint8List? bytes = file.bytes;
         if (bytes == null || bytes.isEmpty) return;
-        GetLoadingDialog.show("上传中");
+        GetLoadingDialog.show("上传中".tr);
         try {
           String objectId = await MinIOTool.upload(
             file.name,
@@ -38,7 +38,7 @@ class CreateGroupLogic extends GetxController {
           GetLoadingDialog.hide();
         } catch (_) {
           GetLoadingDialog.hide();
-          Tool.showToast("上传失败");
+          Tool.showToast("上传失败".tr);
         }
       },
     );
@@ -56,18 +56,18 @@ class CreateGroupLogic extends GetxController {
 
   void create() {
     if (avatarUrl.value.isEmpty) {
-      Tool.showToast("请选择群头像");
+      Tool.showToast("请选择群头像".tr);
       return;
     }
     if (nickname.text.isEmpty) {
-      Tool.showToast("请输入群名称");
+      Tool.showToast("请输入群名称".tr);
       return;
     }
     if (list.isEmpty) {
-      Tool.showToast("请添加群成员");
+      Tool.showToast("请添加群成员".tr);
       return;
     }
-    GetLoadingDialog.show("创建中");
+    GetLoadingDialog.show("创建中".tr);
     XXIM.instance.customRequest<CreateGroupResp>(
       method: "/v1/group/createGroup",
       req: CreateGroupReq(
@@ -80,7 +80,7 @@ class CreateGroupLogic extends GetxController {
       resp: CreateGroupResp.create,
       onSuccess: (data) {
         GetLoadingDialog.hide();
-        Tool.showToast("创建成功");
+        Tool.showToast("创建成功".tr);
         MenuLogic.logic()?.loadConvIdList();
         Get.back();
       },
@@ -140,7 +140,7 @@ class CreateGroupPage extends StatelessWidget {
         }
         return const GetBackButton();
       }),
-      title: const Text("创建群聊"),
+      title: Text("创建群聊".tr),
     );
   }
 
@@ -152,9 +152,9 @@ class CreateGroupPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 8),
         child: Row(
           children: [
-            const Text(
-              "群头像",
-              style: TextStyle(
+            Text(
+              "群头像".tr,
+              style: const TextStyle(
                 color: getTextBlack,
                 fontSize: 14,
                 fontWeight: getMedium,
@@ -186,9 +186,9 @@ class CreateGroupPage extends StatelessWidget {
   Widget _buildNickname(CreateGroupLogic logic) {
     return Row(
       children: [
-        const Text(
-          "群名称",
-          style: TextStyle(
+        Text(
+          "群名称".tr,
+          style: const TextStyle(
             color: getTextBlack,
             fontSize: 14,
             fontWeight: getMedium,
@@ -197,7 +197,7 @@ class CreateGroupPage extends StatelessWidget {
         Expanded(
           child: InputWidget(
             logic.nickname,
-            "请输入群名称",
+            "请输入群名称".tr,
             contentPadding: const EdgeInsets.symmetric(
               vertical: 20,
               horizontal: 28,
@@ -218,8 +218,8 @@ class CreateGroupPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 8),
         child: Row(
           children: [
-            const Text(
-              "群成员",
+            Text(
+              "群成员".tr,
               style: TextStyle(
                 color: getTextBlack,
                 fontSize: 14,
@@ -285,9 +285,9 @@ class CreateGroupPage extends StatelessWidget {
           color: getMainColor,
           borderRadius: BorderRadius.circular(25),
         ),
-        child: const Text(
-          "创建",
-          style: TextStyle(
+        child: Text(
+          "创建".tr,
+          style: const TextStyle(
             color: getTextWhite,
             fontSize: 18,
           ),

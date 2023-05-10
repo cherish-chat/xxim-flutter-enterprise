@@ -74,7 +74,7 @@ class FriendApplyLogic extends GetxController {
     String requestId,
     String applyUserId,
   ) {
-    GetLoadingDialog.show("请稍等");
+    GetLoadingDialog.show("请稍等".tr);
     XXIM.instance.customRequest<RejectAddFriendResp>(
       method: "/v1/relation/rejectAddFriend",
       req: RejectAddFriendReq(
@@ -97,7 +97,7 @@ class FriendApplyLogic extends GetxController {
     String requestId,
     String applyUserId,
   ) {
-    GetLoadingDialog.show("请稍等");
+    GetLoadingDialog.show("请稍等".tr);
     XXIM.instance.customRequest<AcceptAddFriendResp>(
       method: "/v1/relation/acceptAddFriend",
       req: AcceptAddFriendReq(
@@ -156,7 +156,7 @@ class FriendApplyPage extends StatelessWidget {
         }
         return const GetBackButton();
       }),
-      title: const Text("好友申请"),
+      title: Text("好友申请".tr),
     );
   }
 
@@ -189,11 +189,11 @@ class FriendApplyPage extends StatelessWidget {
   ) {
     String status = "";
     if (event.status == RequestAddFriendStatus.Unhandled) {
-      status = "等待验证";
+      status = "等待验证".tr;
     } else if (event.status == RequestAddFriendStatus.Agreed) {
-      status = "已同意";
+      status = "已同意".tr;
     } else if (event.status == RequestAddFriendStatus.Refused) {
-      status = "已拒绝";
+      status = "已拒绝".tr;
     }
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -224,7 +224,7 @@ class FriendApplyPage extends StatelessWidget {
                 const SizedBox(height: 3),
                 Text(
                   event.fromUserId == HiveTool.getUserId()
-                      ? "请求添加对方为好友"
+                      ? "请求添加对方为好友".tr
                       : event.extra.content,
                   style: const TextStyle(
                     color: getHintBlack,
@@ -268,9 +268,9 @@ class FriendApplyPage extends StatelessWidget {
                       color: getMainColor,
                       borderRadius: BorderRadius.circular(12.5),
                     ),
-                    child: const Text(
-                      "拒绝",
-                      style: TextStyle(
+                    child: Text(
+                      "拒绝".tr,
+                      style: const TextStyle(
                         color: getTextWhite,
                         fontSize: 12,
                       ),
@@ -291,9 +291,9 @@ class FriendApplyPage extends StatelessWidget {
                       color: getMainColor,
                       borderRadius: BorderRadius.circular(12.5),
                     ),
-                    child: const Text(
-                      "同意",
-                      style: TextStyle(
+                    child: Text(
+                      "同意".tr,
+                      style: const TextStyle(
                         color: getTextWhite,
                         fontSize: 12,
                       ),

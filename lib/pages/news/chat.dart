@@ -216,7 +216,7 @@ class ChatLogic extends GetxController {
           if (file.bytes == null || file.bytes!.isEmpty) continue;
           List<int> bytes = file.bytes!.toList();
           if (GetPlatform.isWeb && bytes.length > 20000000) {
-            Tool.showToast("网页不支持发送太大的文件");
+            Tool.showToast("网页不支持发送太大的文件".tr);
             return;
           }
           String header = getFileHeader(bytes);
@@ -289,7 +289,7 @@ class ChatLogic extends GetxController {
               },
             );
           } else {
-            Tool.showToast("不支持的类型");
+            Tool.showToast("不支持的类型".tr);
           }
         }
       },
@@ -345,7 +345,7 @@ class ChatLogic extends GetxController {
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
-        content: "[图片]",
+        content: "[图片]".tr,
       ),
       ext: _getMsgExt(),
     );
@@ -395,7 +395,7 @@ class ChatLogic extends GetxController {
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
-        content: "[语音]",
+        content: "[语音]".tr,
       ),
       ext: _getMsgExt(),
     );
@@ -445,7 +445,7 @@ class ChatLogic extends GetxController {
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
-        content: "[视频]",
+        content: "[视频]".tr,
       ),
       ext: _getMsgExt(),
     );
@@ -509,7 +509,7 @@ class ChatLogic extends GetxController {
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
-        content: "[文件]",
+        content: "[文件]".tr,
       ),
       ext: _getMsgExt(),
     );
@@ -521,7 +521,7 @@ class ChatLogic extends GetxController {
       content: content,
       offlinePush: MsgOfflinePushModel(
         title: HiveTool.getNickname(),
-        content: "[位置]",
+        content: "[位置]".tr,
       ),
       ext: _getMsgExt(),
     );
@@ -607,7 +607,7 @@ class ChatPage extends StatelessWidget {
   }
 
   Widget _buildAppBar(ChatLogic logic) {
-    String text = "聊天";
+    String text = "聊天".tr;
     if (SDKTool.isSingleConv(logic.convId)) {
       String userId = SDKTool.getSingleId(
         logic.convId,
@@ -656,9 +656,9 @@ class ChatPage extends StatelessWidget {
                 groupId: SDKTool.getGroupId(logic.convId),
               );
             },
-            child: const Text(
-              "成员",
-              style: TextStyle(
+            child: Text(
+              "成员".tr,
+              style: const TextStyle(
                 color: getTextBlack,
                 fontSize: 14,
               ),
@@ -846,29 +846,29 @@ class ChatPage extends StatelessWidget {
       if (contentType == MsgContentType.text) {
         content = msgModel.content;
       } else if (contentType == MsgContentType.image) {
-        content = "[图片]";
+        content = "[图片]".tr;
       } else if (contentType == MsgContentType.audio) {
-        content = "[语音]";
+        content = "[语音]".tr;
       } else if (contentType == MsgContentType.video) {
-        content = "[视频]";
+        content = "[视频]".tr;
       } else if (contentType == MsgContentType.file) {
-        content = "[文件]";
+        content = "[文件]".tr;
       } else if (contentType == MsgContentType.location) {
-        content = "[位置]";
+        content = "[位置]".tr;
       } else if (contentType == MsgContentType.card) {
-        content = "[名片]";
+        content = "[名片]".tr;
       } else if (contentType == MsgContentType.merge) {
-        content = "[合并消息]";
+        content = "[合并消息]".tr;
       } else if (contentType == MsgContentType.emoji) {
-        content = "[表情消息]";
+        content = "[表情消息]".tr;
       } else if (contentType == MsgContentType.command) {
-        content = "[命令消息]";
+        content = "[命令消息]".tr;
       } else if (contentType == MsgContentType.richText) {
-        content = "[富文本消息]";
+        content = "[富文本消息]".tr;
       } else if (contentType == MsgContentType.markdown) {
-        content = "[标记消息]";
+        content = "[标记消息]".tr;
       } else if (contentType == MsgContentType.custom) {
-        content = "[自定义消息]";
+        content = "[自定义消息]".tr;
       }
       return GestureDetector(
         behavior: HitTestBehavior.opaque,
@@ -919,7 +919,7 @@ class ChatPage extends StatelessWidget {
       ),
       child: ExtendedInputWidget(
         logic.inputController,
-        "输入文本",
+        "输入文本".tr,
         focusNode: logic.inputFocusNode,
         contentPadding: EdgeInsets.symmetric(
           vertical: GetPlatform.isMobile ? 10 : 14,

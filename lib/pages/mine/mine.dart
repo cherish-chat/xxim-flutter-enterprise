@@ -36,9 +36,9 @@ class MineLogic extends GetxController {
 
   void exit() {
     GetAlertDialog.show(
-      const Text(
-        "你确定要退出登录吗？",
-        style: TextStyle(
+      Text(
+        "你确定要退出登录吗？".tr,
+        style: const TextStyle(
           color: getTextBlack,
           fontSize: 16,
           fontWeight: getMedium,
@@ -46,11 +46,11 @@ class MineLogic extends GetxController {
         textAlign: TextAlign.center,
       ),
       actions: [
-        const TextButton(
+        TextButton(
           onPressed: GetAlertDialog.hide,
           child: Text(
-            "取消",
-            style: TextStyle(
+            "取消".tr,
+            style: const TextStyle(
               color: getTextBlack,
               fontSize: 14,
             ),
@@ -63,9 +63,9 @@ class MineLogic extends GetxController {
             XXIM.instance.disconnect();
             Get.offAllNamed(Routes.login);
           },
-          child: const Text(
-            "确定",
-            style: TextStyle(
+          child: Text(
+            "确定".tr,
+            style: const TextStyle(
               color: getTextBlack,
               fontSize: 14,
             ),
@@ -102,7 +102,7 @@ class MinePage extends StatelessWidget {
               const SizedBox(height: 10),
               _buildItem(
                 "assets/images/ic_edit_25.webp",
-                "编辑资料",
+                "编辑资料".tr,
                 () {
                   MenuLogic? logic = MenuLogic.logic();
                   if (logic == null) return;
@@ -114,7 +114,7 @@ class MinePage extends StatelessWidget {
               ),
               _buildItem(
                 "assets/images/ic_lock_25.webp",
-                "修改密码",
+                "修改密码".tr,
                 () {
                   MenuLogic? logic = MenuLogic.logic();
                   if (logic == null) return;
@@ -126,12 +126,12 @@ class MinePage extends StatelessWidget {
               ),
               // _buildItem(
               //   "assets/images/ic_settings_25.webp",
-              //   "系统设置",
+              //   "系统设置".tr,
               //   () {},
               // ),
               _buildItem(
                 "assets/images/ic_exit_25.webp",
-                "退出登录",
+                "退出登录".tr,
                 logic.exit,
               ),
             ],
@@ -156,7 +156,7 @@ class MinePage extends StatelessWidget {
     }
 
     return AppBar(
-      title: const Text("我的"),
+      title: Text("我的".tr),
       actions: buildActions(),
       centerTitle: false,
     );

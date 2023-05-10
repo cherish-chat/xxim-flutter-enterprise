@@ -27,9 +27,9 @@ class GroupChatLogic extends GetxController {
 
   void alertDelete(String groupId) {
     GetAlertDialog.show(
-      const Text(
-        "你确定要退出群聊吗？",
-        style: TextStyle(
+      Text(
+        "你确定要退出群聊吗？".tr,
+        style: const TextStyle(
           color: getTextBlack,
           fontSize: 16,
           fontWeight: getMedium,
@@ -37,11 +37,11 @@ class GroupChatLogic extends GetxController {
         textAlign: TextAlign.center,
       ),
       actions: [
-        const TextButton(
+        TextButton(
           onPressed: GetAlertDialog.hide,
           child: Text(
-            "取消",
-            style: TextStyle(
+            "取消".tr,
+            style: const TextStyle(
               color: getTextBlack,
               fontSize: 14,
             ),
@@ -52,9 +52,9 @@ class GroupChatLogic extends GetxController {
             GetAlertDialog.hide();
             deleteGroup(groupId);
           },
-          child: const Text(
-            "确定",
-            style: TextStyle(
+          child: Text(
+            "确定".tr,
+            style: const TextStyle(
               color: getTextBlack,
               fontSize: 14,
             ),
@@ -78,10 +78,10 @@ class GroupChatLogic extends GetxController {
         });
         loadList();
         NewsLogic.logic()?.deleteConv(SDKTool.groupConvId(groupId));
-        Tool.showToast("退出成功");
+        Tool.showToast("退出成功".tr);
       },
       onError: (code, error) {
-        Tool.showToast("退出失败");
+        Tool.showToast("退出失败".tr);
       },
     );
   }
@@ -125,7 +125,7 @@ class GroupChatPage extends StatelessWidget {
         }
         return const GetBackButton();
       }),
-      title: const Text("我的群聊"),
+      title: Text("我的群聊".tr),
     );
   }
 

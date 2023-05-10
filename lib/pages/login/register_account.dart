@@ -52,7 +52,7 @@ class RegisterAccountLogic extends GetxController {
         captchaBytes.assignAll(data.captcha);
       },
       onError: (code, error) {
-        Tool.showToast("获取验证码失败");
+        Tool.showToast("获取验证码失败".tr);
       },
     );
   }
@@ -60,26 +60,26 @@ class RegisterAccountLogic extends GetxController {
   void register() {
     Tool.hideKeyboard();
     if (username.text.isEmpty) {
-      Tool.showToast("请输入用户名");
+      Tool.showToast("请输入用户名".tr);
       return;
     }
     if (firstPwd.text.isEmpty) {
-      Tool.showToast("请输入密码");
+      Tool.showToast("请输入密码".tr);
       return;
     }
     if (confirmPwd.text.isEmpty) {
-      Tool.showToast("请确认密码");
+      Tool.showToast("请确认密码".tr);
       return;
     }
     if (captchaText.text.isEmpty) {
-      Tool.showToast("请输入验证码");
+      Tool.showToast("请输入验证码".tr);
       return;
     }
     // if (invitation.text.isEmpty) {
-    //   Tool.showToast("请输入邀请码");
+    //   Tool.showToast("请输入邀请码".tr);
     //   return;
     // }
-    GetLoadingDialog.show("注册中");
+    GetLoadingDialog.show("注册中".tr);
     XXIM.instance.customRequest<RegisterResp>(
       method: "/v1/user/white/register",
       req: RegisterReq(
@@ -101,7 +101,7 @@ class RegisterAccountLogic extends GetxController {
       onSuccess: (data) {
         GetLoadingDialog.hide();
         if (data.token.isEmpty) {
-          Tool.showToast("注册失败，请重试");
+          Tool.showToast("注册失败，请重试".tr);
           getCaptcha();
           return;
         }
@@ -124,7 +124,7 @@ class RegisterAccountPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const GetCloseButton(),
-        title: const Text("注册"),
+        title: Text("注册".tr),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -160,7 +160,7 @@ class RegisterAccountPage extends StatelessWidget {
       ),
       child: InputWidget(
         logic.username,
-        "请输入用户名",
+        "请输入用户名".tr,
         contentPadding: const EdgeInsets.symmetric(
           vertical: 18,
           horizontal: 16,
@@ -182,7 +182,7 @@ class RegisterAccountPage extends StatelessWidget {
       ),
       child: InputWidget(
         logic.firstPwd,
-        "请输入密码",
+        "请输入密码".tr,
         contentPadding: const EdgeInsets.symmetric(
           vertical: 18,
           horizontal: 16,
@@ -205,7 +205,7 @@ class RegisterAccountPage extends StatelessWidget {
       ),
       child: InputWidget(
         logic.confirmPwd,
-        "请确认密码",
+        "请确认密码".tr,
         contentPadding: const EdgeInsets.symmetric(
           vertical: 18,
           horizontal: 16,
@@ -231,7 +231,7 @@ class RegisterAccountPage extends StatelessWidget {
           Expanded(
             child: InputWidget(
               logic.captchaText,
-              "请输入验证码",
+              "请输入验证码".tr,
               contentPadding: const EdgeInsets.symmetric(
                 vertical: 18,
                 horizontal: 16,
@@ -253,9 +253,9 @@ class RegisterAccountPage extends StatelessWidget {
                         color: Colors.black,
                         borderRadius: BorderRadius.circular(17.5),
                       ),
-                      child: const Text(
-                        "获取验证码",
-                        style: TextStyle(
+                      child: Text(
+                        "获取验证码".tr,
+                        style: const TextStyle(
                           color: getTextWhite,
                           fontSize: 14,
                         ),
@@ -285,7 +285,7 @@ class RegisterAccountPage extends StatelessWidget {
   //     ),
   //     child: InputWidget(
   //       logic.invitation,
-  //       "请确认邀请码",
+  //       "请确认邀请码".tr,
   //       contentPadding: const EdgeInsets.symmetric(
   //         vertical: 18,
   //         horizontal: 16,
@@ -307,9 +307,9 @@ class RegisterAccountPage extends StatelessWidget {
           color: getMainColor,
           borderRadius: BorderRadius.circular(25),
         ),
-        child: const Text(
-          "注册",
-          style: TextStyle(
+        child: Text(
+          "注册".tr,
+          style: const TextStyle(
             color: getTextWhite,
             fontSize: 18,
           ),

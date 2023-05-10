@@ -24,10 +24,10 @@ class AddGroupLogic extends GetxController {
 
   void search() {
     if (controller.text.isEmpty) {
-      Tool.showToast("请输入");
+      Tool.showToast("请输入".tr);
       return;
     }
-    GetLoadingDialog.show("请稍等");
+    GetLoadingDialog.show("请稍等".tr);
     XXIM.instance.customRequest<SearchGroupsByKeywordResp>(
       method: "/v1/group/searchGroupsByKeyword",
       req: SearchGroupsByKeywordReq(
@@ -39,7 +39,7 @@ class AddGroupLogic extends GetxController {
         list = data.groups;
         update(["list"]);
         if (list.isEmpty) {
-          Tool.showToast("暂未搜索到结果");
+          Tool.showToast("暂未搜索到结果".tr);
         }
       },
       onError: (code, error) {
@@ -49,17 +49,17 @@ class AddGroupLogic extends GetxController {
   }
 
   void apply(String id) {
-    GetLoadingDialog.show("请稍等");
+    GetLoadingDialog.show("请稍等".tr);
     XXIM.instance.customRequest<ApplyToBeGroupMemberResp>(
       method: "/v1/group/applyToBeGroupMember",
       req: ApplyToBeGroupMemberReq(
         groupId: id,
-        reason: "请求加入群聊",
+        reason: "请求加入群聊".tr,
       ),
       resp: ApplyToBeGroupMemberResp.create,
       onSuccess: (data) {
         GetLoadingDialog.hide();
-        Tool.showToast("申请成功");
+        Tool.showToast("申请成功".tr);
       },
       onError: (code, error) {
         GetLoadingDialog.hide();
@@ -107,7 +107,7 @@ class AddGroupPage extends StatelessWidget {
         }
         return const GetBackButton();
       }),
-      title: const Text("添加群聊"),
+      title: Text("添加群聊".tr),
     );
   }
 
@@ -122,7 +122,7 @@ class AddGroupPage extends StatelessWidget {
       ),
       child: InputWidget(
         logic.controller,
-        "请输入群昵称",
+        "请输入群昵称".tr,
         contentPadding: const EdgeInsets.symmetric(
           vertical: 16,
           horizontal: 16,
@@ -199,9 +199,9 @@ class AddGroupPage extends StatelessWidget {
             ),
           ),
           if (index != -1)
-            const Text(
-              "已加群聊",
-              style: TextStyle(
+            Text(
+              "已加群聊".tr,
+              style: const TextStyle(
                 color: getHintBlack,
                 fontSize: 14,
               ),
@@ -220,9 +220,9 @@ class AddGroupPage extends StatelessWidget {
                   color: getMainColor,
                   borderRadius: BorderRadius.circular(12.5),
                 ),
-                child: const Text(
-                  "申请",
-                  style: TextStyle(
+                child: Text(
+                  "申请".tr,
+                  style: const TextStyle(
                     color: getTextWhite,
                     fontSize: 12,
                   ),

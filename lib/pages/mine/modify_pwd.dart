@@ -25,14 +25,14 @@ class ModifyPwdLogic extends GetxController {
   void modify() {
     Tool.hideKeyboard();
     if (oldPwd.text.isEmpty) {
-      Tool.showToast("请输入原密码");
+      Tool.showToast("请输入原密码".tr);
       return;
     }
     if (newPwd.text.isEmpty) {
-      Tool.showToast("请输入新密码");
+      Tool.showToast("请输入新密码".tr);
       return;
     }
-    GetLoadingDialog.show("修改中");
+    GetLoadingDialog.show("修改中".tr);
     XXIM.instance.customRequest<UpdateUserPasswordResp>(
       method: "/v1/user/updateUserPassword",
       req: UpdateUserPasswordReq(
@@ -42,7 +42,7 @@ class ModifyPwdLogic extends GetxController {
       resp: UpdateUserPasswordResp.create,
       onSuccess: (data) {
         GetLoadingDialog.hide();
-        Tool.showToast("修改成功");
+        Tool.showToast("修改成功".tr);
         Get.back();
       },
       onError: (code, error) {
@@ -103,7 +103,7 @@ class ModifyPwdPage extends StatelessWidget {
         }
         return const GetBackButton();
       }),
-      title: const Text("修改密码"),
+      title: Text("修改密码".tr),
     );
   }
 
@@ -118,7 +118,7 @@ class ModifyPwdPage extends StatelessWidget {
       ),
       child: InputWidget(
         logic.oldPwd,
-        "请输入原密码",
+        "请输入原密码".tr,
         contentPadding: const EdgeInsets.symmetric(
           vertical: 18,
           horizontal: 16,
@@ -141,7 +141,7 @@ class ModifyPwdPage extends StatelessWidget {
       ),
       child: InputWidget(
         logic.newPwd,
-        "请确认新密码",
+        "请确认新密码".tr,
         contentPadding: const EdgeInsets.symmetric(
           vertical: 18,
           horizontal: 16,
@@ -165,9 +165,9 @@ class ModifyPwdPage extends StatelessWidget {
           color: getMainColor,
           borderRadius: BorderRadius.circular(25),
         ),
-        child: const Text(
-          "修改",
-          style: TextStyle(
+        child: Text(
+          "修改".tr,
+          style: const TextStyle(
             color: getTextWhite,
             fontSize: 18,
           ),

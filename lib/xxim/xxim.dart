@@ -361,9 +361,9 @@ class XXIM {
             XXIM.instance.disconnect();
             Get.offAllNamed(Routes.login);
           },
-          child: const Text(
-            "好的",
-            style: TextStyle(
+          child: Text(
+            "好的".tr,
+            style: const TextStyle(
               color: getTextBlack,
               fontSize: 14,
             ),

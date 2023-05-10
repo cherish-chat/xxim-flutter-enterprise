@@ -387,29 +387,29 @@ class ChatReplyItem extends StatelessWidget {
     if (contentType == MsgContentType.text) {
       content = msgModel.content;
     } else if (contentType == MsgContentType.image) {
-      content = "[图片]";
+      content = "[图片]".tr;
     } else if (contentType == MsgContentType.audio) {
-      content = "[语音]";
+      content = "[语音]".tr;
     } else if (contentType == MsgContentType.video) {
-      content = "[视频]";
+      content = "[视频]".tr;
     } else if (contentType == MsgContentType.file) {
-      content = "[文件]";
+      content = "[文件]".tr;
     } else if (contentType == MsgContentType.location) {
-      content = "[位置]";
+      content = "[位置]".tr;
     } else if (contentType == MsgContentType.card) {
-      content = "[名片]";
+      content = "[名片]".tr;
     } else if (contentType == MsgContentType.merge) {
-      content = "[合并消息]";
+      content = "[合并消息]".tr;
     } else if (contentType == MsgContentType.emoji) {
-      content = "[表情消息]";
+      content = "[表情消息]".tr;
     } else if (contentType == MsgContentType.command) {
-      content = "[命令消息]";
+      content = "[命令消息]".tr;
     } else if (contentType == MsgContentType.richText) {
-      content = "[富文本消息]";
+      content = "[富文本消息]".tr;
     } else if (contentType == MsgContentType.markdown) {
-      content = "[标记消息]";
+      content = "[标记消息]".tr;
     } else if (contentType == MsgContentType.custom) {
-      content = "[自定义消息]";
+      content = "[自定义消息]".tr;
     }
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -827,7 +827,7 @@ class _ChatAudioItemState extends State<ChatAudioItem> {
             if (_direction == ChatDirection.left)
               _buildRipple(_direction, _timerIndex),
             Text(
-              "${duration == 0 ? "未知" : duration}\u{0022}",
+              "${duration == 0 ? "未知".tr : duration}\u{0022}",
               style: TextStyle(
                 color: _direction == ChatDirection.left
                     ? getTextBlack

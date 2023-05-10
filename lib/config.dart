@@ -12,10 +12,7 @@ const String rsaPublicKey = "-----BEGIN PUBLIC KEY-----\n"
     "\n-----END PUBLIC KEY-----";
 
 /// text翻译配置
-const String fromTranslate = "en";
-const List<String> toTranslateList = [
-  "et",
-  "zh",
-];
+const String fromTranslate = "zh";
+const List<String> toTranslateList = ["en", "fr", "ro"];
 
 const String gdWebKey = "";

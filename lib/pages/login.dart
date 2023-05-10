@@ -52,7 +52,7 @@ class LoginLogic extends GetxController {
         captchaBytes.assignAll(data.captcha);
       },
       onError: (code, error) {
-        Tool.showToast("获取验证码失败");
+        Tool.showToast("获取验证码失败".tr);
       },
     );
   }
@@ -60,18 +60,18 @@ class LoginLogic extends GetxController {
   void login() async {
     Tool.hideKeyboard();
     if (username.text.isEmpty) {
-      Tool.showToast("请输入用户名");
+      Tool.showToast("请输入用户名".tr);
       return;
     }
     if (password.text.isEmpty) {
-      Tool.showToast("请输入密码");
+      Tool.showToast("请输入密码".tr);
       return;
     }
     if (captchaText.text.isEmpty) {
-      Tool.showToast("请输入验证码");
+      Tool.showToast("请输入验证码".tr);
       return;
     }
-    GetLoadingDialog.show("登录中");
+    GetLoadingDialog.show("登录中".tr);
     if (!XXIM.instance.isConnect()) {
       bool isConnect = await XXIM.instance.connect();
       if (!isConnect) {
@@ -91,7 +91,7 @@ class LoginLogic extends GetxController {
       onSuccess: (data) async {
         GetLoadingDialog.hide();
         if (data.token.isEmpty) {
-          Tool.showToast("此账号暂未注册");
+          Tool.showToast("此账号暂未注册".tr);
           getCaptcha();
           return;
         }
@@ -100,7 +100,7 @@ class LoginLogic extends GetxController {
           token: data.token,
         );
         if (!status) {
-          Tool.showToast("登录失败，请重试");
+          Tool.showToast("登录失败，请重试".tr);
           getCaptcha();
           return;
         }
@@ -127,9 +127,9 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                "欢迎光临",
-                style: TextStyle(
+              Text(
+                "欢迎光临".tr,
+                style: const TextStyle(
                   color: getTextBlack,
                   fontSize: 35,
                   fontWeight: getBold,
@@ -164,7 +164,7 @@ class LoginPage extends StatelessWidget {
       ),
       child: InputWidget(
         logic.username,
-        "请输入用户名",
+        "请输入用户名".tr,
         contentPadding: const EdgeInsets.symmetric(
           vertical: 18,
           horizontal: 16,
@@ -186,7 +186,7 @@ class LoginPage extends StatelessWidget {
       ),
       child: InputWidget(
         logic.password,
-        "请输入密码",
+        "请输入密码".tr,
         contentPadding: const EdgeInsets.symmetric(
           vertical: 18,
           horizontal: 16,
@@ -214,7 +214,7 @@ class LoginPage extends StatelessWidget {
           Expanded(
             child: InputWidget(
               logic.captchaText,
-              "请输入验证码",
+              "请输入验证码".tr,
               contentPadding: const EdgeInsets.symmetric(
                 vertical: 18,
                 horizontal: 16,
@@ -236,9 +236,9 @@ class LoginPage extends StatelessWidget {
                         color: Colors.black,
                         borderRadius: BorderRadius.circular(17.5),
                       ),
-                      child: const Text(
-                        "获取验证码",
-                        style: TextStyle(
+                      child: Text(
+                        "获取验证码".tr,
+                        style: const TextStyle(
                           color: getTextWhite,
                           fontSize: 14,
                         ),
@@ -269,9 +269,9 @@ class LoginPage extends StatelessWidget {
           color: getMainColor,
           borderRadius: BorderRadius.circular(25),
         ),
-        child: const Text(
-          "登录",
-          style: TextStyle(
+        child: Text(
+          "登录".tr,
+          style: const TextStyle(
             color: getTextWhite,
             fontSize: 18,
           ),
@@ -286,11 +286,11 @@ class LoginPage extends StatelessWidget {
       onTap: () {
         Get.toNamed(Routes.registerAccount);
       },
-      child: const Padding(
-        padding: EdgeInsets.symmetric(vertical: 10),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
         child: Text(
-          "账号注册",
-          style: TextStyle(
+          "账号注册".tr,
+          style: const TextStyle(
             color: getMainColor,
             fontSize: 14,
           ),

@@ -27,7 +27,7 @@ class Footer extends StatelessWidget {
         );
         if (mode == LoadStatus.noMore) {
           widget = Text(
-            "到底啦~",
+            "到底啦~".tr,
             style: TextStyle(
               color:
                   brightness == Brightness.dark ? getTextBlack : getTextWhite,
@@ -36,7 +36,7 @@ class Footer extends StatelessWidget {
           );
         } else if (mode == LoadStatus.failed) {
           widget = Text(
-            "加载失败",
+            "加载失败".tr,
             style: TextStyle(
               color:
                   brightness == Brightness.dark ? getTextBlack : getTextWhite,

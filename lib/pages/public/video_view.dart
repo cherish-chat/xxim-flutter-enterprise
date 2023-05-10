@@ -90,7 +90,7 @@ class VideoViewLogic extends GetxController {
     controller!.addListener(() {
       VideoPlayerValue value = controller!.value;
       if (value.hasError) {
-        Tool.showToast("视频播放失败");
+        Tool.showToast("视频播放失败".tr);
         VideoView.hide();
       }
     });

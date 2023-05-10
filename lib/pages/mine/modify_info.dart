@@ -32,7 +32,7 @@ class ModifyInfoLogic extends GetxController {
         PlatformFile file = files.first;
         Uint8List? bytes = file.bytes;
         if (bytes == null || bytes.isEmpty) return;
-        GetLoadingDialog.show("修改中");
+        GetLoadingDialog.show("修改中".tr);
         try {
           String objectId = await MinIOTool.upload(
             file.name,
@@ -47,7 +47,7 @@ class ModifyInfoLogic extends GetxController {
             onSuccess: (data) {
               avatarUrl.value = objectId;
               GetLoadingDialog.hide();
-              Tool.showToast("修改成功");
+              Tool.showToast("修改成功".tr);
               MineLogic.logic()?.loadData();
               MenuLogic.logic()?.loadConvIdList();
             },
@@ -57,7 +57,7 @@ class ModifyInfoLogic extends GetxController {
           );
         } catch (_) {
           GetLoadingDialog.hide();
-          Tool.showToast("修改失败");
+          Tool.showToast("修改失败".tr);
         }
       },
     );
@@ -66,10 +66,10 @@ class ModifyInfoLogic extends GetxController {
   void modifyNickname() {
     Tool.hideKeyboard();
     if (nickname.text.isEmpty) {
-      Tool.showToast("请输入昵称");
+      Tool.showToast("请输入昵称".tr);
       return;
     }
-    GetLoadingDialog.show("修改中");
+    GetLoadingDialog.show("修改中".tr);
     XXIM.instance.customRequest<UpdateUserInfoResp>(
       method: "/v1/user/updateUserInfo",
       req: UpdateUserInfoReq(
@@ -78,7 +78,7 @@ class ModifyInfoLogic extends GetxController {
       resp: UpdateUserInfoResp.create,
       onSuccess: (data) {
         GetLoadingDialog.hide();
-        Tool.showToast("修改成功");
+        Tool.showToast("修改成功".tr);
         MineLogic.logic()?.loadData();
         MenuLogic.logic()?.loadConvIdList();
       },
@@ -135,7 +135,7 @@ class ModifyInfoPage extends StatelessWidget {
         }
         return const GetBackButton();
       }),
-      title: const Text("编辑资料"),
+      title: Text("编辑资料".tr),
     );
   }
 
@@ -147,9 +147,9 @@ class ModifyInfoPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 8),
         child: Row(
           children: [
-            const Text(
-              "头像",
-              style: TextStyle(
+            Text(
+              "头像".tr,
+              style: const TextStyle(
                 color: getTextBlack,
                 fontSize: 14,
                 fontWeight: getMedium,
@@ -181,9 +181,9 @@ class ModifyInfoPage extends StatelessWidget {
   Widget _buildNickname(ModifyInfoLogic logic) {
     return Row(
       children: [
-        const Text(
-          "昵称",
-          style: TextStyle(
+        Text(
+          "昵称".tr,
+          style: const TextStyle(
             color: getTextBlack,
             fontSize: 14,
             fontWeight: getMedium,
@@ -192,7 +192,7 @@ class ModifyInfoPage extends StatelessWidget {
         Expanded(
           child: InputWidget(
             logic.nickname,
-            "请输入昵称",
+            "请输入昵称".tr,
             contentPadding: const EdgeInsets.symmetric(
               vertical: 20,
               horizontal: 28,

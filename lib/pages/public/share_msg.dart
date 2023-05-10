@@ -59,7 +59,7 @@ class ShareMsgLogic extends GetxController {
         content: ImageContent.fromJson(content),
         offlinePush: MsgOfflinePushModel(
           title: HiveTool.getNickname(),
-          content: "[图片]",
+          content: "[图片]".tr,
         ),
       );
     } else if (contentType == MsgContentType.audio) {
@@ -68,7 +68,7 @@ class ShareMsgLogic extends GetxController {
         content: AudioContent.fromJson(content),
         offlinePush: MsgOfflinePushModel(
           title: HiveTool.getNickname(),
-          content: "[语音]",
+          content: "[语音]".tr,
         ),
       );
     } else if (contentType == MsgContentType.video) {
@@ -77,7 +77,7 @@ class ShareMsgLogic extends GetxController {
         content: VideoContent.fromJson(content),
         offlinePush: MsgOfflinePushModel(
           title: HiveTool.getNickname(),
-          content: "[视频]",
+          content: "[视频]".tr,
         ),
       );
     } else if (contentType == MsgContentType.file) {
@@ -86,7 +86,7 @@ class ShareMsgLogic extends GetxController {
         content: FileContent.fromJson(content),
         offlinePush: MsgOfflinePushModel(
           title: HiveTool.getNickname(),
-          content: "[文件]",
+          content: "[文件]".tr,
         ),
       );
     } else if (contentType == MsgContentType.location) {
@@ -95,7 +95,7 @@ class ShareMsgLogic extends GetxController {
         content: LocationContent.fromJson(content),
         offlinePush: MsgOfflinePushModel(
           title: HiveTool.getNickname(),
-          content: "[位置]",
+          content: "[位置]".tr,
         ),
       );
     }
@@ -157,9 +157,9 @@ class ShareMsgPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        child: const Text(
-                          "转发消息",
-                          style: TextStyle(
+                        child: Text(
+                          "转发消息".tr,
+                          style: const TextStyle(
                             color: getTextBlack,
                             fontSize: 16,
                           ),

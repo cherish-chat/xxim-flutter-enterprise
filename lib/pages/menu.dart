@@ -295,18 +295,18 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
       _buildItem(
         "assets/images/ic_news_28_nor.webp",
         "assets/images/ic_news_28_sel.webp",
-        "消息",
+        "消息".tr,
         count: logic.newsUnreadCount.value,
       ),
       _buildItem(
         "assets/images/ic_contact_28_nor.webp",
         "assets/images/ic_contact_28_sel.webp",
-        "通讯录",
+        "通讯录".tr,
       ),
       _buildItem(
         "assets/images/ic_mine_28_nor.webp",
         "assets/images/ic_mine_28_sel.webp",
-        "我的",
+        "我的".tr,
       ),
     ];
   }

@@ -38,7 +38,7 @@ class OutletPage extends StatelessWidget {
         }
         return const SizedBox();
       }),
-      title: const Text("空空如也"),
+      title: Text("空空如也".tr),
     );
   }
 

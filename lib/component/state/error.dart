@@ -38,16 +38,16 @@ class Error extends StatelessWidget {
         decoration: decoration,
         child: child ??
             Column(
-              children: const [
-                Icon(
+              children: [
+                const Icon(
                   Icons.error_outline_rounded,
                   size: 50,
                   color: Colors.black,
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Text(
-                  "点击重试",
-                  style: TextStyle(
+                  "点击重试".tr,
+                  style: const TextStyle(
                     color: getTextBlack,
                     fontSize: 12,
                   ),

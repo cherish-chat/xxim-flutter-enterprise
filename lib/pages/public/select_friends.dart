@@ -98,9 +98,9 @@ class SelectFriendsPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        child: const Text(
-                          "选择成员",
-                          style: TextStyle(
+                        child: Text(
+                          "选择成员".tr,
+                          style: const TextStyle(
                             color: getTextBlack,
                             fontSize: 16,
                           ),
@@ -217,7 +217,7 @@ class SelectFriendsPage extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: () {
         if (logic.selectList.isEmpty) {
-          Tool.showToast("请选择成员");
+          Tool.showToast("请选择成员".tr);
           return;
         }
         callback(logic.selectList);
@@ -231,9 +231,9 @@ class SelectFriendsPage extends StatelessWidget {
           color: getMainColor,
           borderRadius: BorderRadius.circular(25),
         ),
-        child: const Text(
-          "确认",
-          style: TextStyle(
+        child: Text(
+          "确认".tr,
+          style: const TextStyle(
             color: getTextWhite,
             fontSize: 18,
           ),

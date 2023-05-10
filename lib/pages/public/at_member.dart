@@ -143,9 +143,9 @@ class AtMemberPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        child: const Text(
-                          "群聊成员",
-                          style: TextStyle(
+                        child: Text(
+                          "群聊成员".tr,
+                          style: const TextStyle(
                             color: getTextBlack,
                             fontSize: 16,
                           ),
@@ -239,9 +239,9 @@ class AtMemberPage extends StatelessWidget {
             ),
             Text(
               memberInfo.role == GroupRole.OWNER
-                  ? "群主"
+                  ? "群主".tr
                   : memberInfo.role == GroupRole.MANAGER
-                      ? "管理员"
+                      ? "管理员".tr
                       : "",
               style: const TextStyle(
                 color: getHintBlack,

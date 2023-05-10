@@ -22,9 +22,9 @@ class MyCardPage extends StatelessWidget {
           const SizedBox(height: 35),
           _buildQRCode(logic),
           const SizedBox(height: 35),
-          const Text(
-            "扫一扫上面的二维码图案，加我为好友",
-            style: TextStyle(
+          Text(
+            "扫一扫上面的二维码图案，加我为好友".tr,
+            style: const TextStyle(
               color: getHintBlack,
               fontSize: 12,
             ),
@@ -51,7 +51,7 @@ class MyCardPage extends StatelessWidget {
         }
         return const GetBackButton();
       }),
-      title: const Text("我的名片"),
+      title: Text("我的名片".tr),
     );
   }
 
