@@ -386,6 +386,16 @@ class ChatReplyItem extends StatelessWidget {
     int contentType = msgModel.contentType;
     if (contentType == MsgContentType.text) {
       content = msgModel.content;
+      if (msgModel.senderId != HiveTool.getUserId() &&
+          msgModel.ext.isNotEmpty) {
+        Map extMap = json.decode(msgModel.ext);
+        String translateValue = extMap["translateMap"] ?? "";
+        if (translateValue.isNotEmpty) {
+          Map translateMap = json.decode(translateValue);
+          String languageCode = Get.locale?.languageCode ?? "";
+          content = translateMap[languageCode] ?? msgModel.content;
+        }
+      }
     } else if (contentType == MsgContentType.image) {
       content = "[图片]".tr;
     } else if (contentType == MsgContentType.audio) {
