@@ -1,5 +1,5 @@
 const String defConfigFile =
-    "https://showurl-test-1259311975.cos.ap-beijing.myqcloud.com/config.json";
+    "https://showurl-test-1259311975.cos.ap-beijing.myqcloud.com/config.amazon.json";
 const Map defConfigMap = {};
 
 /// config文件解密
@@ -13,6 +13,21 @@ const String rsaPublicKey = "-----BEGIN PUBLIC KEY-----\n"
 
 /// text翻译配置
 const String fromTranslate = "zh";
-const List<String> toTranslateList = ["en", "fr", "ro"];
+const List<String> toTranslateList = [
+  "en", // 英语
+  "fr", // 法语
+  "ro", // 罗马尼亚语
+  "hi", // 印地语
+  "id", // 印度尼西亚语
+  "ja", // 日语
+  "ko", // 韩语
+  "pt", // 葡萄牙语
+  "ru", // 俄语
+  "th", // 泰语
+  "vi", // 越南语
+  "zh", // 中文
+  "ur", // 乌尔都语
+  "zh-TW", // 中文（繁体）
+];
 
 const String gdWebKey = "";
