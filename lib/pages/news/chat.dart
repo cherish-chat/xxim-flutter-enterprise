@@ -925,7 +925,7 @@ class ChatPage extends StatelessWidget {
           vertical: GetPlatform.isMobile ? 10 : 14,
           horizontal: 16,
         ),
-        maxLines: GetPlatform.isWeb ? 1 : null,
+        maxLines: null,
         textInputType: TextInputType.text,
         textInputAction: TextInputAction.send,
         onChanged: (value) {
