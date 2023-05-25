@@ -1,5 +1,4 @@
 import 'dart:core';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'grid_menu_layout.dart';
 import 'list_menu_layout.dart';
@@ -40,7 +39,7 @@ class PopupMenu {
   bool get isShow => _isShow;
 
   final MenuConfig config;
-  final Size _screenSize = window.physicalSize / window.devicePixelRatio;
+  late Size _screenSize;
 
   PopupMenu({
     required this.context,
@@ -49,7 +48,10 @@ class PopupMenu {
     this.onClickMenu,
     this.onDismiss,
     this.onShow,
-  });
+  }) {
+    _screenSize =
+        View.of(context).physicalSize / View.of(context).devicePixelRatio;
+  }
 
   MenuLayout? menuLayout;
 
@@ -91,7 +93,7 @@ class PopupMenu {
       return build(layoutP, menuLayout!);
     });
 
-    Overlay.of(context)!.insert(_entry!);
+    Overlay.of(context).insert(_entry!);
     _isShow = true;
     onShow?.call();
   }

@@ -55,7 +55,7 @@ class GetPageScrollPhysics extends ScrollPhysics {
         (velocity >= 0.0 && position.pixels >= position.maxScrollExtent)) {
       return super.createBallisticSimulation(position, velocity);
     }
-    final Tolerance tolerance = this.tolerance;
+    final Tolerance tolerance = toleranceFor(position);
     final double target = _getTargetPixels(position, tolerance, velocity);
     if (target != position.pixels) {
       return ScrollSpringSimulation(spring, position.pixels, target, velocity,
@@ -69,10 +69,10 @@ class GetPageScrollPhysics extends ScrollPhysics {
 
   @override
   SpringDescription get spring => SpringDescription.withDampingRatio(
-        mass: 0.1,
-        stiffness: 100.0,
-        ratio: 1.1,
-      );
+    mass: 0.1,
+    stiffness: 100.0,
+    ratio: 1.1,
+  );
 }
 
 class _PagePosition extends ScrollPositionWithSingleContext
@@ -84,16 +84,13 @@ class _PagePosition extends ScrollPositionWithSingleContext
     bool keepPage = true,
     double viewportFraction = 1.0,
     super.oldPosition,
-  })  : assert(initialPage != null),
-        assert(keepPage != null),
-        assert(viewportFraction != null),
-        assert(viewportFraction > 0.0),
+  })  : assert(viewportFraction > 0.0),
         _viewportFraction = viewportFraction,
         _pageToUseOnStartup = initialPage.toDouble(),
         super(
-          initialPixels: null,
-          keepScrollOffset: keepPage,
-        );
+        initialPixels: null,
+        keepScrollOffset: keepPage,
+      );
 
   final int initialPage;
   double _pageToUseOnStartup;
@@ -105,14 +102,14 @@ class _PagePosition extends ScrollPositionWithSingleContext
 
   @override
   Future<void> ensureVisible(
-    RenderObject object, {
-    double alignment = 0.0,
-    Duration duration = Duration.zero,
-    Curve curve = Curves.ease,
-    ScrollPositionAlignmentPolicy alignmentPolicy =
-        ScrollPositionAlignmentPolicy.explicit,
-    RenderObject? targetRenderObject,
-  }) {
+      RenderObject object, {
+        double alignment = 0.0,
+        Duration duration = Duration.zero,
+        Curve curve = Curves.ease,
+        ScrollPositionAlignmentPolicy alignmentPolicy =
+            ScrollPositionAlignmentPolicy.explicit,
+        RenderObject? targetRenderObject,
+      }) {
     // Since the _PagePosition is intended to cover the available space within
     // its viewport, stop trying to move the target render object to the center
     // - otherwise, could end up changing which page is visible and moving the
@@ -168,27 +165,28 @@ class _PagePosition extends ScrollPositionWithSingleContext
   @override
   double? get page {
     assert(
-      !hasPixels || hasContentDimensions,
-      'Page value is only available after content dimensions are established.',
+    !hasPixels || hasContentDimensions,
+    'Page value is only available after content dimensions are established.',
     );
     return !hasPixels || !hasContentDimensions
         ? null
         : _cachedPage ??
-            getPageFromPixels(
-                clampDouble(pixels, minScrollExtent, maxScrollExtent),
-                viewportDimension);
+        getPageFromPixels(
+            clampDouble(pixels, minScrollExtent, maxScrollExtent),
+            viewportDimension);
   }
 
   @override
   void saveScrollOffset() {
-    PageStorage.of(context.storageContext)?.writeState(context.storageContext,
+    PageStorage.maybeOf(context.storageContext)?.writeState(
+        context.storageContext,
         _cachedPage ?? getPageFromPixels(pixels, viewportDimension));
   }
 
   @override
   void restoreScrollOffset() {
     if (!hasPixels) {
-      final double? value = PageStorage.of(context.storageContext)
+      final double? value = PageStorage.maybeOf(context.storageContext)
           ?.readState(context.storageContext) as double?;
       if (value != null) {
         _pageToUseOnStartup = value;
@@ -204,8 +202,6 @@ class _PagePosition extends ScrollPositionWithSingleContext
 
   @override
   void restoreOffset(double offset, {bool initialRestore = false}) {
-    assert(initialRestore != null);
-    assert(offset != null);
     if (initialRestore) {
       _pageToUseOnStartup = offset;
     } else {
@@ -216,7 +212,7 @@ class _PagePosition extends ScrollPositionWithSingleContext
   @override
   bool applyViewportDimension(double viewportDimension) {
     final double? oldViewportDimensions =
-        hasViewportDimension ? this.viewportDimension : null;
+    hasViewportDimension ? this.viewportDimension : null;
     if (viewportDimension == oldViewportDimensions) {
       return true;
     }
@@ -275,6 +271,7 @@ class _PagePosition extends ScrollPositionWithSingleContext
     double? viewportDimension,
     AxisDirection? axisDirection,
     double? viewportFraction,
+    double? devicePixelRatio,
   }) {
     return PageMetrics(
       minScrollExtent: minScrollExtent ??
@@ -286,6 +283,7 @@ class _PagePosition extends ScrollPositionWithSingleContext
           (hasViewportDimension ? this.viewportDimension : null),
       axisDirection: axisDirection ?? this.axisDirection,
       viewportFraction: viewportFraction ?? this.viewportFraction,
+      devicePixelRatio: devicePixelRatio ?? this.devicePixelRatio,
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:window_manager/window_manager.dart';
 import 'package:xxim_flutter_enterprise/component/component.dart';
 import 'package:xxim_flutter_enterprise/routes.dart';
@@ -74,7 +73,7 @@ class MyApp extends StatelessWidget {
           );
         },
         translations: Translation(),
-        locale: window.locale,
+        locale: View.of(context).platformDispatcher.locale,
         fallbackLocale: const Locale("zh", "CN"),
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,

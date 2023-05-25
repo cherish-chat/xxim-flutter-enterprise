@@ -56,7 +56,7 @@ class MyCardPage extends StatelessWidget {
   }
 
   Widget _buildQRCode(MyCardLogic logic) {
-    return QrImage(
+    return QrImageView(
       data: HiveTool.getUserId(),
       version: QrVersions.auto,
       size: 250,

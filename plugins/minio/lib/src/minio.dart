@@ -158,7 +158,7 @@ class Minio {
       throw MinioS3Error(error.message, error, resp);
     }
 
-    final etag = node.findAllElements('ETag').first.text;
+    final etag = node.findAllElements('ETag').first.innerText;
     return etag;
   }
 
@@ -298,7 +298,7 @@ class Minio {
 
     final node = xml.XmlDocument.parse(resp.body);
 
-    var location = node.findAllElements('LocationConstraint').first.text;
+    var location = node.findAllElements('LocationConstraint').first.innerText;
     // if (location == null || location.isEmpty) {
     if (location.isEmpty) {
       location = 'us-east-1';
@@ -377,7 +377,7 @@ class Minio {
     validate(resp, expect: 200);
 
     final node = xml.XmlDocument.parse(resp.body);
-    return node.findAllElements('UploadId').first.text;
+    return node.findAllElements('UploadId').first.innerText;
   }
 
   /// Returns a stream that emits objects that are partially uploaded.
@@ -569,8 +569,8 @@ class Minio {
     validate(resp);
 
     final node = xml.XmlDocument.parse(resp.body);
-    final isTruncated = getNodeProp(node.rootElement, 'IsTruncated')!.text;
-    final nextMarker = getNodeProp(node.rootElement, 'NextMarker')?.text;
+    final isTruncated = getNodeProp(node.rootElement, 'IsTruncated')!.innerText;
+    final nextMarker = getNodeProp(node.rootElement, 'NextMarker')?.innerText;
     final objs = node.findAllElements('Contents').map((c) => Object.fromXml(c));
     final prefixes = node
         .findAllElements('CommonPrefixes')
@@ -679,9 +679,9 @@ class Minio {
     validate(resp);
 
     final node = xml.XmlDocument.parse(resp.body);
-    final isTruncated = getNodeProp(node.rootElement, 'IsTruncated')!.text;
+    final isTruncated = getNodeProp(node.rootElement, 'IsTruncated')!.innerText;
     final nextContinuationToken =
-        getNodeProp(node.rootElement, 'NextContinuationToken')?.text;
+        getNodeProp(node.rootElement, 'NextContinuationToken')?.innerText;
     final objs = node.findAllElements('Contents').map((c) => Object.fromXml(c));
     final prefixes = node
         .findAllElements('CommonPrefixes')

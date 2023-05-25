@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'menu_item_widget.dart';
 import 'menu_layout.dart';
@@ -132,8 +131,8 @@ class GridMenuLayout implements MenuLayout {
   }
 
   double get screenWidth {
-    double width = window.physicalSize.width;
-    double ratio = window.devicePixelRatio;
+    double width = View.of(context).physicalSize.width;
+    double ratio = View.of(context).devicePixelRatio;
     return width / ratio;
   }
 

@@ -1013,7 +1013,8 @@ class ChatPage extends StatelessWidget {
                   TextSpan oldTextSpan = ExtendedSpecialBuilder().build(
                     inputValue.text,
                   );
-                  textValue = handleSpecialTextSpanDelete(
+                  textValue =
+                      ExtendedTextLibraryUtils.handleSpecialTextSpanDelete(
                     textValue,
                     inputValue,
                     oldTextSpan,

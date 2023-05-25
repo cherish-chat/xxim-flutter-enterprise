@@ -220,7 +220,7 @@ class CreateGroupPage extends StatelessWidget {
           children: [
             Text(
               "群成员".tr,
-              style: TextStyle(
+              style: const TextStyle(
                 color: getTextBlack,
                 fontSize: 14,
                 fontWeight: getMedium,

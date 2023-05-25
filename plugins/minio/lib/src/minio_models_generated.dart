@@ -14,7 +14,7 @@ class AbortIncompleteMultipartUpload {
 
   AbortIncompleteMultipartUpload.fromXml(XmlElement? xml) {
     daysAfterInitiation =
-        int.tryParse(getProp(xml, 'DaysAfterInitiation')!.text);
+        int.tryParse(getProp(xml, 'DaysAfterInitiation')!.innerText);
   }
 
   XmlNode toXml() {
@@ -37,7 +37,7 @@ class AccelerateConfiguration {
   );
 
   AccelerateConfiguration.fromXml(XmlElement xml) {
-    status = getProp(xml, 'Status')?.text;
+    status = getProp(xml, 'Status')?.innerText;
   }
 
   XmlNode toXml() {
@@ -87,7 +87,7 @@ class AccessControlTranslation {
   );
 
   AccessControlTranslation.fromXml(XmlElement? xml) {
-    owner = getProp(xml, 'Owner')?.text;
+    owner = getProp(xml, 'Owner')?.innerText;
   }
 
   XmlNode toXml() {
@@ -110,7 +110,7 @@ class AnalyticsAndOperator {
   );
 
   AnalyticsAndOperator.fromXml(XmlElement? xml) {
-    prefix = getProp(xml, 'Prefix')?.text;
+    prefix = getProp(xml, 'Prefix')?.innerText;
     tags = Tag.fromXml(getProp(xml, 'Tags'));
   }
 
@@ -140,7 +140,7 @@ class AnalyticsConfiguration {
 
   AnalyticsConfiguration.fromXml(XmlElement xml) {
     filter = AnalyticsFilter.fromXml(getProp(xml, 'Filter'));
-    id = getProp(xml, 'Id')?.text;
+    id = getProp(xml, 'Id')?.innerText;
     storageClassAnalysis =
         StorageClassAnalysis.fromXml(getProp(xml, 'StorageClassAnalysis'));
   }
@@ -200,7 +200,7 @@ class AnalyticsFilter {
 
   AnalyticsFilter.fromXml(XmlElement? xml) {
     and = AnalyticsAndOperator.fromXml(getProp(xml, 'And'));
-    prefix = getProp(xml, 'Prefix')?.text;
+    prefix = getProp(xml, 'Prefix')?.innerText;
     tag = Tag.fromXml(getProp(xml, 'Tag'));
   }
 
@@ -234,10 +234,10 @@ class AnalyticsS3BucketDestination {
   );
 
   AnalyticsS3BucketDestination.fromXml(XmlElement? xml) {
-    bucket = getProp(xml, 'Bucket')?.text;
-    bucketAccountId = getProp(xml, 'BucketAccountId')?.text;
-    format = getProp(xml, 'Format')?.text;
-    prefix = getProp(xml, 'Prefix')?.text;
+    bucket = getProp(xml, 'Bucket')?.innerText;
+    bucketAccountId = getProp(xml, 'BucketAccountId')?.innerText;
+    format = getProp(xml, 'Format')?.innerText;
+    prefix = getProp(xml, 'Prefix')?.innerText;
   }
 
   XmlNode toXml() {
@@ -273,8 +273,8 @@ class Bucket {
 
   factory Bucket.fromXml(XmlElement xml) {
     return Bucket(
-      DateTime.parse(getProp(xml, 'CreationDate')!.text),
-      getProp(xml, 'Name')!.text,
+      DateTime.parse(getProp(xml, 'CreationDate')!.innerText),
+      getProp(xml, 'Name')!.innerText,
     );
   }
 
@@ -354,11 +354,11 @@ class CloudFunctionConfiguration {
   );
 
   CloudFunctionConfiguration.fromXml(XmlElement? xml) {
-    cloudFunction = getProp(xml, 'CloudFunction')?.text;
-    event = getProp(xml, 'Event')?.text;
-    events = getProp(xml, 'Events')?.text;
-    id = getProp(xml, 'Id')?.text;
-    invocationRole = getProp(xml, 'InvocationRole')?.text;
+    cloudFunction = getProp(xml, 'CloudFunction')?.innerText;
+    event = getProp(xml, 'Event')?.innerText;
+    events = getProp(xml, 'Events')?.innerText;
+    id = getProp(xml, 'Id')?.innerText;
+    invocationRole = getProp(xml, 'InvocationRole')?.innerText;
   }
 
   XmlNode toXml() {
@@ -396,7 +396,7 @@ class CommonPrefix {
   );
 
   CommonPrefix.fromXml(XmlElement xml) {
-    prefix = getProp(xml, 'Prefix')?.text;
+    prefix = getProp(xml, 'Prefix')?.innerText;
   }
 
   XmlNode toXml() {
@@ -441,8 +441,8 @@ class CompletedPart {
   );
 
   CompletedPart.fromXml(XmlElement? xml) {
-    eTag = getProp(xml, 'ETag')?.text;
-    partNumber = int.tryParse(getProp(xml, 'PartNumber')!.text);
+    eTag = getProp(xml, 'ETag')?.innerText;
+    partNumber = int.tryParse(getProp(xml, 'PartNumber')!.innerText);
   }
 
   XmlNode toXml() {
@@ -470,8 +470,8 @@ class Condition {
 
   Condition.fromXml(XmlElement? xml) {
     httpErrorCodeReturnedEquals =
-        getProp(xml, 'HttpErrorCodeReturnedEquals')?.text;
-    keyPrefixEquals = getProp(xml, 'KeyPrefixEquals')?.text;
+        getProp(xml, 'HttpErrorCodeReturnedEquals')?.innerText;
+    keyPrefixEquals = getProp(xml, 'KeyPrefixEquals')?.innerText;
   }
 
   XmlNode toXml() {
@@ -512,8 +512,8 @@ class CopyObjectResult {
   );
 
   CopyObjectResult.fromXml(XmlElement xml) {
-    eTag = getProp(xml, 'ETag')?.text;
-    lastModified = DateTime.parse(getProp(xml, 'LastModified')!.text);
+    eTag = getProp(xml, 'ETag')?.innerText;
+    lastModified = DateTime.parse(getProp(xml, 'LastModified')!.innerText);
   }
 
   XmlNode toXml() {
@@ -540,8 +540,8 @@ class CopyPartResult {
   );
 
   CopyPartResult.fromXml(XmlElement xml) {
-    eTag = getProp(xml, 'ETag')?.text;
-    lastModified = DateTime.parse(getProp(xml, 'LastModified')!.text);
+    eTag = getProp(xml, 'ETag')?.innerText;
+    lastModified = DateTime.parse(getProp(xml, 'LastModified')!.innerText);
   }
 
   XmlNode toXml() {
@@ -593,11 +593,11 @@ class CORSRule {
   );
 
   CORSRule.fromXml(XmlElement? xml) {
-    allowedHeaders = getProp(xml, 'AllowedHeaders')?.text;
-    allowedMethods = getProp(xml, 'AllowedMethods')?.text;
-    allowedOrigins = getProp(xml, 'AllowedOrigins')?.text;
-    exposeHeaders = getProp(xml, 'ExposeHeaders')?.text;
-    maxAgeSeconds = int.tryParse(getProp(xml, 'MaxAgeSeconds')!.text);
+    allowedHeaders = getProp(xml, 'AllowedHeaders')?.innerText;
+    allowedMethods = getProp(xml, 'AllowedMethods')?.innerText;
+    allowedOrigins = getProp(xml, 'AllowedOrigins')?.innerText;
+    exposeHeaders = getProp(xml, 'ExposeHeaders')?.innerText;
+    maxAgeSeconds = int.tryParse(getProp(xml, 'MaxAgeSeconds')!.innerText);
   }
 
   XmlNode toXml() {
@@ -635,7 +635,7 @@ class CreateBucketConfiguration {
   );
 
   CreateBucketConfiguration.fromXml(XmlElement xml) {
-    locationConstraint = getProp(xml, 'LocationConstraint')?.text;
+    locationConstraint = getProp(xml, 'LocationConstraint')?.innerText;
   }
 
   XmlNode toXml() {
@@ -664,14 +664,14 @@ class CSVInput {
 
   CSVInput.fromXml(XmlElement? xml) {
     allowQuotedRecordDelimiter =
-        getProp(xml, 'AllowQuotedRecordDelimiter')?.text.toUpperCase() ==
+        getProp(xml, 'AllowQuotedRecordDelimiter')?.innerText.toUpperCase() ==
             'TRUE';
-    comments = getProp(xml, 'Comments')?.text;
-    fieldDelimiter = getProp(xml, 'FieldDelimiter')?.text;
-    fileHeaderInfo = getProp(xml, 'FileHeaderInfo')?.text;
-    quoteCharacter = getProp(xml, 'QuoteCharacter')?.text;
-    quoteEscapeCharacter = getProp(xml, 'QuoteEscapeCharacter')?.text;
-    recordDelimiter = getProp(xml, 'RecordDelimiter')?.text;
+    comments = getProp(xml, 'Comments')?.innerText;
+    fieldDelimiter = getProp(xml, 'FieldDelimiter')?.innerText;
+    fileHeaderInfo = getProp(xml, 'FileHeaderInfo')?.innerText;
+    quoteCharacter = getProp(xml, 'QuoteCharacter')?.innerText;
+    quoteEscapeCharacter = getProp(xml, 'QuoteEscapeCharacter')?.innerText;
+    recordDelimiter = getProp(xml, 'RecordDelimiter')?.innerText;
   }
 
   XmlNode toXml() {
@@ -722,11 +722,11 @@ class CSVOutput {
   );
 
   CSVOutput.fromXml(XmlElement? xml) {
-    fieldDelimiter = getProp(xml, 'FieldDelimiter')?.text;
-    quoteCharacter = getProp(xml, 'QuoteCharacter')?.text;
-    quoteEscapeCharacter = getProp(xml, 'QuoteEscapeCharacter')?.text;
-    quoteFields = getProp(xml, 'QuoteFields')?.text;
-    recordDelimiter = getProp(xml, 'RecordDelimiter')?.text;
+    fieldDelimiter = getProp(xml, 'FieldDelimiter')?.innerText;
+    quoteCharacter = getProp(xml, 'QuoteCharacter')?.innerText;
+    quoteEscapeCharacter = getProp(xml, 'QuoteEscapeCharacter')?.innerText;
+    quoteFields = getProp(xml, 'QuoteFields')?.innerText;
+    recordDelimiter = getProp(xml, 'RecordDelimiter')?.innerText;
   }
 
   XmlNode toXml() {
@@ -766,9 +766,9 @@ class DefaultRetention {
   );
 
   DefaultRetention.fromXml(XmlElement? xml) {
-    days = int.tryParse(getProp(xml, 'Days')!.text);
-    mode = getProp(xml, 'Mode')?.text;
-    years = int.tryParse(getProp(xml, 'Years')!.text);
+    days = int.tryParse(getProp(xml, 'Days')!.innerText);
+    mode = getProp(xml, 'Mode')?.innerText;
+    years = int.tryParse(getProp(xml, 'Years')!.innerText);
   }
 
   XmlNode toXml() {
@@ -800,7 +800,7 @@ class Delete {
 
   // Delete.fromXml(XmlElement xml) {
   //   objects = ObjectIdentifier.fromXml(getProp(xml, 'Objects'));
-  //   quiet = getProp(xml, 'Quiet')?.text?.toUpperCase() == 'TRUE';
+  //   quiet = getProp(xml, 'Quiet')?.innerText?.toUpperCase() == 'TRUE';
   // }
 
   XmlNode toXml() {
@@ -831,10 +831,10 @@ class DeletedObject {
   );
 
   DeletedObject.fromXml(XmlElement xml) {
-    deleteMarker = getProp(xml, 'DeleteMarker')?.text.toUpperCase() == 'TRUE';
-    deleteMarkerVersionId = getProp(xml, 'DeleteMarkerVersionId')?.text;
-    key = getProp(xml, 'Key')?.text;
-    versionId = getProp(xml, 'VersionId')?.text;
+    deleteMarker = getProp(xml, 'DeleteMarker')?.innerText.toUpperCase() == 'TRUE';
+    deleteMarkerVersionId = getProp(xml, 'DeleteMarkerVersionId')?.innerText;
+    key = getProp(xml, 'Key')?.innerText;
+    versionId = getProp(xml, 'VersionId')?.innerText;
   }
 
   XmlNode toXml() {
@@ -872,11 +872,11 @@ class DeleteMarkerEntry {
   );
 
   DeleteMarkerEntry.fromXml(XmlElement xml) {
-    isLatest = getProp(xml, 'IsLatest')?.text.toUpperCase() == 'TRUE';
-    key = getProp(xml, 'Key')?.text;
-    lastModified = DateTime.parse(getProp(xml, 'LastModified')!.text);
+    isLatest = getProp(xml, 'IsLatest')?.innerText.toUpperCase() == 'TRUE';
+    key = getProp(xml, 'Key')?.innerText;
+    lastModified = DateTime.parse(getProp(xml, 'LastModified')!.innerText);
     owner = Owner.fromXml(getProp(xml, 'Owner'));
-    versionId = getProp(xml, 'VersionId')?.text;
+    versionId = getProp(xml, 'VersionId')?.innerText;
   }
 
   XmlNode toXml() {
@@ -914,7 +914,7 @@ class DeleteMarkerReplication {
   );
 
   DeleteMarkerReplication.fromXml(XmlElement? xml) {
-    status = getProp(xml, 'Status')?.text;
+    status = getProp(xml, 'Status')?.innerText;
   }
 
   XmlNode toXml() {
@@ -944,13 +944,13 @@ class Destination {
   Destination.fromXml(XmlElement? xml) {
     accessControlTranslation = AccessControlTranslation.fromXml(
         getProp(xml, 'AccessControlTranslation'));
-    account = getProp(xml, 'Account')?.text;
-    bucket = getProp(xml, 'Bucket')?.text;
+    account = getProp(xml, 'Account')?.innerText;
+    bucket = getProp(xml, 'Bucket')?.innerText;
     encryptionConfiguration = EncryptionConfiguration.fromXml(
         getProp(xml, 'EncryptionConfiguration'));
     metrics = Metrics.fromXml(getProp(xml, 'Metrics'));
     replicationTime = ReplicationTime.fromXml(getProp(xml, 'ReplicationTime'));
-    storageClass = getProp(xml, 'StorageClass')?.text;
+    storageClass = getProp(xml, 'StorageClass')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1000,9 +1000,9 @@ class Encryption {
   );
 
   Encryption.fromXml(XmlElement? xml) {
-    encryptionType = getProp(xml, 'EncryptionType')?.text;
-    kMSContext = getProp(xml, 'KMSContext')?.text;
-    kMSKeyId = getProp(xml, 'KMSKeyId')?.text;
+    encryptionType = getProp(xml, 'EncryptionType')?.innerText;
+    kMSContext = getProp(xml, 'KMSContext')?.innerText;
+    kMSKeyId = getProp(xml, 'KMSKeyId')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1032,7 +1032,7 @@ class EncryptionConfiguration {
   );
 
   EncryptionConfiguration.fromXml(XmlElement? xml) {
-    replicaKmsKeyID = getProp(xml, 'ReplicaKmsKeyID')?.text;
+    replicaKmsKeyID = getProp(xml, 'ReplicaKmsKeyID')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1070,10 +1070,10 @@ class Error {
   );
 
   Error.fromXml(XmlElement xml) {
-    code = getProp(xml, 'Code')?.text;
-    key = getProp(xml, 'Key')?.text;
-    message = getProp(xml, 'Message')?.text;
-    versionId = getProp(xml, 'VersionId')?.text;
+    code = getProp(xml, 'Code')?.innerText;
+    key = getProp(xml, 'Key')?.innerText;
+    message = getProp(xml, 'Message')?.innerText;
+    versionId = getProp(xml, 'VersionId')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1112,7 +1112,7 @@ class ErrorDocument {
   );
 
   ErrorDocument.fromXml(XmlElement? xml) {
-    key = getProp(xml, 'Key')?.text;
+    key = getProp(xml, 'Key')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1134,7 +1134,7 @@ class ExistingObjectReplication {
   );
 
   ExistingObjectReplication.fromXml(XmlElement? xml) {
-    status = getProp(xml, 'Status')?.text;
+    status = getProp(xml, 'Status')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1157,8 +1157,8 @@ class FilterRule {
   );
 
   FilterRule.fromXml(XmlElement? xml) {
-    name = getProp(xml, 'Name')?.text;
-    value = getProp(xml, 'Value')?.text;
+    name = getProp(xml, 'Name')?.innerText;
+    value = getProp(xml, 'Value')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1184,7 +1184,7 @@ class GlacierJobParameters {
   );
 
   GlacierJobParameters.fromXml(XmlElement? xml) {
-    tier = getProp(xml, 'Tier')?.text;
+    tier = getProp(xml, 'Tier')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1208,7 +1208,7 @@ class Grant {
 
   Grant.fromXml(XmlElement? xml) {
     grantee = Grantee.fromXml(getProp(xml, 'Grantee'));
-    permission = getProp(xml, 'Permission')?.text;
+    permission = getProp(xml, 'Permission')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1238,11 +1238,11 @@ class Grantee {
   );
 
   Grantee.fromXml(XmlElement? xml) {
-    displayName = getProp(xml, 'DisplayName')?.text;
-    emailAddress = getProp(xml, 'EmailAddress')?.text;
-    iD = getProp(xml, 'ID')?.text;
-    type = getProp(xml, 'Type')?.text;
-    uRI = getProp(xml, 'URI')?.text;
+    displayName = getProp(xml, 'DisplayName')?.innerText;
+    emailAddress = getProp(xml, 'EmailAddress')?.innerText;
+    iD = getProp(xml, 'ID')?.innerText;
+    type = getProp(xml, 'Type')?.innerText;
+    uRI = getProp(xml, 'URI')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1280,7 +1280,7 @@ class IndexDocument {
   );
 
   IndexDocument.fromXml(XmlElement? xml) {
-    suffix = getProp(xml, 'Suffix')?.text;
+    suffix = getProp(xml, 'Suffix')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1303,8 +1303,8 @@ class Initiator {
   );
 
   Initiator.fromXml(XmlElement? xml) {
-    displayName = getProp(xml, 'DisplayName')?.text;
-    iD = getProp(xml, 'ID')?.text;
+    displayName = getProp(xml, 'DisplayName')?.innerText;
+    iD = getProp(xml, 'ID')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1333,7 +1333,7 @@ class InputSerialization {
   );
 
   InputSerialization.fromXml(XmlElement? xml) {
-    compressionType = getProp(xml, 'CompressionType')?.text;
+    compressionType = getProp(xml, 'CompressionType')?.innerText;
     cSV = CSVInput.fromXml(getProp(xml, 'CSV'));
     jSON = JSONInput.fromXml(getProp(xml, 'JSON'));
     parquet = ParquetInput.fromXml(getProp(xml, 'Parquet'));
@@ -1378,10 +1378,10 @@ class InventoryConfiguration {
   InventoryConfiguration.fromXml(XmlElement xml) {
     destination = InventoryDestination.fromXml(getProp(xml, 'Destination'));
     filter = InventoryFilter.fromXml(getProp(xml, 'Filter'));
-    id = getProp(xml, 'Id')?.text;
-    includedObjectVersions = getProp(xml, 'IncludedObjectVersions')?.text;
-    isEnabled = getProp(xml, 'IsEnabled')?.text.toUpperCase() == 'TRUE';
-    optionalFields = getProp(xml, 'OptionalFields')?.text;
+    id = getProp(xml, 'Id')?.innerText;
+    includedObjectVersions = getProp(xml, 'IncludedObjectVersions')?.innerText;
+    isEnabled = getProp(xml, 'IsEnabled')?.innerText.toUpperCase() == 'TRUE';
+    optionalFields = getProp(xml, 'OptionalFields')?.innerText;
     schedule = InventorySchedule.fromXml(getProp(xml, 'Schedule'));
   }
 
@@ -1480,7 +1480,7 @@ class InventoryFilter {
   );
 
   InventoryFilter.fromXml(XmlElement? xml) {
-    prefix = getProp(xml, 'Prefix')?.text;
+    prefix = getProp(xml, 'Prefix')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1506,11 +1506,11 @@ class InventoryS3BucketDestination {
   );
 
   InventoryS3BucketDestination.fromXml(XmlElement? xml) {
-    accountId = getProp(xml, 'AccountId')?.text;
-    bucket = getProp(xml, 'Bucket')?.text;
+    accountId = getProp(xml, 'AccountId')?.innerText;
+    bucket = getProp(xml, 'Bucket')?.innerText;
     encryption = InventoryEncryption.fromXml(getProp(xml, 'Encryption'));
-    format = getProp(xml, 'Format')?.text;
-    prefix = getProp(xml, 'Prefix')?.text;
+    format = getProp(xml, 'Format')?.innerText;
+    prefix = getProp(xml, 'Prefix')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1548,7 +1548,7 @@ class InventorySchedule {
   );
 
   InventorySchedule.fromXml(XmlElement? xml) {
-    frequency = getProp(xml, 'Frequency')?.text;
+    frequency = getProp(xml, 'Frequency')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1570,7 +1570,7 @@ class JSONInput {
   );
 
   JSONInput.fromXml(XmlElement? xml) {
-    type = getProp(xml, 'Type')?.text;
+    type = getProp(xml, 'Type')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1592,7 +1592,7 @@ class JSONOutput {
   );
 
   JSONOutput.fromXml(XmlElement? xml) {
-    recordDelimiter = getProp(xml, 'RecordDelimiter')?.text;
+    recordDelimiter = getProp(xml, 'RecordDelimiter')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1617,10 +1617,10 @@ class LambdaFunctionConfiguration {
   );
 
   LambdaFunctionConfiguration.fromXml(XmlElement? xml) {
-    events = getProp(xml, 'Events')?.text;
+    events = getProp(xml, 'Events')?.innerText;
     filter = NotificationConfigurationFilter.fromXml(getProp(xml, 'Filter'));
-    id = getProp(xml, 'Id')?.text;
-    lambdaFunctionArn = getProp(xml, 'LambdaFunctionArn')?.text;
+    id = getProp(xml, 'Id')?.innerText;
+    lambdaFunctionArn = getProp(xml, 'LambdaFunctionArn')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1678,10 +1678,10 @@ class LifecycleExpiration {
   );
 
   LifecycleExpiration.fromXml(XmlElement? xml) {
-    date = DateTime.parse(getProp(xml, 'Date')!.text);
-    days = int.tryParse(getProp(xml, 'Days')!.text);
+    date = DateTime.parse(getProp(xml, 'Date')!.innerText);
+    days = int.tryParse(getProp(xml, 'Days')!.innerText);
     expiredObjectDeleteMarker =
-        getProp(xml, 'ExpiredObjectDeleteMarker')?.text.toUpperCase() == 'TRUE';
+        getProp(xml, 'ExpiredObjectDeleteMarker')?.innerText.toUpperCase() == 'TRUE';
   }
 
   XmlNode toXml() {
@@ -1724,13 +1724,13 @@ class LifecycleRule {
         getProp(xml, 'AbortIncompleteMultipartUpload'));
     expiration = LifecycleExpiration.fromXml(getProp(xml, 'Expiration'));
     filter = LifecycleRuleFilter.fromXml(getProp(xml, 'Filter'));
-    iD = getProp(xml, 'ID')?.text;
+    iD = getProp(xml, 'ID')?.innerText;
     noncurrentVersionExpiration = NoncurrentVersionExpiration.fromXml(
         getProp(xml, 'NoncurrentVersionExpiration'));
     noncurrentVersionTransitions = NoncurrentVersionTransition.fromXml(
         getProp(xml, 'NoncurrentVersionTransitions'));
-    prefix = getProp(xml, 'Prefix')?.text;
-    status = getProp(xml, 'Status')?.text;
+    prefix = getProp(xml, 'Prefix')?.innerText;
+    status = getProp(xml, 'Status')?.innerText;
     transitions = Transition.fromXml(getProp(xml, 'Transitions'));
   }
 
@@ -1789,7 +1789,7 @@ class LifecycleRuleAndOperator {
   );
 
   LifecycleRuleAndOperator.fromXml(XmlElement? xml) {
-    prefix = getProp(xml, 'Prefix')?.text;
+    prefix = getProp(xml, 'Prefix')?.innerText;
     tags = Tag.fromXml(getProp(xml, 'Tags'));
   }
 
@@ -1819,7 +1819,7 @@ class LifecycleRuleFilter {
 
   LifecycleRuleFilter.fromXml(XmlElement? xml) {
     and = LifecycleRuleAndOperator.fromXml(getProp(xml, 'And'));
-    prefix = getProp(xml, 'Prefix')?.text;
+    prefix = getProp(xml, 'Prefix')?.innerText;
     tag = Tag.fromXml(getProp(xml, 'Tag'));
   }
 
@@ -1852,9 +1852,9 @@ class LoggingEnabled {
   );
 
   LoggingEnabled.fromXml(XmlElement? xml) {
-    targetBucket = getProp(xml, 'TargetBucket')?.text;
+    targetBucket = getProp(xml, 'TargetBucket')?.innerText;
     targetGrants = TargetGrant.fromXml(getProp(xml, 'TargetGrants'));
-    targetPrefix = getProp(xml, 'TargetPrefix')?.text;
+    targetPrefix = getProp(xml, 'TargetPrefix')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1885,8 +1885,8 @@ class MetadataEntry {
   );
 
   MetadataEntry.fromXml(XmlElement? xml) {
-    name = getProp(xml, 'Name')?.text;
-    value = getProp(xml, 'Value')?.text;
+    name = getProp(xml, 'Name')?.innerText;
+    value = getProp(xml, 'Value')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1915,7 +1915,7 @@ class Metrics {
   Metrics.fromXml(XmlElement? xml) {
     eventThreshold =
         ReplicationTimeValue.fromXml(getProp(xml, 'EventThreshold'));
-    status = getProp(xml, 'Status')?.text;
+    status = getProp(xml, 'Status')?.innerText;
   }
 
   XmlNode toXml() {
@@ -1942,7 +1942,7 @@ class MetricsAndOperator {
   );
 
   MetricsAndOperator.fromXml(XmlElement? xml) {
-    prefix = getProp(xml, 'Prefix')?.text;
+    prefix = getProp(xml, 'Prefix')?.innerText;
     tags = Tag.fromXml(getProp(xml, 'Tags'));
   }
 
@@ -1971,7 +1971,7 @@ class MetricsConfiguration {
 
   MetricsConfiguration.fromXml(XmlElement xml) {
     filter = MetricsFilter.fromXml(getProp(xml, 'Filter'));
-    id = getProp(xml, 'Id')?.text;
+    id = getProp(xml, 'Id')?.innerText;
   }
 
   XmlNode toXml() {
@@ -2000,7 +2000,7 @@ class MetricsFilter {
 
   MetricsFilter.fromXml(XmlElement? xml) {
     and = MetricsAndOperator.fromXml(getProp(xml, 'And'));
-    prefix = getProp(xml, 'Prefix')?.text;
+    prefix = getProp(xml, 'Prefix')?.innerText;
     tag = Tag.fromXml(getProp(xml, 'Tag'));
   }
 
@@ -2036,12 +2036,12 @@ class MultipartUpload {
   );
 
   MultipartUpload.fromXml(XmlElement xml) {
-    initiated = DateTime.parse(getProp(xml, 'Initiated')!.text);
+    initiated = DateTime.parse(getProp(xml, 'Initiated')!.innerText);
     initiator = Initiator.fromXml(getProp(xml, 'Initiator'));
-    key = getProp(xml, 'Key')?.text;
+    key = getProp(xml, 'Key')?.innerText;
     owner = Owner.fromXml(getProp(xml, 'Owner'));
-    storageClass = getProp(xml, 'StorageClass')?.text;
-    uploadId = getProp(xml, 'UploadId')?.text;
+    storageClass = getProp(xml, 'StorageClass')?.innerText;
+    uploadId = getProp(xml, 'UploadId')?.innerText;
   }
 
   XmlNode toXml() {
@@ -2083,7 +2083,7 @@ class NoncurrentVersionExpiration {
   );
 
   NoncurrentVersionExpiration.fromXml(XmlElement? xml) {
-    noncurrentDays = int.tryParse(getProp(xml, 'NoncurrentDays')!.text);
+    noncurrentDays = int.tryParse(getProp(xml, 'NoncurrentDays')!.innerText);
   }
 
   XmlNode toXml() {
@@ -2106,8 +2106,8 @@ class NoncurrentVersionTransition {
   );
 
   NoncurrentVersionTransition.fromXml(XmlElement? xml) {
-    noncurrentDays = int.tryParse(getProp(xml, 'NoncurrentDays')!.text);
-    storageClass = getProp(xml, 'StorageClass')?.text;
+    noncurrentDays = int.tryParse(getProp(xml, 'NoncurrentDays')!.innerText);
+    storageClass = getProp(xml, 'StorageClass')?.innerText;
   }
 
   XmlNode toXml() {
@@ -2244,12 +2244,12 @@ class Object {
   );
 
   Object.fromXml(XmlElement xml) {
-    eTag = getProp(xml, 'ETag')?.text;
-    key = getProp(xml, 'Key')?.text;
-    lastModified = DateTime.parse(getProp(xml, 'LastModified')!.text);
+    eTag = getProp(xml, 'ETag')?.innerText;
+    key = getProp(xml, 'Key')?.innerText;
+    lastModified = DateTime.parse(getProp(xml, 'LastModified')!.innerText);
     owner = Owner.fromXml(getProp(xml, 'Owner'));
-    size = int.tryParse(getProp(xml, 'Size')!.text);
-    storageClass = getProp(xml, 'StorageClass')?.text;
+    size = int.tryParse(getProp(xml, 'Size')!.innerText);
+    storageClass = getProp(xml, 'StorageClass')?.innerText;
   }
 
   XmlNode toXml() {
@@ -2297,8 +2297,8 @@ class ObjectIdentifier {
   );
 
   ObjectIdentifier.fromXml(XmlElement xml) {
-    key = getProp(xml, 'Key')?.text;
-    versionId = getProp(xml, 'VersionId')?.text;
+    key = getProp(xml, 'Key')?.innerText;
+    versionId = getProp(xml, 'VersionId')?.innerText;
   }
 
   XmlElement toXml() {
@@ -2327,7 +2327,7 @@ class ObjectLockConfiguration {
   );
 
   ObjectLockConfiguration.fromXml(XmlElement xml) {
-    objectLockEnabled = getProp(xml, 'ObjectLockEnabled')?.text;
+    objectLockEnabled = getProp(xml, 'ObjectLockEnabled')?.innerText;
     rule = ObjectLockRule.fromXml(getProp(xml, 'Rule'));
   }
 
@@ -2354,7 +2354,7 @@ class ObjectLockLegalHold {
   );
 
   ObjectLockLegalHold.fromXml(XmlElement xml) {
-    status = getProp(xml, 'Status')?.text;
+    status = getProp(xml, 'Status')?.innerText;
   }
 
   XmlNode toXml() {
@@ -2377,8 +2377,8 @@ class ObjectLockRetention {
   );
 
   ObjectLockRetention.fromXml(XmlElement xml) {
-    mode = getProp(xml, 'Mode')?.text;
-    retainUntilDate = DateTime.parse(getProp(xml, 'RetainUntilDate')!.text);
+    mode = getProp(xml, 'Mode')?.innerText;
+    retainUntilDate = DateTime.parse(getProp(xml, 'RetainUntilDate')!.innerText);
   }
 
   XmlNode toXml() {
@@ -2435,14 +2435,14 @@ class ObjectVersion {
   );
 
   ObjectVersion.fromXml(XmlElement xml) {
-    eTag = getProp(xml, 'ETag')?.text;
-    isLatest = getProp(xml, 'IsLatest')?.text.toUpperCase() == 'TRUE';
-    key = getProp(xml, 'Key')?.text;
-    lastModified = DateTime.parse(getProp(xml, 'LastModified')!.text);
+    eTag = getProp(xml, 'ETag')?.innerText;
+    isLatest = getProp(xml, 'IsLatest')?.innerText.toUpperCase() == 'TRUE';
+    key = getProp(xml, 'Key')?.innerText;
+    lastModified = DateTime.parse(getProp(xml, 'LastModified')!.innerText);
     owner = Owner.fromXml(getProp(xml, 'Owner'));
-    size = int.tryParse(getProp(xml, 'Size')!.text);
-    storageClass = getProp(xml, 'StorageClass')?.text;
-    versionId = getProp(xml, 'VersionId')?.text;
+    size = int.tryParse(getProp(xml, 'Size')!.innerText);
+    storageClass = getProp(xml, 'StorageClass')?.innerText;
+    versionId = getProp(xml, 'VersionId')?.innerText;
   }
 
   XmlNode toXml() {
@@ -2543,8 +2543,8 @@ class Owner {
   );
 
   Owner.fromXml(XmlElement? xml) {
-    displayName = getProp(xml, 'DisplayName')?.text;
-    iD = getProp(xml, 'ID')?.text;
+    displayName = getProp(xml, 'DisplayName')?.innerText;
+    iD = getProp(xml, 'ID')?.innerText;
   }
 
   XmlNode toXml() {
@@ -2586,10 +2586,10 @@ class Part {
   );
 
   Part.fromXml(XmlElement xml) {
-    eTag = getProp(xml, 'ETag')?.text;
-    lastModified = DateTime.parse(getProp(xml, 'LastModified')!.text);
-    partNumber = int.tryParse(getProp(xml, 'PartNumber')!.text);
-    size = int.tryParse(getProp(xml, 'Size')!.text);
+    eTag = getProp(xml, 'ETag')?.innerText;
+    lastModified = DateTime.parse(getProp(xml, 'LastModified')!.innerText);
+    partNumber = int.tryParse(getProp(xml, 'PartNumber')!.innerText);
+    size = int.tryParse(getProp(xml, 'Size')!.innerText);
   }
 
   XmlNode toXml() {
@@ -2623,7 +2623,7 @@ class PolicyStatus {
   );
 
   PolicyStatus.fromXml(XmlElement xml) {
-    isPublic = getProp(xml, 'IsPublic')?.text.toUpperCase() == 'TRUE';
+    isPublic = getProp(xml, 'IsPublic')?.innerText.toUpperCase() == 'TRUE';
   }
 
   XmlNode toXml() {
@@ -2647,9 +2647,9 @@ class Progress {
   );
 
   Progress.fromXml(XmlElement? xml) {
-    bytesProcessed = int.tryParse(getProp(xml, 'BytesProcessed')!.text);
-    bytesReturned = int.tryParse(getProp(xml, 'BytesReturned')!.text);
-    bytesScanned = int.tryParse(getProp(xml, 'BytesScanned')!.text);
+    bytesProcessed = int.tryParse(getProp(xml, 'BytesProcessed')!.innerText);
+    bytesReturned = int.tryParse(getProp(xml, 'BytesReturned')!.innerText);
+    bytesScanned = int.tryParse(getProp(xml, 'BytesScanned')!.innerText);
   }
 
   XmlNode toXml() {
@@ -2705,13 +2705,13 @@ class PublicAccessBlockConfiguration {
 
   PublicAccessBlockConfiguration.fromXml(XmlElement xml) {
     blockPublicAcls =
-        getProp(xml, 'BlockPublicAcls')?.text.toUpperCase() == 'TRUE';
+        getProp(xml, 'BlockPublicAcls')?.innerText.toUpperCase() == 'TRUE';
     blockPublicPolicy =
-        getProp(xml, 'BlockPublicPolicy')?.text.toUpperCase() == 'TRUE';
+        getProp(xml, 'BlockPublicPolicy')?.innerText.toUpperCase() == 'TRUE';
     ignorePublicAcls =
-        getProp(xml, 'IgnorePublicAcls')?.text.toUpperCase() == 'TRUE';
+        getProp(xml, 'IgnorePublicAcls')?.innerText.toUpperCase() == 'TRUE';
     restrictPublicBuckets =
-        getProp(xml, 'RestrictPublicBuckets')?.text.toUpperCase() == 'TRUE';
+        getProp(xml, 'RestrictPublicBuckets')?.innerText.toUpperCase() == 'TRUE';
   }
 
   XmlNode toXml() {
@@ -2752,10 +2752,10 @@ class QueueConfiguration {
   );
 
   QueueConfiguration.fromXml(XmlElement? xml) {
-    events = getProp(xml, 'Events')?.text;
+    events = getProp(xml, 'Events')?.innerText;
     filter = NotificationConfigurationFilter.fromXml(getProp(xml, 'Filter'));
-    id = getProp(xml, 'Id')?.text;
-    queueArn = getProp(xml, 'QueueArn')?.text;
+    id = getProp(xml, 'Id')?.innerText;
+    queueArn = getProp(xml, 'QueueArn')?.innerText;
   }
 
   XmlNode toXml() {
@@ -2792,10 +2792,10 @@ class QueueConfigurationDeprecated {
   );
 
   QueueConfigurationDeprecated.fromXml(XmlElement? xml) {
-    event = getProp(xml, 'Event')?.text;
-    events = getProp(xml, 'Events')?.text;
-    id = getProp(xml, 'Id')?.text;
-    queue = getProp(xml, 'Queue')?.text;
+    event = getProp(xml, 'Event')?.innerText;
+    events = getProp(xml, 'Events')?.innerText;
+    id = getProp(xml, 'Id')?.innerText;
+    queue = getProp(xml, 'Queue')?.innerText;
   }
 
   XmlNode toXml() {
@@ -2829,7 +2829,7 @@ class RecordsEvent {
   );
 
   RecordsEvent.fromXml(XmlElement? xml) {
-    payload = getProp(xml, 'Payload')?.text;
+    payload = getProp(xml, 'Payload')?.innerText;
   }
 
   XmlNode toXml() {
@@ -2855,11 +2855,11 @@ class Redirect {
   );
 
   Redirect.fromXml(XmlElement? xml) {
-    hostName = getProp(xml, 'HostName')?.text;
-    httpRedirectCode = getProp(xml, 'HttpRedirectCode')?.text;
-    protocol = getProp(xml, 'Protocol')?.text;
-    replaceKeyPrefixWith = getProp(xml, 'ReplaceKeyPrefixWith')?.text;
-    replaceKeyWith = getProp(xml, 'ReplaceKeyWith')?.text;
+    hostName = getProp(xml, 'HostName')?.innerText;
+    httpRedirectCode = getProp(xml, 'HttpRedirectCode')?.innerText;
+    protocol = getProp(xml, 'Protocol')?.innerText;
+    replaceKeyPrefixWith = getProp(xml, 'ReplaceKeyPrefixWith')?.innerText;
+    replaceKeyWith = getProp(xml, 'ReplaceKeyWith')?.innerText;
   }
 
   XmlNode toXml() {
@@ -2898,8 +2898,8 @@ class RedirectAllRequestsTo {
   );
 
   RedirectAllRequestsTo.fromXml(XmlElement? xml) {
-    hostName = getProp(xml, 'HostName')?.text;
-    protocol = getProp(xml, 'Protocol')?.text;
+    hostName = getProp(xml, 'HostName')?.innerText;
+    protocol = getProp(xml, 'Protocol')?.innerText;
   }
 
   XmlNode toXml() {
@@ -2926,7 +2926,7 @@ class ReplicationConfiguration {
   );
 
   ReplicationConfiguration.fromXml(XmlElement xml) {
-    role = getProp(xml, 'Role')?.text;
+    role = getProp(xml, 'Role')?.innerText;
     rules = ReplicationRule.fromXml(getProp(xml, 'Rules'));
   }
 
@@ -2967,12 +2967,12 @@ class ReplicationRule {
     existingObjectReplication = ExistingObjectReplication.fromXml(
         getProp(xml, 'ExistingObjectReplication'));
     filter = ReplicationRuleFilter.fromXml(getProp(xml, 'Filter'));
-    iD = getProp(xml, 'ID')?.text;
-    prefix = getProp(xml, 'Prefix')?.text;
-    priority = int.tryParse(getProp(xml, 'Priority')!.text);
+    iD = getProp(xml, 'ID')?.innerText;
+    prefix = getProp(xml, 'Prefix')?.innerText;
+    priority = int.tryParse(getProp(xml, 'Priority')!.innerText);
     sourceSelectionCriteria = SourceSelectionCriteria.fromXml(
         getProp(xml, 'SourceSelectionCriteria'));
-    status = getProp(xml, 'Status')?.text;
+    status = getProp(xml, 'Status')?.innerText;
   }
 
   XmlNode toXml() {
@@ -3030,7 +3030,7 @@ class ReplicationRuleAndOperator {
   );
 
   ReplicationRuleAndOperator.fromXml(XmlElement? xml) {
-    prefix = getProp(xml, 'Prefix')?.text;
+    prefix = getProp(xml, 'Prefix')?.innerText;
     tags = Tag.fromXml(getProp(xml, 'Tags'));
   }
 
@@ -3060,7 +3060,7 @@ class ReplicationRuleFilter {
 
   ReplicationRuleFilter.fromXml(XmlElement? xml) {
     and = ReplicationRuleAndOperator.fromXml(getProp(xml, 'And'));
-    prefix = getProp(xml, 'Prefix')?.text;
+    prefix = getProp(xml, 'Prefix')?.innerText;
     tag = Tag.fromXml(getProp(xml, 'Tag'));
   }
 
@@ -3092,7 +3092,7 @@ class ReplicationTime {
   );
 
   ReplicationTime.fromXml(XmlElement? xml) {
-    status = getProp(xml, 'Status')?.text;
+    status = getProp(xml, 'Status')?.innerText;
     time = ReplicationTimeValue.fromXml(getProp(xml, 'Time'));
   }
 
@@ -3119,7 +3119,7 @@ class ReplicationTimeValue {
   );
 
   ReplicationTimeValue.fromXml(XmlElement? xml) {
-    minutes = int.tryParse(getProp(xml, 'Minutes')!.text);
+    minutes = int.tryParse(getProp(xml, 'Minutes')!.innerText);
   }
 
   XmlNode toXml() {
@@ -3141,7 +3141,7 @@ class RequestPaymentConfiguration {
   );
 
   RequestPaymentConfiguration.fromXml(XmlElement xml) {
-    payer = getProp(xml, 'Payer')?.text;
+    payer = getProp(xml, 'Payer')?.innerText;
   }
 
   XmlNode toXml() {
@@ -3163,7 +3163,7 @@ class RequestProgress {
   );
 
   RequestProgress.fromXml(XmlElement xml) {
-    enabled = getProp(xml, 'Enabled')?.text.toUpperCase() == 'TRUE';
+    enabled = getProp(xml, 'Enabled')?.innerText.toUpperCase() == 'TRUE';
   }
 
   XmlNode toXml() {
@@ -3191,15 +3191,15 @@ class RestoreRequest {
   );
 
   RestoreRequest.fromXml(XmlElement xml) {
-    days = int.tryParse(getProp(xml, 'Days')!.text);
-    description = getProp(xml, 'Description')?.text;
+    days = int.tryParse(getProp(xml, 'Days')!.innerText);
+    description = getProp(xml, 'Description')?.innerText;
     glacierJobParameters =
         GlacierJobParameters.fromXml(getProp(xml, 'GlacierJobParameters'));
     outputLocation = OutputLocation.fromXml(getProp(xml, 'OutputLocation'));
     selectParameters =
         SelectParameters.fromXml(getProp(xml, 'SelectParameters'));
-    tier = getProp(xml, 'Tier')?.text;
-    type = getProp(xml, 'Type')?.text;
+    tier = getProp(xml, 'Tier')?.innerText;
+    type = getProp(xml, 'Type')?.innerText;
   }
 
   XmlNode toXml() {
@@ -3284,13 +3284,13 @@ class Rule {
     abortIncompleteMultipartUpload = AbortIncompleteMultipartUpload.fromXml(
         getProp(xml, 'AbortIncompleteMultipartUpload'));
     expiration = LifecycleExpiration.fromXml(getProp(xml, 'Expiration'));
-    iD = getProp(xml, 'ID')?.text;
+    iD = getProp(xml, 'ID')?.innerText;
     noncurrentVersionExpiration = NoncurrentVersionExpiration.fromXml(
         getProp(xml, 'NoncurrentVersionExpiration'));
     noncurrentVersionTransition = NoncurrentVersionTransition.fromXml(
         getProp(xml, 'NoncurrentVersionTransition'));
-    prefix = getProp(xml, 'Prefix')?.text;
-    status = getProp(xml, 'Status')?.text;
+    prefix = getProp(xml, 'Prefix')?.innerText;
+    status = getProp(xml, 'Status')?.innerText;
     transition = Transition.fromXml(getProp(xml, 'Transition'));
   }
 
@@ -3374,11 +3374,11 @@ class S3Location {
 
   S3Location.fromXml(XmlElement? xml) {
     accessControlList = Grant.fromXml(getProp(xml, 'AccessControlList'));
-    bucketName = getProp(xml, 'BucketName')?.text;
-    cannedACL = getProp(xml, 'CannedACL')?.text;
+    bucketName = getProp(xml, 'BucketName')?.innerText;
+    cannedACL = getProp(xml, 'CannedACL')?.innerText;
     encryption = Encryption.fromXml(getProp(xml, 'Encryption'));
-    prefix = getProp(xml, 'Prefix')?.text;
-    storageClass = getProp(xml, 'StorageClass')?.text;
+    prefix = getProp(xml, 'Prefix')?.innerText;
+    storageClass = getProp(xml, 'StorageClass')?.innerText;
     tagging = Tagging.fromXml(getProp(xml, 'Tagging'));
     userMetadata = MetadataEntry.fromXml(getProp(xml, 'UserMetadata'));
   }
@@ -3431,8 +3431,8 @@ class ScanRange {
   );
 
   ScanRange.fromXml(XmlElement xml) {
-    end = int.tryParse(getProp(xml, 'End')!.text);
-    start = int.tryParse(getProp(xml, 'Start')!.text);
+    end = int.tryParse(getProp(xml, 'End')!.innerText);
+    start = int.tryParse(getProp(xml, 'Start')!.innerText);
   }
 
   XmlNode toXml() {
@@ -3507,8 +3507,8 @@ class SelectParameters {
   );
 
   SelectParameters.fromXml(XmlElement? xml) {
-    expression = getProp(xml, 'Expression')?.text;
-    expressionType = getProp(xml, 'ExpressionType')?.text;
+    expression = getProp(xml, 'Expression')?.innerText;
+    expressionType = getProp(xml, 'ExpressionType')?.innerText;
     inputSerialization =
         InputSerialization.fromXml(getProp(xml, 'InputSerialization'));
     outputSerialization =
@@ -3548,8 +3548,8 @@ class ServerSideEncryptionByDefault {
   );
 
   ServerSideEncryptionByDefault.fromXml(XmlElement? xml) {
-    kMSMasterKeyID = getProp(xml, 'KMSMasterKeyID')?.text;
-    sSEAlgorithm = getProp(xml, 'SSEAlgorithm')?.text;
+    kMSMasterKeyID = getProp(xml, 'KMSMasterKeyID')?.innerText;
+    sSEAlgorithm = getProp(xml, 'SSEAlgorithm')?.innerText;
   }
 
   XmlNode toXml() {
@@ -3645,7 +3645,7 @@ class SSEKMS {
   );
 
   SSEKMS.fromXml(XmlElement? xml) {
-    keyId = getProp(xml, 'KeyId')?.text;
+    keyId = getProp(xml, 'KeyId')?.innerText;
   }
 
   XmlNode toXml() {
@@ -3667,7 +3667,7 @@ class SseKmsEncryptedObjects {
   );
 
   SseKmsEncryptedObjects.fromXml(XmlElement? xml) {
-    status = getProp(xml, 'Status')?.text;
+    status = getProp(xml, 'Status')?.innerText;
   }
 
   XmlNode toXml() {
@@ -3704,9 +3704,9 @@ class Stats {
   );
 
   Stats.fromXml(XmlElement? xml) {
-    bytesProcessed = int.tryParse(getProp(xml, 'BytesProcessed')!.text);
-    bytesReturned = int.tryParse(getProp(xml, 'BytesReturned')!.text);
-    bytesScanned = int.tryParse(getProp(xml, 'BytesScanned')!.text);
+    bytesProcessed = int.tryParse(getProp(xml, 'BytesProcessed')!.innerText);
+    bytesReturned = int.tryParse(getProp(xml, 'BytesReturned')!.innerText);
+    bytesScanned = int.tryParse(getProp(xml, 'BytesScanned')!.innerText);
   }
 
   XmlNode toXml() {
@@ -3784,7 +3784,7 @@ class StorageClassAnalysisDataExport {
   StorageClassAnalysisDataExport.fromXml(XmlElement? xml) {
     destination =
         AnalyticsExportDestination.fromXml(getProp(xml, 'Destination'));
-    outputSchemaVersion = getProp(xml, 'OutputSchemaVersion')?.text;
+    outputSchemaVersion = getProp(xml, 'OutputSchemaVersion')?.innerText;
   }
 
   XmlNode toXml() {
@@ -3811,8 +3811,8 @@ class Tag {
   );
 
   Tag.fromXml(XmlElement? xml) {
-    key = getProp(xml, 'Key')?.text;
-    value = getProp(xml, 'Value')?.text;
+    key = getProp(xml, 'Key')?.innerText;
+    value = getProp(xml, 'Value')?.innerText;
   }
 
   XmlNode toXml() {
@@ -3862,7 +3862,7 @@ class TargetGrant {
 
   TargetGrant.fromXml(XmlElement? xml) {
     grantee = Grantee.fromXml(getProp(xml, 'Grantee'));
-    permission = getProp(xml, 'Permission')?.text;
+    permission = getProp(xml, 'Permission')?.innerText;
   }
 
   XmlNode toXml() {
@@ -3891,10 +3891,10 @@ class TopicConfiguration {
   );
 
   TopicConfiguration.fromXml(XmlElement? xml) {
-    events = getProp(xml, 'Events')?.text;
+    events = getProp(xml, 'Events')?.innerText;
     filter = NotificationConfigurationFilter.fromXml(getProp(xml, 'Filter'));
-    id = getProp(xml, 'Id')?.text;
-    topicArn = getProp(xml, 'TopicArn')?.text;
+    id = getProp(xml, 'Id')?.innerText;
+    topicArn = getProp(xml, 'TopicArn')?.innerText;
   }
 
   XmlNode toXml() {
@@ -3931,10 +3931,10 @@ class TopicConfigurationDeprecated {
   );
 
   TopicConfigurationDeprecated.fromXml(XmlElement? xml) {
-    event = getProp(xml, 'Event')?.text;
-    events = getProp(xml, 'Events')?.text;
-    id = getProp(xml, 'Id')?.text;
-    topic = getProp(xml, 'Topic')?.text;
+    event = getProp(xml, 'Event')?.innerText;
+    events = getProp(xml, 'Events')?.innerText;
+    id = getProp(xml, 'Id')?.innerText;
+    topic = getProp(xml, 'Topic')?.innerText;
   }
 
   XmlNode toXml() {
@@ -3970,9 +3970,9 @@ class Transition {
   );
 
   Transition.fromXml(XmlElement? xml) {
-    date = DateTime.parse(getProp(xml, 'Date')!.text);
-    days = int.tryParse(getProp(xml, 'Days')!.text);
-    storageClass = getProp(xml, 'StorageClass')?.text;
+    date = DateTime.parse(getProp(xml, 'Date')!.innerText);
+    days = int.tryParse(getProp(xml, 'Days')!.innerText);
+    storageClass = getProp(xml, 'StorageClass')?.innerText;
   }
 
   XmlNode toXml() {
@@ -4003,8 +4003,8 @@ class VersioningConfiguration {
   );
 
   VersioningConfiguration.fromXml(XmlElement xml) {
-    mFADelete = getProp(xml, 'MFADelete')?.text;
-    status = getProp(xml, 'Status')?.text;
+    mFADelete = getProp(xml, 'MFADelete')?.innerText;
+    status = getProp(xml, 'Status')?.innerText;
   }
 
   XmlNode toXml() {

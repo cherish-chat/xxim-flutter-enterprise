@@ -2,8 +2,8 @@ import 'package:xxim_flutter_enterprise/main.dart';
 
 class OverscrollBehavior extends ScrollBehavior {
   @override
-  Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
+  Widget buildOverscrollIndicator(
+      BuildContext context, Widget child, ScrollableDetails details) {
     switch (getPlatform(context)) {
       case TargetPlatform.iOS:
       case TargetPlatform.linux:
@@ -15,7 +15,7 @@ class OverscrollBehavior extends ScrollBehavior {
         return GlowingOverscrollIndicator(
           showLeading: false,
           showTrailing: false,
-          axisDirection: axisDirection,
+          axisDirection: details.direction,
           color: Theme.of(context).primaryColor,
           child: child,
         );

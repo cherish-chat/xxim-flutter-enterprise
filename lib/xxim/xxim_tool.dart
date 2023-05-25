@@ -31,8 +31,8 @@ class XXIMTool {
       IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
       platform = "ios";
       deviceId = iosInfo.identifierForVendor!;
-      deviceModel = iosInfo.model!;
-      osVersion = iosInfo.systemVersion!;
+      deviceModel = iosInfo.model;
+      osVersion = iosInfo.systemVersion;
     } else if (GetPlatform.isWindows) {
       WindowsDeviceInfo windowsInfo = await deviceInfo.windowsInfo;
       platform = "windows";
