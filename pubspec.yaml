@@ -93,6 +93,14 @@ dependencies:
       path: packages/isar
   isar_flutter_libs: 2.5.0
 
+dependency_overrides:
+  intl: 0.18.1
+  isar:
+    git:
+      url: https://github.com/cherish-chat/isar-2.5.0
+      path: packages/isar
+  isar_flutter_libs: 2.5.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -102,14 +110,6 @@ dev_dependencies:
     git:
       url: https://github.com/cherish-chat/isar-2.5.0
       path: packages/isar_generator
-
-dependency_overrides:
-  intl: 0.18.1
-  isar:
-    git:
-      url: https://github.com/cherish-chat/isar-2.5.0
-      path: packages/isar
-  isar_flutter_libs: 2.5.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
