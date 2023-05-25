@@ -389,9 +389,12 @@ class ChatReplyItem extends StatelessWidget {
       if (msgModel.senderId != HiveTool.getUserId() &&
           msgModel.ext.isNotEmpty) {
         Map extMap = json.decode(msgModel.ext);
-        String translateValue = extMap["translateMap"] ?? "";
-        if (translateValue.isNotEmpty) {
-          Map translateMap = json.decode(translateValue);
+        dynamic translateMap = extMap["translateMap"];
+        if (translateMap is Map) {
+          String languageCode = Get.locale?.languageCode ?? "";
+          content = translateMap[languageCode] ?? msgModel.content;
+        } else if (translateMap is String) {
+          translateMap = json.decode(translateMap);
           String languageCode = Get.locale?.languageCode ?? "";
           content = translateMap[languageCode] ?? msgModel.content;
         }
@@ -532,18 +535,16 @@ class ChatTextItem extends StatelessWidget {
     String content = msgModel.content;
     if (direction == ChatDirection.left && msgModel.ext.isNotEmpty) {
       Map extMap = json.decode(msgModel.ext);
-      String translateValue = extMap["translateMap"] ?? "";
-      if (translateValue.isNotEmpty) {
-        Map translateMap = json.decode(translateValue);
+      dynamic translateMap = extMap["translateMap"];
+      if (translateMap is Map) {
+        String languageCode = Get.locale?.languageCode ?? "";
+        content = translateMap[languageCode] ?? msgModel.content;
+      } else if (translateMap is String) {
+        translateMap = json.decode(translateMap);
         String languageCode = Get.locale?.languageCode ?? "";
         content = translateMap[languageCode] ?? msgModel.content;
       }
     }
-    // String translateContent = "";
-    // if (msgModel.ext.isNotEmpty) {
-    //   Map extMap = json.decode(msgModel.ext);
-    //   translateContent = extMap["translateContent"] ?? "";
-    // }
     return Column(
       crossAxisAlignment: direction == ChatDirection.left
           ? CrossAxisAlignment.start
