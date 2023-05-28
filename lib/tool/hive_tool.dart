@@ -14,13 +14,17 @@ class HiveTool {
     if (!kIsWeb) {
       Hive.init((await getApplicationDocumentsDirectory()).path);
     }
-    _configBox = await Hive.openBox("config");
+    String config = "config";
+    if (GetPlatform.isDesktop) {
+      config = Tool.getUUId();
+    }
+    _configBox = await Hive.openBox(config);
     if (!kIsWeb) {
-      String name = "user";
-      if (GetPlatform.isWindows) {
-        name = Tool.getUUId();
+      String user = "user";
+      if (GetPlatform.isDesktop) {
+        user = Tool.getUUId();
       }
-      _userBox = await Hive.openBox(name);
+      _userBox = await Hive.openBox(user);
     } else {
       _userSession = SessionStorage();
     }
