@@ -12,7 +12,7 @@ const String rsaPublicKey = "-----BEGIN PUBLIC KEY-----\n"
     "\n-----END PUBLIC KEY-----";
 
 /// text翻译配置
-const String fromTranslate = "zh";
+String fromTranslate = "zh";
 const List<String> toTranslateList = [
   "en", // 英语
   "fr", // 法语

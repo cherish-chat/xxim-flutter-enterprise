@@ -149,6 +149,7 @@ class Translation extends Translations {
           "撤回了一条消息": "撤回了一条消息",
           "撤回消息失败": "撤回消息失败",
           "好的": "好的",
+          "切换发送语言": "切换发送语言",
         },
         "zh_TW": {
           "企业": "企業",
@@ -296,6 +297,7 @@ class Translation extends Translations {
           "撤回了一条消息": "撤回了一條消息",
           "撤回消息失败": "撤回消息失敗",
           "好的": "好的",
+          "切换发送语言": "切換發送語言",
         },
         "en_US": {
           "企业": "enterprise",
@@ -445,6 +447,7 @@ class Translation extends Translations {
           "撤回了一条消息": "Withdrew a message",
           "撤回消息失败": "Failed to withdraw message",
           "好的": "Okay",
+          "切换发送语言": "Switch sending language",
         },
         "hi_IN": {
           "企业": "उद्योग",
@@ -595,6 +598,7 @@ class Translation extends Translations {
           "撤回了一条消息": "एक संदेश वापस लिया गया",
           "撤回消息失败": "संदेश वापस लेना विफल हुआ",
           "好的": "ठीक है",
+          "切换发送语言": "भेजने की भाषा बदलें",
         },
         "id_ID": {
           "企业": "Perusahaan",
@@ -744,6 +748,7 @@ class Translation extends Translations {
           "撤回了一条消息": "Membatalkan satu pesan",
           "撤回消息失败": "Gagal membatalkan pesan",
           "好的": "Baiklah",
+          "切换发送语言": "Ganti bahasa pengiriman",
         },
         "ja_JP": {
           "企业": "企業",
@@ -891,6 +896,7 @@ class Translation extends Translations {
           "撤回了一条消息": "メッセージを取り消しました",
           "撤回消息失败": "メッセージを取り消しできませんでした",
           "好的": "了解しました",
+          "切换发送语言": "送信言語を切り替える",
         },
         "ko_KR": {
           "企业": "기업",
@@ -1038,6 +1044,7 @@ class Translation extends Translations {
           "撤回了一条消息": "메시지를 철회했습니다",
           "撤回消息失败": "메시지 철회 실패",
           "好的": "알겠습니다",
+          "切换发送语言": "발송 언어 변경",
         },
         "pt_PT": {
           "企业": "Empresa",
@@ -1189,6 +1196,7 @@ class Translation extends Translations {
           "撤回了一条消息": "Retirou uma mensagem",
           "撤回消息失败": "Falha ao retirar mensagem",
           "好的": "Ok",
+          "切换发送语言": "Alterar idioma de envio",
         },
         "ru_RU": {
           "企业": "Компания",
@@ -1339,6 +1347,7 @@ class Translation extends Translations {
           "撤回了一条消息": "Отозвал сообщение",
           "撤回消息失败": "Ошибка отзыва сообщения",
           "好的": "Хорошо",
+          "切换发送语言": "Сменить язык отправки",
         },
         "th_TH": {
           "企业": "ธุรกิจ",
@@ -1486,6 +1495,7 @@ class Translation extends Translations {
           "撤回了一条消息": "ถอนข้อความแล้ว",
           "撤回消息失败": "การถอนข้อความล้มเหลว",
           "好的": "ตกลง",
+          "切换发送语言": "เปลี่ยนภาษาการส่ง",
         },
         "ur_PK": {
           "企业": "کاروبار",
@@ -1635,7 +1645,8 @@ class Translation extends Translations {
           "翻译失败": "ترجمہ ناکام ہوا",
           "撤回了一条消息": "ایک پیغام واپس لے لیا گیا ہے",
           "撤回消息失败": "پیغام واپس نہیں کیا جا سکا",
-          "好的": "ٹھیک ہے"
+          "好的": "ٹھیک ہے",
+          "切换发送语言": "بھیجنے والی زبان تبدیل کریں",
         },
         "vi_VN": {
           "企业": "Doanh nghiệp",
@@ -1783,6 +1794,7 @@ class Translation extends Translations {
           "撤回了一条消息": "Đã rút lại một tin nhắn",
           "撤回消息失败": "Rút lại tin nhắn thất bại",
           "好的": "Được",
+          "切换发送语言": "Thay đổi ngôn ngữ gửi đi",
         },
       };
 }

@@ -8,6 +8,8 @@ class MineLogic extends GetxController {
   RxString avatarUrl = "".obs;
   RxString nickname = "".obs;
 
+  RxString mineFromTranslate = fromTranslate.obs;
+
   @override
   void onReady() {
     super.onReady();
@@ -133,6 +135,37 @@ class MinePage extends StatelessWidget {
                 "assets/images/ic_exit_25.webp",
                 "退出登录".tr,
                 logic.exit,
+              ),
+              Obx(
+                () => _buildItem(
+                  "assets/images/ic_settings_25.webp",
+                  "${"切换发送语言".tr} - ${logic.mineFromTranslate.value}",
+                  () {
+                    OperateSheet.show(
+                      [
+                        "英语 - en",
+                        "法语 - fr",
+                        "罗马尼亚语 - ro",
+                        "印地语 - hi",
+                        "印度尼西亚语 - id",
+                        "日语 - ja",
+                        "韩语 - ko",
+                        "葡萄牙语 - pt",
+                        "俄语 - ru",
+                        "泰语 - th",
+                        "越南语 - vi",
+                        "中文 - zh",
+                        "乌尔都语 - ur",
+                        "中文（繁体） - zh-TW",
+                      ],
+                      (index, text) {
+                        String value = text.split(" - ").last;
+                        fromTranslate = value;
+                        logic.mineFromTranslate.value = fromTranslate;
+                      },
+                    );
+                  },
+                ),
               ),
             ],
           ),

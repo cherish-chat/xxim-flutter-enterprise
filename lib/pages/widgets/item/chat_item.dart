@@ -364,8 +364,8 @@ class ChatReplyItem extends StatelessWidget {
 
   const ChatReplyItem({
     Key? key,
-    required this.ext,
     required this.direction,
+    required this.ext,
   }) : super(key: key);
 
   @override
