@@ -4,6 +4,9 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:uuid/uuid.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
+import 'package:xxim_flutter_enterprise/proto/im.pb.dart';
+import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 export 'platform/platform_none.dart'
     if (dart.library.html) 'platform/platform_html.dart'
@@ -177,6 +180,32 @@ class Tool {
         ","
         "$latitude"
         "&key=$gdWebKey";
+  }
+
+  static void setTranslateContent({
+    required String content,
+    required MsgModel msgModel,
+  }) {
+    XXIM.instance.customRequest<TranslateTextResp>(
+      method: "/v1/im/translateText",
+      req: TranslateTextReq(
+        q: content,
+        from: fromTranslate,
+        to: Get.locale?.languageCode ?? "",
+      ),
+      resp: TranslateTextResp.create,
+      onSuccess: (data) {
+        Map extMap = {};
+        if (msgModel.ext.isNotEmpty) {
+          extMap = json.decode(msgModel.ext);
+        }
+        extMap["translateContent"] = data.result;
+        msgModel.ext = json.encode(extMap);
+        ChatLogic.logic(msgModel.convId)?.update(
+          [ChatMsgItem.getId(msgModel.clientMsgId)],
+        );
+      },
+    );
   }
 
   static Logic? capture<Logic extends GetxController>(

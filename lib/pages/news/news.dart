@@ -322,12 +322,11 @@ class NewsPage extends StatelessWidget {
               msgModel.ext.isNotEmpty) {
             Map extMap = json.decode(msgModel.ext);
             dynamic translateMap = extMap["translateMap"];
+            String languageCode = Get.locale?.languageCode ?? "";
             if (translateMap is Map) {
-              String languageCode = Get.locale?.languageCode ?? "";
               content = translateMap[languageCode] ?? msgModel.content;
             } else if (translateMap is String) {
               translateMap = json.decode(translateMap);
-              String languageCode = Get.locale?.languageCode ?? "";
               content = translateMap[languageCode] ?? msgModel.content;
             }
           }

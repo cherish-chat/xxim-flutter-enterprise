@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
 import 'package:xxim_flutter_enterprise/pages/public/share_msg.dart';
+import 'package:xxim_flutter_enterprise/proto/im.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 class PopupTool {
@@ -93,32 +95,32 @@ class PopupTool {
           );
           Tool.showToast("复制成功".tr);
         } else if (menuTitle == "翻译".tr) {
-          //   GetLoadingDialog.show("请稍等".tr);
-          //   XXIM.instance.customRequest<TranslateTextResp>(
-          //     method: "/v1/im/translateText",
-          //     req: TranslateTextReq(
-          //       q: content,
-          //       from: "en",
-          //       to: "zh",
-          //     ),
-          //     resp: TranslateTextResp.create,
-          //     onSuccess: (data) {
-          //       GetLoadingDialog.hide();
-          //       Map extMap = {};
-          //       if (msgModel.ext.isNotEmpty) {
-          //         extMap = json.decode(msgModel.ext);
-          //       }
-          //       extMap["translateContent"] = data.result;
-          //       msgModel.ext = json.encode(extMap);
-          //       ChatLogic.logic(msgModel.convId)?.update(
-          //         [ChatMsgItem.getId(msgModel.clientMsgId)],
-          //       );
-          //     },
-          //     onError: (code, error) {
-          //       GetLoadingDialog.hide();
-          //       Tool.showToast("翻译失败".tr);
-          //     },
-          //   );
+          GetLoadingDialog.show("请稍等".tr);
+          XXIM.instance.customRequest<TranslateTextResp>(
+            method: "/v1/im/translateText",
+            req: TranslateTextReq(
+              q: content,
+              from: fromTranslate,
+              to: Get.locale?.languageCode ?? "",
+            ),
+            resp: TranslateTextResp.create,
+            onSuccess: (data) {
+              GetLoadingDialog.hide();
+              Map extMap = {};
+              if (msgModel.ext.isNotEmpty) {
+                extMap = json.decode(msgModel.ext);
+              }
+              extMap["translateContent"] = data.result;
+              msgModel.ext = json.encode(extMap);
+              ChatLogic.logic(msgModel.convId)?.update(
+                [ChatMsgItem.getId(msgModel.clientMsgId)],
+              );
+            },
+            onError: (code, error) {
+              GetLoadingDialog.hide();
+              Tool.showToast("翻译失败".tr);
+            },
+          );
         } else if (menuTitle == "转发".tr) {
           ShareMsg.show(contentType, content);
         } else if (menuTitle == "回复".tr) {

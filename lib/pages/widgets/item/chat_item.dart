@@ -390,13 +390,22 @@ class ChatReplyItem extends StatelessWidget {
           msgModel.ext.isNotEmpty) {
         Map extMap = json.decode(msgModel.ext);
         dynamic translateMap = extMap["translateMap"];
+        String languageCode = Get.locale?.languageCode ?? "";
         if (translateMap is Map) {
-          String languageCode = Get.locale?.languageCode ?? "";
           content = translateMap[languageCode] ?? msgModel.content;
         } else if (translateMap is String) {
           translateMap = json.decode(translateMap);
-          String languageCode = Get.locale?.languageCode ?? "";
           content = translateMap[languageCode] ?? msgModel.content;
+        } else {
+          String translateContent = extMap["translateContent"] ?? "";
+          if (translateContent.isEmpty) {
+            Tool.setTranslateContent(
+              content: content,
+              msgModel: msgModel,
+            );
+          } else {
+            content = translateContent;
+          }
         }
       }
     } else if (contentType == MsgContentType.image) {
@@ -533,16 +542,24 @@ class ChatTextItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String content = msgModel.content;
+    String translateContent = "";
     if (direction == ChatDirection.left && msgModel.ext.isNotEmpty) {
       Map extMap = json.decode(msgModel.ext);
       dynamic translateMap = extMap["translateMap"];
+      String languageCode = Get.locale?.languageCode ?? "";
       if (translateMap is Map) {
-        String languageCode = Get.locale?.languageCode ?? "";
         content = translateMap[languageCode] ?? msgModel.content;
       } else if (translateMap is String) {
         translateMap = json.decode(translateMap);
-        String languageCode = Get.locale?.languageCode ?? "";
         content = translateMap[languageCode] ?? msgModel.content;
+      } else {
+        translateContent = extMap["translateContent"] ?? "";
+        if (translateContent.isEmpty) {
+          Tool.setTranslateContent(
+            content: content,
+            msgModel: msgModel,
+          );
+        }
       }
     }
     return Column(
@@ -577,32 +594,32 @@ class ChatTextItem extends StatelessWidget {
             ),
           ),
         ),
-        // if (translateContent.isNotEmpty)
-        //   Container(
-        //     margin: const EdgeInsets.only(top: 5),
-        //     padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
-        //     decoration: BoxDecoration(
-        //       color: getPlaceholderColor,
-        //       borderRadius: direction == ChatDirection.left
-        //           ? const BorderRadius.only(
-        //               topRight: Radius.circular(8),
-        //               bottomLeft: Radius.circular(8),
-        //               bottomRight: Radius.circular(8),
-        //             )
-        //           : const BorderRadius.only(
-        //               topLeft: Radius.circular(8),
-        //               bottomLeft: Radius.circular(8),
-        //               bottomRight: Radius.circular(8),
-        //             ),
-        //     ),
-        //     child: ExtendedTextWidget(
-        //       translateContent,
-        //       style: const TextStyle(
-        //         color: getHintBlack,
-        //         fontSize: 12,
-        //       ),
-        //     ),
-        //   ),
+        if (translateContent.isNotEmpty)
+          Container(
+            margin: const EdgeInsets.only(top: 5),
+            padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+            decoration: BoxDecoration(
+              color: getPlaceholderColor,
+              borderRadius: direction == ChatDirection.left
+                  ? const BorderRadius.only(
+                      topRight: Radius.circular(8),
+                      bottomLeft: Radius.circular(8),
+                      bottomRight: Radius.circular(8),
+                    )
+                  : const BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      bottomLeft: Radius.circular(8),
+                      bottomRight: Radius.circular(8),
+                    ),
+            ),
+            child: ExtendedTextWidget(
+              translateContent,
+              style: const TextStyle(
+                color: getHintBlack,
+                fontSize: 12,
+              ),
+            ),
+          ),
       ],
     );
   }
