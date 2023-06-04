@@ -19,5 +19,5 @@ ipa: clean
 	cp -r build/ios/ipa ~/Desktop/ipa
 
 web: clean
-	flutter build web --release --web-renderer=html
+	flutter build web --release
 	cp -r build/web ~/Desktop/web
