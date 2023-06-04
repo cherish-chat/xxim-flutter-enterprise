@@ -184,13 +184,14 @@ class Tool {
 
   static void setTranslateContent({
     required String content,
+    required String fromLanguage,
     required MsgModel msgModel,
   }) {
     XXIM.instance.customRequest<TranslateTextResp>(
       method: "/v1/im/translateText",
       req: TranslateTextReq(
         q: content,
-        from: fromTranslate,
+        from: fromLanguage,
         to: Get.locale?.languageCode ?? "",
       ),
       resp: TranslateTextResp.create,

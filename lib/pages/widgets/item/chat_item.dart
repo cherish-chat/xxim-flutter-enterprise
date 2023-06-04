@@ -401,6 +401,7 @@ class ChatReplyItem extends StatelessWidget {
           if (translateContent.isEmpty) {
             Tool.setTranslateContent(
               content: content,
+              fromLanguage: extMap["fromLanguage"] ?? fromTranslate,
               msgModel: msgModel,
             );
           } else {
@@ -557,6 +558,7 @@ class ChatTextItem extends StatelessWidget {
         if (translateContent.isEmpty) {
           Tool.setTranslateContent(
             content: content,
+            fromLanguage: extMap["fromLanguage"] ?? fromTranslate,
             msgModel: msgModel,
           );
         }

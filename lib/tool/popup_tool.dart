@@ -95,21 +95,21 @@ class PopupTool {
           );
           Tool.showToast("复制成功".tr);
         } else if (menuTitle == "翻译".tr) {
+          Map extMap = {};
+          if (msgModel.ext.isNotEmpty) {
+            extMap = json.decode(msgModel.ext);
+          }
           GetLoadingDialog.show("请稍等".tr);
           XXIM.instance.customRequest<TranslateTextResp>(
             method: "/v1/im/translateText",
             req: TranslateTextReq(
               q: content,
-              from: fromTranslate,
+              from: extMap["fromLanguage"] ?? fromTranslate,
               to: Get.locale?.languageCode ?? "",
             ),
             resp: TranslateTextResp.create,
             onSuccess: (data) {
               GetLoadingDialog.hide();
-              Map extMap = {};
-              if (msgModel.ext.isNotEmpty) {
-                extMap = json.decode(msgModel.ext);
-              }
               extMap["translateContent"] = data.result;
               msgModel.ext = json.encode(extMap);
               ChatLogic.logic(msgModel.convId)?.update(
