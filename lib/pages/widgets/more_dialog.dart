@@ -127,6 +127,8 @@ class MoreDialog extends StatelessWidget {
                   color: getTextBlack,
                   fontSize: 14,
                 ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
           ],

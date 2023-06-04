@@ -6,6 +6,7 @@ class LaunchLogic extends GetxController with StateMixin {
   @override
   void onInit() {
     super.onInit();
+    fromTranslate = Get.locale?.languageCode ?? "";
     MediaQueryData mediaQuery = Get.mediaQuery;
     double top = mediaQuery.padding.top;
     double btm = mediaQuery.padding.bottom;

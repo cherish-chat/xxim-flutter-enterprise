@@ -143,25 +143,38 @@ class MinePage extends StatelessWidget {
                   () {
                     OperateSheet.show(
                       [
+                        "中文 - zh",
+                        "中文（繁体） - zh-TW",
                         "英语 - en",
-                        "法语 - fr",
-                        "罗马尼亚语 - ro",
                         "印地语 - hi",
                         "印度尼西亚语 - id",
                         "日语 - ja",
                         "韩语 - ko",
-                        "葡萄牙语 - pt",
                         "俄语 - ru",
+                        "葡萄牙语 - pt",
                         "泰语 - th",
-                        "越南语 - vi",
-                        "中文 - zh",
                         "乌尔都语 - ur",
-                        "中文（繁体） - zh-TW",
+                        "越南语 - vi",
                       ],
                       (index, text) {
                         String value = text.split(" - ").last;
                         fromTranslate = value;
                         logic.mineFromTranslate.value = fromTranslate;
+                        List<Locale> supportedLocales = const [
+                          Locale("zh", "CN"),
+                          Locale("zh", "TW"),
+                          Locale("en", "US"),
+                          Locale("hi", "IN"),
+                          Locale("id", "ID"),
+                          Locale("ja", "JP"),
+                          Locale("ko", "KR"),
+                          Locale("ru", "RU"),
+                          Locale("pt", "PT"),
+                          Locale("th", "TH"),
+                          Locale("ur", "PK"),
+                          Locale("vi", "VN"),
+                        ];
+                        Get.updateLocale(supportedLocales[index]);
                       },
                     );
                   },

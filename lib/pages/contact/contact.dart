@@ -223,8 +223,13 @@ class ContactPage extends StatelessWidget {
               ),
               indexHintPosition: MenuLogic.logic()?.isPhone.value == true
                   ? Offset(
-                      Get.width * 0.85 / 2 - 72 / 2, Get.height / 2 - 72 / 2)
-                  : Offset(350 / 2 - 72 / 2, Get.height / 2 - 72 / 2),
+                      Get.width * 0.85 / 2 - 72 / 2,
+                      Get.height / 2 - 72 / 2,
+                    )
+                  : Offset(
+                      350 / 2 - 72 / 2,
+                      Get.height / 2 - 72 / 2,
+                    ),
             ),
             indexBarData: const [
               "↑",
@@ -263,6 +268,14 @@ class ContactPage extends StatelessWidget {
   }
 
   Widget _buildHeader(ContactLogic logic) {
+    double width =
+        MenuLogic.logic()?.isPhone.value == true ? Get.width * 0.85 : 350;
+    double itemWidth;
+    if (GetPlatform.isMobile) {
+      itemWidth = width / 5;
+    } else {
+      itemWidth = width / 4;
+    }
     Widget buildItem(
       String image,
       String text, {
@@ -309,11 +322,17 @@ class ContactPage extends StatelessWidget {
                   ),
               ],
             ),
-            Text(
-              text,
-              style: const TextStyle(
-                color: getTextBlack,
-                fontSize: 14,
+            Container(
+              alignment: Alignment.center,
+              width: itemWidth,
+              child: Text(
+                text,
+                style: const TextStyle(
+                  color: getTextBlack,
+                  fontSize: 14,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
           ],
