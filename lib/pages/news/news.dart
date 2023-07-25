@@ -3,6 +3,7 @@ import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
+import 'package:xxim_flutter_enterprise/pages/public/menu_more_dialog.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/im.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
@@ -199,7 +200,7 @@ class NewsPage extends StatelessWidget {
     List<Widget> buildActions() {
       return [
         IconButton(
-          onPressed: MoreDialog.show,
+          onPressed: MenuMoreDialog.show,
           icon: Image.asset(
             "assets/images/ic_more_24.webp",
             width: 24,

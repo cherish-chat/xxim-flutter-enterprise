@@ -1,10 +1,10 @@
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 
-class MoreDialog extends StatelessWidget {
+class MenuMoreDialog extends StatelessWidget {
   static Future show() {
     return Get.dialog(
-      const MoreDialog(),
+      const MenuMoreDialog(),
       barrierColor: getBlack50,
     );
   }
@@ -15,7 +15,7 @@ class MoreDialog extends StatelessWidget {
     }
   }
 
-  const MoreDialog({Key? key}) : super(key: key);
+  const MenuMoreDialog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

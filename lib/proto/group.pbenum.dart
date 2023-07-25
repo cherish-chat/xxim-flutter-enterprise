@@ -78,10 +78,12 @@ class AllMuterType extends $pb.ProtobufEnum {
 class GetMyGroupListReq_Opt extends $pb.ProtobufEnum {
   static const GetMyGroupListReq_Opt DEFAULT = GetMyGroupListReq_Opt._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'DEFAULT');
   static const GetMyGroupListReq_Opt ONLY_ID = GetMyGroupListReq_Opt._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ONLY_ID');
+  static const GetMyGroupListReq_Opt WITH_MY_MEMBER_INFO = GetMyGroupListReq_Opt._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'WITH_MY_MEMBER_INFO');
 
   static const $core.List<GetMyGroupListReq_Opt> values = <GetMyGroupListReq_Opt> [
     DEFAULT,
     ONLY_ID,
+    WITH_MY_MEMBER_INFO,
   ];
 
   static final $core.Map<$core.int, GetMyGroupListReq_Opt> _byValue = $pb.ProtobufEnum.initByValue(values);

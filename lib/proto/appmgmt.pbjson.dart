@@ -8,8 +8,6 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import 'common.pbjson.dart' as $0;
-
 @$core.Deprecated('Use appMgmtConfigDescriptor instead')
 const AppMgmtConfig$json = const {
   '1': 'AppMgmtConfig',
@@ -1121,155 +1119,230 @@ const GetUploadInfoResp_HeadersEntry$json = const {
 
 /// Descriptor for `GetUploadInfoResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getUploadInfoRespDescriptor = $convert.base64Decode('ChFHZXRVcGxvYWRJbmZvUmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcBIcCgl1cGxvYWRVcmwYAiABKAlSCXVwbG9hZFVybBI8CgdoZWFkZXJzGAMgAygLMiIucGIuR2V0VXBsb2FkSW5mb1Jlc3AuSGVhZGVyc0VudHJ5UgdoZWFkZXJzGjoKDEhlYWRlcnNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgB');
-const $core.Map<$core.String, $core.dynamic> appMgmtServiceBase$json = const {
-  '1': 'appMgmtService',
+@$core.Deprecated('Use appMgmtRichArticleDescriptor instead')
+const AppMgmtRichArticle$json = const {
+  '1': 'AppMgmtRichArticle',
   '2': const [
-    const {'1': 'GetAllAppMgmtConfig', '2': '.pb.GetAllAppMgmtConfigReq', '3': '.pb.GetAllAppMgmtConfigResp'},
-    const {'1': 'UpdateAppMgmtConfig', '2': '.pb.UpdateAppMgmtConfigReq', '3': '.pb.UpdateAppMgmtConfigResp'},
-    const {'1': 'GetAllAppMgmtVersion', '2': '.pb.GetAllAppMgmtVersionReq', '3': '.pb.GetAllAppMgmtVersionResp'},
-    const {'1': 'GetLatestVersion', '2': '.pb.GetLatestVersionReq', '3': '.pb.GetLatestVersionResp'},
-    const {'1': 'GetAppMgmtVersionDetail', '2': '.pb.GetAppMgmtVersionDetailReq', '3': '.pb.GetAppMgmtVersionDetailResp'},
-    const {'1': 'AddAppMgmtVersion', '2': '.pb.AddAppMgmtVersionReq', '3': '.pb.AddAppMgmtVersionResp'},
-    const {'1': 'UpdateAppMgmtVersion', '2': '.pb.UpdateAppMgmtVersionReq', '3': '.pb.UpdateAppMgmtVersionResp'},
-    const {'1': 'DeleteAppMgmtVersion', '2': '.pb.DeleteAppMgmtVersionReq', '3': '.pb.DeleteAppMgmtVersionResp'},
-    const {'1': 'GetAllAppMgmtShieldWord', '2': '.pb.GetAllAppMgmtShieldWordReq', '3': '.pb.GetAllAppMgmtShieldWordResp'},
-    const {'1': 'GetAppMgmtShieldWordDetail', '2': '.pb.GetAppMgmtShieldWordDetailReq', '3': '.pb.GetAppMgmtShieldWordDetailResp'},
-    const {'1': 'AddAppMgmtShieldWord', '2': '.pb.AddAppMgmtShieldWordReq', '3': '.pb.AddAppMgmtShieldWordResp'},
-    const {'1': 'UpdateAppMgmtShieldWord', '2': '.pb.UpdateAppMgmtShieldWordReq', '3': '.pb.UpdateAppMgmtShieldWordResp'},
-    const {'1': 'DeleteAppMgmtShieldWord', '2': '.pb.DeleteAppMgmtShieldWordReq', '3': '.pb.DeleteAppMgmtShieldWordResp'},
-    const {'1': 'GetAllAppMgmtVpn', '2': '.pb.GetAllAppMgmtVpnReq', '3': '.pb.GetAllAppMgmtVpnResp'},
-    const {'1': 'GetAppMgmtVpnDetail', '2': '.pb.GetAppMgmtVpnDetailReq', '3': '.pb.GetAppMgmtVpnDetailResp'},
-    const {'1': 'AddAppMgmtVpn', '2': '.pb.AddAppMgmtVpnReq', '3': '.pb.AddAppMgmtVpnResp'},
-    const {'1': 'UpdateAppMgmtVpn', '2': '.pb.UpdateAppMgmtVpnReq', '3': '.pb.UpdateAppMgmtVpnResp'},
-    const {'1': 'DeleteAppMgmtVpn', '2': '.pb.DeleteAppMgmtVpnReq', '3': '.pb.DeleteAppMgmtVpnResp'},
-    const {'1': 'GetAllAppMgmtEmoji', '2': '.pb.GetAllAppMgmtEmojiReq', '3': '.pb.GetAllAppMgmtEmojiResp'},
-    const {'1': 'GetAppMgmtEmojiDetail', '2': '.pb.GetAppMgmtEmojiDetailReq', '3': '.pb.GetAppMgmtEmojiDetailResp'},
-    const {'1': 'AddAppMgmtEmoji', '2': '.pb.AddAppMgmtEmojiReq', '3': '.pb.AddAppMgmtEmojiResp'},
-    const {'1': 'UpdateAppMgmtEmoji', '2': '.pb.UpdateAppMgmtEmojiReq', '3': '.pb.UpdateAppMgmtEmojiResp'},
-    const {'1': 'DeleteAppMgmtEmoji', '2': '.pb.DeleteAppMgmtEmojiReq', '3': '.pb.DeleteAppMgmtEmojiResp'},
-    const {'1': 'GetAllAppMgmtEmojiGroup', '2': '.pb.GetAllAppMgmtEmojiGroupReq', '3': '.pb.GetAllAppMgmtEmojiGroupResp'},
-    const {'1': 'GetAppMgmtEmojiGroupDetail', '2': '.pb.GetAppMgmtEmojiGroupDetailReq', '3': '.pb.GetAppMgmtEmojiGroupDetailResp'},
-    const {'1': 'AddAppMgmtEmojiGroup', '2': '.pb.AddAppMgmtEmojiGroupReq', '3': '.pb.AddAppMgmtEmojiGroupResp'},
-    const {'1': 'UpdateAppMgmtEmojiGroup', '2': '.pb.UpdateAppMgmtEmojiGroupReq', '3': '.pb.UpdateAppMgmtEmojiGroupResp'},
-    const {'1': 'DeleteAppMgmtEmojiGroup', '2': '.pb.DeleteAppMgmtEmojiGroupReq', '3': '.pb.DeleteAppMgmtEmojiGroupResp'},
-    const {'1': 'GetAllAppMgmtNotice', '2': '.pb.GetAllAppMgmtNoticeReq', '3': '.pb.GetAllAppMgmtNoticeResp'},
-    const {'1': 'GetAppMgmtNoticeDetail', '2': '.pb.GetAppMgmtNoticeDetailReq', '3': '.pb.GetAppMgmtNoticeDetailResp'},
-    const {'1': 'AddAppMgmtNotice', '2': '.pb.AddAppMgmtNoticeReq', '3': '.pb.AddAppMgmtNoticeResp'},
-    const {'1': 'UpdateAppMgmtNotice', '2': '.pb.UpdateAppMgmtNoticeReq', '3': '.pb.UpdateAppMgmtNoticeResp'},
-    const {'1': 'DeleteAppMgmtNotice', '2': '.pb.DeleteAppMgmtNoticeReq', '3': '.pb.DeleteAppMgmtNoticeResp'},
-    const {'1': 'GetAllAppMgmtLink', '2': '.pb.GetAllAppMgmtLinkReq', '3': '.pb.GetAllAppMgmtLinkResp'},
-    const {'1': 'GetAppMgmtLinkDetail', '2': '.pb.GetAppMgmtLinkDetailReq', '3': '.pb.GetAppMgmtLinkDetailResp'},
-    const {'1': 'AddAppMgmtLink', '2': '.pb.AddAppMgmtLinkReq', '3': '.pb.AddAppMgmtLinkResp'},
-    const {'1': 'UpdateAppMgmtLink', '2': '.pb.UpdateAppMgmtLinkReq', '3': '.pb.UpdateAppMgmtLinkResp'},
-    const {'1': 'DeleteAppMgmtLink', '2': '.pb.DeleteAppMgmtLinkReq', '3': '.pb.DeleteAppMgmtLinkResp'},
-    const {'1': 'AppGetAllConfig', '2': '.pb.AppGetAllConfigReq', '3': '.pb.AppGetAllConfigResp'},
-    const {'1': 'GetUploadInfo', '2': '.pb.GetUploadInfoReq', '3': '.pb.GetUploadInfoResp'},
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'title', '3': 2, '4': 1, '5': 9, '10': 'title'},
+    const {'1': 'content', '3': 3, '4': 1, '5': 9, '10': 'content'},
+    const {'1': 'contentType', '3': 4, '4': 1, '5': 9, '10': 'contentType'},
+    const {'1': 'url', '3': 5, '4': 1, '5': 9, '10': 'url'},
+    const {'1': 'isEnable', '3': 6, '4': 1, '5': 8, '10': 'isEnable'},
+    const {'1': 'createdAt', '3': 7, '4': 1, '5': 3, '10': 'createdAt'},
+    const {'1': 'createdAtStr', '3': 8, '4': 1, '5': 9, '10': 'createdAtStr'},
+    const {'1': 'updatedAt', '3': 9, '4': 1, '5': 3, '10': 'updatedAt'},
+    const {'1': 'updatedAtStr', '3': 10, '4': 1, '5': 9, '10': 'updatedAtStr'},
+    const {'1': 'sort', '3': 11, '4': 1, '5': 5, '10': 'sort'},
+    const {'1': 'coverUrl', '3': 12, '4': 1, '5': 9, '10': 'coverUrl'},
   ],
 };
 
-@$core.Deprecated('Use appMgmtServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> appMgmtServiceBase$messageJson = const {
-  '.pb.GetAllAppMgmtConfigReq': GetAllAppMgmtConfigReq$json,
-  '.pb.CommonReq': $0.CommonReq$json,
-  '.pb.GetAllAppMgmtConfigResp': GetAllAppMgmtConfigResp$json,
-  '.pb.CommonResp': $0.CommonResp$json,
-  '.pb.AppMgmtConfig': AppMgmtConfig$json,
-  '.pb.UpdateAppMgmtConfigReq': UpdateAppMgmtConfigReq$json,
-  '.pb.UpdateAppMgmtConfigResp': UpdateAppMgmtConfigResp$json,
-  '.pb.GetAllAppMgmtVersionReq': GetAllAppMgmtVersionReq$json,
-  '.pb.Page': $0.Page$json,
-  '.pb.GetAllAppMgmtVersionReq.FilterEntry': GetAllAppMgmtVersionReq_FilterEntry$json,
-  '.pb.GetAllAppMgmtVersionResp': GetAllAppMgmtVersionResp$json,
-  '.pb.AppMgmtVersion': AppMgmtVersion$json,
-  '.pb.GetLatestVersionReq': GetLatestVersionReq$json,
-  '.pb.GetLatestVersionResp': GetLatestVersionResp$json,
-  '.pb.GetAppMgmtVersionDetailReq': GetAppMgmtVersionDetailReq$json,
-  '.pb.GetAppMgmtVersionDetailResp': GetAppMgmtVersionDetailResp$json,
-  '.pb.AddAppMgmtVersionReq': AddAppMgmtVersionReq$json,
-  '.pb.AddAppMgmtVersionResp': AddAppMgmtVersionResp$json,
-  '.pb.UpdateAppMgmtVersionReq': UpdateAppMgmtVersionReq$json,
-  '.pb.UpdateAppMgmtVersionResp': UpdateAppMgmtVersionResp$json,
-  '.pb.DeleteAppMgmtVersionReq': DeleteAppMgmtVersionReq$json,
-  '.pb.DeleteAppMgmtVersionResp': DeleteAppMgmtVersionResp$json,
-  '.pb.GetAllAppMgmtShieldWordReq': GetAllAppMgmtShieldWordReq$json,
-  '.pb.GetAllAppMgmtShieldWordReq.FilterEntry': GetAllAppMgmtShieldWordReq_FilterEntry$json,
-  '.pb.GetAllAppMgmtShieldWordResp': GetAllAppMgmtShieldWordResp$json,
-  '.pb.AppMgmtShieldWord': AppMgmtShieldWord$json,
-  '.pb.GetAppMgmtShieldWordDetailReq': GetAppMgmtShieldWordDetailReq$json,
-  '.pb.GetAppMgmtShieldWordDetailResp': GetAppMgmtShieldWordDetailResp$json,
-  '.pb.AddAppMgmtShieldWordReq': AddAppMgmtShieldWordReq$json,
-  '.pb.AddAppMgmtShieldWordResp': AddAppMgmtShieldWordResp$json,
-  '.pb.UpdateAppMgmtShieldWordReq': UpdateAppMgmtShieldWordReq$json,
-  '.pb.UpdateAppMgmtShieldWordResp': UpdateAppMgmtShieldWordResp$json,
-  '.pb.DeleteAppMgmtShieldWordReq': DeleteAppMgmtShieldWordReq$json,
-  '.pb.DeleteAppMgmtShieldWordResp': DeleteAppMgmtShieldWordResp$json,
-  '.pb.GetAllAppMgmtVpnReq': GetAllAppMgmtVpnReq$json,
-  '.pb.GetAllAppMgmtVpnReq.FilterEntry': GetAllAppMgmtVpnReq_FilterEntry$json,
-  '.pb.GetAllAppMgmtVpnResp': GetAllAppMgmtVpnResp$json,
-  '.pb.AppMgmtVpn': AppMgmtVpn$json,
-  '.pb.GetAppMgmtVpnDetailReq': GetAppMgmtVpnDetailReq$json,
-  '.pb.GetAppMgmtVpnDetailResp': GetAppMgmtVpnDetailResp$json,
-  '.pb.AddAppMgmtVpnReq': AddAppMgmtVpnReq$json,
-  '.pb.AddAppMgmtVpnResp': AddAppMgmtVpnResp$json,
-  '.pb.UpdateAppMgmtVpnReq': UpdateAppMgmtVpnReq$json,
-  '.pb.UpdateAppMgmtVpnResp': UpdateAppMgmtVpnResp$json,
-  '.pb.DeleteAppMgmtVpnReq': DeleteAppMgmtVpnReq$json,
-  '.pb.DeleteAppMgmtVpnResp': DeleteAppMgmtVpnResp$json,
-  '.pb.GetAllAppMgmtEmojiReq': GetAllAppMgmtEmojiReq$json,
-  '.pb.GetAllAppMgmtEmojiReq.FilterEntry': GetAllAppMgmtEmojiReq_FilterEntry$json,
-  '.pb.GetAllAppMgmtEmojiResp': GetAllAppMgmtEmojiResp$json,
-  '.pb.AppMgmtEmoji': AppMgmtEmoji$json,
-  '.pb.GetAppMgmtEmojiDetailReq': GetAppMgmtEmojiDetailReq$json,
-  '.pb.GetAppMgmtEmojiDetailResp': GetAppMgmtEmojiDetailResp$json,
-  '.pb.AddAppMgmtEmojiReq': AddAppMgmtEmojiReq$json,
-  '.pb.AddAppMgmtEmojiResp': AddAppMgmtEmojiResp$json,
-  '.pb.UpdateAppMgmtEmojiReq': UpdateAppMgmtEmojiReq$json,
-  '.pb.UpdateAppMgmtEmojiResp': UpdateAppMgmtEmojiResp$json,
-  '.pb.DeleteAppMgmtEmojiReq': DeleteAppMgmtEmojiReq$json,
-  '.pb.DeleteAppMgmtEmojiResp': DeleteAppMgmtEmojiResp$json,
-  '.pb.GetAllAppMgmtEmojiGroupReq': GetAllAppMgmtEmojiGroupReq$json,
-  '.pb.GetAllAppMgmtEmojiGroupReq.FilterEntry': GetAllAppMgmtEmojiGroupReq_FilterEntry$json,
-  '.pb.GetAllAppMgmtEmojiGroupResp': GetAllAppMgmtEmojiGroupResp$json,
-  '.pb.AppMgmtEmojiGroup': AppMgmtEmojiGroup$json,
-  '.pb.GetAppMgmtEmojiGroupDetailReq': GetAppMgmtEmojiGroupDetailReq$json,
-  '.pb.GetAppMgmtEmojiGroupDetailResp': GetAppMgmtEmojiGroupDetailResp$json,
-  '.pb.AddAppMgmtEmojiGroupReq': AddAppMgmtEmojiGroupReq$json,
-  '.pb.AddAppMgmtEmojiGroupResp': AddAppMgmtEmojiGroupResp$json,
-  '.pb.UpdateAppMgmtEmojiGroupReq': UpdateAppMgmtEmojiGroupReq$json,
-  '.pb.UpdateAppMgmtEmojiGroupResp': UpdateAppMgmtEmojiGroupResp$json,
-  '.pb.DeleteAppMgmtEmojiGroupReq': DeleteAppMgmtEmojiGroupReq$json,
-  '.pb.DeleteAppMgmtEmojiGroupResp': DeleteAppMgmtEmojiGroupResp$json,
-  '.pb.GetAllAppMgmtNoticeReq': GetAllAppMgmtNoticeReq$json,
-  '.pb.GetAllAppMgmtNoticeReq.FilterEntry': GetAllAppMgmtNoticeReq_FilterEntry$json,
-  '.pb.GetAllAppMgmtNoticeResp': GetAllAppMgmtNoticeResp$json,
-  '.pb.AppMgmtNotice': AppMgmtNotice$json,
-  '.pb.GetAppMgmtNoticeDetailReq': GetAppMgmtNoticeDetailReq$json,
-  '.pb.GetAppMgmtNoticeDetailResp': GetAppMgmtNoticeDetailResp$json,
-  '.pb.AddAppMgmtNoticeReq': AddAppMgmtNoticeReq$json,
-  '.pb.AddAppMgmtNoticeResp': AddAppMgmtNoticeResp$json,
-  '.pb.UpdateAppMgmtNoticeReq': UpdateAppMgmtNoticeReq$json,
-  '.pb.UpdateAppMgmtNoticeResp': UpdateAppMgmtNoticeResp$json,
-  '.pb.DeleteAppMgmtNoticeReq': DeleteAppMgmtNoticeReq$json,
-  '.pb.DeleteAppMgmtNoticeResp': DeleteAppMgmtNoticeResp$json,
-  '.pb.GetAllAppMgmtLinkReq': GetAllAppMgmtLinkReq$json,
-  '.pb.GetAllAppMgmtLinkReq.FilterEntry': GetAllAppMgmtLinkReq_FilterEntry$json,
-  '.pb.GetAllAppMgmtLinkResp': GetAllAppMgmtLinkResp$json,
-  '.pb.AppMgmtLink': AppMgmtLink$json,
-  '.pb.GetAppMgmtLinkDetailReq': GetAppMgmtLinkDetailReq$json,
-  '.pb.GetAppMgmtLinkDetailResp': GetAppMgmtLinkDetailResp$json,
-  '.pb.AddAppMgmtLinkReq': AddAppMgmtLinkReq$json,
-  '.pb.AddAppMgmtLinkResp': AddAppMgmtLinkResp$json,
-  '.pb.UpdateAppMgmtLinkReq': UpdateAppMgmtLinkReq$json,
-  '.pb.UpdateAppMgmtLinkResp': UpdateAppMgmtLinkResp$json,
-  '.pb.DeleteAppMgmtLinkReq': DeleteAppMgmtLinkReq$json,
-  '.pb.DeleteAppMgmtLinkResp': DeleteAppMgmtLinkResp$json,
-  '.pb.AppGetAllConfigReq': AppGetAllConfigReq$json,
-  '.pb.AppGetAllConfigResp': AppGetAllConfigResp$json,
-  '.pb.AppGetAllConfigResp.ConfigMapEntry': AppGetAllConfigResp_ConfigMapEntry$json,
-  '.pb.GetUploadInfoReq': GetUploadInfoReq$json,
-  '.pb.GetUploadInfoResp': GetUploadInfoResp$json,
-  '.pb.GetUploadInfoResp.HeadersEntry': GetUploadInfoResp_HeadersEntry$json,
+/// Descriptor for `AppMgmtRichArticle`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List appMgmtRichArticleDescriptor = $convert.base64Decode('ChJBcHBNZ210UmljaEFydGljbGUSDgoCaWQYASABKAlSAmlkEhQKBXRpdGxlGAIgASgJUgV0aXRsZRIYCgdjb250ZW50GAMgASgJUgdjb250ZW50EiAKC2NvbnRlbnRUeXBlGAQgASgJUgtjb250ZW50VHlwZRIQCgN1cmwYBSABKAlSA3VybBIaCghpc0VuYWJsZRgGIAEoCFIIaXNFbmFibGUSHAoJY3JlYXRlZEF0GAcgASgDUgljcmVhdGVkQXQSIgoMY3JlYXRlZEF0U3RyGAggASgJUgxjcmVhdGVkQXRTdHISHAoJdXBkYXRlZEF0GAkgASgDUgl1cGRhdGVkQXQSIgoMdXBkYXRlZEF0U3RyGAogASgJUgx1cGRhdGVkQXRTdHISEgoEc29ydBgLIAEoBVIEc29ydBIaCghjb3ZlclVybBgMIAEoCVIIY292ZXJVcmw=');
+@$core.Deprecated('Use getAllAppMgmtRichArticleReqDescriptor instead')
+const GetAllAppMgmtRichArticleReq$json = const {
+  '1': 'GetAllAppMgmtRichArticleReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'page', '3': 2, '4': 1, '5': 11, '6': '.pb.Page', '10': 'page'},
+    const {'1': 'filter', '3': 3, '4': 3, '5': 11, '6': '.pb.GetAllAppMgmtRichArticleReq.FilterEntry', '10': 'filter'},
+  ],
+  '3': const [GetAllAppMgmtRichArticleReq_FilterEntry$json],
 };
 
-/// Descriptor for `appMgmtService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List appMgmtServiceDescriptor = $convert.base64Decode('Cg5hcHBNZ210U2VydmljZRJOChNHZXRBbGxBcHBNZ210Q29uZmlnEhoucGIuR2V0QWxsQXBwTWdtdENvbmZpZ1JlcRobLnBiLkdldEFsbEFwcE1nbXRDb25maWdSZXNwEk4KE1VwZGF0ZUFwcE1nbXRDb25maWcSGi5wYi5VcGRhdGVBcHBNZ210Q29uZmlnUmVxGhsucGIuVXBkYXRlQXBwTWdtdENvbmZpZ1Jlc3ASUQoUR2V0QWxsQXBwTWdtdFZlcnNpb24SGy5wYi5HZXRBbGxBcHBNZ210VmVyc2lvblJlcRocLnBiLkdldEFsbEFwcE1nbXRWZXJzaW9uUmVzcBJFChBHZXRMYXRlc3RWZXJzaW9uEhcucGIuR2V0TGF0ZXN0VmVyc2lvblJlcRoYLnBiLkdldExhdGVzdFZlcnNpb25SZXNwEloKF0dldEFwcE1nbXRWZXJzaW9uRGV0YWlsEh4ucGIuR2V0QXBwTWdtdFZlcnNpb25EZXRhaWxSZXEaHy5wYi5HZXRBcHBNZ210VmVyc2lvbkRldGFpbFJlc3ASSAoRQWRkQXBwTWdtdFZlcnNpb24SGC5wYi5BZGRBcHBNZ210VmVyc2lvblJlcRoZLnBiLkFkZEFwcE1nbXRWZXJzaW9uUmVzcBJRChRVcGRhdGVBcHBNZ210VmVyc2lvbhIbLnBiLlVwZGF0ZUFwcE1nbXRWZXJzaW9uUmVxGhwucGIuVXBkYXRlQXBwTWdtdFZlcnNpb25SZXNwElEKFERlbGV0ZUFwcE1nbXRWZXJzaW9uEhsucGIuRGVsZXRlQXBwTWdtdFZlcnNpb25SZXEaHC5wYi5EZWxldGVBcHBNZ210VmVyc2lvblJlc3ASWgoXR2V0QWxsQXBwTWdtdFNoaWVsZFdvcmQSHi5wYi5HZXRBbGxBcHBNZ210U2hpZWxkV29yZFJlcRofLnBiLkdldEFsbEFwcE1nbXRTaGllbGRXb3JkUmVzcBJjChpHZXRBcHBNZ210U2hpZWxkV29yZERldGFpbBIhLnBiLkdldEFwcE1nbXRTaGllbGRXb3JkRGV0YWlsUmVxGiIucGIuR2V0QXBwTWdtdFNoaWVsZFdvcmREZXRhaWxSZXNwElEKFEFkZEFwcE1nbXRTaGllbGRXb3JkEhsucGIuQWRkQXBwTWdtdFNoaWVsZFdvcmRSZXEaHC5wYi5BZGRBcHBNZ210U2hpZWxkV29yZFJlc3ASWgoXVXBkYXRlQXBwTWdtdFNoaWVsZFdvcmQSHi5wYi5VcGRhdGVBcHBNZ210U2hpZWxkV29yZFJlcRofLnBiLlVwZGF0ZUFwcE1nbXRTaGllbGRXb3JkUmVzcBJaChdEZWxldGVBcHBNZ210U2hpZWxkV29yZBIeLnBiLkRlbGV0ZUFwcE1nbXRTaGllbGRXb3JkUmVxGh8ucGIuRGVsZXRlQXBwTWdtdFNoaWVsZFdvcmRSZXNwEkUKEEdldEFsbEFwcE1nbXRWcG4SFy5wYi5HZXRBbGxBcHBNZ210VnBuUmVxGhgucGIuR2V0QWxsQXBwTWdtdFZwblJlc3ASTgoTR2V0QXBwTWdtdFZwbkRldGFpbBIaLnBiLkdldEFwcE1nbXRWcG5EZXRhaWxSZXEaGy5wYi5HZXRBcHBNZ210VnBuRGV0YWlsUmVzcBI8Cg1BZGRBcHBNZ210VnBuEhQucGIuQWRkQXBwTWdtdFZwblJlcRoVLnBiLkFkZEFwcE1nbXRWcG5SZXNwEkUKEFVwZGF0ZUFwcE1nbXRWcG4SFy5wYi5VcGRhdGVBcHBNZ210VnBuUmVxGhgucGIuVXBkYXRlQXBwTWdtdFZwblJlc3ASRQoQRGVsZXRlQXBwTWdtdFZwbhIXLnBiLkRlbGV0ZUFwcE1nbXRWcG5SZXEaGC5wYi5EZWxldGVBcHBNZ210VnBuUmVzcBJLChJHZXRBbGxBcHBNZ210RW1vamkSGS5wYi5HZXRBbGxBcHBNZ210RW1vamlSZXEaGi5wYi5HZXRBbGxBcHBNZ210RW1vamlSZXNwElQKFUdldEFwcE1nbXRFbW9qaURldGFpbBIcLnBiLkdldEFwcE1nbXRFbW9qaURldGFpbFJlcRodLnBiLkdldEFwcE1nbXRFbW9qaURldGFpbFJlc3ASQgoPQWRkQXBwTWdtdEVtb2ppEhYucGIuQWRkQXBwTWdtdEVtb2ppUmVxGhcucGIuQWRkQXBwTWdtdEVtb2ppUmVzcBJLChJVcGRhdGVBcHBNZ210RW1vamkSGS5wYi5VcGRhdGVBcHBNZ210RW1vamlSZXEaGi5wYi5VcGRhdGVBcHBNZ210RW1vamlSZXNwEksKEkRlbGV0ZUFwcE1nbXRFbW9qaRIZLnBiLkRlbGV0ZUFwcE1nbXRFbW9qaVJlcRoaLnBiLkRlbGV0ZUFwcE1nbXRFbW9qaVJlc3ASWgoXR2V0QWxsQXBwTWdtdEVtb2ppR3JvdXASHi5wYi5HZXRBbGxBcHBNZ210RW1vamlHcm91cFJlcRofLnBiLkdldEFsbEFwcE1nbXRFbW9qaUdyb3VwUmVzcBJjChpHZXRBcHBNZ210RW1vamlHcm91cERldGFpbBIhLnBiLkdldEFwcE1nbXRFbW9qaUdyb3VwRGV0YWlsUmVxGiIucGIuR2V0QXBwTWdtdEVtb2ppR3JvdXBEZXRhaWxSZXNwElEKFEFkZEFwcE1nbXRFbW9qaUdyb3VwEhsucGIuQWRkQXBwTWdtdEVtb2ppR3JvdXBSZXEaHC5wYi5BZGRBcHBNZ210RW1vamlHcm91cFJlc3ASWgoXVXBkYXRlQXBwTWdtdEVtb2ppR3JvdXASHi5wYi5VcGRhdGVBcHBNZ210RW1vamlHcm91cFJlcRofLnBiLlVwZGF0ZUFwcE1nbXRFbW9qaUdyb3VwUmVzcBJaChdEZWxldGVBcHBNZ210RW1vamlHcm91cBIeLnBiLkRlbGV0ZUFwcE1nbXRFbW9qaUdyb3VwUmVxGh8ucGIuRGVsZXRlQXBwTWdtdEVtb2ppR3JvdXBSZXNwEk4KE0dldEFsbEFwcE1nbXROb3RpY2USGi5wYi5HZXRBbGxBcHBNZ210Tm90aWNlUmVxGhsucGIuR2V0QWxsQXBwTWdtdE5vdGljZVJlc3ASVwoWR2V0QXBwTWdtdE5vdGljZURldGFpbBIdLnBiLkdldEFwcE1nbXROb3RpY2VEZXRhaWxSZXEaHi5wYi5HZXRBcHBNZ210Tm90aWNlRGV0YWlsUmVzcBJFChBBZGRBcHBNZ210Tm90aWNlEhcucGIuQWRkQXBwTWdtdE5vdGljZVJlcRoYLnBiLkFkZEFwcE1nbXROb3RpY2VSZXNwEk4KE1VwZGF0ZUFwcE1nbXROb3RpY2USGi5wYi5VcGRhdGVBcHBNZ210Tm90aWNlUmVxGhsucGIuVXBkYXRlQXBwTWdtdE5vdGljZVJlc3ASTgoTRGVsZXRlQXBwTWdtdE5vdGljZRIaLnBiLkRlbGV0ZUFwcE1nbXROb3RpY2VSZXEaGy5wYi5EZWxldGVBcHBNZ210Tm90aWNlUmVzcBJIChFHZXRBbGxBcHBNZ210TGluaxIYLnBiLkdldEFsbEFwcE1nbXRMaW5rUmVxGhkucGIuR2V0QWxsQXBwTWdtdExpbmtSZXNwElEKFEdldEFwcE1nbXRMaW5rRGV0YWlsEhsucGIuR2V0QXBwTWdtdExpbmtEZXRhaWxSZXEaHC5wYi5HZXRBcHBNZ210TGlua0RldGFpbFJlc3ASPwoOQWRkQXBwTWdtdExpbmsSFS5wYi5BZGRBcHBNZ210TGlua1JlcRoWLnBiLkFkZEFwcE1nbXRMaW5rUmVzcBJIChFVcGRhdGVBcHBNZ210TGluaxIYLnBiLlVwZGF0ZUFwcE1nbXRMaW5rUmVxGhkucGIuVXBkYXRlQXBwTWdtdExpbmtSZXNwEkgKEURlbGV0ZUFwcE1nbXRMaW5rEhgucGIuRGVsZXRlQXBwTWdtdExpbmtSZXEaGS5wYi5EZWxldGVBcHBNZ210TGlua1Jlc3ASQgoPQXBwR2V0QWxsQ29uZmlnEhYucGIuQXBwR2V0QWxsQ29uZmlnUmVxGhcucGIuQXBwR2V0QWxsQ29uZmlnUmVzcBI8Cg1HZXRVcGxvYWRJbmZvEhQucGIuR2V0VXBsb2FkSW5mb1JlcRoVLnBiLkdldFVwbG9hZEluZm9SZXNw');
+@$core.Deprecated('Use getAllAppMgmtRichArticleReqDescriptor instead')
+const GetAllAppMgmtRichArticleReq_FilterEntry$json = const {
+  '1': 'FilterEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `GetAllAppMgmtRichArticleReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllAppMgmtRichArticleReqDescriptor = $convert.base64Decode('ChtHZXRBbGxBcHBNZ210UmljaEFydGljbGVSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESHAoEcGFnZRgCIAEoCzIILnBiLlBhZ2VSBHBhZ2USQwoGZmlsdGVyGAMgAygLMisucGIuR2V0QWxsQXBwTWdtdFJpY2hBcnRpY2xlUmVxLkZpbHRlckVudHJ5UgZmaWx0ZXIaOQoLRmlsdGVyRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');
+@$core.Deprecated('Use getAllAppMgmtRichArticleRespDescriptor instead')
+const GetAllAppMgmtRichArticleResp$json = const {
+  '1': 'GetAllAppMgmtRichArticleResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'appMgmtRichArticles', '3': 2, '4': 3, '5': 11, '6': '.pb.AppMgmtRichArticle', '10': 'appMgmtRichArticles'},
+    const {'1': 'total', '3': 3, '4': 1, '5': 3, '10': 'total'},
+  ],
+};
+
+/// Descriptor for `GetAllAppMgmtRichArticleResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllAppMgmtRichArticleRespDescriptor = $convert.base64Decode('ChxHZXRBbGxBcHBNZ210UmljaEFydGljbGVSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEkgKE2FwcE1nbXRSaWNoQXJ0aWNsZXMYAiADKAsyFi5wYi5BcHBNZ210UmljaEFydGljbGVSE2FwcE1nbXRSaWNoQXJ0aWNsZXMSFAoFdG90YWwYAyABKANSBXRvdGFs');
+@$core.Deprecated('Use getAppMgmtRichArticleDetailReqDescriptor instead')
+const GetAppMgmtRichArticleDetailReq$json = const {
+  '1': 'GetAppMgmtRichArticleDetailReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'id', '3': 2, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `GetAppMgmtRichArticleDetailReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAppMgmtRichArticleDetailReqDescriptor = $convert.base64Decode('Ch5HZXRBcHBNZ210UmljaEFydGljbGVEZXRhaWxSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESDgoCaWQYAiABKAlSAmlk');
+@$core.Deprecated('Use getAppMgmtRichArticleDetailRespDescriptor instead')
+const GetAppMgmtRichArticleDetailResp$json = const {
+  '1': 'GetAppMgmtRichArticleDetailResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'appMgmtRichArticle', '3': 2, '4': 1, '5': 11, '6': '.pb.AppMgmtRichArticle', '10': 'appMgmtRichArticle'},
+  ],
+};
+
+/// Descriptor for `GetAppMgmtRichArticleDetailResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAppMgmtRichArticleDetailRespDescriptor = $convert.base64Decode('Ch9HZXRBcHBNZ210UmljaEFydGljbGVEZXRhaWxSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEkYKEmFwcE1nbXRSaWNoQXJ0aWNsZRgCIAEoCzIWLnBiLkFwcE1nbXRSaWNoQXJ0aWNsZVISYXBwTWdtdFJpY2hBcnRpY2xl');
+@$core.Deprecated('Use addAppMgmtRichArticleReqDescriptor instead')
+const AddAppMgmtRichArticleReq$json = const {
+  '1': 'AddAppMgmtRichArticleReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'appMgmtRichArticle', '3': 2, '4': 1, '5': 11, '6': '.pb.AppMgmtRichArticle', '10': 'appMgmtRichArticle'},
+  ],
+};
+
+/// Descriptor for `AddAppMgmtRichArticleReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addAppMgmtRichArticleReqDescriptor = $convert.base64Decode('ChhBZGRBcHBNZ210UmljaEFydGljbGVSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESRgoSYXBwTWdtdFJpY2hBcnRpY2xlGAIgASgLMhYucGIuQXBwTWdtdFJpY2hBcnRpY2xlUhJhcHBNZ210UmljaEFydGljbGU=');
+@$core.Deprecated('Use addAppMgmtRichArticleRespDescriptor instead')
+const AddAppMgmtRichArticleResp$json = const {
+  '1': 'AddAppMgmtRichArticleResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `AddAppMgmtRichArticleResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addAppMgmtRichArticleRespDescriptor = $convert.base64Decode('ChlBZGRBcHBNZ210UmljaEFydGljbGVSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use updateAppMgmtRichArticleReqDescriptor instead')
+const UpdateAppMgmtRichArticleReq$json = const {
+  '1': 'UpdateAppMgmtRichArticleReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'appMgmtRichArticle', '3': 2, '4': 1, '5': 11, '6': '.pb.AppMgmtRichArticle', '10': 'appMgmtRichArticle'},
+  ],
+};
+
+/// Descriptor for `UpdateAppMgmtRichArticleReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateAppMgmtRichArticleReqDescriptor = $convert.base64Decode('ChtVcGRhdGVBcHBNZ210UmljaEFydGljbGVSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESRgoSYXBwTWdtdFJpY2hBcnRpY2xlGAIgASgLMhYucGIuQXBwTWdtdFJpY2hBcnRpY2xlUhJhcHBNZ210UmljaEFydGljbGU=');
+@$core.Deprecated('Use updateAppMgmtRichArticleRespDescriptor instead')
+const UpdateAppMgmtRichArticleResp$json = const {
+  '1': 'UpdateAppMgmtRichArticleResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `UpdateAppMgmtRichArticleResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateAppMgmtRichArticleRespDescriptor = $convert.base64Decode('ChxVcGRhdGVBcHBNZ210UmljaEFydGljbGVSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use deleteAppMgmtRichArticleReqDescriptor instead')
+const DeleteAppMgmtRichArticleReq$json = const {
+  '1': 'DeleteAppMgmtRichArticleReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'ids', '3': 2, '4': 3, '5': 9, '10': 'ids'},
+  ],
+};
+
+/// Descriptor for `DeleteAppMgmtRichArticleReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteAppMgmtRichArticleReqDescriptor = $convert.base64Decode('ChtEZWxldGVBcHBNZ210UmljaEFydGljbGVSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESEAoDaWRzGAIgAygJUgNpZHM=');
+@$core.Deprecated('Use deleteAppMgmtRichArticleRespDescriptor instead')
+const DeleteAppMgmtRichArticleResp$json = const {
+  '1': 'DeleteAppMgmtRichArticleResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `DeleteAppMgmtRichArticleResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteAppMgmtRichArticleRespDescriptor = $convert.base64Decode('ChxEZWxldGVBcHBNZ210UmljaEFydGljbGVSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use appGetRichArticleListReqDescriptor instead')
+const AppGetRichArticleListReq$json = const {
+  '1': 'AppGetRichArticleListReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'page', '3': 2, '4': 1, '5': 11, '6': '.pb.Page', '10': 'page'},
+  ],
+};
+
+/// Descriptor for `AppGetRichArticleListReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List appGetRichArticleListReqDescriptor = $convert.base64Decode('ChhBcHBHZXRSaWNoQXJ0aWNsZUxpc3RSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESHAoEcGFnZRgCIAEoCzIILnBiLlBhZ2VSBHBhZ2U=');
+@$core.Deprecated('Use appGetRichArticleListRespDescriptor instead')
+const AppGetRichArticleListResp$json = const {
+  '1': 'AppGetRichArticleListResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'appMgmtRichArticles', '3': 2, '4': 3, '5': 11, '6': '.pb.AppMgmtRichArticle', '10': 'appMgmtRichArticles'},
+    const {'1': 'total', '3': 3, '4': 1, '5': 3, '10': 'total'},
+  ],
+};
+
+/// Descriptor for `AppGetRichArticleListResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List appGetRichArticleListRespDescriptor = $convert.base64Decode('ChlBcHBHZXRSaWNoQXJ0aWNsZUxpc3RSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEkgKE2FwcE1nbXRSaWNoQXJ0aWNsZXMYAiADKAsyFi5wYi5BcHBNZ210UmljaEFydGljbGVSE2FwcE1nbXRSaWNoQXJ0aWNsZXMSFAoFdG90YWwYAyABKANSBXRvdGFs');
+@$core.Deprecated('Use updateAppAddressBookReqDescriptor instead')
+const UpdateAppAddressBookReq$json = const {
+  '1': 'UpdateAppAddressBookReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'addressBook', '3': 2, '4': 1, '5': 9, '10': 'addressBook'},
+  ],
+};
+
+/// Descriptor for `UpdateAppAddressBookReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateAppAddressBookReqDescriptor = $convert.base64Decode('ChdVcGRhdGVBcHBBZGRyZXNzQm9va1JlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIgCgthZGRyZXNzQm9vaxgCIAEoCVILYWRkcmVzc0Jvb2s=');
+@$core.Deprecated('Use updateAppAddressBookRespDescriptor instead')
+const UpdateAppAddressBookResp$json = const {
+  '1': 'UpdateAppAddressBookResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `UpdateAppAddressBookResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateAppAddressBookRespDescriptor = $convert.base64Decode('ChhVcGRhdGVBcHBBZGRyZXNzQm9va1Jlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
+@$core.Deprecated('Use getAppAddressBookReqDescriptor instead')
+const GetAppAddressBookReq$json = const {
+  '1': 'GetAppAddressBookReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+  ],
+};
+
+/// Descriptor for `GetAppAddressBookReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAppAddressBookReqDescriptor = $convert.base64Decode('ChRHZXRBcHBBZGRyZXNzQm9va1JlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcQ==');
+@$core.Deprecated('Use getAppAddressBookRespDescriptor instead')
+const GetAppAddressBookResp$json = const {
+  '1': 'GetAppAddressBookResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'addressBook', '3': 2, '4': 1, '5': 9, '10': 'addressBook'},
+  ],
+};
+
+/// Descriptor for `GetAppAddressBookResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAppAddressBookRespDescriptor = $convert.base64Decode('ChVHZXRBcHBBZGRyZXNzQm9va1Jlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASIAoLYWRkcmVzc0Jvb2sYAiABKAlSC2FkZHJlc3NCb29r');
+@$core.Deprecated('Use getAppAddressBookUrlReqDescriptor instead')
+const GetAppAddressBookUrlReq$json = const {
+  '1': 'GetAppAddressBookUrlReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+  ],
+};
+
+/// Descriptor for `GetAppAddressBookUrlReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAppAddressBookUrlReqDescriptor = $convert.base64Decode('ChdHZXRBcHBBZGRyZXNzQm9va1VybFJlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcQ==');
+@$core.Deprecated('Use getAppAddressBookUrlRespDescriptor instead')
+const GetAppAddressBookUrlResp$json = const {
+  '1': 'GetAppAddressBookUrlResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'url', '3': 2, '4': 1, '5': 9, '10': 'url'},
+  ],
+};
+
+/// Descriptor for `GetAppAddressBookUrlResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAppAddressBookUrlRespDescriptor = $convert.base64Decode('ChhHZXRBcHBBZGRyZXNzQm9va1VybFJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASEAoDdXJsGAIgASgJUgN1cmw=');

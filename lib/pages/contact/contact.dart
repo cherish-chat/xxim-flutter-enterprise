@@ -4,6 +4,7 @@ import 'package:lpinyin/lpinyin.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
+import 'package:xxim_flutter_enterprise/pages/public/menu_more_dialog.dart';
 import 'package:xxim_flutter_enterprise/proto/relation.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
@@ -178,7 +179,7 @@ class ContactPage extends StatelessWidget {
     List<Widget> buildActions() {
       return [
         IconButton(
-          onPressed: MoreDialog.show,
+          onPressed: MenuMoreDialog.show,
           icon: Image.asset(
             "assets/images/ic_more_24.webp",
             width: 24,

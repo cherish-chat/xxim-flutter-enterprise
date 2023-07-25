@@ -5,13 +5,11 @@
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'common.pb.dart' as $0;
-import 'conn.pb.dart' as $1;
+import 'common.pb.dart' as $3;
 
 class NoticeData_Options extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'NoticeData.Options', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
@@ -264,7 +262,7 @@ class NoticeDataList extends $pb.GeneratedMessage {
 
 class GetUserNoticeDataReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetUserNoticeDataReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convId', protoName: 'convId')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceId', protoName: 'deviceId')
@@ -273,7 +271,7 @@ class GetUserNoticeDataReq extends $pb.GeneratedMessage {
 
   GetUserNoticeDataReq._() : super();
   factory GetUserNoticeDataReq({
-    $0.CommonReq? commonReq,
+    $3.CommonReq? commonReq,
     $core.String? userId,
     $core.String? convId,
     $core.String? deviceId,
@@ -315,15 +313,15 @@ class GetUserNoticeDataReq extends $pb.GeneratedMessage {
   static GetUserNoticeDataReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.CommonReq get commonReq => $_getN(0);
+  $3.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($0.CommonReq v) { setField(1, v); }
+  set commonReq($3.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $0.CommonReq ensureCommonReq() => $_ensure(0);
+  $3.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get userId => $_getSZ(1);
@@ -355,7 +353,7 @@ class GetUserNoticeDataReq extends $pb.GeneratedMessage {
 
 class GetUserNoticeDataResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetUserNoticeDataResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
     ..pc<NoticeData>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'noticeData', $pb.PbFieldType.PM, protoName: 'noticeData', subBuilder: NoticeData.create)
     ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'push')
     ..hasRequiredFields = false
@@ -363,7 +361,7 @@ class GetUserNoticeDataResp extends $pb.GeneratedMessage {
 
   GetUserNoticeDataResp._() : super();
   factory GetUserNoticeDataResp({
-    $0.CommonResp? commonResp,
+    $3.CommonResp? commonResp,
     $core.Iterable<NoticeData>? noticeData,
     $core.bool? push,
   }) {
@@ -401,15 +399,15 @@ class GetUserNoticeDataResp extends $pb.GeneratedMessage {
   static GetUserNoticeDataResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.CommonResp get commonResp => $_getN(0);
+  $3.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($0.CommonResp v) { setField(1, v); }
+  set commonResp($3.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $0.CommonResp ensureCommonResp() => $_ensure(0);
+  $3.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<NoticeData> get noticeData => $_getList(1);
@@ -428,7 +426,7 @@ class AckNoticeDataReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AckNoticeDataReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convId', protoName: 'convId')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'noticeId', protoName: 'noticeId')
-    ..aOM<$0.CommonReq>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOM<$3.CommonReq>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
     ..hasRequiredFields = false
   ;
 
@@ -436,7 +434,7 @@ class AckNoticeDataReq extends $pb.GeneratedMessage {
   factory AckNoticeDataReq({
     $core.String? convId,
     $core.String? noticeId,
-    $0.CommonReq? commonReq,
+    $3.CommonReq? commonReq,
   }) {
     final _result = create();
     if (convId != null) {
@@ -490,26 +488,26 @@ class AckNoticeDataReq extends $pb.GeneratedMessage {
   void clearNoticeId() => clearField(2);
 
   @$pb.TagNumber(11)
-  $0.CommonReq get commonReq => $_getN(2);
+  $3.CommonReq get commonReq => $_getN(2);
   @$pb.TagNumber(11)
-  set commonReq($0.CommonReq v) { setField(11, v); }
+  set commonReq($3.CommonReq v) { setField(11, v); }
   @$pb.TagNumber(11)
   $core.bool hasCommonReq() => $_has(2);
   @$pb.TagNumber(11)
   void clearCommonReq() => clearField(11);
   @$pb.TagNumber(11)
-  $0.CommonReq ensureCommonReq() => $_ensure(2);
+  $3.CommonReq ensureCommonReq() => $_ensure(2);
 }
 
 class AckNoticeDataResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AckNoticeDataResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   AckNoticeDataResp._() : super();
   factory AckNoticeDataResp({
-    $0.CommonResp? commonResp,
+    $3.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -539,40 +537,14 @@ class AckNoticeDataResp extends $pb.GeneratedMessage {
   static AckNoticeDataResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.CommonResp get commonResp => $_getN(0);
+  $3.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($0.CommonResp v) { setField(1, v); }
+  set commonResp($3.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $0.CommonResp ensureCommonResp() => $_ensure(0);
-}
-
-class noticeServiceApi {
-  $pb.RpcClient _client;
-  noticeServiceApi(this._client);
-
-  $async.Future<$0.CommonResp> afterConnect($pb.ClientContext? ctx, $1.AfterConnectReq request) {
-    var emptyResponse = $0.CommonResp();
-    return _client.invoke<$0.CommonResp>(ctx, 'noticeService', 'AfterConnect', request, emptyResponse);
-  }
-  $async.Future<$0.CommonResp> afterDisconnect($pb.ClientContext? ctx, $1.AfterDisconnectReq request) {
-    var emptyResponse = $0.CommonResp();
-    return _client.invoke<$0.CommonResp>(ctx, 'noticeService', 'AfterDisconnect', request, emptyResponse);
-  }
-  $async.Future<$1.KeepAliveResp> keepAlive($pb.ClientContext? ctx, $1.KeepAliveReq request) {
-    var emptyResponse = $1.KeepAliveResp();
-    return _client.invoke<$1.KeepAliveResp>(ctx, 'noticeService', 'KeepAlive', request, emptyResponse);
-  }
-  $async.Future<GetUserNoticeDataResp> getUserNoticeData($pb.ClientContext? ctx, GetUserNoticeDataReq request) {
-    var emptyResponse = GetUserNoticeDataResp();
-    return _client.invoke<GetUserNoticeDataResp>(ctx, 'noticeService', 'GetUserNoticeData', request, emptyResponse);
-  }
-  $async.Future<AckNoticeDataResp> ackNoticeData($pb.ClientContext? ctx, AckNoticeDataReq request) {
-    var emptyResponse = AckNoticeDataResp();
-    return _client.invoke<AckNoticeDataResp>(ctx, 'noticeService', 'AckNoticeData', request, emptyResponse);
-  }
+  $3.CommonResp ensureCommonResp() => $_ensure(0);
 }
 

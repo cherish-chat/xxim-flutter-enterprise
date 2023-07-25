@@ -4,6 +4,7 @@ import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/contact.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/group_chat.dart';
 import 'package:xxim_flutter_enterprise/pages/mine/mine.dart';
+import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/relation.pb.dart';
@@ -98,7 +99,7 @@ class MenuLogic extends GetxController {
     return XXIM.instance.customRequest<GetMyGroupListResp>(
       method: "/v1/group/getMyGroupList",
       req: GetMyGroupListReq(
-        opt: GetMyGroupListReq_Opt.DEFAULT,
+        opt: GetMyGroupListReq_Opt.WITH_MY_MEMBER_INFO,
       ),
       resp: GetMyGroupListResp.create,
       onSuccess: (data) {
@@ -110,6 +111,7 @@ class MenuLogic extends GetxController {
             key: "key",
             iv: "iv",
           );
+          ChatLogic.logic(convId)?.update(["mute"]);
         }
         GroupChatLogic.logic()?.loadList();
       },

@@ -8,9 +8,6 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import 'conn.pbjson.dart' as $1;
-import 'common.pbjson.dart' as $0;
-
 @$core.Deprecated('Use noticeDataDescriptor instead')
 const NoticeData$json = const {
   '1': 'NoticeData',
@@ -98,34 +95,3 @@ const AckNoticeDataResp$json = const {
 
 /// Descriptor for `AckNoticeDataResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List ackNoticeDataRespDescriptor = $convert.base64Decode('ChFBY2tOb3RpY2VEYXRhUmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcA==');
-const $core.Map<$core.String, $core.dynamic> noticeServiceBase$json = const {
-  '1': 'noticeService',
-  '2': const [
-    const {'1': 'AfterConnect', '2': '.pb.AfterConnectReq', '3': '.pb.CommonResp'},
-    const {'1': 'AfterDisconnect', '2': '.pb.AfterDisconnectReq', '3': '.pb.CommonResp'},
-    const {'1': 'KeepAlive', '2': '.pb.KeepAliveReq', '3': '.pb.KeepAliveResp'},
-    const {'1': 'GetUserNoticeData', '2': '.pb.GetUserNoticeDataReq', '3': '.pb.GetUserNoticeDataResp'},
-    const {'1': 'AckNoticeData', '2': '.pb.AckNoticeDataReq', '3': '.pb.AckNoticeDataResp'},
-  ],
-};
-
-@$core.Deprecated('Use noticeServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> noticeServiceBase$messageJson = const {
-  '.pb.AfterConnectReq': $1.AfterConnectReq$json,
-  '.pb.ConnParam': $1.ConnParam$json,
-  '.pb.ConnParam.HeadersEntry': $1.ConnParam_HeadersEntry$json,
-  '.pb.CommonResp': $0.CommonResp$json,
-  '.pb.AfterDisconnectReq': $1.AfterDisconnectReq$json,
-  '.pb.KeepAliveReq': $1.KeepAliveReq$json,
-  '.pb.CommonReq': $0.CommonReq$json,
-  '.pb.KeepAliveResp': $1.KeepAliveResp$json,
-  '.pb.GetUserNoticeDataReq': GetUserNoticeDataReq$json,
-  '.pb.GetUserNoticeDataResp': GetUserNoticeDataResp$json,
-  '.pb.NoticeData': NoticeData$json,
-  '.pb.NoticeData.Options': NoticeData_Options$json,
-  '.pb.AckNoticeDataReq': AckNoticeDataReq$json,
-  '.pb.AckNoticeDataResp': AckNoticeDataResp$json,
-};
-
-/// Descriptor for `noticeService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List noticeServiceDescriptor = $convert.base64Decode('Cg1ub3RpY2VTZXJ2aWNlEjMKDEFmdGVyQ29ubmVjdBITLnBiLkFmdGVyQ29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASOQoPQWZ0ZXJEaXNjb25uZWN0EhYucGIuQWZ0ZXJEaXNjb25uZWN0UmVxGg4ucGIuQ29tbW9uUmVzcBIwCglLZWVwQWxpdmUSEC5wYi5LZWVwQWxpdmVSZXEaES5wYi5LZWVwQWxpdmVSZXNwEkgKEUdldFVzZXJOb3RpY2VEYXRhEhgucGIuR2V0VXNlck5vdGljZURhdGFSZXEaGS5wYi5HZXRVc2VyTm90aWNlRGF0YVJlc3ASPAoNQWNrTm90aWNlRGF0YRIULnBiLkFja05vdGljZURhdGFSZXEaFS5wYi5BY2tOb3RpY2VEYXRhUmVzcA==');

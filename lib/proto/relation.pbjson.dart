@@ -8,9 +8,6 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import 'common.pbjson.dart' as $0;
-import 'user.pbjson.dart' as $1;
-
 @$core.Deprecated('Use requestAddFriendStatusDescriptor instead')
 const RequestAddFriendStatus$json = const {
   '1': 'RequestAddFriendStatus',
@@ -431,67 +428,3 @@ const BatchMakeFriendResp$json = const {
 
 /// Descriptor for `BatchMakeFriendResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List batchMakeFriendRespDescriptor = $convert.base64Decode('ChNCYXRjaE1ha2VGcmllbmRSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
-const $core.Map<$core.String, $core.dynamic> relationServiceBase$json = const {
-  '1': 'relationService',
-  '2': const [
-    const {'1': 'AreFriends', '2': '.pb.AreFriendsReq', '3': '.pb.AreFriendsResp', '4': const {}},
-    const {'1': 'AreBlackList', '2': '.pb.AreBlackListReq', '3': '.pb.AreBlackListResp', '4': const {}},
-    const {'1': 'RequestAddFriend', '2': '.pb.RequestAddFriendReq', '3': '.pb.RequestAddFriendResp', '4': const {}},
-    const {'1': 'AcceptAddFriend', '2': '.pb.AcceptAddFriendReq', '3': '.pb.AcceptAddFriendResp', '4': const {}},
-    const {'1': 'RejectAddFriend', '2': '.pb.RejectAddFriendReq', '3': '.pb.RejectAddFriendResp', '4': const {}},
-    const {'1': 'GetFriendCount', '2': '.pb.GetFriendCountReq', '3': '.pb.GetFriendCountResp', '4': const {}},
-    const {'1': 'BlockUser', '2': '.pb.BlockUserReq', '3': '.pb.BlockUserResp', '4': const {}},
-    const {'1': 'DeleteBlockUser', '2': '.pb.DeleteBlockUserReq', '3': '.pb.DeleteBlockUserResp', '4': const {}},
-    const {'1': 'DeleteFriend', '2': '.pb.DeleteFriendReq', '3': '.pb.DeleteFriendResp', '4': const {}},
-    const {'1': 'GetFriendList', '2': '.pb.GetFriendListReq', '3': '.pb.GetFriendListResp', '4': const {}},
-    const {'1': 'GetMyFriendEventList', '2': '.pb.GetMyFriendEventListReq', '3': '.pb.GetMyFriendEventListResp', '4': const {}},
-    const {'1': 'GetFriendListByUserId', '2': '.pb.GetFriendListByUserIdReq', '3': '.pb.GetFriendListByUserIdResp', '4': const {}},
-    const {'1': 'BatchMakeFriend', '2': '.pb.BatchMakeFriendReq', '3': '.pb.BatchMakeFriendResp', '4': const {}},
-  ],
-};
-
-@$core.Deprecated('Use relationServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> relationServiceBase$messageJson = const {
-  '.pb.AreFriendsReq': AreFriendsReq$json,
-  '.pb.CommonReq': $0.CommonReq$json,
-  '.pb.AreFriendsResp': AreFriendsResp$json,
-  '.pb.CommonResp': $0.CommonResp$json,
-  '.pb.AreFriendsResp.FriendListEntry': AreFriendsResp_FriendListEntry$json,
-  '.pb.AreBlackListReq': AreBlackListReq$json,
-  '.pb.AreBlackListResp': AreBlackListResp$json,
-  '.pb.AreBlackListResp.BlackListEntry': AreBlackListResp_BlackListEntry$json,
-  '.pb.RequestAddFriendReq': RequestAddFriendReq$json,
-  '.pb.RequestAddFriendResp': RequestAddFriendResp$json,
-  '.pb.AcceptAddFriendReq': AcceptAddFriendReq$json,
-  '.pb.AcceptAddFriendResp': AcceptAddFriendResp$json,
-  '.pb.RejectAddFriendReq': RejectAddFriendReq$json,
-  '.pb.RejectAddFriendResp': RejectAddFriendResp$json,
-  '.pb.GetFriendCountReq': GetFriendCountReq$json,
-  '.pb.GetFriendCountResp': GetFriendCountResp$json,
-  '.pb.BlockUserReq': BlockUserReq$json,
-  '.pb.BlockUserResp': BlockUserResp$json,
-  '.pb.DeleteBlockUserReq': DeleteBlockUserReq$json,
-  '.pb.DeleteBlockUserResp': DeleteBlockUserResp$json,
-  '.pb.DeleteFriendReq': DeleteFriendReq$json,
-  '.pb.DeleteFriendResp': DeleteFriendResp$json,
-  '.pb.GetFriendListReq': GetFriendListReq$json,
-  '.pb.Page': $0.Page$json,
-  '.pb.GetFriendListResp': GetFriendListResp$json,
-  '.pb.GetFriendListResp.UserMapEntry': GetFriendListResp_UserMapEntry$json,
-  '.pb.UserBaseInfo': $1.UserBaseInfo$json,
-  '.pb.BirthdayInfo': $1.BirthdayInfo$json,
-  '.pb.IpRegion': $0.IpRegion$json,
-  '.pb.GetMyFriendEventListReq': GetMyFriendEventListReq$json,
-  '.pb.GetMyFriendEventListResp': GetMyFriendEventListResp$json,
-  '.pb.FriendEvent': FriendEvent$json,
-  '.pb.RequestAddFriendExtra': RequestAddFriendExtra$json,
-  '.pb.GetFriendListByUserIdReq': GetFriendListByUserIdReq$json,
-  '.pb.GetFriendListByUserIdReq.FilterEntry': GetFriendListByUserIdReq_FilterEntry$json,
-  '.pb.GetFriendListByUserIdResp': GetFriendListByUserIdResp$json,
-  '.pb.GetFriendListByUserIdItem': GetFriendListByUserIdItem$json,
-  '.pb.BatchMakeFriendReq': BatchMakeFriendReq$json,
-  '.pb.BatchMakeFriendResp': BatchMakeFriendResp$json,
-};
-
-/// Descriptor for `relationService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List relationServiceDescriptor = $convert.base64Decode('Cg9yZWxhdGlvblNlcnZpY2USNQoKQXJlRnJpZW5kcxIRLnBiLkFyZUZyaWVuZHNSZXEaEi5wYi5BcmVGcmllbmRzUmVzcCIAEjsKDEFyZUJsYWNrTGlzdBITLnBiLkFyZUJsYWNrTGlzdFJlcRoULnBiLkFyZUJsYWNrTGlzdFJlc3AiABJHChBSZXF1ZXN0QWRkRnJpZW5kEhcucGIuUmVxdWVzdEFkZEZyaWVuZFJlcRoYLnBiLlJlcXVlc3RBZGRGcmllbmRSZXNwIgASRAoPQWNjZXB0QWRkRnJpZW5kEhYucGIuQWNjZXB0QWRkRnJpZW5kUmVxGhcucGIuQWNjZXB0QWRkRnJpZW5kUmVzcCIAEkQKD1JlamVjdEFkZEZyaWVuZBIWLnBiLlJlamVjdEFkZEZyaWVuZFJlcRoXLnBiLlJlamVjdEFkZEZyaWVuZFJlc3AiABJBCg5HZXRGcmllbmRDb3VudBIVLnBiLkdldEZyaWVuZENvdW50UmVxGhYucGIuR2V0RnJpZW5kQ291bnRSZXNwIgASMgoJQmxvY2tVc2VyEhAucGIuQmxvY2tVc2VyUmVxGhEucGIuQmxvY2tVc2VyUmVzcCIAEkQKD0RlbGV0ZUJsb2NrVXNlchIWLnBiLkRlbGV0ZUJsb2NrVXNlclJlcRoXLnBiLkRlbGV0ZUJsb2NrVXNlclJlc3AiABI7CgxEZWxldGVGcmllbmQSEy5wYi5EZWxldGVGcmllbmRSZXEaFC5wYi5EZWxldGVGcmllbmRSZXNwIgASPgoNR2V0RnJpZW5kTGlzdBIULnBiLkdldEZyaWVuZExpc3RSZXEaFS5wYi5HZXRGcmllbmRMaXN0UmVzcCIAElMKFEdldE15RnJpZW5kRXZlbnRMaXN0EhsucGIuR2V0TXlGcmllbmRFdmVudExpc3RSZXEaHC5wYi5HZXRNeUZyaWVuZEV2ZW50TGlzdFJlc3AiABJWChVHZXRGcmllbmRMaXN0QnlVc2VySWQSHC5wYi5HZXRGcmllbmRMaXN0QnlVc2VySWRSZXEaHS5wYi5HZXRGcmllbmRMaXN0QnlVc2VySWRSZXNwIgASRAoPQmF0Y2hNYWtlRnJpZW5kEhYucGIuQmF0Y2hNYWtlRnJpZW5kUmVxGhcucGIuQmF0Y2hNYWtlRnJpZW5kUmVzcCIA');

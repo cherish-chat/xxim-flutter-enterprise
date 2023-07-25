@@ -11,6 +11,7 @@ import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 import 'package:xxim_flutter_enterprise/pages/public/at_member.dart';
 import 'package:xxim_flutter_enterprise/pages/public/group_member.dart';
+import 'package:xxim_flutter_enterprise/pages/public/group_setting.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/im.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
@@ -608,6 +609,7 @@ class ChatPage extends StatelessWidget {
 
   Widget _buildAppBar(ChatLogic logic) {
     String text = "聊天".tr;
+    GroupRole groupRole = GroupRole.MEMBER;
     if (SDKTool.isSingleConv(logic.convId)) {
       String userId = SDKTool.getSingleId(
         logic.convId,
@@ -630,6 +632,8 @@ class ChatPage extends StatelessWidget {
       if (index != -1) {
         text = groupInfoList[index].name;
       }
+      GroupBaseInfo groupBaseInfo = groupInfoList[index];
+      groupRole = groupBaseInfo.myMemberInfo.role;
     }
     return AppBar(
       leading: Obx(() {
@@ -658,6 +662,21 @@ class ChatPage extends StatelessWidget {
             },
             child: Text(
               "成员".tr,
+              style: const TextStyle(
+                color: getTextBlack,
+                fontSize: 14,
+              ),
+            ),
+          ),
+        if (SDKTool.isGroupConv(logic.convId) && groupRole != GroupRole.MEMBER)
+          TextButton(
+            onPressed: () {
+              GroupSetting.show(
+                groupId: SDKTool.getGroupId(logic.convId),
+              );
+            },
+            child: Text(
+              "设置".tr,
               style: const TextStyle(
                 color: getTextBlack,
                 fontSize: 14,
@@ -742,89 +761,130 @@ class ChatPage extends StatelessWidget {
   }
 
   Widget _buildNavigationBar(ChatLogic logic) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: Column(
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
+    return Stack(
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: Column(
             children: [
-              GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () async {
-                  logic.scrollController.jumpTo(0);
-                  if (!await RecorderTool.instance.hasPermission()) return;
-                  if (logic.chatOperate.value == ChatOperate.record) {
-                    logic.inputFocusNode.requestFocus();
-                    if (GetPlatform.isMobile) {
-                      logic.chatOperate.value = ChatOperate.input;
-                    } else {
-                      logic.chatOperate.value = ChatOperate.none;
-                    }
-                  } else {
-                    if (logic.inputFocusNode.hasFocus) {
-                      logic.inputFocusNode.unfocus();
-                    }
-                    logic.chatOperate.value = ChatOperate.record;
-                  }
-                },
-                child: Image.asset(
-                  "assets/images/ic_mic_35.webp",
-                  width: 40,
-                  height: 40,
-                ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () async {
+                      logic.scrollController.jumpTo(0);
+                      if (!await RecorderTool.instance.hasPermission()) return;
+                      if (logic.chatOperate.value == ChatOperate.record) {
+                        logic.inputFocusNode.requestFocus();
+                        if (GetPlatform.isMobile) {
+                          logic.chatOperate.value = ChatOperate.input;
+                        } else {
+                          logic.chatOperate.value = ChatOperate.none;
+                        }
+                      } else {
+                        if (logic.inputFocusNode.hasFocus) {
+                          logic.inputFocusNode.unfocus();
+                        }
+                        logic.chatOperate.value = ChatOperate.record;
+                      }
+                    },
+                    child: Image.asset(
+                      "assets/images/ic_mic_35.webp",
+                      width: 40,
+                      height: 40,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        _buildReply(logic),
+                        _buildInput(logic),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      logic.scrollController.jumpTo(0);
+                      if (logic.chatOperate.value == ChatOperate.emoji) {
+                        logic.inputFocusNode.requestFocus();
+                        if (GetPlatform.isMobile) {
+                          logic.chatOperate.value = ChatOperate.input;
+                        } else {
+                          logic.chatOperate.value = ChatOperate.none;
+                        }
+                      } else {
+                        if (logic.inputFocusNode.hasFocus) {
+                          logic.inputFocusNode.unfocus();
+                        }
+                        logic.chatOperate.value = ChatOperate.emoji;
+                      }
+                    },
+                    child: Image.asset(
+                      "assets/images/ic_emoji_35.webp",
+                      width: 40,
+                      height: 40,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      logic.pickFiles();
+                    },
+                    child: Image.asset(
+                      "assets/images/ic_extended_35.webp",
+                      width: 40,
+                      height: 40,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Column(
-                  children: [
-                    _buildReply(logic),
-                    _buildInput(logic),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 8),
-              GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () {
-                  logic.scrollController.jumpTo(0);
-                  if (logic.chatOperate.value == ChatOperate.emoji) {
-                    logic.inputFocusNode.requestFocus();
-                    if (GetPlatform.isMobile) {
-                      logic.chatOperate.value = ChatOperate.input;
-                    } else {
-                      logic.chatOperate.value = ChatOperate.none;
-                    }
-                  } else {
-                    if (logic.inputFocusNode.hasFocus) {
-                      logic.inputFocusNode.unfocus();
-                    }
-                    logic.chatOperate.value = ChatOperate.emoji;
-                  }
-                },
-                child: Image.asset(
-                  "assets/images/ic_emoji_35.webp",
-                  width: 40,
-                  height: 40,
-                ),
-              ),
-              const SizedBox(width: 8),
-              GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () {
-                  logic.pickFiles();
-                },
-                child: Image.asset(
-                  "assets/images/ic_extended_35.webp",
-                  width: 40,
-                  height: 40,
-                ),
-              ),
+              _buildExtended(logic),
             ],
           ),
-          _buildExtended(logic),
-        ],
-      ),
+        ),
+        GetBuilder<ChatLogic>(
+          tag: logic.tag,
+          id: "mute",
+          builder: (logic) {
+            bool isOperate = true;
+            if (SDKTool.isGroupConv(logic.convId)) {
+              String groupId = SDKTool.getGroupId(logic.convId);
+              List<GroupBaseInfo> groupInfoList =
+                  MenuLogic.logic()?.groupInfoList ?? [];
+              GroupBaseInfo groupBaseInfo = groupInfoList.where((element) {
+                return groupId == element.id;
+              }).first;
+              if (groupBaseInfo.allMute) {
+                groupBaseInfo.myMemberInfo.role == GroupRole.OWNER ||
+                        groupBaseInfo.myMemberInfo.role == GroupRole.MANAGER
+                    ? isOperate = true
+                    : isOperate = false;
+              }
+            }
+            if (isOperate) return const SizedBox();
+            return Container(
+              padding: EdgeInsets.only(bottom: SafeTool.instance.safeBtm),
+              alignment: Alignment.center,
+              width: Get.width,
+              height: 56 + SafeTool.instance.safeBtm,
+              color: getSecondColor,
+              child: const Text(
+                "禁言中...",
+                style: TextStyle(
+                  color: getTextWhite,
+                  fontSize: 16,
+                  fontWeight: getBold,
+                ),
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 

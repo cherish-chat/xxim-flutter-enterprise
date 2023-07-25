@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:xxim_flutter_enterprise/main.dart';
+import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
 import 'package:xxim_flutter_enterprise/pages/public/share_msg.dart';
+import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/im.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
@@ -12,14 +14,21 @@ class PopupTool {
     required String content,
     required MsgModel msgModel,
   }) {
-    RenderBox renderBox = context.findRenderObject() as RenderBox;
-    Offset offset = renderBox.localToGlobal(Offset.zero);
-    Rect rect = Rect.fromLTWH(
-      offset.dx,
-      offset.dy,
-      renderBox.size.width,
-      renderBox.size.height,
-    );
+    bool isOperate = true;
+    if (SDKTool.isGroupConv(msgModel.convId)) {
+      String groupId = SDKTool.getGroupId(msgModel.convId);
+      List<GroupBaseInfo> groupInfoList =
+          MenuLogic.logic()?.groupInfoList ?? [];
+      GroupBaseInfo groupBaseInfo = groupInfoList.where((element) {
+        return groupId == element.id;
+      }).first;
+      if (groupBaseInfo.allMute) {
+        groupBaseInfo.myMemberInfo.role == GroupRole.OWNER ||
+                groupBaseInfo.myMemberInfo.role == GroupRole.MANAGER
+            ? isOperate = true
+            : isOperate = false;
+      }
+    }
     PopupMenu menu = PopupMenu(
       context: Get.overlayContext!,
       items: [
@@ -41,15 +50,16 @@ class PopupTool {
         //       height: 17,
         //     ),
         //   ),
-        DefaultMenuItem(
-          title: "转发".tr,
-          image: Image.asset(
-            "assets/images/ic_msg_share_17.webp",
-            width: 17,
-            height: 17,
+        if (isOperate)
+          DefaultMenuItem(
+            title: "转发".tr,
+            image: Image.asset(
+              "assets/images/ic_msg_share_17.webp",
+              width: 17,
+              height: 17,
+            ),
           ),
-        ),
-        if (msgModel.senderId != HiveTool.getUserId())
+        if (isOperate && msgModel.senderId != HiveTool.getUserId())
           DefaultMenuItem(
             title: "回复".tr,
             image: Image.asset(
@@ -168,6 +178,14 @@ class PopupTool {
           logic.update(["list"]);
         }
       },
+    );
+    RenderBox renderBox = context.findRenderObject() as RenderBox;
+    Offset offset = renderBox.localToGlobal(Offset.zero);
+    Rect rect = Rect.fromLTWH(
+      offset.dx,
+      offset.dy,
+      renderBox.size.width,
+      renderBox.size.height,
     );
     menu.show(rect: rect);
   }

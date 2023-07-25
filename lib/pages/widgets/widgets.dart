@@ -7,5 +7,4 @@ export 'popup/popup_menu.dart';
 
 export 'chat_extended_emoji.dart';
 export 'chat_extended_record.dart';
-export 'more_dialog.dart';
 export 'operate_sheet.dart';
