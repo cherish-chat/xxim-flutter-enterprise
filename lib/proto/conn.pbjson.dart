@@ -8,6 +8,8 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+import 'common.pbjson.dart' as $0;
+
 @$core.Deprecated('Use pushEventDescriptor instead')
 const PushEvent$json = const {
   '1': 'PushEvent',
@@ -320,3 +322,31 @@ const KeepAliveResp$json = const {
 
 /// Descriptor for `KeepAliveResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List keepAliveRespDescriptor = $convert.base64Decode('Cg1LZWVwQWxpdmVSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+const $core.Map<$core.String, $core.dynamic> connServiceBase$json = const {
+  '1': 'connService',
+  '2': const [
+    const {'1': 'KickUserConn', '2': '.pb.KickUserConnReq', '3': '.pb.KickUserConnResp'},
+    const {'1': 'GetUserConn', '2': '.pb.GetUserConnReq', '3': '.pb.GetUserConnResp'},
+    const {'1': 'SendMsg', '2': '.pb.SendMsgReq', '3': '.pb.SendMsgResp'},
+    const {'1': 'KeepAlive', '2': '.pb.KeepAliveReq', '3': '.pb.KeepAliveResp'},
+  ],
+};
+
+@$core.Deprecated('Use connServiceDescriptor instead')
+const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> connServiceBase$messageJson = const {
+  '.pb.KickUserConnReq': KickUserConnReq$json,
+  '.pb.GetUserConnReq': GetUserConnReq$json,
+  '.pb.KickUserConnResp': KickUserConnResp$json,
+  '.pb.CommonResp': $0.CommonResp$json,
+  '.pb.GetUserConnResp': GetUserConnResp$json,
+  '.pb.ConnParam': ConnParam$json,
+  '.pb.ConnParam.HeadersEntry': ConnParam_HeadersEntry$json,
+  '.pb.SendMsgReq': SendMsgReq$json,
+  '.pb.SendMsgResp': SendMsgResp$json,
+  '.pb.KeepAliveReq': KeepAliveReq$json,
+  '.pb.CommonReq': $0.CommonReq$json,
+  '.pb.KeepAliveResp': KeepAliveResp$json,
+};
+
+/// Descriptor for `connService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
+final $typed_data.Uint8List connServiceDescriptor = $convert.base64Decode('Cgtjb25uU2VydmljZRI5CgxLaWNrVXNlckNvbm4SEy5wYi5LaWNrVXNlckNvbm5SZXEaFC5wYi5LaWNrVXNlckNvbm5SZXNwEjYKC0dldFVzZXJDb25uEhIucGIuR2V0VXNlckNvbm5SZXEaEy5wYi5HZXRVc2VyQ29ublJlc3ASKgoHU2VuZE1zZxIOLnBiLlNlbmRNc2dSZXEaDy5wYi5TZW5kTXNnUmVzcBIwCglLZWVwQWxpdmUSEC5wYi5LZWVwQWxpdmVSZXEaES5wYi5LZWVwQWxpdmVSZXNw');

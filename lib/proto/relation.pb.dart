@@ -5,12 +5,13 @@
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
+import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'common.pb.dart' as $3;
+import 'common.pb.dart' as $0;
 import 'user.pb.dart' as $4;
 
 import 'relation.pbenum.dart';
@@ -19,7 +20,7 @@ export 'relation.pbenum.dart';
 
 class AreFriendsReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AreFriendsReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'a')
     ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'bList', protoName: 'bList')
     ..hasRequiredFields = false
@@ -27,7 +28,7 @@ class AreFriendsReq extends $pb.GeneratedMessage {
 
   AreFriendsReq._() : super();
   factory AreFriendsReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? a,
     $core.Iterable<$core.String>? bList,
   }) {
@@ -65,15 +66,15 @@ class AreFriendsReq extends $pb.GeneratedMessage {
   static AreFriendsReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get a => $_getSZ(1);
@@ -90,14 +91,14 @@ class AreFriendsReq extends $pb.GeneratedMessage {
 
 class AreFriendsResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AreFriendsResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..m<$core.String, $core.bool>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'friendList', protoName: 'friendList', entryClassName: 'AreFriendsResp.FriendListEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OB, packageName: const $pb.PackageName('pb'))
     ..hasRequiredFields = false
   ;
 
   AreFriendsResp._() : super();
   factory AreFriendsResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Map<$core.String, $core.bool>? friendList,
   }) {
     final _result = create();
@@ -131,15 +132,15 @@ class AreFriendsResp extends $pb.GeneratedMessage {
   static AreFriendsResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.Map<$core.String, $core.bool> get friendList => $_getMap(1);
@@ -147,7 +148,7 @@ class AreFriendsResp extends $pb.GeneratedMessage {
 
 class AreBlackListReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AreBlackListReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'a')
     ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'bList', protoName: 'bList')
     ..hasRequiredFields = false
@@ -155,7 +156,7 @@ class AreBlackListReq extends $pb.GeneratedMessage {
 
   AreBlackListReq._() : super();
   factory AreBlackListReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? a,
     $core.Iterable<$core.String>? bList,
   }) {
@@ -193,15 +194,15 @@ class AreBlackListReq extends $pb.GeneratedMessage {
   static AreBlackListReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get a => $_getSZ(1);
@@ -218,14 +219,14 @@ class AreBlackListReq extends $pb.GeneratedMessage {
 
 class AreBlackListResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AreBlackListResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..m<$core.String, $core.bool>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'blackList', protoName: 'blackList', entryClassName: 'AreBlackListResp.BlackListEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OB, packageName: const $pb.PackageName('pb'))
     ..hasRequiredFields = false
   ;
 
   AreBlackListResp._() : super();
   factory AreBlackListResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Map<$core.String, $core.bool>? blackList,
   }) {
     final _result = create();
@@ -259,15 +260,15 @@ class AreBlackListResp extends $pb.GeneratedMessage {
   static AreBlackListResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.Map<$core.String, $core.bool> get blackList => $_getMap(1);
@@ -336,7 +337,7 @@ class RequestAddFriendExtra extends $pb.GeneratedMessage {
 
 class RequestAddFriendReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RequestAddFriendReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
     ..hasRequiredFields = false
@@ -344,7 +345,7 @@ class RequestAddFriendReq extends $pb.GeneratedMessage {
 
   RequestAddFriendReq._() : super();
   factory RequestAddFriendReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? to,
     $core.String? message,
   }) {
@@ -382,15 +383,15 @@ class RequestAddFriendReq extends $pb.GeneratedMessage {
   static RequestAddFriendReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get to => $_getSZ(1);
@@ -413,13 +414,13 @@ class RequestAddFriendReq extends $pb.GeneratedMessage {
 
 class RequestAddFriendResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RequestAddFriendResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   RequestAddFriendResp._() : super();
   factory RequestAddFriendResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -449,20 +450,20 @@ class RequestAddFriendResp extends $pb.GeneratedMessage {
   static RequestAddFriendResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class AcceptAddFriendReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AcceptAddFriendReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'applyUserId', protoName: 'applyUserId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'requestId', protoName: 'requestId')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sendTextMsg', protoName: 'sendTextMsg')
@@ -471,7 +472,7 @@ class AcceptAddFriendReq extends $pb.GeneratedMessage {
 
   AcceptAddFriendReq._() : super();
   factory AcceptAddFriendReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? applyUserId,
     $core.String? requestId,
     $core.String? sendTextMsg,
@@ -513,15 +514,15 @@ class AcceptAddFriendReq extends $pb.GeneratedMessage {
   static AcceptAddFriendReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get applyUserId => $_getSZ(1);
@@ -553,13 +554,13 @@ class AcceptAddFriendReq extends $pb.GeneratedMessage {
 
 class AcceptAddFriendResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AcceptAddFriendResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   AcceptAddFriendResp._() : super();
   factory AcceptAddFriendResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -589,20 +590,20 @@ class AcceptAddFriendResp extends $pb.GeneratedMessage {
   static AcceptAddFriendResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class RejectAddFriendReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RejectAddFriendReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'applyUserId', protoName: 'applyUserId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'requestId', protoName: 'requestId')
     ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'block')
@@ -611,7 +612,7 @@ class RejectAddFriendReq extends $pb.GeneratedMessage {
 
   RejectAddFriendReq._() : super();
   factory RejectAddFriendReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? applyUserId,
     $core.String? requestId,
     $core.bool? block,
@@ -653,15 +654,15 @@ class RejectAddFriendReq extends $pb.GeneratedMessage {
   static RejectAddFriendReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get applyUserId => $_getSZ(1);
@@ -693,13 +694,13 @@ class RejectAddFriendReq extends $pb.GeneratedMessage {
 
 class RejectAddFriendResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RejectAddFriendResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   RejectAddFriendResp._() : super();
   factory RejectAddFriendResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -729,26 +730,26 @@ class RejectAddFriendResp extends $pb.GeneratedMessage {
   static RejectAddFriendResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class GetFriendCountReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetFriendCountReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..hasRequiredFields = false
   ;
 
   GetFriendCountReq._() : super();
   factory GetFriendCountReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
   }) {
     final _result = create();
     if (commonReq != null) {
@@ -778,27 +779,27 @@ class GetFriendCountReq extends $pb.GeneratedMessage {
   static GetFriendCountReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 }
 
 class GetFriendCountResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetFriendCountResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'count', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
   GetFriendCountResp._() : super();
   factory GetFriendCountResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.int? count,
   }) {
     final _result = create();
@@ -832,15 +833,15 @@ class GetFriendCountResp extends $pb.GeneratedMessage {
   static GetFriendCountResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.int get count => $_getIZ(1);
@@ -854,14 +855,14 @@ class GetFriendCountResp extends $pb.GeneratedMessage {
 
 class BlockUserReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BlockUserReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
     ..hasRequiredFields = false
   ;
 
   BlockUserReq._() : super();
   factory BlockUserReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? userId,
   }) {
     final _result = create();
@@ -895,15 +896,15 @@ class BlockUserReq extends $pb.GeneratedMessage {
   static BlockUserReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get userId => $_getSZ(1);
@@ -917,13 +918,13 @@ class BlockUserReq extends $pb.GeneratedMessage {
 
 class BlockUserResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BlockUserResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   BlockUserResp._() : super();
   factory BlockUserResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -953,27 +954,27 @@ class BlockUserResp extends $pb.GeneratedMessage {
   static BlockUserResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class DeleteBlockUserReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DeleteBlockUserReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
     ..hasRequiredFields = false
   ;
 
   DeleteBlockUserReq._() : super();
   factory DeleteBlockUserReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? userId,
   }) {
     final _result = create();
@@ -1007,15 +1008,15 @@ class DeleteBlockUserReq extends $pb.GeneratedMessage {
   static DeleteBlockUserReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get userId => $_getSZ(1);
@@ -1029,13 +1030,13 @@ class DeleteBlockUserReq extends $pb.GeneratedMessage {
 
 class DeleteBlockUserResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DeleteBlockUserResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   DeleteBlockUserResp._() : super();
   factory DeleteBlockUserResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -1065,20 +1066,20 @@ class DeleteBlockUserResp extends $pb.GeneratedMessage {
   static DeleteBlockUserResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class DeleteFriendReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DeleteFriendReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
     ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'block')
     ..hasRequiredFields = false
@@ -1086,7 +1087,7 @@ class DeleteFriendReq extends $pb.GeneratedMessage {
 
   DeleteFriendReq._() : super();
   factory DeleteFriendReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? userId,
     $core.bool? block,
   }) {
@@ -1124,15 +1125,15 @@ class DeleteFriendReq extends $pb.GeneratedMessage {
   static DeleteFriendReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get userId => $_getSZ(1);
@@ -1155,13 +1156,13 @@ class DeleteFriendReq extends $pb.GeneratedMessage {
 
 class DeleteFriendResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DeleteFriendResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   DeleteFriendResp._() : super();
   factory DeleteFriendResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -1191,29 +1192,29 @@ class DeleteFriendResp extends $pb.GeneratedMessage {
   static DeleteFriendResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class GetFriendListReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetFriendListReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
-    ..aOM<$3.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $3.Page.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOM<$0.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
     ..e<GetFriendListReq_Opt>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'opt', $pb.PbFieldType.OE, defaultOrMaker: GetFriendListReq_Opt.WithBaseInfo, valueOf: GetFriendListReq_Opt.valueOf, enumValues: GetFriendListReq_Opt.values)
     ..hasRequiredFields = false
   ;
 
   GetFriendListReq._() : super();
   factory GetFriendListReq({
-    $3.CommonReq? commonReq,
-    $3.Page? page,
+    $0.CommonReq? commonReq,
+    $0.Page? page,
     GetFriendListReq_Opt? opt,
   }) {
     final _result = create();
@@ -1250,26 +1251,26 @@ class GetFriendListReq extends $pb.GeneratedMessage {
   static GetFriendListReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $3.Page get page => $_getN(1);
+  $0.Page get page => $_getN(1);
   @$pb.TagNumber(2)
-  set page($3.Page v) { setField(2, v); }
+  set page($0.Page v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPage() => $_has(1);
   @$pb.TagNumber(2)
   void clearPage() => clearField(2);
   @$pb.TagNumber(2)
-  $3.Page ensurePage() => $_ensure(1);
+  $0.Page ensurePage() => $_ensure(1);
 
   @$pb.TagNumber(10)
   GetFriendListReq_Opt get opt => $_getN(2);
@@ -1283,17 +1284,19 @@ class GetFriendListReq extends $pb.GeneratedMessage {
 
 class GetFriendListResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetFriendListResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ids')
     ..m<$core.String, $4.UserBaseInfo>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userMap', protoName: 'userMap', entryClassName: 'GetFriendListResp.UserMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $4.UserBaseInfo.create, packageName: const $pb.PackageName('pb'))
+    ..m<$core.String, $core.String>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'remarkMap', protoName: 'remarkMap', entryClassName: 'GetFriendListResp.RemarkMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
     ..hasRequiredFields = false
   ;
 
   GetFriendListResp._() : super();
   factory GetFriendListResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Iterable<$core.String>? ids,
     $core.Map<$core.String, $4.UserBaseInfo>? userMap,
+    $core.Map<$core.String, $core.String>? remarkMap,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -1304,6 +1307,9 @@ class GetFriendListResp extends $pb.GeneratedMessage {
     }
     if (userMap != null) {
       _result.userMap.addAll(userMap);
+    }
+    if (remarkMap != null) {
+      _result.remarkMap.addAll(remarkMap);
     }
     return _result;
   }
@@ -1329,33 +1335,276 @@ class GetFriendListResp extends $pb.GeneratedMessage {
   static GetFriendListResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<$core.String> get ids => $_getList(1);
 
   @$pb.TagNumber(3)
   $core.Map<$core.String, $4.UserBaseInfo> get userMap => $_getMap(2);
+
+  @$pb.TagNumber(4)
+  $core.Map<$core.String, $core.String> get remarkMap => $_getMap(3);
+}
+
+class UpdateUserRemarkReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateUserRemarkReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'targetId', protoName: 'targetId')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'remark')
+    ..hasRequiredFields = false
+  ;
+
+  UpdateUserRemarkReq._() : super();
+  factory UpdateUserRemarkReq({
+    $0.CommonReq? commonReq,
+    $core.String? targetId,
+    $core.String? remark,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (targetId != null) {
+      _result.targetId = targetId;
+    }
+    if (remark != null) {
+      _result.remark = remark;
+    }
+    return _result;
+  }
+  factory UpdateUserRemarkReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateUserRemarkReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateUserRemarkReq clone() => UpdateUserRemarkReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateUserRemarkReq copyWith(void Function(UpdateUserRemarkReq) updates) => super.copyWith((message) => updates(message as UpdateUserRemarkReq)) as UpdateUserRemarkReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UpdateUserRemarkReq create() => UpdateUserRemarkReq._();
+  UpdateUserRemarkReq createEmptyInstance() => create();
+  static $pb.PbList<UpdateUserRemarkReq> createRepeated() => $pb.PbList<UpdateUserRemarkReq>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateUserRemarkReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateUserRemarkReq>(create);
+  static UpdateUserRemarkReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get targetId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set targetId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasTargetId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTargetId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get remark => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set remark($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasRemark() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearRemark() => clearField(3);
+}
+
+class UpdateUserRemarkResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateUserRemarkResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  UpdateUserRemarkResp._() : super();
+  factory UpdateUserRemarkResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory UpdateUserRemarkResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateUserRemarkResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateUserRemarkResp clone() => UpdateUserRemarkResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateUserRemarkResp copyWith(void Function(UpdateUserRemarkResp) updates) => super.copyWith((message) => updates(message as UpdateUserRemarkResp)) as UpdateUserRemarkResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UpdateUserRemarkResp create() => UpdateUserRemarkResp._();
+  UpdateUserRemarkResp createEmptyInstance() => create();
+  static $pb.PbList<UpdateUserRemarkResp> createRepeated() => $pb.PbList<UpdateUserRemarkResp>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateUserRemarkResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateUserRemarkResp>(create);
+  static UpdateUserRemarkResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
+class MapUserRemarkReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MapUserRemarkReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'targetIds', protoName: 'targetIds')
+    ..hasRequiredFields = false
+  ;
+
+  MapUserRemarkReq._() : super();
+  factory MapUserRemarkReq({
+    $0.CommonReq? commonReq,
+    $core.Iterable<$core.String>? targetIds,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (targetIds != null) {
+      _result.targetIds.addAll(targetIds);
+    }
+    return _result;
+  }
+  factory MapUserRemarkReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MapUserRemarkReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MapUserRemarkReq clone() => MapUserRemarkReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MapUserRemarkReq copyWith(void Function(MapUserRemarkReq) updates) => super.copyWith((message) => updates(message as MapUserRemarkReq)) as MapUserRemarkReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MapUserRemarkReq create() => MapUserRemarkReq._();
+  MapUserRemarkReq createEmptyInstance() => create();
+  static $pb.PbList<MapUserRemarkReq> createRepeated() => $pb.PbList<MapUserRemarkReq>();
+  @$core.pragma('dart2js:noInline')
+  static MapUserRemarkReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MapUserRemarkReq>(create);
+  static MapUserRemarkReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get targetIds => $_getList(1);
+}
+
+class MapUserRemarkResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MapUserRemarkResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..m<$core.String, $core.String>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'remarkMap', protoName: 'remarkMap', entryClassName: 'MapUserRemarkResp.RemarkMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
+    ..hasRequiredFields = false
+  ;
+
+  MapUserRemarkResp._() : super();
+  factory MapUserRemarkResp({
+    $0.CommonResp? commonResp,
+    $core.Map<$core.String, $core.String>? remarkMap,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    if (remarkMap != null) {
+      _result.remarkMap.addAll(remarkMap);
+    }
+    return _result;
+  }
+  factory MapUserRemarkResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MapUserRemarkResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MapUserRemarkResp clone() => MapUserRemarkResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MapUserRemarkResp copyWith(void Function(MapUserRemarkResp) updates) => super.copyWith((message) => updates(message as MapUserRemarkResp)) as MapUserRemarkResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MapUserRemarkResp create() => MapUserRemarkResp._();
+  MapUserRemarkResp createEmptyInstance() => create();
+  static $pb.PbList<MapUserRemarkResp> createRepeated() => $pb.PbList<MapUserRemarkResp>();
+  @$core.pragma('dart2js:noInline')
+  static MapUserRemarkResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MapUserRemarkResp>(create);
+  static MapUserRemarkResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.Map<$core.String, $core.String> get remarkMap => $_getMap(1);
 }
 
 class GetMyFriendEventListReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetMyFriendEventListReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pageIndex', protoName: 'pageIndex')
     ..hasRequiredFields = false
   ;
 
   GetMyFriendEventListReq._() : super();
   factory GetMyFriendEventListReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? pageIndex,
   }) {
     final _result = create();
@@ -1389,15 +1638,15 @@ class GetMyFriendEventListReq extends $pb.GeneratedMessage {
   static GetMyFriendEventListReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get pageIndex => $_getSZ(1);
@@ -1560,7 +1809,7 @@ class FriendEvent extends $pb.GeneratedMessage {
 
 class GetMyFriendEventListResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetMyFriendEventListResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..pc<FriendEvent>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'friendNotifyList', $pb.PbFieldType.PM, protoName: 'friendNotifyList', subBuilder: FriendEvent.create)
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pageIndex', protoName: 'pageIndex')
     ..hasRequiredFields = false
@@ -1568,7 +1817,7 @@ class GetMyFriendEventListResp extends $pb.GeneratedMessage {
 
   GetMyFriendEventListResp._() : super();
   factory GetMyFriendEventListResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Iterable<FriendEvent>? friendNotifyList,
     $core.String? pageIndex,
   }) {
@@ -1606,15 +1855,15 @@ class GetMyFriendEventListResp extends $pb.GeneratedMessage {
   static GetMyFriendEventListResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<FriendEvent> get friendNotifyList => $_getList(1);
@@ -1631,8 +1880,8 @@ class GetMyFriendEventListResp extends $pb.GeneratedMessage {
 
 class GetFriendListByUserIdReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetFriendListByUserIdReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
-    ..aOM<$3.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $3.Page.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOM<$0.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
     ..m<$core.String, $core.String>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'filter', entryClassName: 'GetFriendListByUserIdReq.FilterEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
     ..hasRequiredFields = false
@@ -1640,8 +1889,8 @@ class GetFriendListByUserIdReq extends $pb.GeneratedMessage {
 
   GetFriendListByUserIdReq._() : super();
   factory GetFriendListByUserIdReq({
-    $3.CommonReq? commonReq,
-    $3.Page? page,
+    $0.CommonReq? commonReq,
+    $0.Page? page,
     $core.Map<$core.String, $core.String>? filter,
     $core.String? userId,
   }) {
@@ -1682,26 +1931,26 @@ class GetFriendListByUserIdReq extends $pb.GeneratedMessage {
   static GetFriendListByUserIdReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $3.Page get page => $_getN(1);
+  $0.Page get page => $_getN(1);
   @$pb.TagNumber(2)
-  set page($3.Page v) { setField(2, v); }
+  set page($0.Page v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPage() => $_has(1);
   @$pb.TagNumber(2)
   void clearPage() => clearField(2);
   @$pb.TagNumber(2)
-  $3.Page ensurePage() => $_ensure(1);
+  $0.Page ensurePage() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.Map<$core.String, $core.String> get filter => $_getMap(2);
@@ -1807,7 +2056,7 @@ class GetFriendListByUserIdItem extends $pb.GeneratedMessage {
 
 class GetFriendListByUserIdResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetFriendListByUserIdResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..pc<GetFriendListByUserIdItem>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'friendList', $pb.PbFieldType.PM, protoName: 'friendList', subBuilder: GetFriendListByUserIdItem.create)
     ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'total')
     ..hasRequiredFields = false
@@ -1815,7 +2064,7 @@ class GetFriendListByUserIdResp extends $pb.GeneratedMessage {
 
   GetFriendListByUserIdResp._() : super();
   factory GetFriendListByUserIdResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Iterable<GetFriendListByUserIdItem>? friendList,
     $fixnum.Int64? total,
   }) {
@@ -1853,15 +2102,15 @@ class GetFriendListByUserIdResp extends $pb.GeneratedMessage {
   static GetFriendListByUserIdResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<GetFriendListByUserIdItem> get friendList => $_getList(1);
@@ -1878,7 +2127,7 @@ class GetFriendListByUserIdResp extends $pb.GeneratedMessage {
 
 class BatchMakeFriendReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BatchMakeFriendReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userIdA', protoName: 'userIdA')
     ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userIdBList', protoName: 'userIdBList')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sendTextMsgA', protoName: 'sendTextMsgA')
@@ -1887,7 +2136,7 @@ class BatchMakeFriendReq extends $pb.GeneratedMessage {
 
   BatchMakeFriendReq._() : super();
   factory BatchMakeFriendReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? userIdA,
     $core.Iterable<$core.String>? userIdBList,
     $core.String? sendTextMsgA,
@@ -1929,15 +2178,15 @@ class BatchMakeFriendReq extends $pb.GeneratedMessage {
   static BatchMakeFriendReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get userIdA => $_getSZ(1);
@@ -1963,13 +2212,13 @@ class BatchMakeFriendReq extends $pb.GeneratedMessage {
 
 class BatchMakeFriendResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BatchMakeFriendResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   BatchMakeFriendResp._() : super();
   factory BatchMakeFriendResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -1999,14 +2248,80 @@ class BatchMakeFriendResp extends $pb.GeneratedMessage {
   static BatchMakeFriendResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
+class relationServiceApi {
+  $pb.RpcClient _client;
+  relationServiceApi(this._client);
+
+  $async.Future<AreFriendsResp> areFriends($pb.ClientContext? ctx, AreFriendsReq request) {
+    var emptyResponse = AreFriendsResp();
+    return _client.invoke<AreFriendsResp>(ctx, 'relationService', 'AreFriends', request, emptyResponse);
+  }
+  $async.Future<AreBlackListResp> areBlackList($pb.ClientContext? ctx, AreBlackListReq request) {
+    var emptyResponse = AreBlackListResp();
+    return _client.invoke<AreBlackListResp>(ctx, 'relationService', 'AreBlackList', request, emptyResponse);
+  }
+  $async.Future<RequestAddFriendResp> requestAddFriend($pb.ClientContext? ctx, RequestAddFriendReq request) {
+    var emptyResponse = RequestAddFriendResp();
+    return _client.invoke<RequestAddFriendResp>(ctx, 'relationService', 'RequestAddFriend', request, emptyResponse);
+  }
+  $async.Future<AcceptAddFriendResp> acceptAddFriend($pb.ClientContext? ctx, AcceptAddFriendReq request) {
+    var emptyResponse = AcceptAddFriendResp();
+    return _client.invoke<AcceptAddFriendResp>(ctx, 'relationService', 'AcceptAddFriend', request, emptyResponse);
+  }
+  $async.Future<RejectAddFriendResp> rejectAddFriend($pb.ClientContext? ctx, RejectAddFriendReq request) {
+    var emptyResponse = RejectAddFriendResp();
+    return _client.invoke<RejectAddFriendResp>(ctx, 'relationService', 'RejectAddFriend', request, emptyResponse);
+  }
+  $async.Future<GetFriendCountResp> getFriendCount($pb.ClientContext? ctx, GetFriendCountReq request) {
+    var emptyResponse = GetFriendCountResp();
+    return _client.invoke<GetFriendCountResp>(ctx, 'relationService', 'GetFriendCount', request, emptyResponse);
+  }
+  $async.Future<BlockUserResp> blockUser($pb.ClientContext? ctx, BlockUserReq request) {
+    var emptyResponse = BlockUserResp();
+    return _client.invoke<BlockUserResp>(ctx, 'relationService', 'BlockUser', request, emptyResponse);
+  }
+  $async.Future<DeleteBlockUserResp> deleteBlockUser($pb.ClientContext? ctx, DeleteBlockUserReq request) {
+    var emptyResponse = DeleteBlockUserResp();
+    return _client.invoke<DeleteBlockUserResp>(ctx, 'relationService', 'DeleteBlockUser', request, emptyResponse);
+  }
+  $async.Future<DeleteFriendResp> deleteFriend($pb.ClientContext? ctx, DeleteFriendReq request) {
+    var emptyResponse = DeleteFriendResp();
+    return _client.invoke<DeleteFriendResp>(ctx, 'relationService', 'DeleteFriend', request, emptyResponse);
+  }
+  $async.Future<GetFriendListResp> getFriendList($pb.ClientContext? ctx, GetFriendListReq request) {
+    var emptyResponse = GetFriendListResp();
+    return _client.invoke<GetFriendListResp>(ctx, 'relationService', 'GetFriendList', request, emptyResponse);
+  }
+  $async.Future<MapUserRemarkResp> mapUserRemark($pb.ClientContext? ctx, MapUserRemarkReq request) {
+    var emptyResponse = MapUserRemarkResp();
+    return _client.invoke<MapUserRemarkResp>(ctx, 'relationService', 'MapUserRemark', request, emptyResponse);
+  }
+  $async.Future<UpdateUserRemarkResp> updateUserRemark($pb.ClientContext? ctx, UpdateUserRemarkReq request) {
+    var emptyResponse = UpdateUserRemarkResp();
+    return _client.invoke<UpdateUserRemarkResp>(ctx, 'relationService', 'UpdateUserRemark', request, emptyResponse);
+  }
+  $async.Future<GetMyFriendEventListResp> getMyFriendEventList($pb.ClientContext? ctx, GetMyFriendEventListReq request) {
+    var emptyResponse = GetMyFriendEventListResp();
+    return _client.invoke<GetMyFriendEventListResp>(ctx, 'relationService', 'GetMyFriendEventList', request, emptyResponse);
+  }
+  $async.Future<GetFriendListByUserIdResp> getFriendListByUserId($pb.ClientContext? ctx, GetFriendListByUserIdReq request) {
+    var emptyResponse = GetFriendListByUserIdResp();
+    return _client.invoke<GetFriendListByUserIdResp>(ctx, 'relationService', 'GetFriendListByUserId', request, emptyResponse);
+  }
+  $async.Future<BatchMakeFriendResp> batchMakeFriend($pb.ClientContext? ctx, BatchMakeFriendReq request) {
+    var emptyResponse = BatchMakeFriendResp();
+    return _client.invoke<BatchMakeFriendResp>(ctx, 'relationService', 'BatchMakeFriend', request, emptyResponse);
+  }
 }
 

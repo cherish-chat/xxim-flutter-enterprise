@@ -1,11 +1,12 @@
 import 'package:badges/badges.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
-import 'package:xxim_flutter_enterprise/main.dart';
+import 'package:xxim_flutter_enterprise/main.dart' hide Page;
 import 'package:xxim_flutter_enterprise/pages/contact/contact.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/group_chat.dart';
 import 'package:xxim_flutter_enterprise/pages/mine/mine.dart';
 import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
+import 'package:xxim_flutter_enterprise/proto/common.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/relation.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
@@ -24,6 +25,7 @@ class MenuLogic extends GetxController {
   PageController? pageController;
 
   List<UserBaseInfo> userInfoList = [];
+  Map<String, String> userRemarkMap = {};
   List<GroupBaseInfo> groupInfoList = [];
   Map<String, AesParams> convParams = {};
 
@@ -74,11 +76,16 @@ class MenuLogic extends GetxController {
     return XXIM.instance.customRequest<GetFriendListResp>(
       method: "/v1/relation/getFriendList",
       req: GetFriendListReq(
-        opt: GetFriendListReq_Opt.WithBaseInfo,
+        opt: GetFriendListReq_Opt.WithBaseInfoAndRemark,
+        page: Page(
+          page: 1,
+          size: 0,
+        ),
       ),
       resp: GetFriendListResp.create,
       onSuccess: (data) {
         userInfoList = data.userMap.values.toList();
+        userRemarkMap = data.remarkMap;
         for (UserBaseInfo info in userInfoList) {
           if (info.id.isEmpty || info.nickname.isEmpty) continue;
           String convId = SDKTool.singleConvId(

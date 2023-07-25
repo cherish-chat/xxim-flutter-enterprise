@@ -3,12 +3,14 @@ import 'package:xxim_flutter_enterprise/main.dart';
 class OperateSheet extends StatelessWidget {
   static Future show(
     List<String> textList,
-    Function(int index, String text) textCallback,
-  ) {
+    Function(int index, String text) textCallback, {
+    bool shrinkWrap = false,
+  }) {
     return Get.bottomSheet(
       OperateSheet(
         textList: textList,
         textCallback: textCallback,
+        shrinkWrap: shrinkWrap,
       ),
       barrierColor: getBlack50,
       isScrollControlled: true,
@@ -25,11 +27,13 @@ class OperateSheet extends StatelessWidget {
 
   final List<String> textList;
   final Function(int index, String value) textCallback;
+  final bool shrinkWrap;
 
   const OperateSheet({
     Key? key,
     required this.textList,
     required this.textCallback,
+    required this.shrinkWrap,
   }) : super(key: key);
 
   @override
@@ -65,8 +69,7 @@ class OperateSheet extends StatelessWidget {
   Widget _buildListView() {
     return ListView.separated(
       padding: EdgeInsets.zero,
-      // physics: const NeverScrollableScrollPhysics(),
-      // shrinkWrap: true,
+      shrinkWrap: shrinkWrap,
       itemBuilder: (context, index) {
         return _buildItem(
           textList[index],

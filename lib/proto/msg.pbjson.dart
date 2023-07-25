@@ -8,6 +8,9 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+import 'common.pbjson.dart' as $0;
+import 'conn.pbjson.dart' as $1;
+
 @$core.Deprecated('Use msgMQBodyDescriptor instead')
 const MsgMQBody$json = const {
   '1': 'MsgMQBody',
@@ -452,3 +455,78 @@ const FlushShieldWordTireTreeResp$json = const {
 
 /// Descriptor for `FlushShieldWordTireTreeResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List flushShieldWordTireTreeRespDescriptor = $convert.base64Decode('ChtGbHVzaFNoaWVsZFdvcmRUaXJlVHJlZVJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
+const $core.Map<$core.String, $core.dynamic> msgServiceBase$json = const {
+  '1': 'msgService',
+  '2': const [
+    const {'1': 'InsertMsgDataList', '2': '.pb.MsgDataList', '3': '.pb.MsgDataList', '4': const {}},
+    const {'1': 'SendMsgListSync', '2': '.pb.SendMsgListReq', '3': '.pb.SendMsgListResp', '4': const {}},
+    const {'1': 'SendMsgListAsync', '2': '.pb.SendMsgListReq', '3': '.pb.SendMsgListResp', '4': const {}},
+    const {'1': 'PushMsgList', '2': '.pb.PushMsgListReq', '3': '.pb.CommonResp', '4': const {}},
+    const {'1': 'BatchGetMsgListByConvId', '2': '.pb.BatchGetMsgListByConvIdReq', '3': '.pb.GetMsgListResp', '4': const {}},
+    const {'1': 'GetMsgById', '2': '.pb.GetMsgByIdReq', '3': '.pb.GetMsgByIdResp', '4': const {}},
+    const {'1': 'BatchSetMinSeq', '2': '.pb.BatchSetMinSeqReq', '3': '.pb.BatchSetMinSeqResp', '4': const {}},
+    const {'1': 'BatchGetConvSeq', '2': '.pb.BatchGetConvSeqReq', '3': '.pb.BatchGetConvSeqResp', '4': const {}},
+    const {'1': 'AfterConnect', '2': '.pb.AfterConnectReq', '3': '.pb.CommonResp'},
+    const {'1': 'AfterDisconnect', '2': '.pb.AfterDisconnectReq', '3': '.pb.CommonResp'},
+    const {'1': 'KeepAlive', '2': '.pb.KeepAliveReq', '3': '.pb.KeepAliveResp'},
+    const {'1': 'GetConvSubscribers', '2': '.pb.GetConvSubscribersReq', '3': '.pb.GetConvSubscribersResp', '4': const {}},
+    const {'1': 'OfflinePushMsg', '2': '.pb.OfflinePushMsgReq', '3': '.pb.OfflinePushMsgResp', '4': const {}},
+    const {'1': 'GetConvOnlineCount', '2': '.pb.GetConvOnlineCountReq', '3': '.pb.GetConvOnlineCountResp', '4': const {}},
+    const {'1': 'FlushUsersSubConv', '2': '.pb.FlushUsersSubConvReq', '3': '.pb.CommonResp', '4': const {}},
+    const {'1': 'GetAllMsgList', '2': '.pb.GetAllMsgListReq', '3': '.pb.GetAllMsgListResp', '4': const {}},
+    const {'1': 'ReadMsg', '2': '.pb.ReadMsgReq', '3': '.pb.ReadMsgResp', '4': const {}},
+    const {'1': 'EditMsg', '2': '.pb.EditMsgReq', '3': '.pb.EditMsgResp', '4': const {}},
+    const {'1': 'FlushShieldWordTireTree', '2': '.pb.FlushShieldWordTireTreeReq', '3': '.pb.FlushShieldWordTireTreeResp', '4': const {}},
+  ],
+};
+
+@$core.Deprecated('Use msgServiceDescriptor instead')
+const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> msgServiceBase$messageJson = const {
+  '.pb.MsgDataList': MsgDataList$json,
+  '.pb.MsgData': MsgData$json,
+  '.pb.MsgData.Options': MsgData_Options$json,
+  '.pb.MsgData.OfflinePush': MsgData_OfflinePush$json,
+  '.pb.SendMsgListReq': SendMsgListReq$json,
+  '.pb.CommonReq': $0.CommonReq$json,
+  '.pb.SendMsgListResp': SendMsgListResp$json,
+  '.pb.CommonResp': $0.CommonResp$json,
+  '.pb.PushMsgListReq': PushMsgListReq$json,
+  '.pb.BatchGetMsgListByConvIdReq': BatchGetMsgListByConvIdReq$json,
+  '.pb.BatchGetMsgListByConvIdReq.Item': BatchGetMsgListByConvIdReq_Item$json,
+  '.pb.GetMsgListResp': GetMsgListResp$json,
+  '.pb.GetMsgByIdReq': GetMsgByIdReq$json,
+  '.pb.GetMsgByIdResp': GetMsgByIdResp$json,
+  '.pb.BatchSetMinSeqReq': BatchSetMinSeqReq$json,
+  '.pb.BatchSetMinSeqResp': BatchSetMinSeqResp$json,
+  '.pb.BatchGetConvSeqReq': BatchGetConvSeqReq$json,
+  '.pb.BatchGetConvSeqResp': BatchGetConvSeqResp$json,
+  '.pb.BatchGetConvSeqResp.ConvSeqMapEntry': BatchGetConvSeqResp_ConvSeqMapEntry$json,
+  '.pb.BatchGetConvSeqResp.ConvSeq': BatchGetConvSeqResp_ConvSeq$json,
+  '.pb.AfterConnectReq': $1.AfterConnectReq$json,
+  '.pb.ConnParam': $1.ConnParam$json,
+  '.pb.ConnParam.HeadersEntry': $1.ConnParam_HeadersEntry$json,
+  '.pb.AfterDisconnectReq': $1.AfterDisconnectReq$json,
+  '.pb.KeepAliveReq': $1.KeepAliveReq$json,
+  '.pb.KeepAliveResp': $1.KeepAliveResp$json,
+  '.pb.GetConvSubscribersReq': GetConvSubscribersReq$json,
+  '.pb.GetConvSubscribersResp': GetConvSubscribersResp$json,
+  '.pb.OfflinePushMsgReq': OfflinePushMsgReq$json,
+  '.pb.OfflinePushMsgResp': OfflinePushMsgResp$json,
+  '.pb.GetConvOnlineCountReq': GetConvOnlineCountReq$json,
+  '.pb.GetConvOnlineCountResp': GetConvOnlineCountResp$json,
+  '.pb.FlushUsersSubConvReq': FlushUsersSubConvReq$json,
+  '.pb.GetAllMsgListReq': GetAllMsgListReq$json,
+  '.pb.Page': $0.Page$json,
+  '.pb.GetAllMsgListReq.FilterEntry': GetAllMsgListReq_FilterEntry$json,
+  '.pb.GetAllMsgListResp': GetAllMsgListResp$json,
+  '.pb.GetAllMsgListResp.UserMapEntry': GetAllMsgListResp_UserMapEntry$json,
+  '.pb.ReadMsgReq': ReadMsgReq$json,
+  '.pb.ReadMsgResp': ReadMsgResp$json,
+  '.pb.EditMsgReq': EditMsgReq$json,
+  '.pb.EditMsgResp': EditMsgResp$json,
+  '.pb.FlushShieldWordTireTreeReq': FlushShieldWordTireTreeReq$json,
+  '.pb.FlushShieldWordTireTreeResp': FlushShieldWordTireTreeResp$json,
+};
+
+/// Descriptor for `msgService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
+final $typed_data.Uint8List msgServiceDescriptor = $convert.base64Decode('Cgptc2dTZXJ2aWNlEjcKEUluc2VydE1zZ0RhdGFMaXN0Eg8ucGIuTXNnRGF0YUxpc3QaDy5wYi5Nc2dEYXRhTGlzdCIAEjwKD1NlbmRNc2dMaXN0U3luYxISLnBiLlNlbmRNc2dMaXN0UmVxGhMucGIuU2VuZE1zZ0xpc3RSZXNwIgASPQoQU2VuZE1zZ0xpc3RBc3luYxISLnBiLlNlbmRNc2dMaXN0UmVxGhMucGIuU2VuZE1zZ0xpc3RSZXNwIgASMwoLUHVzaE1zZ0xpc3QSEi5wYi5QdXNoTXNnTGlzdFJlcRoOLnBiLkNvbW1vblJlc3AiABJPChdCYXRjaEdldE1zZ0xpc3RCeUNvbnZJZBIeLnBiLkJhdGNoR2V0TXNnTGlzdEJ5Q29udklkUmVxGhIucGIuR2V0TXNnTGlzdFJlc3AiABI1CgpHZXRNc2dCeUlkEhEucGIuR2V0TXNnQnlJZFJlcRoSLnBiLkdldE1zZ0J5SWRSZXNwIgASQQoOQmF0Y2hTZXRNaW5TZXESFS5wYi5CYXRjaFNldE1pblNlcVJlcRoWLnBiLkJhdGNoU2V0TWluU2VxUmVzcCIAEkQKD0JhdGNoR2V0Q29udlNlcRIWLnBiLkJhdGNoR2V0Q29udlNlcVJlcRoXLnBiLkJhdGNoR2V0Q29udlNlcVJlc3AiABIzCgxBZnRlckNvbm5lY3QSEy5wYi5BZnRlckNvbm5lY3RSZXEaDi5wYi5Db21tb25SZXNwEjkKD0FmdGVyRGlzY29ubmVjdBIWLnBiLkFmdGVyRGlzY29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASMAoJS2VlcEFsaXZlEhAucGIuS2VlcEFsaXZlUmVxGhEucGIuS2VlcEFsaXZlUmVzcBJNChJHZXRDb252U3Vic2NyaWJlcnMSGS5wYi5HZXRDb252U3Vic2NyaWJlcnNSZXEaGi5wYi5HZXRDb252U3Vic2NyaWJlcnNSZXNwIgASQQoOT2ZmbGluZVB1c2hNc2cSFS5wYi5PZmZsaW5lUHVzaE1zZ1JlcRoWLnBiLk9mZmxpbmVQdXNoTXNnUmVzcCIAEk0KEkdldENvbnZPbmxpbmVDb3VudBIZLnBiLkdldENvbnZPbmxpbmVDb3VudFJlcRoaLnBiLkdldENvbnZPbmxpbmVDb3VudFJlc3AiABI/ChFGbHVzaFVzZXJzU3ViQ29udhIYLnBiLkZsdXNoVXNlcnNTdWJDb252UmVxGg4ucGIuQ29tbW9uUmVzcCIAEj4KDUdldEFsbE1zZ0xpc3QSFC5wYi5HZXRBbGxNc2dMaXN0UmVxGhUucGIuR2V0QWxsTXNnTGlzdFJlc3AiABIsCgdSZWFkTXNnEg4ucGIuUmVhZE1zZ1JlcRoPLnBiLlJlYWRNc2dSZXNwIgASLAoHRWRpdE1zZxIOLnBiLkVkaXRNc2dSZXEaDy5wYi5FZGl0TXNnUmVzcCIAElwKF0ZsdXNoU2hpZWxkV29yZFRpcmVUcmVlEh4ucGIuRmx1c2hTaGllbGRXb3JkVGlyZVRyZWVSZXEaHy5wYi5GbHVzaFNoaWVsZFdvcmRUaXJlVHJlZVJlc3AiAA==');

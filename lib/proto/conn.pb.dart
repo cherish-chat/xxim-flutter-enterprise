@@ -5,12 +5,13 @@
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
+import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'common.pb.dart' as $3;
+import 'common.pb.dart' as $0;
 
 import 'conn.pbenum.dart';
 
@@ -373,14 +374,14 @@ class GetUserConnReq extends $pb.GeneratedMessage {
 
 class GetUserConnResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetUserConnResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..pc<ConnParam>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'connParams', $pb.PbFieldType.PM, protoName: 'connParams', subBuilder: ConnParam.create)
     ..hasRequiredFields = false
   ;
 
   GetUserConnResp._() : super();
   factory GetUserConnResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Iterable<ConnParam>? connParams,
   }) {
     final _result = create();
@@ -414,15 +415,15 @@ class GetUserConnResp extends $pb.GeneratedMessage {
   static GetUserConnResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<ConnParam> get connParams => $_getList(1);
@@ -479,13 +480,13 @@ class KickUserConnReq extends $pb.GeneratedMessage {
 
 class KickUserConnResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'KickUserConnResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   KickUserConnResp._() : super();
   factory KickUserConnResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -515,15 +516,15 @@ class KickUserConnResp extends $pb.GeneratedMessage {
   static KickUserConnResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class PushBody extends $pb.GeneratedMessage {
@@ -1387,7 +1388,7 @@ class SendMsgReq extends $pb.GeneratedMessage {
 
 class SendMsgResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SendMsgResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..pc<ConnParam>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'successConnParams', $pb.PbFieldType.PM, protoName: 'successConnParams', subBuilder: ConnParam.create)
     ..pc<ConnParam>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'failedConnParams', $pb.PbFieldType.PM, protoName: 'failedConnParams', subBuilder: ConnParam.create)
     ..hasRequiredFields = false
@@ -1395,7 +1396,7 @@ class SendMsgResp extends $pb.GeneratedMessage {
 
   SendMsgResp._() : super();
   factory SendMsgResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Iterable<ConnParam>? successConnParams,
     $core.Iterable<ConnParam>? failedConnParams,
   }) {
@@ -1433,15 +1434,15 @@ class SendMsgResp extends $pb.GeneratedMessage {
   static SendMsgResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<ConnParam> get successConnParams => $_getList(1);
@@ -1592,14 +1593,14 @@ class AfterDisconnectReq extends $pb.GeneratedMessage {
 
 class KeepAliveReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'KeepAliveReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convIdList', protoName: 'convIdList')
     ..hasRequiredFields = false
   ;
 
   KeepAliveReq._() : super();
   factory KeepAliveReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.Iterable<$core.String>? convIdList,
   }) {
     final _result = create();
@@ -1633,15 +1634,15 @@ class KeepAliveReq extends $pb.GeneratedMessage {
   static KeepAliveReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<$core.String> get convIdList => $_getList(1);
@@ -1649,13 +1650,13 @@ class KeepAliveReq extends $pb.GeneratedMessage {
 
 class KeepAliveResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'KeepAliveResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   KeepAliveResp._() : super();
   factory KeepAliveResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -1685,14 +1686,36 @@ class KeepAliveResp extends $pb.GeneratedMessage {
   static KeepAliveResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
+class connServiceApi {
+  $pb.RpcClient _client;
+  connServiceApi(this._client);
+
+  $async.Future<KickUserConnResp> kickUserConn($pb.ClientContext? ctx, KickUserConnReq request) {
+    var emptyResponse = KickUserConnResp();
+    return _client.invoke<KickUserConnResp>(ctx, 'connService', 'KickUserConn', request, emptyResponse);
+  }
+  $async.Future<GetUserConnResp> getUserConn($pb.ClientContext? ctx, GetUserConnReq request) {
+    var emptyResponse = GetUserConnResp();
+    return _client.invoke<GetUserConnResp>(ctx, 'connService', 'GetUserConn', request, emptyResponse);
+  }
+  $async.Future<SendMsgResp> sendMsg($pb.ClientContext? ctx, SendMsgReq request) {
+    var emptyResponse = SendMsgResp();
+    return _client.invoke<SendMsgResp>(ctx, 'connService', 'SendMsg', request, emptyResponse);
+  }
+  $async.Future<KeepAliveResp> keepAlive($pb.ClientContext? ctx, KeepAliveReq request) {
+    var emptyResponse = KeepAliveResp();
+    return _client.invoke<KeepAliveResp>(ctx, 'connService', 'KeepAlive', request, emptyResponse);
+  }
 }
 

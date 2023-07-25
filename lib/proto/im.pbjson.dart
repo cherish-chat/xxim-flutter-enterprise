@@ -8,6 +8,9 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+import 'conn.pbjson.dart' as $1;
+import 'common.pbjson.dart' as $0;
+
 @$core.Deprecated('Use imMQBodyDescriptor instead')
 const ImMQBody$json = const {
   '1': 'ImMQBody',
@@ -287,3 +290,65 @@ const BatchTranslateTextResp_ResultsEntry$json = const {
 
 /// Descriptor for `BatchTranslateTextResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List batchTranslateTextRespDescriptor = $convert.base64Decode('ChZCYXRjaFRyYW5zbGF0ZVRleHRSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEkEKB3Jlc3VsdHMYAiADKAsyJy5wYi5CYXRjaFRyYW5zbGF0ZVRleHRSZXNwLlJlc3VsdHNFbnRyeVIHcmVzdWx0cxo6CgxSZXN1bHRzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');
+const $core.Map<$core.String, $core.dynamic> imServiceBase$json = const {
+  '1': 'imService',
+  '2': const [
+    const {'1': 'BeforeConnect', '2': '.pb.BeforeConnectReq', '3': '.pb.BeforeConnectResp'},
+    const {'1': 'AfterConnect', '2': '.pb.AfterConnectReq', '3': '.pb.CommonResp'},
+    const {'1': 'AfterDisconnect', '2': '.pb.AfterDisconnectReq', '3': '.pb.CommonResp'},
+    const {'1': 'KeepAlive', '2': '.pb.KeepAliveReq', '3': '.pb.KeepAliveResp'},
+    const {'1': 'KickUserConn', '2': '.pb.KickUserConnReq', '3': '.pb.KickUserConnResp'},
+    const {'1': 'GetUserConn', '2': '.pb.GetUserConnReq', '3': '.pb.GetUserConnResp'},
+    const {'1': 'BeforeRequest', '2': '.pb.BeforeRequestReq', '3': '.pb.BeforeRequestResp'},
+    const {'1': 'GetUserLatestConn', '2': '.pb.GetUserLatestConnReq', '3': '.pb.GetUserLatestConnResp'},
+    const {'1': 'BatchGetUserLatestConn', '2': '.pb.BatchGetUserLatestConnReq', '3': '.pb.BatchGetUserLatestConnResp'},
+    const {'1': 'SendMsg', '2': '.pb.SendMsgReq', '3': '.pb.SendMsgResp'},
+    const {'1': 'GetAllConvIdOfUser', '2': '.pb.GetAllConvIdOfUserReq', '3': '.pb.GetAllConvIdOfUserResp'},
+    const {'1': 'UpdateConvSetting', '2': '.pb.UpdateConvSettingReq', '3': '.pb.UpdateConvSettingResp'},
+    const {'1': 'GetConvSetting', '2': '.pb.GetConvSettingReq', '3': '.pb.GetConvSettingResp'},
+    const {'1': 'TranslateText', '2': '.pb.TranslateTextReq', '3': '.pb.TranslateTextResp'},
+    const {'1': 'BatchTranslateText', '2': '.pb.BatchTranslateTextReq', '3': '.pb.BatchTranslateTextResp'},
+  ],
+};
+
+@$core.Deprecated('Use imServiceDescriptor instead')
+const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> imServiceBase$messageJson = const {
+  '.pb.BeforeConnectReq': BeforeConnectReq$json,
+  '.pb.ConnParam': $1.ConnParam$json,
+  '.pb.ConnParam.HeadersEntry': $1.ConnParam_HeadersEntry$json,
+  '.pb.BeforeConnectResp': BeforeConnectResp$json,
+  '.pb.AfterConnectReq': $1.AfterConnectReq$json,
+  '.pb.CommonResp': $0.CommonResp$json,
+  '.pb.AfterDisconnectReq': $1.AfterDisconnectReq$json,
+  '.pb.KeepAliveReq': $1.KeepAliveReq$json,
+  '.pb.CommonReq': $0.CommonReq$json,
+  '.pb.KeepAliveResp': $1.KeepAliveResp$json,
+  '.pb.KickUserConnReq': $1.KickUserConnReq$json,
+  '.pb.GetUserConnReq': $1.GetUserConnReq$json,
+  '.pb.KickUserConnResp': $1.KickUserConnResp$json,
+  '.pb.GetUserConnResp': $1.GetUserConnResp$json,
+  '.pb.BeforeRequestReq': BeforeRequestReq$json,
+  '.pb.BeforeRequestResp': BeforeRequestResp$json,
+  '.pb.GetUserLatestConnReq': GetUserLatestConnReq$json,
+  '.pb.GetUserLatestConnResp': GetUserLatestConnResp$json,
+  '.pb.IpRegion': $0.IpRegion$json,
+  '.pb.BatchGetUserLatestConnReq': BatchGetUserLatestConnReq$json,
+  '.pb.BatchGetUserLatestConnResp': BatchGetUserLatestConnResp$json,
+  '.pb.SendMsgReq': $1.SendMsgReq$json,
+  '.pb.SendMsgResp': $1.SendMsgResp$json,
+  '.pb.GetAllConvIdOfUserReq': GetAllConvIdOfUserReq$json,
+  '.pb.GetAllConvIdOfUserResp': GetAllConvIdOfUserResp$json,
+  '.pb.UpdateConvSettingReq': UpdateConvSettingReq$json,
+  '.pb.ConvSetting': ConvSetting$json,
+  '.pb.UpdateConvSettingResp': UpdateConvSettingResp$json,
+  '.pb.GetConvSettingReq': GetConvSettingReq$json,
+  '.pb.GetConvSettingResp': GetConvSettingResp$json,
+  '.pb.TranslateTextReq': TranslateTextReq$json,
+  '.pb.TranslateTextResp': TranslateTextResp$json,
+  '.pb.BatchTranslateTextReq': BatchTranslateTextReq$json,
+  '.pb.BatchTranslateTextResp': BatchTranslateTextResp$json,
+  '.pb.BatchTranslateTextResp.ResultsEntry': BatchTranslateTextResp_ResultsEntry$json,
+};
+
+/// Descriptor for `imService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
+final $typed_data.Uint8List imServiceDescriptor = $convert.base64Decode('CglpbVNlcnZpY2USPAoNQmVmb3JlQ29ubmVjdBIULnBiLkJlZm9yZUNvbm5lY3RSZXEaFS5wYi5CZWZvcmVDb25uZWN0UmVzcBIzCgxBZnRlckNvbm5lY3QSEy5wYi5BZnRlckNvbm5lY3RSZXEaDi5wYi5Db21tb25SZXNwEjkKD0FmdGVyRGlzY29ubmVjdBIWLnBiLkFmdGVyRGlzY29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASMAoJS2VlcEFsaXZlEhAucGIuS2VlcEFsaXZlUmVxGhEucGIuS2VlcEFsaXZlUmVzcBI5CgxLaWNrVXNlckNvbm4SEy5wYi5LaWNrVXNlckNvbm5SZXEaFC5wYi5LaWNrVXNlckNvbm5SZXNwEjYKC0dldFVzZXJDb25uEhIucGIuR2V0VXNlckNvbm5SZXEaEy5wYi5HZXRVc2VyQ29ublJlc3ASPAoNQmVmb3JlUmVxdWVzdBIULnBiLkJlZm9yZVJlcXVlc3RSZXEaFS5wYi5CZWZvcmVSZXF1ZXN0UmVzcBJIChFHZXRVc2VyTGF0ZXN0Q29ubhIYLnBiLkdldFVzZXJMYXRlc3RDb25uUmVxGhkucGIuR2V0VXNlckxhdGVzdENvbm5SZXNwElcKFkJhdGNoR2V0VXNlckxhdGVzdENvbm4SHS5wYi5CYXRjaEdldFVzZXJMYXRlc3RDb25uUmVxGh4ucGIuQmF0Y2hHZXRVc2VyTGF0ZXN0Q29ublJlc3ASKgoHU2VuZE1zZxIOLnBiLlNlbmRNc2dSZXEaDy5wYi5TZW5kTXNnUmVzcBJLChJHZXRBbGxDb252SWRPZlVzZXISGS5wYi5HZXRBbGxDb252SWRPZlVzZXJSZXEaGi5wYi5HZXRBbGxDb252SWRPZlVzZXJSZXNwEkgKEVVwZGF0ZUNvbnZTZXR0aW5nEhgucGIuVXBkYXRlQ29udlNldHRpbmdSZXEaGS5wYi5VcGRhdGVDb252U2V0dGluZ1Jlc3ASPwoOR2V0Q29udlNldHRpbmcSFS5wYi5HZXRDb252U2V0dGluZ1JlcRoWLnBiLkdldENvbnZTZXR0aW5nUmVzcBI8Cg1UcmFuc2xhdGVUZXh0EhQucGIuVHJhbnNsYXRlVGV4dFJlcRoVLnBiLlRyYW5zbGF0ZVRleHRSZXNwEksKEkJhdGNoVHJhbnNsYXRlVGV4dBIZLnBiLkJhdGNoVHJhbnNsYXRlVGV4dFJlcRoaLnBiLkJhdGNoVHJhbnNsYXRlVGV4dFJlc3A=');

@@ -5,6 +5,7 @@ import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 import 'package:xxim_flutter_enterprise/pages/public/menu_more_dialog.dart';
+import 'package:xxim_flutter_enterprise/pages/public/setting_remark.dart';
 import 'package:xxim_flutter_enterprise/proto/relation.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
@@ -25,9 +26,14 @@ class ContactModel extends ISuspensionBean {
   });
 
   static ContactModel fromProto(UserBaseInfo info) {
+    String nickname = info.nickname;
+    String remark = MenuLogic.logic()?.userRemarkMap[info.id] ?? "";
+    if (remark.isNotEmpty) {
+      nickname = remark;
+    }
     return ContactModel(
       userId: info.id,
-      nickname: info.nickname,
+      nickname: nickname,
       avatar: info.avatar,
     );
   }
@@ -90,6 +96,20 @@ class ContactLogic extends GetxController {
       ),
     );
     update(["list"]);
+  }
+
+  void showOperate(String userId) {
+    OperateSheet.show(
+      ["设置备注", "删除好友"],
+      (index, text) {
+        if (index == 0) {
+          SettingRemark.show(userId: userId);
+        } else if (index == 1) {
+          alertDelete(userId);
+        }
+      },
+      shrinkWrap: true,
+    );
   }
 
   void alertDelete(String userId) {
@@ -440,10 +460,10 @@ class ContactPage extends StatelessWidget {
         );
       },
       onLongPress: () {
-        logic.alertDelete(item.userId);
+        logic.showOperate(item.userId);
       },
       onSecondaryTap: () {
-        logic.alertDelete(item.userId);
+        logic.showOperate(item.userId);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),

@@ -48,10 +48,12 @@ class AreBlackListReq_Option extends $pb.ProtobufEnum {
 class GetFriendListReq_Opt extends $pb.ProtobufEnum {
   static const GetFriendListReq_Opt WithBaseInfo = GetFriendListReq_Opt._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'WithBaseInfo');
   static const GetFriendListReq_Opt OnlyId = GetFriendListReq_Opt._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'OnlyId');
+  static const GetFriendListReq_Opt WithBaseInfoAndRemark = GetFriendListReq_Opt._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'WithBaseInfoAndRemark');
 
   static const $core.List<GetFriendListReq_Opt> values = <GetFriendListReq_Opt> [
     WithBaseInfo,
     OnlyId,
+    WithBaseInfoAndRemark,
   ];
 
   static final $core.Map<$core.int, GetFriendListReq_Opt> _byValue = $pb.ProtobufEnum.initByValue(values);

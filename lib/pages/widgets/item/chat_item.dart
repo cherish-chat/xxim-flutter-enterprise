@@ -281,6 +281,11 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
           }
           avatar = senderInfo["avatar"] ?? "";
           nickname = senderInfo["nickname"] ?? "";
+          String remark =
+              MenuLogic.logic()?.userRemarkMap[msgModel.senderId] ?? "";
+          if (remark.isNotEmpty) {
+            nickname = remark;
+          }
         }
         return Padding(
           padding: direction == ChatDirection.left
@@ -342,6 +347,11 @@ class ChatNameItem<T extends GetxController> extends StatelessWidget {
             senderInfo = json.decode(msgModel.senderInfo);
           }
           nickname = senderInfo["nickname"] ?? "";
+          String remark =
+              MenuLogic.logic()?.userRemarkMap[msgModel.senderId] ?? "";
+          if (remark.isNotEmpty) {
+            nickname = remark;
+          }
         }
         return Padding(
           padding: const EdgeInsets.only(bottom: 2),

@@ -5,12 +5,13 @@
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
+import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'common.pb.dart' as $3;
+import 'common.pb.dart' as $0;
 import 'user.pb.dart' as $4;
 
 import 'group.pbenum.dart';
@@ -19,7 +20,7 @@ export 'group.pbenum.dart';
 
 class CreateGroupReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateGroupReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'members')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'avatar')
@@ -28,7 +29,7 @@ class CreateGroupReq extends $pb.GeneratedMessage {
 
   CreateGroupReq._() : super();
   factory CreateGroupReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.Iterable<$core.String>? members,
     $core.String? name,
     $core.String? avatar,
@@ -70,15 +71,15 @@ class CreateGroupReq extends $pb.GeneratedMessage {
   static CreateGroupReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<$core.String> get members => $_getList(1);
@@ -104,7 +105,7 @@ class CreateGroupReq extends $pb.GeneratedMessage {
 
 class CreateGroupResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateGroupResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..aOM<GroupBaseInfo>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'info', subBuilder: GroupBaseInfo.create)
     ..hasRequiredFields = false
@@ -112,7 +113,7 @@ class CreateGroupResp extends $pb.GeneratedMessage {
 
   CreateGroupResp._() : super();
   factory CreateGroupResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.String? groupId,
     GroupBaseInfo? info,
   }) {
@@ -150,15 +151,15 @@ class CreateGroupResp extends $pb.GeneratedMessage {
   static CreateGroupResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -183,14 +184,14 @@ class CreateGroupResp extends $pb.GeneratedMessage {
 
 class GetGroupHomeReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupHomeReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..hasRequiredFields = false
   ;
 
   GetGroupHomeReq._() : super();
   factory GetGroupHomeReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
   }) {
     final _result = create();
@@ -224,15 +225,15 @@ class GetGroupHomeReq extends $pb.GeneratedMessage {
   static GetGroupHomeReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -321,7 +322,7 @@ class GetGroupHomeResp_MemberStatistics extends $pb.GeneratedMessage {
 
 class GetGroupHomeResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupHomeResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'avatar')
@@ -336,7 +337,7 @@ class GetGroupHomeResp extends $pb.GeneratedMessage {
 
   GetGroupHomeResp._() : super();
   factory GetGroupHomeResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.String? groupId,
     $core.String? name,
     $core.String? avatar,
@@ -402,15 +403,15 @@ class GetGroupHomeResp extends $pb.GeneratedMessage {
   static GetGroupHomeResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -490,7 +491,7 @@ class GetGroupHomeResp extends $pb.GeneratedMessage {
 
 class InviteFriendToGroupReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InviteFriendToGroupReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'friendIds', protoName: 'friendIds')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'minSeq', protoName: 'minSeq')
@@ -499,7 +500,7 @@ class InviteFriendToGroupReq extends $pb.GeneratedMessage {
 
   InviteFriendToGroupReq._() : super();
   factory InviteFriendToGroupReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.Iterable<$core.String>? friendIds,
     $core.String? minSeq,
@@ -541,15 +542,15 @@ class InviteFriendToGroupReq extends $pb.GeneratedMessage {
   static InviteFriendToGroupReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -575,13 +576,13 @@ class InviteFriendToGroupReq extends $pb.GeneratedMessage {
 
 class InviteFriendToGroupResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InviteFriendToGroupResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   InviteFriendToGroupResp._() : super();
   factory InviteFriendToGroupResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -611,20 +612,20 @@ class InviteFriendToGroupResp extends $pb.GeneratedMessage {
   static InviteFriendToGroupResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class CreateGroupNoticeReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateGroupNoticeReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'title')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'content')
@@ -633,7 +634,7 @@ class CreateGroupNoticeReq extends $pb.GeneratedMessage {
 
   CreateGroupNoticeReq._() : super();
   factory CreateGroupNoticeReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.String? title,
     $core.String? content,
@@ -675,15 +676,15 @@ class CreateGroupNoticeReq extends $pb.GeneratedMessage {
   static CreateGroupNoticeReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -715,13 +716,13 @@ class CreateGroupNoticeReq extends $pb.GeneratedMessage {
 
 class CreateGroupNoticeResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateGroupNoticeResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   CreateGroupNoticeResp._() : super();
   factory CreateGroupNoticeResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -751,20 +752,20 @@ class CreateGroupNoticeResp extends $pb.GeneratedMessage {
   static CreateGroupNoticeResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class DeleteGroupNoticeReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DeleteGroupNoticeReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'noticeId', protoName: 'noticeId')
     ..hasRequiredFields = false
@@ -772,7 +773,7 @@ class DeleteGroupNoticeReq extends $pb.GeneratedMessage {
 
   DeleteGroupNoticeReq._() : super();
   factory DeleteGroupNoticeReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.String? noticeId,
   }) {
@@ -810,15 +811,15 @@ class DeleteGroupNoticeReq extends $pb.GeneratedMessage {
   static DeleteGroupNoticeReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -841,13 +842,13 @@ class DeleteGroupNoticeReq extends $pb.GeneratedMessage {
 
 class DeleteGroupNoticeResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DeleteGroupNoticeResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   DeleteGroupNoticeResp._() : super();
   factory DeleteGroupNoticeResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -877,20 +878,20 @@ class DeleteGroupNoticeResp extends $pb.GeneratedMessage {
   static DeleteGroupNoticeResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class EditGroupNoticeReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'EditGroupNoticeReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'noticeId', protoName: 'noticeId')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'title')
@@ -900,7 +901,7 @@ class EditGroupNoticeReq extends $pb.GeneratedMessage {
 
   EditGroupNoticeReq._() : super();
   factory EditGroupNoticeReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.String? noticeId,
     $core.String? title,
@@ -946,15 +947,15 @@ class EditGroupNoticeReq extends $pb.GeneratedMessage {
   static EditGroupNoticeReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -995,13 +996,13 @@ class EditGroupNoticeReq extends $pb.GeneratedMessage {
 
 class EditGroupNoticeResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'EditGroupNoticeResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   EditGroupNoticeResp._() : super();
   factory EditGroupNoticeResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -1031,30 +1032,30 @@ class EditGroupNoticeResp extends $pb.GeneratedMessage {
   static EditGroupNoticeResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class GetGroupNoticeListReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupNoticeListReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
-    ..aOM<$3.Page>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $3.Page.create)
+    ..aOM<$0.Page>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
     ..hasRequiredFields = false
   ;
 
   GetGroupNoticeListReq._() : super();
   factory GetGroupNoticeListReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
-    $3.Page? page,
+    $0.Page? page,
   }) {
     final _result = create();
     if (commonReq != null) {
@@ -1090,15 +1091,15 @@ class GetGroupNoticeListReq extends $pb.GeneratedMessage {
   static GetGroupNoticeListReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -1110,15 +1111,15 @@ class GetGroupNoticeListReq extends $pb.GeneratedMessage {
   void clearGroupId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $3.Page get page => $_getN(2);
+  $0.Page get page => $_getN(2);
   @$pb.TagNumber(3)
-  set page($3.Page v) { setField(3, v); }
+  set page($0.Page v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasPage() => $_has(2);
   @$pb.TagNumber(3)
   void clearPage() => clearField(3);
   @$pb.TagNumber(3)
-  $3.Page ensurePage() => $_ensure(2);
+  $0.Page ensurePage() => $_ensure(2);
 }
 
 class GroupNotice extends $pb.GeneratedMessage {
@@ -1212,14 +1213,14 @@ class GroupNotice extends $pb.GeneratedMessage {
 
 class GetGroupNoticeListResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupNoticeListResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..pc<GroupNotice>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupNotices', $pb.PbFieldType.PM, protoName: 'groupNotices', subBuilder: GroupNotice.create)
     ..hasRequiredFields = false
   ;
 
   GetGroupNoticeListResp._() : super();
   factory GetGroupNoticeListResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Iterable<GroupNotice>? groupNotices,
   }) {
     final _result = create();
@@ -1253,15 +1254,15 @@ class GetGroupNoticeListResp extends $pb.GeneratedMessage {
   static GetGroupNoticeListResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<GroupNotice> get groupNotices => $_getList(1);
@@ -1269,7 +1270,7 @@ class GetGroupNoticeListResp extends $pb.GeneratedMessage {
 
 class SetGroupMemberInfoReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SetGroupMemberInfoReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberId', protoName: 'memberId')
     ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'remark')
@@ -1280,7 +1281,7 @@ class SetGroupMemberInfoReq extends $pb.GeneratedMessage {
 
   SetGroupMemberInfoReq._() : super();
   factory SetGroupMemberInfoReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.String? memberId,
     $core.String? remark,
@@ -1330,15 +1331,15 @@ class SetGroupMemberInfoReq extends $pb.GeneratedMessage {
   static SetGroupMemberInfoReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -1388,13 +1389,13 @@ class SetGroupMemberInfoReq extends $pb.GeneratedMessage {
 
 class SetGroupMemberInfoResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SetGroupMemberInfoResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   SetGroupMemberInfoResp._() : super();
   factory SetGroupMemberInfoResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -1424,20 +1425,20 @@ class SetGroupMemberInfoResp extends $pb.GeneratedMessage {
   static SetGroupMemberInfoResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class GetGroupMemberInfoReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupMemberInfoReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberId', protoName: 'memberId')
     ..hasRequiredFields = false
@@ -1445,7 +1446,7 @@ class GetGroupMemberInfoReq extends $pb.GeneratedMessage {
 
   GetGroupMemberInfoReq._() : super();
   factory GetGroupMemberInfoReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.String? memberId,
   }) {
@@ -1483,15 +1484,15 @@ class GetGroupMemberInfoReq extends $pb.GeneratedMessage {
   static GetGroupMemberInfoReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -1680,7 +1681,7 @@ class MapGroupMemberInfoByIdsReq_Opt extends $pb.GeneratedMessage {
 
 class MapGroupMemberInfoByIdsReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MapGroupMemberInfoByIdsReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberIds', protoName: 'memberIds')
     ..aOM<MapGroupMemberInfoByIdsReq_Opt>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'opt', subBuilder: MapGroupMemberInfoByIdsReq_Opt.create)
@@ -1689,7 +1690,7 @@ class MapGroupMemberInfoByIdsReq extends $pb.GeneratedMessage {
 
   MapGroupMemberInfoByIdsReq._() : super();
   factory MapGroupMemberInfoByIdsReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.Iterable<$core.String>? memberIds,
     MapGroupMemberInfoByIdsReq_Opt? opt,
@@ -1731,15 +1732,15 @@ class MapGroupMemberInfoByIdsReq extends $pb.GeneratedMessage {
   static MapGroupMemberInfoByIdsReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -1814,7 +1815,7 @@ class MapGroupMemberInfoByGroupIdsReq_Opt extends $pb.GeneratedMessage {
 
 class MapGroupMemberInfoByGroupIdsReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MapGroupMemberInfoByGroupIdsReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupIds', protoName: 'groupIds')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberId', protoName: 'memberId')
     ..aOM<MapGroupMemberInfoByGroupIdsReq_Opt>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'opt', subBuilder: MapGroupMemberInfoByGroupIdsReq_Opt.create)
@@ -1823,7 +1824,7 @@ class MapGroupMemberInfoByGroupIdsReq extends $pb.GeneratedMessage {
 
   MapGroupMemberInfoByGroupIdsReq._() : super();
   factory MapGroupMemberInfoByGroupIdsReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.Iterable<$core.String>? groupIds,
     $core.String? memberId,
     MapGroupMemberInfoByGroupIdsReq_Opt? opt,
@@ -1865,15 +1866,15 @@ class MapGroupMemberInfoByGroupIdsReq extends $pb.GeneratedMessage {
   static MapGroupMemberInfoByGroupIdsReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<$core.String> get groupIds => $_getList(1);
@@ -1901,14 +1902,14 @@ class MapGroupMemberInfoByGroupIdsReq extends $pb.GeneratedMessage {
 
 class MapGroupMemberInfoByIdsResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MapGroupMemberInfoByIdsResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..m<$core.String, GroupMemberInfo>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupMemberInfoMap', protoName: 'groupMemberInfoMap', entryClassName: 'MapGroupMemberInfoByIdsResp.GroupMemberInfoMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: GroupMemberInfo.create, packageName: const $pb.PackageName('pb'))
     ..hasRequiredFields = false
   ;
 
   MapGroupMemberInfoByIdsResp._() : super();
   factory MapGroupMemberInfoByIdsResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Map<$core.String, GroupMemberInfo>? groupMemberInfoMap,
   }) {
     final _result = create();
@@ -1942,15 +1943,15 @@ class MapGroupMemberInfoByIdsResp extends $pb.GeneratedMessage {
   static MapGroupMemberInfoByIdsResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.Map<$core.String, GroupMemberInfo> get groupMemberInfoMap => $_getMap(1);
@@ -1958,14 +1959,14 @@ class MapGroupMemberInfoByIdsResp extends $pb.GeneratedMessage {
 
 class GetGroupMemberInfoResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupMemberInfoResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..aOM<GroupMemberInfo>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupMemberInfo', protoName: 'groupMemberInfo', subBuilder: GroupMemberInfo.create)
     ..hasRequiredFields = false
   ;
 
   GetGroupMemberInfoResp._() : super();
   factory GetGroupMemberInfoResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     GroupMemberInfo? groupMemberInfo,
   }) {
     final _result = create();
@@ -1999,15 +2000,15 @@ class GetGroupMemberInfoResp extends $pb.GeneratedMessage {
   static GetGroupMemberInfoResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   GroupMemberInfo get groupMemberInfo => $_getN(1);
@@ -2023,7 +2024,7 @@ class GetGroupMemberInfoResp extends $pb.GeneratedMessage {
 
 class EditGroupInfoReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'EditGroupInfoReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'avatar')
@@ -2035,7 +2036,7 @@ class EditGroupInfoReq extends $pb.GeneratedMessage {
 
   EditGroupInfoReq._() : super();
   factory EditGroupInfoReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.String? name,
     $core.String? avatar,
@@ -2089,15 +2090,15 @@ class EditGroupInfoReq extends $pb.GeneratedMessage {
   static EditGroupInfoReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -2156,13 +2157,13 @@ class EditGroupInfoReq extends $pb.GeneratedMessage {
 
 class EditGroupInfoResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'EditGroupInfoResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   EditGroupInfoResp._() : super();
   factory EditGroupInfoResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -2192,20 +2193,20 @@ class EditGroupInfoResp extends $pb.GeneratedMessage {
   static EditGroupInfoResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class TransferGroupOwnerReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TransferGroupOwnerReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'newOwner', protoName: 'newOwner')
     ..hasRequiredFields = false
@@ -2213,7 +2214,7 @@ class TransferGroupOwnerReq extends $pb.GeneratedMessage {
 
   TransferGroupOwnerReq._() : super();
   factory TransferGroupOwnerReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.String? newOwner,
   }) {
@@ -2251,15 +2252,15 @@ class TransferGroupOwnerReq extends $pb.GeneratedMessage {
   static TransferGroupOwnerReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -2282,13 +2283,13 @@ class TransferGroupOwnerReq extends $pb.GeneratedMessage {
 
 class TransferGroupOwnerResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TransferGroupOwnerResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   TransferGroupOwnerResp._() : super();
   factory TransferGroupOwnerResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -2318,20 +2319,20 @@ class TransferGroupOwnerResp extends $pb.GeneratedMessage {
   static TransferGroupOwnerResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class KickGroupMemberReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'KickGroupMemberReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberId', protoName: 'memberId')
     ..hasRequiredFields = false
@@ -2339,7 +2340,7 @@ class KickGroupMemberReq extends $pb.GeneratedMessage {
 
   KickGroupMemberReq._() : super();
   factory KickGroupMemberReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.String? memberId,
   }) {
@@ -2377,15 +2378,15 @@ class KickGroupMemberReq extends $pb.GeneratedMessage {
   static KickGroupMemberReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -2408,13 +2409,13 @@ class KickGroupMemberReq extends $pb.GeneratedMessage {
 
 class KickGroupMemberResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'KickGroupMemberResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   KickGroupMemberResp._() : super();
   factory KickGroupMemberResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -2444,20 +2445,20 @@ class KickGroupMemberResp extends $pb.GeneratedMessage {
   static KickGroupMemberResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class BatchKickGroupMemberReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BatchKickGroupMemberReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberIds', protoName: 'memberIds')
     ..hasRequiredFields = false
@@ -2465,7 +2466,7 @@ class BatchKickGroupMemberReq extends $pb.GeneratedMessage {
 
   BatchKickGroupMemberReq._() : super();
   factory BatchKickGroupMemberReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.Iterable<$core.String>? memberIds,
   }) {
@@ -2503,15 +2504,15 @@ class BatchKickGroupMemberReq extends $pb.GeneratedMessage {
   static BatchKickGroupMemberReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -2528,13 +2529,13 @@ class BatchKickGroupMemberReq extends $pb.GeneratedMessage {
 
 class BatchKickGroupMemberResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BatchKickGroupMemberResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   BatchKickGroupMemberResp._() : super();
   factory BatchKickGroupMemberResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -2564,15 +2565,15 @@ class BatchKickGroupMemberResp extends $pb.GeneratedMessage {
   static BatchKickGroupMemberResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class GetGroupMemberListReq_GetGroupMemberListFilter extends $pb.GeneratedMessage {
@@ -2713,9 +2714,9 @@ class GetGroupMemberListReq_GetGroupMemberListOpt extends $pb.GeneratedMessage {
 
 class GetGroupMemberListReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupMemberListReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
-    ..aOM<$3.Page>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $3.Page.create)
+    ..aOM<$0.Page>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
     ..aOM<GetGroupMemberListReq_GetGroupMemberListFilter>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'filter', subBuilder: GetGroupMemberListReq_GetGroupMemberListFilter.create)
     ..aOM<GetGroupMemberListReq_GetGroupMemberListOpt>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'opt', subBuilder: GetGroupMemberListReq_GetGroupMemberListOpt.create)
     ..hasRequiredFields = false
@@ -2723,9 +2724,9 @@ class GetGroupMemberListReq extends $pb.GeneratedMessage {
 
   GetGroupMemberListReq._() : super();
   factory GetGroupMemberListReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
-    $3.Page? page,
+    $0.Page? page,
     GetGroupMemberListReq_GetGroupMemberListFilter? filter,
     GetGroupMemberListReq_GetGroupMemberListOpt? opt,
   }) {
@@ -2769,15 +2770,15 @@ class GetGroupMemberListReq extends $pb.GeneratedMessage {
   static GetGroupMemberListReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -2789,15 +2790,15 @@ class GetGroupMemberListReq extends $pb.GeneratedMessage {
   void clearGroupId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $3.Page get page => $_getN(2);
+  $0.Page get page => $_getN(2);
   @$pb.TagNumber(3)
-  set page($3.Page v) { setField(3, v); }
+  set page($0.Page v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasPage() => $_has(2);
   @$pb.TagNumber(3)
   void clearPage() => clearField(3);
   @$pb.TagNumber(3)
-  $3.Page ensurePage() => $_ensure(2);
+  $0.Page ensurePage() => $_ensure(2);
 
   @$pb.TagNumber(4)
   GetGroupMemberListReq_GetGroupMemberListFilter get filter => $_getN(3);
@@ -2824,14 +2825,14 @@ class GetGroupMemberListReq extends $pb.GeneratedMessage {
 
 class GetGroupMemberListResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupMemberListResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..pc<GroupMemberInfo>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupMemberList', $pb.PbFieldType.PM, protoName: 'groupMemberList', subBuilder: GroupMemberInfo.create)
     ..hasRequiredFields = false
   ;
 
   GetGroupMemberListResp._() : super();
   factory GetGroupMemberListResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Iterable<GroupMemberInfo>? groupMemberList,
   }) {
     final _result = create();
@@ -2865,15 +2866,15 @@ class GetGroupMemberListResp extends $pb.GeneratedMessage {
   static GetGroupMemberListResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<GroupMemberInfo> get groupMemberList => $_getList(1);
@@ -2942,8 +2943,8 @@ class GetMyGroupListReq_Filter extends $pb.GeneratedMessage {
 
 class GetMyGroupListReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetMyGroupListReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
-    ..aOM<$3.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $3.Page.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOM<$0.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
     ..aOM<GetMyGroupListReq_Filter>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'filter', subBuilder: GetMyGroupListReq_Filter.create)
     ..e<GetMyGroupListReq_Opt>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'opt', $pb.PbFieldType.OE, defaultOrMaker: GetMyGroupListReq_Opt.DEFAULT, valueOf: GetMyGroupListReq_Opt.valueOf, enumValues: GetMyGroupListReq_Opt.values)
     ..hasRequiredFields = false
@@ -2951,8 +2952,8 @@ class GetMyGroupListReq extends $pb.GeneratedMessage {
 
   GetMyGroupListReq._() : super();
   factory GetMyGroupListReq({
-    $3.CommonReq? commonReq,
-    $3.Page? page,
+    $0.CommonReq? commonReq,
+    $0.Page? page,
     GetMyGroupListReq_Filter? filter,
     GetMyGroupListReq_Opt? opt,
   }) {
@@ -2993,26 +2994,26 @@ class GetMyGroupListReq extends $pb.GeneratedMessage {
   static GetMyGroupListReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $3.Page get page => $_getN(1);
+  $0.Page get page => $_getN(1);
   @$pb.TagNumber(2)
-  set page($3.Page v) { setField(2, v); }
+  set page($0.Page v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPage() => $_has(1);
   @$pb.TagNumber(2)
   void clearPage() => clearField(2);
   @$pb.TagNumber(2)
-  $3.Page ensurePage() => $_ensure(1);
+  $0.Page ensurePage() => $_ensure(1);
 
   @$pb.TagNumber(3)
   GetMyGroupListReq_Filter get filter => $_getN(2);
@@ -3184,7 +3185,7 @@ class GroupBaseInfo extends $pb.GeneratedMessage {
 
 class GetMyGroupListResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetMyGroupListResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..m<$core.String, GroupBaseInfo>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupMap', protoName: 'groupMap', entryClassName: 'GetMyGroupListResp.GroupMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: GroupBaseInfo.create, packageName: const $pb.PackageName('pb'))
     ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ids')
     ..hasRequiredFields = false
@@ -3192,7 +3193,7 @@ class GetMyGroupListResp extends $pb.GeneratedMessage {
 
   GetMyGroupListResp._() : super();
   factory GetMyGroupListResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Map<$core.String, GroupBaseInfo>? groupMap,
     $core.Iterable<$core.String>? ids,
   }) {
@@ -3230,15 +3231,15 @@ class GetMyGroupListResp extends $pb.GeneratedMessage {
   static GetMyGroupListResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.Map<$core.String, GroupBaseInfo> get groupMap => $_getMap(1);
@@ -3249,14 +3250,14 @@ class GetMyGroupListResp extends $pb.GeneratedMessage {
 
 class MapGroupByIdsReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MapGroupByIdsReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ids')
     ..hasRequiredFields = false
   ;
 
   MapGroupByIdsReq._() : super();
   factory MapGroupByIdsReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.Iterable<$core.String>? ids,
   }) {
     final _result = create();
@@ -3290,15 +3291,15 @@ class MapGroupByIdsReq extends $pb.GeneratedMessage {
   static MapGroupByIdsReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<$core.String> get ids => $_getList(1);
@@ -3306,14 +3307,14 @@ class MapGroupByIdsReq extends $pb.GeneratedMessage {
 
 class MapGroupByIdsResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MapGroupByIdsResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..m<$core.String, $core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupMap', protoName: 'groupMap', entryClassName: 'MapGroupByIdsResp.GroupMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OY, packageName: const $pb.PackageName('pb'))
     ..hasRequiredFields = false
   ;
 
   MapGroupByIdsResp._() : super();
   factory MapGroupByIdsResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Map<$core.String, $core.List<$core.int>>? groupMap,
   }) {
     final _result = create();
@@ -3347,15 +3348,15 @@ class MapGroupByIdsResp extends $pb.GeneratedMessage {
   static MapGroupByIdsResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.Map<$core.String, $core.List<$core.int>> get groupMap => $_getMap(1);
@@ -3363,14 +3364,14 @@ class MapGroupByIdsResp extends $pb.GeneratedMessage {
 
 class SyncGroupMemberCountReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SyncGroupMemberCountReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..hasRequiredFields = false
   ;
 
   SyncGroupMemberCountReq._() : super();
   factory SyncGroupMemberCountReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
   }) {
     final _result = create();
@@ -3404,15 +3405,15 @@ class SyncGroupMemberCountReq extends $pb.GeneratedMessage {
   static SyncGroupMemberCountReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -3426,13 +3427,13 @@ class SyncGroupMemberCountReq extends $pb.GeneratedMessage {
 
 class SyncGroupMemberCountResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SyncGroupMemberCountResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   SyncGroupMemberCountResp._() : super();
   factory SyncGroupMemberCountResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -3462,20 +3463,20 @@ class SyncGroupMemberCountResp extends $pb.GeneratedMessage {
   static SyncGroupMemberCountResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class ApplyToBeGroupMemberReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ApplyToBeGroupMemberReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reason')
     ..hasRequiredFields = false
@@ -3483,7 +3484,7 @@ class ApplyToBeGroupMemberReq extends $pb.GeneratedMessage {
 
   ApplyToBeGroupMemberReq._() : super();
   factory ApplyToBeGroupMemberReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.String? reason,
   }) {
@@ -3521,15 +3522,15 @@ class ApplyToBeGroupMemberReq extends $pb.GeneratedMessage {
   static ApplyToBeGroupMemberReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -3552,13 +3553,13 @@ class ApplyToBeGroupMemberReq extends $pb.GeneratedMessage {
 
 class ApplyToBeGroupMemberResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ApplyToBeGroupMemberResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   ApplyToBeGroupMemberResp._() : super();
   factory ApplyToBeGroupMemberResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -3588,20 +3589,20 @@ class ApplyToBeGroupMemberResp extends $pb.GeneratedMessage {
   static ApplyToBeGroupMemberResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class HandleGroupApplyReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'HandleGroupApplyReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'applyId', protoName: 'applyId')
     ..e<GroupApplyHandleResult>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result', $pb.PbFieldType.OE, defaultOrMaker: GroupApplyHandleResult.UNHANDLED, valueOf: GroupApplyHandleResult.valueOf, enumValues: GroupApplyHandleResult.values)
     ..hasRequiredFields = false
@@ -3609,7 +3610,7 @@ class HandleGroupApplyReq extends $pb.GeneratedMessage {
 
   HandleGroupApplyReq._() : super();
   factory HandleGroupApplyReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? applyId,
     GroupApplyHandleResult? result,
   }) {
@@ -3647,15 +3648,15 @@ class HandleGroupApplyReq extends $pb.GeneratedMessage {
   static HandleGroupApplyReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get applyId => $_getSZ(1);
@@ -3678,13 +3679,13 @@ class HandleGroupApplyReq extends $pb.GeneratedMessage {
 
 class HandleGroupApplyResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'HandleGroupApplyResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   HandleGroupApplyResp._() : super();
   factory HandleGroupApplyResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -3714,15 +3715,15 @@ class HandleGroupApplyResp extends $pb.GeneratedMessage {
   static HandleGroupApplyResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class GetGroupApplyListReq_Filter extends $pb.GeneratedMessage {
@@ -3774,16 +3775,16 @@ class GetGroupApplyListReq_Filter extends $pb.GeneratedMessage {
 
 class GetGroupApplyListReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupApplyListReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
-    ..aOM<$3.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $3.Page.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOM<$0.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
     ..aOM<GetGroupApplyListReq_Filter>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'filter', subBuilder: GetGroupApplyListReq_Filter.create)
     ..hasRequiredFields = false
   ;
 
   GetGroupApplyListReq._() : super();
   factory GetGroupApplyListReq({
-    $3.CommonReq? commonReq,
-    $3.Page? page,
+    $0.CommonReq? commonReq,
+    $0.Page? page,
     GetGroupApplyListReq_Filter? filter,
   }) {
     final _result = create();
@@ -3820,26 +3821,26 @@ class GetGroupApplyListReq extends $pb.GeneratedMessage {
   static GetGroupApplyListReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $3.Page get page => $_getN(1);
+  $0.Page get page => $_getN(1);
   @$pb.TagNumber(2)
-  set page($3.Page v) { setField(2, v); }
+  set page($0.Page v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPage() => $_has(1);
   @$pb.TagNumber(2)
   void clearPage() => clearField(2);
   @$pb.TagNumber(2)
-  $3.Page ensurePage() => $_ensure(1);
+  $0.Page ensurePage() => $_ensure(1);
 
   @$pb.TagNumber(3)
   GetGroupApplyListReq_Filter get filter => $_getN(2);
@@ -4076,7 +4077,7 @@ class GroupApplyInfo extends $pb.GeneratedMessage {
 
 class GetGroupApplyListResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupApplyListResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..pc<GroupApplyInfo>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupApplyList', $pb.PbFieldType.PM, protoName: 'groupApplyList', subBuilder: GroupApplyInfo.create)
     ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'total')
     ..hasRequiredFields = false
@@ -4084,7 +4085,7 @@ class GetGroupApplyListResp extends $pb.GeneratedMessage {
 
   GetGroupApplyListResp._() : super();
   factory GetGroupApplyListResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Iterable<GroupApplyInfo>? groupApplyList,
     $fixnum.Int64? total,
   }) {
@@ -4122,15 +4123,15 @@ class GetGroupApplyListResp extends $pb.GeneratedMessage {
   static GetGroupApplyListResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<GroupApplyInfo> get groupApplyList => $_getList(1);
@@ -4147,8 +4148,8 @@ class GetGroupApplyListResp extends $pb.GeneratedMessage {
 
 class GetGroupListByUserIdReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupListByUserIdReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
-    ..aOM<$3.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $3.Page.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOM<$0.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
     ..m<$core.String, $core.String>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'filter', entryClassName: 'GetGroupListByUserIdReq.FilterEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
     ..hasRequiredFields = false
@@ -4156,8 +4157,8 @@ class GetGroupListByUserIdReq extends $pb.GeneratedMessage {
 
   GetGroupListByUserIdReq._() : super();
   factory GetGroupListByUserIdReq({
-    $3.CommonReq? commonReq,
-    $3.Page? page,
+    $0.CommonReq? commonReq,
+    $0.Page? page,
     $core.Map<$core.String, $core.String>? filter,
     $core.String? userId,
   }) {
@@ -4198,26 +4199,26 @@ class GetGroupListByUserIdReq extends $pb.GeneratedMessage {
   static GetGroupListByUserIdReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $3.Page get page => $_getN(1);
+  $0.Page get page => $_getN(1);
   @$pb.TagNumber(2)
-  set page($3.Page v) { setField(2, v); }
+  set page($0.Page v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPage() => $_has(1);
   @$pb.TagNumber(2)
   void clearPage() => clearField(2);
   @$pb.TagNumber(2)
-  $3.Page ensurePage() => $_ensure(1);
+  $0.Page ensurePage() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.Map<$core.String, $core.String> get filter => $_getMap(2);
@@ -4393,7 +4394,7 @@ class GetGroupListByUserIdItem extends $pb.GeneratedMessage {
 
 class GetGroupListByUserIdResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupListByUserIdResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..pc<GetGroupListByUserIdItem>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupList', $pb.PbFieldType.PM, protoName: 'groupList', subBuilder: GetGroupListByUserIdItem.create)
     ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'total')
     ..hasRequiredFields = false
@@ -4401,7 +4402,7 @@ class GetGroupListByUserIdResp extends $pb.GeneratedMessage {
 
   GetGroupListByUserIdResp._() : super();
   factory GetGroupListByUserIdResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Iterable<GetGroupListByUserIdItem>? groupList,
     $fixnum.Int64? total,
   }) {
@@ -4439,15 +4440,15 @@ class GetGroupListByUserIdResp extends $pb.GeneratedMessage {
   static GetGroupListByUserIdResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<GetGroupListByUserIdItem> get groupList => $_getList(1);
@@ -4862,16 +4863,16 @@ class GroupModel extends $pb.GeneratedMessage {
 
 class GetAllGroupModelReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetAllGroupModelReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
-    ..aOM<$3.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $3.Page.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOM<$0.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
     ..m<$core.String, $core.String>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'filter', entryClassName: 'GetAllGroupModelReq.FilterEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
     ..hasRequiredFields = false
   ;
 
   GetAllGroupModelReq._() : super();
   factory GetAllGroupModelReq({
-    $3.CommonReq? commonReq,
-    $3.Page? page,
+    $0.CommonReq? commonReq,
+    $0.Page? page,
     $core.Map<$core.String, $core.String>? filter,
   }) {
     final _result = create();
@@ -4908,26 +4909,26 @@ class GetAllGroupModelReq extends $pb.GeneratedMessage {
   static GetAllGroupModelReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $3.Page get page => $_getN(1);
+  $0.Page get page => $_getN(1);
   @$pb.TagNumber(2)
-  set page($3.Page v) { setField(2, v); }
+  set page($0.Page v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPage() => $_has(1);
   @$pb.TagNumber(2)
   void clearPage() => clearField(2);
   @$pb.TagNumber(2)
-  $3.Page ensurePage() => $_ensure(1);
+  $0.Page ensurePage() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.Map<$core.String, $core.String> get filter => $_getMap(2);
@@ -4935,7 +4936,7 @@ class GetAllGroupModelReq extends $pb.GeneratedMessage {
 
 class GetAllGroupModelResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetAllGroupModelResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..pc<GroupModel>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupModels', $pb.PbFieldType.PM, protoName: 'groupModels', subBuilder: GroupModel.create)
     ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'total')
     ..hasRequiredFields = false
@@ -4943,7 +4944,7 @@ class GetAllGroupModelResp extends $pb.GeneratedMessage {
 
   GetAllGroupModelResp._() : super();
   factory GetAllGroupModelResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Iterable<GroupModel>? groupModels,
     $fixnum.Int64? total,
   }) {
@@ -4981,15 +4982,15 @@ class GetAllGroupModelResp extends $pb.GeneratedMessage {
   static GetAllGroupModelResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<GroupModel> get groupModels => $_getList(1);
@@ -5006,14 +5007,14 @@ class GetAllGroupModelResp extends $pb.GeneratedMessage {
 
 class GetGroupModelDetailReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupModelDetailReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
     ..hasRequiredFields = false
   ;
 
   GetGroupModelDetailReq._() : super();
   factory GetGroupModelDetailReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? id,
   }) {
     final _result = create();
@@ -5047,15 +5048,15 @@ class GetGroupModelDetailReq extends $pb.GeneratedMessage {
   static GetGroupModelDetailReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get id => $_getSZ(1);
@@ -5069,14 +5070,14 @@ class GetGroupModelDetailReq extends $pb.GeneratedMessage {
 
 class GetGroupModelDetailResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupModelDetailResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..aOM<GroupModel>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupModel', protoName: 'groupModel', subBuilder: GroupModel.create)
     ..hasRequiredFields = false
   ;
 
   GetGroupModelDetailResp._() : super();
   factory GetGroupModelDetailResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     GroupModel? groupModel,
   }) {
     final _result = create();
@@ -5110,15 +5111,15 @@ class GetGroupModelDetailResp extends $pb.GeneratedMessage {
   static GetGroupModelDetailResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   GroupModel get groupModel => $_getN(1);
@@ -5134,14 +5135,14 @@ class GetGroupModelDetailResp extends $pb.GeneratedMessage {
 
 class UpdateGroupModelReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateGroupModelReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOM<GroupModel>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupModel', protoName: 'groupModel', subBuilder: GroupModel.create)
     ..hasRequiredFields = false
   ;
 
   UpdateGroupModelReq._() : super();
   factory UpdateGroupModelReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     GroupModel? groupModel,
   }) {
     final _result = create();
@@ -5175,15 +5176,15 @@ class UpdateGroupModelReq extends $pb.GeneratedMessage {
   static UpdateGroupModelReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   GroupModel get groupModel => $_getN(1);
@@ -5199,13 +5200,13 @@ class UpdateGroupModelReq extends $pb.GeneratedMessage {
 
 class UpdateGroupModelResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateGroupModelResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   UpdateGroupModelResp._() : super();
   factory UpdateGroupModelResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -5235,27 +5236,27 @@ class UpdateGroupModelResp extends $pb.GeneratedMessage {
   static UpdateGroupModelResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class DismissGroupModelReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DismissGroupModelReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ids')
     ..hasRequiredFields = false
   ;
 
   DismissGroupModelReq._() : super();
   factory DismissGroupModelReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.Iterable<$core.String>? ids,
   }) {
     final _result = create();
@@ -5289,15 +5290,15 @@ class DismissGroupModelReq extends $pb.GeneratedMessage {
   static DismissGroupModelReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<$core.String> get ids => $_getList(1);
@@ -5305,13 +5306,13 @@ class DismissGroupModelReq extends $pb.GeneratedMessage {
 
 class DismissGroupModelResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DismissGroupModelResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   DismissGroupModelResp._() : super();
   factory DismissGroupModelResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -5341,27 +5342,27 @@ class DismissGroupModelResp extends $pb.GeneratedMessage {
   static DismissGroupModelResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class SearchGroupsByKeywordReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SearchGroupsByKeywordReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'keyword')
     ..hasRequiredFields = false
   ;
 
   SearchGroupsByKeywordReq._() : super();
   factory SearchGroupsByKeywordReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? keyword,
   }) {
     final _result = create();
@@ -5395,15 +5396,15 @@ class SearchGroupsByKeywordReq extends $pb.GeneratedMessage {
   static SearchGroupsByKeywordReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get keyword => $_getSZ(1);
@@ -5417,14 +5418,14 @@ class SearchGroupsByKeywordReq extends $pb.GeneratedMessage {
 
 class SearchGroupsByKeywordResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SearchGroupsByKeywordResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..pc<GroupBaseInfo>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groups', $pb.PbFieldType.PM, subBuilder: GroupBaseInfo.create)
     ..hasRequiredFields = false
   ;
 
   SearchGroupsByKeywordResp._() : super();
   factory SearchGroupsByKeywordResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
     $core.Iterable<GroupBaseInfo>? groups,
   }) {
     final _result = create();
@@ -5458,15 +5459,15 @@ class SearchGroupsByKeywordResp extends $pb.GeneratedMessage {
   static SearchGroupsByKeywordResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<GroupBaseInfo> get groups => $_getList(1);
@@ -5474,7 +5475,7 @@ class SearchGroupsByKeywordResp extends $pb.GeneratedMessage {
 
 class AddGroupMemberReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AddGroupMemberReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userIds', protoName: 'userIds')
     ..hasRequiredFields = false
@@ -5482,7 +5483,7 @@ class AddGroupMemberReq extends $pb.GeneratedMessage {
 
   AddGroupMemberReq._() : super();
   factory AddGroupMemberReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.Iterable<$core.String>? userIds,
   }) {
@@ -5520,15 +5521,15 @@ class AddGroupMemberReq extends $pb.GeneratedMessage {
   static AddGroupMemberReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -5545,13 +5546,13 @@ class AddGroupMemberReq extends $pb.GeneratedMessage {
 
 class AddGroupMemberResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AddGroupMemberResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   AddGroupMemberResp._() : super();
   factory AddGroupMemberResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -5581,20 +5582,20 @@ class AddGroupMemberResp extends $pb.GeneratedMessage {
   static AddGroupMemberResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class ReportGroupReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ReportGroupReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reason')
     ..hasRequiredFields = false
@@ -5602,7 +5603,7 @@ class ReportGroupReq extends $pb.GeneratedMessage {
 
   ReportGroupReq._() : super();
   factory ReportGroupReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.String? reason,
   }) {
@@ -5640,15 +5641,15 @@ class ReportGroupReq extends $pb.GeneratedMessage {
   static ReportGroupReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -5671,13 +5672,13 @@ class ReportGroupReq extends $pb.GeneratedMessage {
 
 class ReportGroupResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ReportGroupResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   ReportGroupResp._() : super();
   factory ReportGroupResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -5707,20 +5708,20 @@ class ReportGroupResp extends $pb.GeneratedMessage {
   static ReportGroupResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class RandInsertZombieMemberReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RandInsertZombieMemberReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'count', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
@@ -5728,7 +5729,7 @@ class RandInsertZombieMemberReq extends $pb.GeneratedMessage {
 
   RandInsertZombieMemberReq._() : super();
   factory RandInsertZombieMemberReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
     $core.int? count,
   }) {
@@ -5766,15 +5767,15 @@ class RandInsertZombieMemberReq extends $pb.GeneratedMessage {
   static RandInsertZombieMemberReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -5797,13 +5798,13 @@ class RandInsertZombieMemberReq extends $pb.GeneratedMessage {
 
 class RandInsertZombieMemberResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RandInsertZombieMemberResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   RandInsertZombieMemberResp._() : super();
   factory RandInsertZombieMemberResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -5833,27 +5834,27 @@ class RandInsertZombieMemberResp extends $pb.GeneratedMessage {
   static RandInsertZombieMemberResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
 class ClearZombieMemberReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ClearZombieMemberReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $3.CommonReq.create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
     ..hasRequiredFields = false
   ;
 
   ClearZombieMemberReq._() : super();
   factory ClearZombieMemberReq({
-    $3.CommonReq? commonReq,
+    $0.CommonReq? commonReq,
     $core.String? groupId,
   }) {
     final _result = create();
@@ -5887,15 +5888,15 @@ class ClearZombieMemberReq extends $pb.GeneratedMessage {
   static ClearZombieMemberReq? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonReq get commonReq => $_getN(0);
+  $0.CommonReq get commonReq => $_getN(0);
   @$pb.TagNumber(1)
-  set commonReq($3.CommonReq v) { setField(1, v); }
+  set commonReq($0.CommonReq v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonReq() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonReq() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonReq ensureCommonReq() => $_ensure(0);
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get groupId => $_getSZ(1);
@@ -5909,13 +5910,13 @@ class ClearZombieMemberReq extends $pb.GeneratedMessage {
 
 class ClearZombieMemberResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ClearZombieMemberResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
-    ..aOM<$3.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $3.CommonResp.create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..hasRequiredFields = false
   ;
 
   ClearZombieMemberResp._() : super();
   factory ClearZombieMemberResp({
-    $3.CommonResp? commonResp,
+    $0.CommonResp? commonResp,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -5945,14 +5946,144 @@ class ClearZombieMemberResp extends $pb.GeneratedMessage {
   static ClearZombieMemberResp? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.CommonResp get commonResp => $_getN(0);
+  $0.CommonResp get commonResp => $_getN(0);
   @$pb.TagNumber(1)
-  set commonResp($3.CommonResp v) { setField(1, v); }
+  set commonResp($0.CommonResp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCommonResp() => $_has(0);
   @$pb.TagNumber(1)
   void clearCommonResp() => clearField(1);
   @$pb.TagNumber(1)
-  $3.CommonResp ensureCommonResp() => $_ensure(0);
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
+class groupServiceApi {
+  $pb.RpcClient _client;
+  groupServiceApi(this._client);
+
+  $async.Future<CreateGroupResp> createGroup($pb.ClientContext? ctx, CreateGroupReq request) {
+    var emptyResponse = CreateGroupResp();
+    return _client.invoke<CreateGroupResp>(ctx, 'groupService', 'CreateGroup', request, emptyResponse);
+  }
+  $async.Future<GetGroupHomeResp> getGroupHome($pb.ClientContext? ctx, GetGroupHomeReq request) {
+    var emptyResponse = GetGroupHomeResp();
+    return _client.invoke<GetGroupHomeResp>(ctx, 'groupService', 'GetGroupHome', request, emptyResponse);
+  }
+  $async.Future<InviteFriendToGroupResp> inviteFriendToGroup($pb.ClientContext? ctx, InviteFriendToGroupReq request) {
+    var emptyResponse = InviteFriendToGroupResp();
+    return _client.invoke<InviteFriendToGroupResp>(ctx, 'groupService', 'InviteFriendToGroup', request, emptyResponse);
+  }
+  $async.Future<CreateGroupNoticeResp> createGroupNotice($pb.ClientContext? ctx, CreateGroupNoticeReq request) {
+    var emptyResponse = CreateGroupNoticeResp();
+    return _client.invoke<CreateGroupNoticeResp>(ctx, 'groupService', 'CreateGroupNotice', request, emptyResponse);
+  }
+  $async.Future<DeleteGroupNoticeResp> deleteGroupNotice($pb.ClientContext? ctx, DeleteGroupNoticeReq request) {
+    var emptyResponse = DeleteGroupNoticeResp();
+    return _client.invoke<DeleteGroupNoticeResp>(ctx, 'groupService', 'DeleteGroupNotice', request, emptyResponse);
+  }
+  $async.Future<GetGroupNoticeListResp> getGroupNoticeList($pb.ClientContext? ctx, GetGroupNoticeListReq request) {
+    var emptyResponse = GetGroupNoticeListResp();
+    return _client.invoke<GetGroupNoticeListResp>(ctx, 'groupService', 'GetGroupNoticeList', request, emptyResponse);
+  }
+  $async.Future<SetGroupMemberInfoResp> setGroupMemberInfo($pb.ClientContext? ctx, SetGroupMemberInfoReq request) {
+    var emptyResponse = SetGroupMemberInfoResp();
+    return _client.invoke<SetGroupMemberInfoResp>(ctx, 'groupService', 'SetGroupMemberInfo', request, emptyResponse);
+  }
+  $async.Future<GetGroupMemberInfoResp> getGroupMemberInfo($pb.ClientContext? ctx, GetGroupMemberInfoReq request) {
+    var emptyResponse = GetGroupMemberInfoResp();
+    return _client.invoke<GetGroupMemberInfoResp>(ctx, 'groupService', 'GetGroupMemberInfo', request, emptyResponse);
+  }
+  $async.Future<MapGroupMemberInfoByIdsResp> mapGroupMemberInfoByIds($pb.ClientContext? ctx, MapGroupMemberInfoByIdsReq request) {
+    var emptyResponse = MapGroupMemberInfoByIdsResp();
+    return _client.invoke<MapGroupMemberInfoByIdsResp>(ctx, 'groupService', 'MapGroupMemberInfoByIds', request, emptyResponse);
+  }
+  $async.Future<MapGroupMemberInfoByIdsResp> mapGroupMemberInfoByGroupIds($pb.ClientContext? ctx, MapGroupMemberInfoByGroupIdsReq request) {
+    var emptyResponse = MapGroupMemberInfoByIdsResp();
+    return _client.invoke<MapGroupMemberInfoByIdsResp>(ctx, 'groupService', 'MapGroupMemberInfoByGroupIds', request, emptyResponse);
+  }
+  $async.Future<EditGroupInfoResp> editGroupInfo($pb.ClientContext? ctx, EditGroupInfoReq request) {
+    var emptyResponse = EditGroupInfoResp();
+    return _client.invoke<EditGroupInfoResp>(ctx, 'groupService', 'EditGroupInfo', request, emptyResponse);
+  }
+  $async.Future<TransferGroupOwnerResp> transferGroupOwner($pb.ClientContext? ctx, TransferGroupOwnerReq request) {
+    var emptyResponse = TransferGroupOwnerResp();
+    return _client.invoke<TransferGroupOwnerResp>(ctx, 'groupService', 'TransferGroupOwner', request, emptyResponse);
+  }
+  $async.Future<KickGroupMemberResp> kickGroupMember($pb.ClientContext? ctx, KickGroupMemberReq request) {
+    var emptyResponse = KickGroupMemberResp();
+    return _client.invoke<KickGroupMemberResp>(ctx, 'groupService', 'KickGroupMember', request, emptyResponse);
+  }
+  $async.Future<BatchKickGroupMemberResp> batchKickGroupMember($pb.ClientContext? ctx, BatchKickGroupMemberReq request) {
+    var emptyResponse = BatchKickGroupMemberResp();
+    return _client.invoke<BatchKickGroupMemberResp>(ctx, 'groupService', 'BatchKickGroupMember', request, emptyResponse);
+  }
+  $async.Future<GetGroupMemberListResp> getGroupMemberList($pb.ClientContext? ctx, GetGroupMemberListReq request) {
+    var emptyResponse = GetGroupMemberListResp();
+    return _client.invoke<GetGroupMemberListResp>(ctx, 'groupService', 'GetGroupMemberList', request, emptyResponse);
+  }
+  $async.Future<GetMyGroupListResp> getMyGroupList($pb.ClientContext? ctx, GetMyGroupListReq request) {
+    var emptyResponse = GetMyGroupListResp();
+    return _client.invoke<GetMyGroupListResp>(ctx, 'groupService', 'GetMyGroupList', request, emptyResponse);
+  }
+  $async.Future<MapGroupByIdsResp> mapGroupByIds($pb.ClientContext? ctx, MapGroupByIdsReq request) {
+    var emptyResponse = MapGroupByIdsResp();
+    return _client.invoke<MapGroupByIdsResp>(ctx, 'groupService', 'MapGroupByIds', request, emptyResponse);
+  }
+  $async.Future<SyncGroupMemberCountResp> syncGroupMemberCount($pb.ClientContext? ctx, SyncGroupMemberCountReq request) {
+    var emptyResponse = SyncGroupMemberCountResp();
+    return _client.invoke<SyncGroupMemberCountResp>(ctx, 'groupService', 'SyncGroupMemberCount', request, emptyResponse);
+  }
+  $async.Future<ApplyToBeGroupMemberResp> applyToBeGroupMember($pb.ClientContext? ctx, ApplyToBeGroupMemberReq request) {
+    var emptyResponse = ApplyToBeGroupMemberResp();
+    return _client.invoke<ApplyToBeGroupMemberResp>(ctx, 'groupService', 'ApplyToBeGroupMember', request, emptyResponse);
+  }
+  $async.Future<HandleGroupApplyResp> handleGroupApply($pb.ClientContext? ctx, HandleGroupApplyReq request) {
+    var emptyResponse = HandleGroupApplyResp();
+    return _client.invoke<HandleGroupApplyResp>(ctx, 'groupService', 'HandleGroupApply', request, emptyResponse);
+  }
+  $async.Future<GetGroupApplyListResp> getGroupApplyList($pb.ClientContext? ctx, GetGroupApplyListReq request) {
+    var emptyResponse = GetGroupApplyListResp();
+    return _client.invoke<GetGroupApplyListResp>(ctx, 'groupService', 'GetGroupApplyList', request, emptyResponse);
+  }
+  $async.Future<GetGroupListByUserIdResp> getGroupListByUserId($pb.ClientContext? ctx, GetGroupListByUserIdReq request) {
+    var emptyResponse = GetGroupListByUserIdResp();
+    return _client.invoke<GetGroupListByUserIdResp>(ctx, 'groupService', 'GetGroupListByUserId', request, emptyResponse);
+  }
+  $async.Future<GetAllGroupModelResp> getAllGroupModel($pb.ClientContext? ctx, GetAllGroupModelReq request) {
+    var emptyResponse = GetAllGroupModelResp();
+    return _client.invoke<GetAllGroupModelResp>(ctx, 'groupService', 'GetAllGroupModel', request, emptyResponse);
+  }
+  $async.Future<GetGroupModelDetailResp> getGroupModelDetail($pb.ClientContext? ctx, GetGroupModelDetailReq request) {
+    var emptyResponse = GetGroupModelDetailResp();
+    return _client.invoke<GetGroupModelDetailResp>(ctx, 'groupService', 'GetGroupModelDetail', request, emptyResponse);
+  }
+  $async.Future<UpdateGroupModelResp> updateGroupModel($pb.ClientContext? ctx, UpdateGroupModelReq request) {
+    var emptyResponse = UpdateGroupModelResp();
+    return _client.invoke<UpdateGroupModelResp>(ctx, 'groupService', 'UpdateGroupModel', request, emptyResponse);
+  }
+  $async.Future<DismissGroupModelResp> dismissGroupModel($pb.ClientContext? ctx, DismissGroupModelReq request) {
+    var emptyResponse = DismissGroupModelResp();
+    return _client.invoke<DismissGroupModelResp>(ctx, 'groupService', 'DismissGroupModel', request, emptyResponse);
+  }
+  $async.Future<SearchGroupsByKeywordResp> searchGroupsByKeyword($pb.ClientContext? ctx, SearchGroupsByKeywordReq request) {
+    var emptyResponse = SearchGroupsByKeywordResp();
+    return _client.invoke<SearchGroupsByKeywordResp>(ctx, 'groupService', 'SearchGroupsByKeyword', request, emptyResponse);
+  }
+  $async.Future<AddGroupMemberResp> addGroupMember($pb.ClientContext? ctx, AddGroupMemberReq request) {
+    var emptyResponse = AddGroupMemberResp();
+    return _client.invoke<AddGroupMemberResp>(ctx, 'groupService', 'AddGroupMember', request, emptyResponse);
+  }
+  $async.Future<ReportGroupResp> reportGroup($pb.ClientContext? ctx, ReportGroupReq request) {
+    var emptyResponse = ReportGroupResp();
+    return _client.invoke<ReportGroupResp>(ctx, 'groupService', 'ReportGroup', request, emptyResponse);
+  }
+  $async.Future<RandInsertZombieMemberResp> randInsertZombieMember($pb.ClientContext? ctx, RandInsertZombieMemberReq request) {
+    var emptyResponse = RandInsertZombieMemberResp();
+    return _client.invoke<RandInsertZombieMemberResp>(ctx, 'groupService', 'RandInsertZombieMember', request, emptyResponse);
+  }
+  $async.Future<ClearZombieMemberResp> clearZombieMember($pb.ClientContext? ctx, ClearZombieMemberReq request) {
+    var emptyResponse = ClearZombieMemberResp();
+    return _client.invoke<ClearZombieMemberResp>(ctx, 'groupService', 'ClearZombieMember', request, emptyResponse);
+  }
 }
 

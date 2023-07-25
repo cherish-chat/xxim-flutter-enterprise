@@ -295,6 +295,10 @@ class NewsPage extends StatelessWidget {
     if (userInfo != null) {
       convAvatar = userInfo.avatar;
       convName = userInfo.nickname;
+      String remark = MenuLogic.logic()?.userRemarkMap[userInfo.id] ?? "";
+      if (remark.isNotEmpty) {
+        convName = remark;
+      }
     } else if (groupInfo != null) {
       convAvatar = groupInfo.avatar;
       convName = groupInfo.name;
