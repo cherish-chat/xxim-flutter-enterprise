@@ -621,6 +621,10 @@ class ChatPage extends StatelessWidget {
       });
       if (index != -1) {
         text = userInfoList[index].nickname;
+        String remark = MenuLogic.logic()?.userRemarkMap[userId] ?? "";
+        if (remark.isNotEmpty) {
+          text = remark;
+        }
       }
     } else if (SDKTool.isGroupConv(logic.convId)) {
       String groupId = SDKTool.getGroupId(logic.convId);
