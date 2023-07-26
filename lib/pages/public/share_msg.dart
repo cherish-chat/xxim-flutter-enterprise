@@ -102,6 +102,7 @@ class ShareMsgLogic extends GetxController {
     if (msgModel == null) return;
     await XXIM.instance.msgManager.sendMsgList(
       senderInfo: json.encode({
+        "userId": HiveTool.getUserId(),
         "avatar": HiveTool.getAvatarUrl(),
         "nickname": HiveTool.getNickname(),
       }),

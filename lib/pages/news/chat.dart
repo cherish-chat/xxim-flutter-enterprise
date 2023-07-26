@@ -553,6 +553,7 @@ class ChatLogic extends GetxController {
     if (ids.isNotEmpty) update(ids);
     bool status = await XXIM.instance.msgManager.sendMsgList(
       senderInfo: json.encode({
+        "userId": HiveTool.getUserId(),
         "avatar": HiveTool.getAvatarUrl(),
         "nickname": HiveTool.getNickname(),
       }),
