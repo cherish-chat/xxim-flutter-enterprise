@@ -10,6 +10,8 @@ const Color getMainColor = Color(0xFF2FA088);
 const Color getSecondColor = Color(0xFFFF5656);
 const Color getDividerColor = Color(0x1A2FA088);
 const Color getPlaceholderColor = Color(0x1A2FA088);
+const Color getRedPacketNormal = Color(0xFFEF8A1A);
+const Color getRedPacketReceiver = Color(0xFFF5B976);
 
 const Color getBlack50 = Color(0x80000000);
 const Color getBlack25 = Color(0x40000000);

@@ -12,8 +12,11 @@ import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 import 'package:xxim_flutter_enterprise/pages/public/at_member.dart';
 import 'package:xxim_flutter_enterprise/pages/public/group_member.dart';
 import 'package:xxim_flutter_enterprise/pages/public/group_setting.dart';
+import 'package:xxim_flutter_enterprise/pages/public/red_packet_detail.dart';
+import 'package:xxim_flutter_enterprise/pages/public/send_red_packet.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/im.pb.dart';
+import 'package:xxim_flutter_enterprise/proto/msg.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 import 'dart:ui' as ui;
@@ -198,6 +201,10 @@ class ChatLogic extends GetxController {
     } else {
       chatOperate.value = ChatOperate.none;
     }
+  }
+
+  void sendRedPacket() {
+    SendRedPacket.show(convId: convId);
   }
 
   void pickFiles() {
@@ -579,6 +586,27 @@ class ChatLogic extends GetxController {
       return ChatMsgItem.getId(msgModel.clientMsgId);
     }
   }
+
+  void receiveRedPacket(String serverMsgId, String redPacketId) {
+    XXIM.instance.customRequest<ReceiveRedPacketResp>(
+      method: "/v1/msg/receiveRedPacket",
+      req: ReceiveRedPacketReq(
+        convId: convId,
+        serverMsgId: serverMsgId,
+        redPacketId: redPacketId,
+      ),
+      resp: ReceiveRedPacketResp.create,
+      onSuccess: (data) {
+        RedPacketDetail.show(
+          convId: convId,
+          redPacketId: redPacketId,
+        );
+      },
+      onError: (code, error) {
+        Tool.showToast("失败".tr);
+      },
+    );
+  }
 }
 
 class ChatPage extends StatelessWidget {
@@ -735,6 +763,8 @@ class ChatPage extends StatelessWidget {
                     key: ValueKey(msgModel.clientMsgId),
                     tag: logic.tag,
                     direction: direction,
+                    index: index,
+                    msgModelList: logic.msgModelList,
                     msgModel: msgModel,
                     onRetry: () {
                       logic.sendMsgList([msgModel]);
@@ -830,6 +860,18 @@ class ChatPage extends StatelessWidget {
                     },
                     child: Image.asset(
                       "assets/images/ic_emoji_35.webp",
+                      width: 40,
+                      height: 40,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      logic.sendRedPacket();
+                    },
+                    child: Image.asset(
+                      "assets/images/ic_red_packet_35.webp",
                       width: 40,
                       height: 40,
                     ),
@@ -934,6 +976,8 @@ class ChatPage extends StatelessWidget {
         content = "[标记消息]".tr;
       } else if (contentType == MsgContentType.custom) {
         content = "[自定义消息]".tr;
+      } else if (contentType == MsgContentType.redPacket) {
+        content = "[红包消息]".tr;
       }
       return GestureDetector(
         behavior: HitTestBehavior.opaque,

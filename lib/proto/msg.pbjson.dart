@@ -11,6 +11,30 @@ import 'dart:typed_data' as $typed_data;
 import 'common.pbjson.dart' as $0;
 import 'conn.pbjson.dart' as $1;
 
+@$core.Deprecated('Use redPacketTypeDescriptor instead')
+const RedPacketType$json = const {
+  '1': 'RedPacketType',
+  '2': const [
+    const {'1': 'Normal_RedPacket', '2': 0},
+    const {'1': 'Random_RedPacket', '2': 1},
+  ],
+};
+
+/// Descriptor for `RedPacketType`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List redPacketTypeDescriptor = $convert.base64Decode('Cg1SZWRQYWNrZXRUeXBlEhQKEE5vcm1hbF9SZWRQYWNrZXQQABIUChBSYW5kb21fUmVkUGFja2V0EAE=');
+@$core.Deprecated('Use redPacketStatusDescriptor instead')
+const RedPacketStatus$json = const {
+  '1': 'RedPacketStatus',
+  '2': const [
+    const {'1': 'Not_Received', '2': 0},
+    const {'1': 'Received_Part', '2': 1},
+    const {'1': 'Received_All', '2': 2},
+    const {'1': 'Expired', '2': 3},
+  ],
+};
+
+/// Descriptor for `RedPacketStatus`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List redPacketStatusDescriptor = $convert.base64Decode('Cg9SZWRQYWNrZXRTdGF0dXMSEAoMTm90X1JlY2VpdmVkEAASEQoNUmVjZWl2ZWRfUGFydBABEhAKDFJlY2VpdmVkX0FsbBACEgsKB0V4cGlyZWQQAw==');
 @$core.Deprecated('Use msgMQBodyDescriptor instead')
 const MsgMQBody$json = const {
   '1': 'MsgMQBody',
@@ -455,6 +479,107 @@ const FlushShieldWordTireTreeResp$json = const {
 
 /// Descriptor for `FlushShieldWordTireTreeResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List flushShieldWordTireTreeRespDescriptor = $convert.base64Decode('ChtGbHVzaFNoaWVsZFdvcmRUaXJlVHJlZVJlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3A=');
+@$core.Deprecated('Use redPacketDescriptor instead')
+const RedPacket$json = const {
+  '1': 'RedPacket',
+  '2': const [
+    const {'1': 'redPacketId', '3': 1, '4': 1, '5': 9, '10': 'redPacketId'},
+    const {'1': 'convId', '3': 2, '4': 1, '5': 9, '10': 'convId'},
+    const {'1': 'title', '3': 3, '4': 1, '5': 9, '10': 'title'},
+    const {'1': 'redPacketType', '3': 4, '4': 1, '5': 14, '6': '.pb.RedPacketType', '10': 'redPacketType'},
+    const {'1': 'count', '3': 5, '4': 1, '5': 5, '10': 'count'},
+    const {'1': 'totalAmount', '3': 6, '4': 1, '5': 3, '10': 'totalAmount'},
+    const {'1': 'singleAmount', '3': 7, '4': 1, '5': 3, '10': 'singleAmount'},
+    const {'1': 'cover', '3': 8, '4': 1, '5': 9, '10': 'cover'},
+    const {'1': 'redPacketStatus', '3': 9, '4': 1, '5': 14, '6': '.pb.RedPacketStatus', '10': 'redPacketStatus'},
+    const {'1': 'receiverList', '3': 10, '4': 3, '5': 11, '6': '.pb.RedPacket.Receiver', '10': 'receiverList'},
+    const {'1': 'sendTime', '3': 11, '4': 1, '5': 3, '10': 'sendTime'},
+    const {'1': 'expireTime', '3': 12, '4': 1, '5': 3, '10': 'expireTime'},
+  ],
+  '3': const [RedPacket_Receiver$json],
+};
+
+@$core.Deprecated('Use redPacketDescriptor instead')
+const RedPacket_Receiver$json = const {
+  '1': 'Receiver',
+  '2': const [
+    const {'1': 'userId', '3': 1, '4': 1, '5': 9, '10': 'userId'},
+    const {'1': 'amount', '3': 2, '4': 1, '5': 3, '10': 'amount'},
+    const {'1': 'receiveTime', '3': 3, '4': 1, '5': 3, '10': 'receiveTime'},
+    const {'1': 'avatar', '3': 4, '4': 1, '5': 9, '10': 'avatar'},
+    const {'1': 'nickName', '3': 5, '4': 1, '5': 9, '10': 'nickName'},
+  ],
+};
+
+/// Descriptor for `RedPacket`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List redPacketDescriptor = $convert.base64Decode('CglSZWRQYWNrZXQSIAoLcmVkUGFja2V0SWQYASABKAlSC3JlZFBhY2tldElkEhYKBmNvbnZJZBgCIAEoCVIGY29udklkEhQKBXRpdGxlGAMgASgJUgV0aXRsZRI3Cg1yZWRQYWNrZXRUeXBlGAQgASgOMhEucGIuUmVkUGFja2V0VHlwZVINcmVkUGFja2V0VHlwZRIUCgVjb3VudBgFIAEoBVIFY291bnQSIAoLdG90YWxBbW91bnQYBiABKANSC3RvdGFsQW1vdW50EiIKDHNpbmdsZUFtb3VudBgHIAEoA1IMc2luZ2xlQW1vdW50EhQKBWNvdmVyGAggASgJUgVjb3ZlchI9Cg9yZWRQYWNrZXRTdGF0dXMYCSABKA4yEy5wYi5SZWRQYWNrZXRTdGF0dXNSD3JlZFBhY2tldFN0YXR1cxI6CgxyZWNlaXZlckxpc3QYCiADKAsyFi5wYi5SZWRQYWNrZXQuUmVjZWl2ZXJSDHJlY2VpdmVyTGlzdBIaCghzZW5kVGltZRgLIAEoA1IIc2VuZFRpbWUSHgoKZXhwaXJlVGltZRgMIAEoA1IKZXhwaXJlVGltZRqQAQoIUmVjZWl2ZXISFgoGdXNlcklkGAEgASgJUgZ1c2VySWQSFgoGYW1vdW50GAIgASgDUgZhbW91bnQSIAoLcmVjZWl2ZVRpbWUYAyABKANSC3JlY2VpdmVUaW1lEhYKBmF2YXRhchgEIAEoCVIGYXZhdGFyEhoKCG5pY2tOYW1lGAUgASgJUghuaWNrTmFtZQ==');
+@$core.Deprecated('Use sendRedPacketReqDescriptor instead')
+const SendRedPacketReq$json = const {
+  '1': 'SendRedPacketReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'redPacket', '3': 2, '4': 1, '5': 11, '6': '.pb.RedPacket', '10': 'redPacket'},
+  ],
+};
+
+/// Descriptor for `SendRedPacketReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sendRedPacketReqDescriptor = $convert.base64Decode('ChBTZW5kUmVkUGFja2V0UmVxEisKCWNvbW1vblJlcRgBIAEoCzINLnBiLkNvbW1vblJlcVIJY29tbW9uUmVxEisKCXJlZFBhY2tldBgCIAEoCzINLnBiLlJlZFBhY2tldFIJcmVkUGFja2V0');
+@$core.Deprecated('Use sendRedPacketRespDescriptor instead')
+const SendRedPacketResp$json = const {
+  '1': 'SendRedPacketResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `SendRedPacketResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sendRedPacketRespDescriptor = $convert.base64Decode('ChFTZW5kUmVkUGFja2V0UmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcA==');
+@$core.Deprecated('Use receiveRedPacketReqDescriptor instead')
+const ReceiveRedPacketReq$json = const {
+  '1': 'ReceiveRedPacketReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'convId', '3': 2, '4': 1, '5': 9, '10': 'convId'},
+    const {'1': 'redPacketId', '3': 3, '4': 1, '5': 9, '10': 'redPacketId'},
+    const {'1': 'serverMsgId', '3': 4, '4': 1, '5': 9, '10': 'serverMsgId'},
+  ],
+};
+
+/// Descriptor for `ReceiveRedPacketReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List receiveRedPacketReqDescriptor = $convert.base64Decode('ChNSZWNlaXZlUmVkUGFja2V0UmVxEisKCWNvbW1vblJlcRgBIAEoCzINLnBiLkNvbW1vblJlcVIJY29tbW9uUmVxEhYKBmNvbnZJZBgCIAEoCVIGY29udklkEiAKC3JlZFBhY2tldElkGAMgASgJUgtyZWRQYWNrZXRJZBIgCgtzZXJ2ZXJNc2dJZBgEIAEoCVILc2VydmVyTXNnSWQ=');
+@$core.Deprecated('Use receiveRedPacketRespDescriptor instead')
+const ReceiveRedPacketResp$json = const {
+  '1': 'ReceiveRedPacketResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `ReceiveRedPacketResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List receiveRedPacketRespDescriptor = $convert.base64Decode('ChRSZWNlaXZlUmVkUGFja2V0UmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcA==');
+@$core.Deprecated('Use getRedPacketDetailReqDescriptor instead')
+const GetRedPacketDetailReq$json = const {
+  '1': 'GetRedPacketDetailReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'convId', '3': 2, '4': 1, '5': 9, '10': 'convId'},
+    const {'1': 'redPacketId', '3': 3, '4': 1, '5': 9, '10': 'redPacketId'},
+  ],
+};
+
+/// Descriptor for `GetRedPacketDetailReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getRedPacketDetailReqDescriptor = $convert.base64Decode('ChVHZXRSZWRQYWNrZXREZXRhaWxSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESFgoGY29udklkGAIgASgJUgZjb252SWQSIAoLcmVkUGFja2V0SWQYAyABKAlSC3JlZFBhY2tldElk');
+@$core.Deprecated('Use getRedPacketDetailRespDescriptor instead')
+const GetRedPacketDetailResp$json = const {
+  '1': 'GetRedPacketDetailResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'redPacket', '3': 2, '4': 1, '5': 11, '6': '.pb.RedPacket', '10': 'redPacket'},
+  ],
+};
+
+/// Descriptor for `GetRedPacketDetailResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getRedPacketDetailRespDescriptor = $convert.base64Decode('ChZHZXRSZWRQYWNrZXREZXRhaWxSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEisKCXJlZFBhY2tldBgCIAEoCzINLnBiLlJlZFBhY2tldFIJcmVkUGFja2V0');
 const $core.Map<$core.String, $core.dynamic> msgServiceBase$json = const {
   '1': 'msgService',
   '2': const [
@@ -477,6 +602,9 @@ const $core.Map<$core.String, $core.dynamic> msgServiceBase$json = const {
     const {'1': 'ReadMsg', '2': '.pb.ReadMsgReq', '3': '.pb.ReadMsgResp', '4': const {}},
     const {'1': 'EditMsg', '2': '.pb.EditMsgReq', '3': '.pb.EditMsgResp', '4': const {}},
     const {'1': 'FlushShieldWordTireTree', '2': '.pb.FlushShieldWordTireTreeReq', '3': '.pb.FlushShieldWordTireTreeResp', '4': const {}},
+    const {'1': 'SendRedPacket', '2': '.pb.SendRedPacketReq', '3': '.pb.SendRedPacketResp', '4': const {}},
+    const {'1': 'ReceiveRedPacket', '2': '.pb.ReceiveRedPacketReq', '3': '.pb.ReceiveRedPacketResp', '4': const {}},
+    const {'1': 'GetRedPacketDetail', '2': '.pb.GetRedPacketDetailReq', '3': '.pb.GetRedPacketDetailResp', '4': const {}},
   ],
 };
 
@@ -526,7 +654,15 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> msgService
   '.pb.EditMsgResp': EditMsgResp$json,
   '.pb.FlushShieldWordTireTreeReq': FlushShieldWordTireTreeReq$json,
   '.pb.FlushShieldWordTireTreeResp': FlushShieldWordTireTreeResp$json,
+  '.pb.SendRedPacketReq': SendRedPacketReq$json,
+  '.pb.RedPacket': RedPacket$json,
+  '.pb.RedPacket.Receiver': RedPacket_Receiver$json,
+  '.pb.SendRedPacketResp': SendRedPacketResp$json,
+  '.pb.ReceiveRedPacketReq': ReceiveRedPacketReq$json,
+  '.pb.ReceiveRedPacketResp': ReceiveRedPacketResp$json,
+  '.pb.GetRedPacketDetailReq': GetRedPacketDetailReq$json,
+  '.pb.GetRedPacketDetailResp': GetRedPacketDetailResp$json,
 };
 
 /// Descriptor for `msgService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List msgServiceDescriptor = $convert.base64Decode('Cgptc2dTZXJ2aWNlEjcKEUluc2VydE1zZ0RhdGFMaXN0Eg8ucGIuTXNnRGF0YUxpc3QaDy5wYi5Nc2dEYXRhTGlzdCIAEjwKD1NlbmRNc2dMaXN0U3luYxISLnBiLlNlbmRNc2dMaXN0UmVxGhMucGIuU2VuZE1zZ0xpc3RSZXNwIgASPQoQU2VuZE1zZ0xpc3RBc3luYxISLnBiLlNlbmRNc2dMaXN0UmVxGhMucGIuU2VuZE1zZ0xpc3RSZXNwIgASMwoLUHVzaE1zZ0xpc3QSEi5wYi5QdXNoTXNnTGlzdFJlcRoOLnBiLkNvbW1vblJlc3AiABJPChdCYXRjaEdldE1zZ0xpc3RCeUNvbnZJZBIeLnBiLkJhdGNoR2V0TXNnTGlzdEJ5Q29udklkUmVxGhIucGIuR2V0TXNnTGlzdFJlc3AiABI1CgpHZXRNc2dCeUlkEhEucGIuR2V0TXNnQnlJZFJlcRoSLnBiLkdldE1zZ0J5SWRSZXNwIgASQQoOQmF0Y2hTZXRNaW5TZXESFS5wYi5CYXRjaFNldE1pblNlcVJlcRoWLnBiLkJhdGNoU2V0TWluU2VxUmVzcCIAEkQKD0JhdGNoR2V0Q29udlNlcRIWLnBiLkJhdGNoR2V0Q29udlNlcVJlcRoXLnBiLkJhdGNoR2V0Q29udlNlcVJlc3AiABIzCgxBZnRlckNvbm5lY3QSEy5wYi5BZnRlckNvbm5lY3RSZXEaDi5wYi5Db21tb25SZXNwEjkKD0FmdGVyRGlzY29ubmVjdBIWLnBiLkFmdGVyRGlzY29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASMAoJS2VlcEFsaXZlEhAucGIuS2VlcEFsaXZlUmVxGhEucGIuS2VlcEFsaXZlUmVzcBJNChJHZXRDb252U3Vic2NyaWJlcnMSGS5wYi5HZXRDb252U3Vic2NyaWJlcnNSZXEaGi5wYi5HZXRDb252U3Vic2NyaWJlcnNSZXNwIgASQQoOT2ZmbGluZVB1c2hNc2cSFS5wYi5PZmZsaW5lUHVzaE1zZ1JlcRoWLnBiLk9mZmxpbmVQdXNoTXNnUmVzcCIAEk0KEkdldENvbnZPbmxpbmVDb3VudBIZLnBiLkdldENvbnZPbmxpbmVDb3VudFJlcRoaLnBiLkdldENvbnZPbmxpbmVDb3VudFJlc3AiABI/ChFGbHVzaFVzZXJzU3ViQ29udhIYLnBiLkZsdXNoVXNlcnNTdWJDb252UmVxGg4ucGIuQ29tbW9uUmVzcCIAEj4KDUdldEFsbE1zZ0xpc3QSFC5wYi5HZXRBbGxNc2dMaXN0UmVxGhUucGIuR2V0QWxsTXNnTGlzdFJlc3AiABIsCgdSZWFkTXNnEg4ucGIuUmVhZE1zZ1JlcRoPLnBiLlJlYWRNc2dSZXNwIgASLAoHRWRpdE1zZxIOLnBiLkVkaXRNc2dSZXEaDy5wYi5FZGl0TXNnUmVzcCIAElwKF0ZsdXNoU2hpZWxkV29yZFRpcmVUcmVlEh4ucGIuRmx1c2hTaGllbGRXb3JkVGlyZVRyZWVSZXEaHy5wYi5GbHVzaFNoaWVsZFdvcmRUaXJlVHJlZVJlc3AiAA==');
+final $typed_data.Uint8List msgServiceDescriptor = $convert.base64Decode('Cgptc2dTZXJ2aWNlEjcKEUluc2VydE1zZ0RhdGFMaXN0Eg8ucGIuTXNnRGF0YUxpc3QaDy5wYi5Nc2dEYXRhTGlzdCIAEjwKD1NlbmRNc2dMaXN0U3luYxISLnBiLlNlbmRNc2dMaXN0UmVxGhMucGIuU2VuZE1zZ0xpc3RSZXNwIgASPQoQU2VuZE1zZ0xpc3RBc3luYxISLnBiLlNlbmRNc2dMaXN0UmVxGhMucGIuU2VuZE1zZ0xpc3RSZXNwIgASMwoLUHVzaE1zZ0xpc3QSEi5wYi5QdXNoTXNnTGlzdFJlcRoOLnBiLkNvbW1vblJlc3AiABJPChdCYXRjaEdldE1zZ0xpc3RCeUNvbnZJZBIeLnBiLkJhdGNoR2V0TXNnTGlzdEJ5Q29udklkUmVxGhIucGIuR2V0TXNnTGlzdFJlc3AiABI1CgpHZXRNc2dCeUlkEhEucGIuR2V0TXNnQnlJZFJlcRoSLnBiLkdldE1zZ0J5SWRSZXNwIgASQQoOQmF0Y2hTZXRNaW5TZXESFS5wYi5CYXRjaFNldE1pblNlcVJlcRoWLnBiLkJhdGNoU2V0TWluU2VxUmVzcCIAEkQKD0JhdGNoR2V0Q29udlNlcRIWLnBiLkJhdGNoR2V0Q29udlNlcVJlcRoXLnBiLkJhdGNoR2V0Q29udlNlcVJlc3AiABIzCgxBZnRlckNvbm5lY3QSEy5wYi5BZnRlckNvbm5lY3RSZXEaDi5wYi5Db21tb25SZXNwEjkKD0FmdGVyRGlzY29ubmVjdBIWLnBiLkFmdGVyRGlzY29ubmVjdFJlcRoOLnBiLkNvbW1vblJlc3ASMAoJS2VlcEFsaXZlEhAucGIuS2VlcEFsaXZlUmVxGhEucGIuS2VlcEFsaXZlUmVzcBJNChJHZXRDb252U3Vic2NyaWJlcnMSGS5wYi5HZXRDb252U3Vic2NyaWJlcnNSZXEaGi5wYi5HZXRDb252U3Vic2NyaWJlcnNSZXNwIgASQQoOT2ZmbGluZVB1c2hNc2cSFS5wYi5PZmZsaW5lUHVzaE1zZ1JlcRoWLnBiLk9mZmxpbmVQdXNoTXNnUmVzcCIAEk0KEkdldENvbnZPbmxpbmVDb3VudBIZLnBiLkdldENvbnZPbmxpbmVDb3VudFJlcRoaLnBiLkdldENvbnZPbmxpbmVDb3VudFJlc3AiABI/ChFGbHVzaFVzZXJzU3ViQ29udhIYLnBiLkZsdXNoVXNlcnNTdWJDb252UmVxGg4ucGIuQ29tbW9uUmVzcCIAEj4KDUdldEFsbE1zZ0xpc3QSFC5wYi5HZXRBbGxNc2dMaXN0UmVxGhUucGIuR2V0QWxsTXNnTGlzdFJlc3AiABIsCgdSZWFkTXNnEg4ucGIuUmVhZE1zZ1JlcRoPLnBiLlJlYWRNc2dSZXNwIgASLAoHRWRpdE1zZxIOLnBiLkVkaXRNc2dSZXEaDy5wYi5FZGl0TXNnUmVzcCIAElwKF0ZsdXNoU2hpZWxkV29yZFRpcmVUcmVlEh4ucGIuRmx1c2hTaGllbGRXb3JkVGlyZVRyZWVSZXEaHy5wYi5GbHVzaFNoaWVsZFdvcmRUaXJlVHJlZVJlc3AiABI+Cg1TZW5kUmVkUGFja2V0EhQucGIuU2VuZFJlZFBhY2tldFJlcRoVLnBiLlNlbmRSZWRQYWNrZXRSZXNwIgASRwoQUmVjZWl2ZVJlZFBhY2tldBIXLnBiLlJlY2VpdmVSZWRQYWNrZXRSZXEaGC5wYi5SZWNlaXZlUmVkUGFja2V0UmVzcCIAEk0KEkdldFJlZFBhY2tldERldGFpbBIZLnBiLkdldFJlZFBhY2tldERldGFpbFJlcRoaLnBiLkdldFJlZFBhY2tldERldGFpbFJlc3AiAA==');

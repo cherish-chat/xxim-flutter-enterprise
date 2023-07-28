@@ -37,6 +37,9 @@ abstract class msgServiceBase extends $pb.GeneratedService {
   $async.Future<$7.ReadMsgResp> readMsg($pb.ServerContext ctx, $7.ReadMsgReq request);
   $async.Future<$7.EditMsgResp> editMsg($pb.ServerContext ctx, $7.EditMsgReq request);
   $async.Future<$7.FlushShieldWordTireTreeResp> flushShieldWordTireTree($pb.ServerContext ctx, $7.FlushShieldWordTireTreeReq request);
+  $async.Future<$7.SendRedPacketResp> sendRedPacket($pb.ServerContext ctx, $7.SendRedPacketReq request);
+  $async.Future<$7.ReceiveRedPacketResp> receiveRedPacket($pb.ServerContext ctx, $7.ReceiveRedPacketReq request);
+  $async.Future<$7.GetRedPacketDetailResp> getRedPacketDetail($pb.ServerContext ctx, $7.GetRedPacketDetailReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -59,6 +62,9 @@ abstract class msgServiceBase extends $pb.GeneratedService {
       case 'ReadMsg': return $7.ReadMsgReq();
       case 'EditMsg': return $7.EditMsgReq();
       case 'FlushShieldWordTireTree': return $7.FlushShieldWordTireTreeReq();
+      case 'SendRedPacket': return $7.SendRedPacketReq();
+      case 'ReceiveRedPacket': return $7.ReceiveRedPacketReq();
+      case 'GetRedPacketDetail': return $7.GetRedPacketDetailReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -84,6 +90,9 @@ abstract class msgServiceBase extends $pb.GeneratedService {
       case 'ReadMsg': return this.readMsg(ctx, request as $7.ReadMsgReq);
       case 'EditMsg': return this.editMsg(ctx, request as $7.EditMsgReq);
       case 'FlushShieldWordTireTree': return this.flushShieldWordTireTree(ctx, request as $7.FlushShieldWordTireTreeReq);
+      case 'SendRedPacket': return this.sendRedPacket(ctx, request as $7.SendRedPacketReq);
+      case 'ReceiveRedPacket': return this.receiveRedPacket(ctx, request as $7.ReceiveRedPacketReq);
+      case 'GetRedPacketDetail': return this.getRedPacketDetail(ctx, request as $7.GetRedPacketDetailReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

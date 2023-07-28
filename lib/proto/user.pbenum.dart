@@ -99,3 +99,22 @@ class UserRole extends $pb.ProtobufEnum {
   const UserRole._($core.int v, $core.String n) : super(v, n);
 }
 
+class WalletTransactionType extends $pb.ProtobufEnum {
+  static const WalletTransactionType ADMIN_RECHARGE = WalletTransactionType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ADMIN_RECHARGE');
+  static const WalletTransactionType SEND_RED_PACKET = WalletTransactionType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SEND_RED_PACKET');
+  static const WalletTransactionType GRAB_RED_PACKET = WalletTransactionType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'GRAB_RED_PACKET');
+  static const WalletTransactionType RED_PACKET_REFUND = WalletTransactionType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'RED_PACKET_REFUND');
+
+  static const $core.List<WalletTransactionType> values = <WalletTransactionType> [
+    ADMIN_RECHARGE,
+    SEND_RED_PACKET,
+    GRAB_RED_PACKET,
+    RED_PACKET_REFUND,
+  ];
+
+  static final $core.Map<$core.int, WalletTransactionType> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static WalletTransactionType? valueOf($core.int value) => _byValue[value];
+
+  const WalletTransactionType._($core.int v, $core.String n) : super(v, n);
+}
+

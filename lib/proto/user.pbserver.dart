@@ -68,6 +68,8 @@ abstract class userServiceBase extends $pb.GeneratedService {
   $async.Future<$4.BatchCreateZombieUserResp> batchCreateZombieUser($pb.ServerContext ctx, $4.BatchCreateZombieUserReq request);
   $async.Future<$4.DestroyAccountResp> destroyAccount($pb.ServerContext ctx, $4.DestroyAccountReq request);
   $async.Future<$4.RecoverAccountResp> recoverAccount($pb.ServerContext ctx, $4.RecoverAccountReq request);
+  $async.Future<$4.GetUserWalletResp> getUserWallet($pb.ServerContext ctx, $4.GetUserWalletReq request);
+  $async.Future<$4.WalletTransactionResp> walletTransaction($pb.ServerContext ctx, $4.WalletTransactionReq request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -121,6 +123,8 @@ abstract class userServiceBase extends $pb.GeneratedService {
       case 'BatchCreateZombieUser': return $4.BatchCreateZombieUserReq();
       case 'DestroyAccount': return $4.DestroyAccountReq();
       case 'RecoverAccount': return $4.RecoverAccountReq();
+      case 'GetUserWallet': return $4.GetUserWalletReq();
+      case 'WalletTransaction': return $4.WalletTransactionReq();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -177,6 +181,8 @@ abstract class userServiceBase extends $pb.GeneratedService {
       case 'BatchCreateZombieUser': return this.batchCreateZombieUser(ctx, request as $4.BatchCreateZombieUserReq);
       case 'DestroyAccount': return this.destroyAccount(ctx, request as $4.DestroyAccountReq);
       case 'RecoverAccount': return this.recoverAccount(ctx, request as $4.RecoverAccountReq);
+      case 'GetUserWallet': return this.getUserWallet(ctx, request as $4.GetUserWalletReq);
+      case 'WalletTransaction': return this.walletTransaction(ctx, request as $4.WalletTransactionReq);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

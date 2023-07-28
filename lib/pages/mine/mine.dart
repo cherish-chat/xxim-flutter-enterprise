@@ -104,6 +104,18 @@ class MinePage extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               _buildItem(
+                "assets/images/ic_wallet_25.webp",
+                "我的钱包".tr,
+                () {
+                  MenuLogic? logic = MenuLogic.logic();
+                  if (logic == null) return;
+                  logic.sliderKey?.currentState?.closeSlider();
+                  logic.getDelegate?.toNamed(
+                    Routes.mineWallet,
+                  );
+                },
+              ),
+              _buildItem(
                 "assets/images/ic_edit_25.webp",
                 "编辑资料".tr,
                 () {

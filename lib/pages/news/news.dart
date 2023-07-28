@@ -359,6 +359,8 @@ class NewsPage extends StatelessWidget {
           content = "[标记消息]".tr;
         } else if (contentType == MsgContentType.custom) {
           content = "[自定义消息]".tr;
+        } else if (contentType == MsgContentType.redPacket) {
+          content = "[红包消息]".tr;
         }
       }
     }

@@ -20,8 +20,8 @@ class LoginLogic extends GetxController {
 
   @override
   void onReady() {
-    getCaptcha();
     super.onReady();
+    getCaptcha();
   }
 
   @override

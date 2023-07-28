@@ -25,6 +25,7 @@ class MsgContentType extends $pb.ProtobufEnum {
   static const MsgContentType command = MsgContentType._(20, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'command');
   static const MsgContentType richText = MsgContentType._(21, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'richText');
   static const MsgContentType markdown = MsgContentType._(22, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'markdown');
+  static const MsgContentType redPacket = MsgContentType._(23, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'redPacket');
   static const MsgContentType custom = MsgContentType._(100, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'custom');
 
   static const $core.List<MsgContentType> values = <MsgContentType> [
@@ -43,6 +44,7 @@ class MsgContentType extends $pb.ProtobufEnum {
     command,
     richText,
     markdown,
+    redPacket,
     custom,
   ];
 

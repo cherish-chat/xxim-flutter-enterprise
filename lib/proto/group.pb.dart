@@ -331,6 +331,8 @@ class GetGroupHomeResp extends $pb.GeneratedMessage {
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'introduction')
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner')
     ..aInt64(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dismissTime', protoName: 'dismissTime')
+    ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'allMute', protoName: 'allMute')
+    ..aOB(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberCanAddFriend', protoName: 'memberCanAddFriend')
     ..pc<GetGroupHomeResp_MemberStatistics>(21, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberStatistics', $pb.PbFieldType.PM, protoName: 'memberStatistics', subBuilder: GetGroupHomeResp_MemberStatistics.create)
     ..hasRequiredFields = false
   ;
@@ -346,6 +348,8 @@ class GetGroupHomeResp extends $pb.GeneratedMessage {
     $core.String? introduction,
     $core.String? owner,
     $fixnum.Int64? dismissTime,
+    $core.bool? allMute,
+    $core.bool? memberCanAddFriend,
     $core.Iterable<GetGroupHomeResp_MemberStatistics>? memberStatistics,
   }) {
     final _result = create();
@@ -375,6 +379,12 @@ class GetGroupHomeResp extends $pb.GeneratedMessage {
     }
     if (dismissTime != null) {
       _result.dismissTime = dismissTime;
+    }
+    if (allMute != null) {
+      _result.allMute = allMute;
+    }
+    if (memberCanAddFriend != null) {
+      _result.memberCanAddFriend = memberCanAddFriend;
     }
     if (memberStatistics != null) {
       _result.memberStatistics.addAll(memberStatistics);
@@ -485,8 +495,26 @@ class GetGroupHomeResp extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   void clearDismissTime() => clearField(9);
 
+  @$pb.TagNumber(11)
+  $core.bool get allMute => $_getBF(9);
+  @$pb.TagNumber(11)
+  set allMute($core.bool v) { $_setBool(9, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasAllMute() => $_has(9);
+  @$pb.TagNumber(11)
+  void clearAllMute() => clearField(11);
+
+  @$pb.TagNumber(12)
+  $core.bool get memberCanAddFriend => $_getBF(10);
+  @$pb.TagNumber(12)
+  set memberCanAddFriend($core.bool v) { $_setBool(10, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasMemberCanAddFriend() => $_has(10);
+  @$pb.TagNumber(12)
+  void clearMemberCanAddFriend() => clearField(12);
+
   @$pb.TagNumber(21)
-  $core.List<GetGroupHomeResp_MemberStatistics> get memberStatistics => $_getList(9);
+  $core.List<GetGroupHomeResp_MemberStatistics> get memberStatistics => $_getList(11);
 }
 
 class InviteFriendToGroupReq extends $pb.GeneratedMessage {
@@ -2088,6 +2116,139 @@ class EditGroupInfoReq extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static EditGroupInfoReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EditGroupInfoReq>(create);
   static EditGroupInfoReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get groupId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set groupId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasGroupId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearGroupId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get name => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set name($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasName() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearName() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get avatar => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set avatar($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasAvatar() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearAvatar() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get introduction => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set introduction($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasIntroduction() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearIntroduction() => clearField(5);
+
+  @$pb.TagNumber(11)
+  $core.bool get allMute => $_getBF(5);
+  @$pb.TagNumber(11)
+  set allMute($core.bool v) { $_setBool(5, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasAllMute() => $_has(5);
+  @$pb.TagNumber(11)
+  void clearAllMute() => clearField(11);
+
+  @$pb.TagNumber(12)
+  $core.bool get memberCanAddFriend => $_getBF(6);
+  @$pb.TagNumber(12)
+  set memberCanAddFriend($core.bool v) { $_setBool(6, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasMemberCanAddFriend() => $_has(6);
+  @$pb.TagNumber(12)
+  void clearMemberCanAddFriend() => clearField(12);
+}
+
+class ResetGroupInfoReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ResetGroupInfoReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'avatar')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'introduction')
+    ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'allMute', protoName: 'allMute')
+    ..aOB(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberCanAddFriend', protoName: 'memberCanAddFriend')
+    ..hasRequiredFields = false
+  ;
+
+  ResetGroupInfoReq._() : super();
+  factory ResetGroupInfoReq({
+    $0.CommonReq? commonReq,
+    $core.String? groupId,
+    $core.String? name,
+    $core.String? avatar,
+    $core.String? introduction,
+    $core.bool? allMute,
+    $core.bool? memberCanAddFriend,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (groupId != null) {
+      _result.groupId = groupId;
+    }
+    if (name != null) {
+      _result.name = name;
+    }
+    if (avatar != null) {
+      _result.avatar = avatar;
+    }
+    if (introduction != null) {
+      _result.introduction = introduction;
+    }
+    if (allMute != null) {
+      _result.allMute = allMute;
+    }
+    if (memberCanAddFriend != null) {
+      _result.memberCanAddFriend = memberCanAddFriend;
+    }
+    return _result;
+  }
+  factory ResetGroupInfoReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ResetGroupInfoReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ResetGroupInfoReq clone() => ResetGroupInfoReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ResetGroupInfoReq copyWith(void Function(ResetGroupInfoReq) updates) => super.copyWith((message) => updates(message as ResetGroupInfoReq)) as ResetGroupInfoReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ResetGroupInfoReq create() => ResetGroupInfoReq._();
+  ResetGroupInfoReq createEmptyInstance() => create();
+  static $pb.PbList<ResetGroupInfoReq> createRepeated() => $pb.PbList<ResetGroupInfoReq>();
+  @$core.pragma('dart2js:noInline')
+  static ResetGroupInfoReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ResetGroupInfoReq>(create);
+  static ResetGroupInfoReq? _defaultInstance;
 
   @$pb.TagNumber(1)
   $0.CommonReq get commonReq => $_getN(0);
@@ -6004,6 +6165,10 @@ class groupServiceApi {
   $async.Future<EditGroupInfoResp> editGroupInfo($pb.ClientContext? ctx, EditGroupInfoReq request) {
     var emptyResponse = EditGroupInfoResp();
     return _client.invoke<EditGroupInfoResp>(ctx, 'groupService', 'EditGroupInfo', request, emptyResponse);
+  }
+  $async.Future<EditGroupInfoResp> resetGroupInfo($pb.ClientContext? ctx, ResetGroupInfoReq request) {
+    var emptyResponse = EditGroupInfoResp();
+    return _client.invoke<EditGroupInfoResp>(ctx, 'groupService', 'ResetGroupInfo', request, emptyResponse);
   }
   $async.Future<TransferGroupOwnerResp> transferGroupOwner($pb.ClientContext? ctx, TransferGroupOwnerReq request) {
     var emptyResponse = TransferGroupOwnerResp();

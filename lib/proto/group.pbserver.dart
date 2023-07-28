@@ -27,6 +27,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
   $async.Future<$5.MapGroupMemberInfoByIdsResp> mapGroupMemberInfoByIds($pb.ServerContext ctx, $5.MapGroupMemberInfoByIdsReq request);
   $async.Future<$5.MapGroupMemberInfoByIdsResp> mapGroupMemberInfoByGroupIds($pb.ServerContext ctx, $5.MapGroupMemberInfoByGroupIdsReq request);
   $async.Future<$5.EditGroupInfoResp> editGroupInfo($pb.ServerContext ctx, $5.EditGroupInfoReq request);
+  $async.Future<$5.EditGroupInfoResp> resetGroupInfo($pb.ServerContext ctx, $5.ResetGroupInfoReq request);
   $async.Future<$5.TransferGroupOwnerResp> transferGroupOwner($pb.ServerContext ctx, $5.TransferGroupOwnerReq request);
   $async.Future<$5.KickGroupMemberResp> kickGroupMember($pb.ServerContext ctx, $5.KickGroupMemberReq request);
   $async.Future<$5.BatchKickGroupMemberResp> batchKickGroupMember($pb.ServerContext ctx, $5.BatchKickGroupMemberReq request);
@@ -61,6 +62,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'MapGroupMemberInfoByIds': return $5.MapGroupMemberInfoByIdsReq();
       case 'MapGroupMemberInfoByGroupIds': return $5.MapGroupMemberInfoByGroupIdsReq();
       case 'EditGroupInfo': return $5.EditGroupInfoReq();
+      case 'ResetGroupInfo': return $5.ResetGroupInfoReq();
       case 'TransferGroupOwner': return $5.TransferGroupOwnerReq();
       case 'KickGroupMember': return $5.KickGroupMemberReq();
       case 'BatchKickGroupMember': return $5.BatchKickGroupMemberReq();
@@ -98,6 +100,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'MapGroupMemberInfoByIds': return this.mapGroupMemberInfoByIds(ctx, request as $5.MapGroupMemberInfoByIdsReq);
       case 'MapGroupMemberInfoByGroupIds': return this.mapGroupMemberInfoByGroupIds(ctx, request as $5.MapGroupMemberInfoByGroupIdsReq);
       case 'EditGroupInfo': return this.editGroupInfo(ctx, request as $5.EditGroupInfoReq);
+      case 'ResetGroupInfo': return this.resetGroupInfo(ctx, request as $5.ResetGroupInfoReq);
       case 'TransferGroupOwner': return this.transferGroupOwner(ctx, request as $5.TransferGroupOwnerReq);
       case 'KickGroupMember': return this.kickGroupMember(ctx, request as $5.KickGroupMemberReq);
       case 'BatchKickGroupMember': return this.batchKickGroupMember(ctx, request as $5.BatchKickGroupMemberReq);

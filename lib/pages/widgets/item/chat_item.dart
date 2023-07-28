@@ -5,7 +5,9 @@ import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/chat.dart';
 import 'package:xxim_flutter_enterprise/pages/public/photo_view.dart';
+import 'package:xxim_flutter_enterprise/pages/public/red_packet_detail.dart';
 import 'package:xxim_flutter_enterprise/pages/public/video_view.dart';
+import 'package:xxim_flutter_enterprise/proto/msg.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 enum ChatDirection {
@@ -81,6 +83,8 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
 
   final String? tag;
   final ChatDirection direction;
+  final int index;
+  final List<MsgModel> msgModelList;
   final MsgModel msgModel;
   final Function() onRetry;
 
@@ -88,6 +92,8 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
     Key? key,
     this.tag,
     required this.direction,
+    required this.index,
+    required this.msgModelList,
     required this.msgModel,
     required this.onRetry,
   }) : super(key: key);
@@ -161,6 +167,13 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
                           );
                         } else if (contentType == MsgContentType.location) {
                           child = ChatLocationItem(
+                            key: ValueKey(msgModel.content),
+                            direction: direction,
+                            msgModel: msgModel,
+                          );
+                        } else if (contentType == MsgContentType.redPacket) {
+                          MsgModel msgModel = msgModelList[index];
+                          child = ChatRedPacketItem(
                             key: ValueKey(msgModel.content),
                             direction: direction,
                             msgModel: msgModel,
@@ -443,6 +456,8 @@ class ChatReplyItem extends StatelessWidget {
       content = "[标记消息]".tr;
     } else if (contentType == MsgContentType.custom) {
       content = "[自定义消息]".tr;
+    } else if (contentType == MsgContentType.redPacket) {
+      content = "[红包消息]".tr;
     }
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -1142,6 +1157,195 @@ class ChatLocationItem extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class ChatRedPacketItem extends StatelessWidget {
+  final ChatDirection direction;
+  final MsgModel msgModel;
+
+  const ChatRedPacketItem({
+    Key? key,
+    required this.direction,
+    required this.msgModel,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    RedPacketContent content = RedPacketContent.fromJson(msgModel.content);
+    if (content.redPacketStatus == RedPacketStatus.Not_Received.value) {
+      return _buildNormal(content);
+    }
+    if (content.redPacketStatus == RedPacketStatus.Received_Part.value) {
+      int index = content.receiverList.indexWhere((element) {
+        return element.userId == HiveTool.getUserId();
+      });
+      if (index == -1) {
+        return _buildNormal(content);
+      }
+    }
+    return _buildReceiver(content);
+  }
+
+  Widget _buildNormal(RedPacketContent content) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        RedPacketDialog.show(
+          title: content.title,
+          onOpen: () {
+            if (msgModel.serverMsgId == null) return;
+            ChatLogic? logic = ChatLogic.logic(msgModel.convId);
+            if (logic == null) return;
+            logic.receiveRedPacket(msgModel.serverMsgId!, content.redPacketId);
+          },
+        );
+      },
+      child: Container(
+        width: 200,
+        height: 100,
+        decoration: BoxDecoration(
+          color: getRedPacketNormal,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              height: 80,
+              child: Row(
+                children: [
+                  Image.asset(
+                    "assets/images/ic_red_packet_normal.webp",
+                    width: 43,
+                    height: 60,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      content.title,
+                      style: const TextStyle(
+                        color: getTextWhite,
+                        fontSize: 16,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              height: 20,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: const BorderRadius.vertical(
+                  bottom: Radius.circular(8),
+                ),
+              ),
+              child: Row(
+                children: [
+                  Text(
+                    "红包".tr,
+                    style: const TextStyle(
+                      color: getTextWhite,
+                      fontSize: 10,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildReceiver(RedPacketContent content) {
+    String status = "";
+    if (content.redPacketStatus == RedPacketStatus.Received_All.value) {
+      status = "已经领取完".tr;
+    } else if (content.redPacketStatus == RedPacketStatus.Expired.value) {
+      status = "已经过期了".tr;
+    } else if (content.redPacketStatus == RedPacketStatus.Received_Part.value) {
+      status = "已领取".tr;
+    }
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        RedPacketDetail.show(
+          convId: msgModel.convId,
+          redPacketId: content.redPacketId,
+        );
+      },
+      child: Container(
+        width: 200,
+        height: 100,
+        decoration: BoxDecoration(
+          color: getRedPacketReceiver,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              height: 80,
+              child: Row(
+                children: [
+                  Image.asset(
+                    "assets/images/ic_red_packet_receiver.webp",
+                    width: 43,
+                    height: 60,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      content.title,
+                      style: const TextStyle(
+                        color: getTextWhite,
+                        fontSize: 16,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              height: 20,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: const BorderRadius.vertical(
+                  bottom: Radius.circular(8),
+                ),
+              ),
+              child: Row(
+                children: [
+                  Text(
+                    "红包".tr,
+                    style: const TextStyle(
+                      color: getTextWhite,
+                      fontSize: 10,
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    status,
+                    style: const TextStyle(
+                      color: getTextWhite,
+                      fontSize: 10,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -9,6 +9,7 @@ import 'package:xxim_flutter_enterprise/pages/contact/my_card.dart';
 import 'package:xxim_flutter_enterprise/pages/contact/scan_card.dart';
 import 'package:xxim_flutter_enterprise/pages/launch.dart';
 import 'package:xxim_flutter_enterprise/pages/login.dart';
+import 'package:xxim_flutter_enterprise/pages/mine/mine_wallet.dart';
 import 'package:xxim_flutter_enterprise/pages/mine/modify_info.dart';
 import 'package:xxim_flutter_enterprise/pages/mine/modify_pwd.dart';
 import 'package:xxim_flutter_enterprise/pages/login/register_account.dart';
@@ -30,6 +31,7 @@ class Paths {
   static String groupChat = "/group_chat";
   static String myCard = "/my_card";
   static String scanCard = "/scan_card";
+  static String mineWallet = "/mine_wallet";
   static String modifyInfo = "/modify_info";
   static String modifyPwd = "/modify_pwd";
   static String webView = "/web_view";
@@ -53,6 +55,7 @@ class Routes {
   static String groupChat = menu + Paths.groupChat;
   static String myCard = menu + Paths.myCard;
   static String scanCard = menu + Paths.scanCard;
+  static String mineWallet = menu + Paths.mineWallet;
   static String modifyInfo = menu + Paths.modifyInfo;
   static String modifyPwd = menu + Paths.modifyPwd;
   static String webView = menu + Paths.webView;
@@ -130,6 +133,11 @@ class Routes {
           GetPage(
             name: Paths.scanCard,
             page: () => const ScanCardPage(),
+            showCupertinoParallax: false,
+          ),
+          GetPage(
+            name: Paths.mineWallet,
+            page: () => const MineWalletPage(),
             showCupertinoParallax: false,
           ),
           GetPage(

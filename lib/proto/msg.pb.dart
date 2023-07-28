@@ -2477,6 +2477,700 @@ class FlushShieldWordTireTreeResp extends $pb.GeneratedMessage {
   $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
+class RedPacket_Receiver extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RedPacket.Receiver', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
+    ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount')
+    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiveTime', protoName: 'receiveTime')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'avatar')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nickName', protoName: 'nickName')
+    ..hasRequiredFields = false
+  ;
+
+  RedPacket_Receiver._() : super();
+  factory RedPacket_Receiver({
+    $core.String? userId,
+    $fixnum.Int64? amount,
+    $fixnum.Int64? receiveTime,
+    $core.String? avatar,
+    $core.String? nickName,
+  }) {
+    final _result = create();
+    if (userId != null) {
+      _result.userId = userId;
+    }
+    if (amount != null) {
+      _result.amount = amount;
+    }
+    if (receiveTime != null) {
+      _result.receiveTime = receiveTime;
+    }
+    if (avatar != null) {
+      _result.avatar = avatar;
+    }
+    if (nickName != null) {
+      _result.nickName = nickName;
+    }
+    return _result;
+  }
+  factory RedPacket_Receiver.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory RedPacket_Receiver.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  RedPacket_Receiver clone() => RedPacket_Receiver()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  RedPacket_Receiver copyWith(void Function(RedPacket_Receiver) updates) => super.copyWith((message) => updates(message as RedPacket_Receiver)) as RedPacket_Receiver; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RedPacket_Receiver create() => RedPacket_Receiver._();
+  RedPacket_Receiver createEmptyInstance() => create();
+  static $pb.PbList<RedPacket_Receiver> createRepeated() => $pb.PbList<RedPacket_Receiver>();
+  @$core.pragma('dart2js:noInline')
+  static RedPacket_Receiver getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RedPacket_Receiver>(create);
+  static RedPacket_Receiver? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get userId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set userId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get amount => $_getI64(1);
+  @$pb.TagNumber(2)
+  set amount($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasAmount() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearAmount() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get receiveTime => $_getI64(2);
+  @$pb.TagNumber(3)
+  set receiveTime($fixnum.Int64 v) { $_setInt64(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasReceiveTime() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearReceiveTime() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get avatar => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set avatar($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasAvatar() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearAvatar() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get nickName => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set nickName($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasNickName() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearNickName() => clearField(5);
+}
+
+class RedPacket extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RedPacket', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'redPacketId', protoName: 'redPacketId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convId', protoName: 'convId')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'title')
+    ..e<RedPacketType>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'redPacketType', $pb.PbFieldType.OE, protoName: 'redPacketType', defaultOrMaker: RedPacketType.Normal_RedPacket, valueOf: RedPacketType.valueOf, enumValues: RedPacketType.values)
+    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'count', $pb.PbFieldType.O3)
+    ..aInt64(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalAmount', protoName: 'totalAmount')
+    ..aInt64(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'singleAmount', protoName: 'singleAmount')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cover')
+    ..e<RedPacketStatus>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'redPacketStatus', $pb.PbFieldType.OE, protoName: 'redPacketStatus', defaultOrMaker: RedPacketStatus.Not_Received, valueOf: RedPacketStatus.valueOf, enumValues: RedPacketStatus.values)
+    ..pc<RedPacket_Receiver>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiverList', $pb.PbFieldType.PM, protoName: 'receiverList', subBuilder: RedPacket_Receiver.create)
+    ..aInt64(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sendTime', protoName: 'sendTime')
+    ..aInt64(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'expireTime', protoName: 'expireTime')
+    ..hasRequiredFields = false
+  ;
+
+  RedPacket._() : super();
+  factory RedPacket({
+    $core.String? redPacketId,
+    $core.String? convId,
+    $core.String? title,
+    RedPacketType? redPacketType,
+    $core.int? count,
+    $fixnum.Int64? totalAmount,
+    $fixnum.Int64? singleAmount,
+    $core.String? cover,
+    RedPacketStatus? redPacketStatus,
+    $core.Iterable<RedPacket_Receiver>? receiverList,
+    $fixnum.Int64? sendTime,
+    $fixnum.Int64? expireTime,
+  }) {
+    final _result = create();
+    if (redPacketId != null) {
+      _result.redPacketId = redPacketId;
+    }
+    if (convId != null) {
+      _result.convId = convId;
+    }
+    if (title != null) {
+      _result.title = title;
+    }
+    if (redPacketType != null) {
+      _result.redPacketType = redPacketType;
+    }
+    if (count != null) {
+      _result.count = count;
+    }
+    if (totalAmount != null) {
+      _result.totalAmount = totalAmount;
+    }
+    if (singleAmount != null) {
+      _result.singleAmount = singleAmount;
+    }
+    if (cover != null) {
+      _result.cover = cover;
+    }
+    if (redPacketStatus != null) {
+      _result.redPacketStatus = redPacketStatus;
+    }
+    if (receiverList != null) {
+      _result.receiverList.addAll(receiverList);
+    }
+    if (sendTime != null) {
+      _result.sendTime = sendTime;
+    }
+    if (expireTime != null) {
+      _result.expireTime = expireTime;
+    }
+    return _result;
+  }
+  factory RedPacket.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory RedPacket.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  RedPacket clone() => RedPacket()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  RedPacket copyWith(void Function(RedPacket) updates) => super.copyWith((message) => updates(message as RedPacket)) as RedPacket; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RedPacket create() => RedPacket._();
+  RedPacket createEmptyInstance() => create();
+  static $pb.PbList<RedPacket> createRepeated() => $pb.PbList<RedPacket>();
+  @$core.pragma('dart2js:noInline')
+  static RedPacket getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RedPacket>(create);
+  static RedPacket? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get redPacketId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set redPacketId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasRedPacketId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearRedPacketId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get convId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set convId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasConvId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearConvId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get title => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set title($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasTitle() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearTitle() => clearField(3);
+
+  @$pb.TagNumber(4)
+  RedPacketType get redPacketType => $_getN(3);
+  @$pb.TagNumber(4)
+  set redPacketType(RedPacketType v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasRedPacketType() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearRedPacketType() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.int get count => $_getIZ(4);
+  @$pb.TagNumber(5)
+  set count($core.int v) { $_setSignedInt32(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasCount() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearCount() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $fixnum.Int64 get totalAmount => $_getI64(5);
+  @$pb.TagNumber(6)
+  set totalAmount($fixnum.Int64 v) { $_setInt64(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasTotalAmount() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearTotalAmount() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $fixnum.Int64 get singleAmount => $_getI64(6);
+  @$pb.TagNumber(7)
+  set singleAmount($fixnum.Int64 v) { $_setInt64(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasSingleAmount() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearSingleAmount() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.String get cover => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set cover($core.String v) { $_setString(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasCover() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearCover() => clearField(8);
+
+  @$pb.TagNumber(9)
+  RedPacketStatus get redPacketStatus => $_getN(8);
+  @$pb.TagNumber(9)
+  set redPacketStatus(RedPacketStatus v) { setField(9, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasRedPacketStatus() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearRedPacketStatus() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.List<RedPacket_Receiver> get receiverList => $_getList(9);
+
+  @$pb.TagNumber(11)
+  $fixnum.Int64 get sendTime => $_getI64(10);
+  @$pb.TagNumber(11)
+  set sendTime($fixnum.Int64 v) { $_setInt64(10, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasSendTime() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearSendTime() => clearField(11);
+
+  @$pb.TagNumber(12)
+  $fixnum.Int64 get expireTime => $_getI64(11);
+  @$pb.TagNumber(12)
+  set expireTime($fixnum.Int64 v) { $_setInt64(11, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasExpireTime() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearExpireTime() => clearField(12);
+}
+
+class SendRedPacketReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SendRedPacketReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOM<RedPacket>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'redPacket', protoName: 'redPacket', subBuilder: RedPacket.create)
+    ..hasRequiredFields = false
+  ;
+
+  SendRedPacketReq._() : super();
+  factory SendRedPacketReq({
+    $0.CommonReq? commonReq,
+    RedPacket? redPacket,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (redPacket != null) {
+      _result.redPacket = redPacket;
+    }
+    return _result;
+  }
+  factory SendRedPacketReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SendRedPacketReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SendRedPacketReq clone() => SendRedPacketReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SendRedPacketReq copyWith(void Function(SendRedPacketReq) updates) => super.copyWith((message) => updates(message as SendRedPacketReq)) as SendRedPacketReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SendRedPacketReq create() => SendRedPacketReq._();
+  SendRedPacketReq createEmptyInstance() => create();
+  static $pb.PbList<SendRedPacketReq> createRepeated() => $pb.PbList<SendRedPacketReq>();
+  @$core.pragma('dart2js:noInline')
+  static SendRedPacketReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendRedPacketReq>(create);
+  static SendRedPacketReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  RedPacket get redPacket => $_getN(1);
+  @$pb.TagNumber(2)
+  set redPacket(RedPacket v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasRedPacket() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearRedPacket() => clearField(2);
+  @$pb.TagNumber(2)
+  RedPacket ensureRedPacket() => $_ensure(1);
+}
+
+class SendRedPacketResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SendRedPacketResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  SendRedPacketResp._() : super();
+  factory SendRedPacketResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory SendRedPacketResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SendRedPacketResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SendRedPacketResp clone() => SendRedPacketResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SendRedPacketResp copyWith(void Function(SendRedPacketResp) updates) => super.copyWith((message) => updates(message as SendRedPacketResp)) as SendRedPacketResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SendRedPacketResp create() => SendRedPacketResp._();
+  SendRedPacketResp createEmptyInstance() => create();
+  static $pb.PbList<SendRedPacketResp> createRepeated() => $pb.PbList<SendRedPacketResp>();
+  @$core.pragma('dart2js:noInline')
+  static SendRedPacketResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendRedPacketResp>(create);
+  static SendRedPacketResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
+class ReceiveRedPacketReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ReceiveRedPacketReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convId', protoName: 'convId')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'redPacketId', protoName: 'redPacketId')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'serverMsgId', protoName: 'serverMsgId')
+    ..hasRequiredFields = false
+  ;
+
+  ReceiveRedPacketReq._() : super();
+  factory ReceiveRedPacketReq({
+    $0.CommonReq? commonReq,
+    $core.String? convId,
+    $core.String? redPacketId,
+    $core.String? serverMsgId,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (convId != null) {
+      _result.convId = convId;
+    }
+    if (redPacketId != null) {
+      _result.redPacketId = redPacketId;
+    }
+    if (serverMsgId != null) {
+      _result.serverMsgId = serverMsgId;
+    }
+    return _result;
+  }
+  factory ReceiveRedPacketReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReceiveRedPacketReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ReceiveRedPacketReq clone() => ReceiveRedPacketReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ReceiveRedPacketReq copyWith(void Function(ReceiveRedPacketReq) updates) => super.copyWith((message) => updates(message as ReceiveRedPacketReq)) as ReceiveRedPacketReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ReceiveRedPacketReq create() => ReceiveRedPacketReq._();
+  ReceiveRedPacketReq createEmptyInstance() => create();
+  static $pb.PbList<ReceiveRedPacketReq> createRepeated() => $pb.PbList<ReceiveRedPacketReq>();
+  @$core.pragma('dart2js:noInline')
+  static ReceiveRedPacketReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReceiveRedPacketReq>(create);
+  static ReceiveRedPacketReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get convId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set convId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasConvId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearConvId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get redPacketId => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set redPacketId($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasRedPacketId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearRedPacketId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get serverMsgId => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set serverMsgId($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasServerMsgId() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearServerMsgId() => clearField(4);
+}
+
+class ReceiveRedPacketResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ReceiveRedPacketResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  ReceiveRedPacketResp._() : super();
+  factory ReceiveRedPacketResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory ReceiveRedPacketResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReceiveRedPacketResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ReceiveRedPacketResp clone() => ReceiveRedPacketResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ReceiveRedPacketResp copyWith(void Function(ReceiveRedPacketResp) updates) => super.copyWith((message) => updates(message as ReceiveRedPacketResp)) as ReceiveRedPacketResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ReceiveRedPacketResp create() => ReceiveRedPacketResp._();
+  ReceiveRedPacketResp createEmptyInstance() => create();
+  static $pb.PbList<ReceiveRedPacketResp> createRepeated() => $pb.PbList<ReceiveRedPacketResp>();
+  @$core.pragma('dart2js:noInline')
+  static ReceiveRedPacketResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReceiveRedPacketResp>(create);
+  static ReceiveRedPacketResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
+class GetRedPacketDetailReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetRedPacketDetailReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convId', protoName: 'convId')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'redPacketId', protoName: 'redPacketId')
+    ..hasRequiredFields = false
+  ;
+
+  GetRedPacketDetailReq._() : super();
+  factory GetRedPacketDetailReq({
+    $0.CommonReq? commonReq,
+    $core.String? convId,
+    $core.String? redPacketId,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (convId != null) {
+      _result.convId = convId;
+    }
+    if (redPacketId != null) {
+      _result.redPacketId = redPacketId;
+    }
+    return _result;
+  }
+  factory GetRedPacketDetailReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetRedPacketDetailReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetRedPacketDetailReq clone() => GetRedPacketDetailReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetRedPacketDetailReq copyWith(void Function(GetRedPacketDetailReq) updates) => super.copyWith((message) => updates(message as GetRedPacketDetailReq)) as GetRedPacketDetailReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetRedPacketDetailReq create() => GetRedPacketDetailReq._();
+  GetRedPacketDetailReq createEmptyInstance() => create();
+  static $pb.PbList<GetRedPacketDetailReq> createRepeated() => $pb.PbList<GetRedPacketDetailReq>();
+  @$core.pragma('dart2js:noInline')
+  static GetRedPacketDetailReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetRedPacketDetailReq>(create);
+  static GetRedPacketDetailReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get convId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set convId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasConvId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearConvId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get redPacketId => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set redPacketId($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasRedPacketId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearRedPacketId() => clearField(3);
+}
+
+class GetRedPacketDetailResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetRedPacketDetailResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..aOM<RedPacket>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'redPacket', protoName: 'redPacket', subBuilder: RedPacket.create)
+    ..hasRequiredFields = false
+  ;
+
+  GetRedPacketDetailResp._() : super();
+  factory GetRedPacketDetailResp({
+    $0.CommonResp? commonResp,
+    RedPacket? redPacket,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    if (redPacket != null) {
+      _result.redPacket = redPacket;
+    }
+    return _result;
+  }
+  factory GetRedPacketDetailResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetRedPacketDetailResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetRedPacketDetailResp clone() => GetRedPacketDetailResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetRedPacketDetailResp copyWith(void Function(GetRedPacketDetailResp) updates) => super.copyWith((message) => updates(message as GetRedPacketDetailResp)) as GetRedPacketDetailResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetRedPacketDetailResp create() => GetRedPacketDetailResp._();
+  GetRedPacketDetailResp createEmptyInstance() => create();
+  static $pb.PbList<GetRedPacketDetailResp> createRepeated() => $pb.PbList<GetRedPacketDetailResp>();
+  @$core.pragma('dart2js:noInline')
+  static GetRedPacketDetailResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetRedPacketDetailResp>(create);
+  static GetRedPacketDetailResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  RedPacket get redPacket => $_getN(1);
+  @$pb.TagNumber(2)
+  set redPacket(RedPacket v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasRedPacket() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearRedPacket() => clearField(2);
+  @$pb.TagNumber(2)
+  RedPacket ensureRedPacket() => $_ensure(1);
+}
+
 class msgServiceApi {
   $pb.RpcClient _client;
   msgServiceApi(this._client);
@@ -2556,6 +3250,18 @@ class msgServiceApi {
   $async.Future<FlushShieldWordTireTreeResp> flushShieldWordTireTree($pb.ClientContext? ctx, FlushShieldWordTireTreeReq request) {
     var emptyResponse = FlushShieldWordTireTreeResp();
     return _client.invoke<FlushShieldWordTireTreeResp>(ctx, 'msgService', 'FlushShieldWordTireTree', request, emptyResponse);
+  }
+  $async.Future<SendRedPacketResp> sendRedPacket($pb.ClientContext? ctx, SendRedPacketReq request) {
+    var emptyResponse = SendRedPacketResp();
+    return _client.invoke<SendRedPacketResp>(ctx, 'msgService', 'SendRedPacket', request, emptyResponse);
+  }
+  $async.Future<ReceiveRedPacketResp> receiveRedPacket($pb.ClientContext? ctx, ReceiveRedPacketReq request) {
+    var emptyResponse = ReceiveRedPacketResp();
+    return _client.invoke<ReceiveRedPacketResp>(ctx, 'msgService', 'ReceiveRedPacket', request, emptyResponse);
+  }
+  $async.Future<GetRedPacketDetailResp> getRedPacketDetail($pb.ClientContext? ctx, GetRedPacketDetailReq request) {
+    var emptyResponse = GetRedPacketDetailResp();
+    return _client.invoke<GetRedPacketDetailResp>(ctx, 'msgService', 'GetRedPacketDetail', request, emptyResponse);
   }
 }
 
