@@ -1,0 +1,214 @@
+syntax = "proto3";
+package pb;
+
+enum PushEvent {
+  // 消息推送
+  PushMsgDataList = 0;
+  // 通知推送
+  PushNoticeData = 1;
+  // 响应返回
+  PushResponseBody = 2;
+  // 连接成功后的回调
+  PushAfterConnect = 3;
+}
+
+message PushBody {
+  PushEvent event = 1;
+  bytes data = 2;
+}
+
+// 客户端发送的消息体
+message RequestBody {
+  string reqId = 1;
+  string method = 2;
+  bytes data = 3;
+}
+
+// 服务端返回响应的消息体
+message ResponseBody {
+  enum Code {
+    Success = 0;
+
+    UnknownError = 1;
+    InternalError = 2;
+    RequestError = 3;
+    AuthError = 4;
+    ToastError = 5;
+    AlertError = 7;
+    RetryError = 8;
+  }
+  string reqId = 1;
+  string method = 2;
+  Code code = 3;
+  bytes data = 4;
+}
+
+message AfterConnectBody {
+  string aesIv = 1;
+}
+
+message SetCxnParamsReq {
+  string packageId = 1;
+  string platform = 2;
+  string deviceId = 3;
+  string deviceModel = 4;
+  string osVersion = 5;
+  string appVersion = 6;
+  string language = 7;
+  string networkUsed = 8;
+  bytes aesKey = 9; // 用于加密请求和响应的aes key; 他应该是随机字符串的rsa加密结果; 服务端拿到该字段后使用rsa私钥解密得到随机字符串; 然后md5(随机字符串)得到aes key
+  bytes aesIv = 10; // 用于加密请求和响应的aes iv; 他应该是随机字符串的rsa加密结果; 服务端拿到该字段后使用rsa私钥解密得到随机字符串; 然后md5_16(随机字符串)得到aes iv
+  bytes ext = 11;
+}
+
+message SetCxnParamsResp {}
+
+message SetUserParamsReq {
+  string userId = 1;
+  string token = 2;
+  bytes ext = 11;
+}
+
+message SetUserParamsResp {}
+
+message MsgData {
+  message OfflinePush {
+    string title = 1;
+    string content = 2;
+    string payload = 3;
+  }
+  message Options {
+    // 服务端是否需要保存消息
+    bool storageForServer = 1;
+    // 客户端是否需要保存消息
+    bool storageForClient = 2;
+    // 是否需要解密 （端对端加密技术，服务端无法解密）
+    bool needDecrypt = 3;
+    // 是否需要离线推送
+    bool offlinePush = 4;
+    // 是否需要重新渲染会话
+    bool updateConvMsg = 5;
+    // 消息是否需要计入未读数
+    bool updateUnreadCount = 6;
+  }
+  string clientMsgId = 1;
+  string serverMsgId = 2;
+  string clientTime = 3;
+  string serverTime = 4;
+
+  string senderId = 11;
+  bytes senderInfo = 12;
+
+  string convId = 21;
+  repeated string atUsers = 22;
+
+  int32 contentType = 31;
+  bytes content = 32;
+  string seq = 33;
+
+  Options options = 41;
+  OfflinePush offlinePush = 42;
+
+  bytes ext = 101;
+}
+
+message MsgDataList {
+  repeated MsgData msgDataList = 1;
+}
+
+// 通知数据
+message NoticeData {
+  message Options {
+    // 客户端是否需要保存消息
+    bool storageForClient = 1;
+    // 是否需要重新渲染会话
+    bool updateConvNotice = 2;
+  }
+  // 会话信息
+  string convId = 1; // 会话id
+
+  // 消息信息
+  string noticeId = 11;
+  string createTime = 12;
+  string title = 13; // 消息标题(显示在会话列表)
+  int32 contentType = 14; // 通知数据类型
+  bytes content = 15; // 消息数据
+
+  // 附加信息
+  Options options = 21; // 通知选项
+
+  // 扩展信息
+  bytes ext = 101; // 扩展字段
+}
+
+message SendMsgListReq {
+  repeated MsgData msgDataList = 1;
+  optional int32 deliverAfter = 2;
+}
+
+message SendMsgListResp {}
+
+message BatchGetMsgListByConvIdReq {
+  message Item {
+    string convId = 1;
+    repeated string seqList = 2;
+  }
+  repeated Item items = 1;
+}
+
+message GetMsgListResp {
+  repeated MsgData msgDataList = 1;
+}
+
+message GetMsgByIdReq {
+  optional string serverMsgId = 1;
+  optional string clientMsgId = 2;
+}
+
+message GetMsgByIdResp {
+  MsgData msgData = 1;
+}
+
+message BatchGetConvSeqReq {
+  repeated string convIdList = 1;
+}
+
+message BatchGetConvSeqResp {
+  message ConvSeq {
+    string convId = 1;
+    string minSeq = 2;
+    string maxSeq = 3;
+    string updateTime = 4;
+  }
+  map<string, ConvSeq> convSeqMap = 1;
+}
+
+// ReadMsgReq 设置会话已读
+message ReadMsgReq {
+  string senderId = 1;
+  string convId = 2;
+  string seq = 3;
+  bytes noticeContent = 4;
+}
+
+message ReadMsgResp {}
+
+// EditMsgReq 编辑消息
+message EditMsgReq {
+  string senderId = 1;
+  string serverMsgId = 2;
+  int32 contentType = 3;
+  bytes content = 4;
+  bytes ext = 5;
+  bytes noticeContent = 6;
+}
+
+message EditMsgResp {}
+
+// AckNoticeDataReq 确认通知数据
+message AckNoticeDataReq {
+  string convId = 1;
+  string noticeId = 2;
+}
+
+message AckNoticeDataResp {}
