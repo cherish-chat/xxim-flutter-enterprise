@@ -142,7 +142,7 @@ class RedPacketDetailPage extends StatelessWidget {
         return Container(
           alignment: Alignment.center,
           width: double.infinity,
-          height: 200,
+          height: 100,
           color: getMainColor,
           child: Text(
             "¥${logic.mineReceiver!.amount}",
@@ -163,9 +163,9 @@ class RedPacketDetailPage extends StatelessWidget {
           delegate: FlutterListViewDelegate(
             (context, index) {
               RedPacket_Receiver receiver = logic.list[index];
-              if (receiver.userId == HiveTool.getUserId()) {
-                return const SizedBox();
-              }
+              // if (receiver.userId == HiveTool.getUserId()) {
+              //   return const SizedBox();
+              // }
               return _buildItem(receiver);
             },
             childCount: logic.list.length,
@@ -203,7 +203,7 @@ class RedPacketDetailPage extends StatelessWidget {
           ),
           const SizedBox(width: 16),
           Text(
-            receiver.amount.toString(),
+            "¥${receiver.amount}",
             style: const TextStyle(
               color: getMainColor,
               fontSize: 14,
