@@ -911,6 +911,10 @@ class ChatPage extends StatelessWidget {
                         groupBaseInfo.myMemberInfo.role == GroupRole.MANAGER
                     ? isOperate = true
                     : isOperate = false;
+              } else {
+                groupBaseInfo.myMemberInfo.unbanTime == 0
+                    ? isOperate = true
+                    : isOperate = false;
               }
             }
             if (isOperate) return const SizedBox();

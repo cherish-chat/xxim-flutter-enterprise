@@ -38,12 +38,13 @@ const ContentType$json = const {
     const {'1': 'COMMAND', '2': 20},
     const {'1': 'RICH_TEXT', '2': 21},
     const {'1': 'MARKDOWN', '2': 22},
+    const {'1': 'RED_PACKET', '2': 23},
     const {'1': 'CUSTOM', '2': 100},
   ],
 };
 
 /// Descriptor for `ContentType`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List contentTypeDescriptor = $convert.base64Decode('CgtDb250ZW50VHlwZRILCgdVTktOT1dOEAASCgoGVFlQSU5HEAESBwoDVElQEAISCAoEVEVYVBALEgkKBUlNQUdFEAwSCQoFQVVESU8QDRIJCgVWSURFTxAOEggKBEZJTEUQDxIMCghMT0NBVElPThAQEggKBENBUkQQERIJCgVNRVJHRRASEgkKBUVNT0pJEBMSCwoHQ09NTUFORBAUEg0KCVJJQ0hfVEVYVBAVEgwKCE1BUktET1dOEBYSCgoGQ1VTVE9NEGQ=');
+final $typed_data.Uint8List contentTypeDescriptor = $convert.base64Decode('CgtDb250ZW50VHlwZRILCgdVTktOT1dOEAASCgoGVFlQSU5HEAESBwoDVElQEAISCAoEVEVYVBALEgkKBUlNQUdFEAwSCQoFQVVESU8QDRIJCgVWSURFTxAOEggKBEZJTEUQDxIMCghMT0NBVElPThAQEggKBENBUkQQERIJCgVNRVJHRRASEgkKBUVNT0pJEBMSCwoHQ09NTUFORBAUEg0KCVJJQ0hfVEVYVBAVEgwKCE1BUktET1dOEBYSDgoKUkVEX1BBQ0tFVBAXEgoKBkNVU1RPTRBk');
 @$core.Deprecated('Use noticeTypeDescriptor instead')
 const NoticeType$json = const {
   '1': 'NoticeType',

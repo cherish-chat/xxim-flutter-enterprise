@@ -23,6 +23,8 @@ abstract class groupServiceBase extends $pb.GeneratedService {
   $async.Future<$5.DeleteGroupNoticeResp> deleteGroupNotice($pb.ServerContext ctx, $5.DeleteGroupNoticeReq request);
   $async.Future<$5.GetGroupNoticeListResp> getGroupNoticeList($pb.ServerContext ctx, $5.GetGroupNoticeListReq request);
   $async.Future<$5.SetGroupMemberInfoResp> setGroupMemberInfo($pb.ServerContext ctx, $5.SetGroupMemberInfoReq request);
+  $async.Future<$5.BanGroupMemberResp> banGroupMember($pb.ServerContext ctx, $5.BanGroupMemberReq request);
+  $async.Future<$5.UnbanGroupMemberResp> unbanGroupMember($pb.ServerContext ctx, $5.UnbanGroupMemberReq request);
   $async.Future<$5.GetGroupMemberInfoResp> getGroupMemberInfo($pb.ServerContext ctx, $5.GetGroupMemberInfoReq request);
   $async.Future<$5.MapGroupMemberInfoByIdsResp> mapGroupMemberInfoByIds($pb.ServerContext ctx, $5.MapGroupMemberInfoByIdsReq request);
   $async.Future<$5.MapGroupMemberInfoByIdsResp> mapGroupMemberInfoByGroupIds($pb.ServerContext ctx, $5.MapGroupMemberInfoByGroupIdsReq request);
@@ -32,6 +34,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
   $async.Future<$5.KickGroupMemberResp> kickGroupMember($pb.ServerContext ctx, $5.KickGroupMemberReq request);
   $async.Future<$5.BatchKickGroupMemberResp> batchKickGroupMember($pb.ServerContext ctx, $5.BatchKickGroupMemberReq request);
   $async.Future<$5.GetGroupMemberListResp> getGroupMemberList($pb.ServerContext ctx, $5.GetGroupMemberListReq request);
+  $async.Future<$5.SearchGroupMemberResp> searchGroupMember($pb.ServerContext ctx, $5.SearchGroupMemberReq request);
   $async.Future<$5.GetMyGroupListResp> getMyGroupList($pb.ServerContext ctx, $5.GetMyGroupListReq request);
   $async.Future<$5.MapGroupByIdsResp> mapGroupByIds($pb.ServerContext ctx, $5.MapGroupByIdsReq request);
   $async.Future<$5.SyncGroupMemberCountResp> syncGroupMemberCount($pb.ServerContext ctx, $5.SyncGroupMemberCountReq request);
@@ -58,6 +61,8 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'DeleteGroupNotice': return $5.DeleteGroupNoticeReq();
       case 'GetGroupNoticeList': return $5.GetGroupNoticeListReq();
       case 'SetGroupMemberInfo': return $5.SetGroupMemberInfoReq();
+      case 'BanGroupMember': return $5.BanGroupMemberReq();
+      case 'UnbanGroupMember': return $5.UnbanGroupMemberReq();
       case 'GetGroupMemberInfo': return $5.GetGroupMemberInfoReq();
       case 'MapGroupMemberInfoByIds': return $5.MapGroupMemberInfoByIdsReq();
       case 'MapGroupMemberInfoByGroupIds': return $5.MapGroupMemberInfoByGroupIdsReq();
@@ -67,6 +72,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'KickGroupMember': return $5.KickGroupMemberReq();
       case 'BatchKickGroupMember': return $5.BatchKickGroupMemberReq();
       case 'GetGroupMemberList': return $5.GetGroupMemberListReq();
+      case 'SearchGroupMember': return $5.SearchGroupMemberReq();
       case 'GetMyGroupList': return $5.GetMyGroupListReq();
       case 'MapGroupByIds': return $5.MapGroupByIdsReq();
       case 'SyncGroupMemberCount': return $5.SyncGroupMemberCountReq();
@@ -96,6 +102,8 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'DeleteGroupNotice': return this.deleteGroupNotice(ctx, request as $5.DeleteGroupNoticeReq);
       case 'GetGroupNoticeList': return this.getGroupNoticeList(ctx, request as $5.GetGroupNoticeListReq);
       case 'SetGroupMemberInfo': return this.setGroupMemberInfo(ctx, request as $5.SetGroupMemberInfoReq);
+      case 'BanGroupMember': return this.banGroupMember(ctx, request as $5.BanGroupMemberReq);
+      case 'UnbanGroupMember': return this.unbanGroupMember(ctx, request as $5.UnbanGroupMemberReq);
       case 'GetGroupMemberInfo': return this.getGroupMemberInfo(ctx, request as $5.GetGroupMemberInfoReq);
       case 'MapGroupMemberInfoByIds': return this.mapGroupMemberInfoByIds(ctx, request as $5.MapGroupMemberInfoByIdsReq);
       case 'MapGroupMemberInfoByGroupIds': return this.mapGroupMemberInfoByGroupIds(ctx, request as $5.MapGroupMemberInfoByGroupIdsReq);
@@ -105,6 +113,7 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'KickGroupMember': return this.kickGroupMember(ctx, request as $5.KickGroupMemberReq);
       case 'BatchKickGroupMember': return this.batchKickGroupMember(ctx, request as $5.BatchKickGroupMemberReq);
       case 'GetGroupMemberList': return this.getGroupMemberList(ctx, request as $5.GetGroupMemberListReq);
+      case 'SearchGroupMember': return this.searchGroupMember(ctx, request as $5.SearchGroupMemberReq);
       case 'GetMyGroupList': return this.getMyGroupList(ctx, request as $5.GetMyGroupListReq);
       case 'MapGroupByIds': return this.mapGroupByIds(ctx, request as $5.MapGroupByIdsReq);
       case 'SyncGroupMemberCount': return this.syncGroupMemberCount(ctx, request as $5.SyncGroupMemberCountReq);

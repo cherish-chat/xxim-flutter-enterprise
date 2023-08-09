@@ -40,6 +40,7 @@ class ContentType extends $pb.ProtobufEnum {
   static const ContentType COMMAND = ContentType._(20, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'COMMAND');
   static const ContentType RICH_TEXT = ContentType._(21, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'RICH_TEXT');
   static const ContentType MARKDOWN = ContentType._(22, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MARKDOWN');
+  static const ContentType RED_PACKET = ContentType._(23, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'RED_PACKET');
   static const ContentType CUSTOM = ContentType._(100, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CUSTOM');
 
   static const $core.List<ContentType> values = <ContentType> [
@@ -58,6 +59,7 @@ class ContentType extends $pb.ProtobufEnum {
     COMMAND,
     RICH_TEXT,
     MARKDOWN,
+    RED_PACKET,
     CUSTOM,
   ];
 
