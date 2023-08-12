@@ -36,6 +36,7 @@ class GroupMemberLogic extends GetxController {
   RefreshController? refreshController;
   int pageNum = 1;
   List<GroupMemberInfo> list = [];
+  RxBool isOwner = false.obs;
   RxBool isPermission = false.obs;
 
   @override
@@ -93,6 +94,9 @@ class GroupMemberLogic extends GetxController {
           this.list = list;
           for (GroupMemberInfo info in list) {
             if (info.userBaseInfo.id == HiveTool.getUserId()) {
+              if (info.role == GroupRole.OWNER) {
+                isOwner.value = true;
+              }
               if (info.role == GroupRole.OWNER ||
                   info.role == GroupRole.MANAGER) {
                 isPermission.value = true;
@@ -141,6 +145,9 @@ class GroupMemberLogic extends GetxController {
           this.list = list;
           for (GroupMemberInfo info in list) {
             if (info.userBaseInfo.id == HiveTool.getUserId()) {
+              if (info.role == GroupRole.OWNER) {
+                isOwner.value = true;
+              }
               if (info.role == GroupRole.OWNER ||
                   info.role == GroupRole.MANAGER) {
                 isPermission.value = true;
@@ -167,6 +174,138 @@ class GroupMemberLogic extends GetxController {
           --pageNum;
           refreshController?.loadFailed();
         }
+      },
+    );
+  }
+
+  void alertManager(String memberId) {
+    GetAlertDialog.show(
+      Text(
+        "你确定要将对方设置为管理员吗？".tr,
+        style: const TextStyle(
+          color: getTextBlack,
+          fontSize: 16,
+          fontWeight: getMedium,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      actions: [
+        TextButton(
+          onPressed: GetAlertDialog.hide,
+          child: Text(
+            "取消".tr,
+            style: const TextStyle(
+              color: getTextBlack,
+              fontSize: 14,
+            ),
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            GetAlertDialog.hide();
+            managerMember(memberId);
+          },
+          child: Text(
+            "确定".tr,
+            style: const TextStyle(
+              color: getTextBlack,
+              fontSize: 14,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  void managerMember(String memberId) {
+    XXIM.instance.customRequest<BanGroupMemberResp>(
+      method: "/v1/group/setGroupMemberRole",
+      req: SetGroupMemberRoleReq(
+        groupId: groupId,
+        memberId: memberId,
+        role: GroupRole.MANAGER,
+      ),
+      resp: BanGroupMemberResp.create,
+      onSuccess: (data) {
+        int index = list.indexWhere((element) {
+          return element.memberId == memberId;
+        });
+        if (index != -1) {
+          list[index].role = GroupRole.MANAGER;
+          update(["list"]);
+          Tool.showToast("设置成功".tr);
+        } else {
+          Tool.showToast("设置失败".tr);
+        }
+      },
+      onError: (code, error) {
+        Tool.showToast("设置失败".tr);
+      },
+    );
+  }
+
+  void alertUnManager(String memberId) {
+    GetAlertDialog.show(
+      Text(
+        "你确定要将对方设置为群成员吗？".tr,
+        style: const TextStyle(
+          color: getTextBlack,
+          fontSize: 16,
+          fontWeight: getMedium,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      actions: [
+        TextButton(
+          onPressed: GetAlertDialog.hide,
+          child: Text(
+            "取消".tr,
+            style: const TextStyle(
+              color: getTextBlack,
+              fontSize: 14,
+            ),
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            GetAlertDialog.hide();
+            unManagerMember(memberId);
+          },
+          child: Text(
+            "确定".tr,
+            style: const TextStyle(
+              color: getTextBlack,
+              fontSize: 14,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  void unManagerMember(String memberId) {
+    XXIM.instance.customRequest<BanGroupMemberResp>(
+      method: "/v1/group/setGroupMemberRole",
+      req: SetGroupMemberRoleReq(
+        groupId: groupId,
+        memberId: memberId,
+        role: GroupRole.MEMBER,
+      ),
+      resp: BanGroupMemberResp.create,
+      onSuccess: (data) {
+        int index = list.indexWhere((element) {
+          return element.memberId == memberId;
+        });
+        if (index != -1) {
+          list[index].role = GroupRole.MEMBER;
+          update(["list"]);
+          Tool.showToast("设置成功".tr);
+        } else {
+          Tool.showToast("设置失败".tr);
+        }
+      },
+      onError: (code, error) {
+        Tool.showToast("设置失败".tr);
       },
     );
   }
@@ -561,6 +700,35 @@ class GroupMemberPage extends StatelessWidget {
                 fontSize: 14,
               ),
             ),
+            Obx(() {
+              if (logic.isOwner.value &&
+                  memberInfo.userBaseInfo.id != HiveTool.getUserId() &&
+                  memberInfo.role != GroupRole.OWNER) {
+                return GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
+                    if (memberInfo.role == GroupRole.MANAGER) {
+                      logic.alertUnManager(memberInfo.userBaseInfo.id);
+                    } else {
+                      logic.alertManager(memberInfo.userBaseInfo.id);
+                    }
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text(
+                      memberInfo.role == GroupRole.MANAGER
+                          ? "成为群成员".tr
+                          : "成为管理员".tr,
+                      style: const TextStyle(
+                        color: getTextBlack,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                );
+              }
+              return const SizedBox();
+            }),
             Obx(() {
               if (logic.isPermission.value &&
                   memberInfo.userBaseInfo.id != HiveTool.getUserId() &&

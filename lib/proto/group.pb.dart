@@ -1730,6 +1730,286 @@ class UnbanGroupMemberResp extends $pb.GeneratedMessage {
   $0.CommonResp ensureCommonResp() => $_ensure(0);
 }
 
+class SetGroupMemberRoleReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SetGroupMemberRoleReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberId', protoName: 'memberId')
+    ..e<GroupRole>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role', $pb.PbFieldType.OE, defaultOrMaker: GroupRole.MEMBER, valueOf: GroupRole.valueOf, enumValues: GroupRole.values)
+    ..hasRequiredFields = false
+  ;
+
+  SetGroupMemberRoleReq._() : super();
+  factory SetGroupMemberRoleReq({
+    $0.CommonReq? commonReq,
+    $core.String? groupId,
+    $core.String? memberId,
+    GroupRole? role,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (groupId != null) {
+      _result.groupId = groupId;
+    }
+    if (memberId != null) {
+      _result.memberId = memberId;
+    }
+    if (role != null) {
+      _result.role = role;
+    }
+    return _result;
+  }
+  factory SetGroupMemberRoleReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SetGroupMemberRoleReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SetGroupMemberRoleReq clone() => SetGroupMemberRoleReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SetGroupMemberRoleReq copyWith(void Function(SetGroupMemberRoleReq) updates) => super.copyWith((message) => updates(message as SetGroupMemberRoleReq)) as SetGroupMemberRoleReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SetGroupMemberRoleReq create() => SetGroupMemberRoleReq._();
+  SetGroupMemberRoleReq createEmptyInstance() => create();
+  static $pb.PbList<SetGroupMemberRoleReq> createRepeated() => $pb.PbList<SetGroupMemberRoleReq>();
+  @$core.pragma('dart2js:noInline')
+  static SetGroupMemberRoleReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SetGroupMemberRoleReq>(create);
+  static SetGroupMemberRoleReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get groupId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set groupId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasGroupId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearGroupId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get memberId => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set memberId($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasMemberId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearMemberId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  GroupRole get role => $_getN(3);
+  @$pb.TagNumber(4)
+  set role(GroupRole v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasRole() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearRole() => clearField(4);
+}
+
+class SetGroupMemberRoleResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SetGroupMemberRoleResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..hasRequiredFields = false
+  ;
+
+  SetGroupMemberRoleResp._() : super();
+  factory SetGroupMemberRoleResp({
+    $0.CommonResp? commonResp,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    return _result;
+  }
+  factory SetGroupMemberRoleResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SetGroupMemberRoleResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SetGroupMemberRoleResp clone() => SetGroupMemberRoleResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SetGroupMemberRoleResp copyWith(void Function(SetGroupMemberRoleResp) updates) => super.copyWith((message) => updates(message as SetGroupMemberRoleResp)) as SetGroupMemberRoleResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SetGroupMemberRoleResp create() => SetGroupMemberRoleResp._();
+  SetGroupMemberRoleResp createEmptyInstance() => create();
+  static $pb.PbList<SetGroupMemberRoleResp> createRepeated() => $pb.PbList<SetGroupMemberRoleResp>();
+  @$core.pragma('dart2js:noInline')
+  static SetGroupMemberRoleResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SetGroupMemberRoleResp>(create);
+  static SetGroupMemberRoleResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+}
+
+class CanEditGroupMemberMsgReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CanEditGroupMemberMsgReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupId', protoName: 'groupId')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberId', protoName: 'memberId')
+    ..hasRequiredFields = false
+  ;
+
+  CanEditGroupMemberMsgReq._() : super();
+  factory CanEditGroupMemberMsgReq({
+    $0.CommonReq? commonReq,
+    $core.String? groupId,
+    $core.String? memberId,
+  }) {
+    final _result = create();
+    if (commonReq != null) {
+      _result.commonReq = commonReq;
+    }
+    if (groupId != null) {
+      _result.groupId = groupId;
+    }
+    if (memberId != null) {
+      _result.memberId = memberId;
+    }
+    return _result;
+  }
+  factory CanEditGroupMemberMsgReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CanEditGroupMemberMsgReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CanEditGroupMemberMsgReq clone() => CanEditGroupMemberMsgReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CanEditGroupMemberMsgReq copyWith(void Function(CanEditGroupMemberMsgReq) updates) => super.copyWith((message) => updates(message as CanEditGroupMemberMsgReq)) as CanEditGroupMemberMsgReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static CanEditGroupMemberMsgReq create() => CanEditGroupMemberMsgReq._();
+  CanEditGroupMemberMsgReq createEmptyInstance() => create();
+  static $pb.PbList<CanEditGroupMemberMsgReq> createRepeated() => $pb.PbList<CanEditGroupMemberMsgReq>();
+  @$core.pragma('dart2js:noInline')
+  static CanEditGroupMemberMsgReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CanEditGroupMemberMsgReq>(create);
+  static CanEditGroupMemberMsgReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonReq get commonReq => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonReq($0.CommonReq v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonReq() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonReq() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonReq ensureCommonReq() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get groupId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set groupId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasGroupId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearGroupId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get memberId => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set memberId($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasMemberId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearMemberId() => clearField(3);
+}
+
+class CanEditGroupMemberMsgResp extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CanEditGroupMemberMsgResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
+    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'canEditGroupMemberMsg', protoName: 'canEditGroupMemberMsg')
+    ..hasRequiredFields = false
+  ;
+
+  CanEditGroupMemberMsgResp._() : super();
+  factory CanEditGroupMemberMsgResp({
+    $0.CommonResp? commonResp,
+    $core.bool? canEditGroupMemberMsg,
+  }) {
+    final _result = create();
+    if (commonResp != null) {
+      _result.commonResp = commonResp;
+    }
+    if (canEditGroupMemberMsg != null) {
+      _result.canEditGroupMemberMsg = canEditGroupMemberMsg;
+    }
+    return _result;
+  }
+  factory CanEditGroupMemberMsgResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CanEditGroupMemberMsgResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CanEditGroupMemberMsgResp clone() => CanEditGroupMemberMsgResp()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CanEditGroupMemberMsgResp copyWith(void Function(CanEditGroupMemberMsgResp) updates) => super.copyWith((message) => updates(message as CanEditGroupMemberMsgResp)) as CanEditGroupMemberMsgResp; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static CanEditGroupMemberMsgResp create() => CanEditGroupMemberMsgResp._();
+  CanEditGroupMemberMsgResp createEmptyInstance() => create();
+  static $pb.PbList<CanEditGroupMemberMsgResp> createRepeated() => $pb.PbList<CanEditGroupMemberMsgResp>();
+  @$core.pragma('dart2js:noInline')
+  static CanEditGroupMemberMsgResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CanEditGroupMemberMsgResp>(create);
+  static CanEditGroupMemberMsgResp? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.CommonResp get commonResp => $_getN(0);
+  @$pb.TagNumber(1)
+  set commonResp($0.CommonResp v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCommonResp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCommonResp() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.CommonResp ensureCommonResp() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.bool get canEditGroupMemberMsg => $_getBF(1);
+  @$pb.TagNumber(2)
+  set canEditGroupMemberMsg($core.bool v) { $_setBool(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasCanEditGroupMemberMsg() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCanEditGroupMemberMsg() => clearField(2);
+}
+
 class GetGroupMemberInfoReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetGroupMemberInfoReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
@@ -6581,6 +6861,14 @@ class groupServiceApi {
   $async.Future<UnbanGroupMemberResp> unbanGroupMember($pb.ClientContext? ctx, UnbanGroupMemberReq request) {
     var emptyResponse = UnbanGroupMemberResp();
     return _client.invoke<UnbanGroupMemberResp>(ctx, 'groupService', 'UnbanGroupMember', request, emptyResponse);
+  }
+  $async.Future<SetGroupMemberRoleResp> setGroupMemberRole($pb.ClientContext? ctx, SetGroupMemberRoleReq request) {
+    var emptyResponse = SetGroupMemberRoleResp();
+    return _client.invoke<SetGroupMemberRoleResp>(ctx, 'groupService', 'SetGroupMemberRole', request, emptyResponse);
+  }
+  $async.Future<CanEditGroupMemberMsgResp> canEditGroupMemberMsg($pb.ClientContext? ctx, CanEditGroupMemberMsgReq request) {
+    var emptyResponse = CanEditGroupMemberMsgResp();
+    return _client.invoke<CanEditGroupMemberMsgResp>(ctx, 'groupService', 'CanEditGroupMemberMsg', request, emptyResponse);
   }
   $async.Future<GetGroupMemberInfoResp> getGroupMemberInfo($pb.ClientContext? ctx, GetGroupMemberInfoReq request) {
     var emptyResponse = GetGroupMemberInfoResp();

@@ -25,6 +25,8 @@ abstract class groupServiceBase extends $pb.GeneratedService {
   $async.Future<$5.SetGroupMemberInfoResp> setGroupMemberInfo($pb.ServerContext ctx, $5.SetGroupMemberInfoReq request);
   $async.Future<$5.BanGroupMemberResp> banGroupMember($pb.ServerContext ctx, $5.BanGroupMemberReq request);
   $async.Future<$5.UnbanGroupMemberResp> unbanGroupMember($pb.ServerContext ctx, $5.UnbanGroupMemberReq request);
+  $async.Future<$5.SetGroupMemberRoleResp> setGroupMemberRole($pb.ServerContext ctx, $5.SetGroupMemberRoleReq request);
+  $async.Future<$5.CanEditGroupMemberMsgResp> canEditGroupMemberMsg($pb.ServerContext ctx, $5.CanEditGroupMemberMsgReq request);
   $async.Future<$5.GetGroupMemberInfoResp> getGroupMemberInfo($pb.ServerContext ctx, $5.GetGroupMemberInfoReq request);
   $async.Future<$5.MapGroupMemberInfoByIdsResp> mapGroupMemberInfoByIds($pb.ServerContext ctx, $5.MapGroupMemberInfoByIdsReq request);
   $async.Future<$5.MapGroupMemberInfoByIdsResp> mapGroupMemberInfoByGroupIds($pb.ServerContext ctx, $5.MapGroupMemberInfoByGroupIdsReq request);
@@ -63,6 +65,8 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'SetGroupMemberInfo': return $5.SetGroupMemberInfoReq();
       case 'BanGroupMember': return $5.BanGroupMemberReq();
       case 'UnbanGroupMember': return $5.UnbanGroupMemberReq();
+      case 'SetGroupMemberRole': return $5.SetGroupMemberRoleReq();
+      case 'CanEditGroupMemberMsg': return $5.CanEditGroupMemberMsgReq();
       case 'GetGroupMemberInfo': return $5.GetGroupMemberInfoReq();
       case 'MapGroupMemberInfoByIds': return $5.MapGroupMemberInfoByIdsReq();
       case 'MapGroupMemberInfoByGroupIds': return $5.MapGroupMemberInfoByGroupIdsReq();
@@ -104,6 +108,8 @@ abstract class groupServiceBase extends $pb.GeneratedService {
       case 'SetGroupMemberInfo': return this.setGroupMemberInfo(ctx, request as $5.SetGroupMemberInfoReq);
       case 'BanGroupMember': return this.banGroupMember(ctx, request as $5.BanGroupMemberReq);
       case 'UnbanGroupMember': return this.unbanGroupMember(ctx, request as $5.UnbanGroupMemberReq);
+      case 'SetGroupMemberRole': return this.setGroupMemberRole(ctx, request as $5.SetGroupMemberRoleReq);
+      case 'CanEditGroupMemberMsg': return this.canEditGroupMemberMsg(ctx, request as $5.CanEditGroupMemberMsgReq);
       case 'GetGroupMemberInfo': return this.getGroupMemberInfo(ctx, request as $5.GetGroupMemberInfoReq);
       case 'MapGroupMemberInfoByIds': return this.mapGroupMemberInfoByIds(ctx, request as $5.MapGroupMemberInfoByIdsReq);
       case 'MapGroupMemberInfoByGroupIds': return this.mapGroupMemberInfoByGroupIds(ctx, request as $5.MapGroupMemberInfoByGroupIdsReq);

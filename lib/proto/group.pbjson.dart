@@ -343,6 +343,52 @@ const UnbanGroupMemberResp$json = const {
 
 /// Descriptor for `UnbanGroupMemberResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List unbanGroupMemberRespDescriptor = $convert.base64Decode('ChRVbmJhbkdyb3VwTWVtYmVyUmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcA==');
+@$core.Deprecated('Use setGroupMemberRoleReqDescriptor instead')
+const SetGroupMemberRoleReq$json = const {
+  '1': 'SetGroupMemberRoleReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'groupId', '3': 2, '4': 1, '5': 9, '10': 'groupId'},
+    const {'1': 'memberId', '3': 3, '4': 1, '5': 9, '10': 'memberId'},
+    const {'1': 'role', '3': 4, '4': 1, '5': 14, '6': '.pb.GroupRole', '10': 'role'},
+  ],
+};
+
+/// Descriptor for `SetGroupMemberRoleReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List setGroupMemberRoleReqDescriptor = $convert.base64Decode('ChVTZXRHcm91cE1lbWJlclJvbGVSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESGAoHZ3JvdXBJZBgCIAEoCVIHZ3JvdXBJZBIaCghtZW1iZXJJZBgDIAEoCVIIbWVtYmVySWQSIQoEcm9sZRgEIAEoDjINLnBiLkdyb3VwUm9sZVIEcm9sZQ==');
+@$core.Deprecated('Use setGroupMemberRoleRespDescriptor instead')
+const SetGroupMemberRoleResp$json = const {
+  '1': 'SetGroupMemberRoleResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+  ],
+};
+
+/// Descriptor for `SetGroupMemberRoleResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List setGroupMemberRoleRespDescriptor = $convert.base64Decode('ChZTZXRHcm91cE1lbWJlclJvbGVSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNw');
+@$core.Deprecated('Use canEditGroupMemberMsgReqDescriptor instead')
+const CanEditGroupMemberMsgReq$json = const {
+  '1': 'CanEditGroupMemberMsgReq',
+  '2': const [
+    const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
+    const {'1': 'groupId', '3': 2, '4': 1, '5': 9, '10': 'groupId'},
+    const {'1': 'memberId', '3': 3, '4': 1, '5': 9, '10': 'memberId'},
+  ],
+};
+
+/// Descriptor for `CanEditGroupMemberMsgReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List canEditGroupMemberMsgReqDescriptor = $convert.base64Decode('ChhDYW5FZGl0R3JvdXBNZW1iZXJNc2dSZXESKwoJY29tbW9uUmVxGAEgASgLMg0ucGIuQ29tbW9uUmVxUgljb21tb25SZXESGAoHZ3JvdXBJZBgCIAEoCVIHZ3JvdXBJZBIaCghtZW1iZXJJZBgDIAEoCVIIbWVtYmVySWQ=');
+@$core.Deprecated('Use canEditGroupMemberMsgRespDescriptor instead')
+const CanEditGroupMemberMsgResp$json = const {
+  '1': 'CanEditGroupMemberMsgResp',
+  '2': const [
+    const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
+    const {'1': 'canEditGroupMemberMsg', '3': 2, '4': 1, '5': 8, '10': 'canEditGroupMemberMsg'},
+  ],
+};
+
+/// Descriptor for `CanEditGroupMemberMsgResp`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List canEditGroupMemberMsgRespDescriptor = $convert.base64Decode('ChlDYW5FZGl0R3JvdXBNZW1iZXJNc2dSZXNwEi4KCmNvbW1vblJlc3AYASABKAsyDi5wYi5Db21tb25SZXNwUgpjb21tb25SZXNwEjQKFWNhbkVkaXRHcm91cE1lbWJlck1zZxgCIAEoCFIVY2FuRWRpdEdyb3VwTWVtYmVyTXNn');
 @$core.Deprecated('Use getGroupMemberInfoReqDescriptor instead')
 const GetGroupMemberInfoReq$json = const {
   '1': 'GetGroupMemberInfoReq',
@@ -1197,6 +1243,8 @@ const $core.Map<$core.String, $core.dynamic> groupServiceBase$json = const {
     const {'1': 'SetGroupMemberInfo', '2': '.pb.SetGroupMemberInfoReq', '3': '.pb.SetGroupMemberInfoResp', '4': const {}},
     const {'1': 'BanGroupMember', '2': '.pb.BanGroupMemberReq', '3': '.pb.BanGroupMemberResp', '4': const {}},
     const {'1': 'UnbanGroupMember', '2': '.pb.UnbanGroupMemberReq', '3': '.pb.UnbanGroupMemberResp', '4': const {}},
+    const {'1': 'SetGroupMemberRole', '2': '.pb.SetGroupMemberRoleReq', '3': '.pb.SetGroupMemberRoleResp', '4': const {}},
+    const {'1': 'CanEditGroupMemberMsg', '2': '.pb.CanEditGroupMemberMsgReq', '3': '.pb.CanEditGroupMemberMsgResp', '4': const {}},
     const {'1': 'GetGroupMemberInfo', '2': '.pb.GetGroupMemberInfoReq', '3': '.pb.GetGroupMemberInfoResp', '4': const {}},
     const {'1': 'MapGroupMemberInfoByIds', '2': '.pb.MapGroupMemberInfoByIdsReq', '3': '.pb.MapGroupMemberInfoByIdsResp', '4': const {}},
     const {'1': 'MapGroupMemberInfoByGroupIds', '2': '.pb.MapGroupMemberInfoByGroupIdsReq', '3': '.pb.MapGroupMemberInfoByIdsResp', '4': const {}},
@@ -1256,6 +1304,10 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> groupServi
   '.pb.BanGroupMemberResp': BanGroupMemberResp$json,
   '.pb.UnbanGroupMemberReq': UnbanGroupMemberReq$json,
   '.pb.UnbanGroupMemberResp': UnbanGroupMemberResp$json,
+  '.pb.SetGroupMemberRoleReq': SetGroupMemberRoleReq$json,
+  '.pb.SetGroupMemberRoleResp': SetGroupMemberRoleResp$json,
+  '.pb.CanEditGroupMemberMsgReq': CanEditGroupMemberMsgReq$json,
+  '.pb.CanEditGroupMemberMsgResp': CanEditGroupMemberMsgResp$json,
   '.pb.GetGroupMemberInfoReq': GetGroupMemberInfoReq$json,
   '.pb.GetGroupMemberInfoResp': GetGroupMemberInfoResp$json,
   '.pb.MapGroupMemberInfoByIdsReq': MapGroupMemberInfoByIdsReq$json,
@@ -1324,4 +1376,4 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> groupServi
 };
 
 /// Descriptor for `groupService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List groupServiceDescriptor = $convert.base64Decode('Cgxncm91cFNlcnZpY2USOAoLQ3JlYXRlR3JvdXASEi5wYi5DcmVhdGVHcm91cFJlcRoTLnBiLkNyZWF0ZUdyb3VwUmVzcCIAEjsKDEdldEdyb3VwSG9tZRITLnBiLkdldEdyb3VwSG9tZVJlcRoULnBiLkdldEdyb3VwSG9tZVJlc3AiABJQChNJbnZpdGVGcmllbmRUb0dyb3VwEhoucGIuSW52aXRlRnJpZW5kVG9Hcm91cFJlcRobLnBiLkludml0ZUZyaWVuZFRvR3JvdXBSZXNwIgASSgoRQ3JlYXRlR3JvdXBOb3RpY2USGC5wYi5DcmVhdGVHcm91cE5vdGljZVJlcRoZLnBiLkNyZWF0ZUdyb3VwTm90aWNlUmVzcCIAEkoKEURlbGV0ZUdyb3VwTm90aWNlEhgucGIuRGVsZXRlR3JvdXBOb3RpY2VSZXEaGS5wYi5EZWxldGVHcm91cE5vdGljZVJlc3AiABJNChJHZXRHcm91cE5vdGljZUxpc3QSGS5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXEaGi5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXNwIgASTQoSU2V0R3JvdXBNZW1iZXJJbmZvEhkucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVxGhoucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVzcCIAEkEKDkJhbkdyb3VwTWVtYmVyEhUucGIuQmFuR3JvdXBNZW1iZXJSZXEaFi5wYi5CYW5Hcm91cE1lbWJlclJlc3AiABJHChBVbmJhbkdyb3VwTWVtYmVyEhcucGIuVW5iYW5Hcm91cE1lbWJlclJlcRoYLnBiLlVuYmFuR3JvdXBNZW1iZXJSZXNwIgASTQoSR2V0R3JvdXBNZW1iZXJJbmZvEhkucGIuR2V0R3JvdXBNZW1iZXJJbmZvUmVxGhoucGIuR2V0R3JvdXBNZW1iZXJJbmZvUmVzcCIAElwKF01hcEdyb3VwTWVtYmVySW5mb0J5SWRzEh4ucGIuTWFwR3JvdXBNZW1iZXJJbmZvQnlJZHNSZXEaHy5wYi5NYXBHcm91cE1lbWJlckluZm9CeUlkc1Jlc3AiABJmChxNYXBHcm91cE1lbWJlckluZm9CeUdyb3VwSWRzEiMucGIuTWFwR3JvdXBNZW1iZXJJbmZvQnlHcm91cElkc1JlcRofLnBiLk1hcEdyb3VwTWVtYmVySW5mb0J5SWRzUmVzcCIAEj4KDUVkaXRHcm91cEluZm8SFC5wYi5FZGl0R3JvdXBJbmZvUmVxGhUucGIuRWRpdEdyb3VwSW5mb1Jlc3AiABJACg5SZXNldEdyb3VwSW5mbxIVLnBiLlJlc2V0R3JvdXBJbmZvUmVxGhUucGIuRWRpdEdyb3VwSW5mb1Jlc3AiABJNChJUcmFuc2Zlckdyb3VwT3duZXISGS5wYi5UcmFuc2Zlckdyb3VwT3duZXJSZXEaGi5wYi5UcmFuc2Zlckdyb3VwT3duZXJSZXNwIgASRAoPS2lja0dyb3VwTWVtYmVyEhYucGIuS2lja0dyb3VwTWVtYmVyUmVxGhcucGIuS2lja0dyb3VwTWVtYmVyUmVzcCIAElMKFEJhdGNoS2lja0dyb3VwTWVtYmVyEhsucGIuQmF0Y2hLaWNrR3JvdXBNZW1iZXJSZXEaHC5wYi5CYXRjaEtpY2tHcm91cE1lbWJlclJlc3AiABJNChJHZXRHcm91cE1lbWJlckxpc3QSGS5wYi5HZXRHcm91cE1lbWJlckxpc3RSZXEaGi5wYi5HZXRHcm91cE1lbWJlckxpc3RSZXNwIgASSgoRU2VhcmNoR3JvdXBNZW1iZXISGC5wYi5TZWFyY2hHcm91cE1lbWJlclJlcRoZLnBiLlNlYXJjaEdyb3VwTWVtYmVyUmVzcCIAEkEKDkdldE15R3JvdXBMaXN0EhUucGIuR2V0TXlHcm91cExpc3RSZXEaFi5wYi5HZXRNeUdyb3VwTGlzdFJlc3AiABI+Cg1NYXBHcm91cEJ5SWRzEhQucGIuTWFwR3JvdXBCeUlkc1JlcRoVLnBiLk1hcEdyb3VwQnlJZHNSZXNwIgASUwoUU3luY0dyb3VwTWVtYmVyQ291bnQSGy5wYi5TeW5jR3JvdXBNZW1iZXJDb3VudFJlcRocLnBiLlN5bmNHcm91cE1lbWJlckNvdW50UmVzcCIAElMKFEFwcGx5VG9CZUdyb3VwTWVtYmVyEhsucGIuQXBwbHlUb0JlR3JvdXBNZW1iZXJSZXEaHC5wYi5BcHBseVRvQmVHcm91cE1lbWJlclJlc3AiABJHChBIYW5kbGVHcm91cEFwcGx5EhcucGIuSGFuZGxlR3JvdXBBcHBseVJlcRoYLnBiLkhhbmRsZUdyb3VwQXBwbHlSZXNwIgASSgoRR2V0R3JvdXBBcHBseUxpc3QSGC5wYi5HZXRHcm91cEFwcGx5TGlzdFJlcRoZLnBiLkdldEdyb3VwQXBwbHlMaXN0UmVzcCIAElMKFEdldEdyb3VwTGlzdEJ5VXNlcklkEhsucGIuR2V0R3JvdXBMaXN0QnlVc2VySWRSZXEaHC5wYi5HZXRHcm91cExpc3RCeVVzZXJJZFJlc3AiABJHChBHZXRBbGxHcm91cE1vZGVsEhcucGIuR2V0QWxsR3JvdXBNb2RlbFJlcRoYLnBiLkdldEFsbEdyb3VwTW9kZWxSZXNwIgASUAoTR2V0R3JvdXBNb2RlbERldGFpbBIaLnBiLkdldEdyb3VwTW9kZWxEZXRhaWxSZXEaGy5wYi5HZXRHcm91cE1vZGVsRGV0YWlsUmVzcCIAEkcKEFVwZGF0ZUdyb3VwTW9kZWwSFy5wYi5VcGRhdGVHcm91cE1vZGVsUmVxGhgucGIuVXBkYXRlR3JvdXBNb2RlbFJlc3AiABJKChFEaXNtaXNzR3JvdXBNb2RlbBIYLnBiLkRpc21pc3NHcm91cE1vZGVsUmVxGhkucGIuRGlzbWlzc0dyb3VwTW9kZWxSZXNwIgASVgoVU2VhcmNoR3JvdXBzQnlLZXl3b3JkEhwucGIuU2VhcmNoR3JvdXBzQnlLZXl3b3JkUmVxGh0ucGIuU2VhcmNoR3JvdXBzQnlLZXl3b3JkUmVzcCIAEkEKDkFkZEdyb3VwTWVtYmVyEhUucGIuQWRkR3JvdXBNZW1iZXJSZXEaFi5wYi5BZGRHcm91cE1lbWJlclJlc3AiABI4CgtSZXBvcnRHcm91cBISLnBiLlJlcG9ydEdyb3VwUmVxGhMucGIuUmVwb3J0R3JvdXBSZXNwIgASWQoWUmFuZEluc2VydFpvbWJpZU1lbWJlchIdLnBiLlJhbmRJbnNlcnRab21iaWVNZW1iZXJSZXEaHi5wYi5SYW5kSW5zZXJ0Wm9tYmllTWVtYmVyUmVzcCIAEkoKEUNsZWFyWm9tYmllTWVtYmVyEhgucGIuQ2xlYXJab21iaWVNZW1iZXJSZXEaGS5wYi5DbGVhclpvbWJpZU1lbWJlclJlc3AiAA==');
+final $typed_data.Uint8List groupServiceDescriptor = $convert.base64Decode('Cgxncm91cFNlcnZpY2USOAoLQ3JlYXRlR3JvdXASEi5wYi5DcmVhdGVHcm91cFJlcRoTLnBiLkNyZWF0ZUdyb3VwUmVzcCIAEjsKDEdldEdyb3VwSG9tZRITLnBiLkdldEdyb3VwSG9tZVJlcRoULnBiLkdldEdyb3VwSG9tZVJlc3AiABJQChNJbnZpdGVGcmllbmRUb0dyb3VwEhoucGIuSW52aXRlRnJpZW5kVG9Hcm91cFJlcRobLnBiLkludml0ZUZyaWVuZFRvR3JvdXBSZXNwIgASSgoRQ3JlYXRlR3JvdXBOb3RpY2USGC5wYi5DcmVhdGVHcm91cE5vdGljZVJlcRoZLnBiLkNyZWF0ZUdyb3VwTm90aWNlUmVzcCIAEkoKEURlbGV0ZUdyb3VwTm90aWNlEhgucGIuRGVsZXRlR3JvdXBOb3RpY2VSZXEaGS5wYi5EZWxldGVHcm91cE5vdGljZVJlc3AiABJNChJHZXRHcm91cE5vdGljZUxpc3QSGS5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXEaGi5wYi5HZXRHcm91cE5vdGljZUxpc3RSZXNwIgASTQoSU2V0R3JvdXBNZW1iZXJJbmZvEhkucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVxGhoucGIuU2V0R3JvdXBNZW1iZXJJbmZvUmVzcCIAEkEKDkJhbkdyb3VwTWVtYmVyEhUucGIuQmFuR3JvdXBNZW1iZXJSZXEaFi5wYi5CYW5Hcm91cE1lbWJlclJlc3AiABJHChBVbmJhbkdyb3VwTWVtYmVyEhcucGIuVW5iYW5Hcm91cE1lbWJlclJlcRoYLnBiLlVuYmFuR3JvdXBNZW1iZXJSZXNwIgASTQoSU2V0R3JvdXBNZW1iZXJSb2xlEhkucGIuU2V0R3JvdXBNZW1iZXJSb2xlUmVxGhoucGIuU2V0R3JvdXBNZW1iZXJSb2xlUmVzcCIAElYKFUNhbkVkaXRHcm91cE1lbWJlck1zZxIcLnBiLkNhbkVkaXRHcm91cE1lbWJlck1zZ1JlcRodLnBiLkNhbkVkaXRHcm91cE1lbWJlck1zZ1Jlc3AiABJNChJHZXRHcm91cE1lbWJlckluZm8SGS5wYi5HZXRHcm91cE1lbWJlckluZm9SZXEaGi5wYi5HZXRHcm91cE1lbWJlckluZm9SZXNwIgASXAoXTWFwR3JvdXBNZW1iZXJJbmZvQnlJZHMSHi5wYi5NYXBHcm91cE1lbWJlckluZm9CeUlkc1JlcRofLnBiLk1hcEdyb3VwTWVtYmVySW5mb0J5SWRzUmVzcCIAEmYKHE1hcEdyb3VwTWVtYmVySW5mb0J5R3JvdXBJZHMSIy5wYi5NYXBHcm91cE1lbWJlckluZm9CeUdyb3VwSWRzUmVxGh8ucGIuTWFwR3JvdXBNZW1iZXJJbmZvQnlJZHNSZXNwIgASPgoNRWRpdEdyb3VwSW5mbxIULnBiLkVkaXRHcm91cEluZm9SZXEaFS5wYi5FZGl0R3JvdXBJbmZvUmVzcCIAEkAKDlJlc2V0R3JvdXBJbmZvEhUucGIuUmVzZXRHcm91cEluZm9SZXEaFS5wYi5FZGl0R3JvdXBJbmZvUmVzcCIAEk0KElRyYW5zZmVyR3JvdXBPd25lchIZLnBiLlRyYW5zZmVyR3JvdXBPd25lclJlcRoaLnBiLlRyYW5zZmVyR3JvdXBPd25lclJlc3AiABJECg9LaWNrR3JvdXBNZW1iZXISFi5wYi5LaWNrR3JvdXBNZW1iZXJSZXEaFy5wYi5LaWNrR3JvdXBNZW1iZXJSZXNwIgASUwoUQmF0Y2hLaWNrR3JvdXBNZW1iZXISGy5wYi5CYXRjaEtpY2tHcm91cE1lbWJlclJlcRocLnBiLkJhdGNoS2lja0dyb3VwTWVtYmVyUmVzcCIAEk0KEkdldEdyb3VwTWVtYmVyTGlzdBIZLnBiLkdldEdyb3VwTWVtYmVyTGlzdFJlcRoaLnBiLkdldEdyb3VwTWVtYmVyTGlzdFJlc3AiABJKChFTZWFyY2hHcm91cE1lbWJlchIYLnBiLlNlYXJjaEdyb3VwTWVtYmVyUmVxGhkucGIuU2VhcmNoR3JvdXBNZW1iZXJSZXNwIgASQQoOR2V0TXlHcm91cExpc3QSFS5wYi5HZXRNeUdyb3VwTGlzdFJlcRoWLnBiLkdldE15R3JvdXBMaXN0UmVzcCIAEj4KDU1hcEdyb3VwQnlJZHMSFC5wYi5NYXBHcm91cEJ5SWRzUmVxGhUucGIuTWFwR3JvdXBCeUlkc1Jlc3AiABJTChRTeW5jR3JvdXBNZW1iZXJDb3VudBIbLnBiLlN5bmNHcm91cE1lbWJlckNvdW50UmVxGhwucGIuU3luY0dyb3VwTWVtYmVyQ291bnRSZXNwIgASUwoUQXBwbHlUb0JlR3JvdXBNZW1iZXISGy5wYi5BcHBseVRvQmVHcm91cE1lbWJlclJlcRocLnBiLkFwcGx5VG9CZUdyb3VwTWVtYmVyUmVzcCIAEkcKEEhhbmRsZUdyb3VwQXBwbHkSFy5wYi5IYW5kbGVHcm91cEFwcGx5UmVxGhgucGIuSGFuZGxlR3JvdXBBcHBseVJlc3AiABJKChFHZXRHcm91cEFwcGx5TGlzdBIYLnBiLkdldEdyb3VwQXBwbHlMaXN0UmVxGhkucGIuR2V0R3JvdXBBcHBseUxpc3RSZXNwIgASUwoUR2V0R3JvdXBMaXN0QnlVc2VySWQSGy5wYi5HZXRHcm91cExpc3RCeVVzZXJJZFJlcRocLnBiLkdldEdyb3VwTGlzdEJ5VXNlcklkUmVzcCIAEkcKEEdldEFsbEdyb3VwTW9kZWwSFy5wYi5HZXRBbGxHcm91cE1vZGVsUmVxGhgucGIuR2V0QWxsR3JvdXBNb2RlbFJlc3AiABJQChNHZXRHcm91cE1vZGVsRGV0YWlsEhoucGIuR2V0R3JvdXBNb2RlbERldGFpbFJlcRobLnBiLkdldEdyb3VwTW9kZWxEZXRhaWxSZXNwIgASRwoQVXBkYXRlR3JvdXBNb2RlbBIXLnBiLlVwZGF0ZUdyb3VwTW9kZWxSZXEaGC5wYi5VcGRhdGVHcm91cE1vZGVsUmVzcCIAEkoKEURpc21pc3NHcm91cE1vZGVsEhgucGIuRGlzbWlzc0dyb3VwTW9kZWxSZXEaGS5wYi5EaXNtaXNzR3JvdXBNb2RlbFJlc3AiABJWChVTZWFyY2hHcm91cHNCeUtleXdvcmQSHC5wYi5TZWFyY2hHcm91cHNCeUtleXdvcmRSZXEaHS5wYi5TZWFyY2hHcm91cHNCeUtleXdvcmRSZXNwIgASQQoOQWRkR3JvdXBNZW1iZXISFS5wYi5BZGRHcm91cE1lbWJlclJlcRoWLnBiLkFkZEdyb3VwTWVtYmVyUmVzcCIAEjgKC1JlcG9ydEdyb3VwEhIucGIuUmVwb3J0R3JvdXBSZXEaEy5wYi5SZXBvcnRHcm91cFJlc3AiABJZChZSYW5kSW5zZXJ0Wm9tYmllTWVtYmVyEh0ucGIuUmFuZEluc2VydFpvbWJpZU1lbWJlclJlcRoeLnBiLlJhbmRJbnNlcnRab21iaWVNZW1iZXJSZXNwIgASSgoRQ2xlYXJab21iaWVNZW1iZXISGC5wYi5DbGVhclpvbWJpZU1lbWJlclJlcRoZLnBiLkNsZWFyWm9tYmllTWVtYmVyUmVzcCIA');
