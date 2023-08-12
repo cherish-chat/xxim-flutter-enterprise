@@ -14,6 +14,7 @@ class PopupTool {
     required String content,
     required MsgModel msgModel,
   }) {
+    GroupRole role = GroupRole.MEMBER;
     bool isOperate = true;
     if (SDKTool.isGroupConv(msgModel.convId)) {
       String groupId = SDKTool.getGroupId(msgModel.convId);
@@ -22,6 +23,7 @@ class PopupTool {
       GroupBaseInfo groupBaseInfo = groupInfoList.where((element) {
         return groupId == element.id;
       }).first;
+      role = groupBaseInfo.myMemberInfo.role;
       if (groupBaseInfo.allMute) {
         groupBaseInfo.myMemberInfo.role == GroupRole.OWNER ||
                 groupBaseInfo.myMemberInfo.role == GroupRole.MANAGER
@@ -68,7 +70,18 @@ class PopupTool {
               height: 17,
             ),
           ),
-        if (msgModel.senderId == HiveTool.getUserId() &&
+        if ((role == GroupRole.OWNER || role == GroupRole.MANAGER) &&
+            msgModel.sendStatus == SendStatus.success)
+          DefaultMenuItem(
+            title: "撤回".tr,
+            image: Image.asset(
+              "assets/images/ic_msg_revoke_17.webp",
+              width: 17,
+              height: 17,
+            ),
+          ),
+        if (role == GroupRole.MEMBER &&
+            msgModel.senderId == HiveTool.getUserId() &&
             msgModel.sendStatus == SendStatus.success)
           DefaultMenuItem(
             title: "撤回".tr,
