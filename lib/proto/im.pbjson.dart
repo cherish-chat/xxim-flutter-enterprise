@@ -188,17 +188,37 @@ const ConvSetting$json = const {
 
 /// Descriptor for `ConvSetting`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List convSettingDescriptor = $convert.base64Decode('CgtDb252U2V0dGluZxIWCgZ1c2VySWQYASABKAlSBnVzZXJJZBIWCgZjb252SWQYAiABKAlSBmNvbnZJZBIZCgVpc1RvcBgDIAEoCEgAUgVpc1RvcIgBARIhCglpc0Rpc3R1cmIYBCABKAhIAVIJaXNEaXN0dXJiiAEBEikKDW5vdGlmeVByZXZpZXcYBSABKAhIAlINbm90aWZ5UHJldmlld4gBARIlCgtub3RpZnlTb3VuZBgGIAEoCEgDUgtub3RpZnlTb3VuZIgBARIxChFub3RpZnlDdXN0b21Tb3VuZBgHIAEoCUgEUhFub3RpZnlDdXN0b21Tb3VuZIgBARIpCg1ub3RpZnlWaWJyYXRlGAggASgISAVSDW5vdGlmeVZpYnJhdGWIAQESHwoIaXNTaGllbGQYCSABKAhIBlIIaXNTaGllbGSIAQESGwoGY2hhdEJnGAogASgJSAdSBmNoYXRCZ4gBAUIICgZfaXNUb3BCDAoKX2lzRGlzdHVyYkIQCg5fbm90aWZ5UHJldmlld0IOCgxfbm90aWZ5U291bmRCFAoSX25vdGlmeUN1c3RvbVNvdW5kQhAKDl9ub3RpZnlWaWJyYXRlQgsKCV9pc1NoaWVsZEIJCgdfY2hhdEJn');
+@$core.Deprecated('Use convSettingProto2Descriptor instead')
+const ConvSettingProto2$json = const {
+  '1': 'ConvSettingProto2',
+  '2': const [
+    const {'1': 'userId', '3': 1, '4': 1, '5': 9, '10': 'userId'},
+    const {'1': 'convId', '3': 2, '4': 1, '5': 9, '10': 'convId'},
+    const {'1': 'isTop', '3': 3, '4': 1, '5': 5, '10': 'isTop'},
+    const {'1': 'isDisturb', '3': 4, '4': 1, '5': 5, '10': 'isDisturb'},
+    const {'1': 'notifyPreview', '3': 5, '4': 1, '5': 5, '10': 'notifyPreview'},
+    const {'1': 'notifySound', '3': 6, '4': 1, '5': 5, '10': 'notifySound'},
+    const {'1': 'notifyCustomSound', '3': 7, '4': 1, '5': 9, '10': 'notifyCustomSound'},
+    const {'1': 'notifyVibrate', '3': 8, '4': 1, '5': 5, '10': 'notifyVibrate'},
+    const {'1': 'isShield', '3': 9, '4': 1, '5': 5, '10': 'isShield'},
+    const {'1': 'chatBg', '3': 10, '4': 1, '5': 9, '10': 'chatBg'},
+  ],
+};
+
+/// Descriptor for `ConvSettingProto2`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List convSettingProto2Descriptor = $convert.base64Decode('ChFDb252U2V0dGluZ1Byb3RvMhIWCgZ1c2VySWQYASABKAlSBnVzZXJJZBIWCgZjb252SWQYAiABKAlSBmNvbnZJZBIUCgVpc1RvcBgDIAEoBVIFaXNUb3ASHAoJaXNEaXN0dXJiGAQgASgFUglpc0Rpc3R1cmISJAoNbm90aWZ5UHJldmlldxgFIAEoBVINbm90aWZ5UHJldmlldxIgCgtub3RpZnlTb3VuZBgGIAEoBVILbm90aWZ5U291bmQSLAoRbm90aWZ5Q3VzdG9tU291bmQYByABKAlSEW5vdGlmeUN1c3RvbVNvdW5kEiQKDW5vdGlmeVZpYnJhdGUYCCABKAVSDW5vdGlmeVZpYnJhdGUSGgoIaXNTaGllbGQYCSABKAVSCGlzU2hpZWxkEhYKBmNoYXRCZxgKIAEoCVIGY2hhdEJn');
 @$core.Deprecated('Use updateConvSettingReqDescriptor instead')
 const UpdateConvSettingReq$json = const {
   '1': 'UpdateConvSettingReq',
   '2': const [
     const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
     const {'1': 'convSetting', '3': 2, '4': 1, '5': 11, '6': '.pb.ConvSetting', '10': 'convSetting'},
+    const {'1': 'convSetting2', '3': 3, '4': 1, '5': 11, '6': '.pb.ConvSettingProto2', '10': 'convSetting2'},
   ],
 };
 
 /// Descriptor for `UpdateConvSettingReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List updateConvSettingReqDescriptor = $convert.base64Decode('ChRVcGRhdGVDb252U2V0dGluZ1JlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIxCgtjb252U2V0dGluZxgCIAEoCzIPLnBiLkNvbnZTZXR0aW5nUgtjb252U2V0dGluZw==');
+final $typed_data.Uint8List updateConvSettingReqDescriptor = $convert.base64Decode('ChRVcGRhdGVDb252U2V0dGluZ1JlcRIrCgljb21tb25SZXEYASABKAsyDS5wYi5Db21tb25SZXFSCWNvbW1vblJlcRIxCgtjb252U2V0dGluZxgCIAEoCzIPLnBiLkNvbnZTZXR0aW5nUgtjb252U2V0dGluZxI5Cgxjb252U2V0dGluZzIYAyABKAsyFS5wYi5Db252U2V0dGluZ1Byb3RvMlIMY29udlNldHRpbmcy');
 @$core.Deprecated('Use updateConvSettingRespDescriptor instead')
 const UpdateConvSettingResp$json = const {
   '1': 'UpdateConvSettingResp',
@@ -226,11 +246,12 @@ const GetConvSettingResp$json = const {
   '2': const [
     const {'1': 'commonResp', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonResp', '10': 'commonResp'},
     const {'1': 'convSettings', '3': 2, '4': 3, '5': 11, '6': '.pb.ConvSetting', '10': 'convSettings'},
+    const {'1': 'convSetting2s', '3': 3, '4': 3, '5': 11, '6': '.pb.ConvSettingProto2', '10': 'convSetting2s'},
   ],
 };
 
 /// Descriptor for `GetConvSettingResp`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getConvSettingRespDescriptor = $convert.base64Decode('ChJHZXRDb252U2V0dGluZ1Jlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASMwoMY29udlNldHRpbmdzGAIgAygLMg8ucGIuQ29udlNldHRpbmdSDGNvbnZTZXR0aW5ncw==');
+final $typed_data.Uint8List getConvSettingRespDescriptor = $convert.base64Decode('ChJHZXRDb252U2V0dGluZ1Jlc3ASLgoKY29tbW9uUmVzcBgBIAEoCzIOLnBiLkNvbW1vblJlc3BSCmNvbW1vblJlc3ASMwoMY29udlNldHRpbmdzGAIgAygLMg8ucGIuQ29udlNldHRpbmdSDGNvbnZTZXR0aW5ncxI7Cg1jb252U2V0dGluZzJzGAMgAygLMhUucGIuQ29udlNldHRpbmdQcm90bzJSDWNvbnZTZXR0aW5nMnM=');
 @$core.Deprecated('Use translateTextReqDescriptor instead')
 const TranslateTextReq$json = const {
   '1': 'TranslateTextReq',
@@ -340,6 +361,7 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> imServiceB
   '.pb.GetAllConvIdOfUserResp': GetAllConvIdOfUserResp$json,
   '.pb.UpdateConvSettingReq': UpdateConvSettingReq$json,
   '.pb.ConvSetting': ConvSetting$json,
+  '.pb.ConvSettingProto2': ConvSettingProto2$json,
   '.pb.UpdateConvSettingResp': UpdateConvSettingResp$json,
   '.pb.GetConvSettingReq': GetConvSettingReq$json,
   '.pb.GetConvSettingResp': GetConvSettingResp$json,

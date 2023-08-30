@@ -998,10 +998,184 @@ class ConvSetting extends $pb.GeneratedMessage {
   void clearChatBg() => clearField(10);
 }
 
+class ConvSettingProto2 extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ConvSettingProto2', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convId', protoName: 'convId')
+    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isTop', $pb.PbFieldType.O3, protoName: 'isTop')
+    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isDisturb', $pb.PbFieldType.O3, protoName: 'isDisturb')
+    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'notifyPreview', $pb.PbFieldType.O3, protoName: 'notifyPreview')
+    ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'notifySound', $pb.PbFieldType.O3, protoName: 'notifySound')
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'notifyCustomSound', protoName: 'notifyCustomSound')
+    ..a<$core.int>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'notifyVibrate', $pb.PbFieldType.O3, protoName: 'notifyVibrate')
+    ..a<$core.int>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isShield', $pb.PbFieldType.O3, protoName: 'isShield')
+    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'chatBg', protoName: 'chatBg')
+    ..hasRequiredFields = false
+  ;
+
+  ConvSettingProto2._() : super();
+  factory ConvSettingProto2({
+    $core.String? userId,
+    $core.String? convId,
+    $core.int? isTop,
+    $core.int? isDisturb,
+    $core.int? notifyPreview,
+    $core.int? notifySound,
+    $core.String? notifyCustomSound,
+    $core.int? notifyVibrate,
+    $core.int? isShield,
+    $core.String? chatBg,
+  }) {
+    final _result = create();
+    if (userId != null) {
+      _result.userId = userId;
+    }
+    if (convId != null) {
+      _result.convId = convId;
+    }
+    if (isTop != null) {
+      _result.isTop = isTop;
+    }
+    if (isDisturb != null) {
+      _result.isDisturb = isDisturb;
+    }
+    if (notifyPreview != null) {
+      _result.notifyPreview = notifyPreview;
+    }
+    if (notifySound != null) {
+      _result.notifySound = notifySound;
+    }
+    if (notifyCustomSound != null) {
+      _result.notifyCustomSound = notifyCustomSound;
+    }
+    if (notifyVibrate != null) {
+      _result.notifyVibrate = notifyVibrate;
+    }
+    if (isShield != null) {
+      _result.isShield = isShield;
+    }
+    if (chatBg != null) {
+      _result.chatBg = chatBg;
+    }
+    return _result;
+  }
+  factory ConvSettingProto2.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ConvSettingProto2.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ConvSettingProto2 clone() => ConvSettingProto2()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ConvSettingProto2 copyWith(void Function(ConvSettingProto2) updates) => super.copyWith((message) => updates(message as ConvSettingProto2)) as ConvSettingProto2; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ConvSettingProto2 create() => ConvSettingProto2._();
+  ConvSettingProto2 createEmptyInstance() => create();
+  static $pb.PbList<ConvSettingProto2> createRepeated() => $pb.PbList<ConvSettingProto2>();
+  @$core.pragma('dart2js:noInline')
+  static ConvSettingProto2 getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ConvSettingProto2>(create);
+  static ConvSettingProto2? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get userId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set userId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get convId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set convId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasConvId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearConvId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get isTop => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set isTop($core.int v) { $_setSignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasIsTop() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearIsTop() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.int get isDisturb => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set isDisturb($core.int v) { $_setSignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasIsDisturb() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearIsDisturb() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.int get notifyPreview => $_getIZ(4);
+  @$pb.TagNumber(5)
+  set notifyPreview($core.int v) { $_setSignedInt32(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasNotifyPreview() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearNotifyPreview() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.int get notifySound => $_getIZ(5);
+  @$pb.TagNumber(6)
+  set notifySound($core.int v) { $_setSignedInt32(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasNotifySound() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearNotifySound() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get notifyCustomSound => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set notifyCustomSound($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasNotifyCustomSound() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearNotifyCustomSound() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.int get notifyVibrate => $_getIZ(7);
+  @$pb.TagNumber(8)
+  set notifyVibrate($core.int v) { $_setSignedInt32(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasNotifyVibrate() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearNotifyVibrate() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.int get isShield => $_getIZ(8);
+  @$pb.TagNumber(9)
+  set isShield($core.int v) { $_setSignedInt32(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasIsShield() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearIsShield() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.String get chatBg => $_getSZ(9);
+  @$pb.TagNumber(10)
+  set chatBg($core.String v) { $_setString(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasChatBg() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearChatBg() => clearField(10);
+}
+
 class UpdateConvSettingReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateConvSettingReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOM<ConvSetting>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convSetting', protoName: 'convSetting', subBuilder: ConvSetting.create)
+    ..aOM<ConvSettingProto2>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convSetting2', protoName: 'convSetting2', subBuilder: ConvSettingProto2.create)
     ..hasRequiredFields = false
   ;
 
@@ -1009,6 +1183,7 @@ class UpdateConvSettingReq extends $pb.GeneratedMessage {
   factory UpdateConvSettingReq({
     $0.CommonReq? commonReq,
     ConvSetting? convSetting,
+    ConvSettingProto2? convSetting2,
   }) {
     final _result = create();
     if (commonReq != null) {
@@ -1016,6 +1191,9 @@ class UpdateConvSettingReq extends $pb.GeneratedMessage {
     }
     if (convSetting != null) {
       _result.convSetting = convSetting;
+    }
+    if (convSetting2 != null) {
+      _result.convSetting2 = convSetting2;
     }
     return _result;
   }
@@ -1061,6 +1239,17 @@ class UpdateConvSettingReq extends $pb.GeneratedMessage {
   void clearConvSetting() => clearField(2);
   @$pb.TagNumber(2)
   ConvSetting ensureConvSetting() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  ConvSettingProto2 get convSetting2 => $_getN(2);
+  @$pb.TagNumber(3)
+  set convSetting2(ConvSettingProto2 v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasConvSetting2() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearConvSetting2() => clearField(3);
+  @$pb.TagNumber(3)
+  ConvSettingProto2 ensureConvSetting2() => $_ensure(2);
 }
 
 class UpdateConvSettingResp extends $pb.GeneratedMessage {
@@ -1173,6 +1362,7 @@ class GetConvSettingResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetConvSettingResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..pc<ConvSetting>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convSettings', $pb.PbFieldType.PM, protoName: 'convSettings', subBuilder: ConvSetting.create)
+    ..pc<ConvSettingProto2>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convSetting2s', $pb.PbFieldType.PM, protoName: 'convSetting2s', subBuilder: ConvSettingProto2.create)
     ..hasRequiredFields = false
   ;
 
@@ -1180,6 +1370,7 @@ class GetConvSettingResp extends $pb.GeneratedMessage {
   factory GetConvSettingResp({
     $0.CommonResp? commonResp,
     $core.Iterable<ConvSetting>? convSettings,
+    $core.Iterable<ConvSettingProto2>? convSetting2s,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -1187,6 +1378,9 @@ class GetConvSettingResp extends $pb.GeneratedMessage {
     }
     if (convSettings != null) {
       _result.convSettings.addAll(convSettings);
+    }
+    if (convSetting2s != null) {
+      _result.convSetting2s.addAll(convSetting2s);
     }
     return _result;
   }
@@ -1224,6 +1418,9 @@ class GetConvSettingResp extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(2)
   $core.List<ConvSetting> get convSettings => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $core.List<ConvSettingProto2> get convSetting2s => $_getList(2);
 }
 
 class TranslateTextReq extends $pb.GeneratedMessage {

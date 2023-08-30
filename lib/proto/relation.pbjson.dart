@@ -10,6 +10,7 @@ import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 import 'common.pbjson.dart' as $0;
 import 'user.pbjson.dart' as $4;
+import 'im.pbjson.dart' as $3;
 
 @$core.Deprecated('Use requestAddFriendStatusDescriptor instead')
 const RequestAddFriendStatus$json = const {
@@ -277,6 +278,7 @@ const GetFriendListReq$json = const {
   '2': const [
     const {'1': 'commonReq', '3': 1, '4': 1, '5': 11, '6': '.pb.CommonReq', '10': 'commonReq'},
     const {'1': 'page', '3': 2, '4': 1, '5': 11, '6': '.pb.Page', '10': 'page'},
+    const {'1': 'withConvSetting', '3': 3, '4': 1, '5': 8, '10': 'withConvSetting'},
     const {'1': 'opt', '3': 10, '4': 1, '5': 14, '6': '.pb.GetFriendListReq.Opt', '10': 'opt'},
   ],
   '4': const [GetFriendListReq_Opt$json],
@@ -293,7 +295,7 @@ const GetFriendListReq_Opt$json = const {
 };
 
 /// Descriptor for `GetFriendListReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getFriendListReqDescriptor = $convert.base64Decode('ChBHZXRGcmllbmRMaXN0UmVxEisKCWNvbW1vblJlcRgBIAEoCzINLnBiLkNvbW1vblJlcVIJY29tbW9uUmVxEhwKBHBhZ2UYAiABKAsyCC5wYi5QYWdlUgRwYWdlEioKA29wdBgKIAEoDjIYLnBiLkdldEZyaWVuZExpc3RSZXEuT3B0UgNvcHQiPgoDT3B0EhAKDFdpdGhCYXNlSW5mbxAAEgoKBk9ubHlJZBABEhkKFVdpdGhCYXNlSW5mb0FuZFJlbWFyaxAC');
+final $typed_data.Uint8List getFriendListReqDescriptor = $convert.base64Decode('ChBHZXRGcmllbmRMaXN0UmVxEisKCWNvbW1vblJlcRgBIAEoCzINLnBiLkNvbW1vblJlcVIJY29tbW9uUmVxEhwKBHBhZ2UYAiABKAsyCC5wYi5QYWdlUgRwYWdlEigKD3dpdGhDb252U2V0dGluZxgDIAEoCFIPd2l0aENvbnZTZXR0aW5nEioKA29wdBgKIAEoDjIYLnBiLkdldEZyaWVuZExpc3RSZXEuT3B0UgNvcHQiPgoDT3B0EhAKDFdpdGhCYXNlSW5mbxAAEgoKBk9ubHlJZBABEhkKFVdpdGhCYXNlSW5mb0FuZFJlbWFyaxAC');
 @$core.Deprecated('Use getFriendListRespDescriptor instead')
 const GetFriendListResp$json = const {
   '1': 'GetFriendListResp',
@@ -302,8 +304,10 @@ const GetFriendListResp$json = const {
     const {'1': 'ids', '3': 2, '4': 3, '5': 9, '10': 'ids'},
     const {'1': 'userMap', '3': 3, '4': 3, '5': 11, '6': '.pb.GetFriendListResp.UserMapEntry', '10': 'userMap'},
     const {'1': 'remarkMap', '3': 4, '4': 3, '5': 11, '6': '.pb.GetFriendListResp.RemarkMapEntry', '10': 'remarkMap'},
+    const {'1': 'convSettingMap', '3': 5, '4': 3, '5': 11, '6': '.pb.GetFriendListResp.ConvSettingMapEntry', '10': 'convSettingMap'},
+    const {'1': 'convSetting2Map', '3': 6, '4': 3, '5': 11, '6': '.pb.GetFriendListResp.ConvSetting2MapEntry', '10': 'convSetting2Map'},
   ],
-  '3': const [GetFriendListResp_UserMapEntry$json, GetFriendListResp_RemarkMapEntry$json],
+  '3': const [GetFriendListResp_UserMapEntry$json, GetFriendListResp_RemarkMapEntry$json, GetFriendListResp_ConvSettingMapEntry$json, GetFriendListResp_ConvSetting2MapEntry$json],
 };
 
 @$core.Deprecated('Use getFriendListRespDescriptor instead')
@@ -326,8 +330,28 @@ const GetFriendListResp_RemarkMapEntry$json = const {
   '7': const {'7': true},
 };
 
+@$core.Deprecated('Use getFriendListRespDescriptor instead')
+const GetFriendListResp_ConvSettingMapEntry$json = const {
+  '1': 'ConvSettingMapEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.pb.ConvSetting', '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+@$core.Deprecated('Use getFriendListRespDescriptor instead')
+const GetFriendListResp_ConvSetting2MapEntry$json = const {
+  '1': 'ConvSetting2MapEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.pb.ConvSettingProto2', '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
 /// Descriptor for `GetFriendListResp`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getFriendListRespDescriptor = $convert.base64Decode('ChFHZXRGcmllbmRMaXN0UmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcBIQCgNpZHMYAiADKAlSA2lkcxI8Cgd1c2VyTWFwGAMgAygLMiIucGIuR2V0RnJpZW5kTGlzdFJlc3AuVXNlck1hcEVudHJ5Ugd1c2VyTWFwEkIKCXJlbWFya01hcBgEIAMoCzIkLnBiLkdldEZyaWVuZExpc3RSZXNwLlJlbWFya01hcEVudHJ5UglyZW1hcmtNYXAaTAoMVXNlck1hcEVudHJ5EhAKA2tleRgBIAEoCVIDa2V5EiYKBXZhbHVlGAIgASgLMhAucGIuVXNlckJhc2VJbmZvUgV2YWx1ZToCOAEaPAoOUmVtYXJrTWFwRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');
+final $typed_data.Uint8List getFriendListRespDescriptor = $convert.base64Decode('ChFHZXRGcmllbmRMaXN0UmVzcBIuCgpjb21tb25SZXNwGAEgASgLMg4ucGIuQ29tbW9uUmVzcFIKY29tbW9uUmVzcBIQCgNpZHMYAiADKAlSA2lkcxI8Cgd1c2VyTWFwGAMgAygLMiIucGIuR2V0RnJpZW5kTGlzdFJlc3AuVXNlck1hcEVudHJ5Ugd1c2VyTWFwEkIKCXJlbWFya01hcBgEIAMoCzIkLnBiLkdldEZyaWVuZExpc3RSZXNwLlJlbWFya01hcEVudHJ5UglyZW1hcmtNYXASUQoOY29udlNldHRpbmdNYXAYBSADKAsyKS5wYi5HZXRGcmllbmRMaXN0UmVzcC5Db252U2V0dGluZ01hcEVudHJ5Ug5jb252U2V0dGluZ01hcBJUCg9jb252U2V0dGluZzJNYXAYBiADKAsyKi5wYi5HZXRGcmllbmRMaXN0UmVzcC5Db252U2V0dGluZzJNYXBFbnRyeVIPY29udlNldHRpbmcyTWFwGkwKDFVzZXJNYXBFbnRyeRIQCgNrZXkYASABKAlSA2tleRImCgV2YWx1ZRgCIAEoCzIQLnBiLlVzZXJCYXNlSW5mb1IFdmFsdWU6AjgBGjwKDlJlbWFya01hcEVudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgJUgV2YWx1ZToCOAEaUgoTQ29udlNldHRpbmdNYXBFbnRyeRIQCgNrZXkYASABKAlSA2tleRIlCgV2YWx1ZRgCIAEoCzIPLnBiLkNvbnZTZXR0aW5nUgV2YWx1ZToCOAEaWQoUQ29udlNldHRpbmcyTWFwRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSKwoFdmFsdWUYAiABKAsyFS5wYi5Db252U2V0dGluZ1Byb3RvMlIFdmFsdWU6AjgB');
 @$core.Deprecated('Use updateUserRemarkReqDescriptor instead')
 const UpdateUserRemarkReq$json = const {
   '1': 'UpdateUserRemarkReq',
@@ -551,6 +575,10 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> relationSe
   '.pb.BirthdayInfo': $4.BirthdayInfo$json,
   '.pb.IpRegion': $0.IpRegion$json,
   '.pb.GetFriendListResp.RemarkMapEntry': GetFriendListResp_RemarkMapEntry$json,
+  '.pb.GetFriendListResp.ConvSettingMapEntry': GetFriendListResp_ConvSettingMapEntry$json,
+  '.pb.ConvSetting': $3.ConvSetting$json,
+  '.pb.GetFriendListResp.ConvSetting2MapEntry': GetFriendListResp_ConvSetting2MapEntry$json,
+  '.pb.ConvSettingProto2': $3.ConvSettingProto2$json,
   '.pb.MapUserRemarkReq': MapUserRemarkReq$json,
   '.pb.MapUserRemarkResp': MapUserRemarkResp$json,
   '.pb.MapUserRemarkResp.RemarkMapEntry': MapUserRemarkResp_RemarkMapEntry$json,

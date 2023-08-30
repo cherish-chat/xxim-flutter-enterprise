@@ -13,6 +13,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'common.pb.dart' as $0;
 import 'user.pb.dart' as $4;
+import 'im.pb.dart' as $3;
 
 import 'group.pbenum.dart';
 
@@ -331,8 +332,10 @@ class GetGroupHomeResp extends $pb.GeneratedMessage {
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'introduction')
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner')
     ..aInt64(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dismissTime', protoName: 'dismissTime')
+    ..pc<$4.UserBaseInfo>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'admins', $pb.PbFieldType.PM, subBuilder: $4.UserBaseInfo.create)
     ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'allMute', protoName: 'allMute')
     ..aOB(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberCanAddFriend', protoName: 'memberCanAddFriend')
+    ..aOB(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'canAddMember', protoName: 'canAddMember')
     ..pc<GetGroupHomeResp_MemberStatistics>(21, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberStatistics', $pb.PbFieldType.PM, protoName: 'memberStatistics', subBuilder: GetGroupHomeResp_MemberStatistics.create)
     ..hasRequiredFields = false
   ;
@@ -348,8 +351,10 @@ class GetGroupHomeResp extends $pb.GeneratedMessage {
     $core.String? introduction,
     $core.String? owner,
     $fixnum.Int64? dismissTime,
+    $core.Iterable<$4.UserBaseInfo>? admins,
     $core.bool? allMute,
     $core.bool? memberCanAddFriend,
+    $core.bool? canAddMember,
     $core.Iterable<GetGroupHomeResp_MemberStatistics>? memberStatistics,
   }) {
     final _result = create();
@@ -380,11 +385,17 @@ class GetGroupHomeResp extends $pb.GeneratedMessage {
     if (dismissTime != null) {
       _result.dismissTime = dismissTime;
     }
+    if (admins != null) {
+      _result.admins.addAll(admins);
+    }
     if (allMute != null) {
       _result.allMute = allMute;
     }
     if (memberCanAddFriend != null) {
       _result.memberCanAddFriend = memberCanAddFriend;
+    }
+    if (canAddMember != null) {
+      _result.canAddMember = canAddMember;
     }
     if (memberStatistics != null) {
       _result.memberStatistics.addAll(memberStatistics);
@@ -495,26 +506,38 @@ class GetGroupHomeResp extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   void clearDismissTime() => clearField(9);
 
+  @$pb.TagNumber(10)
+  $core.List<$4.UserBaseInfo> get admins => $_getList(9);
+
   @$pb.TagNumber(11)
-  $core.bool get allMute => $_getBF(9);
+  $core.bool get allMute => $_getBF(10);
   @$pb.TagNumber(11)
-  set allMute($core.bool v) { $_setBool(9, v); }
+  set allMute($core.bool v) { $_setBool(10, v); }
   @$pb.TagNumber(11)
-  $core.bool hasAllMute() => $_has(9);
+  $core.bool hasAllMute() => $_has(10);
   @$pb.TagNumber(11)
   void clearAllMute() => clearField(11);
 
   @$pb.TagNumber(12)
-  $core.bool get memberCanAddFriend => $_getBF(10);
+  $core.bool get memberCanAddFriend => $_getBF(11);
   @$pb.TagNumber(12)
-  set memberCanAddFriend($core.bool v) { $_setBool(10, v); }
+  set memberCanAddFriend($core.bool v) { $_setBool(11, v); }
   @$pb.TagNumber(12)
-  $core.bool hasMemberCanAddFriend() => $_has(10);
+  $core.bool hasMemberCanAddFriend() => $_has(11);
   @$pb.TagNumber(12)
   void clearMemberCanAddFriend() => clearField(12);
 
+  @$pb.TagNumber(13)
+  $core.bool get canAddMember => $_getBF(12);
+  @$pb.TagNumber(13)
+  set canAddMember($core.bool v) { $_setBool(12, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasCanAddMember() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearCanAddMember() => clearField(13);
+
   @$pb.TagNumber(21)
-  $core.List<GetGroupHomeResp_MemberStatistics> get memberStatistics => $_getList(11);
+  $core.List<GetGroupHomeResp_MemberStatistics> get memberStatistics => $_getList(13);
 }
 
 class InviteFriendToGroupReq extends $pb.GeneratedMessage {
@@ -2605,6 +2628,7 @@ class EditGroupInfoReq extends $pb.GeneratedMessage {
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'introduction')
     ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'allMute', protoName: 'allMute')
     ..aOB(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberCanAddFriend', protoName: 'memberCanAddFriend')
+    ..aOB(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'canAddMember', protoName: 'canAddMember')
     ..hasRequiredFields = false
   ;
 
@@ -2617,6 +2641,7 @@ class EditGroupInfoReq extends $pb.GeneratedMessage {
     $core.String? introduction,
     $core.bool? allMute,
     $core.bool? memberCanAddFriend,
+    $core.bool? canAddMember,
   }) {
     final _result = create();
     if (commonReq != null) {
@@ -2639,6 +2664,9 @@ class EditGroupInfoReq extends $pb.GeneratedMessage {
     }
     if (memberCanAddFriend != null) {
       _result.memberCanAddFriend = memberCanAddFriend;
+    }
+    if (canAddMember != null) {
+      _result.canAddMember = canAddMember;
     }
     return _result;
   }
@@ -2727,6 +2755,15 @@ class EditGroupInfoReq extends $pb.GeneratedMessage {
   $core.bool hasMemberCanAddFriend() => $_has(6);
   @$pb.TagNumber(12)
   void clearMemberCanAddFriend() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.bool get canAddMember => $_getBF(7);
+  @$pb.TagNumber(13)
+  set canAddMember($core.bool v) { $_setBool(7, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasCanAddMember() => $_has(7);
+  @$pb.TagNumber(13)
+  void clearCanAddMember() => clearField(13);
 }
 
 class ResetGroupInfoReq extends $pb.GeneratedMessage {
@@ -2738,6 +2775,7 @@ class ResetGroupInfoReq extends $pb.GeneratedMessage {
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'introduction')
     ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'allMute', protoName: 'allMute')
     ..aOB(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberCanAddFriend', protoName: 'memberCanAddFriend')
+    ..aOB(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'canAddMember', protoName: 'canAddMember')
     ..hasRequiredFields = false
   ;
 
@@ -2750,6 +2788,7 @@ class ResetGroupInfoReq extends $pb.GeneratedMessage {
     $core.String? introduction,
     $core.bool? allMute,
     $core.bool? memberCanAddFriend,
+    $core.bool? canAddMember,
   }) {
     final _result = create();
     if (commonReq != null) {
@@ -2772,6 +2811,9 @@ class ResetGroupInfoReq extends $pb.GeneratedMessage {
     }
     if (memberCanAddFriend != null) {
       _result.memberCanAddFriend = memberCanAddFriend;
+    }
+    if (canAddMember != null) {
+      _result.canAddMember = canAddMember;
     }
     return _result;
   }
@@ -2860,6 +2902,15 @@ class ResetGroupInfoReq extends $pb.GeneratedMessage {
   $core.bool hasMemberCanAddFriend() => $_has(6);
   @$pb.TagNumber(12)
   void clearMemberCanAddFriend() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.bool get canAddMember => $_getBF(7);
+  @$pb.TagNumber(13)
+  set canAddMember($core.bool v) { $_setBool(7, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasCanAddMember() => $_has(7);
+  @$pb.TagNumber(13)
+  void clearCanAddMember() => clearField(13);
 }
 
 class EditGroupInfoResp extends $pb.GeneratedMessage {
@@ -3594,6 +3645,7 @@ class SearchGroupMemberReq extends $pb.GeneratedMessage {
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'keyword')
     ..pPS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'orInUserIds', protoName: 'orInUserIds')
     ..aOM<$0.Page>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
+    ..pc<GroupRole>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mustRoles', $pb.PbFieldType.KE, protoName: 'mustRoles', valueOf: GroupRole.valueOf, enumValues: GroupRole.values, defaultEnumValue: GroupRole.MEMBER)
     ..hasRequiredFields = false
   ;
 
@@ -3604,6 +3656,7 @@ class SearchGroupMemberReq extends $pb.GeneratedMessage {
     $core.String? keyword,
     $core.Iterable<$core.String>? orInUserIds,
     $0.Page? page,
+    $core.Iterable<GroupRole>? mustRoles,
   }) {
     final _result = create();
     if (commonReq != null) {
@@ -3620,6 +3673,9 @@ class SearchGroupMemberReq extends $pb.GeneratedMessage {
     }
     if (page != null) {
       _result.page = page;
+    }
+    if (mustRoles != null) {
+      _result.mustRoles.addAll(mustRoles);
     }
     return _result;
   }
@@ -3686,6 +3742,9 @@ class SearchGroupMemberReq extends $pb.GeneratedMessage {
   void clearPage() => clearField(5);
   @$pb.TagNumber(5)
   $0.Page ensurePage() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  $core.List<GroupRole> get mustRoles => $_getList(5);
 }
 
 class SearchGroupMemberResp extends $pb.GeneratedMessage {
@@ -3811,6 +3870,7 @@ class GetMyGroupListReq extends $pb.GeneratedMessage {
     ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOM<$0.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
     ..aOM<GetMyGroupListReq_Filter>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'filter', subBuilder: GetMyGroupListReq_Filter.create)
+    ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'withConvSetting', protoName: 'withConvSetting')
     ..e<GetMyGroupListReq_Opt>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'opt', $pb.PbFieldType.OE, defaultOrMaker: GetMyGroupListReq_Opt.DEFAULT, valueOf: GetMyGroupListReq_Opt.valueOf, enumValues: GetMyGroupListReq_Opt.values)
     ..hasRequiredFields = false
   ;
@@ -3820,6 +3880,7 @@ class GetMyGroupListReq extends $pb.GeneratedMessage {
     $0.CommonReq? commonReq,
     $0.Page? page,
     GetMyGroupListReq_Filter? filter,
+    $core.bool? withConvSetting,
     GetMyGroupListReq_Opt? opt,
   }) {
     final _result = create();
@@ -3831,6 +3892,9 @@ class GetMyGroupListReq extends $pb.GeneratedMessage {
     }
     if (filter != null) {
       _result.filter = filter;
+    }
+    if (withConvSetting != null) {
+      _result.withConvSetting = withConvSetting;
     }
     if (opt != null) {
       _result.opt = opt;
@@ -3891,12 +3955,21 @@ class GetMyGroupListReq extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   GetMyGroupListReq_Filter ensureFilter() => $_ensure(2);
 
+  @$pb.TagNumber(4)
+  $core.bool get withConvSetting => $_getBF(3);
+  @$pb.TagNumber(4)
+  set withConvSetting($core.bool v) { $_setBool(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasWithConvSetting() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearWithConvSetting() => clearField(4);
+
   @$pb.TagNumber(10)
-  GetMyGroupListReq_Opt get opt => $_getN(3);
+  GetMyGroupListReq_Opt get opt => $_getN(4);
   @$pb.TagNumber(10)
   set opt(GetMyGroupListReq_Opt v) { setField(10, v); }
   @$pb.TagNumber(10)
-  $core.bool hasOpt() => $_has(3);
+  $core.bool hasOpt() => $_has(4);
   @$pb.TagNumber(10)
   void clearOpt() => clearField(10);
 }
@@ -3910,6 +3983,7 @@ class GroupBaseInfo extends $pb.GeneratedMessage {
     ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dismissTime', protoName: 'dismissTime')
     ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'allMute', protoName: 'allMute')
     ..aOB(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberCanAddFriend', protoName: 'memberCanAddFriend')
+    ..aOB(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'canAddMember', protoName: 'canAddMember')
     ..aOM<GroupMemberInfo>(31, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'myMemberInfo', protoName: 'myMemberInfo', subBuilder: GroupMemberInfo.create)
     ..hasRequiredFields = false
   ;
@@ -3923,6 +3997,7 @@ class GroupBaseInfo extends $pb.GeneratedMessage {
     $fixnum.Int64? dismissTime,
     $core.bool? allMute,
     $core.bool? memberCanAddFriend,
+    $core.bool? canAddMember,
     GroupMemberInfo? myMemberInfo,
   }) {
     final _result = create();
@@ -3946,6 +4021,9 @@ class GroupBaseInfo extends $pb.GeneratedMessage {
     }
     if (memberCanAddFriend != null) {
       _result.memberCanAddFriend = memberCanAddFriend;
+    }
+    if (canAddMember != null) {
+      _result.canAddMember = canAddMember;
     }
     if (myMemberInfo != null) {
       _result.myMemberInfo = myMemberInfo;
@@ -4036,16 +4114,25 @@ class GroupBaseInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(12)
   void clearMemberCanAddFriend() => clearField(12);
 
+  @$pb.TagNumber(13)
+  $core.bool get canAddMember => $_getBF(7);
+  @$pb.TagNumber(13)
+  set canAddMember($core.bool v) { $_setBool(7, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasCanAddMember() => $_has(7);
+  @$pb.TagNumber(13)
+  void clearCanAddMember() => clearField(13);
+
   @$pb.TagNumber(31)
-  GroupMemberInfo get myMemberInfo => $_getN(7);
+  GroupMemberInfo get myMemberInfo => $_getN(8);
   @$pb.TagNumber(31)
   set myMemberInfo(GroupMemberInfo v) { setField(31, v); }
   @$pb.TagNumber(31)
-  $core.bool hasMyMemberInfo() => $_has(7);
+  $core.bool hasMyMemberInfo() => $_has(8);
   @$pb.TagNumber(31)
   void clearMyMemberInfo() => clearField(31);
   @$pb.TagNumber(31)
-  GroupMemberInfo ensureMyMemberInfo() => $_ensure(7);
+  GroupMemberInfo ensureMyMemberInfo() => $_ensure(8);
 }
 
 class GetMyGroupListResp extends $pb.GeneratedMessage {
@@ -4053,6 +4140,8 @@ class GetMyGroupListResp extends $pb.GeneratedMessage {
     ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..m<$core.String, GroupBaseInfo>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupMap', protoName: 'groupMap', entryClassName: 'GetMyGroupListResp.GroupMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: GroupBaseInfo.create, packageName: const $pb.PackageName('pb'))
     ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ids')
+    ..m<$core.String, $3.ConvSetting>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convSettingMap', protoName: 'convSettingMap', entryClassName: 'GetMyGroupListResp.ConvSettingMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $3.ConvSetting.create, packageName: const $pb.PackageName('pb'))
+    ..m<$core.String, $3.ConvSettingProto2>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convSetting2Map', protoName: 'convSetting2Map', entryClassName: 'GetMyGroupListResp.ConvSetting2MapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $3.ConvSettingProto2.create, packageName: const $pb.PackageName('pb'))
     ..hasRequiredFields = false
   ;
 
@@ -4061,6 +4150,8 @@ class GetMyGroupListResp extends $pb.GeneratedMessage {
     $0.CommonResp? commonResp,
     $core.Map<$core.String, GroupBaseInfo>? groupMap,
     $core.Iterable<$core.String>? ids,
+    $core.Map<$core.String, $3.ConvSetting>? convSettingMap,
+    $core.Map<$core.String, $3.ConvSettingProto2>? convSetting2Map,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -4071,6 +4162,12 @@ class GetMyGroupListResp extends $pb.GeneratedMessage {
     }
     if (ids != null) {
       _result.ids.addAll(ids);
+    }
+    if (convSettingMap != null) {
+      _result.convSettingMap.addAll(convSettingMap);
+    }
+    if (convSetting2Map != null) {
+      _result.convSetting2Map.addAll(convSetting2Map);
     }
     return _result;
   }
@@ -4111,6 +4208,12 @@ class GetMyGroupListResp extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(3)
   $core.List<$core.String> get ids => $_getList(2);
+
+  @$pb.TagNumber(5)
+  $core.Map<$core.String, $3.ConvSetting> get convSettingMap => $_getMap(3);
+
+  @$pb.TagNumber(6)
+  $core.Map<$core.String, $3.ConvSettingProto2> get convSetting2Map => $_getMap(4);
 }
 
 class MapGroupByIdsReq extends $pb.GeneratedMessage {

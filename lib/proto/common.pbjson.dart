@@ -52,11 +52,12 @@ const NoticeType$json = const {
     const {'1': 'INVALID', '2': 0},
     const {'1': 'READ', '2': 1},
     const {'1': 'EDIT', '2': 2},
+    const {'1': 'AT', '2': 3},
   ],
 };
 
 /// Descriptor for `NoticeType`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List noticeTypeDescriptor = $convert.base64Decode('CgpOb3RpY2VUeXBlEgsKB0lOVkFMSUQQABIICgRSRUFEEAESCAoERURJVBAC');
+final $typed_data.Uint8List noticeTypeDescriptor = $convert.base64Decode('CgpOb3RpY2VUeXBlEgsKB0lOVkFMSUQQABIICgRSRUFEEAESCAoERURJVBACEgYKAkFUEAM=');
 @$core.Deprecated('Use mStrDescriptor instead')
 const MStr$json = const {
   '1': 'MStr',

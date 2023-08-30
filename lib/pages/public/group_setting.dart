@@ -28,6 +28,7 @@ class GroupSettingLogic extends GetxController {
 
   RxBool groupMembersMute = false.obs;
   RxBool groupMembersChat = false.obs;
+  RxBool groupMembersCanAddMember = false.obs;
 
   @override
   void onInit() {
@@ -37,6 +38,7 @@ class GroupSettingLogic extends GetxController {
     }).first;
     groupMembersMute.value = groupBaseInfo.allMute;
     groupMembersChat.value = groupBaseInfo.memberCanAddFriend;
+    groupMembersCanAddMember.value = groupBaseInfo.canAddMember;
     super.onInit();
   }
 
@@ -67,6 +69,22 @@ class GroupSettingLogic extends GetxController {
       onSuccess: (data) {},
       onError: (code, error) {
         groupMembersChat.value = false;
+        Tool.showToast("失败".tr);
+      },
+    );
+  }
+
+  void editGroupCanAddMember(String groupId) {
+    XXIM.instance.customRequest<EditGroupInfoResp>(
+      method: "/v1/group/editGroupInfo",
+      req: EditGroupInfoReq(
+        groupId: groupId,
+        canAddMember: groupMembersCanAddMember.value,
+      ),
+      resp: EditGroupInfoResp.create,
+      onSuccess: (data) {},
+      onError: (code, error) {
+        groupMembersCanAddMember.value = false;
         Tool.showToast("失败".tr);
       },
     );
@@ -145,6 +163,16 @@ class GroupSettingPage extends StatelessWidget {
                                 (value) {
                                   logic.groupMembersChat.value = value;
                                   logic.editGroupChat(groupId);
+                                },
+                              ),
+                            ),
+                            Obx(
+                              () => _buildItem(
+                                "禁止添加群成员".tr,
+                                logic.groupMembersCanAddMember.value,
+                                (value) {
+                                  logic.groupMembersCanAddMember.value = value;
+                                  logic.editGroupCanAddMember(groupId);
                                 },
                               ),
                             ),

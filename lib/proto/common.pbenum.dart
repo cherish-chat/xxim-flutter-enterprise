@@ -73,11 +73,13 @@ class NoticeType extends $pb.ProtobufEnum {
   static const NoticeType INVALID = NoticeType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'INVALID');
   static const NoticeType READ = NoticeType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'READ');
   static const NoticeType EDIT = NoticeType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EDIT');
+  static const NoticeType AT = NoticeType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'AT');
 
   static const $core.List<NoticeType> values = <NoticeType> [
     INVALID,
     READ,
     EDIT,
+    AT,
   ];
 
   static final $core.Map<$core.int, NoticeType> _byValue = $pb.ProtobufEnum.initByValue(values);

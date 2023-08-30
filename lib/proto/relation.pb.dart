@@ -13,6 +13,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'common.pb.dart' as $0;
 import 'user.pb.dart' as $4;
+import 'im.pb.dart' as $3;
 
 import 'relation.pbenum.dart';
 
@@ -1207,6 +1208,7 @@ class GetFriendListReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetFriendListReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOM<$0.CommonReq>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonReq', protoName: 'commonReq', subBuilder: $0.CommonReq.create)
     ..aOM<$0.Page>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'page', subBuilder: $0.Page.create)
+    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'withConvSetting', protoName: 'withConvSetting')
     ..e<GetFriendListReq_Opt>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'opt', $pb.PbFieldType.OE, defaultOrMaker: GetFriendListReq_Opt.WithBaseInfo, valueOf: GetFriendListReq_Opt.valueOf, enumValues: GetFriendListReq_Opt.values)
     ..hasRequiredFields = false
   ;
@@ -1215,6 +1217,7 @@ class GetFriendListReq extends $pb.GeneratedMessage {
   factory GetFriendListReq({
     $0.CommonReq? commonReq,
     $0.Page? page,
+    $core.bool? withConvSetting,
     GetFriendListReq_Opt? opt,
   }) {
     final _result = create();
@@ -1223,6 +1226,9 @@ class GetFriendListReq extends $pb.GeneratedMessage {
     }
     if (page != null) {
       _result.page = page;
+    }
+    if (withConvSetting != null) {
+      _result.withConvSetting = withConvSetting;
     }
     if (opt != null) {
       _result.opt = opt;
@@ -1272,12 +1278,21 @@ class GetFriendListReq extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $0.Page ensurePage() => $_ensure(1);
 
+  @$pb.TagNumber(3)
+  $core.bool get withConvSetting => $_getBF(2);
+  @$pb.TagNumber(3)
+  set withConvSetting($core.bool v) { $_setBool(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasWithConvSetting() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearWithConvSetting() => clearField(3);
+
   @$pb.TagNumber(10)
-  GetFriendListReq_Opt get opt => $_getN(2);
+  GetFriendListReq_Opt get opt => $_getN(3);
   @$pb.TagNumber(10)
   set opt(GetFriendListReq_Opt v) { setField(10, v); }
   @$pb.TagNumber(10)
-  $core.bool hasOpt() => $_has(2);
+  $core.bool hasOpt() => $_has(3);
   @$pb.TagNumber(10)
   void clearOpt() => clearField(10);
 }
@@ -1288,6 +1303,8 @@ class GetFriendListResp extends $pb.GeneratedMessage {
     ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ids')
     ..m<$core.String, $4.UserBaseInfo>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userMap', protoName: 'userMap', entryClassName: 'GetFriendListResp.UserMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $4.UserBaseInfo.create, packageName: const $pb.PackageName('pb'))
     ..m<$core.String, $core.String>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'remarkMap', protoName: 'remarkMap', entryClassName: 'GetFriendListResp.RemarkMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
+    ..m<$core.String, $3.ConvSetting>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convSettingMap', protoName: 'convSettingMap', entryClassName: 'GetFriendListResp.ConvSettingMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $3.ConvSetting.create, packageName: const $pb.PackageName('pb'))
+    ..m<$core.String, $3.ConvSettingProto2>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convSetting2Map', protoName: 'convSetting2Map', entryClassName: 'GetFriendListResp.ConvSetting2MapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $3.ConvSettingProto2.create, packageName: const $pb.PackageName('pb'))
     ..hasRequiredFields = false
   ;
 
@@ -1297,6 +1314,8 @@ class GetFriendListResp extends $pb.GeneratedMessage {
     $core.Iterable<$core.String>? ids,
     $core.Map<$core.String, $4.UserBaseInfo>? userMap,
     $core.Map<$core.String, $core.String>? remarkMap,
+    $core.Map<$core.String, $3.ConvSetting>? convSettingMap,
+    $core.Map<$core.String, $3.ConvSettingProto2>? convSetting2Map,
   }) {
     final _result = create();
     if (commonResp != null) {
@@ -1310,6 +1329,12 @@ class GetFriendListResp extends $pb.GeneratedMessage {
     }
     if (remarkMap != null) {
       _result.remarkMap.addAll(remarkMap);
+    }
+    if (convSettingMap != null) {
+      _result.convSettingMap.addAll(convSettingMap);
+    }
+    if (convSetting2Map != null) {
+      _result.convSetting2Map.addAll(convSetting2Map);
     }
     return _result;
   }
@@ -1353,6 +1378,12 @@ class GetFriendListResp extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(4)
   $core.Map<$core.String, $core.String> get remarkMap => $_getMap(3);
+
+  @$pb.TagNumber(5)
+  $core.Map<$core.String, $3.ConvSetting> get convSettingMap => $_getMap(4);
+
+  @$pb.TagNumber(6)
+  $core.Map<$core.String, $3.ConvSettingProto2> get convSetting2Map => $_getMap(5);
 }
 
 class UpdateUserRemarkReq extends $pb.GeneratedMessage {
