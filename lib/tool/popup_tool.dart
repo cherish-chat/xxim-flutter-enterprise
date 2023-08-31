@@ -136,7 +136,7 @@ class PopupTool {
               extMap["translateContent"] = data.result;
               msgModel.ext = json.encode(extMap);
               ChatLogic.logic(msgModel.convId)?.update(
-                [ChatMsgItem.getId(msgModel.clientMsgId)],
+                [chatItemId(msgModel.clientMsgId)],
               );
             },
             onError: (code, error) {

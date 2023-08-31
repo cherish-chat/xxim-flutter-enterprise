@@ -171,7 +171,7 @@ class ChatLogic extends GetxController {
     });
     if (index != -1) {
       msgModelList[index] = msgModel;
-      update([_getItemId(msgModel)]);
+      update([chatItemId(msgModel.clientMsgId)]);
     } else {
       msgModelList.insert(0, msgModel);
       update(["list"]);
@@ -368,7 +368,7 @@ class ChatLogic extends GetxController {
       update(["list"]);
     } else {
       msgModel.sendStatus = SendStatus.sending;
-      update([_getItemId(msgModel)]);
+      update([chatItemId(msgModel.clientMsgId)]);
     }
     try {
       ImageContent content = ImageContent.fromJson(msgModel.content);
@@ -393,7 +393,7 @@ class ChatLogic extends GetxController {
       sendMsgList([msgModel]);
     } catch (_) {
       msgModel.sendStatus = SendStatus.failed;
-      update([_getItemId(msgModel)]);
+      update([chatItemId(msgModel.clientMsgId)]);
     }
   }
 
@@ -418,7 +418,7 @@ class ChatLogic extends GetxController {
       update(["list"]);
     } else {
       msgModel.sendStatus = SendStatus.sending;
-      update([_getItemId(msgModel)]);
+      update([chatItemId(msgModel.clientMsgId)]);
     }
     try {
       AudioContent content = AudioContent.fromJson(msgModel.content);
@@ -443,7 +443,7 @@ class ChatLogic extends GetxController {
       sendMsgList([msgModel]);
     } catch (_) {
       msgModel.sendStatus = SendStatus.failed;
-      update([_getItemId(msgModel)]);
+      update([chatItemId(msgModel.clientMsgId)]);
     }
   }
 
@@ -468,7 +468,7 @@ class ChatLogic extends GetxController {
       update(["list"]);
     } else {
       msgModel.sendStatus = SendStatus.sending;
-      update([_getItemId(msgModel)]);
+      update([chatItemId(msgModel.clientMsgId)]);
     }
     try {
       VideoContent content = VideoContent.fromJson(msgModel.content);
@@ -507,7 +507,7 @@ class ChatLogic extends GetxController {
       sendMsgList([msgModel]);
     } catch (_) {
       msgModel.sendStatus = SendStatus.failed;
-      update([_getItemId(msgModel)]);
+      update([chatItemId(msgModel.clientMsgId)]);
     }
   }
 
@@ -554,7 +554,7 @@ class ChatLogic extends GetxController {
         ids.add("list");
       } else {
         msgModel.sendStatus = SendStatus.sending;
-        ids.add(_getItemId(msgModel));
+        ids.add(chatItemId(msgModel.clientMsgId));
       }
     }
     if (ids.isNotEmpty) update(ids);
@@ -573,18 +573,9 @@ class ChatLogic extends GetxController {
       } else {
         msgModel.sendStatus = SendStatus.failed;
       }
-      ids.add(_getItemId(msgModel));
+      ids.add(chatItemId(msgModel.clientMsgId));
     }
     if (ids.isNotEmpty) update(ids);
-  }
-
-  String _getItemId(MsgModel msgModel) {
-    int contentType = msgModel.contentType;
-    if (contentType == MsgContentType.tip) {
-      return ChatTipItem.getId(msgModel.clientMsgId);
-    } else {
-      return ChatMsgItem.getId(msgModel.clientMsgId);
-    }
   }
 
   void receiveRedPacket(String serverMsgId, String redPacketId) {
@@ -733,61 +724,63 @@ class ChatPage extends StatelessWidget {
             reverse: true,
             delegate: FlutterListViewDelegate(
               (context, index) {
-                MsgModel msgModel = logic.msgModelList[index];
-                Widget separator = const SizedBox(height: 16);
-                try {
-                  MsgModel? lastMsgModel = logic.msgModelList[index + 1];
-                  int time = msgModel.serverTime;
-                  int lastTime = lastMsgModel.serverTime;
-                  if ((lastTime - time).abs() >= 300000) {
-                    separator = ChatTimeItem(
-                      timestamp: time,
+                String clientMsgId = logic.msgModelList[index].clientMsgId;
+                return GetBuilder<ChatLogic>(
+                  tag: logic.tag,
+                  id: chatItemId(clientMsgId),
+                  builder: (logic) {
+                    MsgModel msgModel = logic.msgModelList[index];
+                    Widget separator = const SizedBox(height: 16);
+                    try {
+                      MsgModel? lastMsgModel = logic.msgModelList[index + 1];
+                      int time = msgModel.serverTime;
+                      int lastTime = lastMsgModel.serverTime;
+                      if ((lastTime - time).abs() >= 300000) {
+                        separator = ChatTimeItem(
+                          timestamp: time,
+                        );
+                      }
+                    } catch (_) {}
+                    ChatDirection direction = ChatDirection.left;
+                    if (msgModel.senderId == HiveTool.getUserId()) {
+                      direction = ChatDirection.right;
+                    }
+                    int contentType = msgModel.contentType;
+                    Widget widget = const SizedBox();
+                    if (contentType == MsgContentType.tip) {
+                      widget = ChatTipItem(
+                        direction: direction,
+                        msgModel: msgModel,
+                      );
+                    } else {
+                      widget = ChatMsgItem<ChatLogic>(
+                        tag: logic.tag,
+                        direction: direction,
+                        msgModel: msgModel,
+                        onRetry: () {
+                          logic.sendMsgList([msgModel]);
+                        },
+                      );
+                    }
+                    return Padding(
+                      padding: EdgeInsets.only(bottom: index == 0 ? 8 : 0),
+                      child: Column(
+                        children: [
+                          separator,
+                          widget,
+                        ],
+                      ),
                     );
-                  }
-                } catch (_) {}
-                ChatDirection direction = ChatDirection.left;
-                if (msgModel.senderId == HiveTool.getUserId()) {
-                  direction = ChatDirection.right;
-                }
-                int contentType = msgModel.contentType;
-                Widget widget = const SizedBox();
-                if (contentType == MsgContentType.tip) {
-                  widget = ChatTipItem<ChatLogic>(
-                    key: ValueKey(msgModel.clientMsgId),
-                    tag: logic.tag,
-                    direction: direction,
-                    msgModel: msgModel,
-                  );
-                } else {
-                  widget = ChatMsgItem<ChatLogic>(
-                    key: ValueKey(msgModel.clientMsgId),
-                    tag: logic.tag,
-                    direction: direction,
-                    index: index,
-                    msgModelList: logic.msgModelList,
-                    msgModel: msgModel,
-                    onRetry: () {
-                      logic.sendMsgList([msgModel]);
-                    },
-                  );
-                }
-                return Padding(
-                  padding: EdgeInsets.only(bottom: index == 0 ? 8 : 0),
-                  child: Column(
-                    children: [
-                      separator,
-                      widget,
-                    ],
-                  ),
+                  },
                 );
               },
               childCount: logic.msgModelList.length,
-              // onItemKey: (index) {
-              //   return logic.msgModelList[index].clientMsgId;
-              // },
-              // keepPosition: true,
-              // keepPositionOffset: 100,
-              // firstItemAlign: FirstItemAlign.end,
+              onItemKey: (index) {
+                return logic.msgModelList[index].clientMsgId;
+              },
+              keepPosition: true,
+              keepPositionOffset: 100,
+              firstItemAlign: FirstItemAlign.end,
             ),
           );
         },

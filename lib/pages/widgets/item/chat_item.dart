@@ -15,6 +15,10 @@ enum ChatDirection {
   right,
 }
 
+String chatItemId(String clientMsgId) {
+  return "ChatItem$clientMsgId";
+}
+
 class ChatTimeItem extends StatelessWidget {
   final int timestamp;
 
@@ -41,18 +45,12 @@ class ChatTimeItem extends StatelessWidget {
   }
 }
 
-class ChatTipItem<T extends GetxController> extends StatelessWidget {
-  static String getId(String clientMsgId) {
-    return "ChatTipItem$clientMsgId";
-  }
-
-  final String? tag;
+class ChatTipItem extends StatelessWidget {
   final ChatDirection direction;
   final MsgModel msgModel;
 
   const ChatTipItem({
     Key? key,
-    this.tag,
     required this.direction,
     required this.msgModel,
   }) : super(key: key);
@@ -77,14 +75,8 @@ class ChatTipItem<T extends GetxController> extends StatelessWidget {
 }
 
 class ChatMsgItem<T extends GetxController> extends StatelessWidget {
-  static String getId(String clientMsgId) {
-    return "ChatMsgItem$clientMsgId";
-  }
-
   final String? tag;
   final ChatDirection direction;
-  final int index;
-  final List<MsgModel> msgModelList;
   final MsgModel msgModel;
   final Function() onRetry;
 
@@ -92,8 +84,6 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
     Key? key,
     this.tag,
     required this.direction,
-    required this.index,
-    required this.msgModelList,
     required this.msgModel,
     required this.onRetry,
   }) : super(key: key);
@@ -105,8 +95,7 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ChatAvatarItem<T>(
-            tag: tag,
+          ChatAvatarItem(
             direction: direction,
             msgModel: msgModel,
             showAvatar: direction == ChatDirection.left,
@@ -117,128 +106,119 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
             },
           ),
           Expanded(
-            child: GetBuilder<T>(
-              tag: tag,
-              id: ChatMsgItem.getId(msgModel.clientMsgId),
-              builder: (logic) {
-                return Column(
-                  crossAxisAlignment: direction == ChatDirection.left
-                      ? CrossAxisAlignment.start
-                      : CrossAxisAlignment.end,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ChatNameItem<T>(
-                      tag: tag,
-                      msgModel: msgModel,
-                    ),
-                    LayoutBuilder(
-                      builder: (context, constraints) {
-                        int contentType = msgModel.contentType;
-                        Widget child = const SizedBox();
-                        if (contentType == MsgContentType.text) {
-                          child = ChatTextItem(
-                            key: ValueKey(msgModel.content),
-                            direction: direction,
-                            msgModel: msgModel,
-                          );
-                        } else if (contentType == MsgContentType.image) {
-                          child = ChatImageItem(
-                            key: ValueKey(msgModel.content),
-                            direction: direction,
-                            msgModel: msgModel,
-                          );
-                        } else if (contentType == MsgContentType.audio) {
-                          child = ChatAudioItem(
-                            key: ValueKey(msgModel.content),
-                            direction: direction,
-                            msgModel: msgModel,
-                          );
-                        } else if (contentType == MsgContentType.video) {
-                          child = ChatVideoItem(
-                            key: ValueKey(msgModel.content),
-                            direction: direction,
-                            msgModel: msgModel,
-                          );
-                        } else if (contentType == MsgContentType.file) {
-                          child = ChatFileItem(
-                            key: ValueKey(msgModel.content),
-                            direction: direction,
-                            msgModel: msgModel,
-                          );
-                        } else if (contentType == MsgContentType.location) {
-                          child = ChatLocationItem(
-                            key: ValueKey(msgModel.content),
-                            direction: direction,
-                            msgModel: msgModel,
-                          );
-                        } else if (contentType == MsgContentType.redPacket) {
-                          MsgModel msgModel = msgModelList[index];
-                          child = ChatRedPacketItem(
-                            key: ValueKey(msgModel.content),
-                            direction: direction,
-                            msgModel: msgModel,
-                          );
-                        }
-                        return GestureDetector(
-                          behavior: HitTestBehavior.opaque,
-                          onLongPress: () {
-                            PopupTool.show(
-                              context,
-                              contentType: msgModel.contentType,
-                              content: msgModel.content,
-                              msgModel: msgModel,
-                            );
-                          },
-                          onSecondaryTap: () {
-                            PopupTool.show(
-                              context,
-                              contentType: msgModel.contentType,
-                              content: msgModel.content,
-                              msgModel: msgModel,
-                            );
-                          },
-                          child: child,
+            child: Column(
+              crossAxisAlignment: direction == ChatDirection.left
+                  ? CrossAxisAlignment.start
+                  : CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ChatNameItem(
+                  msgModel: msgModel,
+                ),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    int contentType = msgModel.contentType;
+                    Widget child = const SizedBox();
+                    if (contentType == MsgContentType.text) {
+                      child = ChatTextItem(
+                        key: ValueKey(msgModel.content),
+                        direction: direction,
+                        msgModel: msgModel,
+                      );
+                    } else if (contentType == MsgContentType.image) {
+                      child = ChatImageItem(
+                        key: ValueKey(msgModel.content),
+                        direction: direction,
+                        msgModel: msgModel,
+                      );
+                    } else if (contentType == MsgContentType.audio) {
+                      child = ChatAudioItem(
+                        key: ValueKey(msgModel.content),
+                        direction: direction,
+                        msgModel: msgModel,
+                      );
+                    } else if (contentType == MsgContentType.video) {
+                      child = ChatVideoItem(
+                        key: ValueKey(msgModel.content),
+                        direction: direction,
+                        msgModel: msgModel,
+                      );
+                    } else if (contentType == MsgContentType.file) {
+                      child = ChatFileItem(
+                        key: ValueKey(msgModel.content),
+                        direction: direction,
+                        msgModel: msgModel,
+                      );
+                    } else if (contentType == MsgContentType.location) {
+                      child = ChatLocationItem(
+                        key: ValueKey(msgModel.content),
+                        direction: direction,
+                        msgModel: msgModel,
+                      );
+                    } else if (contentType == MsgContentType.redPacket) {
+                      child = ChatRedPacketItem(
+                        key: ValueKey(msgModel.content),
+                        direction: direction,
+                        msgModel: msgModel,
+                      );
+                    }
+                    return GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onLongPress: () {
+                        PopupTool.show(
+                          context,
+                          contentType: msgModel.contentType,
+                          content: msgModel.content,
+                          msgModel: msgModel,
                         );
                       },
-                    ),
-                    ChatReplyItem(
-                      direction: direction,
-                      ext: msgModel.ext,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            TimeTool.formatTimestamp(
-                              msgModel.serverTime,
-                              pattern: "HH:mm:ss",
-                            ),
-                            style: const TextStyle(
-                              color: getHintBlack,
-                              fontSize: 12,
-                            ),
-                          ),
-                          if (direction == ChatDirection.right)
-                            Padding(
-                              padding: const EdgeInsets.only(left: 5),
-                              child: ChatStatusItem<T>(
-                                tag: tag,
-                                msgModel: msgModel,
-                                onRetry: onRetry,
-                              ),
-                            ),
-                        ],
+                      onSecondaryTap: () {
+                        PopupTool.show(
+                          context,
+                          contentType: msgModel.contentType,
+                          content: msgModel.content,
+                          msgModel: msgModel,
+                        );
+                      },
+                      child: child,
+                    );
+                  },
+                ),
+                ChatReplyItem(
+                  direction: direction,
+                  ext: msgModel.ext,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5, top: 2, right: 5),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        TimeTool.formatTimestamp(
+                          msgModel.serverTime,
+                          pattern: "HH:mm:ss",
+                        ),
+                        style: const TextStyle(
+                          color: getHintBlack,
+                          fontSize: 12,
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              },
+                      if (direction == ChatDirection.right)
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: ChatStatusItem<T>(
+                            tag: tag,
+                            msgModel: msgModel,
+                            onRetry: onRetry,
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
-          ChatAvatarItem<T>(
-            tag: tag,
+          ChatAvatarItem(
             direction: direction,
             msgModel: msgModel,
             showAvatar: direction == ChatDirection.right,
@@ -249,12 +229,7 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
   }
 }
 
-class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
-  static String getId(String userId) {
-    return "ChatUserItem$userId";
-  }
-
-  final String? tag;
+class ChatAvatarItem extends StatelessWidget {
   final ChatDirection direction;
   final MsgModel msgModel;
   final bool showAvatar;
@@ -266,7 +241,6 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
 
   const ChatAvatarItem({
     Key? key,
-    this.tag,
     required this.direction,
     required this.msgModel,
     required this.showAvatar,
@@ -275,108 +249,88 @@ class ChatAvatarItem<T extends GetxController> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<T>(
-      tag: tag,
-      id: ChatAvatarItem.getId(msgModel.senderId),
-      builder: (logic) {
-        if (!showAvatar) {
-          return const SizedBox(width: 35 + 8);
-        }
-        String avatar = "";
-        String nickname = "";
-        if (msgModel.senderId == HiveTool.getUserId()) {
-          avatar = HiveTool.getAvatarUrl();
-          nickname = HiveTool.getNickname();
-        } else {
-          Map senderInfo = {};
-          if (msgModel.senderInfo.isNotEmpty) {
-            senderInfo = json.decode(msgModel.senderInfo);
-          }
-          avatar = senderInfo["avatar"] ?? "";
-          nickname = senderInfo["nickname"] ?? "";
-          String remark =
-              MenuLogic.logic()?.userRemarkMap[msgModel.senderId] ?? "";
-          if (remark.isNotEmpty) {
-            nickname = remark;
-          }
-        }
-        return Padding(
-          padding: direction == ChatDirection.left
-              ? const EdgeInsets.only(top: 5, right: 8)
-              : const EdgeInsets.only(top: 5, left: 8),
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: () {
-              // 个人详情
-            },
-            onLongPress: () {
-              if (onAtMember == null) return;
-              onAtMember!(msgModel.senderId, avatar, nickname);
-            },
-            onSecondaryTap: () {
-              if (onAtMember == null) return;
-              onAtMember!(msgModel.senderId, avatar, nickname);
-            },
-            child: ClipOval(
-              child: ImageWidget(
-                avatar,
-                width: 35,
-                height: 35,
-              ),
-            ),
+    if (!showAvatar) {
+      return const SizedBox(width: 35 + 8);
+    }
+    String avatar = "";
+    String nickname = "";
+    if (msgModel.senderId == HiveTool.getUserId()) {
+      avatar = HiveTool.getAvatarUrl();
+      nickname = HiveTool.getNickname();
+    } else {
+      Map senderInfo = {};
+      if (msgModel.senderInfo.isNotEmpty) {
+        senderInfo = json.decode(msgModel.senderInfo);
+      }
+      avatar = senderInfo["avatar"] ?? "";
+      nickname = senderInfo["nickname"] ?? "";
+      String remark = MenuLogic.logic()?.userRemarkMap[msgModel.senderId] ?? "";
+      if (remark.isNotEmpty) {
+        nickname = remark;
+      }
+    }
+    return Padding(
+      padding: direction == ChatDirection.left
+          ? const EdgeInsets.only(top: 5, right: 8)
+          : const EdgeInsets.only(top: 5, left: 8),
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          // 个人详情
+        },
+        onLongPress: () {
+          if (onAtMember == null) return;
+          onAtMember!(msgModel.senderId, avatar, nickname);
+        },
+        onSecondaryTap: () {
+          if (onAtMember == null) return;
+          onAtMember!(msgModel.senderId, avatar, nickname);
+        },
+        child: ClipOval(
+          child: ImageWidget(
+            avatar,
+            width: 35,
+            height: 35,
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }
 
-class ChatNameItem<T extends GetxController> extends StatelessWidget {
-  static String getId(String userId) {
-    return "ChatUserItem$userId";
-  }
-
-  final String? tag;
+class ChatNameItem extends StatelessWidget {
   final MsgModel msgModel;
 
   const ChatNameItem({
     Key? key,
-    this.tag,
     required this.msgModel,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<T>(
-      tag: tag,
-      id: ChatNameItem.getId(msgModel.senderId),
-      builder: (logic) {
-        String nickname = "";
-        if (msgModel.senderId == HiveTool.getUserId()) {
-          nickname = HiveTool.getNickname();
-        } else {
-          Map senderInfo = {};
-          if (msgModel.senderInfo.isNotEmpty) {
-            senderInfo = json.decode(msgModel.senderInfo);
-          }
-          nickname = senderInfo["nickname"] ?? "";
-          String remark =
-              MenuLogic.logic()?.userRemarkMap[msgModel.senderId] ?? "";
-          if (remark.isNotEmpty) {
-            nickname = remark;
-          }
-        }
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 2),
-          child: Text(
-            nickname,
-            style: const TextStyle(
-              color: getTextBlack,
-              fontSize: 12,
-            ),
-          ),
-        );
-      },
+    String nickname = "";
+    if (msgModel.senderId == HiveTool.getUserId()) {
+      nickname = HiveTool.getNickname();
+    } else {
+      Map senderInfo = {};
+      if (msgModel.senderInfo.isNotEmpty) {
+        senderInfo = json.decode(msgModel.senderInfo);
+      }
+      nickname = senderInfo["nickname"] ?? "";
+      String remark = MenuLogic.logic()?.userRemarkMap[msgModel.senderId] ?? "";
+      if (remark.isNotEmpty) {
+        nickname = remark;
+      }
+    }
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 2),
+      child: Text(
+        nickname,
+        style: const TextStyle(
+          color: getTextBlack,
+          fontSize: 12,
+        ),
+      ),
     );
   }
 }
