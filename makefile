@@ -3,6 +3,7 @@
 .PHONY : apk
 .PHONY : ipa
 .PHONY : web
+.PHONY : windows
 
 run:
 	flutter run --release
@@ -21,3 +22,8 @@ ipa: clean
 web: clean
 	flutter build web --release
 	cp -r build/web ~/Desktop/web
+
+windows: clean
+    flutter build windows
+    cp -r build/windows/runner/Release ~/Desktop/Release
+    cp windows/dll/* ~/Desktop/Release
