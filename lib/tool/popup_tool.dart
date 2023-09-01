@@ -136,7 +136,7 @@ class PopupTool {
               extMap["translateContent"] = data.result;
               msgModel.ext = json.encode(extMap);
               ChatLogic.logic(msgModel.convId)?.update(
-                [chatItemId(msgModel.clientMsgId)],
+                [ChatItem.getId(msgModel.clientMsgId)],
               );
             },
             onError: (code, error) {
@@ -152,7 +152,7 @@ class PopupTool {
           logic.replyMsgMap.value = {
             "msgModel": msgModel,
           };
-          logic.scrollController.jumpTo(0);
+          logic.itemScrollController.jumpTo(index: 0);
           logic.inputFocusNode.requestFocus();
           if (GetPlatform.isMobile) {
             logic.chatOperate.value = ChatOperate.input;

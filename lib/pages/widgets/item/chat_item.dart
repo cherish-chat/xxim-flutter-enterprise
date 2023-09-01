@@ -15,8 +15,77 @@ enum ChatDirection {
   right,
 }
 
-String chatItemId(String clientMsgId) {
-  return "ChatItem$clientMsgId";
+class ChatItem<T extends GetxController> extends StatelessWidget {
+  static String getId(String clientMsgId) {
+    return "ChatItem$clientMsgId";
+  }
+
+  final String tag;
+  final String clientMsgId;
+  final int index;
+  final List<MsgModel> msgModelList;
+  final Function(MsgModel msgModel) onRetry;
+
+  const ChatItem({
+    super.key,
+    required this.tag,
+    required this.clientMsgId,
+    required this.index,
+    required this.msgModelList,
+    required this.onRetry,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<T>(
+      tag: tag,
+      id: ChatItem.getId(clientMsgId),
+      builder: (logic) {
+        MsgModel msgModel = msgModelList[index];
+        Widget separator = const SizedBox(height: 16);
+        try {
+          MsgModel? lastMsgModel = msgModelList[index + 1];
+          int time = msgModel.serverTime;
+          int lastTime = lastMsgModel.serverTime;
+          if ((lastTime - time).abs() >= 300000) {
+            separator = ChatTimeItem(
+              timestamp: time,
+            );
+          }
+        } catch (_) {}
+        ChatDirection direction = ChatDirection.left;
+        if (msgModel.senderId == HiveTool.getUserId()) {
+          direction = ChatDirection.right;
+        }
+        int contentType = msgModel.contentType;
+        Widget widget = const SizedBox();
+        if (contentType == MsgContentType.tip) {
+          widget = ChatTipItem(
+            direction: direction,
+            msgModel: msgModel,
+          );
+        } else {
+          widget = ChatMsgItem<T>(
+            tag: tag,
+            direction: direction,
+            msgModel: msgModel,
+            onRetry: () {
+              onRetry(msgModel);
+            },
+          );
+        }
+        return Padding(
+          padding: EdgeInsets.only(bottom: index == 0 ? 8 : 0),
+          child: Column(
+            children: [
+              separator,
+              widget,
+            ],
+          ),
+        );
+      },
+    );
+  }
 }
 
 class ChatTimeItem extends StatelessWidget {
@@ -422,10 +491,9 @@ class ChatReplyItem extends StatelessWidget {
           return element.clientMsgId == msgModel.clientMsgId;
         });
         if (index == -1) return;
-        logic.scrollController.sliverController.animateToIndex(
-          index,
+        logic.itemScrollController.scrollTo(
+          index: index,
           duration: kThemeAnimationDuration,
-          curve: Curves.linear,
         );
       },
       child: Container(

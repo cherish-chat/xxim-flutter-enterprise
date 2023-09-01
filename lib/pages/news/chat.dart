@@ -4,7 +4,7 @@ import 'package:cross_file/cross_file.dart';
 import 'package:extended_text/extended_text.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:flutter_list_view/flutter_list_view.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
@@ -38,7 +38,8 @@ class ChatLogic extends GetxController {
 
   ChatLogic(this.tag, this.convId);
 
-  late FlutterListViewController scrollController;
+  late ItemScrollController itemScrollController;
+  late ItemPositionsListener itemPositionsListener;
   bool isLoadMore = false;
 
   Rx<ChatOperate> chatOperate = ChatOperate.none.obs;
@@ -56,18 +57,18 @@ class ChatLogic extends GetxController {
 
   @override
   void onInit() {
-    scrollController = FlutterListViewController()
-      ..addListener(() {
-        hideOperate();
-        ScrollPosition position = scrollController.position;
-        if (position.pixels >= position.maxScrollExtent && !isLoadMore) {
-          isLoadMore = true;
-          Future.delayed(kThemeChangeDuration, () {
-            loadList();
-            isLoadMore = false;
-          });
-        }
-      });
+    itemScrollController = ItemScrollController();
+    itemPositionsListener = ItemPositionsListener.create();
+    itemPositionsListener.itemPositions.addListener(() {
+      List<ItemPosition> list =
+          itemPositionsListener.itemPositions.value.toList();
+      if (list.last.index >= (msgModelList.length - 1) && !isLoadMore) {
+        isLoadMore = true;
+        Future.delayed(kThemeChangeDuration, () {
+          loadList();
+        });
+      }
+    });
     inputController = TextEditingController()
       ..addListener(() {
         TextSelection selection = inputController.selection;
@@ -79,7 +80,7 @@ class ChatLogic extends GetxController {
     spaceLasting = SpaceLasting();
     keyboardEvent = KeyboardVisibilityController().onChange.listen((event) {
       if (event) {
-        scrollController.jumpTo(0);
+        itemScrollController.jumpTo(index: 0);
         inputFocusNode.requestFocus();
         chatOperate.value = ChatOperate.input;
       } else {
@@ -111,7 +112,6 @@ class ChatLogic extends GetxController {
 
   @override
   void onClose() async {
-    scrollController.dispose();
     inputController.dispose();
     inputFocusNode.dispose();
     keyboardEvent.cancel();
@@ -171,7 +171,7 @@ class ChatLogic extends GetxController {
     });
     if (index != -1) {
       msgModelList[index] = msgModel;
-      update([chatItemId(msgModel.clientMsgId)]);
+      update([ChatItem.getId(msgModel.clientMsgId)]);
     } else {
       msgModelList.insert(0, msgModel);
       update(["list"]);
@@ -368,7 +368,7 @@ class ChatLogic extends GetxController {
       update(["list"]);
     } else {
       msgModel.sendStatus = SendStatus.sending;
-      update([chatItemId(msgModel.clientMsgId)]);
+      update([ChatItem.getId(msgModel.clientMsgId)]);
     }
     try {
       ImageContent content = ImageContent.fromJson(msgModel.content);
@@ -393,7 +393,7 @@ class ChatLogic extends GetxController {
       sendMsgList([msgModel]);
     } catch (_) {
       msgModel.sendStatus = SendStatus.failed;
-      update([chatItemId(msgModel.clientMsgId)]);
+      update([ChatItem.getId(msgModel.clientMsgId)]);
     }
   }
 
@@ -418,7 +418,7 @@ class ChatLogic extends GetxController {
       update(["list"]);
     } else {
       msgModel.sendStatus = SendStatus.sending;
-      update([chatItemId(msgModel.clientMsgId)]);
+      update([ChatItem.getId(msgModel.clientMsgId)]);
     }
     try {
       AudioContent content = AudioContent.fromJson(msgModel.content);
@@ -443,7 +443,7 @@ class ChatLogic extends GetxController {
       sendMsgList([msgModel]);
     } catch (_) {
       msgModel.sendStatus = SendStatus.failed;
-      update([chatItemId(msgModel.clientMsgId)]);
+      update([ChatItem.getId(msgModel.clientMsgId)]);
     }
   }
 
@@ -468,7 +468,7 @@ class ChatLogic extends GetxController {
       update(["list"]);
     } else {
       msgModel.sendStatus = SendStatus.sending;
-      update([chatItemId(msgModel.clientMsgId)]);
+      update([ChatItem.getId(msgModel.clientMsgId)]);
     }
     try {
       VideoContent content = VideoContent.fromJson(msgModel.content);
@@ -507,7 +507,7 @@ class ChatLogic extends GetxController {
       sendMsgList([msgModel]);
     } catch (_) {
       msgModel.sendStatus = SendStatus.failed;
-      update([chatItemId(msgModel.clientMsgId)]);
+      update([ChatItem.getId(msgModel.clientMsgId)]);
     }
   }
 
@@ -554,7 +554,7 @@ class ChatLogic extends GetxController {
         ids.add("list");
       } else {
         msgModel.sendStatus = SendStatus.sending;
-        ids.add(chatItemId(msgModel.clientMsgId));
+        ids.add(ChatItem.getId(msgModel.clientMsgId));
       }
     }
     if (ids.isNotEmpty) update(ids);
@@ -573,7 +573,7 @@ class ChatLogic extends GetxController {
       } else {
         msgModel.sendStatus = SendStatus.failed;
       }
-      ids.add(chatItemId(msgModel.clientMsgId));
+      ids.add(ChatItem.getId(msgModel.clientMsgId));
     }
     if (ids.isNotEmpty) update(ids);
   }
@@ -719,69 +719,24 @@ class ChatPage extends StatelessWidget {
         tag: logic.tag,
         id: "list",
         builder: (logic) {
-          return FlutterListView(
-            controller: logic.scrollController,
+          return ScrollablePositionedList.builder(
+            itemScrollController: logic.itemScrollController,
+            itemPositionsListener: logic.itemPositionsListener,
             reverse: true,
-            delegate: FlutterListViewDelegate(
-              (context, index) {
-                String clientMsgId = logic.msgModelList[index].clientMsgId;
-                return GetBuilder<ChatLogic>(
-                  tag: logic.tag,
-                  id: chatItemId(clientMsgId),
-                  builder: (logic) {
-                    MsgModel msgModel = logic.msgModelList[index];
-                    Widget separator = const SizedBox(height: 16);
-                    try {
-                      MsgModel? lastMsgModel = logic.msgModelList[index + 1];
-                      int time = msgModel.serverTime;
-                      int lastTime = lastMsgModel.serverTime;
-                      if ((lastTime - time).abs() >= 300000) {
-                        separator = ChatTimeItem(
-                          timestamp: time,
-                        );
-                      }
-                    } catch (_) {}
-                    ChatDirection direction = ChatDirection.left;
-                    if (msgModel.senderId == HiveTool.getUserId()) {
-                      direction = ChatDirection.right;
-                    }
-                    int contentType = msgModel.contentType;
-                    Widget widget = const SizedBox();
-                    if (contentType == MsgContentType.tip) {
-                      widget = ChatTipItem(
-                        direction: direction,
-                        msgModel: msgModel,
-                      );
-                    } else {
-                      widget = ChatMsgItem<ChatLogic>(
-                        tag: logic.tag,
-                        direction: direction,
-                        msgModel: msgModel,
-                        onRetry: () {
-                          logic.sendMsgList([msgModel]);
-                        },
-                      );
-                    }
-                    return Padding(
-                      padding: EdgeInsets.only(bottom: index == 0 ? 8 : 0),
-                      child: Column(
-                        children: [
-                          separator,
-                          widget,
-                        ],
-                      ),
-                    );
-                  },
-                );
-              },
-              childCount: logic.msgModelList.length,
-              onItemKey: (index) {
-                return logic.msgModelList[index].clientMsgId;
-              },
-              keepPosition: true,
-              keepPositionOffset: 100,
-              firstItemAlign: FirstItemAlign.end,
-            ),
+            itemBuilder: (context, index) {
+              MsgModel msgModel = logic.msgModelList[index];
+              return ChatItem<ChatLogic>(
+                key: ValueKey("${msgModel.clientMsgId}${msgModel.serverMsgId}"),
+                tag: logic.tag,
+                clientMsgId: msgModel.clientMsgId,
+                index: index,
+                msgModelList: logic.msgModelList,
+                onRetry: (msgModel) {
+                  logic.sendMsgList([msgModel]);
+                },
+              );
+            },
+            itemCount: logic.msgModelList.length,
           );
         },
       ),
@@ -801,7 +756,7 @@ class ChatPage extends StatelessWidget {
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () async {
-                      logic.scrollController.jumpTo(0);
+                      logic.itemScrollController.jumpTo(index: 0);
                       if (!await RecorderTool.instance.hasPermission()) return;
                       if (logic.chatOperate.value == ChatOperate.record) {
                         logic.inputFocusNode.requestFocus();
@@ -836,7 +791,7 @@ class ChatPage extends StatelessWidget {
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () {
-                      logic.scrollController.jumpTo(0);
+                      logic.itemScrollController.jumpTo(index: 0);
                       if (logic.chatOperate.value == ChatOperate.emoji) {
                         logic.inputFocusNode.requestFocus();
                         if (GetPlatform.isMobile) {

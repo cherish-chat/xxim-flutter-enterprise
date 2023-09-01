@@ -203,7 +203,7 @@ class Tool {
         extMap["translateContent"] = data.result;
         msgModel.ext = json.encode(extMap);
         ChatLogic.logic(msgModel.convId)?.update(
-          [chatItemId(msgModel.clientMsgId)],
+          [ChatItem.getId(msgModel.clientMsgId)],
         );
       },
     );
