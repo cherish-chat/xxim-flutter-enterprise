@@ -71,6 +71,10 @@ class CoreTool {
   }
 
   static List<int> utf8Encode(String value) {
-    return utf8.encode(value);
+    try {
+      return utf8.encode(value);
+    } catch (_) {
+      return [];
+    }
   }
 }

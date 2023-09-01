@@ -33,7 +33,7 @@ class SDKTool {
       }
       return splitList[0];
     }
-    return '';
+    return "";
   }
 
   static bool isSingleConv(String convId) {
@@ -91,7 +91,7 @@ class SDKTool {
       );
       return encrypted.bytes;
     } catch (_) {}
-    return utf8Encode(value);
+    return [];
   }
 
   static String aesDecode({
@@ -111,6 +111,6 @@ class SDKTool {
       );
       return source;
     } catch (_) {}
-    return utf8Decode(bytes);
+    return "";
   }
 }
