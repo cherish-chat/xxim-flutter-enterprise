@@ -33,8 +33,8 @@ class TipContent {
   static TipContent fromJson(String content) {
     Map<String, dynamic> map = json.decode(content);
     return TipContent(
-      tip: map["tip"],
-      ext: map["ext"],
+      tip: map["tip"] ?? "",
+      ext: map["ext"] ?? "",
     );
   }
 

@@ -229,51 +229,48 @@ class NewsPage extends StatelessWidget {
       id: "list",
       builder: (logic) {
         return SlidableAutoCloseBehavior(
-          child: FlutterListView(
-            delegate: FlutterListViewDelegate(
-              (context, index) {
-                ConvModel convModel = logic.convModelList[index];
-                UserBaseInfo? userInfo;
-                GroupBaseInfo? groupInfo;
-                if (SDKTool.isSingleConv(convModel.convId)) {
-                  List<UserBaseInfo> userInfoList =
-                      MenuLogic.logic()?.userInfoList ?? [];
-                  if (userInfoList.isNotEmpty) {
-                    List<UserBaseInfo> whereList =
-                        userInfoList.where((element) {
-                      return element.id ==
-                          SDKTool.getSingleId(
-                            convModel.convId,
-                            HiveTool.getUserId(),
-                          );
-                    }).toList();
-                    if (whereList.isNotEmpty) {
-                      userInfo = whereList.first;
-                    }
-                  }
-                } else if (SDKTool.isGroupConv(convModel.convId)) {
-                  List<GroupBaseInfo> groupInfoList =
-                      MenuLogic.logic()?.groupInfoList ?? [];
-                  if (groupInfoList.isNotEmpty) {
-                    List<GroupBaseInfo> whereList =
-                        groupInfoList.where((element) {
-                      return element.id == SDKTool.getGroupId(convModel.convId);
-                    }).toList();
-                    if (whereList.isNotEmpty) {
-                      groupInfo = whereList.first;
-                    }
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              ConvModel convModel = logic.convModelList[index];
+              UserBaseInfo? userInfo;
+              GroupBaseInfo? groupInfo;
+              if (SDKTool.isSingleConv(convModel.convId)) {
+                List<UserBaseInfo> userInfoList =
+                    MenuLogic.logic()?.userInfoList ?? [];
+                if (userInfoList.isNotEmpty) {
+                  List<UserBaseInfo> whereList = userInfoList.where((element) {
+                    return element.id ==
+                        SDKTool.getSingleId(
+                          convModel.convId,
+                          HiveTool.getUserId(),
+                        );
+                  }).toList();
+                  if (whereList.isNotEmpty) {
+                    userInfo = whereList.first;
                   }
                 }
-                return _buildItem(
-                  logic,
-                  convModel,
-                  userInfo: userInfo,
-                  groupInfo: groupInfo,
-                  convSetting: logic.convSettingMap[convModel.convId],
-                );
-              },
-              childCount: logic.convModelList.length,
-            ),
+              } else if (SDKTool.isGroupConv(convModel.convId)) {
+                List<GroupBaseInfo> groupInfoList =
+                    MenuLogic.logic()?.groupInfoList ?? [];
+                if (groupInfoList.isNotEmpty) {
+                  List<GroupBaseInfo> whereList =
+                      groupInfoList.where((element) {
+                    return element.id == SDKTool.getGroupId(convModel.convId);
+                  }).toList();
+                  if (whereList.isNotEmpty) {
+                    groupInfo = whereList.first;
+                  }
+                }
+              }
+              return _buildItem(
+                logic,
+                convModel,
+                userInfo: userInfo,
+                groupInfo: groupInfo,
+                convSetting: logic.convSettingMap[convModel.convId],
+              );
+            },
+            itemCount: logic.convModelList.length,
           ),
         );
       },
