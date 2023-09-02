@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:xxim_flutter_enterprise/main.dart';
 
 class OverscrollBehavior extends ScrollBehavior {
@@ -21,4 +22,10 @@ class OverscrollBehavior extends ScrollBehavior {
         );
     }
   }
+
+  @override
+  Set<PointerDeviceKind> get dragDevices => <PointerDeviceKind>{
+        ...super.dragDevices,
+        PointerDeviceKind.mouse,
+      };
 }
