@@ -1,4 +1,3 @@
-import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/proto/relation.pb.dart';
@@ -150,13 +149,11 @@ class AddFriendPage extends StatelessWidget {
     return GetBuilder<AddFriendLogic>(
       id: "list",
       builder: (logic) {
-        return FlutterListView(
-          delegate: FlutterListViewDelegate(
-            (context, index) {
-              return _buildItem(logic, logic.list[index]);
-            },
-            childCount: logic.list.length,
-          ),
+        return ListView.builder(
+          itemBuilder: (context, index) {
+            return _buildItem(logic, logic.list[index]);
+          },
+          itemCount: logic.list.length,
         );
       },
     );

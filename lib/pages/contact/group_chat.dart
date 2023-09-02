@@ -1,4 +1,3 @@
-import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
@@ -134,13 +133,11 @@ class GroupChatPage extends StatelessWidget {
       id: "list",
       builder: (logic) {
         return SlidableAutoCloseBehavior(
-          child: FlutterListView(
-            delegate: FlutterListViewDelegate(
-              (context, index) {
-                return _buildItem(logic, logic.groupInfoList[index]);
-              },
-              childCount: logic.groupInfoList.length,
-            ),
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              return _buildItem(logic, logic.groupInfoList[index]);
+            },
+            itemCount: logic.groupInfoList.length,
           ),
         );
       },

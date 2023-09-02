@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
@@ -181,42 +180,40 @@ class ShareMsgPage extends StatelessWidget {
   }
 
   Widget _buildListView(ShareMsgLogic logic) {
-    return FlutterListView(
-      delegate: FlutterListViewDelegate(
-        (context, index) {
-          ConvModel convModel = logic.convModelList[index];
-          UserBaseInfo? userInfo;
-          GroupBaseInfo? groupInfo;
-          if (SDKTool.isSingleConv(convModel.convId)) {
-            List<UserBaseInfo> userInfoList =
-                MenuLogic.logic()?.userInfoList ?? [];
-            if (userInfoList.isNotEmpty) {
-              userInfo = userInfoList.where((element) {
-                return element.id ==
-                    SDKTool.getSingleId(
-                      convModel.convId,
-                      HiveTool.getUserId(),
-                    );
-              }).first;
-            }
-          } else if (SDKTool.isGroupConv(convModel.convId)) {
-            List<GroupBaseInfo> groupInfoList =
-                MenuLogic.logic()?.groupInfoList ?? [];
-            if (groupInfoList.isNotEmpty) {
-              groupInfo = groupInfoList.where((element) {
-                return element.id == SDKTool.getGroupId(convModel.convId);
-              }).first;
-            }
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        ConvModel convModel = logic.convModelList[index];
+        UserBaseInfo? userInfo;
+        GroupBaseInfo? groupInfo;
+        if (SDKTool.isSingleConv(convModel.convId)) {
+          List<UserBaseInfo> userInfoList =
+              MenuLogic.logic()?.userInfoList ?? [];
+          if (userInfoList.isNotEmpty) {
+            userInfo = userInfoList.where((element) {
+              return element.id ==
+                  SDKTool.getSingleId(
+                    convModel.convId,
+                    HiveTool.getUserId(),
+                  );
+            }).first;
           }
-          return _buildItem(
-            logic,
-            convModel,
-            userInfo: userInfo,
-            groupInfo: groupInfo,
-          );
-        },
-        childCount: logic.convModelList.length,
-      ),
+        } else if (SDKTool.isGroupConv(convModel.convId)) {
+          List<GroupBaseInfo> groupInfoList =
+              MenuLogic.logic()?.groupInfoList ?? [];
+          if (groupInfoList.isNotEmpty) {
+            groupInfo = groupInfoList.where((element) {
+              return element.id == SDKTool.getGroupId(convModel.convId);
+            }).first;
+          }
+        }
+        return _buildItem(
+          logic,
+          convModel,
+          userInfo: userInfo,
+          groupInfo: groupInfo,
+        );
+      },
+      itemCount: logic.convModelList.length,
     );
   }
 

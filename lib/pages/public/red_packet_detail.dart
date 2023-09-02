@@ -1,4 +1,3 @@
-import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:xxim_flutter_enterprise/main.dart' hide Page;
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/proto/msg.pb.dart';
@@ -159,17 +158,15 @@ class RedPacketDetailPage extends StatelessWidget {
   Widget _buildListView() {
     return GetBuilder<RedPacketDetailLogic>(
       builder: (logic) {
-        return FlutterListView(
-          delegate: FlutterListViewDelegate(
-            (context, index) {
-              RedPacket_Receiver receiver = logic.list[index];
-              // if (receiver.userId == HiveTool.getUserId()) {
-              //   return const SizedBox();
-              // }
-              return _buildItem(receiver);
-            },
-            childCount: logic.list.length,
-          ),
+        return ListView.builder(
+          itemBuilder: (context, index) {
+            RedPacket_Receiver receiver = logic.list[index];
+            // if (receiver.userId == HiveTool.getUserId()) {
+            //   return const SizedBox();
+            // }
+            return _buildItem(receiver);
+          },
+          itemCount: logic.list.length,
         );
       },
     );

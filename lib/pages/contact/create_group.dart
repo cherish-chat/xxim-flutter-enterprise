@@ -1,5 +1,4 @@
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/public/select_friends.dart';
@@ -233,15 +232,13 @@ class CreateGroupPage extends StatelessWidget {
                   return Container(
                     alignment: Alignment.centerRight,
                     height: 50,
-                    child: FlutterListView(
+                    child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
-                      delegate: FlutterListViewDelegate(
-                        (context, index) {
-                          return _buildItem(logic.list[index].avatar);
-                        },
-                        childCount: logic.list.length,
-                      ),
+                      itemBuilder: (context, index) {
+                        return _buildItem(logic.list[index].avatar);
+                      },
+                      itemCount: logic.list.length,
                     ),
                   );
                 },

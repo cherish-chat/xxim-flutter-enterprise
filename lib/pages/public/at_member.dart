@@ -1,4 +1,3 @@
-import 'package:flutter_list_view/flutter_list_view.dart';
 import 'package:xxim_flutter_enterprise/main.dart' hide Page;
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/proto/common.pb.dart';
@@ -175,13 +174,11 @@ class AtMemberPage extends StatelessWidget {
           enablePullUp: true,
           onRefresh: logic.onRefresh,
           onLoading: logic.onLoadMore,
-          child: FlutterListView(
-            delegate: FlutterListViewDelegate(
-              (context, index) {
-                return _buildItem(logic.list[index]);
-              },
-              childCount: logic.list.length,
-            ),
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              return _buildItem(logic.list[index]);
+            },
+            itemCount: logic.list.length,
           ),
         );
       },
