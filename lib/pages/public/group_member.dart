@@ -641,152 +641,146 @@ class GroupMemberPage extends StatelessWidget {
     GroupMemberLogic logic,
     GroupMemberInfo memberInfo,
   ) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () {
-        GroupMember.hide();
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        child: Row(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: ImageWidget(
-                memberInfo.userBaseInfo.avatar,
-                width: 45,
-                height: 45,
-              ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: ImageWidget(
+              memberInfo.userBaseInfo.avatar,
+              width: 45,
+              height: 45,
             ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    memberInfo.userBaseInfo.nickname,
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  memberInfo.userBaseInfo.nickname,
+                  style: const TextStyle(
+                    color: getTextBlack,
+                    fontSize: 16,
+                    fontWeight: getSemiBold,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                // const SizedBox(height: 5),
+                // Text(
+                //   memberInfo.userBaseInfo.id,
+                //   style: const TextStyle(
+                //     color: getHintBlack,
+                //     fontSize: 14,
+                //   ),
+                //   maxLines: 1,
+                //   overflow: TextOverflow.ellipsis,
+                // ),
+              ],
+            ),
+          ),
+          Text(
+            memberInfo.role == GroupRole.OWNER
+                ? "群主".tr
+                : memberInfo.role == GroupRole.MANAGER
+                    ? "管理员".tr
+                    : "",
+            style: const TextStyle(
+              color: getHintBlack,
+              fontSize: 14,
+            ),
+          ),
+          Obx(() {
+            if (logic.isOwner.value &&
+                memberInfo.userBaseInfo.id != HiveTool.getUserId() &&
+                memberInfo.role != GroupRole.OWNER) {
+              return GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  if (memberInfo.role == GroupRole.MANAGER) {
+                    logic.alertUnManager(memberInfo.userBaseInfo.id);
+                  } else {
+                    logic.alertManager(memberInfo.userBaseInfo.id);
+                  }
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text(
+                    memberInfo.role == GroupRole.MANAGER
+                        ? "成为群成员".tr
+                        : "成为管理员".tr,
                     style: const TextStyle(
                       color: getTextBlack,
-                      fontSize: 16,
-                      fontWeight: getSemiBold,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    memberInfo.userBaseInfo.id,
-                    style: const TextStyle(
-                      color: getHintBlack,
                       fontSize: 14,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                   ),
-                ],
-              ),
-            ),
-            Text(
-              memberInfo.role == GroupRole.OWNER
-                  ? "群主".tr
-                  : memberInfo.role == GroupRole.MANAGER
-                      ? "管理员".tr
-                      : "",
-              style: const TextStyle(
-                color: getHintBlack,
-                fontSize: 14,
-              ),
-            ),
-            Obx(() {
-              if (logic.isOwner.value &&
-                  memberInfo.userBaseInfo.id != HiveTool.getUserId() &&
-                  memberInfo.role != GroupRole.OWNER) {
-                return GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: () {
-                    if (memberInfo.role == GroupRole.MANAGER) {
-                      logic.alertUnManager(memberInfo.userBaseInfo.id);
-                    } else {
-                      logic.alertManager(memberInfo.userBaseInfo.id);
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Text(
-                      memberInfo.role == GroupRole.MANAGER
-                          ? "成为群成员".tr
-                          : "成为管理员".tr,
-                      style: const TextStyle(
-                        color: getTextBlack,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ),
-                );
-              }
-              return const SizedBox();
-            }),
-            Obx(() {
-              if (logic.isPermission.value &&
-                  memberInfo.userBaseInfo.id != HiveTool.getUserId() &&
-                  memberInfo.role != GroupRole.OWNER &&
-                  memberInfo.role != GroupRole.MANAGER) {
-                return GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: () {
-                    if (memberInfo.unbanTime == 0) {
-                      logic.alertMute(
-                        memberInfo.userBaseInfo.id,
-                        memberInfo.userBaseInfo.nickname,
-                      );
-                    } else {
-                      logic.unMuteMember(
-                        memberInfo.userBaseInfo.id,
-                        memberInfo.userBaseInfo.nickname,
-                      );
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Text(
-                      memberInfo.unbanTime == 0 ? "禁止发言".tr : "开放发言".tr,
-                      style: const TextStyle(
-                        color: getTextBlack,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ),
-                );
-              }
-              return const SizedBox();
-            }),
-            Obx(() {
-              if (logic.isPermission.value &&
-                  memberInfo.userBaseInfo.id != HiveTool.getUserId() &&
-                  memberInfo.role != GroupRole.OWNER &&
-                  memberInfo.role != GroupRole.MANAGER) {
-                return GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: () {
-                    logic.alertKick(
+                ),
+              );
+            }
+            return const SizedBox();
+          }),
+          Obx(() {
+            if (logic.isPermission.value &&
+                memberInfo.userBaseInfo.id != HiveTool.getUserId() &&
+                memberInfo.role != GroupRole.OWNER &&
+                memberInfo.role != GroupRole.MANAGER) {
+              return GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  if (memberInfo.unbanTime == 0) {
+                    logic.alertMute(
                       memberInfo.userBaseInfo.id,
                       memberInfo.userBaseInfo.nickname,
                     );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Image.asset(
-                      "assets/images/ic_kick_member_20.webp",
-                      width: 20,
-                      height: 20,
+                  } else {
+                    logic.unMuteMember(
+                      memberInfo.userBaseInfo.id,
+                      memberInfo.userBaseInfo.nickname,
+                    );
+                  }
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text(
+                    memberInfo.unbanTime == 0 ? "禁止发言".tr : "开放发言".tr,
+                    style: const TextStyle(
+                      color: getTextBlack,
+                      fontSize: 14,
                     ),
                   ),
-                );
-              }
-              return const SizedBox();
-            }),
-          ],
-        ),
+                ),
+              );
+            }
+            return const SizedBox();
+          }),
+          Obx(() {
+            if (logic.isPermission.value &&
+                memberInfo.userBaseInfo.id != HiveTool.getUserId() &&
+                memberInfo.role != GroupRole.OWNER &&
+                memberInfo.role != GroupRole.MANAGER) {
+              return GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  logic.alertKick(
+                    memberInfo.userBaseInfo.id,
+                    memberInfo.userBaseInfo.nickname,
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Image.asset(
+                    "assets/images/ic_kick_member_20.webp",
+                    width: 20,
+                    height: 20,
+                  ),
+                ),
+              );
+            }
+            return const SizedBox();
+          }),
+        ],
       ),
     );
   }

@@ -103,7 +103,9 @@ class ContactLogic extends GetxController {
       ["设置备注", "删除好友"],
       (index, text) {
         if (index == 0) {
-          SettingRemark.show(userId: userId);
+          SettingRemark.show(
+            userId: userId,
+          );
         } else if (index == 1) {
           alertDelete(userId);
         }
@@ -446,66 +448,82 @@ class ContactPage extends StatelessWidget {
     ContactLogic logic,
     ContactModel item,
   ) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () {
-        MenuLogic? logic = MenuLogic.logic();
-        if (logic == null) return;
-        logic.sliderKey?.currentState?.closeSlider();
-        logic.getDelegate?.toNamed(
-          Routes.chat(SDKTool.singleConvId(
-            HiveTool.getUserId(),
-            item.userId,
-          )),
-        );
-      },
-      onLongPress: () {
-        logic.showOperate(item.userId);
-      },
-      onSecondaryTap: () {
-        logic.showOperate(item.userId);
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        child: Row(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: ImageWidget(
-                item.avatar,
-                width: 55,
-                height: 55,
+    return Slidable(
+      endActionPane: ActionPane(
+        extentRatio: 0.25,
+        motion: const ScrollMotion(),
+        children: [
+          SlidableAction(
+            onPressed: (context) {
+              logic.showOperate(item.userId);
+            },
+            icon: Icons.settings,
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
+          ),
+        ],
+      ),
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          MenuLogic? logic = MenuLogic.logic();
+          if (logic == null) return;
+          logic.sliderKey?.currentState?.closeSlider();
+          logic.getDelegate?.toNamed(
+            Routes.chat(SDKTool.singleConvId(
+              HiveTool.getUserId(),
+              item.userId,
+            )),
+          );
+        },
+        onLongPress: () {
+          logic.showOperate(item.userId);
+        },
+        onSecondaryTap: () {
+          logic.showOperate(item.userId);
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: ImageWidget(
+                  item.avatar,
+                  width: 55,
+                  height: 55,
+                ),
               ),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    item.nickname,
-                    style: const TextStyle(
-                      color: getTextBlack,
-                      fontSize: 16,
-                      fontWeight: getSemiBold,
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item.nickname,
+                      style: const TextStyle(
+                        color: getTextBlack,
+                        fontSize: 16,
+                        fontWeight: getSemiBold,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    item.userId,
-                    style: const TextStyle(
-                      color: getHintBlack,
-                      fontSize: 14,
+                    const SizedBox(height: 5),
+                    Text(
+                      item.userId,
+                      style: const TextStyle(
+                        color: getHintBlack,
+                        fontSize: 14,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

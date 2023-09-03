@@ -140,7 +140,7 @@ class MinePage extends StatelessWidget {
                 },
               ),
               // _buildItem(
-              //   "assets/images/ic_settings_25.webp",
+              //   "assets/images/ic_settings_25.1",
               //   "系统设置".tr,
               //   () {},
               // ),

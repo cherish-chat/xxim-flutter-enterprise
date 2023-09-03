@@ -365,7 +365,7 @@ class NewsPage extends StatelessWidget {
     }
     return Slidable(
       endActionPane: ActionPane(
-        extentRatio: 0.45,
+        extentRatio: 0.5,
         motion: const ScrollMotion(),
         children: [
           SlidableAction(

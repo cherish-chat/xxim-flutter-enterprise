@@ -1,5 +1,6 @@
 import 'package:xxim_flutter_enterprise/main.dart' hide Page;
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
+import 'package:xxim_flutter_enterprise/pages/public/group_name.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 
 class GroupSetting {
@@ -146,6 +147,13 @@ class GroupSettingPage extends StatelessWidget {
                       Expanded(
                         child: Column(
                           children: [
+                            _buildText("修改群名".tr, () {
+                              GroupSetting.hide();
+                              GroupName.show(
+                                groupId: groupId,
+                                removeCount: 1,
+                              );
+                            }),
                             Obx(
                               () => _buildItem(
                                 "开启群成员禁言".tr,
@@ -187,6 +195,39 @@ class GroupSettingPage extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildText(
+    String text,
+    Function() onTap,
+  ) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                text,
+                style: const TextStyle(
+                  color: getTextBlack,
+                  fontSize: 14,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            Image.asset(
+              "assets/images/ic_right_20.webp",
+              width: 20,
+              height: 20,
+            ),
+          ],
+        ),
+      ),
     );
   }
 

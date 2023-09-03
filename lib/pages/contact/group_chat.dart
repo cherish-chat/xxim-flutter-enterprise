@@ -2,6 +2,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
+import 'package:xxim_flutter_enterprise/pages/public/group_name.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
@@ -22,6 +23,23 @@ class GroupChatLogic extends GetxController {
       return;
     }
     update(["list"]);
+  }
+
+  void showOperate(String groupId) {
+    OperateSheet.show(
+      ["修改群名", "退出群聊"],
+      (index, text) {
+        if (index == 0) {
+          GroupName.show(
+            groupId: groupId,
+            removeCount: 2,
+          );
+        } else if (index == 1) {
+          alertDelete(groupId);
+        }
+      },
+      shrinkWrap: true,
+    );
   }
 
   void alertDelete(String groupId) {
@@ -132,13 +150,11 @@ class GroupChatPage extends StatelessWidget {
     return GetBuilder<GroupChatLogic>(
       id: "list",
       builder: (logic) {
-        return SlidableAutoCloseBehavior(
-          child: ListView.builder(
-            itemBuilder: (context, index) {
-              return _buildItem(logic, logic.groupInfoList[index]);
-            },
-            itemCount: logic.groupInfoList.length,
-          ),
+        return ListView.builder(
+          itemBuilder: (context, index) {
+            return _buildItem(logic, logic.groupInfoList[index]);
+          },
+          itemCount: logic.groupInfoList.length,
         );
       },
     );
@@ -159,10 +175,10 @@ class GroupChatPage extends StatelessWidget {
         );
       },
       onLongPress: () {
-        logic.alertDelete(item.id);
+        logic.showOperate(item.id);
       },
       onSecondaryTap: () {
-        logic.alertDelete(item.id);
+        logic.showOperate(item.id);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -202,6 +218,16 @@ class GroupChatPage extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ],
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                logic.showOperate(item.id);
+              },
+              icon: Image.asset(
+                "assets/images/ic_settings_25.webp",
+                width: 25,
+                height: 25,
               ),
             ),
           ],
