@@ -24,6 +24,7 @@ web: clean
 	cp -r build/web ~/Desktop/web
 
 windows: clean
-    flutter build windows
-    cp -r build/windows/runner/Release ~/Desktop/Release
-    cp windows/dll/* ~/Desktop/Release
+	flutter pub run msix:build
+	cp windows/dll/* build/windows/runner/Release
+	flutter pub run msix:pack
+	cp -r build/windows/runner/Release ~/Desktop/Release

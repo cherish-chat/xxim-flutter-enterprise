@@ -113,6 +113,18 @@ dev_dependencies:
     git:
       url: https://github.com/cherish-chat/isar-2.5.0
       path: packages/isar_generator
+  msix: 3.16.1
+
+msix_config:
+  display_name: xxim_flutter_enterprise
+  app_installer:
+    publish_folder_path: C:\Users\Dizzy\Desktop
+    hours_between_update_checks: 0
+    automatic_background_task: true
+    update_blocks_activation: true
+    show_prompt: true
+    force_update_from_any_version: true
+  msix_version: 1.0.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
