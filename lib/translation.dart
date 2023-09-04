@@ -196,10 +196,8 @@ class Translation extends Translations {
           "输入群公告": "输入群公告",
           "展开": "展开",
           "收起": "收起",
-
           "截图失败": "截图失败",
           "发送": "发送",
-
         },
         "zh_TW": {
           "企业": "企業",
@@ -394,6 +392,8 @@ class Translation extends Translations {
           "输入群公告": "輸入群公告",
           "展开": "展開",
           "收起": "收起",
+          "截图失败": "截圖失敗",
+          "发送": "發送",
         },
         "en_US": {
           "企业": "enterprise",
@@ -592,6 +592,8 @@ class Translation extends Translations {
           "输入群公告": "Enter Group Announcement",
           "展开": "Expand",
           "收起": "Collapse",
+          "截图失败": "Screenshot Failed",
+          "发送": "Send",
         },
         "hi_IN": {
           "企业": "उद्योग",
@@ -792,6 +794,8 @@ class Translation extends Translations {
           "输入群公告": "समूह सूचना दर्ज करें",
           "展开": "विस्तार करें",
           "收起": "संक्षेपित करें",
+          "截图失败": "स्क्रीनशॉट विफल",
+          "发送": "भेजें",
         },
         "id_ID": {
           "企业": "Perusahaan",
@@ -991,6 +995,8 @@ class Translation extends Translations {
           "输入群公告": "Masukkan Pengumuman Grup",
           "展开": "Buka",
           "收起": "utup",
+          "截图失败": "Tangkapan Layar Gagal",
+          "发送": "Kirim",
         },
         "ja_JP": {
           "企业": "企業",
@@ -1185,6 +1191,8 @@ class Translation extends Translations {
           "输入群公告": "グループ公告を入力",
           "展开": "展開",
           "收起": "折りたたむ",
+          "截图失败": "スクリーンショットの取得に失敗",
+          "发送": "送信",
         },
         "ko_KR": {
           "企业": "기업",
@@ -1379,6 +1387,8 @@ class Translation extends Translations {
           "输入群公告": "그룹 공지 입력",
           "展开": "펼치기",
           "收起": "접기",
+          "截图失败": "스크린샷 실패",
+          "发送": "보내기",
         },
         "pt_PT": {
           "企业": "Empresa",
@@ -1580,6 +1590,8 @@ class Translation extends Translations {
           "输入群公告": "Introduzir Anúncio do Grupo",
           "展开": "Expandir",
           "收起": "Contrair",
+          "截图失败": "Captura de Tela Falhou",
+          "发送": "Enviar",
         },
         "ru_RU": {
           "企业": "Компания",
@@ -1780,6 +1792,8 @@ class Translation extends Translations {
           "输入群公告": "Ввести Объявление в Группе",
           "展开": "Развернуть",
           "收起": "Свернуть",
+          "截图失败": "Скриншот не удалось сделать",
+          "发送": "Отправить",
         },
         "th_TH": {
           "企业": "ธุรกิจ",
@@ -1974,6 +1988,8 @@ class Translation extends Translations {
           "输入群公告": "ป้อนประกาศกลุ่ม",
           "展开": "ขยาย",
           "收起": "ย่อ",
+          "截图失败": "การจับภาพหน้าจอล้มเหลว",
+          "发送": "ส่ง",
         },
         "ur_PK": {
           "企业": "کاروبار",
@@ -2174,6 +2190,8 @@ class Translation extends Translations {
           "输入群公告": "گروپ کی اعلان درج کریں",
           "展开": "پھیلائیں",
           "收起": "مختصر کریں",
+          "截图失败": "اسکرین شاٹ فیل ہوگیا",
+          "发送": "بھیجیں",
         },
         "vi_VN": {
           "企业": "Doanh nghiệp",
@@ -2370,6 +2388,8 @@ class Translation extends Translations {
           "输入群公告": "Nhập Thông báo Nhóm",
           "展开": "Mở rộng",
           "收起": "Thu gọn",
+          "截图失败": "Chụp ảnh màn hình thất bại",
+          "发送": "Gửi",
         },
       };
 }
