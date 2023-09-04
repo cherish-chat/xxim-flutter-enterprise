@@ -4,13 +4,16 @@ import 'package:cross_file/cross_file.dart';
 import 'package:extended_text/extended_text.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:hotkey_manager/hotkey_manager.dart';
 import 'package:readmore/readmore.dart';
+import 'package:screen_capturer/screen_capturer.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 import 'package:xxim_flutter_enterprise/pages/public/at_member.dart';
+import 'package:xxim_flutter_enterprise/pages/public/capturer_dialog.dart';
 import 'package:xxim_flutter_enterprise/pages/public/group_member.dart';
 import 'package:xxim_flutter_enterprise/pages/public/group_setting.dart';
 import 'package:xxim_flutter_enterprise/pages/public/red_packet_detail.dart';
@@ -58,8 +61,10 @@ class ChatLogic extends GetxController {
   RxMap replyMsgMap = {}.obs;
   Map translateMap = {};
 
+  late HotKey hotKey;
+
   @override
-  void onInit() {
+  void onInit() async {
     itemScrollController = ItemScrollController();
     itemPositionsListener = ItemPositionsListener.create();
     itemPositionsListener.itemPositions.addListener(() {
@@ -92,6 +97,22 @@ class ChatLogic extends GetxController {
         }
       }
     });
+
+    hotKey = HotKey(
+      KeyCode.keyA,
+      modifiers: [
+        KeyModifier.control,
+        KeyModifier.shift,
+      ],
+      scope: HotKeyScope.inapp,
+    );
+    await hotKeyManager.register(
+      hotKey,
+      keyDownHandler: (hotKey) {
+        sendScreenCapturer();
+      },
+    );
+
     super.onInit();
   }
 
@@ -144,6 +165,7 @@ class ChatLogic extends GetxController {
         msgModelList: modelList,
       );
     }
+    await hotKeyManager.unregisterAll();
     super.onClose();
   }
 
@@ -223,6 +245,29 @@ class ChatLogic extends GetxController {
 
   void sendRedPacket() {
     SendRedPacket.show(convId: convId);
+  }
+
+  void sendScreenCapturer() {
+    screenCapturer
+        .capture(
+      mode: CaptureMode.region,
+      imagePath: "<path>",
+      copyToClipboard: true,
+    )
+        .then(
+      (value) {
+        if (value == null) return;
+        Uint8List? imageBytes = value.imageBytes;
+        if (imageBytes == null) {
+          Tool.showToast("截图失败".tr);
+          return;
+        }
+        CapturerDialog.show(
+          imageBytes: imageBytes,
+          sendImage: () {},
+        );
+      },
+    );
   }
 
   void pickFiles() {
@@ -884,6 +929,19 @@ class ChatPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 8),
+                  if (GetPlatform.isDesktop)
+                    GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () {
+                        logic.sendScreenCapturer();
+                      },
+                      child: Image.asset(
+                        "assets/images/ic_capturer_35.webp",
+                        width: 40,
+                        height: 40,
+                      ),
+                    ),
+                  if (GetPlatform.isDesktop) const SizedBox(width: 8),
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () {

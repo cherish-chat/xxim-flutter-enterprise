@@ -1,3 +1,4 @@
+import 'package:hotkey_manager/hotkey_manager.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:xxim_flutter_enterprise/component/component.dart';
 import 'package:xxim_flutter_enterprise/routes.dart';
@@ -30,7 +31,6 @@ void main() async {
     windowManager.waitUntilReadyToShow(
       const WindowOptions(
         size: Size(1443, 812),
-        center: true,
         minimumSize: Size(375, 812),
         backgroundColor: Colors.transparent,
         skipTaskbar: false,
@@ -41,6 +41,7 @@ void main() async {
         await windowManager.focus();
       },
     );
+    await hotKeyManager.unregisterAll();
   }
   PlatformTool.webContextMenu();
   PlatformTool.webBeforeUnload();

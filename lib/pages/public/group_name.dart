@@ -105,7 +105,9 @@ class GroupNamePage extends StatelessWidget {
               builder: (context, constraints) {
                 return Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  width: Get.width / 3 * 2,
+                  width: MenuLogic.logic()?.isPhone.value == true
+                      ? Get.width / 5 * 4
+                      : Get.width / 3 * 2,
                   height: Get.height / 5 * 1.2,
                   decoration: BoxDecoration(
                     color: Colors.white,

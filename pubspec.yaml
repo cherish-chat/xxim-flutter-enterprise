@@ -77,6 +77,8 @@ dependencies:
   record: 4.4.4
   cross_file: 0.3.3+4
   audioplayers: 4.0.1
+  screen_capturer: 0.1.7
+  hotkey_manager: 0.1.8
 
   flutter_keyboard_visibility: 5.4.1
   extended_text_library: 11.0.0
