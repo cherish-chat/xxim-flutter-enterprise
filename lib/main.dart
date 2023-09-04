@@ -30,7 +30,11 @@ void main() async {
     windowManager.waitUntilReadyToShow(
       const WindowOptions(
         size: Size(1443, 812),
+        center: true,
         minimumSize: Size(375, 812),
+        backgroundColor: Colors.transparent,
+        skipTaskbar: false,
+        titleBarStyle: TitleBarStyle.normal,
       ),
       () async {
         await windowManager.show();
