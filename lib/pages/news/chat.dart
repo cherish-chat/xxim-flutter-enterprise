@@ -5,6 +5,7 @@ import 'package:extended_text/extended_text.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:readmore/readmore.dart';
 import 'package:screen_capturer/screen_capturer.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
@@ -61,7 +62,7 @@ class ChatLogic extends GetxController {
   RxMap replyMsgMap = {}.obs;
   Map translateMap = {};
 
-  late HotKey hotKey;
+  HotKey? hotKey;
 
   @override
   void onInit() async {
@@ -98,20 +99,22 @@ class ChatLogic extends GetxController {
       }
     });
 
-    hotKey = HotKey(
-      KeyCode.keyA,
-      modifiers: [
-        KeyModifier.control,
-        KeyModifier.shift,
-      ],
-      scope: HotKeyScope.inapp,
-    );
-    await hotKeyManager.register(
-      hotKey,
-      keyDownHandler: (hotKey) {
-        sendScreenCapturer();
-      },
-    );
+    if (GetPlatform.isDesktop) {
+      hotKey = HotKey(
+        KeyCode.keyA,
+        modifiers: [
+          KeyModifier.control,
+          KeyModifier.alt,
+        ],
+        scope: HotKeyScope.inapp,
+      );
+      await hotKeyManager.register(
+        hotKey!,
+        keyDownHandler: (hotKey) {
+          sendScreenCapturer();
+        },
+      );
+    }
 
     super.onInit();
   }
@@ -165,7 +168,9 @@ class ChatLogic extends GetxController {
         msgModelList: modelList,
       );
     }
-    await hotKeyManager.unregisterAll();
+    if (GetPlatform.isDesktop) {
+      await hotKeyManager.unregisterAll();
+    }
     super.onClose();
   }
 
@@ -247,12 +252,12 @@ class ChatLogic extends GetxController {
     SendRedPacket.show(convId: convId);
   }
 
-  void sendScreenCapturer() {
+  void sendScreenCapturer() async {
     screenCapturer
         .capture(
       mode: CaptureMode.region,
-      imagePath: "<path>",
-      copyToClipboard: true,
+      imagePath:
+          "${(await getApplicationDocumentsDirectory()).path}/${Tool.getUUId()}.jpg",
     )
         .then(
       (value) {
