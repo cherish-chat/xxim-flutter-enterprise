@@ -1,5 +1,6 @@
 import 'package:xxim_flutter_enterprise/main.dart' hide Page;
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
+import 'package:xxim_flutter_enterprise/pages/public/group_bulletin.dart';
 import 'package:xxim_flutter_enterprise/pages/public/group_name.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 
@@ -147,9 +148,16 @@ class GroupSettingPage extends StatelessWidget {
                       Expanded(
                         child: Column(
                           children: [
-                            _buildText("修改群名".tr, () {
+                            _buildText(16, "修改群名".tr, () {
                               GroupSetting.hide();
                               GroupName.show(
+                                groupId: groupId,
+                                removeCount: 1,
+                              );
+                            }),
+                            _buildText(8, "修改群公告".tr, () {
+                              GroupSetting.hide();
+                              GroupBulletin.show(
                                 groupId: groupId,
                                 removeCount: 1,
                               );
@@ -199,6 +207,7 @@ class GroupSettingPage extends StatelessWidget {
   }
 
   Widget _buildText(
+    double vertical,
     String text,
     Function() onTap,
   ) {
@@ -206,7 +215,7 @@ class GroupSettingPage extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
+        padding: EdgeInsets.symmetric(vertical: vertical),
         child: Row(
           children: [
             Expanded(

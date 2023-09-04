@@ -4,6 +4,7 @@ import 'package:cross_file/cross_file.dart';
 import 'package:extended_text/extended_text.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:readmore/readmore.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
@@ -50,6 +51,8 @@ class ChatLogic extends GetxController {
   late StreamSubscription keyboardEvent;
 
   List<MsgModel> msgModelList = [];
+
+  RxString bulletin = "".obs;
 
   Map atUserMap = {};
   RxMap replyMsgMap = {}.obs;
@@ -108,6 +111,7 @@ class ChatLogic extends GetxController {
     await XXIM.instance.convManager.setConvRead(convId: convId);
     NewsLogic.logic()?.loadList(force: true);
     loadList();
+    loadBulletin();
   }
 
   @override
@@ -162,6 +166,20 @@ class ChatLogic extends GetxController {
     msgModelList.addAll(msgList);
     update(["list"]);
     isLoadMore = false;
+  }
+
+  void loadBulletin() {
+    if (!SDKTool.isGroupConv(convId)) return;
+    XXIM.instance.customRequest<GetGroupHomeResp>(
+      method: "/v1/group/getGroupHome",
+      req: GetGroupHomeReq(
+        groupId: SDKTool.getGroupId(convId),
+      ),
+      resp: GetGroupHomeResp.create,
+      onSuccess: (data) {
+        bulletin.value = data.introduction;
+      },
+    );
   }
 
   void receiveMsg(MsgModel msgModel) {
@@ -618,6 +636,7 @@ class ChatPage extends StatelessWidget {
       child: Column(
         children: [
           _buildAppBar(logic),
+          _buildBulletin(logic),
           Expanded(
             child: _buildListView(logic),
           ),
@@ -709,6 +728,46 @@ class ChatPage extends StatelessWidget {
           ),
       ],
     );
+  }
+
+  Widget _buildBulletin(ChatLogic logic) {
+    return Obx(() {
+      if (logic.bulletin.value.isEmpty) return const SizedBox();
+      return Container(
+        margin: const EdgeInsets.only(top: 1),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+        color: Colors.white,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Icon(
+              Icons.warning_amber_rounded,
+              size: 17,
+              color: getSecondColor,
+            ),
+            const SizedBox(width: 5),
+            Expanded(
+              child: ReadMoreText(
+                logic.bulletin.value,
+                trimLines: 3,
+                colorClickableText: getSecondColor,
+                trimMode: TrimMode.Line,
+                style: const TextStyle(
+                  color: getTextBlack,
+                  fontSize: 12,
+                ),
+                trimCollapsedText: "展开",
+                trimExpandedText: "收起",
+                moreStyle: const TextStyle(
+                  color: getSecondColor,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    });
   }
 
   Widget _buildListView(ChatLogic logic) {

@@ -2,6 +2,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
+import 'package:xxim_flutter_enterprise/pages/public/group_bulletin.dart';
 import 'package:xxim_flutter_enterprise/pages/public/group_name.dart';
 import 'package:xxim_flutter_enterprise/proto/group.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
@@ -27,7 +28,7 @@ class GroupChatLogic extends GetxController {
 
   void showOperate(String groupId) {
     OperateSheet.show(
-      ["修改群名", "退出群聊"],
+      ["修改群名".tr, "修改群公告".tr, "退出群聊".tr],
       (index, text) {
         if (index == 0) {
           GroupName.show(
@@ -35,6 +36,11 @@ class GroupChatLogic extends GetxController {
             removeCount: 2,
           );
         } else if (index == 1) {
+          GroupBulletin.show(
+            groupId: groupId,
+            removeCount: 2,
+          );
+        } else if (index == 2) {
           alertDelete(groupId);
         }
       },

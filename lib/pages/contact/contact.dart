@@ -100,7 +100,7 @@ class ContactLogic extends GetxController {
 
   void showOperate(String userId) {
     OperateSheet.show(
-      ["设置备注", "删除好友"],
+      ["设置备注".tr, "删除好友".tr],
       (index, text) {
         if (index == 0) {
           SettingRemark.show(
