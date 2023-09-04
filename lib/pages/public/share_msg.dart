@@ -181,6 +181,7 @@ class ShareMsgPage extends StatelessWidget {
 
   Widget _buildListView(ShareMsgLogic logic) {
     return ListView.builder(
+      padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
         ConvModel convModel = logic.convModelList[index];
         UserBaseInfo? userInfo;

@@ -157,6 +157,7 @@ class GroupChatPage extends StatelessWidget {
       id: "list",
       builder: (logic) {
         return ListView.builder(
+          padding: EdgeInsets.zero,
           itemBuilder: (context, index) {
             return _buildItem(logic, logic.groupInfoList[index]);
           },

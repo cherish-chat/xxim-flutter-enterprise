@@ -159,6 +159,7 @@ class RedPacketDetailPage extends StatelessWidget {
     return GetBuilder<RedPacketDetailLogic>(
       builder: (logic) {
         return ListView.builder(
+          padding: EdgeInsets.zero,
           itemBuilder: (context, index) {
             RedPacket_Receiver receiver = logic.list[index];
             // if (receiver.userId == HiveTool.getUserId()) {

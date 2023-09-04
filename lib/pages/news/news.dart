@@ -229,6 +229,7 @@ class NewsPage extends StatelessWidget {
       builder: (logic) {
         return SlidableAutoCloseBehavior(
           child: ListView.builder(
+            padding: EdgeInsets.zero,
             itemBuilder: (context, index) {
               ConvModel convModel = logic.convModelList[index];
               UserBaseInfo? userInfo;

@@ -170,6 +170,7 @@ class FriendApplyPage extends StatelessWidget {
           onRefresh: logic.onRefresh,
           onLoading: logic.onLoadMore,
           child: ListView.builder(
+            padding: EdgeInsets.zero,
             itemBuilder: (context, index) {
               return _buildItem(logic, logic.list[index]);
             },

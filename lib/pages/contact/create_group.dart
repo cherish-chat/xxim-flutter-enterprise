@@ -233,6 +233,7 @@ class CreateGroupPage extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     height: 50,
                     child: ListView.builder(
+                      padding: EdgeInsets.zero,
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
