@@ -264,7 +264,26 @@ class ChatLogic extends GetxController {
         }
         CapturerDialog.show(
           imageBytes: imageBytes,
-          sendImage: () {},
+          sendImage: () async {
+            Completer<ui.Image> completer = Completer();
+            ui.decodeImageFromList(imageBytes, (ui.Image image) {
+              return completer.complete(image);
+            });
+            ui.Image image = await completer.future;
+            createImage(ImageContent(
+              imageName: "${Tool.getUUId()}.jpg",
+              imagePath: "",
+              imageUrl: "",
+              imageBytes: imageBytes,
+              width: image.width,
+              height: image.height,
+              size: imageBytes.length,
+            )).then(
+              (value) {
+                sendImage(value);
+              },
+            );
+          },
         );
       },
     );
