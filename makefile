@@ -27,4 +27,5 @@ windows: clean
 	flutter build windows
 	cp -r build/windows/runner/Release ~/Desktop/xxim_flutter_enterprise
 	cp windows/dll/* ~/Desktop/xxim_flutter_enterprise
+	cp windows/xxim_flutter_enterprise.iss ~/Desktop
 	cp LICENSE ~/Desktop/xxim_flutter_enterprise
