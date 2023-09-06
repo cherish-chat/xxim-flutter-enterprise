@@ -25,5 +25,6 @@ web: clean
 
 windows: clean
 	flutter build windows
-	cp -r build/windows/runner/Release ~/Desktop/Release
-	cp windows/dll/* ~/Desktop/Release
+	cp -r build/windows/runner/Release ~/Desktop/xxim_flutter_enterprise
+	cp windows/dll/* ~/Desktop/xxim_flutter_enterprise
+	cp LICENSE ~/Desktop/xxim_flutter_enterprise

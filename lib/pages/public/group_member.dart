@@ -463,13 +463,13 @@ class GroupMemberLogic extends GetxController {
         });
         update(["list"]);
         Tool.showToast("踢出成功".tr);
-        XXIM.instance.msgManager.sendTip(
-          convId: SDKTool.groupConvId(groupId),
-          content: TipContent(
-            tip:
-                "$memberNickname${"被".tr}${HiveTool.getNickname()}${"踢出群聊".tr}",
-          ),
-        );
+        // XXIM.instance.msgManager.sendTip(
+        //   convId: SDKTool.groupConvId(groupId),
+        //   content: TipContent(
+        //     tip:
+        //         "$memberNickname${"被".tr}${HiveTool.getNickname()}${"踢出群聊".tr}",
+        //   ),
+        // );
       },
       onError: (code, error) {
         Tool.showToast("踢出失败".tr);
@@ -504,13 +504,13 @@ class GroupMemberLogic extends GetxController {
       resp: InviteFriendToGroupResp.create,
       onSuccess: (data) {
         onRefresh();
-        XXIM.instance.msgManager.sendTip(
-          convId: SDKTool.groupConvId(groupId),
-          content: TipContent(
-            tip:
-                "${HiveTool.getNickname()}${"邀请".tr}${friendNames.join("，")}${"进入群聊".tr}",
-          ),
-        );
+        // XXIM.instance.msgManager.sendTip(
+        //   convId: SDKTool.groupConvId(groupId),
+        //   content: TipContent(
+        //     tip:
+        //         "${HiveTool.getNickname()}${"邀请".tr}${friendNames.join("，")}${"进入群聊".tr}",
+        //   ),
+        // );
       },
       onError: (code, error) {
         Tool.showToast("邀请失败".tr);
