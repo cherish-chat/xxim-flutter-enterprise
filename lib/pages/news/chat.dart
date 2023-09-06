@@ -101,12 +101,11 @@ class ChatLogic extends GetxController {
 
     if (GetPlatform.isDesktop) {
       hotKey = HotKey(
-        KeyCode.keyA,
+        KeyCode.keyP,
         modifiers: [
           KeyModifier.control,
-          KeyModifier.alt,
         ],
-        scope: HotKeyScope.inapp,
+        scope: HotKeyScope.system,
       );
       await hotKeyManager.register(
         hotKey!,
