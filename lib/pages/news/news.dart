@@ -317,7 +317,8 @@ class NewsPage extends StatelessWidget {
           }
         }
         if (contentType == MsgContentType.tip) {
-          content = TipContent.fromJson(msgModel.content).tip;
+          // content = TipContent.fromJson(msgModel.content).tip;
+          content = "";
         } else if (contentType == MsgContentType.text) {
           content = msgModel.content;
           if (msgModel.senderId != HiveTool.getUserId() &&
