@@ -60,10 +60,10 @@ class ChatItem<T extends GetxController> extends StatelessWidget {
         int contentType = msgModel.contentType;
         Widget widget = const SizedBox();
         if (contentType == MsgContentType.tip) {
-          widget = ChatTipItem(
-            direction: direction,
-            msgModel: msgModel,
-          );
+          // widget = ChatTipItem(
+          //   direction: direction,
+          //   msgModel: msgModel,
+          // );
         } else {
           widget = ChatMsgItem<T>(
             tag: tag,
