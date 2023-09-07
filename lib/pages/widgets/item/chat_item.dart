@@ -688,9 +688,11 @@ class ChatImageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     ImageContent content = ImageContent.fromJson(msgModel.content);
     double maxWidth =
-        (MenuLogic.logic()?.isPhone.value == true ? Get.width : Get.width / 2) -
+        (MenuLogic.logic()?.isPhone.value == true ? Get.width : Get.width / 3) -
             128;
+    double maxPixelWidth = maxWidth * Get.pixelRatio;
     double maxHeight = maxWidth * 1.5;
+    double maxPixelHeight = maxHeight * Get.pixelRatio;
     double width = content.width.toDouble();
     double height = content.height.toDouble();
     if (width == 0 || height == 0) {
@@ -699,14 +701,27 @@ class ChatImageItem extends StatelessWidget {
     } else {
       double scale = width / height;
       if (width > height) {
-        width = maxWidth;
+        if (width >= maxPixelWidth) {
+          width = maxWidth;
+        } else {
+          width = width / Get.pixelRatio;
+        }
         height = width / scale;
       } else if (height > width) {
-        height = maxHeight;
-        width = maxHeight * scale;
+        if (height >= maxPixelHeight) {
+          height = maxHeight;
+        } else {
+          height = height / Get.pixelRatio;
+        }
+        width = height * scale;
       } else {
-        width = maxWidth;
-        height = maxWidth;
+        if (width >= maxPixelWidth) {
+          width = maxWidth;
+          height = maxWidth;
+        } else {
+          width = width / Get.pixelRatio;
+          height = height / Get.pixelRatio;
+        }
       }
     }
     return GestureDetector(
@@ -857,7 +872,7 @@ class _ChatAudioItemState extends State<ChatAudioItem> {
   @override
   Widget build(BuildContext context) {
     double maxWidth =
-        (MenuLogic.logic()?.isPhone.value == true ? Get.width : Get.width / 2) -
+        (MenuLogic.logic()?.isPhone.value == true ? Get.width : Get.width / 3) -
             128;
     double minWidth = 91;
     double duration = _content.duration.toDouble();
@@ -962,7 +977,7 @@ class ChatVideoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     VideoContent content = VideoContent.fromJson(msgModel.content);
     double maxWidth =
-        (MenuLogic.logic()?.isPhone.value == true ? Get.width : Get.width / 2) -
+        (MenuLogic.logic()?.isPhone.value == true ? Get.width : Get.width / 3) -
             128;
     double maxHeight = maxWidth * 1.5;
     double width = 200;
