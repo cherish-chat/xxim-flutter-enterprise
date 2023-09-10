@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cross_file/cross_file.dart';
 import 'package:extended_text/extended_text.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
 import 'package:path_provider/path_provider.dart';
@@ -99,7 +100,7 @@ class ChatLogic extends GetxController {
       }
     });
 
-    if (GetPlatform.isDesktop) {
+    if (!kIsWeb && GetPlatform.isDesktop) {
       hotKey = HotKey(
         KeyCode.keyP,
         modifiers: [
@@ -167,7 +168,7 @@ class ChatLogic extends GetxController {
         msgModelList: modelList,
       );
     }
-    if (GetPlatform.isDesktop) {
+    if (!kIsWeb && GetPlatform.isDesktop) {
       await hotKeyManager.unregisterAll();
     }
     super.onClose();
@@ -952,7 +953,7 @@ class ChatPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  if (GetPlatform.isDesktop)
+                  if (!kIsWeb && GetPlatform.isDesktop)
                     GestureDetector(
                       behavior: HitTestBehavior.opaque,
                       onTap: () {
@@ -964,7 +965,8 @@ class ChatPage extends StatelessWidget {
                         height: 40,
                       ),
                     ),
-                  if (GetPlatform.isDesktop) const SizedBox(width: 8),
+                  if (!kIsWeb && GetPlatform.isDesktop)
+                    const SizedBox(width: 8),
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () {
