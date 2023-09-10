@@ -118,6 +118,7 @@ class MenuLogic extends GetxController {
             key: "key",
             iv: "iv",
           );
+          ChatLogic.logic(convId)?.loadBulletin();
           ChatLogic.logic(convId)?.update(["mute"]);
         }
         GroupChatLogic.logic()?.loadList();
