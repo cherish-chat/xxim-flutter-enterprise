@@ -96,6 +96,7 @@ class MenuLogic extends GetxController {
             key: "key",
             iv: "iv",
           );
+          ChatLogic.logic(convId)?.update(["appBar"]);
         }
         ContactLogic.logic()?.loadList();
       },
@@ -118,6 +119,7 @@ class MenuLogic extends GetxController {
             key: "key",
             iv: "iv",
           );
+          ChatLogic.logic(convId)?.update(["appBar"]);
           ChatLogic.logic(convId)?.loadBulletin();
           ChatLogic.logic(convId)?.update(["mute"]);
         }

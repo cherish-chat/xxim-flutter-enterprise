@@ -716,86 +716,94 @@ class ChatPage extends StatelessWidget {
   }
 
   Widget _buildAppBar(ChatLogic logic) {
-    String text = "聊天".tr;
-    GroupRole groupRole = GroupRole.MEMBER;
-    if (SDKTool.isSingleConv(logic.convId)) {
-      String userId = SDKTool.getSingleId(
-        logic.convId,
-        HiveTool.getUserId(),
-      );
-      List<UserBaseInfo> userInfoList = MenuLogic.logic()?.userInfoList ?? [];
-      int index = userInfoList.indexWhere((element) {
-        return userId == element.id;
-      });
-      if (index != -1) {
-        text = userInfoList[index].nickname;
-        String remark = MenuLogic.logic()?.userRemarkMap[userId] ?? "";
-        if (remark.isNotEmpty) {
-          text = remark;
-        }
-      }
-    } else if (SDKTool.isGroupConv(logic.convId)) {
-      String groupId = SDKTool.getGroupId(logic.convId);
-      List<GroupBaseInfo> groupInfoList =
-          MenuLogic.logic()?.groupInfoList ?? [];
-      int index = groupInfoList.indexWhere((element) {
-        return groupId == element.id;
-      });
-      if (index != -1) {
-        text = groupInfoList[index].name;
-      }
-      GroupBaseInfo groupBaseInfo = groupInfoList[index];
-      groupRole = groupBaseInfo.myMemberInfo.role;
-    }
-    return AppBar(
-      leading: Obx(() {
-        if (MenuLogic.logic()?.isPhone.value == true) {
-          return IconButton(
-            icon: Image.asset(
-              "assets/images/ic_menu_24.webp",
-              width: 24,
-              height: 24,
-            ),
-            onPressed: () {
-              MenuLogic.logic()?.sliderKey?.currentState?.toggle();
-            },
+    return GetBuilder<ChatLogic>(
+      tag: logic.tag,
+      id: "appBar",
+      builder: (logic) {
+        String text = "聊天".tr;
+        GroupRole groupRole = GroupRole.MEMBER;
+        if (SDKTool.isSingleConv(logic.convId)) {
+          String userId = SDKTool.getSingleId(
+            logic.convId,
+            HiveTool.getUserId(),
           );
+          List<UserBaseInfo> userInfoList =
+              MenuLogic.logic()?.userInfoList ?? [];
+          int index = userInfoList.indexWhere((element) {
+            return userId == element.id;
+          });
+          if (index != -1) {
+            text = userInfoList[index].nickname;
+            String remark = MenuLogic.logic()?.userRemarkMap[userId] ?? "";
+            if (remark.isNotEmpty) {
+              text = remark;
+            }
+          }
+        } else if (SDKTool.isGroupConv(logic.convId)) {
+          String groupId = SDKTool.getGroupId(logic.convId);
+          List<GroupBaseInfo> groupInfoList =
+              MenuLogic.logic()?.groupInfoList ?? [];
+          int index = groupInfoList.indexWhere((element) {
+            return groupId == element.id;
+          });
+          if (index != -1) {
+            text = groupInfoList[index].name;
+          }
+          GroupBaseInfo groupBaseInfo = groupInfoList[index];
+          groupRole = groupBaseInfo.myMemberInfo.role;
         }
-        return const SizedBox();
-      }),
-      title: Text(text),
-      actions: [
-        if (SDKTool.isGroupConv(logic.convId))
-          TextButton(
-            onPressed: () {
-              GroupMember.show(
-                groupId: SDKTool.getGroupId(logic.convId),
+        return AppBar(
+          leading: Obx(() {
+            if (MenuLogic.logic()?.isPhone.value == true) {
+              return IconButton(
+                icon: Image.asset(
+                  "assets/images/ic_menu_24.webp",
+                  width: 24,
+                  height: 24,
+                ),
+                onPressed: () {
+                  MenuLogic.logic()?.sliderKey?.currentState?.toggle();
+                },
               );
-            },
-            child: Text(
-              "成员".tr,
-              style: const TextStyle(
-                color: getTextBlack,
-                fontSize: 14,
+            }
+            return const SizedBox();
+          }),
+          title: Text(text),
+          actions: [
+            if (SDKTool.isGroupConv(logic.convId))
+              TextButton(
+                onPressed: () {
+                  GroupMember.show(
+                    groupId: SDKTool.getGroupId(logic.convId),
+                  );
+                },
+                child: Text(
+                  "成员".tr,
+                  style: const TextStyle(
+                    color: getTextBlack,
+                    fontSize: 14,
+                  ),
+                ),
               ),
-            ),
-          ),
-        if (SDKTool.isGroupConv(logic.convId) && groupRole != GroupRole.MEMBER)
-          TextButton(
-            onPressed: () {
-              GroupSetting.show(
-                groupId: SDKTool.getGroupId(logic.convId),
-              );
-            },
-            child: Text(
-              "设置".tr,
-              style: const TextStyle(
-                color: getTextBlack,
-                fontSize: 14,
+            if (SDKTool.isGroupConv(logic.convId) &&
+                groupRole != GroupRole.MEMBER)
+              TextButton(
+                onPressed: () {
+                  GroupSetting.show(
+                    groupId: SDKTool.getGroupId(logic.convId),
+                  );
+                },
+                child: Text(
+                  "设置".tr,
+                  style: const TextStyle(
+                    color: getTextBlack,
+                    fontSize: 14,
+                  ),
+                ),
               ),
-            ),
-          ),
-      ],
+          ],
+        );
+      },
     );
   }
 
