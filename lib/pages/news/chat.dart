@@ -11,6 +11,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:readmore/readmore.dart';
 import 'package:screen_capturer/screen_capturer.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import 'package:super_clipboard/super_clipboard.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
@@ -122,29 +123,17 @@ class ChatLogic extends GetxController {
       await hotKeyManager.register(
         fileHotKey,
         keyDownHandler: (hotKey) async {
-          String getFileHeader(List<int> bytes) {
-            return bytes
-                .map((byte) => byte.toRadixString(16).padLeft(2, '0'))
-                .join()
-                .toUpperCase();
-          }
-
-          Uint8List? uint8List = await screenCapturer.readImageFromClipboard();
-          if (uint8List != null) {
-            File imageFile = File(
-                "${(await getApplicationDocumentsDirectory()).path}/${Tool.getUUId()}.jpg");
-            if (!(await imageFile.parent.exists())) {
-              await imageFile.parent.create(recursive: true);
-            }
-            imageFile = await imageFile.writeAsBytes(uint8List);
-            uint8List = await imageFile.readAsBytes();
-            String header = getFileHeader(uint8List.toList());
-            if (header.startsWith("FFD8") || // JPEG
-                    header.startsWith("89504E470D0A1A0A") || // PNG
-                    header.startsWith("47494638") // GIF
-                ) {
+          ClipboardReader reader = await ClipboardReader.readClipboard();
+          if (reader.canProvide(Formats.jpeg)) {
+            reader.getFile(Formats.jpeg, (value) async {
+              Uint8List uint8List = await value.readAll();
               sendCopyImage(uint8List);
-            }
+            });
+          } else if (reader.canProvide(Formats.png)) {
+            reader.getFile(Formats.png, (value) async {
+              Uint8List uint8List = await value.readAll();
+              sendCopyImage(uint8List);
+            });
           }
         },
       );
