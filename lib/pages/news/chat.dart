@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'package:cross_file/cross_file.dart';
 import 'package:extended_text/extended_text.dart';
 import 'package:file_picker/file_picker.dart';
@@ -63,8 +64,6 @@ class ChatLogic extends GetxController {
   RxMap replyMsgMap = {}.obs;
   Map translateMap = {};
 
-  HotKey? hotKey;
-
   @override
   void onInit() async {
     itemScrollController = ItemScrollController();
@@ -99,9 +98,8 @@ class ChatLogic extends GetxController {
         }
       }
     });
-
     if (!kIsWeb && GetPlatform.isDesktop) {
-      hotKey = HotKey(
+      HotKey capturerHotKey = HotKey(
         KeyCode.keyP,
         modifiers: [
           KeyModifier.control,
@@ -109,13 +107,48 @@ class ChatLogic extends GetxController {
         scope: HotKeyScope.system,
       );
       await hotKeyManager.register(
-        hotKey!,
+        capturerHotKey,
         keyDownHandler: (hotKey) {
           sendScreenCapturer();
         },
       );
-    }
+      HotKey fileHotKey = HotKey(
+        KeyCode.keyV,
+        modifiers: [
+          KeyModifier.control,
+        ],
+        scope: HotKeyScope.system,
+      );
+      await hotKeyManager.register(
+        fileHotKey,
+        keyDownHandler: (hotKey) async {
+          String getFileHeader(List<int> bytes) {
+            return bytes
+                .map((byte) => byte.toRadixString(16).padLeft(2, '0'))
+                .join()
+                .toUpperCase();
+          }
 
+          Uint8List? uint8List = await screenCapturer.readImageFromClipboard();
+          if (uint8List != null) {
+            File imageFile = File(
+                "${(await getApplicationDocumentsDirectory()).path}/${Tool.getUUId()}.jpg");
+            if (!(await imageFile.parent.exists())) {
+              await imageFile.parent.create(recursive: true);
+            }
+            imageFile = await imageFile.writeAsBytes(uint8List);
+            uint8List = await imageFile.readAsBytes();
+            String header = getFileHeader(uint8List.toList());
+            if (header.startsWith("FFD8") || // JPEG
+                    header.startsWith("89504E470D0A1A0A") || // PNG
+                    header.startsWith("47494638") // GIF
+                ) {
+              sendCopyImage(uint8List);
+            }
+          }
+        },
+      );
+    }
     super.onInit();
   }
 
@@ -288,6 +321,32 @@ class ChatLogic extends GetxController {
                 sendImage(value);
               },
             );
+          },
+        );
+      },
+    );
+  }
+
+  void sendCopyImage(Uint8List imageBytes) {
+    CapturerDialog.show(
+      imageBytes: imageBytes,
+      sendImage: () async {
+        Completer<ui.Image> completer = Completer();
+        ui.decodeImageFromList(imageBytes, (ui.Image image) {
+          return completer.complete(image);
+        });
+        ui.Image image = await completer.future;
+        createImage(ImageContent(
+          imageName: "${Tool.getUUId()}.jpg",
+          imagePath: "",
+          imageUrl: "",
+          imageBytes: imageBytes,
+          width: image.width,
+          height: image.height,
+          size: imageBytes.length,
+        )).then(
+          (value) {
+            sendImage(value);
           },
         );
       },
