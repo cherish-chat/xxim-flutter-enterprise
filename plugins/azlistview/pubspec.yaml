@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   # https://pub.flutter-io.cn/packages/scrollable_positioned_list
-  scrollable_positioned_list: ^0.3.5
+  scrollable_positioned_list: ^0.3.8
 
 dev_dependencies:
   flutter_test:

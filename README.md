@@ -2,6 +2,10 @@
 
 A new Flutter project.
 
+## Flutter SDK
+
+Channel stable 3.13.3
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
