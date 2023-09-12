@@ -303,7 +303,7 @@ class ChatLogic extends GetxController {
     }
 
     PickTool.pickFiles(
-      type: FileType.media,
+      type: FileType.any,
       onSuccess: (result) async {
         List<PlatformFile> files = result.files;
         if (files.isEmpty) return;
@@ -363,7 +363,8 @@ class ChatLogic extends GetxController {
                   (header.startsWith("000001BA") ||
                       header.startsWith("000001B3")) || // MPG, MPEG
                   (header.startsWith("000001BA") ||
-                      header.startsWith("000001B0")) // 3GP
+                      header.startsWith("000001B0")) || // 3GP
+                  header.startsWith("464C56") // FLV
               ) {
             String coverName = "";
             List<int> coverBytes = [];
