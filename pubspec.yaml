@@ -80,6 +80,7 @@ dependencies:
   screen_capturer: 0.1.7
   hotkey_manager: 0.1.8
   super_clipboard: 0.6.4
+  desktop_drop: 0.4.3
 
   flutter_keyboard_visibility: 5.4.1
   extended_text_library: 11.0.0

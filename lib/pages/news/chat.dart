@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'package:cross_file/cross_file.dart';
+import 'package:desktop_drop/desktop_drop.dart';
 import 'package:extended_text/extended_text.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
@@ -17,7 +17,7 @@ import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 import 'package:xxim_flutter_enterprise/pages/public/at_member.dart';
-import 'package:xxim_flutter_enterprise/pages/public/capturer_dialog.dart';
+import 'package:xxim_flutter_enterprise/pages/public/send_image_dialog.dart';
 import 'package:xxim_flutter_enterprise/pages/public/group_member.dart';
 import 'package:xxim_flutter_enterprise/pages/public/group_setting.dart';
 import 'package:xxim_flutter_enterprise/pages/public/red_packet_detail.dart';
@@ -126,13 +126,21 @@ class ChatLogic extends GetxController {
           ClipboardReader reader = await ClipboardReader.readClipboard();
           if (reader.canProvide(Formats.jpeg)) {
             reader.getFile(Formats.jpeg, (value) async {
-              Uint8List uint8List = await value.readAll();
-              sendCopyImage(uint8List);
+              Uint8List uint8list = await value.readAll();
+              if (GetPlatform.isWeb && uint8list.length > 20000000) {
+                Tool.showToast("网页不支持发送太大的文件".tr);
+                return;
+              }
+              showSendImage(uint8list);
             });
           } else if (reader.canProvide(Formats.png)) {
             reader.getFile(Formats.png, (value) async {
-              Uint8List uint8List = await value.readAll();
-              sendCopyImage(uint8List);
+              Uint8List uint8list = await value.readAll();
+              if (GetPlatform.isWeb && uint8list.length > 20000000) {
+                Tool.showToast("网页不支持发送太大的文件".tr);
+                return;
+              }
+              showSendImage(uint8list);
             });
           }
         },
@@ -289,7 +297,7 @@ class ChatLogic extends GetxController {
           Tool.showToast("截图失败".tr);
           return;
         }
-        CapturerDialog.show(
+        SendImageDialog.show(
           imageBytes: imageBytes,
           sendImage: () async {
             Completer<ui.Image> completer = Completer();
@@ -316,8 +324,8 @@ class ChatLogic extends GetxController {
     );
   }
 
-  void sendCopyImage(Uint8List imageBytes) {
-    CapturerDialog.show(
+  void showSendImage(Uint8List imageBytes) {
+    SendImageDialog.show(
       imageBytes: imageBytes,
       sendImage: () async {
         Completer<ui.Image> completer = Completer();
@@ -417,14 +425,14 @@ class ChatLogic extends GetxController {
             String coverName = "";
             List<int> coverBytes = [];
             if (GetPlatform.isMobile && file.path != null) {
-              Uint8List? uint8List = await VideoThumbnail.thumbnailData(
+              Uint8List? uint8list = await VideoThumbnail.thumbnailData(
                 video: file.path!,
                 imageFormat: ImageFormat.JPEG,
                 quality: 90,
               );
-              if (uint8List != null) {
+              if (uint8list != null) {
                 coverName = "${Tool.getUUId()}.jpg";
-                coverBytes = uint8List.toList();
+                coverBytes = uint8list.toList();
               }
             }
             createVideo(VideoContent(
@@ -760,15 +768,26 @@ class ChatPage extends StatelessWidget {
       decoration: const BoxDecoration(
         color: getBackgroundColor,
       ),
-      child: Column(
-        children: [
-          _buildAppBar(logic),
-          _buildBulletin(logic),
-          Expanded(
-            child: _buildListView(logic),
-          ),
-          _buildNavigationBar(logic),
-        ],
+      child: DropTarget(
+        onDragDone: (details) async {
+          XFile xFile = details.files.first;
+          Uint8List uint8list = await xFile.readAsBytes();
+          if (GetPlatform.isWeb && uint8list.length > 20000000) {
+            Tool.showToast("网页不支持发送太大的文件".tr);
+            return;
+          }
+          logic.showSendImage(uint8list);
+        },
+        child: Column(
+          children: [
+            _buildAppBar(logic),
+            _buildBulletin(logic),
+            Expanded(
+              child: _buildListView(logic),
+            ),
+            _buildNavigationBar(logic),
+          ],
+        ),
       ),
     );
   }

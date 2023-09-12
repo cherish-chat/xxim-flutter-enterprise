@@ -4,6 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   audioplayers_linux
+  desktop_drop
   hotkey_manager
   irondash_engine_context
   isar_flutter_libs

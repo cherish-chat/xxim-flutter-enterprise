@@ -1,13 +1,13 @@
 import 'package:xxim_flutter_enterprise/main.dart' hide Page;
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 
-class CapturerDialog {
+class SendImageDialog {
   static Future show({
     required Uint8List imageBytes,
     required Function() sendImage,
   }) {
     return Get.dialog(
-      CapturerPage(
+      SendImagePage(
         imageBytes: imageBytes,
         sendImage: sendImage,
       ),
@@ -21,11 +21,11 @@ class CapturerDialog {
   }
 }
 
-class CapturerPage extends StatelessWidget {
+class SendImagePage extends StatelessWidget {
   final Uint8List imageBytes;
   final Function() sendImage;
 
-  const CapturerPage({
+  const SendImagePage({
     Key? key,
     required this.imageBytes,
     required this.sendImage,
@@ -63,7 +63,7 @@ class CapturerPage extends StatelessWidget {
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () {
-                      CapturerDialog.hide();
+                      SendImageDialog.hide();
                       sendImage();
                     },
                     child: Container(
