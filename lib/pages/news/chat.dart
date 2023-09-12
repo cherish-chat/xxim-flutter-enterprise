@@ -315,10 +315,10 @@ class ChatLogic extends GetxController {
             return;
           }
           String header = getFileHeader(bytes);
-          if (header.startsWith("FFD8") ||
-              header.startsWith("89504E470D0A1A0A") ||
-              header.startsWith("47494638")) {
-            // JPEG、PNG、GIF
+          if (header.startsWith("FFD8") || // JPEG
+                  header.startsWith("89504E470D0A1A0A") || // PNG
+                  header.startsWith("47494638") // GIF
+              ) {
             Completer<ui.Image> completer = Completer();
             ui.decodeImageFromList(Uint8List.fromList(bytes), (ui.Image image) {
               return completer.complete(image);
@@ -337,9 +337,10 @@ class ChatLogic extends GetxController {
                 sendImage(value);
               },
             );
-          } else if ((header.startsWith("FFF1") || header.startsWith("FFF9")) ||
-              header.startsWith("494433")) {
-            // AAC、MP3
+          } else if ((header.startsWith("FFF1") ||
+                      header.startsWith("FFF9")) || // AAC
+                  header.startsWith("494433") // MP3
+              ) {
             createAudio(AudioContent(
               audioName: file.name,
               audioPath: "",
@@ -353,9 +354,17 @@ class ChatLogic extends GetxController {
               },
             );
           } else if ((header.startsWith("000000") ||
-                  header.startsWith("66747970")) ||
-              header.startsWith("6D6F6F76")) {
-            // MP4、MOV
+                      header.startsWith("66747970")) || // MP4和MOV
+                  header.startsWith("6D6F6F76") || // MOV
+                  header.startsWith("52494646") || // AVI (RIFF)
+                  header
+                      .startsWith("3026B2758E66CF11A6D900AA0062CE6C") || // WMV
+                  header.startsWith("2E524D46") || // RMVB
+                  (header.startsWith("000001BA") ||
+                      header.startsWith("000001B3")) || // MPG, MPEG
+                  (header.startsWith("000001BA") ||
+                      header.startsWith("000001B0")) // 3GP
+              ) {
             String coverName = "";
             List<int> coverBytes = [];
             if (GetPlatform.isMobile && file.path != null) {

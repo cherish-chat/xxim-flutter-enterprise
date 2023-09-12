@@ -471,11 +471,14 @@ class ReadContent {
   });
 
   static ReadContent fromJson(String content) {
-    Map<String, dynamic> map = json.decode(content);
+    Map<String, dynamic> map = {};
+    try {
+      map = json.decode(content);
+    } catch (_) {}
     return ReadContent(
-      senderId: map["senderId"],
-      convId: map["convId"],
-      seq: map["seq"],
+      senderId: map["senderId"] ?? "",
+      convId: map["convId"] ?? "",
+      seq: map["seq"] ?? 0,
     );
   }
 
