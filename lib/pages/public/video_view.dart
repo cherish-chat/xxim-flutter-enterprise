@@ -1,37 +1,20 @@
 import 'dart:io';
-import 'package:crypto/crypto.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:url_launcher/url_launcher_string.dart';
-import 'package:video_player/video_player.dart';
+import 'package:media_kit_video/media_kit_video.dart';
 import 'package:xxim_flutter_enterprise/main.dart';
-
-// ignore: depend_on_referenced_packages
-import 'package:path/path.dart';
+import 'package:media_kit/media_kit.dart';
 
 class VideoView {
   static Future show({
     required dynamic video,
   }) async {
-    if (GetPlatform.isMobile || GetPlatform.isWeb) {
-      if (GetPlatform.isWeb && video is Uint8List) {
-        return Future.value(false);
-      }
-      return Get.dialog(
-        VideoViewPage(
-          video: video,
-        ),
-        barrierDismissible: true,
-        barrierColor: Colors.transparent,
-        useSafeArea: false,
-      );
-    }
-    if (video is String) {
-      if (await canLaunchUrlString(video)) {
-        await launchUrlString(video);
-      }
-    }
-    return Future.value(false);
+    return Get.dialog(
+      VideoViewPage(
+        video: video,
+      ),
+      barrierDismissible: true,
+      barrierColor: Colors.transparent,
+      useSafeArea: false,
+    );
   }
 
   static void hide() {
@@ -45,8 +28,15 @@ class VideoViewLogic extends GetxController {
 
   VideoViewLogic(this.video);
 
-  VideoPlayerController? controller;
-  RxBool isInitialized = false.obs;
+  late Player player;
+  late VideoController videoController;
+
+  @override
+  void onInit() {
+    player = Player();
+    videoController = VideoController(player);
+    super.onInit();
+  }
 
   @override
   void onReady() {
@@ -56,49 +46,24 @@ class VideoViewLogic extends GetxController {
 
   @override
   void onClose() {
-    controller?.dispose();
+    player.dispose();
     super.onClose();
   }
 
   void _initVideo() async {
-    VideoPlayerOptions options = VideoPlayerOptions(
-      mixWithOthers: true,
-    );
     if (video is File) {
-      controller = VideoPlayerController.file(
-        video,
-        videoPlayerOptions: options,
+      player.open(
+        Media("file:///${video.path}}"),
       );
     } else if (video is Uint8List) {
-      List<int> bytes = video.toList();
-      Directory directory = await getTemporaryDirectory();
-      String name = md5.convert(bytes).toString();
-      File file = File(join(directory.path, name));
-      if (!file.existsSync()) {
-        await file.writeAsBytes(bytes);
-      }
-      controller = VideoPlayerController.file(
-        file,
-        videoPlayerOptions: options,
+      player.open(
+        Media.memory(video) as Playable,
       );
     } else {
-      controller = VideoPlayerController.network(
-        video,
-        videoPlayerOptions: options,
+      player.open(
+        Media(video),
       );
     }
-    controller!.addListener(() {
-      VideoPlayerValue value = controller!.value;
-      if (value.hasError) {
-        Tool.showToast("视频播放失败".tr);
-        VideoView.hide();
-      }
-    });
-    await controller!.initialize().then((_) {
-      isInitialized.value = true;
-      controller!.play();
-      controller!.setLooping(true);
-    });
   }
 }
 
@@ -140,18 +105,14 @@ class VideoViewPage extends StatelessWidget {
   }
 
   Widget _buildVideo(VideoViewLogic logic) {
-    return Obx(() {
-      if (!logic.isInitialized.value) {
-        return const SpinKitSquareCircle(
-          size: 40,
-          color: getMainColor,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Video(
+          controller: logic.videoController,
+          width: constraints.maxWidth,
+          height: constraints.maxHeight,
         );
-      }
-      VideoPlayerValue value = logic.controller!.value;
-      return AspectRatio(
-        aspectRatio: value.aspectRatio,
-        child: VideoPlayer(logic.controller!),
-      );
-    });
+      },
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:hotkey_manager/hotkey_manager.dart';
+import 'package:media_kit/media_kit.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:xxim_flutter_enterprise/component/component.dart';
 import 'package:xxim_flutter_enterprise/routes.dart';
@@ -26,6 +27,7 @@ export 'translation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  MediaKit.ensureInitialized();
   if (!kIsWeb && GetPlatform.isDesktop) {
     await windowManager.ensureInitialized();
     windowManager.waitUntilReadyToShow(

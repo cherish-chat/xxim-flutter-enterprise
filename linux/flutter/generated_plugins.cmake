@@ -8,6 +8,8 @@ list(APPEND FLUTTER_PLUGIN_LIST
   hotkey_manager
   irondash_engine_context
   isar_flutter_libs
+  media_kit_libs_linux
+  media_kit_video
   record_linux
   screen_capturer
   screen_retriever
@@ -17,6 +19,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
+  media_kit_native_event_loop
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)

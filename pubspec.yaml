@@ -82,6 +82,10 @@ dependencies:
   super_clipboard: 0.6.4
   desktop_drop: 0.4.3
 
+  media_kit: 1.1.7
+  media_kit_video: 1.1.8
+  media_kit_libs_video: 1.0.1
+
   flutter_keyboard_visibility: 5.4.1
   extended_text_library: 11.1.0
   extended_text: 11.1.0
