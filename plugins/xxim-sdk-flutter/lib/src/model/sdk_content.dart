@@ -179,7 +179,7 @@ class VideoContent {
       videoPath: map["videoPath"],
       videoUrl: map["videoUrl"],
       videoBytes: (map["videoBytes"] ?? []).cast<int>(),
-      duration: map["duration"],
+      duration: (map["duration"] ?? 0).floor(),
       width: map["width"],
       height: map["height"],
       size: map["size"],
