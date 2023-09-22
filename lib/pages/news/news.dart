@@ -16,6 +16,7 @@ class NewsLogic extends GetxController {
   late RxInt loadRandom = 0.obs;
   List<ConvModel> convModelList = [];
   Map<String, ConvSetting> convSettingMap = {};
+  String convIndexId = "";
 
   @override
   void onInit() {
@@ -396,10 +397,12 @@ class NewsPage extends StatelessWidget {
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {
-          MenuLogic? logic = MenuLogic.logic();
-          if (logic == null) return;
-          logic.sliderKey?.currentState?.closeSlider();
-          logic.getDelegate?.toNamed(
+          logic.convIndexId = convModel.convId;
+          logic.update(["list"]);
+          MenuLogic? menuLogic = MenuLogic.logic();
+          if (menuLogic == null) return;
+          menuLogic.sliderKey?.currentState?.closeSlider();
+          menuLogic.getDelegate?.toNamed(
             Routes.chat(convModel.convId),
           );
         },
@@ -411,7 +414,11 @@ class NewsPage extends StatelessWidget {
         },
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-          color: (convSetting?.isTop == true) ? getBlack10 : Colors.transparent,
+          color: (convSetting?.isTop == true)
+              ? getBlack20
+              : logic.convIndexId == convModel.convId
+                  ? Colors.black.withOpacity(0.05)
+                  : Colors.transparent,
           child: Row(
             children: [
               ClipRRect(

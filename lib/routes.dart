@@ -83,7 +83,7 @@ class Routes {
         name: menu,
         page: () => MenuPage(),
         participatesInRootNavigator: true,
-        transition: Transition.noTransition,
+        transition: Transition.fade,
         children: [
           GetPage(
             name: Paths.outlet,
