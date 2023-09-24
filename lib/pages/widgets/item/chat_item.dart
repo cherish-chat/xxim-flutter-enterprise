@@ -8,6 +8,8 @@ import 'package:xxim_flutter_enterprise/pages/public/photo_view.dart';
 import 'package:xxim_flutter_enterprise/pages/public/red_packet_detail.dart';
 import 'package:xxim_flutter_enterprise/pages/public/video_view.dart';
 import 'package:xxim_flutter_enterprise/proto/msg.pb.dart';
+import 'package:xxim_flutter_enterprise/proto/relation.pb.dart';
+import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 
 enum ChatDirection {
@@ -227,6 +229,12 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
                       );
                     } else if (contentType == MsgContentType.redPacket) {
                       child = ChatRedPacketItem(
+                        key: ValueKey(msgModel.content),
+                        direction: direction,
+                        msgModel: msgModel,
+                      );
+                    } else if (contentType == MsgContentType.card) {
+                      child = ChatCardItem(
                         key: ValueKey(msgModel.content),
                         direction: direction,
                         msgModel: msgModel,
@@ -1460,6 +1468,114 @@ class ChatRedPacketItem extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ChatCardItem extends StatelessWidget {
+  final ChatDirection direction;
+  final MsgModel msgModel;
+
+  const ChatCardItem({
+    Key? key,
+    required this.direction,
+    required this.msgModel,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    CardContent content = CardContent.fromJson(msgModel.content);
+    List<UserBaseInfo> userInfoList = MenuLogic.logic()?.userInfoList ?? [];
+    int index = userInfoList.indexWhere((element) {
+      return content.userId == element.id;
+    });
+    return Container(
+      padding: const EdgeInsets.all(5),
+      width: 150,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: getMainColor,
+          width: 2,
+        ),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: ImageWidget(
+              content.avatar,
+              width: 60,
+              height: 60,
+            ),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  content.nickname,
+                  style: const TextStyle(
+                    color: getTextBlack,
+                    fontSize: 16,
+                    fontWeight: getSemiBold,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 5),
+                if (index != -1)
+                  Text(
+                    "已是好友".tr,
+                    style: const TextStyle(
+                      color: getHintBlack,
+                      fontSize: 14,
+                    ),
+                  )
+                else
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      GetLoadingDialog.show("请稍等".tr);
+                      XXIM.instance.customRequest<RequestAddFriendResp>(
+                        method: "/v1/relation/requestAddFriend",
+                        req: RequestAddFriendReq(
+                          to: content.userId,
+                          message: "请求成为好友".tr,
+                        ),
+                        resp: RequestAddFriendResp.create,
+                        onSuccess: (data) {
+                          GetLoadingDialog.hide();
+                          Tool.showToast("申请成功".tr);
+                        },
+                        onError: (code, error) {
+                          GetLoadingDialog.hide();
+                        },
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: 50,
+                      height: 25,
+                      decoration: BoxDecoration(
+                        color: getMainColor,
+                        borderRadius: BorderRadius.circular(12.5),
+                      ),
+                      child: Text(
+                        "申请".tr,
+                        style: const TextStyle(
+                          color: getTextWhite,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

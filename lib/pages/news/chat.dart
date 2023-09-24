@@ -17,6 +17,7 @@ import 'package:xxim_flutter_enterprise/main.dart';
 import 'package:xxim_flutter_enterprise/pages/menu.dart';
 import 'package:xxim_flutter_enterprise/pages/news/news.dart';
 import 'package:xxim_flutter_enterprise/pages/public/at_member.dart';
+import 'package:xxim_flutter_enterprise/pages/public/business_card.dart';
 import 'package:xxim_flutter_enterprise/pages/public/send_image_dialog.dart';
 import 'package:xxim_flutter_enterprise/pages/public/group_member.dart';
 import 'package:xxim_flutter_enterprise/pages/public/group_setting.dart';
@@ -698,6 +699,18 @@ class ChatLogic extends GetxController {
     );
   }
 
+  Future<MsgModel> createCard(CardContent content) {
+    return XXIM.instance.msgManager.createCard(
+      convId: convId,
+      content: content,
+      offlinePush: MsgOfflinePushModel(
+        title: HiveTool.getNickname(),
+        content: "[名片]".tr,
+      ),
+      ext: _getMsgExt(),
+    );
+  }
+
   void sendMsgList(List<MsgModel> msgModelList) async {
     XXIM.instance.convManager.setConvDraft(
       convId: convId,
@@ -1043,6 +1056,30 @@ class ChatPage extends StatelessWidget {
                     },
                     child: Image.asset(
                       "assets/images/ic_red_packet_35.webp",
+                      width: 40,
+                      height: 40,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      BusinessCard.show(
+                        callback: (info) {
+                          logic
+                              .createCard(CardContent(
+                            userId: info.id,
+                            nickname: info.nickname,
+                            avatar: info.avatar,
+                          ))
+                              .then((value) {
+                            logic.sendMsgList([value]);
+                          });
+                        },
+                      );
+                    },
+                    child: Image.asset(
+                      "assets/images/ic_business_card_35.webp",
                       width: 40,
                       height: 40,
                     ),
