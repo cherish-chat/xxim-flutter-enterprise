@@ -117,12 +117,14 @@ class XXIM {
               int applyFriendCount = HiveTool.getApplyFriendCount();
               ++applyFriendCount;
               HiveTool.setApplyFriendCount(applyFriendCount);
+              MenuLogic.logic()?.applyFriendCount.value = applyFriendCount;
               ContactLogic.logic()?.applyFriendCount.value = applyFriendCount;
             } else if (noticeModel.contentType ==
                 XXIMCommon.applyToBeGroupMember) {
               int applyGroupCount = HiveTool.getApplyGroupCount();
               ++applyGroupCount;
               HiveTool.setApplyGroupCount(applyGroupCount);
+              MenuLogic.logic()?.applyGroupCount.value = applyGroupCount;
               ContactLogic.logic()?.applyGroupCount.value = applyGroupCount;
             } else if (noticeModel.contentType == XXIMCommon.groupMemberLeave) {
               Map content = json.decode(noticeModel.content);

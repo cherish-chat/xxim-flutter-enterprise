@@ -31,6 +31,9 @@ class MenuLogic extends GetxController {
 
   RxInt newsUnreadCount = 0.obs;
 
+  RxInt applyFriendCount = 0.obs;
+  RxInt applyGroupCount = 0.obs;
+
   @override
   void onReady() {
     super.onReady();
@@ -314,6 +317,7 @@ class MenuPage extends StatelessWidget with GetResponsiveMixin {
         "assets/images/ic_contact_28_nor.webp",
         "assets/images/ic_contact_28_sel.webp",
         "通讯录".tr,
+        count: logic.applyFriendCount.value + logic.applyGroupCount.value,
       ),
       _buildItem(
         "assets/images/ic_mine_28_nor.webp",

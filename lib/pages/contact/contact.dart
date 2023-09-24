@@ -380,6 +380,7 @@ class ContactPage extends StatelessWidget {
                 menuLogic.getDelegate?.toNamed(
                   Routes.friendApply,
                 );
+                menuLogic.applyFriendCount.value = 0;
                 logic.applyFriendCount.value = 0;
                 HiveTool.setApplyFriendCount(0);
               },
@@ -397,6 +398,7 @@ class ContactPage extends StatelessWidget {
                 menuLogic.getDelegate?.toNamed(
                   Routes.groupApply,
                 );
+                menuLogic.applyGroupCount.value = 0;
                 logic.applyGroupCount.value = 0;
                 HiveTool.setApplyGroupCount(0);
               },
