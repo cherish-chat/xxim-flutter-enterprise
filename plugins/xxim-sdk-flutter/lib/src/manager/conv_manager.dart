@@ -6,6 +6,7 @@ import 'package:xxim_sdk_flutter/src/manager/sdk_manager.dart';
 import 'package:xxim_sdk_flutter/src/model/conv_model.dart';
 import 'package:xxim_sdk_flutter/src/model/msg_model.dart';
 import 'package:xxim_sdk_flutter/src/model/notice_model.dart';
+import 'package:xxim_sdk_flutter/src/model/read_model.dart';
 import 'package:xxim_sdk_flutter/src/model/sdk_content.dart';
 
 class ConvManager {
@@ -109,6 +110,25 @@ class ConvManager {
       );
     }
     return convModel;
+  }
+
+  /// 获取会话已读
+  Future<List<ReadModel>> getConvRead({
+    required String convId,
+    required int seq,
+  }) {
+    return _sdkManager.findAll(
+      query: _sdkManager
+          .readModels()
+          .filter()
+          .convIdEqualTo(convId)
+          .and()
+          .seqGreaterThan(
+            seq,
+            include: true,
+          )
+          .build(),
+    );
   }
 
   /// 设置会话已读

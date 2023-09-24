@@ -429,8 +429,10 @@ class SDKManager {
           updated = true;
         }
       } else {
-        modelList.add(msgModel);
-        updated = true;
+        if (msgModel.options.storageForClient) {
+          modelList.add(msgModel);
+          updated = true;
+        }
       }
     }
     if (updated) await msgModels().putAll(modelList);

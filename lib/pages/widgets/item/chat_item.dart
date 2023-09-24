@@ -263,6 +263,20 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      if (direction == ChatDirection.right)
+                        Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 3),
+                          child: GetBuilder<T>(
+                            tag: tag,
+                            id: ChatReadItem.getId(),
+                            builder: (controller) {
+                              return ChatReadItem(
+                                key: UniqueKey(),
+                                msgModel: msgModel,
+                              );
+                            },
+                          ),
+                        ),
                       Text(
                         TimeTool.formatTimestamp(
                           msgModel.serverTime,
@@ -274,13 +288,10 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
                         ),
                       ),
                       if (direction == ChatDirection.right)
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: ChatStatusItem<T>(
-                            tag: tag,
-                            msgModel: msgModel,
-                            onRetry: onRetry,
-                          ),
+                        ChatStatusItem<T>(
+                          tag: tag,
+                          msgModel: msgModel,
+                          onRetry: onRetry,
                         ),
                     ],
                   ),
@@ -575,6 +586,70 @@ class ChatStatusItem<T extends GetxController> extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+class ChatReadItem extends StatefulWidget {
+  static String getId() {
+    return "ChatReadItem";
+  }
+
+  final MsgModel msgModel;
+
+  const ChatReadItem({
+    super.key,
+    required this.msgModel,
+  });
+
+  @override
+  State<ChatReadItem> createState() => _ChatReadItemState();
+}
+
+class _ChatReadItemState extends State<ChatReadItem> {
+  late MsgModel _msgModel;
+  late String _convId;
+  late int _seq;
+  RxString text = "".obs;
+
+  @override
+  void initState() {
+    _msgModel = widget.msgModel;
+    _convId = _msgModel.convId;
+    _seq = _msgModel.seq;
+    _loadConvRead();
+    super.initState();
+  }
+
+  void _loadConvRead() async {
+    List<ReadModel> readModelList = await XXIM.instance.convManager.getConvRead(
+      convId: _convId,
+      seq: _seq,
+    );
+    readModelList.removeWhere((element) {
+      return element.senderId == HiveTool.getUserId();
+    });
+    if (SDKTool.isSingleConv(_convId)) {
+      if (readModelList.isEmpty) {
+        text.value = "未读".tr;
+      } else {
+        text.value = "已读".tr;
+      }
+    } else {
+      text.value = "${readModelList.length}${"人已读".tr}";
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      return Text(
+        text.value,
+        style: const TextStyle(
+          color: getTextBlack,
+          fontSize: 8,
+        ),
+      );
+    });
   }
 }
 

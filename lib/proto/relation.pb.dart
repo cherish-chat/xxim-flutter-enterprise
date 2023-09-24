@@ -12,7 +12,7 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'common.pb.dart' as $0;
-import 'user.pb.dart' as $4;
+import 'user.pb.dart' as $5;
 import 'im.pb.dart' as $3;
 
 import 'relation.pbenum.dart';
@@ -1301,7 +1301,7 @@ class GetFriendListResp extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetFriendListResp', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOM<$0.CommonResp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'commonResp', protoName: 'commonResp', subBuilder: $0.CommonResp.create)
     ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ids')
-    ..m<$core.String, $4.UserBaseInfo>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userMap', protoName: 'userMap', entryClassName: 'GetFriendListResp.UserMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $4.UserBaseInfo.create, packageName: const $pb.PackageName('pb'))
+    ..m<$core.String, $5.UserBaseInfo>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userMap', protoName: 'userMap', entryClassName: 'GetFriendListResp.UserMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $5.UserBaseInfo.create, packageName: const $pb.PackageName('pb'))
     ..m<$core.String, $core.String>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'remarkMap', protoName: 'remarkMap', entryClassName: 'GetFriendListResp.RemarkMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('pb'))
     ..m<$core.String, $3.ConvSetting>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convSettingMap', protoName: 'convSettingMap', entryClassName: 'GetFriendListResp.ConvSettingMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $3.ConvSetting.create, packageName: const $pb.PackageName('pb'))
     ..m<$core.String, $3.ConvSettingProto2>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'convSetting2Map', protoName: 'convSetting2Map', entryClassName: 'GetFriendListResp.ConvSetting2MapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $3.ConvSettingProto2.create, packageName: const $pb.PackageName('pb'))
@@ -1312,7 +1312,7 @@ class GetFriendListResp extends $pb.GeneratedMessage {
   factory GetFriendListResp({
     $0.CommonResp? commonResp,
     $core.Iterable<$core.String>? ids,
-    $core.Map<$core.String, $4.UserBaseInfo>? userMap,
+    $core.Map<$core.String, $5.UserBaseInfo>? userMap,
     $core.Map<$core.String, $core.String>? remarkMap,
     $core.Map<$core.String, $3.ConvSetting>? convSettingMap,
     $core.Map<$core.String, $3.ConvSettingProto2>? convSetting2Map,
@@ -1374,7 +1374,7 @@ class GetFriendListResp extends $pb.GeneratedMessage {
   $core.List<$core.String> get ids => $_getList(1);
 
   @$pb.TagNumber(3)
-  $core.Map<$core.String, $4.UserBaseInfo> get userMap => $_getMap(2);
+  $core.Map<$core.String, $5.UserBaseInfo> get userMap => $_getMap(2);
 
   @$pb.TagNumber(4)
   $core.Map<$core.String, $core.String> get remarkMap => $_getMap(3);
@@ -1693,7 +1693,7 @@ class FriendEvent extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FriendEvent', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pb'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fromUserId', protoName: 'fromUserId')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'toUserId', protoName: 'toUserId')
-    ..aOM<$4.UserBaseInfo>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'otherUserInfo', protoName: 'otherUserInfo', subBuilder: $4.UserBaseInfo.create)
+    ..aOM<$5.UserBaseInfo>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'otherUserInfo', protoName: 'otherUserInfo', subBuilder: $5.UserBaseInfo.create)
     ..e<RequestAddFriendStatus>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: RequestAddFriendStatus.Unhandled, valueOf: RequestAddFriendStatus.valueOf, enumValues: RequestAddFriendStatus.values)
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createTime', protoName: 'createTime')
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updateTime', protoName: 'updateTime')
@@ -1706,7 +1706,7 @@ class FriendEvent extends $pb.GeneratedMessage {
   factory FriendEvent({
     $core.String? fromUserId,
     $core.String? toUserId,
-    $4.UserBaseInfo? otherUserInfo,
+    $5.UserBaseInfo? otherUserInfo,
     RequestAddFriendStatus? status,
     $core.String? createTime,
     $core.String? updateTime,
@@ -1780,15 +1780,15 @@ class FriendEvent extends $pb.GeneratedMessage {
   void clearToUserId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $4.UserBaseInfo get otherUserInfo => $_getN(2);
+  $5.UserBaseInfo get otherUserInfo => $_getN(2);
   @$pb.TagNumber(3)
-  set otherUserInfo($4.UserBaseInfo v) { setField(3, v); }
+  set otherUserInfo($5.UserBaseInfo v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasOtherUserInfo() => $_has(2);
   @$pb.TagNumber(3)
   void clearOtherUserInfo() => clearField(3);
   @$pb.TagNumber(3)
-  $4.UserBaseInfo ensureOtherUserInfo() => $_ensure(2);
+  $5.UserBaseInfo ensureOtherUserInfo() => $_ensure(2);
 
   @$pb.TagNumber(4)
   RequestAddFriendStatus get status => $_getN(3);

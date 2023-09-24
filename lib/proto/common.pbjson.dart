@@ -26,6 +26,7 @@ const ContentType$json = const {
     const {'1': 'UNKNOWN', '2': 0},
     const {'1': 'TYPING', '2': 1},
     const {'1': 'TIP', '2': 2},
+    const {'1': 'STATUS', '2': 3},
     const {'1': 'TEXT', '2': 11},
     const {'1': 'IMAGE', '2': 12},
     const {'1': 'AUDIO', '2': 13},
@@ -44,7 +45,7 @@ const ContentType$json = const {
 };
 
 /// Descriptor for `ContentType`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List contentTypeDescriptor = $convert.base64Decode('CgtDb250ZW50VHlwZRILCgdVTktOT1dOEAASCgoGVFlQSU5HEAESBwoDVElQEAISCAoEVEVYVBALEgkKBUlNQUdFEAwSCQoFQVVESU8QDRIJCgVWSURFTxAOEggKBEZJTEUQDxIMCghMT0NBVElPThAQEggKBENBUkQQERIJCgVNRVJHRRASEgkKBUVNT0pJEBMSCwoHQ09NTUFORBAUEg0KCVJJQ0hfVEVYVBAVEgwKCE1BUktET1dOEBYSDgoKUkVEX1BBQ0tFVBAXEgoKBkNVU1RPTRBk');
+final $typed_data.Uint8List contentTypeDescriptor = $convert.base64Decode('CgtDb250ZW50VHlwZRILCgdVTktOT1dOEAASCgoGVFlQSU5HEAESBwoDVElQEAISCgoGU1RBVFVTEAMSCAoEVEVYVBALEgkKBUlNQUdFEAwSCQoFQVVESU8QDRIJCgVWSURFTxAOEggKBEZJTEUQDxIMCghMT0NBVElPThAQEggKBENBUkQQERIJCgVNRVJHRRASEgkKBUVNT0pJEBMSCwoHQ09NTUFORBAUEg0KCVJJQ0hfVEVYVBAVEgwKCE1BUktET1dOEBYSDgoKUkVEX1BBQ0tFVBAXEgoKBkNVU1RPTRBk');
 @$core.Deprecated('Use noticeTypeDescriptor instead')
 const NoticeType$json = const {
   '1': 'NoticeType',

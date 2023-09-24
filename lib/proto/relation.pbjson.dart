@@ -9,7 +9,7 @@ import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 import 'common.pbjson.dart' as $0;
-import 'user.pbjson.dart' as $4;
+import 'user.pbjson.dart' as $5;
 import 'im.pbjson.dart' as $3;
 
 @$core.Deprecated('Use requestAddFriendStatusDescriptor instead')
@@ -571,8 +571,8 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> relationSe
   '.pb.Page': $0.Page$json,
   '.pb.GetFriendListResp': GetFriendListResp$json,
   '.pb.GetFriendListResp.UserMapEntry': GetFriendListResp_UserMapEntry$json,
-  '.pb.UserBaseInfo': $4.UserBaseInfo$json,
-  '.pb.BirthdayInfo': $4.BirthdayInfo$json,
+  '.pb.UserBaseInfo': $5.UserBaseInfo$json,
+  '.pb.BirthdayInfo': $5.BirthdayInfo$json,
   '.pb.IpRegion': $0.IpRegion$json,
   '.pb.GetFriendListResp.RemarkMapEntry': GetFriendListResp_RemarkMapEntry$json,
   '.pb.GetFriendListResp.ConvSettingMapEntry': GetFriendListResp_ConvSettingMapEntry$json,

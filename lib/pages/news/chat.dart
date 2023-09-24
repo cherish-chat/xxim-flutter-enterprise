@@ -241,6 +241,10 @@ class ChatLogic extends GetxController {
 
   void receiveMsg(MsgModel msgModel) {
     if (msgModel.convId != convId) return;
+    if (msgModel.contentType == MsgContentType.typing) {
+    } else if (msgModel.contentType == MsgContentType.status) {
+      return;
+    }
     int index = msgModelList.indexWhere((element) {
       return msgModel.clientMsgId == element.clientMsgId;
     });
@@ -251,6 +255,12 @@ class ChatLogic extends GetxController {
       msgModelList.insert(0, msgModel);
       update(["list"]);
     }
+    XXIM.instance.convManager.setConvRead(convId: convId);
+  }
+
+  void readMsg(ReadContent readContent) {
+    if (readContent.convId != convId) return;
+    update([ChatReadItem.getId()]);
   }
 
   void setAtMember(String senderId, String nickname) {

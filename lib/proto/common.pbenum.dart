@@ -28,6 +28,7 @@ class ContentType extends $pb.ProtobufEnum {
   static const ContentType UNKNOWN = ContentType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNKNOWN');
   static const ContentType TYPING = ContentType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TYPING');
   static const ContentType TIP = ContentType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TIP');
+  static const ContentType STATUS = ContentType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'STATUS');
   static const ContentType TEXT = ContentType._(11, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TEXT');
   static const ContentType IMAGE = ContentType._(12, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'IMAGE');
   static const ContentType AUDIO = ContentType._(13, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'AUDIO');
@@ -47,6 +48,7 @@ class ContentType extends $pb.ProtobufEnum {
     UNKNOWN,
     TYPING,
     TIP,
+    STATUS,
     TEXT,
     IMAGE,
     AUDIO,

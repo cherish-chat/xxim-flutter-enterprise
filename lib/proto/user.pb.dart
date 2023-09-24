@@ -13,6 +13,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'common.pb.dart' as $0;
 import 'conn.pb.dart' as $1;
+import 'openapi.pb.dart' as $4;
 
 import 'user.pbenum.dart';
 
@@ -205,6 +206,7 @@ class UserBaseInfo extends $pb.GeneratedMessage {
     ..aOM<BirthdayInfo>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'birthday', subBuilder: BirthdayInfo.create)
     ..aOM<$0.IpRegion>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ipRegion', protoName: 'ipRegion', subBuilder: $0.IpRegion.create)
     ..a<$core.int>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role', $pb.PbFieldType.O3)
+    ..aOB(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isOnline', protoName: 'isOnline')
     ..hasRequiredFields = false
   ;
 
@@ -217,6 +219,7 @@ class UserBaseInfo extends $pb.GeneratedMessage {
     BirthdayInfo? birthday,
     $0.IpRegion? ipRegion,
     $core.int? role,
+    $core.bool? isOnline,
   }) {
     final _result = create();
     if (id != null) {
@@ -239,6 +242,9 @@ class UserBaseInfo extends $pb.GeneratedMessage {
     }
     if (role != null) {
       _result.role = role;
+    }
+    if (isOnline != null) {
+      _result.isOnline = isOnline;
     }
     return _result;
   }
@@ -329,6 +335,15 @@ class UserBaseInfo extends $pb.GeneratedMessage {
   $core.bool hasRole() => $_has(6);
   @$pb.TagNumber(7)
   void clearRole() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.bool get isOnline => $_getBF(7);
+  @$pb.TagNumber(8)
+  set isOnline($core.bool v) { $_setBool(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasIsOnline() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearIsOnline() => clearField(8);
 }
 
 class LoginReq extends $pb.GeneratedMessage {
@@ -9126,6 +9141,10 @@ class userServiceApi {
   $async.Future<WalletTransactionResp> walletTransaction($pb.ClientContext? ctx, WalletTransactionReq request) {
     var emptyResponse = WalletTransactionResp();
     return _client.invoke<WalletTransactionResp>(ctx, 'userService', 'WalletTransaction', request, emptyResponse);
+  }
+  $async.Future<$4.OpenApiGetTokenResp> openApiGetToken($pb.ClientContext? ctx, $4.OpenApiGetTokenReq request) {
+    var emptyResponse = $4.OpenApiGetTokenResp();
+    return _client.invoke<$4.OpenApiGetTokenResp>(ctx, 'userService', 'OpenApiGetToken', request, emptyResponse);
   }
 }
 

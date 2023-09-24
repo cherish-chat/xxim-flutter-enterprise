@@ -25,6 +25,7 @@ export 'src/manager/notice_manager.dart';
 export 'src/model/conv_model.dart';
 export 'src/model/msg_model.dart';
 export 'src/model/notice_model.dart';
+export 'src/model/read_model.dart';
 export 'src/model/sdk_content.dart';
 
 export 'src/tool/sdk_tool.dart';

@@ -12,7 +12,7 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'common.pb.dart' as $0;
-import 'user.pb.dart' as $4;
+import 'user.pb.dart' as $5;
 import 'im.pb.dart' as $3;
 
 import 'group.pbenum.dart';
@@ -332,7 +332,7 @@ class GetGroupHomeResp extends $pb.GeneratedMessage {
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'introduction')
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner')
     ..aInt64(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dismissTime', protoName: 'dismissTime')
-    ..pc<$4.UserBaseInfo>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'admins', $pb.PbFieldType.PM, subBuilder: $4.UserBaseInfo.create)
+    ..pc<$5.UserBaseInfo>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'admins', $pb.PbFieldType.PM, subBuilder: $5.UserBaseInfo.create)
     ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'allMute', protoName: 'allMute')
     ..aOB(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memberCanAddFriend', protoName: 'memberCanAddFriend')
     ..aOB(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'canAddMember', protoName: 'canAddMember')
@@ -351,7 +351,7 @@ class GetGroupHomeResp extends $pb.GeneratedMessage {
     $core.String? introduction,
     $core.String? owner,
     $fixnum.Int64? dismissTime,
-    $core.Iterable<$4.UserBaseInfo>? admins,
+    $core.Iterable<$5.UserBaseInfo>? admins,
     $core.bool? allMute,
     $core.bool? memberCanAddFriend,
     $core.bool? canAddMember,
@@ -507,7 +507,7 @@ class GetGroupHomeResp extends $pb.GeneratedMessage {
   void clearDismissTime() => clearField(9);
 
   @$pb.TagNumber(10)
-  $core.List<$4.UserBaseInfo> get admins => $_getList(9);
+  $core.List<$5.UserBaseInfo> get admins => $_getList(9);
 
   @$pb.TagNumber(11)
   $core.bool get allMute => $_getBF(10);
@@ -2117,7 +2117,7 @@ class GroupMemberInfo extends $pb.GeneratedMessage {
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'remark')
     ..e<GroupRole>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role', $pb.PbFieldType.OE, defaultOrMaker: GroupRole.MEMBER, valueOf: GroupRole.valueOf, enumValues: GroupRole.values)
     ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unbanTime', protoName: 'unbanTime')
-    ..aOM<$4.UserBaseInfo>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userBaseInfo', protoName: 'userBaseInfo', subBuilder: $4.UserBaseInfo.create)
+    ..aOM<$5.UserBaseInfo>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userBaseInfo', protoName: 'userBaseInfo', subBuilder: $5.UserBaseInfo.create)
     ..hasRequiredFields = false
   ;
 
@@ -2128,7 +2128,7 @@ class GroupMemberInfo extends $pb.GeneratedMessage {
     $core.String? remark,
     GroupRole? role,
     $fixnum.Int64? unbanTime,
-    $4.UserBaseInfo? userBaseInfo,
+    $5.UserBaseInfo? userBaseInfo,
   }) {
     final _result = create();
     if (groupId != null) {
@@ -2218,15 +2218,15 @@ class GroupMemberInfo extends $pb.GeneratedMessage {
   void clearUnbanTime() => clearField(5);
 
   @$pb.TagNumber(11)
-  $4.UserBaseInfo get userBaseInfo => $_getN(5);
+  $5.UserBaseInfo get userBaseInfo => $_getN(5);
   @$pb.TagNumber(11)
-  set userBaseInfo($4.UserBaseInfo v) { setField(11, v); }
+  set userBaseInfo($5.UserBaseInfo v) { setField(11, v); }
   @$pb.TagNumber(11)
   $core.bool hasUserBaseInfo() => $_has(5);
   @$pb.TagNumber(11)
   void clearUserBaseInfo() => clearField(11);
   @$pb.TagNumber(11)
-  $4.UserBaseInfo ensureUserBaseInfo() => $_ensure(5);
+  $5.UserBaseInfo ensureUserBaseInfo() => $_ensure(5);
 }
 
 class MapGroupMemberInfoByIdsReq_Opt extends $pb.GeneratedMessage {
@@ -4834,8 +4834,8 @@ class GroupApplyInfo extends $pb.GeneratedMessage {
     ..aInt64(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'handleTime', protoName: 'handleTime')
     ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'handleTimeStr', protoName: 'handleTimeStr')
     ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'handleUserId', protoName: 'handleUserId')
-    ..aOM<$4.UserBaseInfo>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userBaseInfo', protoName: 'userBaseInfo', subBuilder: $4.UserBaseInfo.create)
-    ..aOM<$4.UserBaseInfo>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'handleUserBaseInfo', protoName: 'handleUserBaseInfo', subBuilder: $4.UserBaseInfo.create)
+    ..aOM<$5.UserBaseInfo>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userBaseInfo', protoName: 'userBaseInfo', subBuilder: $5.UserBaseInfo.create)
+    ..aOM<$5.UserBaseInfo>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'handleUserBaseInfo', protoName: 'handleUserBaseInfo', subBuilder: $5.UserBaseInfo.create)
     ..aOM<GroupBaseInfo>(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'groupBaseInfo', protoName: 'groupBaseInfo', subBuilder: GroupBaseInfo.create)
     ..hasRequiredFields = false
   ;
@@ -4852,8 +4852,8 @@ class GroupApplyInfo extends $pb.GeneratedMessage {
     $fixnum.Int64? handleTime,
     $core.String? handleTimeStr,
     $core.String? handleUserId,
-    $4.UserBaseInfo? userBaseInfo,
-    $4.UserBaseInfo? handleUserBaseInfo,
+    $5.UserBaseInfo? userBaseInfo,
+    $5.UserBaseInfo? handleUserBaseInfo,
     GroupBaseInfo? groupBaseInfo,
   }) {
     final _result = create();
@@ -5010,26 +5010,26 @@ class GroupApplyInfo extends $pb.GeneratedMessage {
   void clearHandleUserId() => clearField(10);
 
   @$pb.TagNumber(11)
-  $4.UserBaseInfo get userBaseInfo => $_getN(10);
+  $5.UserBaseInfo get userBaseInfo => $_getN(10);
   @$pb.TagNumber(11)
-  set userBaseInfo($4.UserBaseInfo v) { setField(11, v); }
+  set userBaseInfo($5.UserBaseInfo v) { setField(11, v); }
   @$pb.TagNumber(11)
   $core.bool hasUserBaseInfo() => $_has(10);
   @$pb.TagNumber(11)
   void clearUserBaseInfo() => clearField(11);
   @$pb.TagNumber(11)
-  $4.UserBaseInfo ensureUserBaseInfo() => $_ensure(10);
+  $5.UserBaseInfo ensureUserBaseInfo() => $_ensure(10);
 
   @$pb.TagNumber(12)
-  $4.UserBaseInfo get handleUserBaseInfo => $_getN(11);
+  $5.UserBaseInfo get handleUserBaseInfo => $_getN(11);
   @$pb.TagNumber(12)
-  set handleUserBaseInfo($4.UserBaseInfo v) { setField(12, v); }
+  set handleUserBaseInfo($5.UserBaseInfo v) { setField(12, v); }
   @$pb.TagNumber(12)
   $core.bool hasHandleUserBaseInfo() => $_has(11);
   @$pb.TagNumber(12)
   void clearHandleUserBaseInfo() => clearField(12);
   @$pb.TagNumber(12)
-  $4.UserBaseInfo ensureHandleUserBaseInfo() => $_ensure(11);
+  $5.UserBaseInfo ensureHandleUserBaseInfo() => $_ensure(11);
 
   @$pb.TagNumber(13)
   GroupBaseInfo get groupBaseInfo => $_getN(12);

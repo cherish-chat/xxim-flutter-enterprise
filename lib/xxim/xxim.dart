@@ -101,11 +101,15 @@ class XXIM {
           onReceive: (msgModelList) {
             for (MsgModel msgModel in msgModelList) {
               ChatLogic.logic(msgModel.convId)?.receiveMsg(msgModel);
+              if (msgModel.contentType == MsgContentType.status) {
+                MenuLogic.logic()?.loadConvIdList();
+              }
             }
           },
         ),
         noticeListener: NoticeListener(
           onReadMsg: (readContent) async {
+            ChatLogic.logic(readContent.convId)?.readMsg(readContent);
             return true;
           },
           onEditMsg: (msgModel) async {

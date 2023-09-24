@@ -13,6 +13,7 @@ class MsgContentType extends $pb.ProtobufEnum {
   static const MsgContentType unknown = MsgContentType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'unknown');
   static const MsgContentType typing = MsgContentType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'typing');
   static const MsgContentType tip = MsgContentType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'tip');
+  static const MsgContentType status = MsgContentType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'status');
   static const MsgContentType text = MsgContentType._(11, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'text');
   static const MsgContentType image = MsgContentType._(12, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'image');
   static const MsgContentType audio = MsgContentType._(13, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'audio');
@@ -32,6 +33,7 @@ class MsgContentType extends $pb.ProtobufEnum {
     unknown,
     typing,
     tip,
+    status,
     text,
     image,
     audio,

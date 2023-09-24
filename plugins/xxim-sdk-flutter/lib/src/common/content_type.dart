@@ -3,6 +3,7 @@ class MsgContentType {
   static const int unknown = 0; // 未知类型
   static const int typing = 1; // 正在输入
   static const int tip = 2; // 提示
+  static const int status = 3; // 状态
 
   static const int text = 11; // 文本
   static const int image = 12; // 图片

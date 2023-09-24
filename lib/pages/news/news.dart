@@ -287,6 +287,8 @@ class NewsPage extends StatelessWidget {
   }) {
     String convAvatar = "";
     String convName = "";
+    String status = "";
+    String ipAddress = "";
     String prefix = "";
     String content = "";
     String msgTime = "";
@@ -297,6 +299,10 @@ class NewsPage extends StatelessWidget {
       if (remark.isNotEmpty) {
         convName = remark;
       }
+      status = userInfo.isOnline.toString();
+      ipAddress = userInfo.ipRegion.country +
+          userInfo.ipRegion.province +
+          userInfo.ipRegion.city;
     } else if (groupInfo != null) {
       convAvatar = groupInfo.avatar;
       convName = groupInfo.name;
@@ -421,13 +427,38 @@ class NewsPage extends StatelessWidget {
                   : Colors.transparent,
           child: Row(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: ImageWidget(
-                  convAvatar,
-                  width: 55,
-                  height: 55,
-                ),
+              Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: ImageWidget(
+                      convAvatar,
+                      width: 55,
+                      height: 55,
+                    ),
+                  ),
+                  if (status == "true")
+                    Container(
+                      margin: const EdgeInsets.only(top: 3, right: 3),
+                      width: 10,
+                      height: 10,
+                      decoration: const BoxDecoration(
+                        color: Colors.green,
+                        shape: BoxShape.circle,
+                      ),
+                    )
+                  else if (status == "false")
+                    Container(
+                      margin: const EdgeInsets.only(top: 3, right: 3),
+                      width: 10,
+                      height: 10,
+                      decoration: const BoxDecoration(
+                        color: Colors.grey,
+                        shape: BoxShape.circle,
+                      ),
+                    )
+                ],
               ),
               const SizedBox(width: 16),
               Expanded(
@@ -498,7 +529,7 @@ class NewsPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 3),
                   Text(
                     msgTime,
                     style: const TextStyle(
@@ -506,6 +537,17 @@ class NewsPage extends StatelessWidget {
                       fontSize: 12,
                     ),
                   ),
+                  if (ipAddress.isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 3),
+                      child: Text(
+                        ipAddress,
+                        style: const TextStyle(
+                          color: getHintBlack,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ],
