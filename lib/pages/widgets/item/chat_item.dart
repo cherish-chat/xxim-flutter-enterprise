@@ -296,11 +296,9 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(right: 10, top: 3),
                           child: Obx(() {
-                            if (readModel.value == null) {
-                              return const SizedBox();
-                            }
                             return Text(
-                              readModel.value!.seq >= msgModel.seq
+                              readModel.value != null &&
+                                      readModel.value!.seq >= msgModel.seq
                                   ? "已读".tr
                                   : "未读".tr,
                               style: const TextStyle(
@@ -621,70 +619,6 @@ class ChatStatusItem<T extends GetxController> extends StatelessWidget {
     );
   }
 }
-
-// class ChatReadItem extends StatefulWidget {
-//   static String getId() {
-//     return "ChatReadItem";
-//   }
-//
-//   final MsgModel msgModel;
-//
-//   const ChatReadItem({
-//     super.key,
-//     required this.msgModel,
-//   });
-//
-//   @override
-//   State<ChatReadItem> createState() => _ChatReadItemState();
-// }
-//
-// class _ChatReadItemState extends State<ChatReadItem> {
-//   late MsgModel _msgModel;
-//   late String _convId;
-//   late int _seq;
-//   RxString text = "".obs;
-//
-//   @override
-//   void initState() {
-//     _msgModel = widget.msgModel;
-//     _convId = _msgModel.convId;
-//     _seq = _msgModel.seq;
-//     _loadConvRead();
-//     super.initState();
-//   }
-//
-//   void _loadConvRead() async {
-//     List<ReadModel> readModelList = await XXIM.instance.convManager.getConvRead(
-//       convId: _convId,
-//       seq: _seq,
-//     );
-//     readModelList.removeWhere((element) {
-//       return element.senderId == HiveTool.getUserId();
-//     });
-//     if (SDKTool.isSingleConv(_convId)) {
-//       if (readModelList.isEmpty) {
-//         text.value = "未读".tr;
-//       } else {
-//         text.value = "已读".tr;
-//       }
-//     } else {
-//       text.value = "${readModelList.length}${"人已读".tr}";
-//     }
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Obx(() {
-//       return Text(
-//         text.value,
-//         style: const TextStyle(
-//           color: getTextBlack,
-//           fontSize: 8,
-//         ),
-//       );
-//     });
-//   }
-// }
 
 class ChatTextItem extends StatelessWidget {
   final ChatDirection direction;
