@@ -118,8 +118,6 @@ class ConvManager {
   }) async {
     List<ReadModel> readModelList = await getConvReadList(
       convId: convId,
-      offset: 0,
-      limit: 200,
     );
     readModelList.removeWhere((element) {
       return element.senderId == _sdkManager.userId;
@@ -130,8 +128,6 @@ class ConvManager {
   /// 获取会话已读列表
   Future<List<ReadModel>> getConvReadList({
     required String convId,
-    required int offset,
-    required int limit,
   }) {
     return _sdkManager.findAll(
       query: _sdkManager
@@ -139,8 +135,6 @@ class ConvManager {
           .filter()
           .convIdEqualTo(convId)
           .sortBySeqDesc()
-          .offset(offset)
-          .limit(limit)
           .build(),
     );
   }
