@@ -59,6 +59,7 @@ class ChatLogic extends GetxController {
   late StreamSubscription keyboardEvent;
 
   List<MsgModel> msgModelList = [];
+  Rx<ReadModel?> readModel = Rx<ReadModel?>(null);
 
   RxString bulletin = "".obs;
 
@@ -222,6 +223,9 @@ class ChatLogic extends GetxController {
       size: 20,
     );
     msgModelList.addAll(msgList);
+    readModel.value = await XXIM.instance.convManager.getConvRead(
+      convId: convId,
+    );
     update(["list"]);
     isLoadMore = false;
   }
@@ -259,9 +263,11 @@ class ChatLogic extends GetxController {
     XXIM.instance.convManager.setConvRead(convId: convId);
   }
 
-  void readMsg(ReadContent readContent) {
+  void readMsg(ReadContent readContent) async {
     if (readContent.convId != convId) return;
-    update([ChatReadItem.getId()]);
+    readModel.value = await XXIM.instance.convManager.getConvRead(
+      convId: convId,
+    );
   }
 
   void setAtMember(String senderId, String nickname) {
@@ -967,6 +973,7 @@ class ChatPage extends StatelessWidget {
                 clientMsgId: msgModel.clientMsgId,
                 index: index,
                 msgModelList: logic.msgModelList,
+                readModel: logic.readModel,
                 onRetry: (msgModel) {
                   logic.sendMsgList([msgModel]);
                 },

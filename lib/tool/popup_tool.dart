@@ -13,10 +13,13 @@ class PopupTool {
     required int contentType,
     required String content,
     required MsgModel msgModel,
+    required int readCount,
   }) {
+    bool isGroupConv = false;
     GroupRole role = GroupRole.MEMBER;
     bool isOperate = true;
     if (SDKTool.isGroupConv(msgModel.convId)) {
+      isGroupConv = true;
       String groupId = SDKTool.getGroupId(msgModel.convId);
       List<GroupBaseInfo> groupInfoList =
           MenuLogic.logic()?.groupInfoList ?? [];
@@ -107,6 +110,15 @@ class PopupTool {
             height: 17,
           ),
         ),
+        if (isGroupConv)
+          DefaultMenuItem(
+            title: "$readCount${"人已读".tr}",
+            image: Image.asset(
+              "assets/images/ic_msg_read_17.webp",
+              width: 17,
+              height: 17,
+            ),
+          ),
       ],
       onClickMenu: (item) async {
         String menuTitle = item.menuTitle;

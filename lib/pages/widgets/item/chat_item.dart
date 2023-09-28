@@ -26,6 +26,7 @@ class ChatItem<T extends GetxController> extends StatelessWidget {
   final String clientMsgId;
   final int index;
   final List<MsgModel> msgModelList;
+  final Rx<ReadModel?> readModel;
   final Function(MsgModel msgModel) onRetry;
 
   const ChatItem({
@@ -34,6 +35,7 @@ class ChatItem<T extends GetxController> extends StatelessWidget {
     required this.clientMsgId,
     required this.index,
     required this.msgModelList,
+    required this.readModel,
     required this.onRetry,
   });
 
@@ -72,6 +74,7 @@ class ChatItem<T extends GetxController> extends StatelessWidget {
             tag: tag,
             direction: direction,
             msgModel: msgModel,
+            readModel: readModel,
             onRetry: () {
               onRetry(msgModel);
             },
@@ -150,6 +153,7 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
   final String? tag;
   final ChatDirection direction;
   final MsgModel msgModel;
+  final Rx<ReadModel?> readModel;
   final Function() onRetry;
 
   const ChatMsgItem({
@@ -157,6 +161,7 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
     this.tag,
     required this.direction,
     required this.msgModel,
+    required this.readModel,
     required this.onRetry,
   }) : super(key: key);
 
@@ -243,20 +248,36 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
                     return GestureDetector(
                       behavior: HitTestBehavior.opaque,
                       onLongPress: () {
-                        PopupTool.show(
-                          context,
-                          contentType: msgModel.contentType,
-                          content: msgModel.content,
-                          msgModel: msgModel,
-                        );
+                        XXIM.instance.convManager
+                            .getConvReadPeopleCount(
+                          convId: msgModel.convId,
+                          seq: msgModel.seq,
+                        )
+                            .then((value) {
+                          PopupTool.show(
+                            context,
+                            contentType: msgModel.contentType,
+                            content: msgModel.content,
+                            msgModel: msgModel,
+                            readCount: value.length,
+                          );
+                        });
                       },
-                      onSecondaryTap: () {
-                        PopupTool.show(
-                          context,
-                          contentType: msgModel.contentType,
-                          content: msgModel.content,
-                          msgModel: msgModel,
-                        );
+                      onSecondaryTap: () async {
+                        XXIM.instance.convManager
+                            .getConvReadPeopleCount(
+                          convId: msgModel.convId,
+                          seq: msgModel.seq,
+                        )
+                            .then((value) {
+                          PopupTool.show(
+                            context,
+                            contentType: msgModel.contentType,
+                            content: msgModel.content,
+                            msgModel: msgModel,
+                            readCount: value.length,
+                          );
+                        });
                       },
                       child: child,
                     );
@@ -274,16 +295,20 @@ class ChatMsgItem<T extends GetxController> extends StatelessWidget {
                       if (direction == ChatDirection.right)
                         Padding(
                           padding: const EdgeInsets.only(right: 10, top: 3),
-                          child: GetBuilder<T>(
-                            tag: tag,
-                            id: ChatReadItem.getId(),
-                            builder: (controller) {
-                              return ChatReadItem(
-                                key: UniqueKey(),
-                                msgModel: msgModel,
-                              );
-                            },
-                          ),
+                          child: Obx(() {
+                            if (readModel.value == null) {
+                              return const SizedBox();
+                            }
+                            return Text(
+                              readModel.value!.seq >= msgModel.seq
+                                  ? "已读".tr
+                                  : "未读".tr,
+                              style: const TextStyle(
+                                color: getTextBlack,
+                                fontSize: 8,
+                              ),
+                            );
+                          }),
                         ),
                       Text(
                         TimeTool.formatTimestamp(
@@ -597,69 +622,69 @@ class ChatStatusItem<T extends GetxController> extends StatelessWidget {
   }
 }
 
-class ChatReadItem extends StatefulWidget {
-  static String getId() {
-    return "ChatReadItem";
-  }
-
-  final MsgModel msgModel;
-
-  const ChatReadItem({
-    super.key,
-    required this.msgModel,
-  });
-
-  @override
-  State<ChatReadItem> createState() => _ChatReadItemState();
-}
-
-class _ChatReadItemState extends State<ChatReadItem> {
-  late MsgModel _msgModel;
-  late String _convId;
-  late int _seq;
-  RxString text = "".obs;
-
-  @override
-  void initState() {
-    _msgModel = widget.msgModel;
-    _convId = _msgModel.convId;
-    _seq = _msgModel.seq;
-    _loadConvRead();
-    super.initState();
-  }
-
-  void _loadConvRead() async {
-    List<ReadModel> readModelList = await XXIM.instance.convManager.getConvRead(
-      convId: _convId,
-      seq: _seq,
-    );
-    readModelList.removeWhere((element) {
-      return element.senderId == HiveTool.getUserId();
-    });
-    if (SDKTool.isSingleConv(_convId)) {
-      if (readModelList.isEmpty) {
-        text.value = "未读".tr;
-      } else {
-        text.value = "已读".tr;
-      }
-    } else {
-      text.value = "${readModelList.length}${"人已读".tr}";
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Obx(() {
-      return Text(
-        text.value,
-        style: const TextStyle(
-          color: getTextBlack,
-          fontSize: 8,
-        ),
-      );
-    });
-  }
-}
+// class ChatReadItem extends StatefulWidget {
+//   static String getId() {
+//     return "ChatReadItem";
+//   }
+//
+//   final MsgModel msgModel;
+//
+//   const ChatReadItem({
+//     super.key,
+//     required this.msgModel,
+//   });
+//
+//   @override
+//   State<ChatReadItem> createState() => _ChatReadItemState();
+// }
+//
+// class _ChatReadItemState extends State<ChatReadItem> {
+//   late MsgModel _msgModel;
+//   late String _convId;
+//   late int _seq;
+//   RxString text = "".obs;
+//
+//   @override
+//   void initState() {
+//     _msgModel = widget.msgModel;
+//     _convId = _msgModel.convId;
+//     _seq = _msgModel.seq;
+//     _loadConvRead();
+//     super.initState();
+//   }
+//
+//   void _loadConvRead() async {
+//     List<ReadModel> readModelList = await XXIM.instance.convManager.getConvRead(
+//       convId: _convId,
+//       seq: _seq,
+//     );
+//     readModelList.removeWhere((element) {
+//       return element.senderId == HiveTool.getUserId();
+//     });
+//     if (SDKTool.isSingleConv(_convId)) {
+//       if (readModelList.isEmpty) {
+//         text.value = "未读".tr;
+//       } else {
+//         text.value = "已读".tr;
+//       }
+//     } else {
+//       text.value = "${readModelList.length}${"人已读".tr}";
+//     }
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Obx(() {
+//       return Text(
+//         text.value,
+//         style: const TextStyle(
+//           color: getTextBlack,
+//           fontSize: 8,
+//         ),
+//       );
+//     });
+//   }
+// }
 
 class ChatTextItem extends StatelessWidget {
   final ChatDirection direction;

@@ -113,11 +113,44 @@ class ConvManager {
   }
 
   /// 获取会话已读
-  Future<List<ReadModel>> getConvRead({
+  Future<ReadModel?> getConvRead({
     required String convId,
-    required int seq,
+  }) async {
+    List<ReadModel> readModelList = await getConvReadList(
+      convId: convId,
+      offset: 0,
+      limit: 200,
+    );
+    readModelList.removeWhere((element) {
+      return element.senderId == _sdkManager.userId;
+    });
+    return readModelList.firstOrNull;
+  }
+
+  /// 获取会话已读列表
+  Future<List<ReadModel>> getConvReadList({
+    required String convId,
+    required int offset,
+    required int limit,
   }) {
     return _sdkManager.findAll(
+      query: _sdkManager
+          .readModels()
+          .filter()
+          .convIdEqualTo(convId)
+          .sortBySeqDesc()
+          .offset(offset)
+          .limit(limit)
+          .build(),
+    );
+  }
+
+  /// 获取会话已读人数量
+  Future<List<ReadModel>> getConvReadPeopleCount({
+    required String convId,
+    required int seq,
+  }) async {
+    List<ReadModel> readModelList = await _sdkManager.findAll(
       query: _sdkManager
           .readModels()
           .filter()
@@ -129,6 +162,10 @@ class ConvManager {
           )
           .build(),
     );
+    readModelList.removeWhere((element) {
+      return element.senderId == _sdkManager.userId;
+    });
+    return readModelList;
   }
 
   /// 设置会话已读
