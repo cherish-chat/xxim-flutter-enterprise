@@ -117,7 +117,7 @@ class ConvManager {
     required String convId,
   }) async {
     int offset = 0;
-    int limit = 10;
+    int limit = 5;
     List<ReadModel> readModelList = [];
     while (readModelList.isEmpty) {
       readModelList = await getConvReadList(
@@ -128,6 +128,7 @@ class ConvManager {
       readModelList.removeWhere((element) {
         return element.senderId == _sdkManager.userId;
       });
+      if (offset >= 100) break;
       offset += limit;
     }
     return readModelList.firstOrNull;
