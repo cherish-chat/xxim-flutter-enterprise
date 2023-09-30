@@ -116,18 +116,28 @@ class ConvManager {
   Future<ReadModel?> getConvRead({
     required String convId,
   }) async {
-    List<ReadModel> readModelList = await getConvReadList(
-      convId: convId,
-    );
-    readModelList.removeWhere((element) {
-      return element.senderId == _sdkManager.userId;
-    });
+    int offset = 0;
+    int limit = 10;
+    List<ReadModel> readModelList = [];
+    while (readModelList.isEmpty) {
+      readModelList = await getConvReadList(
+        convId: convId,
+        offset: offset,
+        limit: limit,
+      );
+      readModelList.removeWhere((element) {
+        return element.senderId == _sdkManager.userId;
+      });
+      offset += limit;
+    }
     return readModelList.firstOrNull;
   }
 
   /// 获取会话已读列表
   Future<List<ReadModel>> getConvReadList({
     required String convId,
+    required int offset,
+    required int limit,
   }) {
     return _sdkManager.findAll(
       query: _sdkManager
@@ -135,6 +145,8 @@ class ConvManager {
           .filter()
           .convIdEqualTo(convId)
           .sortBySeqDesc()
+          .offset(offset)
+          .limit(limit)
           .build(),
     );
   }
