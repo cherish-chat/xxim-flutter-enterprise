@@ -7,9 +7,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart' hide Category;
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:readmore/readmore.dart';
-import 'package:screen_capturer/screen_capturer.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:super_clipboard/super_clipboard.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
@@ -103,19 +101,19 @@ class ChatLogic extends GetxController {
       }
     });
     if (!kIsWeb && GetPlatform.isDesktop) {
-      HotKey capturerHotKey = HotKey(
-        KeyCode.keyP,
-        modifiers: [
-          KeyModifier.control,
-        ],
-        scope: HotKeyScope.inapp,
-      );
-      await hotKeyManager.register(
-        capturerHotKey,
-        keyDownHandler: (hotKey) {
-          sendScreenCapturer();
-        },
-      );
+      // HotKey capturerHotKey = HotKey(
+      //   KeyCode.keyP,
+      //   modifiers: [
+      //     KeyModifier.control,
+      //   ],
+      //   scope: HotKeyScope.inapp,
+      // );
+      // await hotKeyManager.register(
+      //   capturerHotKey,
+      //   keyDownHandler: (hotKey) {
+      //     sendScreenCapturer();
+      //   },
+      // );
       HotKey fileHotKey = HotKey(
         KeyCode.keyV,
         modifiers: [
@@ -345,47 +343,47 @@ class ChatLogic extends GetxController {
     SendRedPacket.show(convId: convId);
   }
 
-  void sendScreenCapturer() async {
-    screenCapturer
-        .capture(
-      mode: CaptureMode.region,
-      imagePath:
-          "${(await getApplicationDocumentsDirectory()).path}/${Tool.getUUId()}.jpg",
-    )
-        .then(
-      (value) {
-        if (value == null) return;
-        Uint8List? imageBytes = value.imageBytes;
-        if (imageBytes == null) {
-          Tool.showToast("截图失败".tr);
-          return;
-        }
-        SendImageDialog.show(
-          imageBytes: imageBytes,
-          sendImage: () async {
-            Completer<ui.Image> completer = Completer();
-            ui.decodeImageFromList(imageBytes, (ui.Image image) {
-              return completer.complete(image);
-            });
-            ui.Image image = await completer.future;
-            createImage(ImageContent(
-              imageName: "${Tool.getUUId()}.jpg",
-              imagePath: "",
-              imageUrl: "",
-              imageBytes: imageBytes,
-              width: image.width,
-              height: image.height,
-              size: imageBytes.length,
-            )).then(
-              (value) {
-                sendImage(value);
-              },
-            );
-          },
-        );
-      },
-    );
-  }
+  // void sendScreenCapturer() async {
+  //   screenCapturer
+  //       .capture(
+  //     mode: CaptureMode.region,
+  //     imagePath:
+  //         "${(await getApplicationDocumentsDirectory()).path}/${Tool.getUUId()}.jpg",
+  //   )
+  //       .then(
+  //     (value) {
+  //       if (value == null) return;
+  //       Uint8List? imageBytes = value.imageBytes;
+  //       if (imageBytes == null) {
+  //         Tool.showToast("截图失败".tr);
+  //         return;
+  //       }
+  //       SendImageDialog.show(
+  //         imageBytes: imageBytes,
+  //         sendImage: () async {
+  //           Completer<ui.Image> completer = Completer();
+  //           ui.decodeImageFromList(imageBytes, (ui.Image image) {
+  //             return completer.complete(image);
+  //           });
+  //           ui.Image image = await completer.future;
+  //           createImage(ImageContent(
+  //             imageName: "${Tool.getUUId()}.jpg",
+  //             imagePath: "",
+  //             imageUrl: "",
+  //             imageBytes: imageBytes,
+  //             width: image.width,
+  //             height: image.height,
+  //             size: imageBytes.length,
+  //           )).then(
+  //             (value) {
+  //               sendImage(value);
+  //             },
+  //           );
+  //         },
+  //       );
+  //     },
+  //   );
+  // }
 
   void showSendImage(Uint8List imageBytes) {
     SendImageDialog.show(
@@ -1138,20 +1136,20 @@ class ChatPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  if (!kIsWeb && GetPlatform.isDesktop)
-                    GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () {
-                        logic.sendScreenCapturer();
-                      },
-                      child: Image.asset(
-                        "assets/images/ic_capturer_35.webp",
-                        width: 40,
-                        height: 40,
-                      ),
-                    ),
-                  if (!kIsWeb && GetPlatform.isDesktop)
-                    const SizedBox(width: 8),
+                  // if (!kIsWeb && GetPlatform.isDesktop)
+                  //   GestureDetector(
+                  //     behavior: HitTestBehavior.opaque,
+                  //     onTap: () {
+                  //       logic.sendScreenCapturer();
+                  //     },
+                  //     child: Image.asset(
+                  //       "assets/images/ic_capturer_35.webp",
+                  //       width: 40,
+                  //       height: 40,
+                  //     ),
+                  //   ),
+                  // if (!kIsWeb && GetPlatform.isDesktop)
+                  //   const SizedBox(width: 8),
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () {
