@@ -108,7 +108,7 @@ class ChatLogic extends GetxController {
         modifiers: [
           KeyModifier.control,
         ],
-        scope: HotKeyScope.system,
+        scope: HotKeyScope.inapp,
       );
       await hotKeyManager.register(
         capturerHotKey,
