@@ -201,6 +201,7 @@ class Translation extends Translations {
           "未读": "未读",
           "已读": "已读",
           "人已读": "人已读",
+          "没有最近":"没有最近",
         },
         "zh_TW": {
           "企业": "企業",

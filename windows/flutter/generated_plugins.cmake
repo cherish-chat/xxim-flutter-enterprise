@@ -6,6 +6,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   audioplayers_windows
   connectivity_plus
   desktop_drop
+  emoji_picker_flutter
   hotkey_manager
   irondash_engine_context
   isar_flutter_libs

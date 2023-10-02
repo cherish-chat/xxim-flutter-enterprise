@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:cross_file/cross_file.dart';
 import 'package:desktop_drop/desktop_drop.dart';
-import 'package:extended_text/extended_text.dart';
+import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart' hide Category;
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
 import 'package:path_provider/path_provider.dart';
@@ -29,6 +29,7 @@ import 'package:xxim_flutter_enterprise/proto/msg.pb.dart';
 import 'package:xxim_flutter_enterprise/proto/user.pb.dart';
 import 'package:xxim_sdk_flutter/xxim_sdk_flutter.dart';
 import 'dart:ui' as ui;
+import 'package:flutter/foundation.dart' as foundation;
 
 enum ChatOperate {
   none,
@@ -1362,54 +1363,92 @@ class ChatPage extends StatelessWidget {
             ? logic.spaceLasting
             : null,
         child: logic.chatOperate.value == ChatOperate.emoji
-            ? ChatExtendedEmoji(
-                callback: (emoji) {
-                  String text = logic.inputController.text;
-                  int offset = logic.inputBaseOffset;
-                  if (offset != -1) {
-                    text = text.replaceRange(offset, offset, emoji);
-                  } else {
-                    text = text + emoji;
-                  }
-                  logic.inputBaseOffset += emoji.length;
-                  logic.inputController.text = text;
-                  logic.inputController.value = TextEditingValue(
-                    text: text,
-                    selection: TextSelection.fromPosition(
-                      TextPosition(offset: logic.inputBaseOffset),
+            ? EmojiPicker(
+                onEmojiSelected: (Category? category, Emoji emoji) {},
+                onBackspacePressed: () {},
+                textEditingController: logic.inputController,
+                config: Config(
+                  columns: 7,
+                  emojiSizeMax: 32 *
+                      (foundation.defaultTargetPlatform == TargetPlatform.iOS
+                          ? 1.30
+                          : 1.0),
+                  verticalSpacing: 0,
+                  horizontalSpacing: 0,
+                  gridPadding: EdgeInsets.zero,
+                  initCategory: Category.RECENT,
+                  bgColor: Colors.white,
+                  indicatorColor: getMainColor,
+                  iconColor: Colors.black,
+                  iconColorSelected: getMainColor,
+                  backspaceColor: getMainColor,
+                  skinToneDialogBgColor: Colors.white,
+                  skinToneIndicatorColor: Colors.grey,
+                  enableSkinTones: true,
+                  recentTabBehavior: RecentTabBehavior.RECENT,
+                  recentsLimit: 28,
+                  noRecents: Text(
+                    "没有最近".tr,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
                     ),
-                  );
-                },
-                onDelete: () {
-                  TextEditingValue inputValue = logic.inputController.value;
-                  TextSelection textSelection = inputValue.selection;
-                  if (!textSelection.isValid) return;
-                  TextEditingValue textValue;
-                  String actualText = inputValue.text;
-                  if (textSelection.isCollapsed && textSelection.start == 0) {
-                    return;
-                  }
-                  int start = textSelection.isCollapsed
-                      ? textSelection.start - 1
-                      : textSelection.start;
-                  int end = textSelection.end;
-                  textValue = TextEditingValue(
-                    text: actualText.replaceRange(start, end, ""),
-                    selection: TextSelection.collapsed(offset: start),
-                  );
-                  TextSpan oldTextSpan = ExtendedSpecialBuilder().build(
-                    inputValue.text,
-                  );
-                  textValue =
-                      ExtendedTextLibraryUtils.handleSpecialTextSpanDelete(
-                    textValue,
-                    inputValue,
-                    oldTextSpan,
-                    null,
-                  );
-                  logic.inputController.value = textValue;
-                },
+                    textAlign: TextAlign.center,
+                  ),
+                  loadingIndicator: const SizedBox.shrink(),
+                  tabIndicatorAnimDuration: kTabScrollDuration,
+                  categoryIcons: const CategoryIcons(),
+                  buttonMode: ButtonMode.MATERIAL,
+                ),
               )
+            // ? ChatExtendedEmoji(
+            //     callback: (emoji) {
+            //       String text = logic.inputController.text;
+            //       int offset = logic.inputBaseOffset;
+            //       if (offset != -1) {
+            //         text = text.replaceRange(offset, offset, emoji);
+            //       } else {
+            //         text = text + emoji;
+            //       }
+            //       logic.inputBaseOffset += emoji.length;
+            //       logic.inputController.text = text;
+            //       logic.inputController.value = TextEditingValue(
+            //         text: text,
+            //         selection: TextSelection.fromPosition(
+            //           TextPosition(offset: logic.inputBaseOffset),
+            //         ),
+            //       );
+            //     },
+            //     onDelete: () {
+            //       TextEditingValue inputValue = logic.inputController.value;
+            //       TextSelection textSelection = inputValue.selection;
+            //       if (!textSelection.isValid) return;
+            //       TextEditingValue textValue;
+            //       String actualText = inputValue.text;
+            //       if (textSelection.isCollapsed && textSelection.start == 0) {
+            //         return;
+            //       }
+            //       int start = textSelection.isCollapsed
+            //           ? textSelection.start - 1
+            //           : textSelection.start;
+            //       int end = textSelection.end;
+            //       textValue = TextEditingValue(
+            //         text: actualText.replaceRange(start, end, ""),
+            //         selection: TextSelection.collapsed(offset: start),
+            //       );
+            //       TextSpan oldTextSpan = ExtendedSpecialBuilder().build(
+            //         inputValue.text,
+            //       );
+            //       textValue =
+            //           ExtendedTextLibraryUtils.handleSpecialTextSpanDelete(
+            //         textValue,
+            //         inputValue,
+            //         oldTextSpan,
+            //         null,
+            //       );
+            //       logic.inputController.value = textValue;
+            //     },
+            //   )
             : logic.chatOperate.value == ChatOperate.record
                 ? ChatExtendedRecord(
                     callback: (
