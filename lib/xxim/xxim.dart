@@ -70,7 +70,7 @@ class XXIM {
             connectController.add(false);
             NewsLogic.logic()?.connectStatus.value = ConnectStatus.connect;
             pulling = true;
-            _reconnect();
+            Future.delayed(const Duration(seconds: 2), _reconnect);
           },
         ),
         subscribeCallback: SubscribeCallback(
@@ -171,23 +171,24 @@ class XXIM {
   Future _reconnect() async {
     bool success = await Tool.loadConfigFast();
     if (!success) {
-      Future.delayed(const Duration(seconds: 3), _reconnect);
+      Future.delayed(const Duration(seconds: 2), _reconnect);
       return;
     }
     if (!XXIM.instance.isConnect()) {
       bool isConnect = await XXIM.instance.connect();
-      if (!isConnect) {
-        Future.delayed(const Duration(seconds: 3), _reconnect);
-        return;
-      }
+      if (!isConnect) return;
     }
+    _resetUserParams();
+  }
+
+  void _resetUserParams() async {
     if (!HiveTool.isLogin()) return;
     bool status = await XXIM.instance.setUserParams(
       userId: HiveTool.getUserId(),
       token: HiveTool.getToken(),
     );
     if (!status) {
-      Future.delayed(const Duration(seconds: 3), _reconnect);
+      Future.delayed(const Duration(seconds: 1), _resetUserParams);
       return;
     }
   }
@@ -253,43 +254,19 @@ class XXIM {
     ErrorCallback? onError,
   }) async {
     if (!XXIM.instance.isConnect()) {
-      bool isConnect = await XXIM.instance.connect();
-      if (!isConnect) {
-        if (environment == Environment.debug) {
-          debugPrint("--------------------------------------------------");
-          debugPrint("customRequest:$method");
-          debugPrint("customRequest:$req");
-          debugPrint(
-              "customRequest-onError:${CommonResp_Code.UnknownError.value} - Socket连接失败");
-          debugPrint("--------------------------------------------------");
-        }
-        onError?.call(
-          CommonResp_Code.UnknownError.value,
-          "Socket连接失败",
-        );
-        return null;
+      if (environment == Environment.debug) {
+        debugPrint("--------------------------------------------------");
+        debugPrint("customRequest:$method");
+        debugPrint("customRequest:$req");
+        debugPrint(
+            "customRequest-onError:${CommonResp_Code.UnknownError.value} - Socket连接失败");
+        debugPrint("--------------------------------------------------");
       }
-      if (HiveTool.isLogin()) {
-        bool status = await XXIM.instance.setUserParams(
-          userId: HiveTool.getUserId(),
-          token: HiveTool.getToken(),
-        );
-        if (!status) {
-          if (environment == Environment.debug) {
-            debugPrint("--------------------------------------------------");
-            debugPrint("customRequest:$method");
-            debugPrint("customRequest:$req");
-            debugPrint(
-                "customRequest-onError:${CommonResp_Code.UnknownError.value} - 设置用户参数失败");
-            debugPrint("--------------------------------------------------");
-          }
-          onError?.call(
-            CommonResp_Code.UnknownError.value,
-            "设置用户参数失败",
-          );
-          return null;
-        }
-      }
+      onError?.call(
+        CommonResp_Code.UnknownError.value,
+        "Socket连接失败",
+      );
+      return null;
     }
     List<int>? data = await _sdk.customRequest(
       method: method,

@@ -34,13 +34,6 @@ class LoginLogic extends GetxController {
 
   void getCaptcha() async {
     await Future.delayed(const Duration(seconds: 1));
-    if (!XXIM.instance.isConnect()) {
-      bool isConnect = await XXIM.instance.connect();
-      if (!isConnect) {
-        getCaptcha();
-        return;
-      }
-    }
     XXIM.instance.customRequest<GetCaptchaCodeResp>(
       method: "/v1/user/white/getCaptchaCode",
       req: GetCaptchaCodeReq(
@@ -72,13 +65,6 @@ class LoginLogic extends GetxController {
       return;
     }
     GetLoadingDialog.show("登录中".tr);
-    if (!XXIM.instance.isConnect()) {
-      bool isConnect = await XXIM.instance.connect();
-      if (!isConnect) {
-        login();
-        return;
-      }
-    }
     XXIM.instance.customRequest<LoginResp>(
       method: "/v1/user/white/login",
       req: LoginReq(
