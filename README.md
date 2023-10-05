@@ -4,7 +4,7 @@ A new Flutter project.
 
 ## Flutter SDK
 
-Channel stable 3.13.5
+Channel stable 3.13.6
 
 ## Getting Started
 
