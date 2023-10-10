@@ -11,6 +11,9 @@ const String rsaPublicKey = "-----BEGIN PUBLIC KEY-----\n"
     "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuknt6qcc53juo3oWKr6PHBzwgKIp0Ot4rEYecSuHiQ6k5V+nOttdopqAqTvKcTZ9GZAyc+U86AhwR6lfKWcjZMyDgrgery+OkTILjE4orfQIF6zrGqk+ZkXU9ZfjwYkTo7h1a0zGlGsbPZnspisPAgw37vBmIOtW0uBxQUzqSyfSa+LpjC97AO8/YeuceW+K+MCXIG/04PBHJ425GdkQVgzQDtq0KBF3JrBb+z1chW4pH8EpmdZ3uvhmkgrv0EeRy4iH4R6lwms7I2Nuq6ziwu6zCTpYYAAykfDS0ya3tdnx1SX8vdRPy4zrBxu91oDYaQxJVOa0dE+7UKl/QntcpwIDAQAB"
     "\n-----END PUBLIC KEY-----";
 
+/// 控制是否可以发送大于20M的文件
+bool canUploadBigFile = false;
+
 /// text翻译配置
 String fromTranslate = "zh";
 const List<String> toTranslateList = [
@@ -30,4 +33,5 @@ const List<String> toTranslateList = [
   "zh-TW", // 中文（繁体）
 ];
 
+/// 高德地图apiKey-暂不使用
 const String gdWebKey = "";

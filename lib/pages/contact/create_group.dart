@@ -27,6 +27,19 @@ class CreateGroupLogic extends GetxController {
         PlatformFile file = files.first;
         Uint8List? bytes = file.bytes;
         if (bytes == null || bytes.isEmpty) return;
+        if (GetPlatform.isWeb) {
+          if (bytes.length > 20971520) {
+            Tool.showToast("不支持发送大于20M的文件".tr);
+            return;
+          }
+        } else {
+          if (!canUploadBigFile) {
+            if (bytes.length > 20971520) {
+              Tool.showToast("不支持发送大于20M的文件".tr);
+              return;
+            }
+          }
+        }
         GetLoadingDialog.show("上传中".tr);
         try {
           String objectId = await MinIOTool.upload(

@@ -128,63 +128,126 @@ class ChatLogic extends GetxController {
           if (reader.canProvide(Formats.jpeg)) {
             reader.getFile(Formats.jpeg, (value) async {
               Uint8List uint8list = await value.readAll();
-              if (GetPlatform.isWeb && uint8list.length > 20000000) {
-                Tool.showToast("网页不支持发送太大的文件".tr);
-                return;
+              if (GetPlatform.isWeb) {
+                if (uint8list.length > 20971520) {
+                  Tool.showToast("不支持发送大于20M的文件".tr);
+                  return;
+                }
+              } else {
+                if (!canUploadBigFile) {
+                  if (uint8list.length > 20971520) {
+                    Tool.showToast("不支持发送大于20M的文件".tr);
+                    return;
+                  }
+                }
               }
               showSendImage(uint8list);
             });
           } else if (reader.canProvide(Formats.png)) {
             reader.getFile(Formats.png, (value) async {
               Uint8List uint8list = await value.readAll();
-              if (GetPlatform.isWeb && uint8list.length > 20000000) {
-                Tool.showToast("网页不支持发送太大的文件".tr);
-                return;
+              if (GetPlatform.isWeb) {
+                if (uint8list.length > 20971520) {
+                  Tool.showToast("不支持发送大于20M的文件".tr);
+                  return;
+                }
+              } else {
+                if (!canUploadBigFile) {
+                  if (uint8list.length > 20971520) {
+                    Tool.showToast("不支持发送大于20M的文件".tr);
+                    return;
+                  }
+                }
               }
               showSendImage(uint8list);
             });
           } else if (reader.canProvide(Formats.tiff)) {
             reader.getFile(Formats.tiff, (value) async {
               Uint8List uint8list = await value.readAll();
-              if (GetPlatform.isWeb && uint8list.length > 20000000) {
-                Tool.showToast("网页不支持发送太大的文件".tr);
-                return;
+              if (GetPlatform.isWeb) {
+                if (uint8list.length > 20971520) {
+                  Tool.showToast("不支持发送大于20M的文件".tr);
+                  return;
+                }
+              } else {
+                if (!canUploadBigFile) {
+                  if (uint8list.length > 20971520) {
+                    Tool.showToast("不支持发送大于20M的文件".tr);
+                    return;
+                  }
+                }
               }
               showSendImage(uint8list);
             });
           } else if (reader.canProvide(Formats.bmp)) {
             reader.getFile(Formats.bmp, (value) async {
               Uint8List uint8list = await value.readAll();
-              if (GetPlatform.isWeb && uint8list.length > 20000000) {
-                Tool.showToast("网页不支持发送太大的文件".tr);
-                return;
+              if (GetPlatform.isWeb) {
+                if (uint8list.length > 20971520) {
+                  Tool.showToast("不支持发送大于20M的文件".tr);
+                  return;
+                }
+              } else {
+                if (!canUploadBigFile) {
+                  if (uint8list.length > 20971520) {
+                    Tool.showToast("不支持发送大于20M的文件".tr);
+                    return;
+                  }
+                }
               }
               showSendImage(uint8list);
             });
           } else if (reader.canProvide(Formats.ico)) {
             reader.getFile(Formats.ico, (value) async {
               Uint8List uint8list = await value.readAll();
-              if (GetPlatform.isWeb && uint8list.length > 20000000) {
-                Tool.showToast("网页不支持发送太大的文件".tr);
-                return;
+              if (GetPlatform.isWeb) {
+                if (uint8list.length > 20971520) {
+                  Tool.showToast("不支持发送大于20M的文件".tr);
+                  return;
+                }
+              } else {
+                if (!canUploadBigFile) {
+                  if (uint8list.length > 20971520) {
+                    Tool.showToast("不支持发送大于20M的文件".tr);
+                    return;
+                  }
+                }
               }
               showSendImage(uint8list);
             });
           } else if (reader.canProvide(Formats.heic)) {
             reader.getFile(Formats.heic, (value) async {
               Uint8List uint8list = await value.readAll();
-              if (GetPlatform.isWeb && uint8list.length > 20000000) {
-                Tool.showToast("网页不支持发送太大的文件".tr);
-                return;
+              if (GetPlatform.isWeb) {
+                if (uint8list.length > 20971520) {
+                  Tool.showToast("不支持发送大于20M的文件".tr);
+                  return;
+                }
+              } else {
+                if (!canUploadBigFile) {
+                  if (uint8list.length > 20971520) {
+                    Tool.showToast("不支持发送大于20M的文件".tr);
+                    return;
+                  }
+                }
               }
               showSendImage(uint8list);
             });
           } else if (reader.canProvide(Formats.heif)) {
             reader.getFile(Formats.heif, (value) async {
               Uint8List uint8list = await value.readAll();
-              if (GetPlatform.isWeb && uint8list.length > 20000000) {
-                Tool.showToast("网页不支持发送太大的文件".tr);
-                return;
+              if (GetPlatform.isWeb) {
+                if (uint8list.length > 20971520) {
+                  Tool.showToast("不支持发送大于20M的文件".tr);
+                  return;
+                }
+              } else {
+                if (!canUploadBigFile) {
+                  if (uint8list.length > 20971520) {
+                    Tool.showToast("不支持发送大于20M的文件".tr);
+                    return;
+                  }
+                }
               }
               showSendImage(uint8list);
             });
@@ -427,9 +490,18 @@ class ChatLogic extends GetxController {
         for (PlatformFile file in files) {
           if (file.bytes == null || file.bytes!.isEmpty) continue;
           List<int> bytes = file.bytes!.toList();
-          if (GetPlatform.isWeb && bytes.length > 20000000) {
-            Tool.showToast("网页不支持发送太大的文件".tr);
-            return;
+          if (GetPlatform.isWeb) {
+            if (bytes.length > 20971520) {
+              Tool.showToast("不支持发送大于20M的文件".tr);
+              return;
+            }
+          } else {
+            if (!canUploadBigFile) {
+              if (bytes.length > 20971520) {
+                Tool.showToast("不支持发送大于20M的文件".tr);
+                return;
+              }
+            }
           }
           String header = getFileHeader(bytes);
           if (header.startsWith("FFD8") || // JPEG
@@ -845,9 +917,18 @@ class ChatPage extends StatelessWidget {
         onDragDone: (details) async {
           XFile xFile = details.files.first;
           Uint8List uint8list = await xFile.readAsBytes();
-          if (GetPlatform.isWeb && uint8list.length > 20000000) {
-            Tool.showToast("网页不支持发送太大的文件".tr);
-            return;
+          if (GetPlatform.isWeb) {
+            if (uint8list.length > 20971520) {
+              Tool.showToast("不支持发送大于20M的文件".tr);
+              return;
+            }
+          } else {
+            if (!canUploadBigFile) {
+              if (uint8list.length > 20971520) {
+                Tool.showToast("不支持发送大于20M的文件".tr);
+                return;
+              }
+            }
           }
           logic.showSendImage(uint8list);
         },
