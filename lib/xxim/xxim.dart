@@ -183,6 +183,7 @@ class XXIM {
 
   void _resetUserParams() async {
     if (!HiveTool.isLogin()) return;
+    if (!XXIM.instance.isConnect()) return;
     bool status = await XXIM.instance.setUserParams(
       userId: HiveTool.getUserId(),
       token: HiveTool.getToken(),
